@@ -63,9 +63,9 @@ class TestFinancialProfile(unittest.TestCase):
                                 detailed_frequency = 'Daily', 
                                 detailed_frequency_parameter = 1, ), 
                             schedule_consistency_score = 0.44, 
-                            next_expected_transaction_date = 'Fri Oct 04 02:00:00 CEST 2019', 
-                            earliest_transaction_date = 'Fri Apr 24 02:00:00 CEST 2020', 
-                            most_recent_transaction_date = 'Thu Oct 03 02:00:00 CEST 2019', 
+                            next_expected_transaction_date = 'Fri Oct 04 01:00:00 BST 2019', 
+                            earliest_transaction_date = 'Fri Apr 24 01:00:00 BST 2020', 
+                            most_recent_transaction_date = 'Thu Oct 03 01:00:00 BST 2019', 
                             amount_consistency_score = 0.74, 
                             average_amount = 19.708, )
                         ], 
@@ -73,9 +73,9 @@ class TestFinancialProfile(unittest.TestCase):
                         openapi_client.models.transaction_stream.TransactionStream(
                             name = 'Amazon Marketplace', 
                             schedule_consistency_score = 0.44, 
-                            next_expected_transaction_date = 'Fri Oct 04 02:00:00 CEST 2019', 
-                            earliest_transaction_date = 'Fri Apr 24 02:00:00 CEST 2020', 
-                            most_recent_transaction_date = 'Thu Oct 03 02:00:00 CEST 2019', 
+                            next_expected_transaction_date = 'Fri Oct 04 01:00:00 BST 2019', 
+                            earliest_transaction_date = 'Fri Apr 24 01:00:00 BST 2020', 
+                            most_recent_transaction_date = 'Thu Oct 03 01:00:00 BST 2019', 
                             amount_consistency_score = 0.74, 
                             average_amount = 19.708, )
                         ], 
@@ -83,9 +83,9 @@ class TestFinancialProfile(unittest.TestCase):
                         openapi_client.models.terminated_transaction_stream.TerminatedTransactionStream(
                             name = 'Amazon Marketplace', 
                             schedule_consistency_score = 0.44, 
-                            next_expected_transaction_date = 'Fri Oct 04 02:00:00 CEST 2019', 
-                            earliest_transaction_date = 'Fri Apr 24 02:00:00 CEST 2020', 
-                            most_recent_transaction_date = 'Thu Oct 03 02:00:00 CEST 2019', 
+                            next_expected_transaction_date = 'Fri Oct 04 01:00:00 BST 2019', 
+                            earliest_transaction_date = 'Fri Apr 24 01:00:00 BST 2020', 
+                            most_recent_transaction_date = 'Thu Oct 03 01:00:00 BST 2019', 
                             amount_consistency_score = 0.74, 
                             average_amount = 19.708, 
                             missed_transactions = 3, )
@@ -94,9 +94,9 @@ class TestFinancialProfile(unittest.TestCase):
                         openapi_client.models.terminated_transaction_stream.TerminatedTransactionStream(
                             name = 'Amazon Marketplace', 
                             schedule_consistency_score = 0.44, 
-                            next_expected_transaction_date = 'Fri Oct 04 02:00:00 CEST 2019', 
-                            earliest_transaction_date = 'Fri Apr 24 02:00:00 CEST 2020', 
-                            most_recent_transaction_date = 'Thu Oct 03 02:00:00 CEST 2019', 
+                            next_expected_transaction_date = 'Fri Oct 04 01:00:00 BST 2019', 
+                            earliest_transaction_date = 'Fri Apr 24 01:00:00 BST 2020', 
+                            most_recent_transaction_date = 'Thu Oct 03 01:00:00 BST 2019', 
                             amount_consistency_score = 0.74, 
                             average_amount = 19.708, 
                             missed_transactions = 3, )
