@@ -1,3 +1,21 @@
+# building the repo
+
+- download the latest yapily openapi.json file
+- run `openapi-generator generate -i openapi.json -g python -o . --additional-properties=projectName=python-yapily,packageName=yapily`
+- run the code below and use the output to update `yapily/schema/__init__.py`
+
+```python
+from yapily import models
+
+for name, cls in models.__dict__.items():
+    if isinstance(cls, type):
+        print(f'{name} = create_model_from_dict("{name}", __config__=Config, **yapily.{name}.openapi_types)')
+
+for name, cls in models.__dict__.items():
+    if isinstance(cls, type):
+        print(f'{name}.update_forward_refs()')
+```
+
 # python-yapily
 The Yapily API enables connections between your application and users' banks. For more information check out our [documentation](https://docs.yapily.com/).<br><br>In particular, make sure to view our [Getting Started](https://docs.yapily.com/#getting-started) steps if this is your first time here.<br><br>While testing the API, our list of [sandbox credentials](https://docs.yapily.com/guides/applications/institutions/sandbox/) maybe useful.
 
