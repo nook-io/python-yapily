@@ -9,10 +9,10 @@ from yapily import models
 
 for name, cls in models.__dict__.items():
     if isinstance(cls, type):
-        print(f'{name} = create_model_from_dict("{name}", __config__=Config, **yapily.{name}.openapi_types)')
+        print(f'{name} = create_model_from_dict("{name}", yapily.{name}, __config__=Config)')
 
 for name, cls in models.__dict__.items():
-    if isinstance(cls, type):
+    if isinstance(cls, type) and not hasattr(cls, "allowable_values"):
         print(f'{name}.update_forward_refs()')
 ```
 
