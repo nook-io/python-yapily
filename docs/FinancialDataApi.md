@@ -1,4 +1,4 @@
-# openapi_client.FinancialDataApi
+# yapily.FinancialDataApi
 
 All URIs are relative to *https://api.yapily.com*
 
@@ -32,12 +32,12 @@ Used to return the account and balance information for the end user associated w
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -47,15 +47,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -116,12 +116,12 @@ Used to return the balance for the end user associated with the presented consen
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -131,15 +131,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -200,12 +200,12 @@ Used to get the list of direct debits for an account.<br><br>Feature: `ACCOUNT_D
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -215,15 +215,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
@@ -280,12 +280,12 @@ Used to get the list of periodic payments (standing orders in the UK) for an acc
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -295,15 +295,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
@@ -360,12 +360,12 @@ Used to get the list of scheduled payments for an account.<br><br>Feature: `ACCO
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -375,15 +375,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
@@ -440,12 +440,12 @@ Used to return all accounts and balances for the end user associated with the pr
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -455,15 +455,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
 psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -522,12 +522,12 @@ Used to get all the beneficiaries of a user's account<br><br>Feature: `ACCOUNT_B
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -537,15 +537,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
@@ -600,12 +600,12 @@ Used to retrieve the list of categories returned by the Yapily Categorisation en
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -615,15 +615,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     country = 'country_example' # str | __Mandatory__. The 2 letter country code e.g. 'GB'.
 
     try:
@@ -674,12 +674,12 @@ Used to get the identity information for an account.<br><br>Feature: `IDENTITY`
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -689,15 +689,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
@@ -750,12 +750,12 @@ Used to get a statement for an account.<br><br>Feature: `ACCOUNT_STATEMENT`
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -765,15 +765,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     consent = 'consent_example' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 statement_id = 'statement_id_example' # str | __Mandatory__. The statement Id of the statement file.
@@ -830,12 +830,12 @@ Used to get the statement file for an account.<br><br>Feature: `ACCOUNT_STATEMEN
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -845,15 +845,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 statement_id = 'statement_id_example' # str | __Mandatory__. The statement Id of the statement file.
@@ -910,12 +910,12 @@ Used to get the list of statements for an account.<br><br>Feature: `ACCOUNT_STAT
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -925,21 +925,21 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 _from = '_from_example' # str | __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).  (optional)
 before = 'before_example' # str | __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). (optional)
 limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
-sort = openapi_client.SortEnum() # SortEnum | __Optional__. Sort transaction records by date ascending with 'date' or descending with '-date'. The default sort order is descending (optional)
+sort = yapily.SortEnum() # SortEnum | __Optional__. Sort transaction records by date ascending with 'date' or descending with '-date'. The default sort order is descending (optional)
 offset = 56 # int | __Optional__. The number of transaction records to be skipped. Used primarily with paginated results. (optional)
 raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
@@ -998,12 +998,12 @@ Used to get the account transactions for an account<br><br>Feature: `ACCOUNT_TRA
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -1013,15 +1013,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialDataApi(api_client)
+    api_instance = yapily.FinancialDataApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
 consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -1031,7 +1031,7 @@ _with = ['_with_example'] # list[str] | __Optional__. Can be `categories` or `me
 _from = '_from_example' # str | __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).  (optional)
 before = 'before_example' # str | __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). (optional)
 limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
-sort = openapi_client.SortEnum() # SortEnum | __Optional__. Sort transaction records by date ascending with 'date' or descending with '-date'. The default sort order is descending (optional)
+sort = yapily.SortEnum() # SortEnum | __Optional__. Sort transaction records by date ascending with 'date' or descending with '-date'. The default sort order is descending (optional)
 offset = 56 # int | __Optional__. The number of transaction records to be skipped. Used primarily with paginated results. (optional)
 cursor = 'cursor_example' # str | __Optional__. This property is not currently in use. (optional)
 raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)

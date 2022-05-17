@@ -1,4 +1,4 @@
-# openapi_client.UsersApi
+# yapily.UsersApi
 
 All URIs are relative to *https://api.yapily.com*
 
@@ -23,12 +23,12 @@ Create a new user in your application
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -38,15 +38,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.UsersApi(api_client)
+    api_instance = yapily.UsersApi(api_client)
     new_application_user = {"applicationUserId":"john.doe@company.com"} # NewApplicationUser | 
 
     try:
@@ -97,12 +97,12 @@ Delete a user from your application along with any sub-resources (including cons
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -112,15 +112,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.UsersApi(api_client)
+    api_instance = yapily.UsersApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
 
     try:
@@ -171,12 +171,12 @@ Get a specific user using the user UUID
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -186,15 +186,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.UsersApi(api_client)
+    api_instance = yapily.UsersApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
 
     try:
@@ -245,12 +245,12 @@ Get all the users configured in your application
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -260,15 +260,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.UsersApi(api_client)
+    api_instance = yapily.UsersApi(api_client)
     filter_application_user_id = ['filter_application_user_id_example'] # list[str] | __Optional__. Filter records based on the list of `applicationUserId` users provided. (optional)
 
     try:

@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.enrichment_merchant import EnrichmentMerchant  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.enrichment_merchant import EnrichmentMerchant  # noqa: E501
+from yapily.rest import ApiException
 
 class TestEnrichmentMerchant(unittest.TestCase):
     """EnrichmentMerchant unit test stubs"""
@@ -34,7 +34,7 @@ class TestEnrichmentMerchant(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.enrichment_merchant.EnrichmentMerchant()  # noqa: E501
+        # model = yapily.models.enrichment_merchant.EnrichmentMerchant()  # noqa: E501
         if include_optional :
             return EnrichmentMerchant(
                 merchant_name = '0', 

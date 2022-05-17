@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.api_error import ApiError  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.api_error import ApiError  # noqa: E501
+from yapily.rest import ApiException
 
 class TestApiError(unittest.TestCase):
     """ApiError unit test stubs"""
@@ -34,11 +34,11 @@ class TestApiError(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.api_error.ApiError()  # noqa: E501
+        # model = yapily.models.api_error.ApiError()  # noqa: E501
         if include_optional :
             return ApiError(
                 code = 56, 
-                institution_error = openapi_client.models.institution_error.InstitutionError(
+                institution_error = yapily.models.institution_error.InstitutionError(
                     error_message = '0', 
                     http_status_code = 56, ), 
                 message = '0', 

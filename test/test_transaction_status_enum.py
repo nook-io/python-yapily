@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.transaction_status_enum import TransactionStatusEnum  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.transaction_status_enum import TransactionStatusEnum  # noqa: E501
+from yapily.rest import ApiException
 
 class TestTransactionStatusEnum(unittest.TestCase):
     """TransactionStatusEnum unit test stubs"""
@@ -34,7 +34,7 @@ class TestTransactionStatusEnum(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.transaction_status_enum.TransactionStatusEnum()  # noqa: E501
+        # model = yapily.models.transaction_status_enum.TransactionStatusEnum()  # noqa: E501
         if include_optional :
             return TransactionStatusEnum(
             )

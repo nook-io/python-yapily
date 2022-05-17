@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.iso_bank_transaction_code import IsoBankTransactionCode  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.iso_bank_transaction_code import IsoBankTransactionCode  # noqa: E501
+from yapily.rest import ApiException
 
 class TestIsoBankTransactionCode(unittest.TestCase):
     """IsoBankTransactionCode unit test stubs"""
@@ -34,16 +34,16 @@ class TestIsoBankTransactionCode(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.iso_bank_transaction_code.IsoBankTransactionCode()  # noqa: E501
+        # model = yapily.models.iso_bank_transaction_code.IsoBankTransactionCode()  # noqa: E501
         if include_optional :
             return IsoBankTransactionCode(
-                domain_code = openapi_client.models.iso_code_details.IsoCodeDetails(
+                domain_code = yapily.models.iso_code_details.IsoCodeDetails(
                     code = 'UNKNOWN', 
                     name = 'UNKNOWN', ), 
-                family_code = openapi_client.models.iso_code_details.IsoCodeDetails(
+                family_code = yapily.models.iso_code_details.IsoCodeDetails(
                     code = 'UNKNOWN', 
                     name = 'UNKNOWN', ), 
-                sub_family_code = openapi_client.models.iso_code_details.IsoCodeDetails(
+                sub_family_code = yapily.models.iso_code_details.IsoCodeDetails(
                     code = 'UNKNOWN', 
                     name = 'UNKNOWN', )
             )

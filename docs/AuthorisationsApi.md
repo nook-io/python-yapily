@@ -1,4 +1,4 @@
-# openapi_client.AuthorisationsApi
+# yapily.AuthorisationsApi
 
 All URIs are relative to *https://api.yapily.com*
 
@@ -33,12 +33,12 @@ Used to initiate the authorisation process and direct users to the login screen 
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -48,15 +48,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     bulk_payment_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"modelo-sandbox","callback":"https://display-parameters.com/","paymentRequest":{"payments":[{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"d78fy48uh8f9odhde68dfi38di9","reference":"payment1","amount":{"amount":2.0,"currency":"GBP"},"payee":{"name":"Jane Doe","accountIdentifications":[{"type":"ACCOUNT_NUMBER","identification":"12345678"},{"type":"SORT_CODE","identification":"123456"}]}},{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"4279gdy8t63dg73gd8gx87738dg","reference":"payment2","amount":{"amount":5.0,"currency":"GBP"},"payee":{"name":"John Doe","accountIdentifications":[{"type":"ACCOUNT_NUMBER","identification":"87654321"},{"type":"SORT_CODE","identification":"654321"}]}}]}} # BulkPaymentAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
 psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -115,12 +115,12 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -130,15 +130,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     bulk_payment_embedded_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"fiducia-sandbox","userCredentials":{"id":"VRK1234567890PLUS","password":"password"},"paymentRequest":{"executionDateTime":"2021-10-29T00:00:00Z","payments":[{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"e4f913909a3d11eabb370242ac130002","reference":"REFERENCE","amount":{"amount":1.0,"currency":"EUR"},"payer":{"name":"John Doe","accountIdentifications":[{"type":"IBAN","identification":"DE39499999600000005111"}]},"payee":{"name":"Jane Doe","address":{"country":"DE"},"accountIdentifications":[{"type":"IBAN","identification":"DE12345678901234567890"}]}},{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"e4f913909a3d11eabb370242ac130002","reference":"REFERENCE","amount":{"amount":1.0,"currency":"EUR"},"payer":{"name":"Jane Doe","accountIdentifications":[{"type":"IBAN","identification":"DE39499999600000005111"}]},"payee":{"name":"John Doe","address":{"country":"DE"},"accountIdentifications":[{"type":"IBAN","identification":"DE12345678900000000000"}]}}]}} # BulkPaymentEmbeddedAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
 psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -197,12 +197,12 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -212,15 +212,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     payment_embedded_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"postbank-sandbox","userCredentials":{"id":"6154057725","password":"PISPWD12"},"paymentRequest":{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"e4f913909a3d11eabb370242ac130002","reference":"REFERENCE","amount":{"amount":1.0,"currency":"EUR"},"payer":{"name":"John Doe","accountIdentifications":[{"type":"IBAN","identification":"DE12345678901234567890"}]},"payee":{"name":"Jane Doe","address":{"country":"DE"},"accountIdentifications":[{"type":"IBAN","identification":"DE09876543210987654321"}]}}} # PaymentEmbeddedAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
 psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -279,12 +279,12 @@ Used to initiate the authorisation process and direct users to the login screen 
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -294,15 +294,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     payment_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"bpm-sandbox","callback":"https://display-parameters.com/","paymentRequest":{"paymentIdempotencyId":"234g87t58tgeuo848wudjew489","payer":{"name":"John Doe","accountIdentifications":[{"type":"IBAN","identification":"DE12345678901234567890"}]},"amount":{"amount":1.0,"currency":"EUR"},"reference":"Bill Payment","type":"DOMESTIC_PAYMENT","payee":{"name":"Jane Doe","address":{"country":"BE"},"accountIdentifications":[{"type":"IBAN","identification":"BE12345678901234"}]}}} # PaymentAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
 psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -361,12 +361,12 @@ Used to initiate the pre-authorisation process for payments for CbiGlobe `Instit
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -376,15 +376,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     payment_pre_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"n26","callback":"https://display-parameters.com/","scope":"PIS","reference":"Bill Payment","amount":{"amount":1.0,"currency":"EUR"},"payee":{"name":"Jane Doe","country":"BE","accountIdentifications":[{"type":"IBAN","identification":"BE12345678901234"}]},"payer":{"accountIdentifications":[{"type":"IBAN","identification":"DE12345678901234567890"}]}} # PaymentPreAuthorisationRequest | 
 raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
@@ -437,12 +437,12 @@ Used to initiate the pre-authorisation process for any `Institution` that contai
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -452,15 +452,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     pre_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"n26","callback":"https://display-parameters.com/","scope":"AIS"} # PreAuthorisationRequest | 
 raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
@@ -513,12 +513,12 @@ Used to initiate the authorisation process and direct users to the login screen 
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -528,15 +528,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     account_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"bpm-sandbox","callback":"https://display-parameters.com/","accountRequest":{"accountIdentifiersForBalance":[{"accountId":"account1234567","accountIdentification":{"type":"IBAN","identification":"IT77O0848283352871412938123"}}],"accountIdentifiersForTransaction":[{"accountId":"account1234567","accountIdentification":{"type":"IBAN","identification":"IT77O0848283352871412938123"}}]}} # AccountAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
 psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -595,12 +595,12 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -610,15 +610,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     account_embedded_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"fiducia-sandbox","userCredentials":{"id":"6154057725","password":"PISPWD12"}} # AccountEmbeddedAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
 psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -677,12 +677,12 @@ Used to prompt the account holder for continued access to their financial data. 
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -692,15 +692,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
 psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -759,12 +759,12 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -774,15 +774,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
 account_embedded_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"fiducia-sandbox","scaCode":"6154057725"} # AccountEmbeddedAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -843,12 +843,12 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -858,15 +858,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
 bulk_payment_embedded_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"fiducia-sandbox","scaCode":"123456","paymentRequest":{"executionDateTime":"2021-10-29T00:00:00Z","payments":[{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"e4f913909a3d11eabb370242ac130002","reference":"REFERENCE","amount":{"amount":1.0,"currency":"EUR"},"payer":{"name":"John Doe","accountIdentifications":[{"type":"IBAN","identification":"DE39499999600000005111"}]},"payee":{"name":"Jane Doe","address":{"country":"DE"},"accountIdentifications":[{"type":"IBAN","identification":"DE12345678901234567890"}]}},{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"e4f913909a3d11eabb370242ac130002","reference":"REFERENCE","amount":{"amount":1.0,"currency":"EUR"},"payer":{"name":"Jane Doe","accountIdentifications":[{"type":"IBAN","identification":"DE39499999600000005111"}]},"payee":{"name":"John Doe","address":{"country":"DE"},"accountIdentifications":[{"type":"IBAN","identification":"DE12345678900000000000"}]}}]}} # BulkPaymentEmbeddedAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -927,12 +927,12 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -942,15 +942,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
 payment_embedded_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"postbank-sandbox","scaCode":"325614","paymentRequest":{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"e4f913909a3d11eabb370242ac130002","reference":"REFERENCE","amount":{"amount":1.0,"currency":"EUR"},"payer":{"name":"John Doe","accountIdentifications":[{"type":"IBAN","identification":"DE12345678901234567890"}]},"payee":{"name":"Jane Doe","address":{"country":"DE"},"accountIdentifications":[{"type":"IBAN","identification":"DE09876543210987654321"}]}}} # PaymentEmbeddedAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -1011,12 +1011,12 @@ Used to continue the authorisation process and for any `Institution` that contai
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -1026,15 +1026,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 payment_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"n26","paymentRequest":{"paymentIdempotencyId":"234g87t58tgeuo848wudjew489","payer":{"name":"John Doe","accountIdentifications":[{"type":"IBAN","identification":"DE12345678901234567890"}]},"amount":{"amount":1.0,"currency":"EUR"},"reference":"Bill Payment","type":"DOMESTIC_PAYMENT","payee":{"name":"Jane Doe","address":{"country":"BE"},"accountIdentifications":[{"type":"IBAN","identification":"BE12345678901234"}]}}} # PaymentAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -1095,12 +1095,12 @@ Used to continue the authorisation process and for any `Institution` that contai
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -1110,15 +1110,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AuthorisationsApi(api_client)
+    api_instance = yapily.AuthorisationsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 account_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"n26"} # AccountAuthorisationRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)

@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.usage_type import UsageType  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.usage_type import UsageType  # noqa: E501
+from yapily.rest import ApiException
 
 class TestUsageType(unittest.TestCase):
     """UsageType unit test stubs"""
@@ -34,7 +34,7 @@ class TestUsageType(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.usage_type.UsageType()  # noqa: E501
+        # model = yapily.models.usage_type.UsageType()  # noqa: E501
         if include_optional :
             return UsageType(
             )

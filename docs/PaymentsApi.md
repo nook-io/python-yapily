@@ -1,4 +1,4 @@
-# openapi_client.PaymentsApi
+# yapily.PaymentsApi
 
 All URIs are relative to *https://api.yapily.com*
 
@@ -22,12 +22,12 @@ Used to initiate a bulk payment after obtaining the user's authorisation. <br><b
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -37,15 +37,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PaymentsApi(api_client)
+    api_instance = yapily.PaymentsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 bulk_payment_request = {"payments":[{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"d78fy48uh8f9odhde68dfi38di9","reference":"payment1","amount":{"amount":2.0,"currency":"GBP"},"payee":{"name":"Jane Doe","accountIdentifications":[{"type":"ACCOUNT_NUMBER","identification":"12345678"},{"type":"SORT_CODE","identification":"123456"}]}},{"type":"DOMESTIC_PAYMENT","paymentIdempotencyId":"4279gdy8t63dg73gd8gx87738dg","reference":"payment2","amount":{"amount":5.0,"currency":"GBP"},"payee":{"name":"John Doe","accountIdentifications":[{"type":"ACCOUNT_NUMBER","identification":"87654321"},{"type":"SORT_CODE","identification":"654321"}]}}]} # BulkPaymentRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -106,12 +106,12 @@ Used to initiate a payment after obtaining the user's authorisation. <br><br>Fea
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -121,15 +121,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PaymentsApi(api_client)
+    api_instance = yapily.PaymentsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 payment_request = {"paymentIdempotencyId":"234g87t58tgeuo848wudjew489","payer":{"name":"John Doe","accountIdentifications":[{"type":"IBAN","identification":"DE12345678901234567890"}]},"amount":{"amount":1.0,"currency":"EUR"},"reference":"Bill Payment","type":"DOMESTIC_PAYMENT","payee":{"name":"Jane Doe","address":{"country":"BE"},"accountIdentifications":[{"type":"IBAN","identification":"BE12345678901234"}]}} # PaymentRequest | 
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
@@ -190,12 +190,12 @@ Used to get the payment details of a payment. This is most commonly used to chec
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -205,15 +205,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PaymentsApi(api_client)
+    api_instance = yapily.PaymentsApi(api_client)
     payment_id = 'payment_id_example' # str | __Mandatory__. The payment Id of the payment.
 consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
 psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)

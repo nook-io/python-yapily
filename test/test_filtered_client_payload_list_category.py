@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.filtered_client_payload_list_category import FilteredClientPayloadListCategory  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.filtered_client_payload_list_category import FilteredClientPayloadListCategory  # noqa: E501
+from yapily.rest import ApiException
 
 class TestFilteredClientPayloadListCategory(unittest.TestCase):
     """FilteredClientPayloadListCategory unit test stubs"""
@@ -34,17 +34,17 @@ class TestFilteredClientPayloadListCategory(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.filtered_client_payload_list_category.FilteredClientPayloadListCategory()  # noqa: E501
+        # model = yapily.models.filtered_client_payload_list_category.FilteredClientPayloadListCategory()  # noqa: E501
         if include_optional :
             return FilteredClientPayloadListCategory(
-                api_call = openapi_client.models.api_call.ApiCall(), 
+                api_call = yapily.models.api_call.ApiCall(), 
                 data = [
-                    openapi_client.models.category.Category(
+                    yapily.models.category.Category(
                         id = '0', 
                         label = '0', 
                         country = '0', 
                         subcategories = [
-                            openapi_client.models.subcategory.Subcategory(
+                            yapily.models.subcategory.Subcategory(
                                 id = '0', 
                                 label = '0', )
                             ], )
@@ -52,7 +52,7 @@ class TestFilteredClientPayloadListCategory(unittest.TestCase):
                 next_cursor_hash = '0', 
                 next_link = '0', 
                 paging_map = {
-                    'key' : openapi_client.models.filter_and_sort.FilterAndSort(
+                    'key' : yapily.models.filter_and_sort.FilterAndSort(
                         from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         limit = 56, 

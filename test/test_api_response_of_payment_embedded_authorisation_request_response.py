@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse  # noqa: E501
+from yapily.rest import ApiException
 
 class TestApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(unittest.TestCase):
     """ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse unit test stubs"""
@@ -34,12 +34,12 @@ class TestApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(unittest.Test
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.api_response_of_payment_embedded_authorisation_request_response.ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse()  # noqa: E501
+        # model = yapily.models.api_response_of_payment_embedded_authorisation_request_response.ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse()  # noqa: E501
         if include_optional :
             return ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(
-                meta = openapi_client.models.response_meta.ResponseMeta(
+                meta = yapily.models.response_meta.ResponseMeta(
                     tracing_id = '0', ), 
-                data = openapi_client.models.payment_embedded_authorisation_request_response.PaymentEmbeddedAuthorisationRequestResponse(
+                data = yapily.models.payment_embedded_authorisation_request_response.PaymentEmbeddedAuthorisationRequestResponse(
                     id = '0', 
                     user_uuid = '0', 
                     application_user_id = '0', 
@@ -60,14 +60,14 @@ class TestApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(unittest.Test
                     authorized_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     institution_consent_id = '0', 
                     charges = [
-                        openapi_client.models.payment_charge_details.PaymentChargeDetails(
-                            charge_amount = openapi_client.models.amount.Amount(
+                        yapily.models.payment_charge_details.PaymentChargeDetails(
+                            charge_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), 
                             charge_type = '0', 
                             charge_to = '0', )
                         ], 
-                    exchange_rate_information = openapi_client.models.exchange_rate_information_response.ExchangeRateInformationResponse(
+                    exchange_rate_information = yapily.models.exchange_rate_information_response.ExchangeRateInformationResponse(
                         unit_currency = '0', 
                         rate = 1.337, 
                         rate_type = 'ACTUAL', 
@@ -84,22 +84,22 @@ class TestApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(unittest.Test
                     'key' : '0'
                     }, 
                 forwarded_data = [
-                    openapi_client.models.response_forwarded_data.ResponseForwardedData(
+                    yapily.models.response_forwarded_data.ResponseForwardedData(
                         headers = {
                             'key' : '0'
                             }, 
                         url = '0', )
                     ], 
                 raw = [
-                    openapi_client.models.raw_response.RawResponse(
-                        request = openapi_client.models.raw_request.RawRequest(
+                    yapily.models.raw_response.RawResponse(
+                        request = yapily.models.raw_request.RawRequest(
                             method = '0', 
                             url = '0', 
                             request_instant = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             headers = {
                                 'key' : '0'
                                 }, 
-                            body = openapi_client.models.body.body(), 
+                            body = yapily.models.body.body(), 
                             body_parameters = {
                                 'key' : '0'
                                 }, 
@@ -110,7 +110,7 @@ class TestApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(unittest.Test
                             'key' : '0'
                             }, 
                         result_code = 56, 
-                        result = openapi_client.models.result.result(), )
+                        result = yapily.models.result.result(), )
                     ], 
                 tracing_id = '0'
             )

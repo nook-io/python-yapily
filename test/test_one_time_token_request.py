@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.one_time_token_request import OneTimeTokenRequest  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.one_time_token_request import OneTimeTokenRequest  # noqa: E501
+from yapily.rest import ApiException
 
 class TestOneTimeTokenRequest(unittest.TestCase):
     """OneTimeTokenRequest unit test stubs"""
@@ -34,7 +34,7 @@ class TestOneTimeTokenRequest(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.one_time_token_request.OneTimeTokenRequest()  # noqa: E501
+        # model = yapily.models.one_time_token_request.OneTimeTokenRequest()  # noqa: E501
         if include_optional :
             return OneTimeTokenRequest(
                 one_time_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImJidmEtc2FuZGJveCIsIlVVSUQiOiJmMzNmNGU4ZC1jMDQ0LTQ2YTktOTlkMC0wYmRlMzIyYTJjOTIifQ.4Qv3NJI6av2nKi1U3aNmm71cIwJ3TvRsIlYDafQUVv_Khy_e-8oEpV_BoP4V1CII12oT-Yq4cPveHILz8BOwjg'

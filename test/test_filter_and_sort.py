@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.filter_and_sort import FilterAndSort  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.filter_and_sort import FilterAndSort  # noqa: E501
+from yapily.rest import ApiException
 
 class TestFilterAndSort(unittest.TestCase):
     """FilterAndSort unit test stubs"""
@@ -34,7 +34,7 @@ class TestFilterAndSort(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.filter_and_sort.FilterAndSort()  # noqa: E501
+        # model = yapily.models.filter_and_sort.FilterAndSort()  # noqa: E501
         if include_optional :
             return FilterAndSort(
                 _from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 

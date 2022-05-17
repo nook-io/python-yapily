@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.pre_authorisation_request import PreAuthorisationRequest  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.pre_authorisation_request import PreAuthorisationRequest  # noqa: E501
+from yapily.rest import ApiException
 
 class TestPreAuthorisationRequest(unittest.TestCase):
     """PreAuthorisationRequest unit test stubs"""
@@ -34,7 +34,7 @@ class TestPreAuthorisationRequest(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.pre_authorisation_request.PreAuthorisationRequest()  # noqa: E501
+        # model = yapily.models.pre_authorisation_request.PreAuthorisationRequest()  # noqa: E501
         if include_optional :
             return PreAuthorisationRequest(
                 user_uuid = '0', 
@@ -44,7 +44,7 @@ class TestPreAuthorisationRequest(unittest.TestCase):
                     ], 
                 institution_id = 'yapily-mock', 
                 callback = 'https://display-parameters.com', 
-                redirect = openapi_client.models.redirect_request.RedirectRequest(
+                redirect = yapily.models.redirect_request.RedirectRequest(
                     url = '0', ), 
                 one_time_token = False, 
                 scope = 'AIS'

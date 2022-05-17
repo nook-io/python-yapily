@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.payment_charge_details import PaymentChargeDetails  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.payment_charge_details import PaymentChargeDetails  # noqa: E501
+from yapily.rest import ApiException
 
 class TestPaymentChargeDetails(unittest.TestCase):
     """PaymentChargeDetails unit test stubs"""
@@ -34,10 +34,10 @@ class TestPaymentChargeDetails(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.payment_charge_details.PaymentChargeDetails()  # noqa: E501
+        # model = yapily.models.payment_charge_details.PaymentChargeDetails()  # noqa: E501
         if include_optional :
             return PaymentChargeDetails(
-                charge_amount = openapi_client.models.amount.Amount(
+                charge_amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', ), 
                 charge_type = '0', 

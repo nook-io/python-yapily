@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.next import Next  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.next import Next  # noqa: E501
+from yapily.rest import ApiException
 
 class TestNext(unittest.TestCase):
     """Next unit test stubs"""
@@ -34,7 +34,7 @@ class TestNext(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.next.Next()  # noqa: E501
+        # model = yapily.models.next.Next()  # noqa: E501
         if include_optional :
             return Next(
                 _from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 

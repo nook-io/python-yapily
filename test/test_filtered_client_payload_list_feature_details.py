@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.filtered_client_payload_list_feature_details import FilteredClientPayloadListFeatureDetails  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.filtered_client_payload_list_feature_details import FilteredClientPayloadListFeatureDetails  # noqa: E501
+from yapily.rest import ApiException
 
 class TestFilteredClientPayloadListFeatureDetails(unittest.TestCase):
     """FilteredClientPayloadListFeatureDetails unit test stubs"""
@@ -34,12 +34,12 @@ class TestFilteredClientPayloadListFeatureDetails(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.filtered_client_payload_list_feature_details.FilteredClientPayloadListFeatureDetails()  # noqa: E501
+        # model = yapily.models.filtered_client_payload_list_feature_details.FilteredClientPayloadListFeatureDetails()  # noqa: E501
         if include_optional :
             return FilteredClientPayloadListFeatureDetails(
-                api_call = openapi_client.models.api_call.ApiCall(), 
+                api_call = yapily.models.api_call.ApiCall(), 
                 data = [
-                    openapi_client.models.feature_details.FeatureDetails(
+                    yapily.models.feature_details.FeatureDetails(
                         feature = 'INITIATE_PRE_AUTHORISATION', 
                         endpoint = '0', 
                         documentation_url = '0', )
@@ -47,7 +47,7 @@ class TestFilteredClientPayloadListFeatureDetails(unittest.TestCase):
                 next_cursor_hash = '0', 
                 next_link = '0', 
                 paging_map = {
-                    'key' : openapi_client.models.filter_and_sort.FilterAndSort(
+                    'key' : yapily.models.filter_and_sort.FilterAndSort(
                         from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         limit = 56, 

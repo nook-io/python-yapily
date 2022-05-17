@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.account_balance import AccountBalance  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.account_balance import AccountBalance  # noqa: E501
+from yapily.rest import ApiException
 
 class TestAccountBalance(unittest.TestCase):
     """AccountBalance unit test stubs"""
@@ -34,19 +34,19 @@ class TestAccountBalance(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.account_balance.AccountBalance()  # noqa: E501
+        # model = yapily.models.account_balance.AccountBalance()  # noqa: E501
         if include_optional :
             return AccountBalance(
                 type = 'CLOSING_AVAILABLE', 
                 date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                balance_amount = openapi_client.models.amount.Amount(
+                balance_amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', ), 
                 credit_line_included = True, 
                 credit_lines = [
-                    openapi_client.models.credit_line.CreditLine(
+                    yapily.models.credit_line.CreditLine(
                         type = 'AVAILABLE', 
-                        credit_line_amount = openapi_client.models.amount.Amount(
+                        credit_line_amount = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), )
                     ]

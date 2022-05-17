@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.payment_authorisation_request_response import PaymentAuthorisationRequestResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.payment_authorisation_request_response import PaymentAuthorisationRequestResponse  # noqa: E501
+from yapily.rest import ApiException
 
 class TestPaymentAuthorisationRequestResponse(unittest.TestCase):
     """PaymentAuthorisationRequestResponse unit test stubs"""
@@ -34,7 +34,7 @@ class TestPaymentAuthorisationRequestResponse(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.payment_authorisation_request_response.PaymentAuthorisationRequestResponse()  # noqa: E501
+        # model = yapily.models.payment_authorisation_request_response.PaymentAuthorisationRequestResponse()  # noqa: E501
         if include_optional :
             return PaymentAuthorisationRequestResponse(
                 id = '0', 
@@ -57,14 +57,14 @@ class TestPaymentAuthorisationRequestResponse(unittest.TestCase):
                 authorized_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 institution_consent_id = '0', 
                 charges = [
-                    openapi_client.models.payment_charge_details.PaymentChargeDetails(
-                        charge_amount = openapi_client.models.amount.Amount(
+                    yapily.models.payment_charge_details.PaymentChargeDetails(
+                        charge_amount = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), 
                         charge_type = '0', 
                         charge_to = '0', )
                     ], 
-                exchange_rate_information = openapi_client.models.exchange_rate_information_response.ExchangeRateInformationResponse(
+                exchange_rate_information = yapily.models.exchange_rate_information_response.ExchangeRateInformationResponse(
                     unit_currency = '0', 
                     rate = 1.337, 
                     rate_type = 'ACTUAL', 

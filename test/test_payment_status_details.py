@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.payment_status_details import PaymentStatusDetails  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.payment_status_details import PaymentStatusDetails  # noqa: E501
+from yapily.rest import ApiException
 
 class TestPaymentStatusDetails(unittest.TestCase):
     """PaymentStatusDetails unit test stubs"""
@@ -34,20 +34,20 @@ class TestPaymentStatusDetails(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.payment_status_details.PaymentStatusDetails()  # noqa: E501
+        # model = yapily.models.payment_status_details.PaymentStatusDetails()  # noqa: E501
         if include_optional :
             return PaymentStatusDetails(
                 status = 'PENDING', 
                 status_reason = '0', 
                 status_reason_description = '0', 
                 status_update_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                multi_authorisation_status = openapi_client.models.multi_authorisation.MultiAuthorisation(
+                multi_authorisation_status = yapily.models.multi_authorisation.MultiAuthorisation(
                     status = '0', 
                     number_of_authorisation_required = 56, 
                     number_of_authorisation_received = 56, 
                     last_updated_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     expiration_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
-                iso_status = openapi_client.models.payment_iso_status.PaymentIsoStatus(
+                iso_status = yapily.models.payment_iso_status.PaymentIsoStatus(
                     code = 'ACCC', 
                     name = 'AcceptedCreditSettlementCompleted', )
             )

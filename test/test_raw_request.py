@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.raw_request import RawRequest  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.raw_request import RawRequest  # noqa: E501
+from yapily.rest import ApiException
 
 class TestRawRequest(unittest.TestCase):
     """RawRequest unit test stubs"""
@@ -34,7 +34,7 @@ class TestRawRequest(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.raw_request.RawRequest()  # noqa: E501
+        # model = yapily.models.raw_request.RawRequest()  # noqa: E501
         if include_optional :
             return RawRequest(
                 method = '0', 
@@ -43,7 +43,7 @@ class TestRawRequest(unittest.TestCase):
                 headers = {
                     'key' : '0'
                     }, 
-                body = openapi_client.models.body.body(), 
+                body = yapily.models.body.body(), 
                 body_parameters = {
                     'key' : '0'
                     }, 

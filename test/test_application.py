@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.application import Application  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.application import Application  # noqa: E501
+from yapily.rest import ApiException
 
 class TestApplication(unittest.TestCase):
     """Application unit test stubs"""
@@ -34,7 +34,7 @@ class TestApplication(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.application.Application()  # noqa: E501
+        # model = yapily.models.application.Application()  # noqa: E501
         if include_optional :
             return Application(
                 uuid = '0', 
@@ -44,19 +44,19 @@ class TestApplication(unittest.TestCase):
                     '0'
                     ], 
                 institutions = [
-                    openapi_client.models.institution.Institution(
+                    yapily.models.institution.Institution(
                         id = '0', 
                         name = '0', 
                         full_name = '0', 
                         countries = [
-                            openapi_client.models.country.Country(
+                            yapily.models.country.Country(
                                 display_name = '0', 
                                 country_code2 = '0', )
                             ], 
                         environment_type = 'SANDBOX', 
                         credentials_type = 'OAUTH1', 
                         media = [
-                            openapi_client.models.media.Media(
+                            yapily.models.media.Media(
                                 source = '0', 
                                 type = '0', )
                             ], 
@@ -64,14 +64,14 @@ class TestApplication(unittest.TestCase):
                             'INITIATE_PRE_AUTHORISATION'
                             ], 
                         monitoring = {
-                            'key' : openapi_client.models.monitoring_feature_status.MonitoringFeatureStatus(
+                            'key' : yapily.models.monitoring_feature_status.MonitoringFeatureStatus(
                                 last_tested = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 span = '0', 
                                 status = 'Up', )
                             }, )
                     ], 
                 media = [
-                    openapi_client.models.media.Media(
+                    yapily.models.media.Media(
                         source = '0', 
                         type = '0', )
                     ], 

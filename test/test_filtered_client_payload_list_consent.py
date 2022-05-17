@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.filtered_client_payload_list_consent import FilteredClientPayloadListConsent  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.filtered_client_payload_list_consent import FilteredClientPayloadListConsent  # noqa: E501
+from yapily.rest import ApiException
 
 class TestFilteredClientPayloadListConsent(unittest.TestCase):
     """FilteredClientPayloadListConsent unit test stubs"""
@@ -34,12 +34,12 @@ class TestFilteredClientPayloadListConsent(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.filtered_client_payload_list_consent.FilteredClientPayloadListConsent()  # noqa: E501
+        # model = yapily.models.filtered_client_payload_list_consent.FilteredClientPayloadListConsent()  # noqa: E501
         if include_optional :
             return FilteredClientPayloadListConsent(
-                api_call = openapi_client.models.api_call.ApiCall(), 
+                api_call = yapily.models.api_call.ApiCall(), 
                 data = [
-                    openapi_client.models.consent.Consent(
+                    yapily.models.consent.Consent(
                         id = '0', 
                         user_uuid = '0', 
                         application_user_id = '0', 
@@ -63,7 +63,7 @@ class TestFilteredClientPayloadListConsent(unittest.TestCase):
                 next_cursor_hash = '0', 
                 next_link = '0', 
                 paging_map = {
-                    'key' : openapi_client.models.filter_and_sort.FilterAndSort(
+                    'key' : yapily.models.filter_and_sort.FilterAndSort(
                         from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         limit = 56, 

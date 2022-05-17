@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.consent_auth_code_request import ConsentAuthCodeRequest  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.consent_auth_code_request import ConsentAuthCodeRequest  # noqa: E501
+from yapily.rest import ApiException
 
 class TestConsentAuthCodeRequest(unittest.TestCase):
     """ConsentAuthCodeRequest unit test stubs"""
@@ -34,7 +34,7 @@ class TestConsentAuthCodeRequest(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.consent_auth_code_request.ConsentAuthCodeRequest()  # noqa: E501
+        # model = yapily.models.consent_auth_code_request.ConsentAuthCodeRequest()  # noqa: E501
         if include_optional :
             return ConsentAuthCodeRequest(
                 auth_code = '6b965fbb-ff09-4afa-b897-90c34797cb8f&id_token=eyJhbGciOiJQUzI1NiIsImtpZCI6InprYm9LRmpRUndCZDlVRW5QQzV3bHY1N2lnNCJ9.eyJzdWIiOiJzZHAtNi0xZjA1MjBiNC1mZmNkLTQ4OTgtYWVkMC0wYjU0Y2I2ZDkwM2QiLCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOiJzZHAtNi0xZjA1MjBiNC1mZmNkLTQ4OTgtYWVkMC0wYjU0Y2I2ZDkwM2QiLCJwc3VfaWRlbnRpZmllcnMiOnsidXNlcklkIjoiNzAwMDAxMDAwMDAwMDAwMDAwMDAwMDAyIiwiY29tcGFueUlkIjoiMTIzNDUifSwiaXNzIjoiaHR0cHM6Ly9vYjE5LWF1dGgxLXVpLm8zYmFuay5jby51ayIsImF1ZCI6IjA0ZmJjMGQ5LTlmMDgtNGIyOC1iNjY2LWFkNmEwYmMzM2NjZSIsImlhdCI6MTYxMTIyMjgzNywiZXhwIjoxNjExMjI2NDM3LCJub25jZSI6IjEyNzBjYjJmZmM0ODQyYjc4OTUzYWZhMjIyOGUwYTg5IiwiYXV0aF90aW1lIjoxNjExMjIyODM3LCJhenAiOiIwNGZiYzBkOS05ZjA4LTRiMjgtYjY2Ni1hZDZhMGJjMzNjY2UiLCJyZWZyZXNoX3Rva2VuX2V4cGlyZXNfYXQiOjE2MTE2MTE2MzcsImNfaGFzaCI6Inc5NG9pTkg1RWlBdVNKdWJfUHAxSlEiLCJzX2hhc2giOiJhRmxHY3dJY1EtdTVHYnBmcXRCR293IiwiYWNyIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIn0.nfaJ-llxVVa4HS7oii2oGgAV6k3MPwtQLFaOAZ2RY8VcxoWBkXKnrPkwf2jRHvE4aJnnfD3BcDAfJNeDBFEt5YQcujl0NxQm3XpOVkhjUVvINjmi9zbDMz2WFDpz8hSZZxvzxQ29h5nFSFcvXxE-0d2i10nX87OVlophc5GabHt3mnP3UbFIy-k0i9a9JGodheF9Qu3J-q2bgNJpLww8jj-gNH1LekG3qu8fxaB1c5-MuERfSWvrgwrJKKUe_yIxXVpL4zMMXw3B6JGIeUgPHKtAZxiAA9YA6dTlA1yPQwOfh4B-qvAZDmuGBnoB3iUXKLIUqBUA8j3rzLkQj51ORg', 

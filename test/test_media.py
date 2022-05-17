@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.media import Media  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.media import Media  # noqa: E501
+from yapily.rest import ApiException
 
 class TestMedia(unittest.TestCase):
     """Media unit test stubs"""
@@ -34,7 +34,7 @@ class TestMedia(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.media.Media()  # noqa: E501
+        # model = yapily.models.media.Media()  # noqa: E501
         if include_optional :
             return Media(
                 source = '0', 

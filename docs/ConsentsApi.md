@@ -1,4 +1,4 @@
-# openapi_client.ConsentsApi
+# yapily.ConsentsApi
 
 All URIs are relative to *https://api.yapily.com*
 
@@ -24,12 +24,12 @@ Used to obtain a Yapily Consent object containing the `consentToken` once the us
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -39,16 +39,16 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ConsentsApi(api_client)
-    consent_auth_code_request = openapi_client.ConsentAuthCodeRequest() # ConsentAuthCodeRequest | 
+    api_instance = yapily.ConsentsApi(api_client)
+    consent_auth_code_request = yapily.ConsentAuthCodeRequest() # ConsentAuthCodeRequest | 
 
     try:
         # Exchange OAuth2 Code
@@ -98,12 +98,12 @@ Delete a consent using the consent Id
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -113,15 +113,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ConsentsApi(api_client)
+    api_instance = yapily.ConsentsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
 force_delete = True # bool | __Optional__. Whether to force the deletion. (optional) (default to True)
 
@@ -174,12 +174,12 @@ Get consent using the consent Id
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -189,15 +189,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ConsentsApi(api_client)
+    api_instance = yapily.ConsentsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
 
     try:
@@ -248,12 +248,12 @@ Exchange a One-time-token for the consent token
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -263,16 +263,16 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ConsentsApi(api_client)
-    one_time_token_request = openapi_client.OneTimeTokenRequest() # OneTimeTokenRequest | 
+    api_instance = yapily.ConsentsApi(api_client)
+    one_time_token_request = yapily.OneTimeTokenRequest() # OneTimeTokenRequest | 
 
     try:
         # Exchange One Time Token
@@ -322,12 +322,12 @@ Used to retrieve all the consents created for each user within an application
 ```python
 from __future__ import print_function
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import yapily
+from yapily.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     host = "https://api.yapily.com"
 )
 
@@ -337,15 +337,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = yapily.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ConsentsApi(api_client)
+    api_instance = yapily.ConsentsApi(api_client)
     filter_application_user_id = ['filter_application_user_id_example'] # list[str] | __Optional__. Filter records based on the list of `applicationUserId` users provided. (optional)
 filter_user_uuid = ['filter_user_uuid_example'] # list[str] | __Optional__. Filter records based on the list of `userUuid` users provided. (optional)
 filter_institution = ['filter_institution_example'] # list[str] | __Optional__. Filter records based on the list of `Institution` provided. (optional)

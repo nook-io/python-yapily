@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.response_list_meta import ResponseListMeta  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.response_list_meta import ResponseListMeta  # noqa: E501
+from yapily.rest import ApiException
 
 class TestResponseListMeta(unittest.TestCase):
     """ResponseListMeta unit test stubs"""
@@ -34,21 +34,21 @@ class TestResponseListMeta(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.response_list_meta.ResponseListMeta()  # noqa: E501
+        # model = yapily.models.response_list_meta.ResponseListMeta()  # noqa: E501
         if include_optional :
             return ResponseListMeta(
                 tracing_id = '0', 
                 count = 56, 
-                pagination = openapi_client.models.pagination.Pagination(
+                pagination = yapily.models.pagination.Pagination(
                     total_count = 56, 
-                    self = openapi_client.models.filter_and_sort.FilterAndSort(
+                    self = yapily.models.filter_and_sort.FilterAndSort(
                         from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         limit = 56, 
                         sort = 'date', 
                         offset = 56, 
                         cursor = '0', ), 
-                    next = openapi_client.models.next.Next(
+                    next = yapily.models.next.Next(
                         from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         limit = 56, 

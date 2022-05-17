@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.financial_profile import FinancialProfile  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.financial_profile import FinancialProfile  # noqa: E501
+from yapily.rest import ApiException
 
 class TestFinancialProfile(unittest.TestCase):
     """FinancialProfile unit test stubs"""
@@ -34,31 +34,31 @@ class TestFinancialProfile(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.financial_profile.FinancialProfile()  # noqa: E501
+        # model = yapily.models.financial_profile.FinancialProfile()  # noqa: E501
         if include_optional :
             return FinancialProfile(
                 status = 'COMPLETED', 
                 profile_consents = [
-                    openapi_client.models.profile_consent.ProfileConsent(
+                    yapily.models.profile_consent.ProfileConsent(
                         id = 'eb2ad083-a111-4143-8756-a3a3cef4031c', 
                         status = 'PENDING', 
                         user_id = '3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d', 
                         reference_consent_id = '1e2e5167-8519-4c19-b016-8f2f0c6e38b6', 
                         institution_id = 'mock-sandbox', )
                     ], 
-                enrichment = openapi_client.models.enriched_wrapper.EnrichedWrapper(
+                enrichment = yapily.models.enriched_wrapper.EnrichedWrapper(
                     income_streams = [
-                        openapi_client.models.transaction_stream.TransactionStream(
+                        yapily.models.transaction_stream.TransactionStream(
                             name = 'Amazon Marketplace', 
                             transactions = [
-                                openapi_client.models.enriched_transaction.EnrichedTransaction(
+                                yapily.models.enriched_transaction.EnrichedTransaction(
                                     transaction_id = 'c51e3bee-36fb-4c0a-8441-d6ba2056fe87', 
                                     transaction_information = 'Amazon Marketplace', 
                                     amount = 21.99, 
                                     institution = 'starling', 
                                     booking_date_time = '2020-04-24T00:30:19.951Z', )
                                 ], 
-                            transaction_schedule = openapi_client.models.transaction_schedule.TransactionSchedule(
+                            transaction_schedule = yapily.models.transaction_schedule.TransactionSchedule(
                                 frequency = 'Daily', 
                                 detailed_frequency = 'Daily', 
                                 detailed_frequency_parameter = 1, ), 
@@ -70,7 +70,7 @@ class TestFinancialProfile(unittest.TestCase):
                             average_amount = 19.708, )
                         ], 
                     expenditure_streams = [
-                        openapi_client.models.transaction_stream.TransactionStream(
+                        yapily.models.transaction_stream.TransactionStream(
                             name = 'Amazon Marketplace', 
                             schedule_consistency_score = 0.44, 
                             next_expected_transaction_date = 'Fri Oct 04 01:00:00 BST 2019', 
@@ -80,7 +80,7 @@ class TestFinancialProfile(unittest.TestCase):
                             average_amount = 19.708, )
                         ], 
                     recently_terminated_income_streams = [
-                        openapi_client.models.terminated_transaction_stream.TerminatedTransactionStream(
+                        yapily.models.terminated_transaction_stream.TerminatedTransactionStream(
                             name = 'Amazon Marketplace', 
                             schedule_consistency_score = 0.44, 
                             next_expected_transaction_date = 'Fri Oct 04 01:00:00 BST 2019', 
@@ -91,7 +91,7 @@ class TestFinancialProfile(unittest.TestCase):
                             missed_transactions = 3, )
                         ], 
                     recently_terminated_expenditure_streams = [
-                        openapi_client.models.terminated_transaction_stream.TerminatedTransactionStream(
+                        yapily.models.terminated_transaction_stream.TerminatedTransactionStream(
                             name = 'Amazon Marketplace', 
                             schedule_consistency_score = 0.44, 
                             next_expected_transaction_date = 'Fri Oct 04 01:00:00 BST 2019', 

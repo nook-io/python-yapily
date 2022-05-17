@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.profile_consent import ProfileConsent  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.profile_consent import ProfileConsent  # noqa: E501
+from yapily.rest import ApiException
 
 class TestProfileConsent(unittest.TestCase):
     """ProfileConsent unit test stubs"""
@@ -34,7 +34,7 @@ class TestProfileConsent(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.profile_consent.ProfileConsent()  # noqa: E501
+        # model = yapily.models.profile_consent.ProfileConsent()  # noqa: E501
         if include_optional :
             return ProfileConsent(
                 id = 'eb2ad083-a111-4143-8756-a3a3cef4031c', 

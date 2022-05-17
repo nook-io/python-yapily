@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.filtered_client_payload_list_account import FilteredClientPayloadListAccount  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.filtered_client_payload_list_account import FilteredClientPayloadListAccount  # noqa: E501
+from yapily.rest import ApiException
 
 class TestFilteredClientPayloadListAccount(unittest.TestCase):
     """FilteredClientPayloadListAccount unit test stubs"""
@@ -34,12 +34,12 @@ class TestFilteredClientPayloadListAccount(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.filtered_client_payload_list_account.FilteredClientPayloadListAccount()  # noqa: E501
+        # model = yapily.models.filtered_client_payload_list_account.FilteredClientPayloadListAccount()  # noqa: E501
         if include_optional :
             return FilteredClientPayloadListAccount(
-                api_call = openapi_client.models.api_call.ApiCall(), 
+                api_call = yapily.models.api_call.ApiCall(), 
                 data = [
-                    openapi_client.models.account.Account(
+                    yapily.models.account.Account(
                         id = '0', 
                         type = '0', 
                         description = '0', 
@@ -50,24 +50,24 @@ class TestFilteredClientPayloadListAccount(unittest.TestCase):
                         nickname = '0', 
                         details = '0', 
                         account_names = [
-                            openapi_client.models.account_name.AccountName(
+                            yapily.models.account_name.AccountName(
                                 name = '0', )
                             ], 
                         account_identifications = [
-                            openapi_client.models.account_identification.AccountIdentification(
+                            yapily.models.account_identification.AccountIdentification(
                                 type = 'SORT_CODE', 
                                 identification = '401016', )
                             ], 
                         account_balances = [
-                            openapi_client.models.account_balance.AccountBalance(
+                            yapily.models.account_balance.AccountBalance(
                                 date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                balance_amount = openapi_client.models.amount.Amount(
+                                balance_amount = yapily.models.amount.Amount(
                                     amount = 10, 
                                     currency = 'GBP', ), 
                                 credit_line_included = True, 
                                 credit_lines = [
-                                    openapi_client.models.credit_line.CreditLine(
-                                        credit_line_amount = openapi_client.models.amount.Amount(
+                                    yapily.models.credit_line.CreditLine(
+                                        credit_line_amount = yapily.models.amount.Amount(
                                             amount = 10, 
                                             currency = 'GBP', ), )
                                     ], )
@@ -76,7 +76,7 @@ class TestFilteredClientPayloadListAccount(unittest.TestCase):
                 next_cursor_hash = '0', 
                 next_link = '0', 
                 paging_map = {
-                    'key' : openapi_client.models.filter_and_sort.FilterAndSort(
+                    'key' : yapily.models.filter_and_sort.FilterAndSort(
                         from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         limit = 56, 

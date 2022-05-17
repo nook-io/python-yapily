@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.account_request import AccountRequest  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.account_request import AccountRequest  # noqa: E501
+from yapily.rest import ApiException
 
 class TestAccountRequest(unittest.TestCase):
     """AccountRequest unit test stubs"""
@@ -34,28 +34,28 @@ class TestAccountRequest(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.account_request.AccountRequest()  # noqa: E501
+        # model = yapily.models.account_request.AccountRequest()  # noqa: E501
         if include_optional :
             return AccountRequest(
                 transaction_from = '2020-01-01T00:00Z', 
                 transaction_to = '2021-01-01T00:00Z', 
                 expires_at = '2025-01-01T00:00Z', 
-                account_identifiers = openapi_client.models.account_info.AccountInfo(
+                account_identifiers = yapily.models.account_info.AccountInfo(
                     account_id = '500000000000000000000001', 
-                    account_identification = openapi_client.models.account_identification.AccountIdentification(
+                    account_identification = yapily.models.account_identification.AccountIdentification(
                         type = 'SORT_CODE', 
                         identification = '401016', ), ), 
                 account_identifiers_for_transaction = [
-                    openapi_client.models.account_info.AccountInfo(
+                    yapily.models.account_info.AccountInfo(
                         account_id = '500000000000000000000001', 
-                        account_identification = openapi_client.models.account_identification.AccountIdentification(
+                        account_identification = yapily.models.account_identification.AccountIdentification(
                             type = 'SORT_CODE', 
                             identification = '401016', ), )
                     ], 
                 account_identifiers_for_balance = [
-                    openapi_client.models.account_info.AccountInfo(
+                    yapily.models.account_info.AccountInfo(
                         account_id = '500000000000000000000001', 
-                        account_identification = openapi_client.models.account_identification.AccountIdentification(
+                        account_identification = yapily.models.account_identification.AccountIdentification(
                             type = 'SORT_CODE', 
                             identification = '401016', ), )
                     ], 

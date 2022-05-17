@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.new_application_user import NewApplicationUser  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.new_application_user import NewApplicationUser  # noqa: E501
+from yapily.rest import ApiException
 
 class TestNewApplicationUser(unittest.TestCase):
     """NewApplicationUser unit test stubs"""
@@ -34,7 +34,7 @@ class TestNewApplicationUser(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.new_application_user.NewApplicationUser()  # noqa: E501
+        # model = yapily.models.new_application_user.NewApplicationUser()  # noqa: E501
         if include_optional :
             return NewApplicationUser(
                 application_user_id = 'user-234562290', 

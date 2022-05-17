@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.exchange_rate_information import ExchangeRateInformation  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.exchange_rate_information import ExchangeRateInformation  # noqa: E501
+from yapily.rest import ApiException
 
 class TestExchangeRateInformation(unittest.TestCase):
     """ExchangeRateInformation unit test stubs"""
@@ -34,7 +34,7 @@ class TestExchangeRateInformation(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.exchange_rate_information.ExchangeRateInformation()  # noqa: E501
+        # model = yapily.models.exchange_rate_information.ExchangeRateInformation()  # noqa: E501
         if include_optional :
             return ExchangeRateInformation(
                 unit_currency = '0', 

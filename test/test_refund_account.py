@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.refund_account import RefundAccount  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.refund_account import RefundAccount  # noqa: E501
+from yapily.rest import ApiException
 
 class TestRefundAccount(unittest.TestCase):
     """RefundAccount unit test stubs"""
@@ -34,12 +34,12 @@ class TestRefundAccount(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.refund_account.RefundAccount()  # noqa: E501
+        # model = yapily.models.refund_account.RefundAccount()  # noqa: E501
         if include_optional :
             return RefundAccount(
                 name = '0', 
                 account_identifications = [
-                    openapi_client.models.account_identification.AccountIdentification(
+                    yapily.models.account_identification.AccountIdentification(
                         type = 'SORT_CODE', 
                         identification = '401016', )
                     ]

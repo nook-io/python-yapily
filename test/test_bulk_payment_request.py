@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.bulk_payment_request import BulkPaymentRequest  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.bulk_payment_request import BulkPaymentRequest  # noqa: E501
+from yapily.rest import ApiException
 
 class TestBulkPaymentRequest(unittest.TestCase):
     """BulkPaymentRequest unit test stubs"""
@@ -34,16 +34,16 @@ class TestBulkPaymentRequest(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.bulk_payment_request.BulkPaymentRequest()  # noqa: E501
+        # model = yapily.models.bulk_payment_request.BulkPaymentRequest()  # noqa: E501
         if include_optional :
             return BulkPaymentRequest(
                 payments = [
-                    openapi_client.models.payment_request.PaymentRequest(
+                    yapily.models.payment_request.PaymentRequest(
                         payment_idempotency_id = '04ab4536gaerfc0e1f93c4f4', 
-                        payer = openapi_client.models.payer.Payer(
+                        payer = yapily.models.payer.Payer(
                             name = 'John Doe', 
                             account_identifications = [
-                                openapi_client.models.account_identification.AccountIdentification(
+                                yapily.models.account_identification.AccountIdentification(
                                     type = 'SORT_CODE', 
                                     identification = '401016', )
                                 ], 
@@ -51,29 +51,29 @@ class TestBulkPaymentRequest(unittest.TestCase):
                         reference = 'Bill payment', 
                         context_type = 'OTHER', 
                         type = 'DOMESTIC_PAYMENT', 
-                        payee = openapi_client.models.payee.Payee(
+                        payee = yapily.models.payee.Payee(
                             name = 'Jane Doe', 
                             account_identifications = [{"identification":"401016","type":"SORT_CODE"},{"identification":"71518920","type":"ACCOUNT_NUMBER"}], 
                             merchant_id = '24589303', 
                             merchant_category_code = '5551', ), 
-                        periodic_payment = openapi_client.models.periodic_payment_request.PeriodicPaymentRequest(
-                            frequency = openapi_client.models.frequency_request.FrequencyRequest(
+                        periodic_payment = yapily.models.periodic_payment_request.PeriodicPaymentRequest(
+                            frequency = yapily.models.frequency_request.FrequencyRequest(
                                 type = 'DAILY', 
                                 interval_week = 1, 
                                 interval_month = 1, 
                                 execution_day = 1, ), 
                             number_of_payments = 5, 
                             next_payment_date_time = '2018-01-10T00:00Z', 
-                            next_payment_amount = openapi_client.models.amount.Amount(
+                            next_payment_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), 
                             final_payment_date_time = '2030-01-10T00:00Z', 
-                            final_payment_amount = openapi_client.models.amount.Amount(
+                            final_payment_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), ), 
-                        international_payment = openapi_client.models.international_payment_request.InternationalPaymentRequest(
+                        international_payment = yapily.models.international_payment_request.InternationalPaymentRequest(
                             currency_of_transfer = '0', 
-                            exchange_rate_information = openapi_client.models.exchange_rate_information.ExchangeRateInformation(
+                            exchange_rate_information = yapily.models.exchange_rate_information.ExchangeRateInformation(
                                 unit_currency = '0', 
                                 rate = 1.337, 
                                 rate_type = 'ACTUAL', 
@@ -81,7 +81,7 @@ class TestBulkPaymentRequest(unittest.TestCase):
                             purpose = '0', 
                             priority = 'NORMAL', 
                             charge_bearer = 'DEBT', ), 
-                        amount = openapi_client.models.amount.Amount(
+                        amount = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), 
                         payment_date_time = '2021-07-21T17:32:28Z', 
@@ -93,12 +93,12 @@ class TestBulkPaymentRequest(unittest.TestCase):
         else :
             return BulkPaymentRequest(
                 payments = [
-                    openapi_client.models.payment_request.PaymentRequest(
+                    yapily.models.payment_request.PaymentRequest(
                         payment_idempotency_id = '04ab4536gaerfc0e1f93c4f4', 
-                        payer = openapi_client.models.payer.Payer(
+                        payer = yapily.models.payer.Payer(
                             name = 'John Doe', 
                             account_identifications = [
-                                openapi_client.models.account_identification.AccountIdentification(
+                                yapily.models.account_identification.AccountIdentification(
                                     type = 'SORT_CODE', 
                                     identification = '401016', )
                                 ], 
@@ -106,29 +106,29 @@ class TestBulkPaymentRequest(unittest.TestCase):
                         reference = 'Bill payment', 
                         context_type = 'OTHER', 
                         type = 'DOMESTIC_PAYMENT', 
-                        payee = openapi_client.models.payee.Payee(
+                        payee = yapily.models.payee.Payee(
                             name = 'Jane Doe', 
                             account_identifications = [{"identification":"401016","type":"SORT_CODE"},{"identification":"71518920","type":"ACCOUNT_NUMBER"}], 
                             merchant_id = '24589303', 
                             merchant_category_code = '5551', ), 
-                        periodic_payment = openapi_client.models.periodic_payment_request.PeriodicPaymentRequest(
-                            frequency = openapi_client.models.frequency_request.FrequencyRequest(
+                        periodic_payment = yapily.models.periodic_payment_request.PeriodicPaymentRequest(
+                            frequency = yapily.models.frequency_request.FrequencyRequest(
                                 type = 'DAILY', 
                                 interval_week = 1, 
                                 interval_month = 1, 
                                 execution_day = 1, ), 
                             number_of_payments = 5, 
                             next_payment_date_time = '2018-01-10T00:00Z', 
-                            next_payment_amount = openapi_client.models.amount.Amount(
+                            next_payment_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), 
                             final_payment_date_time = '2030-01-10T00:00Z', 
-                            final_payment_amount = openapi_client.models.amount.Amount(
+                            final_payment_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), ), 
-                        international_payment = openapi_client.models.international_payment_request.InternationalPaymentRequest(
+                        international_payment = yapily.models.international_payment_request.InternationalPaymentRequest(
                             currency_of_transfer = '0', 
-                            exchange_rate_information = openapi_client.models.exchange_rate_information.ExchangeRateInformation(
+                            exchange_rate_information = yapily.models.exchange_rate_information.ExchangeRateInformation(
                                 unit_currency = '0', 
                                 rate = 1.337, 
                                 rate_type = 'ACTUAL', 
@@ -136,7 +136,7 @@ class TestBulkPaymentRequest(unittest.TestCase):
                             purpose = '0', 
                             priority = 'NORMAL', 
                             charge_bearer = 'DEBT', ), 
-                        amount = openapi_client.models.amount.Amount(
+                        amount = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), 
                         payment_date_time = '2021-07-21T17:32:28Z', 

@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.payer_details import PayerDetails  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.payer_details import PayerDetails  # noqa: E501
+from yapily.rest import ApiException
 
 class TestPayerDetails(unittest.TestCase):
     """PayerDetails unit test stubs"""
@@ -34,11 +34,11 @@ class TestPayerDetails(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.payer_details.PayerDetails()  # noqa: E501
+        # model = yapily.models.payer_details.PayerDetails()  # noqa: E501
         if include_optional :
             return PayerDetails(
                 account_identifications = [
-                    openapi_client.models.account_identification.AccountIdentification(
+                    yapily.models.account_identification.AccountIdentification(
                         type = 'SORT_CODE', 
                         identification = '401016', )
                     ]
@@ -46,7 +46,7 @@ class TestPayerDetails(unittest.TestCase):
         else :
             return PayerDetails(
                 account_identifications = [
-                    openapi_client.models.account_identification.AccountIdentification(
+                    yapily.models.account_identification.AccountIdentification(
                         type = 'SORT_CODE', 
                         identification = '401016', )
                     ],

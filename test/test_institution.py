@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.institution import Institution  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.institution import Institution  # noqa: E501
+from yapily.rest import ApiException
 
 class TestInstitution(unittest.TestCase):
     """Institution unit test stubs"""
@@ -34,21 +34,21 @@ class TestInstitution(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.institution.Institution()  # noqa: E501
+        # model = yapily.models.institution.Institution()  # noqa: E501
         if include_optional :
             return Institution(
                 id = '0', 
                 name = '0', 
                 full_name = '0', 
                 countries = [
-                    openapi_client.models.country.Country(
+                    yapily.models.country.Country(
                         display_name = '0', 
                         country_code2 = '0', )
                     ], 
                 environment_type = 'SANDBOX', 
                 credentials_type = 'OAUTH1', 
                 media = [
-                    openapi_client.models.media.Media(
+                    yapily.models.media.Media(
                         source = '0', 
                         type = '0', )
                     ], 
@@ -56,7 +56,7 @@ class TestInstitution(unittest.TestCase):
                     'INITIATE_PRE_AUTHORISATION'
                     ], 
                 monitoring = {
-                    'key' : openapi_client.models.monitoring_feature_status.MonitoringFeatureStatus(
+                    'key' : yapily.models.monitoring_feature_status.MonitoringFeatureStatus(
                         last_tested = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         span = '0', 
                         status = 'Up', )

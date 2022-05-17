@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.credit_line import CreditLine  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.credit_line import CreditLine  # noqa: E501
+from yapily.rest import ApiException
 
 class TestCreditLine(unittest.TestCase):
     """CreditLine unit test stubs"""
@@ -34,11 +34,11 @@ class TestCreditLine(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.credit_line.CreditLine()  # noqa: E501
+        # model = yapily.models.credit_line.CreditLine()  # noqa: E501
         if include_optional :
             return CreditLine(
                 type = 'AVAILABLE', 
-                credit_line_amount = openapi_client.models.amount.Amount(
+                credit_line_amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', )
             )

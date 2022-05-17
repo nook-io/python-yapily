@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.account_api_list_response import AccountApiListResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.account_api_list_response import AccountApiListResponse  # noqa: E501
+from yapily.rest import ApiException
 
 class TestAccountApiListResponse(unittest.TestCase):
     """AccountApiListResponse unit test stubs"""
@@ -34,28 +34,28 @@ class TestAccountApiListResponse(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.account_api_list_response.AccountApiListResponse()  # noqa: E501
+        # model = yapily.models.account_api_list_response.AccountApiListResponse()  # noqa: E501
         if include_optional :
             return AccountApiListResponse(
-                meta = openapi_client.models.response_list_meta.ResponseListMeta(
+                meta = yapily.models.response_list_meta.ResponseListMeta(
                     tracing_id = '0', 
                     count = 56, 
-                    pagination = openapi_client.models.pagination.Pagination(
+                    pagination = yapily.models.pagination.Pagination(
                         total_count = 56, 
-                        self = openapi_client.models.filter_and_sort.FilterAndSort(
+                        self = yapily.models.filter_and_sort.FilterAndSort(
                             from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             limit = 56, 
                             sort = 'date', 
                             offset = 56, 
                             cursor = '0', ), 
-                        next = openapi_client.models.next.Next(
+                        next = yapily.models.next.Next(
                             from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             limit = 56, 
                             cursor = '0', ), ), ), 
                 data = [
-                    openapi_client.models.account.Account(
+                    yapily.models.account.Account(
                         id = '0', 
                         type = '0', 
                         description = '0', 
@@ -66,24 +66,24 @@ class TestAccountApiListResponse(unittest.TestCase):
                         nickname = '0', 
                         details = '0', 
                         account_names = [
-                            openapi_client.models.account_name.AccountName(
+                            yapily.models.account_name.AccountName(
                                 name = '0', )
                             ], 
                         account_identifications = [
-                            openapi_client.models.account_identification.AccountIdentification(
+                            yapily.models.account_identification.AccountIdentification(
                                 type = 'SORT_CODE', 
                                 identification = '401016', )
                             ], 
                         account_balances = [
-                            openapi_client.models.account_balance.AccountBalance(
+                            yapily.models.account_balance.AccountBalance(
                                 date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                balance_amount = openapi_client.models.amount.Amount(
+                                balance_amount = yapily.models.amount.Amount(
                                     amount = 10, 
                                     currency = 'GBP', ), 
                                 credit_line_included = True, 
                                 credit_lines = [
-                                    openapi_client.models.credit_line.CreditLine(
-                                        credit_line_amount = openapi_client.models.amount.Amount(
+                                    yapily.models.credit_line.CreditLine(
+                                        credit_line_amount = yapily.models.amount.Amount(
                                             amount = 10, 
                                             currency = 'GBP', ), )
                                     ], )
@@ -93,22 +93,22 @@ class TestAccountApiListResponse(unittest.TestCase):
                     'key' : '0'
                     }, 
                 forwarded_data = [
-                    openapi_client.models.response_forwarded_data.ResponseForwardedData(
+                    yapily.models.response_forwarded_data.ResponseForwardedData(
                         headers = {
                             'key' : '0'
                             }, 
                         url = '0', )
                     ], 
                 raw = [
-                    openapi_client.models.raw_response.RawResponse(
-                        request = openapi_client.models.raw_request.RawRequest(
+                    yapily.models.raw_response.RawResponse(
+                        request = yapily.models.raw_request.RawRequest(
                             method = '0', 
                             url = '0', 
                             request_instant = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             headers = {
                                 'key' : '0'
                                 }, 
-                            body = openapi_client.models.body.body(), 
+                            body = yapily.models.body.body(), 
                             body_parameters = {
                                 'key' : '0'
                                 }, 
@@ -119,12 +119,12 @@ class TestAccountApiListResponse(unittest.TestCase):
                             'key' : '0'
                             }, 
                         result_code = 56, 
-                        result = openapi_client.models.result.result(), )
+                        result = yapily.models.result.result(), )
                     ], 
-                paging = openapi_client.models.filtered_client_payload_list_account.FilteredClientPayloadListAccount(
-                    api_call = openapi_client.models.api_call.ApiCall(), 
+                paging = yapily.models.filtered_client_payload_list_account.FilteredClientPayloadListAccount(
+                    api_call = yapily.models.api_call.ApiCall(), 
                     data = [
-                        openapi_client.models.account.Account(
+                        yapily.models.account.Account(
                             id = '0', 
                             type = '0', 
                             description = '0', 
@@ -135,24 +135,24 @@ class TestAccountApiListResponse(unittest.TestCase):
                             nickname = '0', 
                             details = '0', 
                             account_names = [
-                                openapi_client.models.account_name.AccountName(
+                                yapily.models.account_name.AccountName(
                                     name = '0', )
                                 ], 
                             account_identifications = [
-                                openapi_client.models.account_identification.AccountIdentification(
+                                yapily.models.account_identification.AccountIdentification(
                                     type = 'SORT_CODE', 
                                     identification = '401016', )
                                 ], 
                             account_balances = [
-                                openapi_client.models.account_balance.AccountBalance(
+                                yapily.models.account_balance.AccountBalance(
                                     date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                    balance_amount = openapi_client.models.amount.Amount(
+                                    balance_amount = yapily.models.amount.Amount(
                                         amount = 10, 
                                         currency = 'GBP', ), 
                                     credit_line_included = True, 
                                     credit_lines = [
-                                        openapi_client.models.credit_line.CreditLine(
-                                            credit_line_amount = openapi_client.models.amount.Amount(
+                                        yapily.models.credit_line.CreditLine(
+                                            credit_line_amount = yapily.models.amount.Amount(
                                                 amount = 10, 
                                                 currency = 'GBP', ), )
                                         ], )
@@ -161,7 +161,7 @@ class TestAccountApiListResponse(unittest.TestCase):
                     next_cursor_hash = '0', 
                     next_link = '0', 
                     paging_map = {
-                        'key' : openapi_client.models.filter_and_sort.FilterAndSort(
+                        'key' : yapily.models.filter_and_sort.FilterAndSort(
                             from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             limit = 56, 

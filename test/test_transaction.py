@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.transaction import Transaction  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.transaction import Transaction  # noqa: E501
+from yapily.rest import ApiException
 
 class TestTransaction(unittest.TestCase):
     """Transaction unit test stubs"""
@@ -34,7 +34,7 @@ class TestTransaction(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.transaction.Transaction()  # noqa: E501
+        # model = yapily.models.transaction.Transaction()  # noqa: E501
         if include_optional :
             return Transaction(
                 id = '0', 
@@ -44,83 +44,83 @@ class TestTransaction(unittest.TestCase):
                 status = 'BOOKED', 
                 amount = 1.337, 
                 currency = '0', 
-                transaction_amount = openapi_client.models.amount.Amount(
+                transaction_amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', ), 
-                gross_amount = openapi_client.models.amount.Amount(
+                gross_amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', ), 
-                currency_exchange = openapi_client.models.currency_exchange.CurrencyExchange(
+                currency_exchange = yapily.models.currency_exchange.CurrencyExchange(
                     source_currency = '0', 
                     target_currency = '0', 
                     unit_currency = '0', 
                     exchange_rate = 1.337, ), 
-                charge_details = openapi_client.models.transaction_charge_details.TransactionChargeDetails(
-                    charge_amount = openapi_client.models.amount.Amount(
+                charge_details = yapily.models.transaction_charge_details.TransactionChargeDetails(
+                    charge_amount = yapily.models.amount.Amount(
                         amount = 10, 
                         currency = 'GBP', ), ), 
                 reference = '0', 
                 statement_references = [
-                    openapi_client.models.statement_reference.StatementReference(
+                    yapily.models.statement_reference.StatementReference(
                         value = '0', )
                     ], 
                 description = '0', 
                 transaction_information = [
                     '0'
                     ], 
-                address_details = openapi_client.models.address_details.AddressDetails(
+                address_details = yapily.models.address_details.AddressDetails(
                     address_line = '0', ), 
-                iso_bank_transaction_code = openapi_client.models.iso_bank_transaction_code.IsoBankTransactionCode(
-                    domain_code = openapi_client.models.iso_code_details.IsoCodeDetails(
+                iso_bank_transaction_code = yapily.models.iso_bank_transaction_code.IsoBankTransactionCode(
+                    domain_code = yapily.models.iso_code_details.IsoCodeDetails(
                         code = 'UNKNOWN', 
                         name = 'UNKNOWN', ), 
-                    family_code = openapi_client.models.iso_code_details.IsoCodeDetails(
+                    family_code = yapily.models.iso_code_details.IsoCodeDetails(
                         code = 'UNKNOWN', 
                         name = 'UNKNOWN', ), 
-                    sub_family_code = openapi_client.models.iso_code_details.IsoCodeDetails(
+                    sub_family_code = yapily.models.iso_code_details.IsoCodeDetails(
                         code = 'UNKNOWN', 
                         name = 'UNKNOWN', ), ), 
-                proprietary_bank_transaction_code = openapi_client.models.proprietary_bank_transaction_code.ProprietaryBankTransactionCode(
+                proprietary_bank_transaction_code = yapily.models.proprietary_bank_transaction_code.ProprietaryBankTransactionCode(
                     code = '0', 
                     issuer = '0', ), 
-                balance = openapi_client.models.transaction_balance.TransactionBalance(
+                balance = yapily.models.transaction_balance.TransactionBalance(
                     type = 'CLOSING_AVAILABLE', 
-                    balance_amount = openapi_client.models.amount.Amount(
+                    balance_amount = yapily.models.amount.Amount(
                         amount = 10, 
                         currency = 'GBP', ), ), 
-                payee_details = openapi_client.models.payee.Payee(
+                payee_details = yapily.models.payee.Payee(
                     name = 'Jane Doe', 
                     account_identifications = [{"identification":"401016","type":"SORT_CODE"},{"identification":"71518920","type":"ACCOUNT_NUMBER"}], 
                     address = {"country":"GB"}, 
                     merchant_id = '24589303', 
                     merchant_category_code = '5551', ), 
-                payer_details = openapi_client.models.payer.Payer(
+                payer_details = yapily.models.payer.Payer(
                     name = 'John Doe', 
                     account_identifications = [
-                        openapi_client.models.account_identification.AccountIdentification(
+                        yapily.models.account_identification.AccountIdentification(
                             type = 'SORT_CODE', 
                             identification = '401016', )
                         ], 
                     address = {"country":"GB"}, ), 
-                merchant = openapi_client.models.merchant.Merchant(
+                merchant = yapily.models.merchant.Merchant(
                     merchant_name = '0', 
                     merchant_category_code = '0', ), 
-                enrichment = openapi_client.models.enrichment.Enrichment(
-                    categorisation = openapi_client.models.categorisation.Categorisation(
+                enrichment = yapily.models.enrichment.Enrichment(
+                    categorisation = yapily.models.categorisation.Categorisation(
                         categories = [
                             '0'
                             ], 
                         source = '0', ), 
-                    transaction_hash = openapi_client.models.transaction_hash.TransactionHash(
+                    transaction_hash = yapily.models.transaction_hash.TransactionHash(
                         hash = '0', ), 
                     cleansed_description = '0', 
-                    merchant = openapi_client.models.enrichment_merchant.EnrichmentMerchant(
+                    merchant = yapily.models.enrichment_merchant.EnrichmentMerchant(
                         merchant_name = '0', 
                         parent_group = '0', ), 
                     location = '0', 
                     payment_processor = '0', 
                     corrected_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
-                supplementary_data = openapi_client.models.supplementary_data.supplementaryData()
+                supplementary_data = yapily.models.supplementary_data.supplementaryData()
             )
         else :
             return Transaction(

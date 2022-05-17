@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.api_list_response_of_beneficiary import ApiListResponseOfBeneficiary  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.api_list_response_of_beneficiary import ApiListResponseOfBeneficiary  # noqa: E501
+from yapily.rest import ApiException
 
 class TestApiListResponseOfBeneficiary(unittest.TestCase):
     """ApiListResponseOfBeneficiary unit test stubs"""
@@ -34,31 +34,31 @@ class TestApiListResponseOfBeneficiary(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.api_list_response_of_beneficiary.ApiListResponseOfBeneficiary()  # noqa: E501
+        # model = yapily.models.api_list_response_of_beneficiary.ApiListResponseOfBeneficiary()  # noqa: E501
         if include_optional :
             return ApiListResponseOfBeneficiary(
-                meta = openapi_client.models.response_list_meta.ResponseListMeta(
+                meta = yapily.models.response_list_meta.ResponseListMeta(
                     tracing_id = '0', 
                     count = 56, 
-                    pagination = openapi_client.models.pagination.Pagination(
+                    pagination = yapily.models.pagination.Pagination(
                         total_count = 56, 
-                        self = openapi_client.models.filter_and_sort.FilterAndSort(
+                        self = yapily.models.filter_and_sort.FilterAndSort(
                             from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             limit = 56, 
                             sort = 'date', 
                             offset = 56, 
                             cursor = '0', ), 
-                        next = openapi_client.models.next.Next(
+                        next = yapily.models.next.Next(
                             from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             limit = 56, 
                             cursor = '0', ), ), ), 
                 data = [
-                    openapi_client.models.beneficiary.Beneficiary(
+                    yapily.models.beneficiary.Beneficiary(
                         id = '0', 
                         reference = '0', 
-                        payee = openapi_client.models.beneficiary_payee.BeneficiaryPayee(
+                        payee = yapily.models.beneficiary_payee.BeneficiaryPayee(
                             name = 'Jane Doe', 
                             account_identifications = [{"identification":"401016","type":"SORT_CODE"},{"identification":"71518920","type":"ACCOUNT_NUMBER"}], 
                             address = {"country":"GB"}, ), 
@@ -68,22 +68,22 @@ class TestApiListResponseOfBeneficiary(unittest.TestCase):
                     'key' : '0'
                     }, 
                 forwarded_data = [
-                    openapi_client.models.response_forwarded_data.ResponseForwardedData(
+                    yapily.models.response_forwarded_data.ResponseForwardedData(
                         headers = {
                             'key' : '0'
                             }, 
                         url = '0', )
                     ], 
                 raw = [
-                    openapi_client.models.raw_response.RawResponse(
-                        request = openapi_client.models.raw_request.RawRequest(
+                    yapily.models.raw_response.RawResponse(
+                        request = yapily.models.raw_request.RawRequest(
                             method = '0', 
                             url = '0', 
                             request_instant = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             headers = {
                                 'key' : '0'
                                 }, 
-                            body = openapi_client.models.body.body(), 
+                            body = yapily.models.body.body(), 
                             body_parameters = {
                                 'key' : '0'
                                 }, 
@@ -94,7 +94,7 @@ class TestApiListResponseOfBeneficiary(unittest.TestCase):
                             'key' : '0'
                             }, 
                         result_code = 56, 
-                        result = openapi_client.models.result.result(), )
+                        result = yapily.models.result.result(), )
                     ], 
                 tracing_id = '0'
             )

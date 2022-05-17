@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.api_list_response_of_payment_response import ApiListResponseOfPaymentResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.api_list_response_of_payment_response import ApiListResponseOfPaymentResponse  # noqa: E501
+from yapily.rest import ApiException
 
 class TestApiListResponseOfPaymentResponse(unittest.TestCase):
     """ApiListResponseOfPaymentResponse unit test stubs"""
@@ -34,54 +34,54 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.api_list_response_of_payment_response.ApiListResponseOfPaymentResponse()  # noqa: E501
+        # model = yapily.models.api_list_response_of_payment_response.ApiListResponseOfPaymentResponse()  # noqa: E501
         if include_optional :
             return ApiListResponseOfPaymentResponse(
-                meta = openapi_client.models.response_list_meta.ResponseListMeta(
+                meta = yapily.models.response_list_meta.ResponseListMeta(
                     tracing_id = '0', 
                     count = 56, 
-                    pagination = openapi_client.models.pagination.Pagination(
+                    pagination = yapily.models.pagination.Pagination(
                         total_count = 56, 
-                        self = openapi_client.models.filter_and_sort.FilterAndSort(
+                        self = yapily.models.filter_and_sort.FilterAndSort(
                             from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             limit = 56, 
                             sort = 'date', 
                             offset = 56, 
                             cursor = '0', ), 
-                        next = openapi_client.models.next.Next(
+                        next = yapily.models.next.Next(
                             from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             limit = 56, 
                             cursor = '0', ), ), ), 
                 data = [
-                    openapi_client.models.payment_response.PaymentResponse(
+                    yapily.models.payment_response.PaymentResponse(
                         id = '0', 
                         institution_consent_id = '0', 
                         payment_idempotency_id = '0', 
                         payment_lifecycle_id = '0', 
                         status = 'PENDING', 
-                        status_details = openapi_client.models.payment_status_details.PaymentStatusDetails(
+                        status_details = yapily.models.payment_status_details.PaymentStatusDetails(
                             status_reason = '0', 
                             status_reason_description = '0', 
                             status_update_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            multi_authorisation_status = openapi_client.models.multi_authorisation.MultiAuthorisation(
+                            multi_authorisation_status = yapily.models.multi_authorisation.MultiAuthorisation(
                                 number_of_authorisation_required = 56, 
                                 number_of_authorisation_received = 56, 
                                 last_updated_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 expiration_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
-                            iso_status = openapi_client.models.payment_iso_status.PaymentIsoStatus(
+                            iso_status = yapily.models.payment_iso_status.PaymentIsoStatus(
                                 code = 'ACCC', 
                                 name = 'AcceptedCreditSettlementCompleted', ), ), 
-                        payer = openapi_client.models.payer.Payer(
+                        payer = yapily.models.payer.Payer(
                             name = 'John Doe', 
                             account_identifications = [
-                                openapi_client.models.account_identification.AccountIdentification(
+                                yapily.models.account_identification.AccountIdentification(
                                     type = 'SORT_CODE', 
                                     identification = '401016', )
                                 ], 
                             address = {"country":"GB"}, ), 
-                        payee_details = openapi_client.models.payee.Payee(
+                        payee_details = yapily.models.payee.Payee(
                             name = 'Jane Doe', 
                             account_identifications = [{"identification":"401016","type":"SORT_CODE"},{"identification":"71518920","type":"ACCOUNT_NUMBER"}], 
                             merchant_id = '24589303', 
@@ -89,30 +89,30 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
                         reference = '0', 
                         amount = 1.337, 
                         currency = '0', 
-                        amount_details = openapi_client.models.amount.Amount(
+                        amount_details = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        first_payment_amount = openapi_client.models.amount.Amount(
+                        first_payment_amount = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), 
                         first_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        next_payment_amount = openapi_client.models.amount.Amount(
+                        next_payment_amount = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), 
                         next_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        final_payment_amount = openapi_client.models.amount.Amount(
+                        final_payment_amount = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), 
                         final_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         number_of_payments = 56, 
-                        previous_payment_amount = openapi_client.models.amount.Amount(
+                        previous_payment_amount = yapily.models.amount.Amount(
                             amount = 10, 
                             currency = 'GBP', ), 
                         previous_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         charge_details = [
-                            openapi_client.models.payment_charge_details.PaymentChargeDetails(
-                                charge_amount = openapi_client.models.amount.Amount(
+                            yapily.models.payment_charge_details.PaymentChargeDetails(
+                                charge_amount = yapily.models.amount.Amount(
                                     amount = 10, 
                                     currency = 'GBP', ), 
                                 charge_type = '0', 
@@ -120,7 +120,7 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
                             ], 
                         scheduled_payment_type = '0', 
                         scheduled_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        frequency = openapi_client.models.frequency_response.FrequencyResponse(
+                        frequency = yapily.models.frequency_response.FrequencyResponse(
                             frequency_type = 'DAILY', 
                             interval_week = 56, 
                             interval_month = 56, 
@@ -128,13 +128,13 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
                         currency_of_transfer = '0', 
                         purpose = '0', 
                         priority = 'NORMAL', 
-                        exchange_rate = openapi_client.models.exchange_rate_information_response.ExchangeRateInformationResponse(
+                        exchange_rate = yapily.models.exchange_rate_information_response.ExchangeRateInformationResponse(
                             unit_currency = '0', 
                             rate = 1.337, 
                             rate_type = 'ACTUAL', 
                             foreign_exchange_contract_reference = '0', 
                             exchange_rate_expiry_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
-                        refund_account = openapi_client.models.refund_account.RefundAccount(
+                        refund_account = yapily.models.refund_account.RefundAccount(
                             name = '0', ), 
                         bulk_amount_sum = 1.337, )
                     ], 
@@ -142,22 +142,22 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
                     'key' : '0'
                     }, 
                 forwarded_data = [
-                    openapi_client.models.response_forwarded_data.ResponseForwardedData(
+                    yapily.models.response_forwarded_data.ResponseForwardedData(
                         headers = {
                             'key' : '0'
                             }, 
                         url = '0', )
                     ], 
                 raw = [
-                    openapi_client.models.raw_response.RawResponse(
-                        request = openapi_client.models.raw_request.RawRequest(
+                    yapily.models.raw_response.RawResponse(
+                        request = yapily.models.raw_request.RawRequest(
                             method = '0', 
                             url = '0', 
                             request_instant = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             headers = {
                                 'key' : '0'
                                 }, 
-                            body = openapi_client.models.body.body(), 
+                            body = yapily.models.body.body(), 
                             body_parameters = {
                                 'key' : '0'
                                 }, 
@@ -168,38 +168,38 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
                             'key' : '0'
                             }, 
                         result_code = 56, 
-                        result = openapi_client.models.result.result(), )
+                        result = yapily.models.result.result(), )
                     ], 
-                paging = openapi_client.models.filtered_client_payload_list_payment_response.FilteredClientPayloadListPaymentResponse(
-                    api_call = openapi_client.models.api_call.ApiCall(), 
+                paging = yapily.models.filtered_client_payload_list_payment_response.FilteredClientPayloadListPaymentResponse(
+                    api_call = yapily.models.api_call.ApiCall(), 
                     data = [
-                        openapi_client.models.payment_response.PaymentResponse(
+                        yapily.models.payment_response.PaymentResponse(
                             id = '0', 
                             institution_consent_id = '0', 
                             payment_idempotency_id = '0', 
                             payment_lifecycle_id = '0', 
                             status = 'PENDING', 
-                            status_details = openapi_client.models.payment_status_details.PaymentStatusDetails(
+                            status_details = yapily.models.payment_status_details.PaymentStatusDetails(
                                 status_reason = '0', 
                                 status_reason_description = '0', 
                                 status_update_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                multi_authorisation_status = openapi_client.models.multi_authorisation.MultiAuthorisation(
+                                multi_authorisation_status = yapily.models.multi_authorisation.MultiAuthorisation(
                                     number_of_authorisation_required = 56, 
                                     number_of_authorisation_received = 56, 
                                     last_updated_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                     expiration_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
-                                iso_status = openapi_client.models.payment_iso_status.PaymentIsoStatus(
+                                iso_status = yapily.models.payment_iso_status.PaymentIsoStatus(
                                     code = 'ACCC', 
                                     name = 'AcceptedCreditSettlementCompleted', ), ), 
-                            payer = openapi_client.models.payer.Payer(
+                            payer = yapily.models.payer.Payer(
                                 name = 'John Doe', 
                                 account_identifications = [
-                                    openapi_client.models.account_identification.AccountIdentification(
+                                    yapily.models.account_identification.AccountIdentification(
                                         type = 'SORT_CODE', 
                                         identification = '401016', )
                                     ], 
                                 address = {"country":"GB"}, ), 
-                            payee_details = openapi_client.models.payee.Payee(
+                            payee_details = yapily.models.payee.Payee(
                                 name = 'Jane Doe', 
                                 account_identifications = [{"identification":"401016","type":"SORT_CODE"},{"identification":"71518920","type":"ACCOUNT_NUMBER"}], 
                                 merchant_id = '24589303', 
@@ -207,30 +207,30 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
                             reference = '0', 
                             amount = 1.337, 
                             currency = '0', 
-                            amount_details = openapi_client.models.amount.Amount(
+                            amount_details = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), 
                             created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            first_payment_amount = openapi_client.models.amount.Amount(
+                            first_payment_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), 
                             first_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            next_payment_amount = openapi_client.models.amount.Amount(
+                            next_payment_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), 
                             next_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            final_payment_amount = openapi_client.models.amount.Amount(
+                            final_payment_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), 
                             final_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             number_of_payments = 56, 
-                            previous_payment_amount = openapi_client.models.amount.Amount(
+                            previous_payment_amount = yapily.models.amount.Amount(
                                 amount = 10, 
                                 currency = 'GBP', ), 
                             previous_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             charge_details = [
-                                openapi_client.models.payment_charge_details.PaymentChargeDetails(
-                                    charge_amount = openapi_client.models.amount.Amount(
+                                yapily.models.payment_charge_details.PaymentChargeDetails(
+                                    charge_amount = yapily.models.amount.Amount(
                                         amount = 10, 
                                         currency = 'GBP', ), 
                                     charge_type = '0', 
@@ -238,7 +238,7 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
                                 ], 
                             scheduled_payment_type = '0', 
                             scheduled_payment_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            frequency = openapi_client.models.frequency_response.FrequencyResponse(
+                            frequency = yapily.models.frequency_response.FrequencyResponse(
                                 frequency_type = 'DAILY', 
                                 interval_week = 56, 
                                 interval_month = 56, 
@@ -246,20 +246,20 @@ class TestApiListResponseOfPaymentResponse(unittest.TestCase):
                             currency_of_transfer = '0', 
                             purpose = '0', 
                             priority = 'NORMAL', 
-                            exchange_rate = openapi_client.models.exchange_rate_information_response.ExchangeRateInformationResponse(
+                            exchange_rate = yapily.models.exchange_rate_information_response.ExchangeRateInformationResponse(
                                 unit_currency = '0', 
                                 rate = 1.337, 
                                 rate_type = 'ACTUAL', 
                                 foreign_exchange_contract_reference = '0', 
                                 exchange_rate_expiry_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
-                            refund_account = openapi_client.models.refund_account.RefundAccount(
+                            refund_account = yapily.models.refund_account.RefundAccount(
                                 name = '0', ), 
                             bulk_amount_sum = 1.337, )
                         ], 
                     next_cursor_hash = '0', 
                     next_link = '0', 
                     paging_map = {
-                        'key' : openapi_client.models.filter_and_sort.FilterAndSort(
+                        'key' : yapily.models.filter_and_sort.FilterAndSort(
                             from = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             before = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             limit = 56, 

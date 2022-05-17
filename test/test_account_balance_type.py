@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.account_balance_type import AccountBalanceType  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.account_balance_type import AccountBalanceType  # noqa: E501
+from yapily.rest import ApiException
 
 class TestAccountBalanceType(unittest.TestCase):
     """AccountBalanceType unit test stubs"""
@@ -34,7 +34,7 @@ class TestAccountBalanceType(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.account_balance_type.AccountBalanceType()  # noqa: E501
+        # model = yapily.models.account_balance_type.AccountBalanceType()  # noqa: E501
         if include_optional :
             return AccountBalanceType(
             )

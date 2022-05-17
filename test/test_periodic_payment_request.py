@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.periodic_payment_request import PeriodicPaymentRequest  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.periodic_payment_request import PeriodicPaymentRequest  # noqa: E501
+from yapily.rest import ApiException
 
 class TestPeriodicPaymentRequest(unittest.TestCase):
     """PeriodicPaymentRequest unit test stubs"""
@@ -34,27 +34,27 @@ class TestPeriodicPaymentRequest(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.periodic_payment_request.PeriodicPaymentRequest()  # noqa: E501
+        # model = yapily.models.periodic_payment_request.PeriodicPaymentRequest()  # noqa: E501
         if include_optional :
             return PeriodicPaymentRequest(
-                frequency = openapi_client.models.frequency_request.FrequencyRequest(
+                frequency = yapily.models.frequency_request.FrequencyRequest(
                     type = 'DAILY', 
                     interval_week = 1, 
                     interval_month = 1, 
                     execution_day = 1, ), 
                 number_of_payments = 5, 
                 next_payment_date_time = '2018-01-10T00:00Z', 
-                next_payment_amount = openapi_client.models.amount.Amount(
+                next_payment_amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', ), 
                 final_payment_date_time = '2030-01-10T00:00Z', 
-                final_payment_amount = openapi_client.models.amount.Amount(
+                final_payment_amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', )
             )
         else :
             return PeriodicPaymentRequest(
-                frequency = openapi_client.models.frequency_request.FrequencyRequest(
+                frequency = yapily.models.frequency_request.FrequencyRequest(
                     type = 'DAILY', 
                     interval_week = 1, 
                     interval_month = 1, 

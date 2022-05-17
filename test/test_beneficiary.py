@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.beneficiary import Beneficiary  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.beneficiary import Beneficiary  # noqa: E501
+from yapily.rest import ApiException
 
 class TestBeneficiary(unittest.TestCase):
     """Beneficiary unit test stubs"""
@@ -34,12 +34,12 @@ class TestBeneficiary(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.beneficiary.Beneficiary()  # noqa: E501
+        # model = yapily.models.beneficiary.Beneficiary()  # noqa: E501
         if include_optional :
             return Beneficiary(
                 id = '0', 
                 reference = '0', 
-                payee = openapi_client.models.beneficiary_payee.BeneficiaryPayee(
+                payee = yapily.models.beneficiary_payee.BeneficiaryPayee(
                     name = 'Jane Doe', 
                     account_identifications = [{"identification":"401016","type":"SORT_CODE"},{"identification":"71518920","type":"ACCOUNT_NUMBER"}], 
                     address = {"country":"GB"}, ), 

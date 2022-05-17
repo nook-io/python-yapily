@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.address_details import AddressDetails  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.address_details import AddressDetails  # noqa: E501
+from yapily.rest import ApiException
 
 class TestAddressDetails(unittest.TestCase):
     """AddressDetails unit test stubs"""
@@ -34,7 +34,7 @@ class TestAddressDetails(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.address_details.AddressDetails()  # noqa: E501
+        # model = yapily.models.address_details.AddressDetails()  # noqa: E501
         if include_optional :
             return AddressDetails(
                 address_line = '0'

@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.enriched_transaction import EnrichedTransaction  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.enriched_transaction import EnrichedTransaction  # noqa: E501
+from yapily.rest import ApiException
 
 class TestEnrichedTransaction(unittest.TestCase):
     """EnrichedTransaction unit test stubs"""
@@ -34,7 +34,7 @@ class TestEnrichedTransaction(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.enriched_transaction.EnrichedTransaction()  # noqa: E501
+        # model = yapily.models.enriched_transaction.EnrichedTransaction()  # noqa: E501
         if include_optional :
             return EnrichedTransaction(
                 transaction_id = 'c51e3bee-36fb-4c0a-8441-d6ba2056fe87', 

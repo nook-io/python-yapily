@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.identity import Identity  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.identity import Identity  # noqa: E501
+from yapily.rest import ApiException
 
 class TestIdentity(unittest.TestCase):
     """Identity unit test stubs"""
@@ -34,7 +34,7 @@ class TestIdentity(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.identity.Identity()  # noqa: E501
+        # model = yapily.models.identity.Identity()  # noqa: E501
         if include_optional :
             return Identity(
                 id = '0', 
@@ -46,7 +46,7 @@ class TestIdentity(unittest.TestCase):
                 email = '0', 
                 phone = '0', 
                 addresses = [
-                    openapi_client.models.identity_address.IdentityAddress(
+                    yapily.models.identity_address.IdentityAddress(
                         address_lines = [
                             '0'
                             ], 

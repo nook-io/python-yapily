@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.payment_pre_authorisation_request import PaymentPreAuthorisationRequest  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.payment_pre_authorisation_request import PaymentPreAuthorisationRequest  # noqa: E501
+from yapily.rest import ApiException
 
 class TestPaymentPreAuthorisationRequest(unittest.TestCase):
     """PaymentPreAuthorisationRequest unit test stubs"""
@@ -34,7 +34,7 @@ class TestPaymentPreAuthorisationRequest(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.payment_pre_authorisation_request.PaymentPreAuthorisationRequest()  # noqa: E501
+        # model = yapily.models.payment_pre_authorisation_request.PaymentPreAuthorisationRequest()  # noqa: E501
         if include_optional :
             return PaymentPreAuthorisationRequest(
                 user_uuid = '0', 
@@ -44,21 +44,21 @@ class TestPaymentPreAuthorisationRequest(unittest.TestCase):
                     ], 
                 institution_id = 'yapily-mock', 
                 callback = 'https://display-parameters.com', 
-                redirect = openapi_client.models.redirect_request.RedirectRequest(
+                redirect = yapily.models.redirect_request.RedirectRequest(
                     url = '0', ), 
                 one_time_token = False, 
                 scope = 'AIS', 
-                payee = openapi_client.models.payee_details.PayeeDetails(
+                payee = yapily.models.payee_details.PayeeDetails(
                     name = 'Jane Doe', 
                     account_identifications = [{"identification":"IBUK123456789","type":"IBAN"}], 
                     country = 'GB', ), 
-                payer = openapi_client.models.payer_details.PayerDetails(
+                payer = yapily.models.payer_details.PayerDetails(
                     account_identifications = [
-                        openapi_client.models.account_identification.AccountIdentification(
+                        yapily.models.account_identification.AccountIdentification(
                             type = 'SORT_CODE', 
                             identification = '401016', )
                         ], ), 
-                amount = openapi_client.models.amount.Amount(
+                amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', ), 
                 reference = 'Bill payment'
@@ -67,17 +67,17 @@ class TestPaymentPreAuthorisationRequest(unittest.TestCase):
             return PaymentPreAuthorisationRequest(
                 institution_id = 'yapily-mock',
                 scope = 'AIS',
-                payee = openapi_client.models.payee_details.PayeeDetails(
+                payee = yapily.models.payee_details.PayeeDetails(
                     name = 'Jane Doe', 
                     account_identifications = [{"identification":"IBUK123456789","type":"IBAN"}], 
                     country = 'GB', ),
-                payer = openapi_client.models.payer_details.PayerDetails(
+                payer = yapily.models.payer_details.PayerDetails(
                     account_identifications = [
-                        openapi_client.models.account_identification.AccountIdentification(
+                        yapily.models.account_identification.AccountIdentification(
                             type = 'SORT_CODE', 
                             identification = '401016', )
                         ], ),
-                amount = openapi_client.models.amount.Amount(
+                amount = yapily.models.amount.Amount(
                     amount = 10, 
                     currency = 'GBP', ),
                 reference = 'Bill payment',

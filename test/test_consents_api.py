@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
-from openapi_client.api.consents_api import ConsentsApi  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.api.consents_api import ConsentsApi  # noqa: E501
+from yapily.rest import ApiException
 
 
 class TestConsentsApi(unittest.TestCase):
     """ConsentsApi unit test stubs"""
 
     def setUp(self):
-        self.api = openapi_client.api.consents_api.ConsentsApi()  # noqa: E501
+        self.api = yapily.api.consents_api.ConsentsApi()  # noqa: E501
 
     def tearDown(self):
         pass

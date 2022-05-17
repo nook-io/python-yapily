@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.enriched_wrapper import EnrichedWrapper  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.enriched_wrapper import EnrichedWrapper  # noqa: E501
+from yapily.rest import ApiException
 
 class TestEnrichedWrapper(unittest.TestCase):
     """EnrichedWrapper unit test stubs"""
@@ -34,21 +34,21 @@ class TestEnrichedWrapper(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.enriched_wrapper.EnrichedWrapper()  # noqa: E501
+        # model = yapily.models.enriched_wrapper.EnrichedWrapper()  # noqa: E501
         if include_optional :
             return EnrichedWrapper(
                 income_streams = [
-                    openapi_client.models.transaction_stream.TransactionStream(
+                    yapily.models.transaction_stream.TransactionStream(
                         name = 'Amazon Marketplace', 
                         transactions = [
-                            openapi_client.models.enriched_transaction.EnrichedTransaction(
+                            yapily.models.enriched_transaction.EnrichedTransaction(
                                 transaction_id = 'c51e3bee-36fb-4c0a-8441-d6ba2056fe87', 
                                 transaction_information = 'Amazon Marketplace', 
                                 amount = 21.99, 
                                 institution = 'starling', 
                                 booking_date_time = '2020-04-24T00:30:19.951Z', )
                             ], 
-                        transaction_schedule = openapi_client.models.transaction_schedule.TransactionSchedule(
+                        transaction_schedule = yapily.models.transaction_schedule.TransactionSchedule(
                             frequency = 'Daily', 
                             detailed_frequency = 'Daily', 
                             detailed_frequency_parameter = 1, ), 
@@ -60,17 +60,17 @@ class TestEnrichedWrapper(unittest.TestCase):
                         average_amount = 19.708, )
                     ], 
                 expenditure_streams = [
-                    openapi_client.models.transaction_stream.TransactionStream(
+                    yapily.models.transaction_stream.TransactionStream(
                         name = 'Amazon Marketplace', 
                         transactions = [
-                            openapi_client.models.enriched_transaction.EnrichedTransaction(
+                            yapily.models.enriched_transaction.EnrichedTransaction(
                                 transaction_id = 'c51e3bee-36fb-4c0a-8441-d6ba2056fe87', 
                                 transaction_information = 'Amazon Marketplace', 
                                 amount = 21.99, 
                                 institution = 'starling', 
                                 booking_date_time = '2020-04-24T00:30:19.951Z', )
                             ], 
-                        transaction_schedule = openapi_client.models.transaction_schedule.TransactionSchedule(
+                        transaction_schedule = yapily.models.transaction_schedule.TransactionSchedule(
                             frequency = 'Daily', 
                             detailed_frequency = 'Daily', 
                             detailed_frequency_parameter = 1, ), 
@@ -82,17 +82,17 @@ class TestEnrichedWrapper(unittest.TestCase):
                         average_amount = 19.708, )
                     ], 
                 recently_terminated_income_streams = [
-                    openapi_client.models.terminated_transaction_stream.TerminatedTransactionStream(
+                    yapily.models.terminated_transaction_stream.TerminatedTransactionStream(
                         name = 'Amazon Marketplace', 
                         transactions = [
-                            openapi_client.models.enriched_transaction.EnrichedTransaction(
+                            yapily.models.enriched_transaction.EnrichedTransaction(
                                 transaction_id = 'c51e3bee-36fb-4c0a-8441-d6ba2056fe87', 
                                 transaction_information = 'Amazon Marketplace', 
                                 amount = 21.99, 
                                 institution = 'starling', 
                                 booking_date_time = '2020-04-24T00:30:19.951Z', )
                             ], 
-                        transaction_schedule = openapi_client.models.transaction_schedule.TransactionSchedule(
+                        transaction_schedule = yapily.models.transaction_schedule.TransactionSchedule(
                             frequency = 'Daily', 
                             detailed_frequency = 'Daily', 
                             detailed_frequency_parameter = 1, ), 
@@ -105,17 +105,17 @@ class TestEnrichedWrapper(unittest.TestCase):
                         missed_transactions = 3, )
                     ], 
                 recently_terminated_expenditure_streams = [
-                    openapi_client.models.terminated_transaction_stream.TerminatedTransactionStream(
+                    yapily.models.terminated_transaction_stream.TerminatedTransactionStream(
                         name = 'Amazon Marketplace', 
                         transactions = [
-                            openapi_client.models.enriched_transaction.EnrichedTransaction(
+                            yapily.models.enriched_transaction.EnrichedTransaction(
                                 transaction_id = 'c51e3bee-36fb-4c0a-8441-d6ba2056fe87', 
                                 transaction_information = 'Amazon Marketplace', 
                                 amount = 21.99, 
                                 institution = 'starling', 
                                 booking_date_time = '2020-04-24T00:30:19.951Z', )
                             ], 
-                        transaction_schedule = openapi_client.models.transaction_schedule.TransactionSchedule(
+                        transaction_schedule = yapily.models.transaction_schedule.TransactionSchedule(
                             frequency = 'Daily', 
                             detailed_frequency = 'Daily', 
                             detailed_frequency_parameter = 1, ), 

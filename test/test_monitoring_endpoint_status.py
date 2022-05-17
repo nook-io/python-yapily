@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.monitoring_endpoint_status import MonitoringEndpointStatus  # noqa: E501
-from openapi_client.rest import ApiException
+import yapily
+from yapily.models.monitoring_endpoint_status import MonitoringEndpointStatus  # noqa: E501
+from yapily.rest import ApiException
 
 class TestMonitoringEndpointStatus(unittest.TestCase):
     """MonitoringEndpointStatus unit test stubs"""
@@ -34,7 +34,7 @@ class TestMonitoringEndpointStatus(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.monitoring_endpoint_status.MonitoringEndpointStatus()  # noqa: E501
+        # model = yapily.models.monitoring_endpoint_status.MonitoringEndpointStatus()  # noqa: E501
         if include_optional :
             return MonitoringEndpointStatus(
                 last_tested = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
