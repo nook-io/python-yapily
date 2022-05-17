@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Type, cast
+from typing import Any, Dict, cast, Type as _Type
 
 import yapily
 from pydantic import BaseConfig, BaseModel, ConfigError
@@ -13,12 +13,12 @@ from pydantic.utils import is_valid_field
 def create_model_from_dict(
     __model_name: str,
     *,
-    __config__: Type[BaseConfig] = None,
-    __base__: Type["Model"] = None,
+    __config__: _Type[BaseConfig] = None,
+    __base__: _Type["Model"] = None,
     __module__: str = __name__,
     __validators__: Dict[str, classmethod] = None,
     **field_definitions: Any,
-) -> Type["Model"]:
+) -> _Type["Model"]:
     """
     Dynamically create a model.
     :param __model_name: name of the created model
@@ -36,7 +36,7 @@ def create_model_from_dict(
         if __config__ is not None:
             raise ConfigError("to avoid confusion __config__ and __base__ cannot be used together")
     else:
-        __base__ = cast(Type["Model"], BaseModel)
+        __base__ = cast(_Type["Model"], BaseModel)
 
     fields = {}
     annotations = {}
@@ -237,6 +237,7 @@ Type = create_model_from_dict("Type", __config__=Config, **yapily.Type.openapi_t
 UsageType = create_model_from_dict("UsageType", __config__=Config, **yapily.UsageType.openapi_types)
 UserCredentials = create_model_from_dict("UserCredentials", __config__=Config, **yapily.UserCredentials.openapi_types)
 UserDeleteResponse = create_model_from_dict("UserDeleteResponse", __config__=Config, **yapily.UserDeleteResponse.openapi_types)
+
 Account.update_forward_refs()
 AccountApiListResponse.update_forward_refs()
 AccountAuthorisationRequest.update_forward_refs()
