@@ -41,7 +41,7 @@ class Institution(object):
         'environment_type': 'EnvironmentType',
         'credentials_type': 'CredentialsType',
         'media': 'list[Media]',
-        'features': 'list[FeatureEnum]',
+        'features': 'list[str]',
         'monitoring': 'dict(str, MonitoringFeatureStatus)'
     }
 
@@ -256,7 +256,7 @@ class Institution(object):
 
 
         :return: The features of this Institution.  # noqa: E501
-        :rtype: list[FeatureEnum]
+        :rtype: list[str]
         """
         return self._features
 
@@ -266,7 +266,7 @@ class Institution(object):
 
 
         :param features: The features of this Institution.  # noqa: E501
-        :type: list[FeatureEnum]
+        :type: list[str]
         """
 
         self._features = features
