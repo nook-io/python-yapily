@@ -34,7 +34,7 @@ class FeatureDetails(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'feature': 'FeatureEnum',
+        'feature': 'str',
         'endpoint': 'str',
         'documentation_url': 'str'
     }
@@ -69,7 +69,7 @@ class FeatureDetails(object):
 
 
         :return: The feature of this FeatureDetails.  # noqa: E501
-        :rtype: FeatureEnum
+        :rtype: str
         """
         return self._feature
 
@@ -79,7 +79,7 @@ class FeatureDetails(object):
 
 
         :param feature: The feature of this FeatureDetails.  # noqa: E501
-        :type: FeatureEnum
+        :type: str
         """
 
         self._feature = feature

@@ -46,7 +46,7 @@ class PaymentAuthorisationRequestResponse(object):
         'expires_at': 'datetime',
         'time_to_expire_in_millis': 'int',
         'time_to_expire': 'str',
-        'feature_scope': 'list[FeatureEnum]',
+        'feature_scope': 'list[str]',
         'consent_token': 'str',
         'state': 'str',
         'authorized_at': 'datetime',
@@ -416,7 +416,7 @@ class PaymentAuthorisationRequestResponse(object):
 
 
         :return: The feature_scope of this PaymentAuthorisationRequestResponse.  # noqa: E501
-        :rtype: list[FeatureEnum]
+        :rtype: list[str]
         """
         return self._feature_scope
 
@@ -426,7 +426,7 @@ class PaymentAuthorisationRequestResponse(object):
 
 
         :param feature_scope: The feature_scope of this PaymentAuthorisationRequestResponse.  # noqa: E501
-        :type: list[FeatureEnum]
+        :type: list[str]
         """
 
         self._feature_scope = feature_scope

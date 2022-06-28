@@ -40,7 +40,7 @@ class AccountRequest(object):
         'account_identifiers': 'AccountInfo',
         'account_identifiers_for_transaction': 'list[AccountInfo]',
         'account_identifiers_for_balance': 'list[AccountInfo]',
-        'feature_scope': 'list[FeatureEnum]'
+        'feature_scope': 'list[str]'
     }
 
     attribute_map = {
@@ -226,7 +226,7 @@ class AccountRequest(object):
         __Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).  # noqa: E501
 
         :return: The feature_scope of this AccountRequest.  # noqa: E501
-        :rtype: list[FeatureEnum]
+        :rtype: list[str]
         """
         return self._feature_scope
 
@@ -237,7 +237,7 @@ class AccountRequest(object):
         __Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).  # noqa: E501
 
         :param feature_scope: The feature_scope of this AccountRequest.  # noqa: E501
-        :type: list[FeatureEnum]
+        :type: list[str]
         """
 
         self._feature_scope = feature_scope
