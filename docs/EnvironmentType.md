@@ -1,6 +1,6 @@
 # EnvironmentType
 
-The environment type. <br><br>See [Institution Configuration](https://docs.yapily.com/guides/applications/institutions/#configuration) for more information
+The environment type. <br><br>See [Institution Configuration](https://docs.yapily.com/pages/key-concepts/institutions/#configuration) for more information
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,0 +1,16 @@
+# VirtualAccountIndividualClient
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**first_name** | **str** |  | 
+**middle_name** | **str** |  | [optional] 
+**last_name** | **str** |  | 
+**address** | [**VirtualAccountAddress**](VirtualAccountAddress.md) |  | [optional] 
+**birth_date** | **date** |  | 
+**email** | **str** |  | 
+**phone** | **str** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

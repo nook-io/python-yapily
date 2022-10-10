@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **consent_token** | **str** |  | [optional] 
 **state** | **str** |  | [optional] 
 **authorized_at** | **datetime** |  | [optional] 
+**last_confirmed_at** | **datetime** | The time that the PSU last confirmed access to their account information, either through full authentication with the institution, or through reconfirmation with the TPP. | [optional] 
+**reconfirm_by** | **datetime** | The time by which the consent should be reconfirmed to ensure continued access to the account information. | [optional] 
 **institution_consent_id** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

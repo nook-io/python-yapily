@@ -46,7 +46,7 @@ class AuthorisationEmbeddedRequestResponse(object):
         'expires_at': 'datetime',
         'time_to_expire_in_millis': 'int',
         'time_to_expire': 'str',
-        'feature_scope': 'list[str]',
+        'feature_scope': 'list[FeatureEnum]',
         'consent_token': 'str',
         'state': 'str',
         'authorized_at': 'datetime',
@@ -411,7 +411,7 @@ class AuthorisationEmbeddedRequestResponse(object):
 
 
         :return: The feature_scope of this AuthorisationEmbeddedRequestResponse.  # noqa: E501
-        :rtype: list[str]
+        :rtype: list[FeatureEnum]
         """
         return self._feature_scope
 
@@ -421,7 +421,7 @@ class AuthorisationEmbeddedRequestResponse(object):
 
 
         :param feature_scope: The feature_scope of this AuthorisationEmbeddedRequestResponse.  # noqa: E501
-        :type: list[str]
+        :type: list[FeatureEnum]
         """
 
         self._feature_scope = feature_scope
