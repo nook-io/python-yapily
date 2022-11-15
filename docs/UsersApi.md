@@ -47,7 +47,7 @@ configuration = yapily.Configuration(
 with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.UsersApi(api_client)
-    new_application_user = {"applicationUserId":"john.doe@company.com"} # NewApplicationUser | 
+    new_application_user = yapily.NewApplicationUser() # NewApplicationUser | 
 
     try:
         # Create User

@@ -4,7 +4,7 @@ __Conditional__. Used to create a request for the balance of the account specifi
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **str** | __Mandatory__. The &#x60;Institution&#x60; account identifier for the account | 
+**account_id** | **str** | __Mandatory__. Unique identifier of the account. | 
 **account_identification** | [**AccountIdentification**](AccountIdentification.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

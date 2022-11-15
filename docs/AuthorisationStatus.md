@@ -1,5 +1,6 @@
 # AuthorisationStatus
 
+Current status of the embedded authorisation request in code form.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
