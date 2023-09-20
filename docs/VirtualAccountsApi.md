@@ -31,11 +31,14 @@ Create a new virtual account
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account import ApiResponseOfVirtualAccount
+from yapily.models.virtual_account_request import VirtualAccountRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -49,30 +52,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
-virtual_account_request = {"nickname":"MyAccount123","currency":"GBP"} # VirtualAccountRequest | 
+    virtual_account_request = {"nickname":"MyAccount123","currency":"GBP"} # VirtualAccountRequest | 
 
     try:
         # Create Account
-        api_response = api_instance.create_virtual_account(client_id, virtual_account_request)
+        api_response = await api_instance.create_virtual_account(client_id, virtual_account_request)
+        print("The response of VirtualAccountsApi->create_virtual_account:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->create_virtual_account: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
  **virtual_account_request** | [**VirtualAccountRequest**](VirtualAccountRequest.md)|  | 
 
 ### Return type
@@ -111,11 +117,14 @@ Create a new beneficiary (individual or business account) to which a Pay Out can
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account_beneficiary import ApiResponseOfVirtualAccountBeneficiary
+from yapily.models.virtual_account_beneficiary_request import VirtualAccountBeneficiaryRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -129,30 +138,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
-virtual_account_beneficiary_request = {"nickname":"MyBeneficiary123","paymentSchemes":["FASTER_PAYMENTS","CHAPS"],"type":"INDIVIDUAL","name":"Mr Jack Williams","birthDate":"1999-10-04","address":{"addressLine":"12 New Street","townName":"London","postCode":"NE15 PLZ","country":"GB"},"account":{"currency":"GBP","bankName":"Lloyds Bank","bankAddress":"London, WE12 ABC","bankCountry":"GB","accountIdentifications":[{"type":"SORT_CODE","identification":"401016"},{"type":"ACCOUNT_NUMBER","identification":"71518920"}]}} # VirtualAccountBeneficiaryRequest | 
+    virtual_account_beneficiary_request = {"nickname":"MyBeneficiary123","paymentSchemes":["FASTER_PAYMENTS","CHAPS"],"type":"INDIVIDUAL","name":"Mr Jack Williams","birthDate":"1999-10-04","address":{"addressLine":"12 New Street","townName":"London","postCode":"NE15 PLZ","country":"GB"},"account":{"currency":"GBP","bankName":"Lloyds Bank","bankAddress":"London, WE12 ABC","bankCountry":"GB","accountIdentifications":[{"type":"SORT_CODE","identification":"401016"},{"type":"ACCOUNT_NUMBER","identification":"71518920"}]}} # VirtualAccountBeneficiaryRequest | 
 
     try:
         # Create Beneficiary
-        api_response = api_instance.create_virtual_account_beneficiary(client_id, virtual_account_beneficiary_request)
+        api_response = await api_instance.create_virtual_account_beneficiary(client_id, virtual_account_beneficiary_request)
+        print("The response of VirtualAccountsApi->create_virtual_account_beneficiary:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->create_virtual_account_beneficiary: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
  **virtual_account_beneficiary_request** | [**VirtualAccountBeneficiaryRequest**](VirtualAccountBeneficiaryRequest.md)|  | 
 
 ### Return type
@@ -191,11 +203,14 @@ Create a new virtual account client (individual or business client). Available f
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account_client import ApiResponseOfVirtualAccountClient
+from yapily.models.virtual_account_client_request import VirtualAccountClientRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -209,30 +224,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients)
-virtual_account_client_request = {"type":"BUSINESS","business":{"name":"Payments ltd company","type":"LIMITED_LIABILITY","registrationNumber":"1234567","contactName":"James Edward Rhodes","email":"james.rhodes@example.com","phone":"447006783009","registeredAddress":{"addressLine1":"123 Queens Street","addressLine2":"Unit 13","townName":"York","postCode":"12345","country":"GB"},"tradingAddress":{"addressLine1":"123 Queens Street","addressLine2":"Unit 13","townName":"York","postCode":"12345","country":"GB"}}} # VirtualAccountClientRequest | 
+    virtual_account_client_request = {"type":"BUSINESS","business":{"name":"Payments ltd company","type":"LIMITED_LIABILITY","registrationNumber":"1234567","contactName":"James Edward Rhodes","email":"james.rhodes@example.com","phone":"447006783009","registeredAddress":{"addressLine1":"123 Queens Street","addressLine2":"Unit 13","townName":"York","postCode":"12345","country":"GB"},"tradingAddress":{"addressLine1":"123 Queens Street","addressLine2":"Unit 13","townName":"York","postCode":"12345","country":"GB"}}} # VirtualAccountClientRequest | 
 
     try:
         # Create Virtual Account Client
-        api_response = api_instance.create_virtual_account_client(client_id, virtual_account_client_request)
+        api_response = await api_instance.create_virtual_account_client(client_id, virtual_account_client_request)
+        print("The response of VirtualAccountsApi->create_virtual_account_client:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->create_virtual_account_client: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_id** | [**str**](.md)| __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) | 
+ **client_id** | **str**| __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) | 
  **virtual_account_client_request** | [**VirtualAccountClientRequest**](VirtualAccountClientRequest.md)|  | 
 
 ### Return type
@@ -271,11 +289,14 @@ Initiate a payment from a specified virtual account to a previously added benefi
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account_payment import ApiResponseOfVirtualAccountPayment
+from yapily.models.virtual_account_pay_out_request import VirtualAccountPayOutRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -289,32 +310,35 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     idempotency_key = 'a346fe67-1d81-4ccd-8409-bf9d6c07980f' # str | Uniquely identifies a request, such that requests made with a same value are considered retries <br> We recommend that a v4 UUID is supplied 
-client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
-virtual_account_pay_out_request = {"accountId":"eb2ad083-a111-4143-8756-a3a3cef4031c","amount":{"amount":10.5,"currency":"GBP"},"reference":"Invoice 1267765","beneficiaryId":"sd6ad034-a111-4143-8756-a3a3cef4045v","paymentScheme":"FASTER_PAYMENTS","paymentDate":"2022-08-28"} # VirtualAccountPayOutRequest | 
+    client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
+    virtual_account_pay_out_request = {"accountId":"eb2ad083-a111-4143-8756-a3a3cef4031c","amount":{"amount":10.5,"currency":"GBP"},"reference":"Invoice 1267765","beneficiaryId":"sd6ad034-a111-4143-8756-a3a3cef4045v","paymentScheme":"FASTER_PAYMENTS","paymentDate":"2022-08-28"} # VirtualAccountPayOutRequest | 
 
     try:
         # Create Pay Out
-        api_response = api_instance.create_virtual_account_pay_out(idempotency_key, client_id, virtual_account_pay_out_request)
+        api_response = await api_instance.create_virtual_account_pay_out(idempotency_key, client_id, virtual_account_pay_out_request)
+        print("The response of VirtualAccountsApi->create_virtual_account_pay_out:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->create_virtual_account_pay_out: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **idempotency_key** | **str**| Uniquely identifies a request, such that requests made with a same value are considered retries &lt;br&gt; We recommend that a v4 UUID is supplied  | 
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
  **virtual_account_pay_out_request** | [**VirtualAccountPayOutRequest**](VirtualAccountPayOutRequest.md)|  | 
 
 ### Return type
@@ -353,11 +377,14 @@ Create a transfer between two virtual accounts
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account_payment import ApiResponseOfVirtualAccountPayment
+from yapily.models.virtual_account_transfer_request import VirtualAccountTransferRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -371,32 +398,35 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     idempotency_key = 'a346fe67-1d81-4ccd-8409-bf9d6c07980f' # str | Uniquely identifies a request, such that requests made with a same value are considered retries <br> We recommend that a v4 UUID is supplied 
-client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
-virtual_account_transfer_request = {"amount":{"amount":10.5,"currency":"GBP"},"source":{"accountId":"a346fe67-1d81-4ccd-8409-bf9d6c07980f"},"destination":{"accountId":"e3465e67-1d81-4ccd-8409-tf9d6c07980r"},"reference":"Ref 86543"} # VirtualAccountTransferRequest | 
+    client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
+    virtual_account_transfer_request = {"amount":{"amount":10.5,"currency":"GBP"},"source":{"accountId":"a346fe67-1d81-4ccd-8409-bf9d6c07980f"},"destination":{"accountId":"e3465e67-1d81-4ccd-8409-tf9d6c07980r"},"reference":"Ref 86543"} # VirtualAccountTransferRequest | 
 
     try:
         # Create Virtual Account Transfer
-        api_response = api_instance.create_virtual_account_transfer(idempotency_key, client_id, virtual_account_transfer_request)
+        api_response = await api_instance.create_virtual_account_transfer(idempotency_key, client_id, virtual_account_transfer_request)
+        print("The response of VirtualAccountsApi->create_virtual_account_transfer:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->create_virtual_account_transfer: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **idempotency_key** | **str**| Uniquely identifies a request, such that requests made with a same value are considered retries &lt;br&gt; We recommend that a v4 UUID is supplied  | 
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
  **virtual_account_transfer_request** | [**VirtualAccountTransferRequest**](VirtualAccountTransferRequest.md)|  | 
 
 ### Return type
@@ -435,11 +465,13 @@ Get the details of a pay-in transaction
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account_pay_in_details import ApiResponseOfVirtualAccountPayInDetails
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -453,23 +485,26 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     payment_id = '8b66abb5-5412-4454-aa7b-4e693ada6321' # str | Uniquely identifies a transaction
 
     try:
         # Get Pay-In Details
-        api_response = api_instance.get_pay_in_details(payment_id)
+        api_response = await api_instance.get_pay_in_details(payment_id)
+        print("The response of VirtualAccountsApi->get_pay_in_details:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->get_pay_in_details: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -514,11 +549,13 @@ Get the details of a specific payment using its Id
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account_payment import ApiResponseOfVirtualAccountPayment
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -532,31 +569,34 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     id = 'id_example' # str | __Mandatory__. The id of the payment
-client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
+    client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
 
     try:
         # Get Payment
-        api_response = api_instance.get_payments_by_id(id, client_id)
+        api_response = await api_instance.get_payments_by_id(id, client_id)
+        print("The response of VirtualAccountsApi->get_payments_by_id:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->get_payments_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| __Mandatory__. The id of the payment | 
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
 
 ### Return type
 
@@ -595,11 +635,13 @@ Gets the list of beneficiaries (individual or business account) to which a Pay O
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_list_response_of_virtual_account_beneficiary import ApiListResponseOfVirtualAccountBeneficiary
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -613,30 +655,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
-cursor = 'cursor_example' # str | __Optional__. Data required to provide pagination (optional)
+    cursor = 'cursor_example' # str | __Optional__. Data required to provide pagination (optional)
 
     try:
         # Get List Of Beneficiaries
-        api_response = api_instance.get_virtual_account_beneficiaries(client_id, cursor=cursor)
+        api_response = await api_instance.get_virtual_account_beneficiaries(client_id, cursor=cursor)
+        print("The response of VirtualAccountsApi->get_virtual_account_beneficiaries:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->get_virtual_account_beneficiaries: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
  **cursor** | **str**| __Optional__. Data required to provide pagination | [optional] 
 
 ### Return type
@@ -675,11 +720,13 @@ Get the details of a specific beneficiary (individual or business account) to wh
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account_beneficiary import ApiResponseOfVirtualAccountBeneficiary
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -693,31 +740,34 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     beneficiary_id = 'beneficiary_id_example' # str | __Mandatory__. The Id of the requested beneficiary.
-client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
+    client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
 
     try:
         # Get Beneficiary
-        api_response = api_instance.get_virtual_account_beneficiary(beneficiary_id, client_id)
+        api_response = await api_instance.get_virtual_account_beneficiary(beneficiary_id, client_id)
+        print("The response of VirtualAccountsApi->get_virtual_account_beneficiary:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->get_virtual_account_beneficiary: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **beneficiary_id** | **str**| __Mandatory__. The Id of the requested beneficiary. | 
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
 
 ### Return type
 
@@ -756,11 +806,13 @@ Get the details of a specific account using its Id
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account import ApiResponseOfVirtualAccount
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -774,31 +826,34 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The Id of the account.
-client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
+    client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
 
     try:
         # Get Account
-        api_response = api_instance.get_virtual_account_by_id(account_id, client_id)
+        api_response = await api_instance.get_virtual_account_by_id(account_id, client_id)
+        print("The response of VirtualAccountsApi->get_virtual_account_by_id:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->get_virtual_account_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The Id of the account. | 
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
 
 ### Return type
 
@@ -837,11 +892,13 @@ Get Virtual Account Clients (individual or business client).
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_list_response_of_virtual_account_client import ApiListResponseOfVirtualAccountClient
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -855,32 +912,35 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients)
-type = 'BUSINESS' # str | __Optional__.  Filter clients based on client type. One of BUSINESS or INDIVIDUAL (optional)
-status = 'ACTIVE' # str | __Optional__.  Filter clients based on client status. One of ACTIVE, PENDING or SUSPENDED (optional)
-cursor = 'cursor_example' # str | __Optional__. Data required to provide pagination (optional)
+    type = 'BUSINESS' # str | __Optional__.  Filter clients based on client type. One of BUSINESS or INDIVIDUAL (optional)
+    status = 'ACTIVE' # str | __Optional__.  Filter clients based on client status. One of ACTIVE, PENDING or SUSPENDED (optional)
+    cursor = 'cursor_example' # str | __Optional__. Data required to provide pagination (optional)
 
     try:
         # Get List of Virtual Account Clients
-        api_response = api_instance.get_virtual_account_clients(client_id, type=type, status=status, cursor=cursor)
+        api_response = await api_instance.get_virtual_account_clients(client_id, type=type, status=status, cursor=cursor)
+        print("The response of VirtualAccountsApi->get_virtual_account_clients:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->get_virtual_account_clients: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_id** | [**str**](.md)| __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) | 
+ **client_id** | **str**| __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) | 
  **type** | **str**| __Optional__.  Filter clients based on client type. One of BUSINESS or INDIVIDUAL | [optional] 
  **status** | **str**| __Optional__.  Filter clients based on client status. One of ACTIVE, PENDING or SUSPENDED | [optional] 
  **cursor** | **str**| __Optional__. Data required to provide pagination | [optional] 
@@ -921,11 +981,13 @@ Retrieve a list of virtual account payments
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_list_response_of_virtual_account_payment import ApiListResponseOfVirtualAccountPayment
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -939,40 +1001,43 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
-account_id = 'eb2ad083-a111-4143-8756-a3a3cef4031c' # str | __Optional__. Filter payments based on accountId (optional)
-created_date_time_from = '2022-04-24T00:30:19.951Z' # datetime | __Optional__. Filter payments based on the createdDateTime (optional)
-created_date_time_to = '2022-04-24T00:30:19.951Z' # datetime | __Optional__. Filter payments based on the createdDateTime (optional)
-status = ['[\"INITIATED\",\"COMPLETED\"]'] # list[str] | __Optional__. Filter payments based on the payment status. One of INITIATED, PROCESSING, COMPLETED, FAILED (optional)
-type = ['[\"PAY_IN\",\"PAY_OUT\"]'] # list[str] | __Optional__. Filter payments based on the payment type. One of PAY_IN, PAY_OUT, RETURN_IN, RETURN_OUT (optional)
-cursor = 'cursor_example' # str | __Optional__. Data required to provide pagination (optional)
+    account_id = 'eb2ad083-a111-4143-8756-a3a3cef4031c' # str | __Optional__. Filter payments based on accountId (optional)
+    created_date_time_from = '2022-04-24T00:30:19.951Z' # datetime | __Optional__. Filter payments based on the createdDateTime (optional)
+    created_date_time_to = '2022-04-24T00:30:19.951Z' # datetime | __Optional__. Filter payments based on the createdDateTime (optional)
+    status = ['[\"INITIATED\",\"COMPLETED\"]'] # List[str] | __Optional__. Filter payments based on the payment status. One of INITIATED, PROCESSING, COMPLETED, FAILED (optional)
+    type = ['[\"PAY_IN\",\"PAY_OUT\"]'] # List[str] | __Optional__. Filter payments based on the payment type. One of PAY_IN, PAY_OUT, RETURN_IN, RETURN_OUT (optional)
+    cursor = 'cursor_example' # str | __Optional__. Data required to provide pagination (optional)
 
     try:
         # Get Payments
-        api_response = api_instance.get_virtual_account_payments(client_id, account_id=account_id, created_date_time_from=created_date_time_from, created_date_time_to=created_date_time_to, status=status, type=type, cursor=cursor)
+        api_response = await api_instance.get_virtual_account_payments(client_id, account_id=account_id, created_date_time_from=created_date_time_from, created_date_time_to=created_date_time_to, status=status, type=type, cursor=cursor)
+        print("The response of VirtualAccountsApi->get_virtual_account_payments:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->get_virtual_account_payments: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
  **account_id** | **str**| __Optional__. Filter payments based on accountId | [optional] 
  **created_date_time_from** | **datetime**| __Optional__. Filter payments based on the createdDateTime | [optional] 
  **created_date_time_to** | **datetime**| __Optional__. Filter payments based on the createdDateTime | [optional] 
- **status** | [**list[str]**](str.md)| __Optional__. Filter payments based on the payment status. One of INITIATED, PROCESSING, COMPLETED, FAILED | [optional] 
- **type** | [**list[str]**](str.md)| __Optional__. Filter payments based on the payment type. One of PAY_IN, PAY_OUT, RETURN_IN, RETURN_OUT | [optional] 
+ **status** | [**List[str]**](str.md)| __Optional__. Filter payments based on the payment status. One of INITIATED, PROCESSING, COMPLETED, FAILED | [optional] 
+ **type** | [**List[str]**](str.md)| __Optional__. Filter payments based on the payment type. One of PAY_IN, PAY_OUT, RETURN_IN, RETURN_OUT | [optional] 
  **cursor** | **str**| __Optional__. Data required to provide pagination | [optional] 
 
 ### Return type
@@ -1011,11 +1076,13 @@ Retrieve a list of all virtual accounts held
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_list_response_of_virtual_account import ApiListResponseOfVirtualAccount
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -1029,33 +1096,36 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
-nickname = 'nickname_example' # str | __Optional__. Filter accounts based on reference provided in order to help with identification of the account (optional)
-currency = 'currency_example' # str | __Optional__. Filter accounts based on three-letter ISO 4217 currency code (optional)
-status = 'status_example' # str | __Optional__. Filter accounts based on their current state. One of PENDING, ACTIVE, FAILED, SUSPENDED or CLOSED (optional)
-cursor = 'cursor_example' # str | __Optional__. Data required to provide pagination (optional)
+    nickname = 'nickname_example' # str | __Optional__. Filter accounts based on reference provided in order to help with identification of the account (optional)
+    currency = 'currency_example' # str | __Optional__. Filter accounts based on three-letter ISO 4217 currency code (optional)
+    status = 'status_example' # str | __Optional__. Filter accounts based on their current state. One of PENDING, ACTIVE, FAILED, SUSPENDED or CLOSED (optional)
+    cursor = 'cursor_example' # str | __Optional__. Data required to provide pagination (optional)
 
     try:
         # Get Accounts
-        api_response = api_instance.get_virtual_accounts(client_id, nickname=nickname, currency=currency, status=status, cursor=cursor)
+        api_response = await api_instance.get_virtual_accounts(client_id, nickname=nickname, currency=currency, status=status, cursor=cursor)
+        print("The response of VirtualAccountsApi->get_virtual_accounts:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->get_virtual_accounts: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
  **nickname** | **str**| __Optional__. Filter accounts based on reference provided in order to help with identification of the account | [optional] 
  **currency** | **str**| __Optional__. Filter accounts based on three-letter ISO 4217 currency code | [optional] 
  **status** | **str**| __Optional__. Filter accounts based on their current state. One of PENDING, ACTIVE, FAILED, SUSPENDED or CLOSED | [optional] 
@@ -1097,11 +1167,14 @@ Update the details of a specific account using its Id
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_virtual_account import ApiResponseOfVirtualAccount
+from yapily.models.update_virtual_account_request import UpdateVirtualAccountRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -1115,32 +1188,35 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VirtualAccountsApi(api_client)
     account_id = 'account_id_example' # str | __Mandatory__. The Id of the account.
-client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
-update_virtual_account_request = {"nickname":"MyAccount456","status":"CLOSED"} # UpdateVirtualAccountRequest | 
+    client_id = '5a7294ab-6b7d-4681-835a-f9b9775c75db' # str | __Mandatory__. The customer or sub-customer id for which the request will be done
+    update_virtual_account_request = {"nickname":"MyAccount456","status":"CLOSED"} # UpdateVirtualAccountRequest | 
 
     try:
         # Update Account
-        api_response = api_instance.update_virtual_account_by_id(account_id, client_id, update_virtual_account_request)
+        api_response = await api_instance.update_virtual_account_by_id(account_id, client_id, update_virtual_account_request)
+        print("The response of VirtualAccountsApi->update_virtual_account_by_id:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VirtualAccountsApi->update_virtual_account_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The Id of the account. | 
- **client_id** | [**str**](.md)| __Mandatory__. The customer or sub-customer id for which the request will be done | 
+ **client_id** | **str**| __Mandatory__. The customer or sub-customer id for which the request will be done | 
  **update_virtual_account_request** | [**UpdateVirtualAccountRequest**](UpdateVirtualAccountRequest.md)|  | 
 
 ### Return type

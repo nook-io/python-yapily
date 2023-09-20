@@ -1,5 +1,6 @@
 # Consent
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 **expires_at** | **datetime** |  | [optional] 
 **time_to_expire_in_millis** | **int** |  | [optional] 
 **time_to_expire** | **str** |  | [optional] 
-**feature_scope** | [**list[FeatureEnum]**](FeatureEnum.md) |  | [optional] 
+**feature_scope** | [**List[FeatureEnum]**](FeatureEnum.md) |  | [optional] 
 **consent_token** | **str** |  | [optional] 
 **state** | **str** |  | [optional] 
 **authorized_at** | **datetime** |  | [optional] 
@@ -23,6 +24,23 @@ Name | Type | Description | Notes
 **reconfirm_by** | **datetime** | The time by which the consent should be reconfirmed to ensure continued access to the account information. | [optional] 
 **institution_consent_id** | **str** |  | [optional] 
 
+## Example
+
+```python
+from yapily.models.consent import Consent
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Consent from a JSON string
+consent_instance = Consent.from_json(json)
+# print the JSON string representation of the object
+print Consent.to_json()
+
+# convert the object into a dict
+consent_dict = consent_instance.to_dict()
+# create an instance of Consent from a dict
+consent_form_dict = consent.from_dict(consent_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

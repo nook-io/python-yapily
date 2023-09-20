@@ -1,6 +1,7 @@
 # Type
 
 The type of sca method available for the user
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

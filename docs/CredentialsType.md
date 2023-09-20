@@ -1,6 +1,7 @@
 # CredentialsType
 
 The type of credentials required to register the `Institution`
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

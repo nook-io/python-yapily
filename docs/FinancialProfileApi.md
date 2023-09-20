@@ -22,11 +22,13 @@ Used to add a consent to a `Financial Profile` for a `User`.  The response is as
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_financial_profile_authorisation_response import ApiResponseOfFinancialProfileAuthorisationResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -40,30 +42,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.FinancialProfileApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
-consent = 'consent_example' # str | __Mandatory__. The `consent-token` obtained from the original authorisation.
+    consent = 'consent_example' # str | __Mandatory__. The `consent-token` obtained from the original authorisation.
 
     try:
         # Create Profile Consent
-        api_response = api_instance.create_profile_consent(user_uuid, consent)
+        api_response = await api_instance.create_profile_consent(user_uuid, consent)
+        print("The response of FinancialProfileApi->create_profile_consent:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling FinancialProfileApi->create_profile_consent: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_uuid** | [**str**](.md)| __Mandatory__. The Yapily generated UUID for the user. | 
+ **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; obtained from the original authorisation. | 
 
 ### Return type
@@ -100,11 +105,13 @@ Used to delete a `ProfileConsent` for a `User`. This will remove the consent and
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_financial_profile_consent_remove_response import ApiResponseOfFinancialProfileConsentRemoveResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -118,30 +125,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.FinancialProfileApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
-profile_consent_id = 'profile_consent_id_example' # str | __Mandatory__. The ID of the ProfileConsent
+    profile_consent_id = 'profile_consent_id_example' # str | __Mandatory__. The ID of the ProfileConsent
 
     try:
         # Delete Profile Consent
-        api_response = api_instance.delete_profile_consent(user_uuid, profile_consent_id)
+        api_response = await api_instance.delete_profile_consent(user_uuid, profile_consent_id)
+        print("The response of FinancialProfileApi->delete_profile_consent:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling FinancialProfileApi->delete_profile_consent: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_uuid** | [**str**](.md)| __Mandatory__. The Yapily generated UUID for the user. | 
+ **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
  **profile_consent_id** | **str**| __Mandatory__. The ID of the ProfileConsent | 
 
 ### Return type
@@ -178,11 +188,13 @@ Used to retrieve a `Balance Prediction Profile` for a `User`.  Status will be `P
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_financial_profile_balance_prediction import ApiResponseOfFinancialProfileBalancePrediction
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -196,29 +208,32 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.FinancialProfileApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
 
     try:
         # Get Predicted Balances
-        api_response = api_instance.get_balance_prediction(user_uuid)
+        api_response = await api_instance.get_balance_prediction(user_uuid)
+        print("The response of FinancialProfileApi->get_balance_prediction:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling FinancialProfileApi->get_balance_prediction: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_uuid** | [**str**](.md)| __Mandatory__. The Yapily generated UUID for the user. | 
+ **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
 
 ### Return type
 
@@ -254,11 +269,13 @@ Used to retreive a specific ProfileConsent for a User.
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_financial_profile_consent import ApiResponseOfFinancialProfileConsent
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -272,30 +289,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.FinancialProfileApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
-profile_consent_id = 'profile_consent_id_example' # str | __Mandatory__. The ID of the ProfileConsent
+    profile_consent_id = 'profile_consent_id_example' # str | __Mandatory__. The ID of the ProfileConsent
 
     try:
         # Get Profile Consent
-        api_response = api_instance.get_profile_consent(user_uuid, profile_consent_id)
+        api_response = await api_instance.get_profile_consent(user_uuid, profile_consent_id)
+        print("The response of FinancialProfileApi->get_profile_consent:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling FinancialProfileApi->get_profile_consent: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_uuid** | [**str**](.md)| __Mandatory__. The Yapily generated UUID for the user. | 
+ **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
  **profile_consent_id** | **str**| __Mandatory__. The ID of the ProfileConsent | 
 
 ### Return type
@@ -332,11 +352,13 @@ Used to retrieve a `FinancialProfile` for a `User`.  Status will be `PENDING` un
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_financial_profile import ApiResponseOfFinancialProfile
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -350,29 +372,32 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.FinancialProfileApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
 
     try:
         # Get User Profile
-        api_response = api_instance.get_user_profile(user_uuid)
+        api_response = await api_instance.get_user_profile(user_uuid)
+        print("The response of FinancialProfileApi->get_user_profile:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling FinancialProfileApi->get_user_profile: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_uuid** | [**str**](.md)| __Mandatory__. The Yapily generated UUID for the user. | 
+ **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
 
 ### Return type
 

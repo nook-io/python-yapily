@@ -1,6 +1,7 @@
 # RateTypeEnum
 
 __Mandatory__. The type used to complete the currency exchange.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

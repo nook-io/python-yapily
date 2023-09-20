@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 # flake8: noqa
 
 # import apis into api package
@@ -14,3 +12,4 @@ from yapily.api.payments_api import PaymentsApi
 from yapily.api.users_api import UsersApi
 from yapily.api.variable_recurring_payments_api import VariableRecurringPaymentsApi
 from yapily.api.virtual_accounts_api import VirtualAccountsApi
+

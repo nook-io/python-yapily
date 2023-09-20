@@ -17,8 +17,11 @@ import unittest
 import datetime
 
 import yapily
-from yapily.models.enriched_predicted_balance import EnrichedPredictedBalance  # noqa: E501
+from yapily.models.enriched_predicted_balance import (
+    EnrichedPredictedBalance,
+)  # noqa: E501
 from yapily.rest import ApiException
+
 
 class TestEnrichedPredictedBalance(unittest.TestCase):
     """EnrichedPredictedBalance unit test stubs"""
@@ -31,20 +34,17 @@ class TestEnrichedPredictedBalance(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test EnrichedPredictedBalance
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = yapily.models.enriched_predicted_balance.EnrichedPredictedBalance()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return EnrichedPredictedBalance(
-                date = 'Mon Nov 01 00:00:00 GMT 2021', 
-                median_balance = 49.26, 
-                _90percentile_balance = 49.26, 
-                _10percentile_balance = 5.96
+                date="Mon Nov 01 00:00:00 GMT 2021",
+                median_balance=49.26,
             )
-        else :
-            return EnrichedPredictedBalance(
-        )
+        else:
+            return EnrichedPredictedBalance()
 
     def testEnrichedPredictedBalance(self):
         """Test EnrichedPredictedBalance"""
@@ -52,5 +52,5 @@ class TestEnrichedPredictedBalance(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

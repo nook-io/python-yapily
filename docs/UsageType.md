@@ -1,5 +1,6 @@
 # UsageType
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
