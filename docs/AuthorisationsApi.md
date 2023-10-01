@@ -31,11 +31,14 @@ Used to initiate the authorisation process and direct users to the login screen 
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_payment_authorisation_request_response import ApiResponseOfPaymentAuthorisationRequestResponse
+from yapily.models.bulk_payment_authorisation_request import BulkPaymentAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -49,27 +52,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     bulk_payment_authorisation_request = yapily.BulkPaymentAuthorisationRequest() # BulkPaymentAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Create Bulk Payment Authorisation
-        api_response = api_instance.create_bulk_payment_authorisation(bulk_payment_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.create_bulk_payment_authorisation(bulk_payment_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->create_bulk_payment_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->create_bulk_payment_authorisation: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -113,11 +119,14 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
+from yapily.models.bulk_payment_embedded_authorisation_request import BulkPaymentEmbeddedAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -131,27 +140,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     bulk_payment_embedded_authorisation_request = yapily.BulkPaymentEmbeddedAuthorisationRequest() # BulkPaymentEmbeddedAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Create Embedded Bulk Payment Authorisation
-        api_response = api_instance.create_embedded_bulk_payment_authorisation(bulk_payment_embedded_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.create_embedded_bulk_payment_authorisation(bulk_payment_embedded_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->create_embedded_bulk_payment_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->create_embedded_bulk_payment_authorisation: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -195,11 +207,14 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
+from yapily.models.payment_embedded_authorisation_request import PaymentEmbeddedAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -213,27 +228,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     payment_embedded_authorisation_request = yapily.PaymentEmbeddedAuthorisationRequest() # PaymentEmbeddedAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Create Embedded Payment Authorisation
-        api_response = api_instance.create_embedded_payment_authorisation(payment_embedded_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.create_embedded_payment_authorisation(payment_embedded_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->create_embedded_payment_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->create_embedded_payment_authorisation: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -277,11 +295,14 @@ Used to initiate the authorisation process and direct users to the login screen 
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_payment_authorisation_request_response import ApiResponseOfPaymentAuthorisationRequestResponse
+from yapily.models.payment_authorisation_request import PaymentAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -295,27 +316,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     payment_authorisation_request = yapily.PaymentAuthorisationRequest() # PaymentAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Create Payment Authorisation
-        api_response = api_instance.create_payment_authorisation(payment_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.create_payment_authorisation(payment_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->create_payment_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->create_payment_authorisation: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -349,21 +373,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_payment_pre_authorisation_request**
-> ApiResponseOfAccountAuthorisationResponse create_payment_pre_authorisation_request(payment_pre_authorisation_request, raw=raw)
+> ApiResponseOfPreAuthorisationResponse create_payment_pre_authorisation_request(payment_pre_authorisation_request, raw=raw, psu_ip_address=psu_ip_address)
 
 Create Payment Pre-authorisation
 
-Used to initiate the pre-authorisation process for payments for CbiGlobe `Institution` that contains the `INITIATE_ONETIME_PRE_AUTHORISATION_PAYMENTS` feature to authenticate the user. <br><br>Feature: `INITIATE_ONETIME_PRE_AUTHORISATION_PAYMENTS`
+Used to initiate the pre-authorisation process for payments for CBI Globe institutions that contain the `INITIATE_ONETIME_PRE_AUTHORISATION_PAYMENTS` feature to authenticate the user. <br><br>Feature: `INITIATE_ONETIME_PRE_AUTHORISATION_PAYMENTS`
 
 ### Example
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_pre_authorisation_response import ApiResponseOfPreAuthorisationResponse
+from yapily.models.payment_pre_authorisation_request import PaymentPreAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -377,24 +404,28 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     payment_pre_authorisation_request = yapily.PaymentPreAuthorisationRequest() # PaymentPreAuthorisationRequest | 
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
 
     try:
         # Create Payment Pre-authorisation
-        api_response = api_instance.create_payment_pre_authorisation_request(payment_pre_authorisation_request, raw=raw)
+        api_response = await api_instance.create_payment_pre_authorisation_request(payment_pre_authorisation_request, raw=raw, psu_ip_address=psu_ip_address)
+        print("The response of AuthorisationsApi->create_payment_pre_authorisation_request:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->create_payment_pre_authorisation_request: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -402,10 +433,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_pre_authorisation_request** | [**PaymentPreAuthorisationRequest**](PaymentPreAuthorisationRequest.md)|  | 
  **raw** | **bool**| __Optional__. Used to obtain the raw request and response to and from the &lt;code&gt;Institution&lt;/code&gt;. | [optional] 
+ **psu_ip_address** | **str**| __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
 
 ### Return type
 
-[**ApiResponseOfAccountAuthorisationResponse**](ApiResponseOfAccountAuthorisationResponse.md)
+[**ApiResponseOfPreAuthorisationResponse**](ApiResponseOfPreAuthorisationResponse.md)
 
 ### Authorization
 
@@ -425,7 +457,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_pre_authorisation_request**
-> ApiResponseOfAccountAuthorisationResponse create_pre_authorisation_request(pre_authorisation_request, raw=raw)
+> ApiResponseOfPreAuthorisationResponse create_pre_authorisation_request(pre_authorisation_request, raw=raw, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address)
 
 Create Pre-authorisation
 
@@ -435,11 +467,14 @@ Used to initiate the pre-authorisation process for any `Institution` that contai
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_pre_authorisation_response import ApiResponseOfPreAuthorisationResponse
+from yapily.models.pre_authorisation_request import PreAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -453,24 +488,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     pre_authorisation_request = yapily.PreAuthorisationRequest() # PreAuthorisationRequest | 
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
 
     try:
         # Create Pre-authorisation
-        api_response = api_instance.create_pre_authorisation_request(pre_authorisation_request, raw=raw)
+        api_response = await api_instance.create_pre_authorisation_request(pre_authorisation_request, raw=raw, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address)
+        print("The response of AuthorisationsApi->create_pre_authorisation_request:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->create_pre_authorisation_request: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -478,10 +519,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pre_authorisation_request** | [**PreAuthorisationRequest**](PreAuthorisationRequest.md)|  | 
  **raw** | **bool**| __Optional__. Used to obtain the raw request and response to and from the &lt;code&gt;Institution&lt;/code&gt;. | [optional] 
+ **psu_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
+ **psu_corporate_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
+ **psu_ip_address** | **str**| __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
 
 ### Return type
 
-[**ApiResponseOfAccountAuthorisationResponse**](ApiResponseOfAccountAuthorisationResponse.md)
+[**ApiResponseOfPreAuthorisationResponse**](ApiResponseOfPreAuthorisationResponse.md)
 
 ### Authorization
 
@@ -511,11 +555,14 @@ Used to initiate the authorisation process and direct users to the login screen 
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.account_authorisation_request import AccountAuthorisationRequest
+from yapily.models.api_response_of_account_authorisation_response import ApiResponseOfAccountAuthorisationResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -529,27 +576,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     account_authorisation_request = yapily.AccountAuthorisationRequest() # AccountAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Create Account Authorisation
-        api_response = api_instance.initiate_account_request(account_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.initiate_account_request(account_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->initiate_account_request:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->initiate_account_request: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -593,11 +643,14 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_embedded_account_authorisation_response import ApiResponseOfEmbeddedAccountAuthorisationResponse
+from yapily.models.embedded_account_authorisation_request import EmbeddedAccountAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -611,27 +664,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     embedded_account_authorisation_request = yapily.EmbeddedAccountAuthorisationRequest() # EmbeddedAccountAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Create Embedded Account Authorisation
-        api_response = api_instance.initiate_embedded_account_request(embedded_account_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.initiate_embedded_account_request(embedded_account_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->initiate_embedded_account_request:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->initiate_embedded_account_request: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -675,11 +731,13 @@ Used to prompt the account holder for continued access to their financial data. 
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_account_authorisation_response import ApiResponseOfAccountAuthorisationResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -693,27 +751,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Re-authorise Account Consent
-        api_response = api_instance.re_authorise_account(consent, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.re_authorise_account(consent, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->re_authorise_account:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->re_authorise_account: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -757,11 +818,14 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_embedded_account_authorisation_response import ApiResponseOfEmbeddedAccountAuthorisationResponse
+from yapily.models.embedded_account_authorisation_request import EmbeddedAccountAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -775,28 +839,31 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
-embedded_account_authorisation_request = yapily.EmbeddedAccountAuthorisationRequest() # EmbeddedAccountAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    embedded_account_authorisation_request = yapily.EmbeddedAccountAuthorisationRequest() # EmbeddedAccountAuthorisationRequest | 
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Update Embedded Account Authorisation
-        api_response = api_instance.update_embedded_account_request(consent_id, embedded_account_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.update_embedded_account_request(consent_id, embedded_account_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->update_embedded_account_request:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->update_embedded_account_request: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -841,11 +908,14 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
+from yapily.models.bulk_payment_embedded_authorisation_request import BulkPaymentEmbeddedAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -859,28 +929,31 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
-bulk_payment_embedded_authorisation_request = yapily.BulkPaymentEmbeddedAuthorisationRequest() # BulkPaymentEmbeddedAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    bulk_payment_embedded_authorisation_request = yapily.BulkPaymentEmbeddedAuthorisationRequest() # BulkPaymentEmbeddedAuthorisationRequest | 
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Update Embedded Bulk Payment Authorisation
-        api_response = api_instance.update_embedded_bulk_payment_authorisation(consent_id, bulk_payment_embedded_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.update_embedded_bulk_payment_authorisation(consent_id, bulk_payment_embedded_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->update_embedded_bulk_payment_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->update_embedded_bulk_payment_authorisation: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -925,11 +998,14 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
+from yapily.models.payment_embedded_authorisation_request import PaymentEmbeddedAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -943,28 +1019,31 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
-payment_embedded_authorisation_request = yapily.PaymentEmbeddedAuthorisationRequest() # PaymentEmbeddedAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    payment_embedded_authorisation_request = yapily.PaymentEmbeddedAuthorisationRequest() # PaymentEmbeddedAuthorisationRequest | 
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Update Embedded Payment Authorisation
-        api_response = api_instance.update_embedded_payment_authorisation(consent_id, payment_embedded_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.update_embedded_payment_authorisation(consent_id, payment_embedded_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->update_embedded_payment_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->update_embedded_payment_authorisation: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -1009,11 +1088,14 @@ Used to continue the authorisation process and for any `Institution` that contai
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_payment_authorisation_request_response import ApiResponseOfPaymentAuthorisationRequestResponse
+from yapily.models.payment_authorisation_request import PaymentAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -1027,28 +1109,31 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
-payment_authorisation_request = yapily.PaymentAuthorisationRequest() # PaymentAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    payment_authorisation_request = yapily.PaymentAuthorisationRequest() # PaymentAuthorisationRequest | 
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Update Payment Pre-authorisation
-        api_response = api_instance.update_payment_authorisation(consent, payment_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.update_payment_authorisation(consent, payment_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->update_payment_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->update_payment_authorisation: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
@@ -1093,11 +1178,14 @@ Used to continue the authorisation process and for any `Institution` that contai
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.account_authorisation_request import AccountAuthorisationRequest
+from yapily.models.api_response_of_account_authorisation_response import ApiResponseOfAccountAuthorisationResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -1111,28 +1199,31 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.AuthorisationsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
-account_authorisation_request = yapily.AccountAuthorisationRequest() # AccountAuthorisationRequest | 
-psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    account_authorisation_request = yapily.AccountAuthorisationRequest() # AccountAuthorisationRequest | 
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
 
     try:
         # Update Account Pre-authorisation
-        api_response = api_instance.update_pre_authorise_account_consent(consent, account_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = await api_instance.update_pre_authorise_account_consent(consent, account_authorisation_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        print("The response of AuthorisationsApi->update_pre_authorise_account_consent:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling AuthorisationsApi->update_pre_authorise_account_consent: %s\n" % e)
 ```
+
+
 
 ### Parameters
 

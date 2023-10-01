@@ -1,6 +1,7 @@
 # DeleteStatusEnum
 
 Indicates the outcome of the delete request.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

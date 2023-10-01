@@ -1,5 +1,6 @@
 # TransactionStatusEnum
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
