@@ -1,6 +1,7 @@
 # PaymentStatus
 
 The status of the Payment. <br><br>For more information, see [Payment Status](/guides/payments/payment-status/)
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
