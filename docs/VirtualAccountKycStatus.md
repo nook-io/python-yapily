@@ -1,5 +1,6 @@
 # VirtualAccountKycStatus
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
