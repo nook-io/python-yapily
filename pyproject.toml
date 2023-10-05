@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "yapily"
-version = "1.0.0"
+version = "1.0.3b"
 description = "Yapily API"
 authors = ["Yapily Support <support@yapily.com>"]
 license = "NoLicense"
