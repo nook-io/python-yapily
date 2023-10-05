@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**get_beneficiaries**](FinancialDataApi.md#get_beneficiaries) | **GET** /accounts/{accountId}/beneficiaries | Get Account Beneficiaries
 [**get_categories**](FinancialDataApi.md#get_categories) | **GET** /categories/{country} | Get Categories
 [**get_identity**](FinancialDataApi.md#get_identity) | **GET** /identity | Get Identity
+[**get_real_time_transactions**](FinancialDataApi.md#get_real_time_transactions) | **GET** /accounts/{accountId}/real-time/transactions | Get Real Time Account Transactions
 [**get_statement**](FinancialDataApi.md#get_statement) | **GET** /accounts/{accountId}/statements/{statementId} | Get Account Statement
 [**get_statement_file**](FinancialDataApi.md#get_statement_file) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get Account Statement File
 [**get_statements**](FinancialDataApi.md#get_statements) | **GET** /accounts/{accountId}/statements | Get Account Statements
@@ -24,7 +25,7 @@ Method | HTTP request | Description
 
 Get Account
 
-Used to return the account and balance information for the end user associated with the presented consent token.<br><br>Feature: `ACCOUNTS`
+Returns the account and balance information for a user's specified account.<br><br>Feature: `ACCOUNT`
 
 ### Example
 
@@ -113,7 +114,7 @@ Name | Type | Description  | Notes
 
 Get Account Balances
 
-Used to return the balance for the end user associated with the presented consent token.<br><br> __Note__: This endpoint is only for obtaining the balance information of an account belonging to an `Institution` that exposes their APIs through the [CBI Globe Gateway](https://docs.yapily.com/pages/knowledge/open-banking/cbi_globe//). If the `Institution` you wish to obtain balance data is not in the CBI Globe, use [Get Account](https://docs.yapily.com/api/reference/#operation/getAccount) or [Get Accounts](https://docs.yapily.com/api/reference/#operation/getAccounts) to get balance data. <br><br>Feature: `ACCOUNT_BALANCES` 
+Returns the balance for the end user associated with the presented consent token.<br><br>Feature: `ACCOUNT_BALANCES`
 
 ### Example
 
@@ -202,7 +203,7 @@ Name | Type | Description  | Notes
 
 Get Account Direct Debits
 
-Used to get the list of direct debits for an account.<br><br>Feature: `ACCOUNT_DIRECT_DEBIT`
+Returns the list of direct debits for an account.<br><br>Feature: `ACCOUNT_DIRECT_DEBITS`
 
 ### Example
 
@@ -287,7 +288,7 @@ Name | Type | Description  | Notes
 
 Get Account Periodic Payments
 
-Used to get the list of periodic payments (standing orders in the UK) for an account.<br><br>Feature: `ACCOUNT_PERIODIC_PAYMENTS`
+Returns the list of periodic payments (standing orders in the UK) for an account.<br><br>Feature: `ACCOUNT_PERIODIC_PAYMENTS`
 
 ### Example
 
@@ -372,7 +373,7 @@ Name | Type | Description  | Notes
 
 Get Account Scheduled Payments
 
-Used to get the list of scheduled payments for an account.<br><br>Feature: `ACCOUNT_SCHEDULED_PAYMENT`
+Returns the list of scheduled payments for an account.<br><br>Feature: `ACCOUNT_SCHEDULED_PAYMENTS`
 
 ### Example
 
@@ -457,7 +458,7 @@ Name | Type | Description  | Notes
 
 Get Accounts
 
-Used to return all accounts and balances for the end user associated with the presented consent token.<br><br>Feature: `ACCOUNTS`
+Returns all accounts and balances for the end user associated with the presented consent token.<br><br>Feature: `ACCOUNTS`
 
 ### Example
 
@@ -544,7 +545,7 @@ Name | Type | Description  | Notes
 
 Get Account Beneficiaries
 
-Used to get all the beneficiaries of a user's account<br><br>Feature: `ACCOUNT_BENEFICIARIES`
+Returns all the beneficiaries of a user's account.<br><br>Feature: `ACCOUNT_BENEFICIARIES`
 
 ### Example
 
@@ -706,7 +707,7 @@ Name | Type | Description  | Notes
 
 Get Identity
 
-Used to get the identity information for an account.<br><br>Feature: `IDENTITY`
+Returns the identity information for an account.<br><br>Feature: `IDENTITY`
 
 ### Example
 
@@ -782,12 +783,108 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_real_time_transactions**
+> ApiListResponseOfRealTimeTransaction get_real_time_transactions(account_id, consent, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, var_from=var_from, before=before, cursor=cursor, raw=raw)
+
+Get Real Time Account Transactions
+
+Used to get the account transactions for an account in real time with cursor pagination<br><br>Feature: `ACCOUNT_TRANSACTIONS`
+
+### Example
+
+* Basic Authentication (basicAuth):
+```python
+import time
+import os
+import yapily
+from yapily.models.api_list_response_of_real_time_transaction import ApiListResponseOfRealTimeTransaction
+from yapily.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yapily.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yapily.Configuration(
+    host = "https://api.yapily.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = yapily.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+async with yapily.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yapily.FinancialDataApi(api_client)
+    account_id = 'account_id_example' # str | __Mandatory__. The account Id of the user's bank account.
+    consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+    var_from = 'var_from_example' # str | __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). (optional)
+    before = 'before_example' # str | __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). (optional)
+    cursor = 'cursor_example' # str | __Optional__. The cursor token supplied by a previous call. The cursor represents a location in the data set. (optional)
+    raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+
+    try:
+        # Get Real Time Account Transactions
+        api_response = await api_instance.get_real_time_transactions(account_id, consent, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, var_from=var_from, before=before, cursor=cursor, raw=raw)
+        print("The response of FinancialDataApi->get_real_time_transactions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FinancialDataApi->get_real_time_transactions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
+ **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
+ **psu_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. | [optional] 
+ **psu_corporate_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. | [optional] 
+ **psu_ip_address** | **str**| __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. | [optional] 
+ **var_from** | **str**| __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ). | [optional] 
+ **before** | **str**| __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ). | [optional] 
+ **cursor** | **str**| __Optional__. The cursor token supplied by a previous call. The cursor represents a location in the data set. | [optional] 
+ **raw** | **bool**| __Optional__. Used to obtain the raw request and response to and from the &lt;code&gt;Institution&lt;/code&gt;. | [optional] 
+
+### Return type
+
+[**ApiListResponseOfRealTimeTransaction**](ApiListResponseOfRealTimeTransaction.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json;charset=UTF-8
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+**401** | Error Response |  -  |
+**0** | Error Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_statement**
 > ApiResponseOfAccountStatement get_statement(consent, account_id, statement_id, raw=raw)
 
 Get Account Statement
 
-Used to get a statement for an account.<br><br>Feature: `ACCOUNT_STATEMENT`
+Returns a statement for an account.<br><br>Feature: `ACCOUNT_STATEMENT`
 
 ### Example
 
@@ -872,7 +969,7 @@ Name | Type | Description  | Notes
 
 Get Account Statement File
 
-Used to get the statement file for an account.<br><br>Feature: `ACCOUNT_STATEMENT_FILE`
+Returns a PDF file of a statement for an account.<br><br>Feature: `ACCOUNT_STATEMENT_FILE`
 
 ### Example
 
@@ -956,7 +1053,7 @@ Name | Type | Description  | Notes
 
 Get Account Statements
 
-Used to get the list of statements for an account.<br><br>Feature: `ACCOUNT_STATEMENTS`
+Returns the list of statements for an account.<br><br>Feature: `ACCOUNT_STATEMENTS`
 
 ### Example
 
@@ -1050,7 +1147,7 @@ Name | Type | Description  | Notes
 
 Get Account Transactions
 
-Used to get the account transactions for an account<br><br>Feature: `ACCOUNT_TRANSACTIONS`
+Returns the account transactions for an account.<br><br>Feature: `ACCOUNT_TRANSACTIONS`
 
 ### Example
 
@@ -1090,7 +1187,7 @@ async with yapily.ApiClient(configuration) as api_client:
     psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
     psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
     psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-    var_with = ['var_with_example'] # List[str] | __Optional__. Can be `categories` or `merchant`. When set, will include enrichment data in the transactions returned. <br><br>Enrichment data is optional, e.g. when 'merchant' enrichment data is requested, the enrichment response will include merchant data only if it can be evaluated from the transaction. (optional)
+    var_with = ['var_with_example'] # List[str] | __Optional__. Acceptable value: `categorisation`. When set, will include enrichment data in the transactions returned. <br><br>Enrichment data is optional, e.g. when 'categorisation' enrichment data is requested, the enrichment response will include categorisation data and merchant name, only if it can be evaluated from the transaction. This service is limited for UK institution transactions currently. (optional)
     var_from = 'var_from_example' # str | __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).  (optional)
     before = 'before_example' # str | __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). (optional)
     limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
@@ -1119,7 +1216,7 @@ Name | Type | Description  | Notes
  **psu_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
  **psu_corporate_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
  **psu_ip_address** | **str**| __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
- **var_with** | [**List[str]**](str.md)| __Optional__. Can be &#x60;categories&#x60; or &#x60;merchant&#x60;. When set, will include enrichment data in the transactions returned. &lt;br&gt;&lt;br&gt;Enrichment data is optional, e.g. when &#39;merchant&#39; enrichment data is requested, the enrichment response will include merchant data only if it can be evaluated from the transaction. | [optional] 
+ **var_with** | [**List[str]**](str.md)| __Optional__. Acceptable value: &#x60;categorisation&#x60;. When set, will include enrichment data in the transactions returned. &lt;br&gt;&lt;br&gt;Enrichment data is optional, e.g. when &#39;categorisation&#39; enrichment data is requested, the enrichment response will include categorisation data and merchant name, only if it can be evaluated from the transaction. This service is limited for UK institution transactions currently. | [optional] 
  **var_from** | **str**| __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ).  | [optional] 
  **before** | **str**| __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ). | [optional] 
  **limit** | **int**| __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. | [optional] 

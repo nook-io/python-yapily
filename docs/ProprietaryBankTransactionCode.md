@@ -1,11 +1,12 @@
 # ProprietaryBankTransactionCode
 
+Transaction code that is proprietary to the `Institution`.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **str** |  | [optional] 
-**issuer** | **str** |  | [optional] 
+**code** | **str** | __Mandatory__. Properietary code used to identify the underlying transaction. | [optional] 
+**issuer** | **str** | __Mandatory__. Issuer of the properitary code. | [optional] 
 
 ## Example
 

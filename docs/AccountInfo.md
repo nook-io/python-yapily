@@ -5,7 +5,7 @@ __Conditional__. Used to create a request for the balance of the account specifi
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **str** | __Mandatory__. Unique identifier of the account. | 
+**account_id** | **str** | __Conditional__. Unique identifier of the account. | [optional] 
 **account_identification** | [**AccountIdentification**](AccountIdentification.md) |  | 
 
 ## Example

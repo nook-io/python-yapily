@@ -1,6 +1,6 @@
 # ApiError
 
-Provides details of the error that has occured.
+Provides details of the error that has occurred.
 
 ## Properties
 Name | Type | Description | Notes

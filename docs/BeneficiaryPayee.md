@@ -1,6 +1,6 @@
 # BeneficiaryPayee
 
-__Mandatory__. The `BeneficiaryPayee` object contains details of the beneficiary [person or business]. You must define this in your payment request along with all of the nested mandatory properties.
+__Mandatory__. Account details belonging to the `Beneficiary Payee` (person/ business). You must define this in your payment request along with all of the nested mandatory properties.
 
 ## Properties
 Name | Type | Description | Notes

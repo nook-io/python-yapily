@@ -1,12 +1,13 @@
 # UserDeleteResponse
 
+Deletion of the user. Includes the user profile and all associate consents.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
+**id** | **str** | Unique identifier of the user. | [optional] 
 **delete_status** | [**DeleteStatusEnum**](DeleteStatusEnum.md) |  | [optional] 
-**creation_date** | **datetime** |  | [optional] 
+**creation_date** | **datetime** | Date and time that the user was created. | [optional] 
 **user_consents** | [**List[ConsentDeleteResponse]**](ConsentDeleteResponse.md) |  | [optional] 
 
 ## Example

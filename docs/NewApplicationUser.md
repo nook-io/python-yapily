@@ -1,11 +1,12 @@
 # NewApplicationUser
 
+Details of a new user to be created for the application.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**application_user_id** | **str** | __Optional__. An additional unique identifier that you can specify when creating a new &#x60;User&#x60; to more easily reference it | [optional] 
-**reference_id** | **str** | __Deprecated__. A non-unique reference Id for the &#x60;User&#x60; | [optional] 
+**application_user_id** | **str** | __Optional__. The unique identifier of the &#x60;Application User&#x60; assigned by the Application Owner. | [optional] 
+**reference_id** | **str** | __Deprecated__. A non-unique reference Id for the &#x60;Application User&#x60;. | [optional] 
 
 ## Example
 

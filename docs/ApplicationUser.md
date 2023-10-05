@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **application_uuid** | **str** | Unique identifier of the application the user is associated with. | [optional] 
 **application_user_id** | **str** | __Conditional__. The user-friendly reference to the &#x60;User&#x60;. | [optional] 
 **reference_id** | **str** |  | [optional] 
+**created_at** | **datetime** | Date and time of when the user was created. | [optional] 
 **institution_consents** | [**List[InstitutionConsent]**](InstitutionConsent.md) |  | [optional] 
 
 ## Example

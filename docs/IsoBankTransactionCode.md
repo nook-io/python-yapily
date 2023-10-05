@@ -1,5 +1,6 @@
 # IsoBankTransactionCode
 
+Defines the underlying transaction type (e.g. Card or Debit Transactions, Loans or Mortages). <br><br> Conforms to `ISO` standards - ISO 20022.
 
 ## Properties
 Name | Type | Description | Notes

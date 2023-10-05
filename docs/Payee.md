@@ -1,6 +1,6 @@
 # Payee
 
-__Mandatory__. The `Payee` object contains details of the beneficiary [person or business]. You must define this in your payment request alongwith all of the nested mandatory properties.
+__Mandatory__. Details of the beneficiary [person or business].
 
 ## Properties
 Name | Type | Description | Notes
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **account_identifications** | [**List[AccountIdentification]**](AccountIdentification.md) | __Mandatory__. The account identifications that identify the &#x60;Payee&#x60; bank account. | 
 **address** | [**Address**](Address.md) |  | [optional] 
 **merchant_id** | **str** | __Optional__. The merchant ID is a unique code provided by the payment processor to the merchant. | [optional] 
-**merchant_category_code** | **str** | __Optional__. The category code of the merchant in case the &#x60;Payee&#x60; is a business. | [optional] 
+**merchant_category_code** | **str** | __Optional__. The category code of the merchant in case the &#x60;Payee&#x60; is a business. Specified as a 3-letter ISO 18245 code. | [optional] 
 
 ## Example
 

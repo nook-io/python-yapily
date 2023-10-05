@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete_profile_consent**](FinancialProfileApi.md#delete_profile_consent) | **DELETE** /users/{userUuid}/profile/consents/{profileConsentId} | Delete Profile Consent
 [**get_balance_prediction**](FinancialProfileApi.md#get_balance_prediction) | **GET** /users/{userUuid}/profile/predicted-balances | Get Predicted Balances
 [**get_profile_consent**](FinancialProfileApi.md#get_profile_consent) | **GET** /users/{userUuid}/profile/consents/{profileConsentId} | Get Profile Consent
-[**get_user_profile**](FinancialProfileApi.md#get_user_profile) | **GET** /users/{userUuid}/profile | Get User Profile
+[**get_user_profile**](FinancialProfileApi.md#get_user_profile) | **GET** /users/{userUuid}/profile/transaction-groups | Get Transaction Groups
 
 
 # **create_profile_consent**
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 Get Profile Consent
 
-Used to retreive a specific ProfileConsent for a User.
+Used to retrieve a specific ProfileConsent for a User.
 
 ### Example
 
@@ -344,9 +344,9 @@ Name | Type | Description  | Notes
 # **get_user_profile**
 > ApiResponseOfFinancialProfile get_user_profile(user_uuid)
 
-Get User Profile
+Get Transaction Groups
 
-Used to retrieve a `FinancialProfile` for a `User`.  Status will be `PENDING` until all ProfileConsents are `COMPLETED`.
+Used to retrieve a `TransactionGroups` for a `User`.  Status will be `PENDING` until all ProfileConsents are `COMPLETED`.
 
 ### Example
 
@@ -383,7 +383,7 @@ async with yapily.ApiClient(configuration) as api_client:
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
 
     try:
-        # Get User Profile
+        # Get Transaction Groups
         api_response = await api_instance.get_user_profile(user_uuid)
         print("The response of FinancialProfileApi->get_user_profile:\n")
         pprint(api_response)

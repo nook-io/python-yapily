@@ -1,5 +1,6 @@
 # RefundAccount
 
+The account to which funds should be returned if the payment is to be later refunded.
 
 ## Properties
 Name | Type | Description | Notes

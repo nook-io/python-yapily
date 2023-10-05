@@ -1,6 +1,6 @@
 # TransactionSchedule
 
-Part of a financial profile for a User.
+The frequency at which transactions occurred.
 
 ## Properties
 Name | Type | Description | Notes

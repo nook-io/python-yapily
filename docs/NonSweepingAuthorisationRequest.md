@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **one_time_token** | **bool** | __Conditional__. Used to receive a &#x60;oneTimeToken&#x60; rather than a &#x60;consentToken&#x60; at the &#x60;callback&#x60; for additional security. This can only be used when the &#x60;callback&#x60; is set. &lt;br&gt;&lt;br&gt;See [Using a callback with an OTT (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-with-an-ott-optional) for more information. | [optional] 
 **control_parameters** | [**NonSweepingControlParameters**](NonSweepingControlParameters.md) |  | 
 **initiation_details** | [**InitiationDetails**](InitiationDetails.md) |  | 
+**compliance_data** | [**ComplianceData**](ComplianceData.md) |  | [optional] 
 
 ## Example
 

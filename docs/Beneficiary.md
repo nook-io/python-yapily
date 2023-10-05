@@ -1,13 +1,14 @@
 # Beneficiary
 
+Account information belonging to the target beneficiary (person/ business).
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**reference** | **str** |  | [optional] 
+**id** | **str** | Unique identifier of the &#x60;beneficiary&#x60;. | [optional] 
+**reference** | **str** | A creditor reference that is requested to be used for all payment instructions to this beneficiary. | [optional] 
 **payee** | [**BeneficiaryPayee**](BeneficiaryPayee.md) |  | [optional] 
-**trusted** | **bool** |  | [optional] 
+**trusted** | **bool** | Indicates whether the account owner has stated that this beneficiary should be trusted. This often results in reduced authentication and authorisation requirements on payments to the beneficiary. | [optional] 
 
 ## Example
 

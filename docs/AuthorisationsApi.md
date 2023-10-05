@@ -373,11 +373,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_payment_pre_authorisation_request**
-> ApiResponseOfAccountAuthorisationResponse create_payment_pre_authorisation_request(payment_pre_authorisation_request, raw=raw)
+> ApiResponseOfPreAuthorisationResponse create_payment_pre_authorisation_request(payment_pre_authorisation_request, raw=raw, psu_ip_address=psu_ip_address)
 
 Create Payment Pre-authorisation
 
-Used to initiate the pre-authorisation process for payments for CbiGlobe `Institution` that contains the `INITIATE_ONETIME_PRE_AUTHORISATION_PAYMENTS` feature to authenticate the user. <br><br>Feature: `INITIATE_ONETIME_PRE_AUTHORISATION_PAYMENTS`
+Used to initiate the pre-authorisation process for payments for CBI Globe institutions that contain the `INITIATE_ONETIME_PRE_AUTHORISATION_PAYMENTS` feature to authenticate the user. <br><br>Feature: `INITIATE_ONETIME_PRE_AUTHORISATION_PAYMENTS`
 
 ### Example
 
@@ -386,7 +386,7 @@ Used to initiate the pre-authorisation process for payments for CbiGlobe `Instit
 import time
 import os
 import yapily
-from yapily.models.api_response_of_account_authorisation_response import ApiResponseOfAccountAuthorisationResponse
+from yapily.models.api_response_of_pre_authorisation_response import ApiResponseOfPreAuthorisationResponse
 from yapily.models.payment_pre_authorisation_request import PaymentPreAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
@@ -414,10 +414,11 @@ async with yapily.ApiClient(configuration) as api_client:
     api_instance = yapily.AuthorisationsApi(api_client)
     payment_pre_authorisation_request = yapily.PaymentPreAuthorisationRequest() # PaymentPreAuthorisationRequest | 
     raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
 
     try:
         # Create Payment Pre-authorisation
-        api_response = await api_instance.create_payment_pre_authorisation_request(payment_pre_authorisation_request, raw=raw)
+        api_response = await api_instance.create_payment_pre_authorisation_request(payment_pre_authorisation_request, raw=raw, psu_ip_address=psu_ip_address)
         print("The response of AuthorisationsApi->create_payment_pre_authorisation_request:\n")
         pprint(api_response)
     except Exception as e:
@@ -432,10 +433,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_pre_authorisation_request** | [**PaymentPreAuthorisationRequest**](PaymentPreAuthorisationRequest.md)|  | 
  **raw** | **bool**| __Optional__. Used to obtain the raw request and response to and from the &lt;code&gt;Institution&lt;/code&gt;. | [optional] 
+ **psu_ip_address** | **str**| __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
 
 ### Return type
 
-[**ApiResponseOfAccountAuthorisationResponse**](ApiResponseOfAccountAuthorisationResponse.md)
+[**ApiResponseOfPreAuthorisationResponse**](ApiResponseOfPreAuthorisationResponse.md)
 
 ### Authorization
 
@@ -455,7 +457,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_pre_authorisation_request**
-> ApiResponseOfAccountAuthorisationResponse create_pre_authorisation_request(pre_authorisation_request, raw=raw)
+> ApiResponseOfPreAuthorisationResponse create_pre_authorisation_request(pre_authorisation_request, raw=raw, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address)
 
 Create Pre-authorisation
 
@@ -468,7 +470,7 @@ Used to initiate the pre-authorisation process for any `Institution` that contai
 import time
 import os
 import yapily
-from yapily.models.api_response_of_account_authorisation_response import ApiResponseOfAccountAuthorisationResponse
+from yapily.models.api_response_of_pre_authorisation_response import ApiResponseOfPreAuthorisationResponse
 from yapily.models.pre_authorisation_request import PreAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
@@ -496,10 +498,13 @@ async with yapily.ApiClient(configuration) as api_client:
     api_instance = yapily.AuthorisationsApi(api_client)
     pre_authorisation_request = yapily.PreAuthorisationRequest() # PreAuthorisationRequest | 
     raw = True # bool | __Optional__. Used to obtain the raw request and response to and from the <code>Institution</code>. (optional)
+    psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
+    psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
 
     try:
         # Create Pre-authorisation
-        api_response = await api_instance.create_pre_authorisation_request(pre_authorisation_request, raw=raw)
+        api_response = await api_instance.create_pre_authorisation_request(pre_authorisation_request, raw=raw, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address)
         print("The response of AuthorisationsApi->create_pre_authorisation_request:\n")
         pprint(api_response)
     except Exception as e:
@@ -514,10 +519,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pre_authorisation_request** | [**PreAuthorisationRequest**](PreAuthorisationRequest.md)|  | 
  **raw** | **bool**| __Optional__. Used to obtain the raw request and response to and from the &lt;code&gt;Institution&lt;/code&gt;. | [optional] 
+ **psu_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
+ **psu_corporate_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
+ **psu_ip_address** | **str**| __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
 
 ### Return type
 
-[**ApiResponseOfAccountAuthorisationResponse**](ApiResponseOfAccountAuthorisationResponse.md)
+[**ApiResponseOfPreAuthorisationResponse**](ApiResponseOfPreAuthorisationResponse.md)
 
 ### Authorization
 

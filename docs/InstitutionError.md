@@ -1,11 +1,12 @@
 # InstitutionError
 
+Raw error details provided by the `Institution`, when it was the error source.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error_message** | **str** |  | [optional] 
-**http_status_code** | **int** |  | [optional] 
+**error_message** | **str** | Textual description of the &#x60;Institution&#x60; error. | [optional] 
+**http_status_code** | **int** | Numeric HTTP status code associated with the &#x60;Institution&#x60; error. | [optional] 
 
 ## Example
 

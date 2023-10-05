@@ -131,7 +131,7 @@ configuration = yapily.Configuration(
 async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
-    event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent)
+    event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent). 
 
     try:
         # Delete Event Subscription
@@ -148,7 +148,7 @@ async with yapily.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent) | 
+ **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent).  | 
 
 ### Return type
 
@@ -211,7 +211,7 @@ configuration = yapily.Configuration(
 async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
-    event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent)
+    event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent). 
 
     try:
         # Get Event Subscription
@@ -228,7 +228,7 @@ async with yapily.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent) | 
+ **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent).  | 
 
 ### Return type
 

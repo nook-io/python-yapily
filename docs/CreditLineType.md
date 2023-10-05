@@ -1,5 +1,6 @@
 # CreditLineType
 
+__Mandatory__. The type of credit that has been provided.
 
 ## Properties
 Name | Type | Description | Notes

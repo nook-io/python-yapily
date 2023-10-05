@@ -1,15 +1,15 @@
 # EnrichedTransaction
 
-Part of a financial profile for a User.
+Details of the transaction, identified by Yapily data services.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transaction_id** | **str** | The id of the transaction | [optional] 
+**transaction_id** | **str** | Unique identifier of the transaction | [optional] 
 **transaction_information** | **str** | Information for the transaction | [optional] 
-**amount** | **float** | The amount of the transaction | [optional] 
-**institution** | **str** | The id of the institution | [optional] 
-**booking_date_time** | **datetime** | The datetime of the transaction | [optional] 
+**amount** | **float** | Monetary amount. | [optional] 
+**institution** | **str** | The &#x60;Institution&#x60; that the transaction is sent to. | [optional] 
+**booking_date_time** | **datetime** | Date and time of when a transaction entry occured and was posted to the account servicer&#39;s books. | [optional] 
 
 ## Example
 

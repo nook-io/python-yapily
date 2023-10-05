@@ -1,16 +1,17 @@
 # Enrichment
 
+Enriched data that has been derived by Yapily using it's data processing and machine learning techniques.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **categorisation** | [**Categorisation**](Categorisation.md) |  | [optional] 
 **transaction_hash** | [**TransactionHash**](TransactionHash.md) |  | [optional] 
-**cleansed_description** | **str** |  | [optional] 
+**cleansed_description** | **str** | Cleaned version of the &#x60;Transaction Description&#x60; that removes miscellaneous, generic and unhelpful text. | [optional] 
 **merchant** | [**EnrichmentMerchant**](EnrichmentMerchant.md) |  | [optional] 
-**location** | **str** |  | [optional] 
-**payment_processor** | **str** |  | [optional] 
-**corrected_date** | **datetime** |  | [optional] 
+**location** | **str** | The location of where the transaction took place. | [optional] 
+**payment_processor** | **str** | A payment provider that manages (credit/debit) transactions between the &#x60;Institution&#x60; and the merchant. | [optional] 
+**corrected_date** | **datetime** | The likely date and time on which the transaction took place. This is distinct from &#x60;Booking Date Time&#x60; which usually refers to the post-clearing value. | [optional] 
 
 ## Example
 

@@ -1,5 +1,6 @@
 # Identity
 
+Identification details of a party associated with an account e.g. (account owner or operator).
 
 ## Properties
 Name | Type | Description | Notes

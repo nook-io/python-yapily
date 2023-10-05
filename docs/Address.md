@@ -1,6 +1,6 @@
 # Address
 
-__Conditional__. The address of the `Payee` or `Payer`.<ul><li>`payee.address` is mandatory when the `paymentType` is an `INTERNATIONAL` payment</li><li>An `Institution` may require you to specify the `country` when used in the context ofthe `Payee` to be able to make a payment.</li></ul>
+__Conditional__. The address of the `Payee` or `Payer`.<ul><li>`payee.address` is mandatory when the `paymentType` is an `INTERNATIONAL` payment</li><li>An `Institution` may require you to specify the `country` when used in the context of the `Payee` to be able to make a payment.</li></ul>
 
 ## Properties
 Name | Type | Description | Notes

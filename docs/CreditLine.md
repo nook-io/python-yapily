@@ -1,5 +1,6 @@
 # CreditLine
 
+__Mandatory__. Details whether the account has access to a credit line from an `Institution`.
 
 ## Properties
 Name | Type | Description | Notes

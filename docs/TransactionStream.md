@@ -1,12 +1,12 @@
 # TransactionStream
 
-Part of a financial profile for a User.
+Lists all possible transaction streams identified for the `Application User`.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The name of the TransactionStream | [optional] 
-**transactions** | [**List[EnrichedTransaction]**](EnrichedTransaction.md) | A list of Transactions from the transaction stream. | [optional] 
+**name** | **str** | The name of the Transaction Stream. | [optional] 
+**transactions** | [**List[EnrichedTransaction]**](EnrichedTransaction.md) | A list of transaction details, identified by Yapily data services. | [optional] 
 **transaction_schedule** | [**TransactionSchedule**](TransactionSchedule.md) |  | [optional] 
 **schedule_consistency_score** | **float** | The consistency of the transaction.  This is a number between 0 and 1 with 1 being the most consistent schedule. | [optional] 
 **next_expected_transaction_date** | **date** | When is the transaction expected to occur next. | [optional] 

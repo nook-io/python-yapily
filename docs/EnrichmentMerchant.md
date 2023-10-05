@@ -1,11 +1,12 @@
 # EnrichmentMerchant
 
+Details of the merchant, identified by Yapily data services.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**merchant_name** | **str** |  | [optional] 
-**parent_group** | **str** |  | [optional] 
+**merchant_name** | **str** | The name of the indivdual merchant involved in the transaction e.g. (TESCO Petrol). | [optional] 
+**parent_group** | **str** | The parent organisation that the merchant belongs to e.g. (TESCO). | [optional] 
 
 ## Example
 

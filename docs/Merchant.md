@@ -1,11 +1,12 @@
 # Merchant
 
+Details of the merchant involved in the transaction.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**merchant_name** | **str** |  | [optional] 
-**merchant_category_code** | **str** |  | [optional] 
+**merchant_name** | **str** | The name of the merchant involved in the transaction. | [optional] 
+**merchant_category_code** | **str** | Defines the underlying services and goods that the merchant provides. Specified as a 3-letter ISO 18245 code  | [optional] 
 
 ## Example
 

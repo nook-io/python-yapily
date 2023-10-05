@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Type of source for a payment. One of ACCOUNT or EXTERNAL | 
 **account_id** | **str** | Only present if type is ACCOUNT. Identifies the Virtual Account from which the payment was made | [optional] 
+**beneficiary_id** | **str** | Only present if type is BENEFICIARY. Identifies the Virtual Account Beneficiary from which the payment was made | [optional] 
 **account_identifications** | [**List[AccountIdentification]**](AccountIdentification.md) | Only present if type is EXTERNAL. The account identifications that identify an external source | [optional] 
 
 ## Example

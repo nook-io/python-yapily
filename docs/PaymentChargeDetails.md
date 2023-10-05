@@ -1,12 +1,13 @@
 # PaymentChargeDetails
 
+Details the charges that will apply to the payment.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **charge_amount** | [**Amount**](Amount.md) |  | [optional] 
-**charge_type** | **str** | Type of charge | [optional] 
-**charge_to** | **str** | Charge bearer | [optional] 
+**charge_type** | **str** | __Mandatory__. Specifies the nature of the transaction charge e.g. (Bank transfer fees). | [optional] 
+**charge_to** | **str** | __Mandatory__. States which party of the payment bears the charges. | [optional] 
 
 ## Example
 

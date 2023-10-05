@@ -1,11 +1,12 @@
 # IsoCodeDetails
 
+__Mandatory__. Details the identification of the ISO code.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **str** |  | [optional] [default to 'UNKNOWN']
-**name** | **str** |  | [optional] [default to 'UNKNOWN']
+**code** | **str** | __Mandatory__. Unique identifier of the ISO code. | [optional] [default to 'UNKNOWN']
+**name** | **str** | __Mandatory__. Name of the ISO Code. | [optional] [default to 'UNKNOWN']
 
 ## Example
 
