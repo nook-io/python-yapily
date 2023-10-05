@@ -1,3 +1,38 @@
+# building the repo
+
+- download the latest yapily openapi.json file
+- run `openapi-generator generate -i openapi.json -g python -o . --additional-properties=projectName=python-yapily,packageName=yapily --library=asyncio`
+- run the code below and use the output to update `yapily/schema/__init__.py`
+
+```python
+from yapily import models
+
+for name, cls in models.__dict__.items():
+    if isinstance(cls, type):
+        print(f'{name} = create_model_from_dict("{name}", yapily.{name}, __config__=Config)')
+
+for name, cls in models.__dict__.items():
+    if isinstance(cls, type) and not hasattr(cls, "allowable_values"):
+        print(f'{name}.update_forward_refs()')
+```
+
+for example by running:
+```
+mkdir yapily/schema \
+  && touch yapily/schema/__init__.py \
+  && cat <<EOF | python3 > yapily/schema/__init__.py
+from yapily import models
+
+for name, cls in models.__dict__.items():
+    if isinstance(cls, type):
+        print(f'{name} = create_model_from_dict("{name}", yapily.{name}, __config__=Config)')
+
+for name, cls in models.__dict__.items():
+    if isinstance(cls, type) and not hasattr(cls, "allowable_values"):
+        print(f'{name}.update_forward_refs()')
+EOF
+```
+
 # python-yapily
 The Yapily API enables connections between your application and users' banks. For more information check out our [documentation](https://docs.yapily.com/).<br><br>In particular, make sure to view our [Getting Started](https://docs.yapily.com/pages/home/getting-started/) steps if this is your first time here.<br><br>While testing the API, our list of [sandbox credentials](https://docs.yapily.com/pages/key-concepts/sandbox-credentials/) maybe useful.
 
