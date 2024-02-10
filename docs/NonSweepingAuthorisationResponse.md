@@ -1,6 +1,8 @@
 # NonSweepingAuthorisationResponse
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -9,7 +11,7 @@ Name | Type | Description | Notes
 **institution_id** | **str** | The reference to the Institution which identifies which institution the authorisation request is sent to. | [optional] 
 **status** | [**AuthorisationStatus**](AuthorisationStatus.md) |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
-**feature_scope** | [**list[FeatureEnum]**](FeatureEnum.md) | __Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the &#x60;Institution&#x60;, this may also populate a consent screen which list these scopes before the user authorises.&lt;br&gt;&lt;br&gt;This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the &#x60;Institution&#x60; supports.To find out which scopes an &#x60;Institution&#x60; supports, check [GET Institution](./#get-institution). | [optional] 
+**feature_scope** | [**List[FeatureEnum]**](FeatureEnum.md) | __Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the &#x60;Institution&#x60;, this may also populate a consent screen which list these scopes before the user authorises.&lt;br&gt;&lt;br&gt;This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the &#x60;Institution&#x60; supports.To find out which scopes an &#x60;Institution&#x60; supports, check [GET Institution](./#get-institution). | [optional] 
 **consent_token** | **str** | The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the payment request. | [optional] 
 **state** | **str** |  | [optional] 
 **authorized_at** | **datetime** |  | [optional] 
@@ -20,6 +22,23 @@ Name | Type | Description | Notes
 **payer** | [**Payer**](Payer.md) |  | [optional] 
 **initiation_details** | [**InitiationDetails**](InitiationDetails.md) |  | [optional] 
 
+## Example
+
+```python
+from yapily.models.non_sweeping_authorisation_response import NonSweepingAuthorisationResponse
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of NonSweepingAuthorisationResponse from a JSON string
+non_sweeping_authorisation_response_instance = NonSweepingAuthorisationResponse.from_json(json)
+# print the JSON string representation of the object
+print NonSweepingAuthorisationResponse.to_json()
+
+# convert the object into a dict
+non_sweeping_authorisation_response_dict = non_sweeping_authorisation_response_instance.to_dict()
+# create an instance of NonSweepingAuthorisationResponse from a dict
+non_sweeping_authorisation_response_form_dict = non_sweeping_authorisation_response.from_dict(non_sweeping_authorisation_response_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

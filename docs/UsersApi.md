@@ -20,12 +20,16 @@ Create a new user in your application
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.application_user import ApplicationUser
+from yapily.models.new_application_user import NewApplicationUser
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -39,25 +43,29 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.UsersApi(api_client)
     new_application_user = yapily.NewApplicationUser() # NewApplicationUser | 
 
     try:
         # Create User
-        api_response = api_instance.add_user(new_application_user)
+        api_response = await api_instance.add_user(new_application_user)
+        print("The response of UsersApi->add_user:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->add_user: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -77,6 +85,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -94,12 +103,15 @@ Delete a user from your application along with any sub-resources (including cons
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_user_delete_response import ApiResponseOfUserDeleteResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -113,29 +125,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.UsersApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
 
     try:
         # Delete User
-        api_response = api_instance.delete_user(user_uuid)
+        api_response = await api_instance.delete_user(user_uuid)
+        print("The response of UsersApi->delete_user:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->delete_user: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_uuid** | [**str**](.md)| __Mandatory__. The Yapily generated UUID for the user. | 
+ **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
 
 ### Return type
 
@@ -151,6 +167,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -168,12 +185,15 @@ Get a specific user using the user UUID
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.application_user import ApplicationUser
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -187,29 +207,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.UsersApi(api_client)
     user_uuid = 'user_uuid_example' # str | __Mandatory__. The Yapily generated UUID for the user.
 
     try:
         # Get User
-        api_response = api_instance.get_user(user_uuid)
+        api_response = await api_instance.get_user(user_uuid)
+        print("The response of UsersApi->get_user:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->get_user: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_uuid** | [**str**](.md)| __Mandatory__. The Yapily generated UUID for the user. | 
+ **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
 
 ### Return type
 
@@ -225,6 +249,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -233,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users**
-> list[ApplicationUser] get_users(filter_application_user_id=filter_application_user_id)
+> List[ApplicationUser] get_users(filter_application_user_id=filter_application_user_id)
 
 Get Users
 
@@ -242,12 +267,15 @@ Get all the users configured in your application
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.application_user import ApplicationUser
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -261,33 +289,37 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.UsersApi(api_client)
-    filter_application_user_id = ['filter_application_user_id_example'] # list[str] | __Optional__. Filter records based on the list of `applicationUserId` users provided. (optional)
+    filter_application_user_id = ['filter_application_user_id_example'] # List[str] | __Optional__. Filter records based on the list of `applicationUserId` users provided. (optional)
 
     try:
         # Get Users
-        api_response = api_instance.get_users(filter_application_user_id=filter_application_user_id)
+        api_response = await api_instance.get_users(filter_application_user_id=filter_application_user_id)
+        print("The response of UsersApi->get_users:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling UsersApi->get_users: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter_application_user_id** | [**list[str]**](str.md)| __Optional__. Filter records based on the list of &#x60;applicationUserId&#x60; users provided. | [optional] 
+ **filter_application_user_id** | [**List[str]**](str.md)| __Optional__. Filter records based on the list of &#x60;applicationUserId&#x60; users provided. | [optional] 
 
 ### Return type
 
-[**list[ApplicationUser]**](ApplicationUser.md)
+[**List[ApplicationUser]**](ApplicationUser.md)
 
 ### Authorization
 
@@ -299,6 +331,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

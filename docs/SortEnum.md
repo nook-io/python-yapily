@@ -1,7 +1,9 @@
 # SortEnum
 
 Valid options for the sort parameter
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

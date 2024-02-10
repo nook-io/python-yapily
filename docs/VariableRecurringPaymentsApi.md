@@ -23,12 +23,16 @@ Used to initiate the authorisation process and direct users to the login screen 
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_non_sweeping_authorisation_response import ApiResponseOfNonSweepingAuthorisationResponse
+from yapily.models.non_sweeping_authorisation_request import NonSweepingAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -42,25 +46,29 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VariableRecurringPaymentsApi(api_client)
     non_sweeping_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"modelo-sandbox","callback":"https://display-parameters.com/","controlParameters":{"psuAuthenticationMethods":["SCA_NOT_REQUIRED"],"periodicLimits":[{"totalMaxAmount":{"amount":100,"currency":"GBP"},"frequency":"DAILY","alignment":"CONSENT","maxNumberOfPayments":1}],"maxAmountPerPayment":{"amount":10,"currency":"GBP"},"maxCumulativeAmount":{"amount":100,"currency":"GBP"},"maxCumulativeNumberOfPayments":10},"initiationDetails":{"reference":"Bill Payment","payer":{"name":"John Doe","accountIdentifications":[{"type":"ACCOUNT_NUMBER","identification":"87654321"},{"type":"SORT_CODE","identification":"654321"}]},"payee":{"name":"Thames Water","accountIdentifications":[{"type":"ACCOUNT_NUMBER","identification":"12345678"},{"type":"SORT_CODE","identification":"123456"}]}}} # NonSweepingAuthorisationRequest | 
 
     try:
         # Create Non-Sweeping Variable Recurring Payment Authorisation
-        api_response = api_instance.create_non_sweeping_authorisation(non_sweeping_authorisation_request)
+        api_response = await api_instance.create_non_sweeping_authorisation(non_sweeping_authorisation_request)
+        print("The response of VariableRecurringPaymentsApi->create_non_sweeping_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VariableRecurringPaymentsApi->create_non_sweeping_authorisation: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -80,6 +88,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -98,12 +107,16 @@ Used to initiate the authorisation process and direct users to the login screen 
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_sweeping_authorisation_response import ApiResponseOfSweepingAuthorisationResponse
+from yapily.models.sweeping_authorisation_request import SweepingAuthorisationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -117,25 +130,29 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VariableRecurringPaymentsApi(api_client)
     sweeping_authorisation_request = {"applicationUserId":"john.doe@company.com","institutionId":"modelo-sandbox","callback":"https://display-parameters.com/","controlParameters":{"psuAuthenticationMethods":["SCA_NOT_REQUIRED"],"periodicLimits":[{"totalMaxAmount":{"amount":100,"currency":"GBP"},"frequency":"DAILY","alignment":"CONSENT"}],"maxAmountPerPayment":{"amount":10,"currency":"GBP"}},"initiationDetails":{"reference":"Own Account Sweeping","payer":{"name":"John Doe","accountIdentifications":[{"type":"ACCOUNT_NUMBER","identification":"87654321"},{"type":"SORT_CODE","identification":"654321"}]},"payee":{"name":"John Doe","accountIdentifications":[{"type":"ACCOUNT_NUMBER","identification":"12345678"},{"type":"SORT_CODE","identification":"123456"}]}}} # SweepingAuthorisationRequest | 
 
     try:
         # Create Sweeping Variable Recurring Payment Authorisation
-        api_response = api_instance.create_sweeping_authorisation(sweeping_authorisation_request)
+        api_response = await api_instance.create_sweeping_authorisation(sweeping_authorisation_request)
+        print("The response of VariableRecurringPaymentsApi->create_sweeping_authorisation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VariableRecurringPaymentsApi->create_sweeping_authorisation: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -155,6 +172,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -173,12 +191,16 @@ Used to confirm funds on the Payer account to execute Variable Recurring Payment
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_funds_confirmation_response import ApiResponseOfFundsConfirmationResponse
+from yapily.models.funds_confirmation_request import FundsConfirmationRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -192,26 +214,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VariableRecurringPaymentsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
-funds_confirmation_request = {"reference":"Own Account Sweeping","paymentAmount":{"amount":10,"currency":"GBP"}} # FundsConfirmationRequest | 
+    funds_confirmation_request = {"reference":"Own Account Sweeping","paymentAmount":{"amount":10,"currency":"GBP"}} # FundsConfirmationRequest | 
 
     try:
         # Confirm Funds for Variable Recurring Payment
-        api_response = api_instance.create_vrp_funds_confirmation(consent, funds_confirmation_request)
+        api_response = await api_instance.create_vrp_funds_confirmation(consent, funds_confirmation_request)
+        print("The response of VariableRecurringPaymentsApi->create_vrp_funds_confirmation:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VariableRecurringPaymentsApi->create_vrp_funds_confirmation: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -232,6 +258,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -250,12 +277,16 @@ Used to submit a Variable Recurring Payments transaction after obtaining the use
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_submission_response import ApiResponseOfSubmissionResponse
+from yapily.models.submission_request import SubmissionRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -269,26 +300,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VariableRecurringPaymentsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
-submission_request = {"paymentIdempotencyId":"234g87t58tgeuo848wudjew489","psuAuthenticationMethod":"SCA_NOT_REQUIRED","paymentAmount":{"amount":10,"currency":"GBP"}} # SubmissionRequest | 
+    submission_request = {"paymentIdempotencyId":"234g87t58tgeuo848wudjew489","psuAuthenticationMethod":"SCA_NOT_REQUIRED","paymentAmount":{"amount":10,"currency":"GBP"}} # SubmissionRequest | 
 
     try:
         # Create Variable Recurring Payment
-        api_response = api_instance.create_vrp_payment(consent, submission_request)
+        api_response = await api_instance.create_vrp_payment(consent, submission_request)
+        print("The response of VariableRecurringPaymentsApi->create_vrp_payment:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VariableRecurringPaymentsApi->create_vrp_payment: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -309,6 +344,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -327,12 +363,15 @@ Get Sweeping Variable Recurring Payments consent details using the consent Id
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_sweeping_authorisation_response import ApiResponseOfSweepingAuthorisationResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -346,29 +385,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VariableRecurringPaymentsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Variable Recurring Payments Consent` to retrieve.
 
     try:
         # Get Sweeping Variable Recurring Payment Consent Details
-        api_response = api_instance.get_sweeping_vrp_consent_by_id(consent_id)
+        api_response = await api_instance.get_sweeping_vrp_consent_by_id(consent_id)
+        print("The response of VariableRecurringPaymentsApi->get_sweeping_vrp_consent_by_id:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VariableRecurringPaymentsApi->get_sweeping_vrp_consent_by_id: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consent_id** | [**str**](.md)| __Mandatory__. The consent Id of the &#x60;Variable Recurring Payments Consent&#x60; to retrieve. | 
+ **consent_id** | **str**| __Mandatory__. The consent Id of the &#x60;Variable Recurring Payments Consent&#x60; to retrieve. | 
 
 ### Return type
 
@@ -384,6 +427,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -402,12 +446,15 @@ Get Variable Recurring Payment details using the Payment Id
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_submission_response import ApiResponseOfSubmissionResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -421,26 +468,30 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VariableRecurringPaymentsApi(api_client)
     payment_id = 'payment_id_example' # str | __Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve.
-consent = 'consent_example' # str | __Mandatory__. The consent token containing the user's authorisation to make the `Variable Recurring Payments` request.
+    consent = 'consent_example' # str | __Mandatory__. The consent token containing the user's authorisation to make the `Variable Recurring Payments` request.
 
     try:
         # Get Variable Recurring Payment Details
-        api_response = api_instance.get_vrp_payment_details(payment_id, consent)
+        api_response = await api_instance.get_vrp_payment_details(payment_id, consent)
+        print("The response of VariableRecurringPaymentsApi->get_vrp_payment_details:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VariableRecurringPaymentsApi->get_vrp_payment_details: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -461,6 +512,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -479,12 +531,15 @@ Get Non-Sweeping Variable Recurring Payments consent details using the consent I
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_non_sweeping_authorisation_response import ApiResponseOfNonSweepingAuthorisationResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -498,29 +553,33 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.VariableRecurringPaymentsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Variable Recurring Payments Consent` to retrieve.
 
     try:
         # Get Non-Sweeping Variable Recurring Payment Consent Details
-        api_response = api_instance.getp_non_sweeping_vrp_consent_by_id(consent_id)
+        api_response = await api_instance.getp_non_sweeping_vrp_consent_by_id(consent_id)
+        print("The response of VariableRecurringPaymentsApi->getp_non_sweeping_vrp_consent_by_id:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling VariableRecurringPaymentsApi->getp_non_sweeping_vrp_consent_by_id: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consent_id** | [**str**](.md)| __Mandatory__. The consent Id of the &#x60;Variable Recurring Payments Consent&#x60; to retrieve. | 
+ **consent_id** | **str**| __Mandatory__. The consent Id of the &#x60;Variable Recurring Payments Consent&#x60; to retrieve. | 
 
 ### Return type
 
@@ -536,6 +595,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

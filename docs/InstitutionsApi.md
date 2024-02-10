@@ -19,12 +19,15 @@ Used to retrieve all features available from Yapily. Each `Institution` supports
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_list_response_of_feature_details import ApiListResponseOfFeatureDetails
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -38,24 +41,28 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.InstitutionsApi(api_client)
-    
+
     try:
         # Get Features
-        api_response = api_instance.get_feature_details()
+        api_response = await api_instance.get_feature_details()
+        print("The response of InstitutionsApi->get_feature_details:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling InstitutionsApi->get_feature_details: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -72,6 +79,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -89,12 +97,15 @@ Used to retrieves details of a specific `Institution` within an application
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.institution import Institution
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -108,25 +119,29 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.InstitutionsApi(api_client)
     institution_id = 'institution_id_example' # str | __Mandatory__. The Yapily institution Id for the `Institution`.
 
     try:
         # Get Institution
-        api_response = api_instance.get_institution(institution_id)
+        api_response = await api_instance.get_institution(institution_id)
+        print("The response of InstitutionsApi->get_institution:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling InstitutionsApi->get_institution: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -146,6 +161,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -163,12 +179,15 @@ Used to retrieve all `Institutions` within an application
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_list_response_of_institution import ApiListResponseOfInstitution
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -182,24 +201,28 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.InstitutionsApi(api_client)
-    
+
     try:
         # Get Institutions
-        api_response = api_instance.get_institutions()
+        api_response = await api_instance.get_institutions()
+        print("The response of InstitutionsApi->get_institutions:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling InstitutionsApi->get_institutions: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -216,6 +239,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

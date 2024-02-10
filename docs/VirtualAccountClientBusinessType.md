@@ -1,6 +1,8 @@
 # VirtualAccountClientBusinessType
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

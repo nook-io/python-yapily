@@ -20,12 +20,16 @@ Used to subscribe to notifications relating to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_event_subscription_response import ApiResponseOfEventSubscriptionResponse
+from yapily.models.event_subscription_request import EventSubscriptionRequest
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -39,25 +43,29 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
     event_subscription_request = yapily.EventSubscriptionRequest() # EventSubscriptionRequest | 
 
     try:
         # Create Event Subscription
-        api_response = api_instance.create_event_subscription(event_subscription_request)
+        api_response = await api_instance.create_event_subscription(event_subscription_request)
+        print("The response of NotificationsApi->create_event_subscription:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling NotificationsApi->create_event_subscription: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -77,6 +85,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Event subscription created successfully |  -  |
@@ -96,12 +105,15 @@ Used to unsubscribe to notifications relating to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_event_subscription_delete_response import ApiResponseOfEventSubscriptionDeleteResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -115,25 +127,29 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
     event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent)
 
     try:
         # Delete Event Subscription
-        api_response = api_instance.delete_event_subscription_by_id(event_type_id)
+        api_response = await api_instance.delete_event_subscription_by_id(event_type_id)
+        print("The response of NotificationsApi->delete_event_subscription_by_id:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling NotificationsApi->delete_event_subscription_by_id: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -153,6 +169,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscription deleted successfully |  -  |
@@ -171,12 +188,15 @@ Used to get details of your subscription to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_response_of_event_subscription_response import ApiResponseOfEventSubscriptionResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -190,25 +210,29 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
     event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent)
 
     try:
         # Get Event Subscription
-        api_response = api_instance.get_event_subscription_by_id(event_type_id)
+        api_response = await api_instance.get_event_subscription_by_id(event_type_id)
+        print("The response of NotificationsApi->get_event_subscription_by_id:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling NotificationsApi->get_event_subscription_by_id: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -228,6 +252,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscription data found |  -  |
@@ -246,12 +271,15 @@ Get all event subscriptions that your application is subscribed to
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
+import os
 import yapily
+from yapily.models.api_list_response_of_event_subscription_response import ApiListResponseOfEventSubscriptionResponse
 from yapily.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.yapily.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = yapily.Configuration(
@@ -265,24 +293,28 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
-    
+
     try:
         # Get Event Subscriptions
-        api_response = api_instance.get_event_subscriptions()
+        api_response = await api_instance.get_event_subscriptions()
+        print("The response of NotificationsApi->get_event_subscriptions:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling NotificationsApi->get_event_subscriptions: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -299,6 +331,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscriptions for the application |  -  |

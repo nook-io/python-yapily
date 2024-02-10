@@ -1,7 +1,9 @@
 # InternationalPaymentRequest
 
 __Conditional__. Used to specify properties to define an international payment. <br><br>Must be specified when the payment `type` is one of the following:<ul>     <li><code>INTERNATIONAL_SINGLE_PAYMENT</code></li>     <li><code>INTERNATIONAL_SCHEDULED_PAYMENT</code></li>     <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency_of_transfer** | **str** | __Mandatory__. The 3-letter currency code for the currency of the payment to be transferred which can differ from the currency of the payer&#39;s account. | 
@@ -10,6 +12,23 @@ Name | Type | Description | Notes
 **priority** | [**PriorityCodeEnum**](PriorityCodeEnum.md) |  | [optional] 
 **charge_bearer** | [**ChargeBearerType**](ChargeBearerType.md) |  | [optional] 
 
+## Example
+
+```python
+from yapily.models.international_payment_request import InternationalPaymentRequest
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of InternationalPaymentRequest from a JSON string
+international_payment_request_instance = InternationalPaymentRequest.from_json(json)
+# print the JSON string representation of the object
+print InternationalPaymentRequest.to_json()
+
+# convert the object into a dict
+international_payment_request_dict = international_payment_request_instance.to_dict()
+# create an instance of InternationalPaymentRequest from a dict
+international_payment_request_form_dict = international_payment_request.from_dict(international_payment_request_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

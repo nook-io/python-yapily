@@ -1,21 +1,3 @@
-# building the repo
-
-- download the latest yapily openapi.json file
-- run `openapi-generator generate -i openapi.json -g python -o . --additional-properties=projectName=python-yapily,packageName=yapily --library=asyncio`
-- run the code below and use the output to update `yapily/schema/__init__.py`
-
-```python
-from yapily import models
-
-for name, cls in models.__dict__.items():
-    if isinstance(cls, type):
-        print(f'{name} = create_model_from_dict("{name}", yapily.{name}, __config__=Config)')
-
-for name, cls in models.__dict__.items():
-    if isinstance(cls, type) and not hasattr(cls, "allowable_values"):
-        print(f'{name}.update_forward_refs()')
-```
-
 # python-yapily
 The Yapily API enables connections between your application and users' banks. For more information check out our [documentation](https://docs.yapily.com/).<br><br>In particular, make sure to view our [Getting Started](https://docs.yapily.com/pages/home/getting-started/) steps if this is your first time here.<br><br>While testing the API, our list of [sandbox credentials](https://docs.yapily.com/pages/key-concepts/sandbox-credentials/) maybe useful.
 
@@ -28,7 +10,7 @@ For more information, please visit [https://docs.yapily.com/pages/resources/supp
 
 ## Requirements.
 
-Python 2.7 and 3.4+
+Python 3.7+
 
 ## Installation & Usage
 ### pip install
@@ -59,12 +41,15 @@ Then import the package:
 import yapily
 ```
 
+### Tests
+
+Execute `pytest` to run the tests.
+
 ## Getting Started
 
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
-from __future__ import print_function
 
 import time
 import yapily
@@ -84,23 +69,24 @@ configuration = yapily.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = yapily.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationApi(api_client)
-    
+
     try:
         # Get Application Self
-        api_response = api_instance.get_application_me()
+        api_response = await api_instance.get_application_me()
+        print("The response of ApplicationApi->get_application_me:\n")
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ApplicationApi->get_application_me: %s\n" % e)
-    
+
 ```
 
 ## Documentation for API Endpoints
@@ -413,6 +399,7 @@ Class | Method | HTTP request | Description
  - [VirtualAccountPayInDetails](docs/VirtualAccountPayInDetails.md)
  - [VirtualAccountPayOutRequest](docs/VirtualAccountPayOutRequest.md)
  - [VirtualAccountPayment](docs/VirtualAccountPayment.md)
+ - [VirtualAccountPaymentAmount](docs/VirtualAccountPaymentAmount.md)
  - [VirtualAccountPaymentDestination](docs/VirtualAccountPaymentDestination.md)
  - [VirtualAccountPaymentSource](docs/VirtualAccountPaymentSource.md)
  - [VirtualAccountRequest](docs/VirtualAccountRequest.md)
@@ -421,10 +408,13 @@ Class | Method | HTTP request | Description
  - [VirtualAccountTransferSource](docs/VirtualAccountTransferSource.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
 
-## basicAuth
+Authentication schemes defined for the API:
+<a id="basicAuth"></a>
+### basicAuth
 
 - **Type**: HTTP basic authentication
 
