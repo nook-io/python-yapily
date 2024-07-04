@@ -3,7 +3,6 @@
 __Optional__. The payment context code. This defaults to `OTHER` if not specified.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

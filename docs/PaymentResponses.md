@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payments** | [**List[PaymentResponse]**](PaymentResponse.md) |  | [optional] 

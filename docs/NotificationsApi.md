@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_event_subscription**
-> ApiResponseOfEventSubscriptionResponse create_event_subscription(event_subscription_request)
+> ApiResponseOfEventSubscriptionResponse create_event_subscription(event_subscription_request, sub_application=sub_application)
 
 Create Event Subscription
 
@@ -20,7 +20,6 @@ Used to subscribe to notifications relating to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -48,14 +47,15 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
     event_subscription_request = yapily.EventSubscriptionRequest() # EventSubscriptionRequest | 
+    sub_application = 'sub_application_example' # str | The sub-application ID to which event type is being subscribed to (optional)
 
     try:
         # Create Event Subscription
-        api_response = await api_instance.create_event_subscription(event_subscription_request)
+        api_response = api_instance.create_event_subscription(event_subscription_request, sub_application=sub_application)
         print("The response of NotificationsApi->create_event_subscription:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,10 +66,10 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **event_subscription_request** | [**EventSubscriptionRequest**](EventSubscriptionRequest.md)|  | 
+ **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
 
 ### Return type
 
@@ -85,7 +85,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Event subscription created successfully |  -  |
@@ -96,7 +95,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_event_subscription_by_id**
-> ApiResponseOfEventSubscriptionDeleteResponse delete_event_subscription_by_id(event_type_id)
+> ApiResponseOfEventSubscriptionDeleteResponse delete_event_subscription_by_id(event_type_id, sub_application=sub_application)
 
 Delete Event Subscription
 
@@ -105,7 +104,6 @@ Used to unsubscribe to notifications relating to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -132,14 +130,15 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
-    event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent)
+    event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent). 
+    sub_application = 'sub_application_example' # str | The sub-application ID for which event type will be deleted (optional)
 
     try:
         # Delete Event Subscription
-        api_response = await api_instance.delete_event_subscription_by_id(event_type_id)
+        api_response = api_instance.delete_event_subscription_by_id(event_type_id, sub_application=sub_application)
         print("The response of NotificationsApi->delete_event_subscription_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,10 +149,10 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent) | 
+ **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent).  | 
+ **sub_application** | **str**| The sub-application ID for which event type will be deleted | [optional] 
 
 ### Return type
 
@@ -169,7 +168,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscription deleted successfully |  -  |
@@ -179,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_event_subscription_by_id**
-> ApiResponseOfEventSubscriptionResponse get_event_subscription_by_id(event_type_id)
+> ApiResponseOfEventSubscriptionResponse get_event_subscription_by_id(event_type_id, sub_application=sub_application)
 
 Get Event Subscription
 
@@ -188,7 +186,6 @@ Used to get details of your subscription to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -215,14 +212,15 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
-    event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent)
+    event_type_id = 'event_type_id_example' # str | Unique identifier of the event type (for which notifications will be sent). 
+    sub_application = 'sub_application_example' # str | The sub-application ID for which details of specific event type will be returned (optional)
 
     try:
         # Get Event Subscription
-        api_response = await api_instance.get_event_subscription_by_id(event_type_id)
+        api_response = api_instance.get_event_subscription_by_id(event_type_id, sub_application=sub_application)
         print("The response of NotificationsApi->get_event_subscription_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -233,10 +231,10 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent) | 
+ **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent).  | 
+ **sub_application** | **str**| The sub-application ID for which details of specific event type will be returned | [optional] 
 
 ### Return type
 
@@ -252,7 +250,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscription data found |  -  |
@@ -262,7 +259,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_event_subscriptions**
-> ApiListResponseOfEventSubscriptionResponse get_event_subscriptions()
+> ApiListResponseOfEventSubscriptionResponse get_event_subscriptions(sub_application=sub_application)
 
 Get Event Subscriptions
 
@@ -271,7 +268,6 @@ Get all event subscriptions that your application is subscribed to
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -298,13 +294,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.NotificationsApi(api_client)
+    sub_application = 'sub_application_example' # str | The sub-application ID for which all event subscriptions will be returned (optional)
 
     try:
         # Get Event Subscriptions
-        api_response = await api_instance.get_event_subscriptions()
+        api_response = api_instance.get_event_subscriptions(sub_application=sub_application)
         print("The response of NotificationsApi->get_event_subscriptions:\n")
         pprint(api_response)
     except Exception as e:
@@ -315,7 +312,9 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sub_application** | **str**| The sub-application ID for which all event subscriptions will be returned | [optional] 
 
 ### Return type
 
@@ -331,7 +330,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscriptions for the application |  -  |

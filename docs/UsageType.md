@@ -1,8 +1,8 @@
 # UsageType
 
+The customer segment of the account.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

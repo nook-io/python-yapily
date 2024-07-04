@@ -1,8 +1,8 @@
 # MonitoringStatusEnum
 
+The latest operational status.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

@@ -2,10 +2,9 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**event_type_id** | **str** | Unique identifier of the event type (for which notifications will be sent) | 
+**event_type_id** | **str** | Unique identifier of the event type (for which notifications will be sent).&lt;br&gt;&lt;br&gt;Allowed values: payment.status, payment.status.completed, payment.isoStatus  | 
 **notification** | [**Notification**](Notification.md) |  | 
 
 ## Example

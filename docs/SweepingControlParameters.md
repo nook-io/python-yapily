@@ -3,7 +3,6 @@
 Define the restrictions and limits for payment orders as part of Sweeping VRP consent
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **psu_authentication_methods** | **List[str]** | __Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED]. | 

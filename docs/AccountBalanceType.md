@@ -3,7 +3,6 @@
 Specifies the type of the stated account balance.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

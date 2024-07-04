@@ -3,7 +3,6 @@
 The type of account e.g. (Credit Card, Savings).
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

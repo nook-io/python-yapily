@@ -2,12 +2,11 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total_max_amount** | [**Amount**](Amount.md) |  | 
-**frequency** | **str** | __Mandatory__. Frequency for which the payment limits are enforced. Allowed values are [DAILY, WEEKLY, FORTNIGHTLY, MONTHLY, YEARLY]. | 
-**alignment** | **str** | __Mandatory__. Period alignment for which the payment limits are enforced. Allowed values are [CONSENT, CALENDAR]. If CONSENT, then period starts on consent creation date. If CALENDAR, then period lines up with the frequency e.g. WEEKLY period will begin at start of the week in question. | 
+**frequency** | **str** | __Mandatory__. Frequency for which the payment limits are enforced. Allowed values are [DAILY, WEEKLY, FORTNIGHTLY, MONTHLY, YEARLY]. This field cannot be enforced when &#x60;recurringPaymentCategory&#x3D;ONGOING&#x60;. | [optional] 
+**alignment** | **str** | __Mandatory__. Period alignment for which the payment limits are enforced. Allowed values are [CONSENT, CALENDAR]. If CONSENT, then period starts on consent creation date. If CALENDAR, then period lines up with the frequency e.g. WEEKLY period will begin at start of the week in question. This field cannot be enforced when &#x60;recurringPaymentCategory&#x3D;ONGOING&#x60;. | [optional] 
 **max_number_of_payments** | **int** | __Optional__. Max number of payments that can be submitted under this period. | [optional] 
 
 ## Example

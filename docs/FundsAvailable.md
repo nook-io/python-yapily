@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **funds_available** | **bool** | __Mandatory__. Indicates whether funds are available or not. | 

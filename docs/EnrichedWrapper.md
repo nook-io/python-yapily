@@ -1,13 +1,12 @@
 # EnrichedWrapper
 
-A financial profile for a User.
+Details of income and expenditure streams, identified by Yapily data services.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**income_streams** | [**List[TransactionStream]**](TransactionStream.md) | A list of transaction streams | 
-**expenditure_streams** | [**List[TransactionStream]**](TransactionStream.md) | A list of transaction streams | 
+**income_streams** | [**List[TransactionStream]**](TransactionStream.md) | Lists all possible income streams identified for the &#x60;Application User&#x60;. | 
+**expenditure_streams** | [**List[TransactionStream]**](TransactionStream.md) | Lists all possible expenditure streams identified for the &#x60;Application User&#x60;. | 
 **recently_terminated_income_streams** | [**List[TerminatedTransactionStream]**](TerminatedTransactionStream.md) | A list of terminated transaction income streams | 
 **recently_terminated_expenditure_streams** | [**List[TerminatedTransactionStream]**](TerminatedTransactionStream.md) | A list of terminated transaction expenditure streams | 
 

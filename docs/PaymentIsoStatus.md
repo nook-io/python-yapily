@@ -1,8 +1,8 @@
 # PaymentIsoStatus
 
+The payment status code, as denoted by a 3-letter ISO 20022 code.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | [**PaymentIsoStatusCodeEnum**](PaymentIsoStatusCodeEnum.md) |  | [optional] 

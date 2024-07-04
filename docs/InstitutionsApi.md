@@ -19,7 +19,6 @@ Used to retrieve all features available from Yapily. Each `Institution` supports
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -46,13 +45,13 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.InstitutionsApi(api_client)
 
     try:
         # Get Features
-        api_response = await api_instance.get_feature_details()
+        api_response = api_instance.get_feature_details()
         print("The response of InstitutionsApi->get_feature_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,7 +61,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -79,7 +77,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -97,7 +94,6 @@ Used to retrieves details of a specific `Institution` within an application
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -124,14 +120,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.InstitutionsApi(api_client)
     institution_id = 'institution_id_example' # str | __Mandatory__. The Yapily institution Id for the `Institution`.
 
     try:
         # Get Institution
-        api_response = await api_instance.get_institution(institution_id)
+        api_response = api_instance.get_institution(institution_id)
         print("The response of InstitutionsApi->get_institution:\n")
         pprint(api_response)
     except Exception as e:
@@ -141,7 +137,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -161,7 +156,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -179,7 +173,6 @@ Used to retrieve all `Institutions` within an application
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -206,13 +199,13 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.InstitutionsApi(api_client)
 
     try:
         # Get Institutions
-        api_response = await api_instance.get_institutions()
+        api_response = api_instance.get_institutions()
         print("The response of InstitutionsApi->get_institutions:\n")
         pprint(api_response)
     except Exception as e:
@@ -222,7 +215,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -239,7 +231,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

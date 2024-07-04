@@ -3,7 +3,6 @@
 Terminated transaction stream generated as part of the financial profile for a User.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the TransactionStream | [optional] 

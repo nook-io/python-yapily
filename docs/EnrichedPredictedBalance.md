@@ -3,7 +3,6 @@
 A list of Predicted Account Balances for future date range.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_date** | **date** | The date for which Balance amount is predicted. | [optional] 

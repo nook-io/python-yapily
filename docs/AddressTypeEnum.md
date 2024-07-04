@@ -3,7 +3,6 @@
 __Optional__. The type of address
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

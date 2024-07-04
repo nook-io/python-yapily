@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tracing_id** | **str** | Unique identifier of the request, used by Yapily for support purposes | 

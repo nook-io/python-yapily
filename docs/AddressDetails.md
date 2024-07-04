@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_line** | **str** | Information, in free format text, that identifies a specific address. | [optional] 

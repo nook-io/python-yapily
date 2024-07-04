@@ -3,7 +3,6 @@
 The ISO 20022 `PaymentStatusCode`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

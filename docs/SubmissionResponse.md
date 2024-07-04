@@ -2,11 +2,11 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **payment_idempotency_id** | **str** |  | [optional] 
+**payment_lifecycle_id** | **str** |  | [optional] 
 **institution_consent_id** | **str** |  | [optional] 
 **status** | [**PaymentStatus**](PaymentStatus.md) |  | [optional] 
 **status_details** | [**PaymentStatusDetails**](PaymentStatusDetails.md) |  | [optional] 

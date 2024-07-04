@@ -1,9 +1,8 @@
 # SortEnum
 
-Valid options for the sort parameter
+The attribute on which resources / records returned should be sorted. Valid options for the sort parameter.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

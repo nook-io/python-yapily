@@ -3,7 +3,6 @@
 __Mandatory__. Defines the intervals at which payment should be made.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**FrequencyEnumExtended**](FrequencyEnumExtended.md) |  | 

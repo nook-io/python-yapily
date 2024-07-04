@@ -3,7 +3,6 @@
 Information about the application.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uuid** | **str** | Unique identification for the &#x60;Application&#x60; as assigned by Yapily. | [optional] 

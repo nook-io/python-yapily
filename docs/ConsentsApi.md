@@ -22,7 +22,6 @@ Used to obtain a Yapily Consent object containing the `consentToken` once the us
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -50,14 +49,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ConsentsApi(api_client)
     consent_auth_code_request = yapily.ConsentAuthCodeRequest() # ConsentAuthCodeRequest | 
 
     try:
         # Exchange OAuth2 Code
-        api_response = await api_instance.create_consent_with_code(consent_auth_code_request)
+        api_response = api_instance.create_consent_with_code(consent_auth_code_request)
         print("The response of ConsentsApi->create_consent_with_code:\n")
         pprint(api_response)
     except Exception as e:
@@ -67,7 +66,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -87,10 +85,9 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Created |  -  |
+**200** | Ok |  -  |
 **0** | Error Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -105,7 +102,6 @@ Delete a consent using the consent Id
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -132,7 +128,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ConsentsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
@@ -140,7 +136,7 @@ async with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Delete Consent
-        api_response = await api_instance.delete(consent_id, force_delete=force_delete)
+        api_response = api_instance.delete(consent_id, force_delete=force_delete)
         print("The response of ConsentsApi->delete:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,7 +146,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -171,7 +166,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -189,7 +183,6 @@ Used to indicate to Yapily that reconfirmation has occurred for a given Consent,
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -217,7 +210,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ConsentsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
@@ -225,7 +218,7 @@ async with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Extend Consent
-        api_response = await api_instance.extend_consent(consent_id, extend_consent_request)
+        api_response = api_instance.extend_consent(consent_id, extend_consent_request)
         print("The response of ConsentsApi->extend_consent:\n")
         pprint(api_response)
     except Exception as e:
@@ -235,7 +228,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -256,7 +248,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Created |  -  |
@@ -275,7 +266,6 @@ Get consent using the consent Id
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -302,14 +292,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ConsentsApi(api_client)
     consent_id = 'consent_id_example' # str | __Mandatory__. The consent Id of the `Consent` to update.
 
     try:
         # Get Consent
-        api_response = await api_instance.get_consent_by_id(consent_id)
+        api_response = api_instance.get_consent_by_id(consent_id)
         print("The response of ConsentsApi->get_consent_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -319,7 +309,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -339,7 +328,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -357,7 +345,6 @@ Exchange a One-time-token for the consent token
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -385,14 +372,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ConsentsApi(api_client)
     one_time_token_request = yapily.OneTimeTokenRequest() # OneTimeTokenRequest | 
 
     try:
         # Exchange One Time Token
-        api_response = await api_instance.get_consent_by_single_access_consent(one_time_token_request)
+        api_response = api_instance.get_consent_by_single_access_consent(one_time_token_request)
         print("The response of ConsentsApi->get_consent_by_single_access_consent:\n")
         pprint(api_response)
     except Exception as e:
@@ -402,7 +389,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -422,7 +408,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -440,7 +425,6 @@ Used to retrieve all the consents created for each user within an application
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -467,7 +451,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ConsentsApi(api_client)
     filter_application_user_id = ['filter_application_user_id_example'] # List[str] | __Optional__. Filter records based on the list of `applicationUserId` users provided. (optional)
@@ -476,12 +460,12 @@ async with yapily.ApiClient(configuration) as api_client:
     filter_status = ['filter_status_example'] # List[str] | __Optional__. Filter records based on the list of `Consent` [statuses](https://docs.yapily.com/api/reference/#operation/getConsents!c=200&path=data/status&t=response). (optional)
     var_from = 'var_from_example' # str | __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).  (optional)
     before = 'before_example' # str | __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). (optional)
-    limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
+    limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 1 and 1000. (optional)
     offset = 0 # int | __Optional__. The number of transaction records to be skipped. Used primarily with paginated results. (optional) (default to 0)
 
     try:
         # Get Consents
-        api_response = await api_instance.get_consents(filter_application_user_id=filter_application_user_id, filter_user_uuid=filter_user_uuid, filter_institution=filter_institution, filter_status=filter_status, var_from=var_from, before=before, limit=limit, offset=offset)
+        api_response = api_instance.get_consents(filter_application_user_id=filter_application_user_id, filter_user_uuid=filter_user_uuid, filter_institution=filter_institution, filter_status=filter_status, var_from=var_from, before=before, limit=limit, offset=offset)
         print("The response of ConsentsApi->get_consents:\n")
         pprint(api_response)
     except Exception as e:
@@ -492,7 +476,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter_application_user_id** | [**List[str]**](str.md)| __Optional__. Filter records based on the list of &#x60;applicationUserId&#x60; users provided. | [optional] 
@@ -501,7 +484,7 @@ Name | Type | Description  | Notes
  **filter_status** | [**List[str]**](str.md)| __Optional__. Filter records based on the list of &#x60;Consent&#x60; [statuses](https://docs.yapily.com/api/reference/#operation/getConsents!c&#x3D;200&amp;path&#x3D;data/status&amp;t&#x3D;response). | [optional] 
  **var_from** | **str**| __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ).  | [optional] 
  **before** | **str**| __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ). | [optional] 
- **limit** | **int**| __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. | [optional] 
+ **limit** | **int**| __Optional__. The maximum number of transaction records to be returned. Must be between 1 and 1000. | [optional] 
  **offset** | **int**| __Optional__. The number of transaction records to be skipped. Used primarily with paginated results. | [optional] [default to 0]
 
 ### Return type
@@ -518,7 +501,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

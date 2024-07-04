@@ -14,12 +14,11 @@ Method | HTTP request | Description
 
 Create Bulk Payment
 
-Used to initiate a bulk payment after obtaining the user's authorisation. <br><br>Feature: `CREATE_BULK_PAYMENT`
+Creates a bulk payment after obtaining the user's authorisation. <br><br>Feature: `CREATE_BULK_PAYMENT`
 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -47,7 +46,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.PaymentsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
@@ -59,7 +58,7 @@ async with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Create Bulk Payment
-        api_response = await api_instance.create_bulk_payment(consent, bulk_payment_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = api_instance.create_bulk_payment(consent, bulk_payment_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
         print("The response of PaymentsApi->create_bulk_payment:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,7 +68,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -94,7 +92,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -107,12 +104,11 @@ Name | Type | Description  | Notes
 
 Create Payment
 
-Used to initiate a payment after obtaining the user's authorisation. <br><br>Features:<ul><li>`INITIATE_DOMESTIC_PERIODIC_PAYMENT`</li><li>`INITIATE_DOMESTIC_SCHEDULED_PAYMENT`</li><li>`INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT`</li><li>`INITIATE_DOMESTIC_SINGLE_PAYMENT`</li><li>`INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT`</li><li>`INITIATE_INTERNATIONAL_PERIODIC_PAYMENT`</li><li>`INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT`</li><li>`INITIATE_INTERNATIONAL_SINGLE_PAYMENT`</li></ul>
+Creates a payment after obtaining the user's authorisation. <br><br>Features:<ul><li>`CREATE_DOMESTIC_PERIODIC_PAYMENT`</li><li>`CREATE_DOMESTIC_SCHEDULED_PAYMENT`</li><li>`CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT`</li><li>`CREATE_DOMESTIC_SINGLE_PAYMENT`</li><li>`CREATE_INTERNATIONAL_PERIODIC_PAYMENT`</li><li>`CREATE_INTERNATIONAL_SCHEDULED_PAYMENT`</li><li>`CREATE_INTERNATIONAL_SINGLE_PAYMENT`</li></ul>
 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -140,7 +136,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.PaymentsApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
@@ -152,7 +148,7 @@ async with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Create Payment
-        api_response = await api_instance.create_payment(consent, payment_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = api_instance.create_payment(consent, payment_request, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
         print("The response of PaymentsApi->create_payment:\n")
         pprint(api_response)
     except Exception as e:
@@ -162,7 +158,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -187,7 +182,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -200,12 +194,11 @@ Name | Type | Description  | Notes
 
 Get Payment Details
 
-Used to get the payment details of a payment. This is most commonly used to check for any updates to the payment status. <br><br>Feature: `EXISTING_PAYMENTS_DETAILS`
+Returns the details of a payment. <br><br>Most commonly used to check for payment status updates. <br><br>Feature: `EXISTING_PAYMENTS_DETAILS`
 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
 import time
 import os
@@ -232,7 +225,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-async with yapily.ApiClient(configuration) as api_client:
+with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.PaymentsApi(api_client)
     payment_id = 'payment_id_example' # str | __Mandatory__. The payment Id of the payment.
@@ -244,7 +237,7 @@ async with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Get Payment Details
-        api_response = await api_instance.get_payments(payment_id, consent, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
+        api_response = api_instance.get_payments(payment_id, consent, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, raw=raw)
         print("The response of PaymentsApi->get_payments:\n")
         pprint(api_response)
     except Exception as e:
@@ -254,7 +247,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -279,7 +271,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

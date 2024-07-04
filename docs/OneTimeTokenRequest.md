@@ -3,7 +3,6 @@
 The request body containing the `OneTimeTokenRequest` json payload
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **one_time_token** | **str** | __Mandatory__. The one time token to exchange for a consent token. | 

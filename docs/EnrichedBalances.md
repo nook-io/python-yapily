@@ -3,7 +3,6 @@
 Enriched Balance information generated which include historic aggregated balances and predicted balances
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_ids** | **List[str]** | A list of Account Ids used to generate Balance Prediction Profile. | [optional] 

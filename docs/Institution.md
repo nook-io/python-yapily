@@ -1,13 +1,13 @@
 # Institution
 
+Typically, a bank or business unit within a bank e.g. (AIB Business, AIB Ireland, AIB UK).
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The Yapily Id for the &#x60;Institution&#x60; | [optional] 
-**name** | **str** | The friendly name of the &#x60;Institution&#x60; | [optional] 
-**full_name** | **str** | The full name of the &#x60;Institution&#x60; | [optional] 
+**id** | **str** | Unique identifier for the &#x60;Institution&#x60;. | [optional] 
+**name** | **str** | The friendly name of the &#x60;Institution&#x60;. | [optional] 
+**full_name** | **str** | The full name of the &#x60;Institution&#x60;. | [optional] 
 **countries** | [**List[Country]**](Country.md) | An array of &#x60;Country&#x60; denoting which regions the &#x60;Institution&#x60; provides coverage for | [optional] 
 **environment_type** | [**EnvironmentType**](EnvironmentType.md) |  | [optional] 
 **credentials_type** | [**CredentialsType**](CredentialsType.md) |  | [optional] 

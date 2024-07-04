@@ -1,8 +1,8 @@
 # Categorisation
 
+Income and Expense categorisation that the Yapily categorisation engine has determined for the transaction.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **categories** | **List[str]** |  | [optional] 

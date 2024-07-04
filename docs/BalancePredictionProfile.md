@@ -3,7 +3,6 @@
 A Balance Prediction profile for a User.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** | The status, will be COMPLETED which represents successful retreival of profile. | [optional] 

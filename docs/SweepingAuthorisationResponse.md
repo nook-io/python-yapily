@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -15,7 +14,7 @@ Name | Type | Description | Notes
 **consent_token** | **str** | The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the payment request. | [optional] 
 **state** | **str** |  | [optional] 
 **authorized_at** | **datetime** |  | [optional] 
-**institution_consent_id** | **str** |  | [optional] 
+**institution_consent_id** | **str** | Identification of the consent at the Institution. | [optional] 
 **authorisation_url** | **str** |  | [optional] 
 **qr_code_url** | **str** |  | [optional] 
 **control_parameters** | [**SweepingControlParameters**](SweepingControlParameters.md) |  | [optional] 

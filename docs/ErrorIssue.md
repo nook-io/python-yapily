@@ -3,7 +3,6 @@
 Detailed information regarding the issue that was experienced during processing of the request
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Category of the issue | 

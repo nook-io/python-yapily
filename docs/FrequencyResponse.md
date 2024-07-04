@@ -1,14 +1,14 @@
 # FrequencyResponse
 
+__Mandatory__. Defines the intervals at which payment should be made.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **frequency_type** | [**FrequencyEnumExtended**](FrequencyEnumExtended.md) |  | [optional] 
-**interval_week** | **int** |  | [optional] 
-**interval_month** | **int** |  | [optional] 
-**execution_day** | **int** |  | [optional] 
+**interval_week** | **int** | The weekly intervals at which a payment will be made. e.g. 1 &#x3D; Every months, 2 &#x3D; Every 2 months. | [optional] 
+**interval_month** | **int** | The monthly intervals at which a payment will be made. e.g. 1 &#x3D; Every month, 2 &#x3D; Every 2 months | [optional] 
+**execution_day** | **int** | The day on which a payment will be made, according to the weekly or monthly interval. | [optional] 
 
 ## Example
 

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** | &#x60;User&#x60; for which the authorisation request was created. | [optional] 

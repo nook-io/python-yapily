@@ -1,16 +1,15 @@
 # ProfileConsent
 
-Object returned when creating a User Profile.
+Details of a consent linked to a `User Profile`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The id of the ProfileConsent | [optional] 
+**id** | **str** | Unique identifier of the &#x60;consent&#x60; in context of a user&#39;s profile. | [optional] 
 **status** | **str** | The status, can be PENDING, COMPLETED or ERROR. | [optional] 
 **user_id** | **str** | The userUuid. | [optional] 
-**reference_consent_id** | **str** | The referenceConsentId. | [optional] 
-**institution_id** | **str** | The id of the Institution. | [optional] 
+**reference_consent_id** | **str** | Unique identifier of the consent. | [optional] 
+**institution_id** | **str** | __Mandatory__. The  &#x60;Institution&#x60; the authorisation request is sent to. | [optional] 
 **created_at** | **datetime** | When a profile consent is created. | [optional] 
 **expires_at** | **datetime** | When a profile consent is expired after created + X. | [optional] 
 **data_inserted_at** | **datetime** | After data retrieval from aggregated profile consent is completed. | [optional] 

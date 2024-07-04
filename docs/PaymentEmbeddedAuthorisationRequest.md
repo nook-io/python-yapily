@@ -3,7 +3,6 @@
 The request body containing an `PaymentEmbeddedAuthorisationRequest` json payload
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** |  | [optional] 

@@ -3,11 +3,10 @@
 An array of `Country` denoting which regions the `Institution` provides coverage for
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**display_name** | **str** |  | [optional] 
-**country_code2** | **str** |  | [optional] 
+**display_name** | **str** | Country name. | [optional] 
+**country_code2** | **str** | Two character ISO 3166 country code. | [optional] 
 
 ## Example
 

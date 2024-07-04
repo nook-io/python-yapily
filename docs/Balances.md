@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **main_balance_amount** | [**Amount**](Amount.md) |  | [optional] 

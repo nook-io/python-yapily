@@ -3,7 +3,6 @@
 The request body containing the `ConsentAuthCodeRequest` json payload
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auth_code** | **str** | __Mandatory__. The authorisation code | 

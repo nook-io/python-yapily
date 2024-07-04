@@ -1,8 +1,8 @@
 # TransactionChargeDetails
 
+Details the charges that will apply to the transaction.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **charge_amount** | [**Amount**](Amount.md) |  | [optional] 

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**PaymentStatus**](PaymentStatus.md) |  | [optional] 

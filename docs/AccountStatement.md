@@ -3,7 +3,6 @@
 Statement information belonging to the account.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the statement. | [optional] 

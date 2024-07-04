@@ -1,9 +1,8 @@
 # ApiError
 
-Provides details of the error that has occured.
+Provides details of the error that has occurred.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **int** | _Mandatory_. Numeric &#x60;HTTP&#x60; status code associated with the error. | [optional] 

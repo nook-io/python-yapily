@@ -1,9 +1,8 @@
 # TransactionSchedule
 
-Part of a financial profile for a User.
+The frequency at which transactions occurred.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **frequency** | **str** | How often the transaction happens.  Can be &#39;Monthly&#39;, &#39;Twice monthly&#39;, &#39;Every two weeks&#39;, &#39;Every four weeks&#39;, &#39;Daily&#39;, &#39;Weekly&#39;, &#39;Every weekday&#39;, &#39;Twice daily&#39;, &#39;Twice every weekday&#39; | [optional] 

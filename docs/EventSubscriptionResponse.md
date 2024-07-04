@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **event_type_id** | **str** | Unique identifier of the event type (for which notifications will be sent) | 

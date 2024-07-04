@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **last_confirmed_at** | **datetime** | __Mandatory__. The time that the user confirmed access to their account information | 

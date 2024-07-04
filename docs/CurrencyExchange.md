@@ -3,7 +3,6 @@
 Provides details on the currrency exchange.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source_currency** | **str** | Currency from which an amount is to be converted. | [optional] 

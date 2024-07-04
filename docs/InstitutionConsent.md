@@ -1,11 +1,11 @@
 # InstitutionConsent
 
+`Institution` authorised consents which are currently in place for the `Application User`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**institution_id** | **str** |  | [optional] 
+**institution_id** | **str** | __Mandatory__. The &#x60;Institution&#x60; the authorisation request is sent to. | [optional] 
 
 ## Example
 

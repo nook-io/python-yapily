@@ -3,7 +3,6 @@
 __Mandatory__. Monetary Amount.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **float** | __Mandatory__. The monetary value | 

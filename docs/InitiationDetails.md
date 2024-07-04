@@ -3,7 +3,6 @@
 __Mandatory__. The payment initiation object defining the details of the payment under the Variable Recurring Payment consent.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reference** | **str** | __Optional__. The payment reference or description. Limited to a maximum of 18 characters long. | [optional] 

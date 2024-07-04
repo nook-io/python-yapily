@@ -1,13 +1,12 @@
 # Media
 
-Contains links to the logo and the icons for the `Institution`
+Details of the media held for the `Institution`
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
+**source** | **str** | __Mandatory__. URL from where the media can be retrieved. | [optional] 
+**type** | **str** | __Mandatory__. The type of media e.g. (logo, icon). | [optional] 
 
 ## Example
 

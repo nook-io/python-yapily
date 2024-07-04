@@ -1,8 +1,8 @@
 # RawResponse
 
+Interaction (raw request and response) that occured with the `Institution` in order to fulfil a request.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **request** | [**RawRequest**](RawRequest.md) |  | [optional] 

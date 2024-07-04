@@ -1,8 +1,8 @@
 # StatementReference
 
+Unique reference for a statement period. This may be optionally populated if available.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **str** |  | [optional] 

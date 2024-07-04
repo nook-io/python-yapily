@@ -1,13 +1,13 @@
 # Category
 
+Income and Expense `Category` in which the transaction resides.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**label** | **str** |  | [optional] 
-**country** | **str** |  | [optional] 
+**id** | **str** | Unique identifier of the category | [optional] 
+**label** | **str** | Descriptive identifier of the category. | [optional] 
+**country** | **str** | The country code of where the category transaction took place, denoted as a 3-digit character code - ISO 3166. | [optional] 
 **subcategories** | [**List[Subcategory]**](Subcategory.md) |  | [optional] 
 
 ## Example

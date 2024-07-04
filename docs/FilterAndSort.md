@@ -2,12 +2,11 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_from** | **datetime** |  | [optional] 
-**before** | **datetime** |  | [optional] 
-**limit** | **int** |  | [optional] 
+**var_from** | **datetime** | __Optional__. The earliest date and time of resources / records that should be returned. | [optional] 
+**before** | **datetime** | __Optional__. The latest date and time of resources / records that should be returned. | [optional] 
+**limit** | **int** | __Optional__. The maximum number of resources / records that should be returned. | [optional] 
 **sort** | [**SortEnum**](SortEnum.md) |  | [optional] 
 **offset** | **int** |  | [optional] 
 **cursor** | **str** |  | [optional] 

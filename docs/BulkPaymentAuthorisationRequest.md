@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** | __Conditional__. The reference to the &#x60;User&#x60; that will authorise the authorisation request using the Yapily generated UUID. Either the &#x60;userUuid&#x60; or &#x60;applicationUserId&#x60; must be provided. | [optional] 

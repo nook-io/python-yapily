@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseMeta**](ResponseMeta.md) |  | [optional] 
@@ -10,6 +9,7 @@ Name | Type | Description | Notes
 **links** | **Dict[str, str]** |  | [optional] 
 **forwarded_data** | [**List[ResponseForwardedData]**](ResponseForwardedData.md) |  | [optional] 
 **tracing_id** | **str** |  | [optional] 
+**raw** | [**List[RawResponse]**](RawResponse.md) |  | [optional] 
 
 ## Example
 

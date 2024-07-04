@@ -3,7 +3,6 @@
 A financial profile for a User.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** | The status, can be EMPTY, PARTIAL, PENDING, COMPLETED or ERROR. | [optional] 

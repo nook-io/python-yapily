@@ -3,7 +3,6 @@
 A list of Aggregated Account Balances for historic date range.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_date** | **date** | The date for which Aggregated Balance amount across Bank accounts is calculated. | [optional] 

@@ -1,12 +1,12 @@
 # Notification
 
+Subscription details for how and where to receive notifications.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | How the notification will be delivered. This is currently only via WEBHOOK. | 
-**url** | **str** | URL to which the notification will be sent | 
+**url** | **str** | URL to which the notification will be sent. | 
 
 ## Example
 
