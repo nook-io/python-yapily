@@ -3,7 +3,6 @@
 __Mandatory__. Defines the intervals at which payment should be made.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**FrequencyEnumExtended**](FrequencyEnumExtended.md) |  | 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of FrequencyRequest from a JSON string
 frequency_request_instance = FrequencyRequest.from_json(json)
 # print the JSON string representation of the object
-print(FrequencyRequest.to_json())
+print FrequencyRequest.to_json()
 
 # convert the object into a dict
 frequency_request_dict = frequency_request_instance.to_dict()

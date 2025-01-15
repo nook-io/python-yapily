@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 from yapily.models.hosted_account_request_details_response import (
     HostedAccountRequestDetailsResponse,
 )
@@ -27,34 +27,32 @@ from yapily.models.institution_identifiers_response import (
     InstitutionIdentifiersResponse,
 )
 from yapily.models.user_settings import UserSettings
-from typing import Set
-from typing_extensions import Self
 
 
 class HostedConsentRequestResponse(BaseModel):
     """
     HostedConsentRequestResponse
-    """  # noqa: E501
+    """
 
     consent_request_id: Optional[StrictStr] = Field(
         default=None,
-        description="Unique Id of the consent request.",
         alias="consentRequestId",
+        description="Unique Id of the consent request.",
     )
     user_id: Optional[StrictStr] = Field(
         default=None,
-        description="Unique Id for the `User` assigned by Yapily.",
         alias="userId",
+        description="Unique Id for the `User` assigned by Yapily.",
     )
     application_user_id: Optional[StrictStr] = Field(
         default=None,
-        description="Your reference to the `User`.",
         alias="applicationUserId",
+        description="Your reference to the `User`.",
     )
     application_id: Optional[StrictStr] = Field(
         default=None,
-        description="Unique Id of the `Application` the user is associated with.",
         alias="applicationId",
+        description="Unique Id of the `Application` the user is associated with.",
     )
     institution_identifiers: Optional[InstitutionIdentifiersResponse] = Field(
         default=None, alias="institutionIdentifiers"
@@ -62,28 +60,28 @@ class HostedConsentRequestResponse(BaseModel):
     user_settings: Optional[UserSettings] = Field(default=None, alias="userSettings")
     redirect_url: Optional[StrictStr] = Field(
         default=None,
-        description="URL of consent server to redirect the user after completion of the consent flow.",
         alias="redirectUrl",
+        description="URL of consent server to redirect the user after completion of the consent flow.",
     )
     account_request_details: Optional[HostedAccountRequestDetailsResponse] = Field(
         default=None, alias="accountRequestDetails"
     )
     hosted_url: Optional[StrictStr] = Field(
         default=None,
-        description="The URL of Hosted UI page for the applicationId which initiates the user journey for the consent. <br> URL would be appended with authToken, applicationId and userSettings.",
         alias="hostedUrl",
+        description="The URL of Hosted UI page for the applicationId which initiates the user journey for the consent. <br> URL would be appended with authToken, applicationId and userSettings.",
     )
     created_at: Optional[datetime] = Field(
         default=None,
-        description="The date and time at which the consent was created.",
         alias="createdAt",
+        description="The date and time at which the consent was created.",
     )
     authorisation_expires_at: Optional[datetime] = Field(
         default=None,
-        description="The date and time at which the auth Token will expire.",
         alias="authorisationExpiresAt",
+        description="The date and time at which the auth Token will expire.",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "consentRequestId",
         "userId",
         "applicationUserId",
@@ -97,43 +95,28 @@ class HostedConsentRequestResponse(BaseModel):
         "authorisationExpiresAt",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> HostedConsentRequestResponse:
         """Create an instance of HostedConsentRequestResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of institution_identifiers
         if self.institution_identifiers:
             _dict["institutionIdentifiers"] = self.institution_identifiers.to_dict()
@@ -146,37 +129,37 @@ class HostedConsentRequestResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> HostedConsentRequestResponse:
         """Create an instance of HostedConsentRequestResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return HostedConsentRequestResponse.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = HostedConsentRequestResponse.parse_obj(
             {
-                "consentRequestId": obj.get("consentRequestId"),
-                "userId": obj.get("userId"),
-                "applicationUserId": obj.get("applicationUserId"),
-                "applicationId": obj.get("applicationId"),
-                "institutionIdentifiers": InstitutionIdentifiersResponse.from_dict(
-                    obj["institutionIdentifiers"]
+                "consent_request_id": obj.get("consentRequestId"),
+                "user_id": obj.get("userId"),
+                "application_user_id": obj.get("applicationUserId"),
+                "application_id": obj.get("applicationId"),
+                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(
+                    obj.get("institutionIdentifiers")
                 )
                 if obj.get("institutionIdentifiers") is not None
                 else None,
-                "userSettings": UserSettings.from_dict(obj["userSettings"])
+                "user_settings": UserSettings.from_dict(obj.get("userSettings"))
                 if obj.get("userSettings") is not None
                 else None,
-                "redirectUrl": obj.get("redirectUrl"),
-                "accountRequestDetails": HostedAccountRequestDetailsResponse.from_dict(
-                    obj["accountRequestDetails"]
+                "redirect_url": obj.get("redirectUrl"),
+                "account_request_details": HostedAccountRequestDetailsResponse.from_dict(
+                    obj.get("accountRequestDetails")
                 )
                 if obj.get("accountRequestDetails") is not None
                 else None,
-                "hostedUrl": obj.get("hostedUrl"),
-                "createdAt": obj.get("createdAt"),
-                "authorisationExpiresAt": obj.get("authorisationExpiresAt"),
+                "hosted_url": obj.get("hostedUrl"),
+                "created_at": obj.get("createdAt"),
+                "authorisation_expires_at": obj.get("authorisationExpiresAt"),
             }
         )
         return _obj

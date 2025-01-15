@@ -3,7 +3,6 @@
 The status of the payment.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**PaymentStatus**](PaymentStatus.md) |  | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of HostedPaymentStatusDetails from a JSON string
 hosted_payment_status_details_instance = HostedPaymentStatusDetails.from_json(json)
 # print the JSON string representation of the object
-print(HostedPaymentStatusDetails.to_json())
+print HostedPaymentStatusDetails.to_json()
 
 # convert the object into a dict
 hosted_payment_status_details_dict = hosted_payment_status_details_instance.to_dict()

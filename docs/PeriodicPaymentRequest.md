@@ -3,7 +3,6 @@
 __Conditional__. Used to specify properties to define a periodic payment. <br><br>Must be specified when the payment `type` is one of the following:<ul>     <li><code>DOMESTIC_PERIODIC_PAYMENT</code></li>     <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **frequency** | [**FrequencyRequest**](FrequencyRequest.md) |  | 
@@ -23,7 +22,7 @@ json = "{}"
 # create an instance of PeriodicPaymentRequest from a JSON string
 periodic_payment_request_instance = PeriodicPaymentRequest.from_json(json)
 # print the JSON string representation of the object
-print(PeriodicPaymentRequest.to_json())
+print PeriodicPaymentRequest.to_json()
 
 # convert the object into a dict
 periodic_payment_request_dict = periodic_payment_request_instance.to_dict()

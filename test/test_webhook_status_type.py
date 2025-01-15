@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestWebhookStatusType(unittest.TestCase):
     """WebhookStatusType unit test stubs"""
 

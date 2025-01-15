@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseMeta**](ResponseMeta.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ApiResponseOfCreateHostedConsentRequest from a JSON string
 api_response_of_create_hosted_consent_request_instance = ApiResponseOfCreateHostedConsentRequest.from_json(json)
 # print the JSON string representation of the object
-print(ApiResponseOfCreateHostedConsentRequest.to_json())
+print ApiResponseOfCreateHostedConsentRequest.to_json()
 
 # convert the object into a dict
 api_response_of_create_hosted_consent_request_dict = api_response_of_create_hosted_consent_request_instance.to_dict()

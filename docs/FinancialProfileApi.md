@@ -21,8 +21,9 @@ Used to add a consent to a `Financial Profile` for a `User`.  The response is as
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_financial_profile_authorisation_response import ApiResponseOfFinancialProfileAuthorisationResponse
 from yapily.rest import ApiException
@@ -65,7 +66,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
@@ -85,7 +85,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | A successful response, returning a ApiResponseOfFinancialProfileAuthorisationResponse. |  -  |
@@ -105,8 +104,9 @@ Used to delete a `ProfileConsent` for a `User`. This will remove the consent and
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_financial_profile_consent_remove_response import ApiResponseOfFinancialProfileConsentRemoveResponse
 from yapily.rest import ApiException
@@ -149,7 +149,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
@@ -169,7 +168,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The ProfileConsent was deleted. |  -  |
@@ -189,8 +187,9 @@ Used to retrieve a `Balance Prediction Profile` for a `User`.  Status will be `P
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_financial_profile_balance_prediction import ApiResponseOfFinancialProfileBalancePrediction
 from yapily.rest import ApiException
@@ -232,7 +231,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
@@ -251,7 +249,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response, returning a Balance Prediction Profile. |  -  |
@@ -271,8 +268,9 @@ Used to retrieve a specific ProfileConsent for a User.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_financial_profile_consent import ApiResponseOfFinancialProfileConsent
 from yapily.rest import ApiException
@@ -315,7 +313,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
@@ -335,7 +332,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response, returning a ApiResponseOfFinancialProfileConsent. |  -  |
@@ -355,8 +351,9 @@ Used to retrieve a `TransactionGroups` for a `User`.  Status will be `PENDING` u
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_financial_profile import ApiResponseOfFinancialProfile
 from yapily.rest import ApiException
@@ -398,7 +395,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_uuid** | **str**| __Mandatory__. The Yapily generated UUID for the user. | 
@@ -417,7 +413,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response, returning a ApiResponseOfFinancialProfile. |  -  |

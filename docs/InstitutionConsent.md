@@ -3,7 +3,6 @@
 `Institution` authorised consents which are currently in place for the `Application User`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **institution_id** | **str** | __Mandatory__. The &#x60;Institution&#x60; the authorisation request is sent to. | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of InstitutionConsent from a JSON string
 institution_consent_instance = InstitutionConsent.from_json(json)
 # print the JSON string representation of the object
-print(InstitutionConsent.to_json())
+print InstitutionConsent.to_json()
 
 # convert the object into a dict
 institution_consent_dict = institution_consent_instance.to_dict()

@@ -17,118 +17,97 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from yapily.models.enriched_historic_balance import EnrichedHistoricBalance
 from yapily.models.enriched_predicted_balance import EnrichedPredictedBalance
-from typing import Set
-from typing_extensions import Self
 
 
 class EnrichedBalances(BaseModel):
     """
-    Enriched Balance information generated which include historic aggregated balances and predicted balances
-    """  # noqa: E501
+    Enriched Balance information generated which include historic aggregated balances and predicted balances  # noqa: E501
+    """
 
-    account_ids: Optional[List[StrictStr]] = Field(
+    account_ids: Optional[conlist(StrictStr)] = Field(
         default=None,
-        description="A list of Account Ids used to generate Balance Prediction Profile.",
         alias="accountIds",
+        description="A list of Account Ids used to generate Balance Prediction Profile.",
     )
-    institutions: Optional[List[StrictStr]] = Field(
+    institutions: Optional[conlist(StrictStr)] = Field(
         default=None,
         description="A list of Institution Ids associated with the accounts used to generate Balance Prediction Profile.",
     )
-    historic: Optional[List[EnrichedHistoricBalance]] = Field(
+    historic: Optional[conlist(EnrichedHistoricBalance)] = Field(
         default=None,
         description="A list of historic balances. Each balance in the list is an aggregation (sum) of the reported balance for each account within the profile at a point in time.",
     )
-    predicted: Optional[List[EnrichedPredictedBalance]] = Field(
+    predicted: Optional[conlist(EnrichedPredictedBalance)] = Field(
         default=None,
         description="A list of predicted balances. Each balance in the list is a projected balance of the profile at a future point in time.",
     )
-    __properties: ClassVar[List[str]] = [
-        "accountIds",
-        "institutions",
-        "historic",
-        "predicted",
-    ]
+    __properties = ["accountIds", "institutions", "historic", "predicted"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> EnrichedBalances:
         """Create an instance of EnrichedBalances from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in historic (list)
         _items = []
         if self.historic:
-            for _item_historic in self.historic:
-                if _item_historic:
-                    _items.append(_item_historic.to_dict())
+            for _item in self.historic:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["historic"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in predicted (list)
         _items = []
         if self.predicted:
-            for _item_predicted in self.predicted:
-                if _item_predicted:
-                    _items.append(_item_predicted.to_dict())
+            for _item in self.predicted:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["predicted"] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> EnrichedBalances:
         """Create an instance of EnrichedBalances from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return EnrichedBalances.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = EnrichedBalances.parse_obj(
             {
-                "accountIds": obj.get("accountIds"),
+                "account_ids": obj.get("accountIds"),
                 "institutions": obj.get("institutions"),
                 "historic": [
                     EnrichedHistoricBalance.from_dict(_item)
-                    for _item in obj["historic"]
+                    for _item in obj.get("historic")
                 ]
                 if obj.get("historic") is not None
                 else None,
                 "predicted": [
                     EnrichedPredictedBalance.from_dict(_item)
-                    for _item in obj["predicted"]
+                    for _item in obj.get("predicted")
                 ]
                 if obj.get("predicted") is not None
                 else None,

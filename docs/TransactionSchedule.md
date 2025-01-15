@@ -3,7 +3,6 @@
 The frequency at which transactions occurred.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **frequency** | **str** | How often the transaction happens.  Can be &#39;Monthly&#39;, &#39;Twice monthly&#39;, &#39;Every two weeks&#39;, &#39;Every four weeks&#39;, &#39;Daily&#39;, &#39;Weekly&#39;, &#39;Every weekday&#39;, &#39;Twice daily&#39;, &#39;Twice every weekday&#39; | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of TransactionSchedule from a JSON string
 transaction_schedule_instance = TransactionSchedule.from_json(json)
 # print the JSON string representation of the object
-print(TransactionSchedule.to_json())
+print TransactionSchedule.to_json()
 
 # convert the object into a dict
 transaction_schedule_dict = transaction_schedule_instance.to_dict()

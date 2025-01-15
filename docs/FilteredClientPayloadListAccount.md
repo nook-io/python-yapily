@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_call** | **object** |  | [optional] 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of FilteredClientPayloadListAccount from a JSON string
 filtered_client_payload_list_account_instance = FilteredClientPayloadListAccount.from_json(json)
 # print the JSON string representation of the object
-print(FilteredClientPayloadListAccount.to_json())
+print FilteredClientPayloadListAccount.to_json()
 
 # convert the object into a dict
 filtered_client_payload_list_account_dict = filtered_client_payload_list_account_instance.to_dict()

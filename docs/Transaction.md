@@ -3,7 +3,6 @@
 Details of a transaction (credit or debit) that has occurred on the account.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the transaction. | [optional] 
@@ -42,7 +41,7 @@ json = "{}"
 # create an instance of Transaction from a JSON string
 transaction_instance = Transaction.from_json(json)
 # print the JSON string representation of the object
-print(Transaction.to_json())
+print Transaction.to_json()
 
 # convert the object into a dict
 transaction_dict = transaction_instance.to_dict()

@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestCredentialsType(unittest.TestCase):
     """CredentialsType unit test stubs"""
 

@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestFrequencyEnum(unittest.TestCase):
     """FrequencyEnum unit test stubs"""
 

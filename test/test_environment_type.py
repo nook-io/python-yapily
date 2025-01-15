@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestEnvironmentType(unittest.TestCase):
     """EnvironmentType unit test stubs"""
 

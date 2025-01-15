@@ -3,7 +3,6 @@
 Details of the merchant, identified by Yapily data services.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **merchant_name** | **str** | The name of the indivdual merchant involved in the transaction e.g. (TESCO Petrol). | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of EnrichmentMerchant from a JSON string
 enrichment_merchant_instance = EnrichmentMerchant.from_json(json)
 # print the JSON string representation of the object
-print(EnrichmentMerchant.to_json())
+print EnrichmentMerchant.to_json()
 
 # convert the object into a dict
 enrichment_merchant_dict = enrichment_merchant_instance.to_dict()

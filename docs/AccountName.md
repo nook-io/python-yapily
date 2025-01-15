@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The bank account holder&#39;s name given by the account owner. | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of AccountName from a JSON string
 account_name_instance = AccountName.from_json(json)
 # print the JSON string representation of the object
-print(AccountName.to_json())
+print AccountName.to_json()
 
 # convert the object into a dict
 account_name_dict = account_name_instance.to_dict()

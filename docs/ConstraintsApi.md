@@ -18,8 +18,9 @@ Get Data Constraints Rules against an Institution for Account Authorisation requ
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_data_constraints import ApiListResponseOfDataConstraints
 from yapily.rest import ApiException
@@ -64,7 +65,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **institution_ids** | [**List[str]**](str.md)| Unique Id(s) of the &#x60;Institution&#x60;(s) to retrieve the Data Constraints for. Multiple institutionIds need to be separated by &#x60;,&#x60; | 
@@ -86,7 +86,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -107,8 +106,9 @@ Retrieve institution specific constraints for payment authorisation and submissi
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_payment_constraints import ApiListResponseOfPaymentConstraints
 from yapily.rest import ApiException
@@ -154,7 +154,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **institution_ids** | [**List[str]**](str.md)| Unique Id(s) of the &#x60;Institution&#x60;(s) to retrieve the Payment Constraints for. Multiple institutionIds need to be separated by &#x60;,&#x60; | 
@@ -177,7 +176,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

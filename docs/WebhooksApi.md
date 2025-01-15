@@ -21,8 +21,9 @@ Delete a webhook event for a specified webhook ID, unregistering it from receivi
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.delete_webhook200_response import DeleteWebhook200Response
 from yapily.rest import ApiException
@@ -65,7 +66,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhook_id** | **str**| Registered webhook id | 
@@ -85,7 +85,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | delete webhook succeeded |  -  |
@@ -106,8 +105,9 @@ Retrieve the list of registered webhooks for your application
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.get_registered_webhooks200_response import GetRegisteredWebhooks200Response
 from yapily.rest import ApiException
@@ -149,7 +149,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
@@ -168,7 +167,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | retrieve all registered webhook |  -  |
@@ -188,8 +186,9 @@ Retrieve a comprehensive list of event categories that can be registered for web
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.get_webhook_events_categories200_response import GetWebhookEventsCategories200Response
 from yapily.rest import ApiException
@@ -229,7 +228,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -246,7 +244,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -266,8 +263,9 @@ Register a webhook to one or multiple event categories to receive real-time noti
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.register_webhook201_response import RegisterWebhook201Response
 from yapily.models.register_webhook_request import RegisterWebhookRequest
@@ -311,7 +309,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
@@ -331,7 +328,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | webhook details including the secret |  -  |
@@ -352,8 +348,9 @@ Reset webhook secret for a webhook that is already registered to your applicatio
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.register_webhook201_response import RegisterWebhook201Response
 from yapily.models.webhook_secret_reset_request import WebhookSecretResetRequest
@@ -398,7 +395,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhook_id** | **str**| Registered webhook id | 
@@ -419,7 +415,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | webhook details including the secret |  -  |

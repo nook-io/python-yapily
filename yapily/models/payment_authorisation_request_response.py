@@ -18,22 +18,20 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from yapily.models.authorisation_status import AuthorisationStatus
 from yapily.models.exchange_rate_information_response import (
     ExchangeRateInformationResponse,
 )
 from yapily.models.feature_enum import FeatureEnum
 from yapily.models.payment_charge_details import PaymentChargeDetails
-from typing import Set
-from typing_extensions import Self
 
 
 class PaymentAuthorisationRequestResponse(BaseModel):
     """
     PaymentAuthorisationRequestResponse
-    """  # noqa: E501
+    """
 
     id: Optional[StrictStr] = Field(
         default=None,
@@ -41,54 +39,54 @@ class PaymentAuthorisationRequestResponse(BaseModel):
     )
     user_uuid: Optional[StrictStr] = Field(
         default=None,
-        description="The `User` that the authorisation request was created for.",
         alias="userUuid",
+        description="The `User` that the authorisation request was created for.",
     )
     application_user_id: Optional[StrictStr] = Field(
         default=None,
-        description="The user-friendly reference to the `User` that the authorisation request was created for.",
         alias="applicationUserId",
+        description="The user-friendly reference to the `User` that the authorisation request was created for.",
     )
     reference_id: Optional[StrictStr] = Field(default=None, alias="referenceId")
     institution_id: Optional[StrictStr] = Field(
         default=None,
-        description="The `Institution` the authorisation request was sent to.",
         alias="institutionId",
+        description="The `Institution` the authorisation request was sent to.",
     )
     status: Optional[AuthorisationStatus] = None
     created_at: Optional[datetime] = Field(
         default=None,
-        description="Date and time the consent was created.",
         alias="createdAt",
+        description="Date and time the consent was created.",
     )
     transaction_from: Optional[datetime] = Field(
         default=None,
-        description="When performing a transaction query using the consent, this is the earliest date of transaction records that can be retrieved.",
         alias="transactionFrom",
+        description="When performing a transaction query using the consent, this is the earliest date of transaction records that can be retrieved.",
     )
     transaction_to: Optional[datetime] = Field(
         default=None,
-        description="When performing a transaction query using the consent, this is the latest date of transaction records that can be retrieved.",
         alias="transactionTo",
+        description="When performing a transaction query using the consent, this is the latest date of transaction records that can be retrieved.",
     )
     expires_at: Optional[datetime] = Field(
         default=None,
-        description="Date and time the authorisation expires. Re-authorisation is needed to retain access.",
         alias="expiresAt",
+        description="Date and time the authorisation expires. Re-authorisation is needed to retain access.",
     )
     time_to_expire_in_millis: Optional[StrictInt] = Field(
         default=None, alias="timeToExpireInMillis"
     )
     time_to_expire: Optional[StrictStr] = Field(default=None, alias="timeToExpire")
-    feature_scope: Optional[List[FeatureEnum]] = Field(
+    feature_scope: Optional[conlist(FeatureEnum, unique_items=True)] = Field(
         default=None,
-        description="The set of features the consent provides access to.",
         alias="featureScope",
+        description="The set of features the consent provides access to.",
     )
     consent_token: Optional[StrictStr] = Field(
         default=None,
-        description="Represents the authorisation to gain access to the requested features. Required to make a payment request.",
         alias="consentToken",
+        description="Represents the authorisation to gain access to the requested features. Required to make a payment request.",
     )
     state: Optional[StrictStr] = Field(
         default=None,
@@ -96,15 +94,15 @@ class PaymentAuthorisationRequestResponse(BaseModel):
     )
     authorized_at: Optional[datetime] = Field(
         default=None,
-        description="Date and time the request was authorised by the `Institution`.",
         alias="authorizedAt",
+        description="Date and time the request was authorised by the `Institution`.",
     )
     institution_consent_id: Optional[StrictStr] = Field(
         default=None,
-        description="Unique identifier of the consent assigned by the `Institution`.",
         alias="institutionConsentId",
+        description="Unique identifier of the consent assigned by the `Institution`.",
     )
-    charges: Optional[List[PaymentChargeDetails]] = None
+    charges: Optional[conlist(PaymentChargeDetails)] = None
     exchange_rate_information: Optional[ExchangeRateInformationResponse] = Field(
         default=None, alias="exchangeRateInformation"
     )
@@ -113,14 +111,14 @@ class PaymentAuthorisationRequestResponse(BaseModel):
     )
     qr_code_url: Optional[StrictStr] = Field(
         default=None,
-        description="The URL for a QR code that may be scanned via a mobile device to make a authorisation redirect to the bank (authURL encoded).",
         alias="qrCodeUrl",
+        description="The URL for a QR code that may be scanned via a mobile device to make a authorisation redirect to the bank (authURL encoded).",
     )
     explanation: Optional[StrictStr] = Field(
         default=None,
         description="Message from the `Institution` received by Yapily, detailing the next action the user is required to take. This is used only for Decoupled flows.",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "userUuid",
         "applicationUserId",
@@ -145,49 +143,34 @@ class PaymentAuthorisationRequestResponse(BaseModel):
         "explanation",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> PaymentAuthorisationRequestResponse:
         """Create an instance of PaymentAuthorisationRequestResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in charges (list)
         _items = []
         if self.charges:
-            for _item_charges in self.charges:
-                if _item_charges:
-                    _items.append(_item_charges.to_dict())
+            for _item in self.charges:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["charges"] = _items
         # override the default output from pydantic by calling `to_dict()` of exchange_rate_information
         if self.exchange_rate_information:
@@ -195,45 +178,46 @@ class PaymentAuthorisationRequestResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> PaymentAuthorisationRequestResponse:
         """Create an instance of PaymentAuthorisationRequestResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PaymentAuthorisationRequestResponse.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = PaymentAuthorisationRequestResponse.parse_obj(
             {
                 "id": obj.get("id"),
-                "userUuid": obj.get("userUuid"),
-                "applicationUserId": obj.get("applicationUserId"),
-                "referenceId": obj.get("referenceId"),
-                "institutionId": obj.get("institutionId"),
+                "user_uuid": obj.get("userUuid"),
+                "application_user_id": obj.get("applicationUserId"),
+                "reference_id": obj.get("referenceId"),
+                "institution_id": obj.get("institutionId"),
                 "status": obj.get("status"),
-                "createdAt": obj.get("createdAt"),
-                "transactionFrom": obj.get("transactionFrom"),
-                "transactionTo": obj.get("transactionTo"),
-                "expiresAt": obj.get("expiresAt"),
-                "timeToExpireInMillis": obj.get("timeToExpireInMillis"),
-                "timeToExpire": obj.get("timeToExpire"),
-                "featureScope": obj.get("featureScope"),
-                "consentToken": obj.get("consentToken"),
+                "created_at": obj.get("createdAt"),
+                "transaction_from": obj.get("transactionFrom"),
+                "transaction_to": obj.get("transactionTo"),
+                "expires_at": obj.get("expiresAt"),
+                "time_to_expire_in_millis": obj.get("timeToExpireInMillis"),
+                "time_to_expire": obj.get("timeToExpire"),
+                "feature_scope": obj.get("featureScope"),
+                "consent_token": obj.get("consentToken"),
                 "state": obj.get("state"),
-                "authorizedAt": obj.get("authorizedAt"),
-                "institutionConsentId": obj.get("institutionConsentId"),
+                "authorized_at": obj.get("authorizedAt"),
+                "institution_consent_id": obj.get("institutionConsentId"),
                 "charges": [
-                    PaymentChargeDetails.from_dict(_item) for _item in obj["charges"]
+                    PaymentChargeDetails.from_dict(_item)
+                    for _item in obj.get("charges")
                 ]
                 if obj.get("charges") is not None
                 else None,
-                "exchangeRateInformation": ExchangeRateInformationResponse.from_dict(
-                    obj["exchangeRateInformation"]
+                "exchange_rate_information": ExchangeRateInformationResponse.from_dict(
+                    obj.get("exchangeRateInformation")
                 )
                 if obj.get("exchangeRateInformation") is not None
                 else None,
-                "authorisationUrl": obj.get("authorisationUrl"),
-                "qrCodeUrl": obj.get("qrCodeUrl"),
+                "authorisation_url": obj.get("authorisationUrl"),
+                "qr_code_url": obj.get("qrCodeUrl"),
                 "explanation": obj.get("explanation"),
             }
         )

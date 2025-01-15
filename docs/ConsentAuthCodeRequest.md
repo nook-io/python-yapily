@@ -3,7 +3,6 @@
 The request body containing the `ConsentAuthCodeRequest` json payload
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auth_code** | **str** | __Mandatory__. The authorisation code | 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of ConsentAuthCodeRequest from a JSON string
 consent_auth_code_request_instance = ConsentAuthCodeRequest.from_json(json)
 # print the JSON string representation of the object
-print(ConsentAuthCodeRequest.to_json())
+print ConsentAuthCodeRequest.to_json()
 
 # convert the object into a dict
 consent_auth_code_request_dict = consent_auth_code_request_instance.to_dict()

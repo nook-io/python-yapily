@@ -17,16 +17,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from typing import Set
-from typing_extensions import Self
+
+from typing import Optional, Union
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
 
 
 class TransactionSchedule(BaseModel):
     """
-    The frequency at which transactions occurred.
-    """  # noqa: E501
+    The frequency at which transactions occurred.  # noqa: E501
+    """
 
     frequency: Optional[StrictStr] = Field(
         default=None,
@@ -34,73 +33,54 @@ class TransactionSchedule(BaseModel):
     )
     detailed_frequency: Optional[StrictStr] = Field(
         default=None,
-        description="When in the cycle the transaction occurs.  Can be 'Daily', 'Twice daily', 'Twice every weekday', 'Every weekday', 'Weekly on day n', 'Every two weeks on day n', 'Monthly on working day before day n of month', 'Monthly on last working day of month', 'Twice a month on 15th and last working day of month', 'Every four weeks on day n'",
         alias="detailedFrequency",
+        description="When in the cycle the transaction occurs.  Can be 'Daily', 'Twice daily', 'Twice every weekday', 'Every weekday', 'Weekly on day n', 'Every two weeks on day n', 'Monthly on working day before day n of month', 'Monthly on last working day of month', 'Twice a month on 15th and last working day of month', 'Every four weeks on day n'",
     )
     detailed_frequency_parameter: Optional[Union[StrictFloat, StrictInt]] = Field(
         default=None,
-        description="The n in detailedFrequency where there is one - for week-based frequencies, an integer from 0 to 6 where 0 is Monday or for month-based frequencies, an integer from 0 to 27 where 0 is the first day of the month",
         alias="detailedFrequencyParameter",
+        description="The n in detailedFrequency where there is one - for week-based frequencies, an integer from 0 to 6 where 0 is Monday or for month-based frequencies, an integer from 0 to 27 where 0 is the first day of the month",
     )
-    __properties: ClassVar[List[str]] = [
-        "frequency",
-        "detailedFrequency",
-        "detailedFrequencyParameter",
-    ]
+    __properties = ["frequency", "detailedFrequency", "detailedFrequencyParameter"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> TransactionSchedule:
         """Create an instance of TransactionSchedule from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> TransactionSchedule:
         """Create an instance of TransactionSchedule from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return TransactionSchedule.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = TransactionSchedule.parse_obj(
             {
                 "frequency": obj.get("frequency"),
-                "detailedFrequency": obj.get("detailedFrequency"),
-                "detailedFrequencyParameter": obj.get("detailedFrequencyParameter"),
+                "detailed_frequency": obj.get("detailedFrequency"),
+                "detailed_frequency_parameter": obj.get("detailedFrequencyParameter"),
             }
         )
         return _obj

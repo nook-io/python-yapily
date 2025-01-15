@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tracing_id** | **str** |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of ResponseListMeta from a JSON string
 response_list_meta_instance = ResponseListMeta.from_json(json)
 # print the JSON string representation of the object
-print(ResponseListMeta.to_json())
+print ResponseListMeta.to_json()
 
 # convert the object into a dict
 response_list_meta_dict = response_list_meta_instance.to_dict()

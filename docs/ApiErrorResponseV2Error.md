@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tracing_id** | **str** | Unique identifier of the request, used by Yapily for support purposes | 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of ApiErrorResponseV2Error from a JSON string
 api_error_response_v2_error_instance = ApiErrorResponseV2Error.from_json(json)
 # print the JSON string representation of the object
-print(ApiErrorResponseV2Error.to_json())
+print ApiErrorResponseV2Error.to_json()
 
 # convert the object into a dict
 api_error_response_v2_error_dict = api_error_response_v2_error_instance.to_dict()

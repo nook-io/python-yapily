@@ -3,7 +3,6 @@
 Consent detailing the requested authorisation from a user to a specific `Institution`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the consent. | [optional] 
@@ -37,7 +36,7 @@ json = "{}"
 # create an instance of Consent from a JSON string
 consent_instance = Consent.from_json(json)
 # print the JSON string representation of the object
-print(Consent.to_json())
+print Consent.to_json()
 
 # convert the object into a dict
 consent_dict = consent_instance.to_dict()

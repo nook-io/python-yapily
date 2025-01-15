@@ -18,18 +18,16 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
 from yapily.models.institution import Institution
 from yapily.models.media import Media
-from typing import Set
-from typing_extensions import Self
 
 
 class Application(BaseModel):
     """
-    Information about the application.
-    """  # noqa: E501
+    Information about the application.  # noqa: E501
+    """
 
     uuid: Optional[StrictStr] = Field(
         default=None,
@@ -41,11 +39,11 @@ class Application(BaseModel):
     active: Optional[StrictBool] = Field(
         default=None, description="States whether an `Application` is active."
     )
-    auth_callbacks: Optional[List[StrictStr]] = Field(
+    auth_callbacks: Optional[conlist(StrictStr)] = Field(
         default=None, alias="authCallbacks"
     )
-    institutions: Optional[List[Institution]] = None
-    media: Optional[List[Media]] = None
+    institutions: Optional[conlist(Institution, unique_items=True)] = None
+    media: Optional[conlist(Media, unique_items=True)] = None
     created: Optional[datetime] = Field(
         default=None, description="Date and time of when the application was created."
     )
@@ -53,7 +51,7 @@ class Application(BaseModel):
         default=None,
         description="Date and time of when the application was last updated.",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "uuid",
         "name",
         "active",
@@ -64,80 +62,65 @@ class Application(BaseModel):
         "updated",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Application:
         """Create an instance of Application from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in institutions (list)
         _items = []
         if self.institutions:
-            for _item_institutions in self.institutions:
-                if _item_institutions:
-                    _items.append(_item_institutions.to_dict())
+            for _item in self.institutions:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["institutions"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in media (list)
         _items = []
         if self.media:
-            for _item_media in self.media:
-                if _item_media:
-                    _items.append(_item_media.to_dict())
+            for _item in self.media:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["media"] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> Application:
         """Create an instance of Application from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return Application.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = Application.parse_obj(
             {
                 "uuid": obj.get("uuid"),
                 "name": obj.get("name"),
                 "active": obj.get("active"),
-                "authCallbacks": obj.get("authCallbacks"),
+                "auth_callbacks": obj.get("authCallbacks"),
                 "institutions": [
-                    Institution.from_dict(_item) for _item in obj["institutions"]
+                    Institution.from_dict(_item) for _item in obj.get("institutions")
                 ]
                 if obj.get("institutions") is not None
                 else None,
-                "media": [Media.from_dict(_item) for _item in obj["media"]]
+                "media": [Media.from_dict(_item) for _item in obj.get("media")]
                 if obj.get("media") is not None
                 else None,
                 "created": obj.get("created"),

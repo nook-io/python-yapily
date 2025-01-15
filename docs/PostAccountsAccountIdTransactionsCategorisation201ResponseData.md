@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **categorisation_id** | **str** |  | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of PostAccountsAccountIdTransactionsCategorisation201ResponseData from a JSON string
 post_accounts_account_id_transactions_categorisation201_response_data_instance = PostAccountsAccountIdTransactionsCategorisation201ResponseData.from_json(json)
 # print the JSON string representation of the object
-print(PostAccountsAccountIdTransactionsCategorisation201ResponseData.to_json())
+print PostAccountsAccountIdTransactionsCategorisation201ResponseData.to_json()
 
 # convert the object into a dict
 post_accounts_account_id_transactions_categorisation201_response_data_dict = post_accounts_account_id_transactions_categorisation201_response_data_instance.to_dict()

@@ -19,8 +19,9 @@ Used to retrieve all features available from Yapily. Each `Institution` supports
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_feature_details import ApiListResponseOfFeatureDetails
 from yapily.rest import ApiException
@@ -60,7 +61,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -77,7 +77,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -95,8 +94,9 @@ Used to retrieves details of a specific `Institution` within an application
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.institution import Institution
 from yapily.rest import ApiException
@@ -138,7 +138,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **institution_id** | **str**| __Mandatory__. The Yapily institution Id for the &#x60;Institution&#x60;. | 
@@ -157,7 +156,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -175,8 +173,9 @@ Used to retrieve all `Institutions` within an application
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_institution import ApiListResponseOfInstitution
 from yapily.rest import ApiException
@@ -216,7 +215,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -233,7 +231,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

@@ -3,7 +3,6 @@
 Features that an individual `Institution` may support. 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **feature** | [**FeatureEnum**](FeatureEnum.md) |  | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of FeatureDetails from a JSON string
 feature_details_instance = FeatureDetails.from_json(json)
 # print the JSON string representation of the object
-print(FeatureDetails.to_json())
+print FeatureDetails.to_json()
 
 # convert the object into a dict
 feature_details_dict = feature_details_instance.to_dict()

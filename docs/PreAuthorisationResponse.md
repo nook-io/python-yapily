@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the pre-authorisation request. | [optional] 
@@ -35,7 +34,7 @@ json = "{}"
 # create an instance of PreAuthorisationResponse from a JSON string
 pre_authorisation_response_instance = PreAuthorisationResponse.from_json(json)
 # print the JSON string representation of the object
-print(PreAuthorisationResponse.to_json())
+print PreAuthorisationResponse.to_json()
 
 # convert the object into a dict
 pre_authorisation_response_dict = pre_authorisation_response_instance.to_dict()

@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestFeatureEnum(unittest.TestCase):
     """FeatureEnum unit test stubs"""
 

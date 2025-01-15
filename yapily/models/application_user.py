@@ -18,17 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from yapily.models.institution_consent import InstitutionConsent
-from typing import Set
-from typing_extensions import Self
 
 
 class ApplicationUser(BaseModel):
     """
-    Information about a user of an application.
-    """  # noqa: E501
+    Information about a user of an application.  # noqa: E501
+    """
 
     uuid: Optional[StrictStr] = Field(
         default=None,
@@ -36,24 +34,24 @@ class ApplicationUser(BaseModel):
     )
     application_uuid: Optional[StrictStr] = Field(
         default=None,
-        description="Unique identifier of the application the user is associated with.",
         alias="applicationUuid",
+        description="Unique identifier of the application the user is associated with.",
     )
     application_user_id: Optional[StrictStr] = Field(
         default=None,
-        description="__Conditional__. The user-friendly reference to the `User`.",
         alias="applicationUserId",
+        description="__Conditional__. The user-friendly reference to the `User`.",
     )
     reference_id: Optional[StrictStr] = Field(default=None, alias="referenceId")
     created_at: Optional[datetime] = Field(
         default=None,
-        description="Date and time of when the user was created.",
         alias="createdAt",
+        description="Date and time of when the user was created.",
     )
-    institution_consents: Optional[List[InstitutionConsent]] = Field(
+    institution_consents: Optional[conlist(InstitutionConsent)] = Field(
         default=None, alias="institutionConsents"
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "uuid",
         "applicationUuid",
         "applicationUserId",
@@ -62,71 +60,56 @@ class ApplicationUser(BaseModel):
         "institutionConsents",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> ApplicationUser:
         """Create an instance of ApplicationUser from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in institution_consents (list)
         _items = []
         if self.institution_consents:
-            for _item_institution_consents in self.institution_consents:
-                if _item_institution_consents:
-                    _items.append(_item_institution_consents.to_dict())
+            for _item in self.institution_consents:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["institutionConsents"] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> ApplicationUser:
         """Create an instance of ApplicationUser from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return ApplicationUser.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = ApplicationUser.parse_obj(
             {
                 "uuid": obj.get("uuid"),
-                "applicationUuid": obj.get("applicationUuid"),
-                "applicationUserId": obj.get("applicationUserId"),
-                "referenceId": obj.get("referenceId"),
-                "createdAt": obj.get("createdAt"),
-                "institutionConsents": [
+                "application_uuid": obj.get("applicationUuid"),
+                "application_user_id": obj.get("applicationUserId"),
+                "reference_id": obj.get("referenceId"),
+                "created_at": obj.get("createdAt"),
+                "institution_consents": [
                     InstitutionConsent.from_dict(_item)
-                    for _item in obj["institutionConsents"]
+                    for _item in obj.get("institutionConsents")
                 ]
                 if obj.get("institutionConsents") is not None
                 else None,

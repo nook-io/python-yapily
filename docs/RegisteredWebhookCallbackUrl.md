@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **main** | [**RegisteredWebhookCallbackUrlMain**](RegisteredWebhookCallbackUrlMain.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of RegisteredWebhookCallbackUrl from a JSON string
 registered_webhook_callback_url_instance = RegisteredWebhookCallbackUrl.from_json(json)
 # print the JSON string representation of the object
-print(RegisteredWebhookCallbackUrl.to_json())
+print RegisteredWebhookCallbackUrl.to_json()
 
 # convert the object into a dict
 registered_webhook_callback_url_dict = registered_webhook_callback_url_instance.to_dict()

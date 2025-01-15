@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The id of the application returned | [optional] 
@@ -23,7 +22,7 @@ json = "{}"
 # create an instance of ApplicationResponse from a JSON string
 application_response_instance = ApplicationResponse.from_json(json)
 # print the JSON string representation of the object
-print(ApplicationResponse.to_json())
+print ApplicationResponse.to_json()
 
 # convert the object into a dict
 application_response_dict = application_response_instance.to_dict()

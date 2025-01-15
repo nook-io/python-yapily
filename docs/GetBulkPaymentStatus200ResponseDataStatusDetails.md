@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** | Bulk file status. Enum: &#x60;COMPLETED&#x60; &#x60;PENDING&#x60; &#x60;FAILED&#x60; &#x60;UNKNOWN&#x60; | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of GetBulkPaymentStatus200ResponseDataStatusDetails from a JSON string
 get_bulk_payment_status200_response_data_status_details_instance = GetBulkPaymentStatus200ResponseDataStatusDetails.from_json(json)
 # print the JSON string representation of the object
-print(GetBulkPaymentStatus200ResponseDataStatusDetails.to_json())
+print GetBulkPaymentStatus200ResponseDataStatusDetails.to_json()
 
 # convert the object into a dict
 get_bulk_payment_status200_response_data_status_details_dict = get_bulk_payment_status200_response_data_status_details_instance.to_dict()

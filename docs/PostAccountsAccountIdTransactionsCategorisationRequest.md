@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country_code** | **str** | _Mandatory_, ISO 3166-1 alpha-2 two-letter country codes e.g. GB | 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of PostAccountsAccountIdTransactionsCategorisationRequest from a JSON string
 post_accounts_account_id_transactions_categorisation_request_instance = PostAccountsAccountIdTransactionsCategorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print(PostAccountsAccountIdTransactionsCategorisationRequest.to_json())
+print PostAccountsAccountIdTransactionsCategorisationRequest.to_json()
 
 # convert the object into a dict
 post_accounts_account_id_transactions_categorisation_request_dict = post_accounts_account_id_transactions_categorisation_request_instance.to_dict()

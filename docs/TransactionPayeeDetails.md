@@ -3,7 +3,6 @@
 Details of the beneficiary [person or business].
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The account holder name of the Payee. | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of TransactionPayeeDetails from a JSON string
 transaction_payee_details_instance = TransactionPayeeDetails.from_json(json)
 # print the JSON string representation of the object
-print(TransactionPayeeDetails.to_json())
+print TransactionPayeeDetails.to_json()
 
 # convert the object into a dict
 transaction_payee_details_dict = transaction_payee_details_instance.to_dict()

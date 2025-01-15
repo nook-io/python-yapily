@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the account authorisation request.&lt;br&gt;&lt;br&gt;The &#x60;consentID&#x60; used to [retrieve a consent](/api/reference/#operation/getConsentById). | [optional] 
@@ -37,7 +36,7 @@ json = "{}"
 # create an instance of AccountAuthorisationResponse from a JSON string
 account_authorisation_response_instance = AccountAuthorisationResponse.from_json(json)
 # print the JSON string representation of the object
-print(AccountAuthorisationResponse.to_json())
+print AccountAuthorisationResponse.to_json()
 
 # convert the object into a dict
 account_authorisation_response_dict = account_authorisation_response_instance.to_dict()

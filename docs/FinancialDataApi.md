@@ -30,8 +30,9 @@ Returns the account and balance information for a user's specified account.<br><
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_account import ApiResponseOfAccount
 from yapily.rest import ApiException
@@ -79,7 +80,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
@@ -104,7 +104,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -122,8 +121,9 @@ Returns the balance for the end user associated with the presented consent token
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_balances import ApiResponseOfBalances
 from yapily.rest import ApiException
@@ -171,7 +171,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
@@ -196,7 +195,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -214,8 +212,9 @@ Returns the list of direct debits for an account.<br><br>Feature: `ACCOUNT_DIREC
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_direct_debit_response import ApiListResponseOfDirectDebitResponse
 from yapily.rest import ApiException
@@ -261,7 +260,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
@@ -284,7 +282,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -302,8 +299,9 @@ Returns the list of periodic payments (standing orders in the UK) for an account
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_payment_response import ApiListResponseOfPaymentResponse
 from yapily.rest import ApiException
@@ -349,7 +347,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
@@ -372,7 +369,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -390,8 +386,9 @@ Returns the list of scheduled payments for an account.<br><br>Feature: `ACCOUNT_
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_payment_response import ApiListResponseOfPaymentResponse
 from yapily.rest import ApiException
@@ -437,7 +434,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
@@ -460,7 +456,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -478,8 +473,9 @@ Returns all accounts and balances for the end user associated with the presented
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.account_api_list_response import AccountApiListResponse
 from yapily.rest import ApiException
@@ -526,7 +522,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -550,7 +545,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -568,8 +562,9 @@ Returns all the beneficiaries of a user's account.<br><br>Feature: `ACCOUNT_BENE
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_beneficiary import ApiListResponseOfBeneficiary
 from yapily.rest import ApiException
@@ -614,7 +609,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
@@ -636,7 +630,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -654,8 +647,9 @@ Used to retrieve the list of categories returned by the Yapily Categorisation en
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_category import ApiListResponseOfCategory
 from yapily.rest import ApiException
@@ -697,7 +691,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **country** | **str**| __Mandatory__. The 2 letter country code e.g. &#39;GB&#39;. | 
@@ -716,7 +709,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -734,8 +726,9 @@ Returns the identity information for an account.<br><br>Feature: `IDENTITY`
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_identity import ApiResponseOfIdentity
 from yapily.rest import ApiException
@@ -779,7 +772,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -800,7 +792,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -818,8 +809,9 @@ Used to get the account transactions for an account in real time with cursor pag
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_real_time_transaction import ApiListResponseOfRealTimeTransaction
 from yapily.rest import ApiException
@@ -870,7 +862,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
@@ -898,7 +889,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -917,8 +907,9 @@ Returns a statement for an account.<br><br>Feature: `ACCOUNT_STATEMENT`
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_account_statement import ApiResponseOfAccountStatement
 from yapily.rest import ApiException
@@ -964,7 +955,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -987,7 +977,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -1005,8 +994,9 @@ Returns a PDF file of a statement for an account.<br><br>Feature: `ACCOUNT_STATE
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.rest import ApiException
 from pprint import pprint
@@ -1051,7 +1041,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -1074,7 +1063,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/pdf, application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -1092,8 +1080,9 @@ Returns the list of statements for an account.<br><br>Feature: `ACCOUNT_STATEMEN
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_account_statement import ApiListResponseOfAccountStatement
 from yapily.models.sort_enum import SortEnum
@@ -1144,7 +1133,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -1171,7 +1159,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -1189,8 +1176,9 @@ Returns the account transactions for an account.<br><br>Feature: `ACCOUNT_TRANSA
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_transaction import ApiListResponseOfTransaction
 from yapily.models.sort_enum import SortEnum
@@ -1246,7 +1234,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| __Mandatory__. The account Id of the user&#39;s bank account. | 
@@ -1278,7 +1265,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

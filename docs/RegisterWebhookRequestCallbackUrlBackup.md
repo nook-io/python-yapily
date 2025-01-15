@@ -3,7 +3,6 @@
 backup webhook url used to send events to in case the main one is not responding
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of RegisterWebhookRequestCallbackUrlBackup from a JSON string
 register_webhook_request_callback_url_backup_instance = RegisterWebhookRequestCallbackUrlBackup.from_json(json)
 # print the JSON string representation of the object
-print(RegisterWebhookRequestCallbackUrlBackup.to_json())
+print RegisterWebhookRequestCallbackUrlBackup.to_json()
 
 # convert the object into a dict
 register_webhook_request_callback_url_backup_dict = register_webhook_request_callback_url_backup_instance.to_dict()

@@ -3,7 +3,6 @@
 Details of income and expenditure streams, identified by Yapily data services.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **income_streams** | [**List[TransactionStream]**](TransactionStream.md) | Lists all possible income streams identified for the &#x60;Application User&#x60;. | 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of EnrichedWrapper from a JSON string
 enriched_wrapper_instance = EnrichedWrapper.from_json(json)
 # print the JSON string representation of the object
-print(EnrichedWrapper.to_json())
+print EnrichedWrapper.to_json()
 
 # convert the object into a dict
 enriched_wrapper_dict = enriched_wrapper_instance.to_dict()

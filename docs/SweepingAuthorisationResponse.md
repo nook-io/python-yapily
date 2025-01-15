@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -32,7 +31,7 @@ json = "{}"
 # create an instance of SweepingAuthorisationResponse from a JSON string
 sweeping_authorisation_response_instance = SweepingAuthorisationResponse.from_json(json)
 # print the JSON string representation of the object
-print(SweepingAuthorisationResponse.to_json())
+print SweepingAuthorisationResponse.to_json()
 
 # convert the object into a dict
 sweeping_authorisation_response_dict = sweeping_authorisation_response_instance.to_dict()

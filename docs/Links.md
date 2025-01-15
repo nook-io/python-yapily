@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_self** | **str** |  | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of Links from a JSON string
 links_instance = Links.from_json(json)
 # print the JSON string representation of the object
-print(Links.to_json())
+print Links.to_json()
 
 # convert the object into a dict
 links_dict = links_instance.to_dict()

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseMeta**](ResponseMeta.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ApiResponseOfGetHostedVRPConsentsRequest from a JSON string
 api_response_of_get_hosted_vrp_consents_request_instance = ApiResponseOfGetHostedVRPConsentsRequest.from_json(json)
 # print the JSON string representation of the object
-print(ApiResponseOfGetHostedVRPConsentsRequest.to_json())
+print ApiResponseOfGetHostedVRPConsentsRequest.to_json()
 
 # convert the object into a dict
 api_response_of_get_hosted_vrp_consents_request_dict = api_response_of_get_hosted_vrp_consents_request_instance.to_dict()

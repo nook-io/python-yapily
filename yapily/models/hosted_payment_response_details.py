@@ -18,26 +18,24 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 from yapily.models.amount_details_response import AmountDetailsResponse
 from yapily.models.payee_details_response import PayeeDetailsResponse
 from yapily.models.payer_details_response import PayerDetailsResponse
 from yapily.models.payment_context_type_response import PaymentContextTypeResponse
 from yapily.models.payment_type_response import PaymentTypeResponse
-from typing import Set
-from typing_extensions import Self
 
 
 class HostedPaymentResponseDetails(BaseModel):
     """
-    Details of the payment.
-    """  # noqa: E501
+    Details of the payment.  # noqa: E501
+    """
 
     payment_idempotency_id: Optional[StrictStr] = Field(
         default=None,
-        description="A unique identifier provided to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
         alias="paymentIdempotencyId",
+        description="A unique identifier provided to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
     )
     reference: Optional[StrictStr] = Field(
         default=None,
@@ -54,10 +52,10 @@ class HostedPaymentResponseDetails(BaseModel):
     )
     payment_due_date: Optional[date] = Field(
         default=None,
-        description="The date that the payment is due.",
         alias="paymentDueDate",
+        description="The date that the payment is due.",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "paymentIdempotencyId",
         "reference",
         "contextType",
@@ -68,43 +66,28 @@ class HostedPaymentResponseDetails(BaseModel):
         "paymentDueDate",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> HostedPaymentResponseDetails:
         """Create an instance of HostedPaymentResponseDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of payee
         if self.payee:
             _dict["payee"] = self.payee.to_dict()
@@ -117,30 +100,32 @@ class HostedPaymentResponseDetails(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> HostedPaymentResponseDetails:
         """Create an instance of HostedPaymentResponseDetails from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return HostedPaymentResponseDetails.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = HostedPaymentResponseDetails.parse_obj(
             {
-                "paymentIdempotencyId": obj.get("paymentIdempotencyId"),
+                "payment_idempotency_id": obj.get("paymentIdempotencyId"),
                 "reference": obj.get("reference"),
-                "contextType": obj.get("contextType"),
+                "context_type": obj.get("contextType"),
                 "type": obj.get("type"),
-                "payee": PayeeDetailsResponse.from_dict(obj["payee"])
+                "payee": PayeeDetailsResponse.from_dict(obj.get("payee"))
                 if obj.get("payee") is not None
                 else None,
-                "payer": PayerDetailsResponse.from_dict(obj["payer"])
+                "payer": PayerDetailsResponse.from_dict(obj.get("payer"))
                 if obj.get("payer") is not None
                 else None,
-                "amountDetails": AmountDetailsResponse.from_dict(obj["amountDetails"])
+                "amount_details": AmountDetailsResponse.from_dict(
+                    obj.get("amountDetails")
+                )
                 if obj.get("amountDetails") is not None
                 else None,
-                "paymentDueDate": obj.get("paymentDueDate"),
+                "payment_due_date": obj.get("paymentDueDate"),
             }
         )
         return _obj

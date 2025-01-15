@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from yapily.models.amount_details_response import AmountDetailsResponse
 from yapily.models.hosted_payment_phase import HostedPaymentPhase
 from yapily.models.hosted_payment_status_details import HostedPaymentStatusDetails
@@ -29,60 +30,58 @@ from yapily.models.payee_details_response import PayeeDetailsResponse
 from yapily.models.payer_details_response import PayerDetailsResponse
 from yapily.models.payment_context_type_response import PaymentContextTypeResponse
 from yapily.models.payment_type_response import PaymentTypeResponse
-from typing import Set
-from typing_extensions import Self
 
 
 class HostedPayment(BaseModel):
     """
     HostedPayment
-    """  # noqa: E501
+    """
 
     payment_id: Optional[StrictStr] = Field(
         default=None,
-        description="The Unique Identifier of the payment.",
         alias="paymentId",
+        description="The Unique Identifier of the payment.",
     )
     hosted_payment_id: Optional[StrictStr] = Field(
         default=None,
-        description="The Unique Identifier of the payment created using Yapily hosted application.",
         alias="hostedPaymentId",
+        description="The Unique Identifier of the payment created using Yapily hosted application.",
     )
     consent_id: Optional[StrictStr] = Field(
         default=None,
-        description="The Unique Identifier of the consent.",
         alias="consentId",
+        description="The Unique Identifier of the consent.",
     )
     institution_identifiers: Optional[InstitutionIdentifiersResponse] = Field(
         default=None, alias="institutionIdentifiers"
     )
-    phases: Optional[List[HostedPaymentPhase]] = Field(
+    phases: Optional[conlist(HostedPaymentPhase)] = Field(
         default=None, description="The phase reached by the payment and its timestamp."
     )
     payment_status: Optional[StrictStr] = Field(
         default=None,
-        description="Payment status based on latest HostedAuthPaymentPhase in phases. Value can be <ul> <li>PENDING  -  Payment pending processing</li> <li>COMPLETED  -  Payment processing completed</li> <li>FAILED  -  Payment process failed</li></ul>",
         alias="paymentStatus",
+        description="Payment status based on latest HostedAuthPaymentPhase in phases. Value can be <ul> <li>PENDING  -  Payment pending processing</li> <li>COMPLETED  -  Payment processing completed</li> <li>FAILED  -  Payment process failed</li></ul>",
     )
-    status_details: Optional[List[HostedPaymentStatusDetails]] = Field(
+    status_details: Optional[conlist(HostedPaymentStatusDetails)] = Field(
         default=None,
-        description="Details of the payment status.",
         alias="statusDetails",
+        description="Details of the payment status.",
     )
     institution_payment_id: Optional[StrictStr] = Field(
         default=None,
-        description="The Unique Identifier of the payment created with the `Institution`.",
         alias="institutionPaymentId",
+        description="The Unique Identifier of the payment created with the `Institution`.",
     )
     payment_lifecycle_id: Optional[StrictStr] = Field(
         default=None,
-        description="The Unique Identifier provided by TPP in the Payment request to identify the payment.",
         alias="paymentLifecycleId",
+        description="The Unique Identifier provided by TPP in the Payment request to identify the payment.",
     )
     payment_idempotency_id: Optional[StrictStr] = Field(
         default=None,
-        description="A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
         alias="paymentIdempotencyId",
+        description="A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
     )
     reference: Optional[StrictStr] = Field(
         default=None,
@@ -95,7 +94,7 @@ class HostedPayment(BaseModel):
     payee: Optional[PayeeDetailsResponse] = None
     payer: Optional[PayerDetailsResponse] = None
     amount: Optional[AmountDetailsResponse] = None
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "paymentId",
         "hostedPaymentId",
         "consentId",
@@ -114,59 +113,44 @@ class HostedPayment(BaseModel):
         "amount",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> HostedPayment:
         """Create an instance of HostedPayment from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of institution_identifiers
         if self.institution_identifiers:
             _dict["institutionIdentifiers"] = self.institution_identifiers.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in phases (list)
         _items = []
         if self.phases:
-            for _item_phases in self.phases:
-                if _item_phases:
-                    _items.append(_item_phases.to_dict())
+            for _item in self.phases:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["phases"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in status_details (list)
         _items = []
         if self.status_details:
-            for _item_status_details in self.status_details:
-                if _item_status_details:
-                    _items.append(_item_status_details.to_dict())
+            for _item in self.status_details:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["statusDetails"] = _items
         # override the default output from pydantic by calling `to_dict()` of payee
         if self.payee:
@@ -180,49 +164,49 @@ class HostedPayment(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> HostedPayment:
         """Create an instance of HostedPayment from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return HostedPayment.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = HostedPayment.parse_obj(
             {
-                "paymentId": obj.get("paymentId"),
-                "hostedPaymentId": obj.get("hostedPaymentId"),
-                "consentId": obj.get("consentId"),
-                "institutionIdentifiers": InstitutionIdentifiersResponse.from_dict(
-                    obj["institutionIdentifiers"]
+                "payment_id": obj.get("paymentId"),
+                "hosted_payment_id": obj.get("hostedPaymentId"),
+                "consent_id": obj.get("consentId"),
+                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(
+                    obj.get("institutionIdentifiers")
                 )
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "phases": [
-                    HostedPaymentPhase.from_dict(_item) for _item in obj["phases"]
+                    HostedPaymentPhase.from_dict(_item) for _item in obj.get("phases")
                 ]
                 if obj.get("phases") is not None
                 else None,
-                "paymentStatus": obj.get("paymentStatus"),
-                "statusDetails": [
+                "payment_status": obj.get("paymentStatus"),
+                "status_details": [
                     HostedPaymentStatusDetails.from_dict(_item)
-                    for _item in obj["statusDetails"]
+                    for _item in obj.get("statusDetails")
                 ]
                 if obj.get("statusDetails") is not None
                 else None,
-                "institutionPaymentId": obj.get("institutionPaymentId"),
-                "paymentLifecycleId": obj.get("paymentLifecycleId"),
-                "paymentIdempotencyId": obj.get("paymentIdempotencyId"),
+                "institution_payment_id": obj.get("institutionPaymentId"),
+                "payment_lifecycle_id": obj.get("paymentLifecycleId"),
+                "payment_idempotency_id": obj.get("paymentIdempotencyId"),
                 "reference": obj.get("reference"),
-                "contextType": obj.get("contextType"),
+                "context_type": obj.get("contextType"),
                 "type": obj.get("type"),
-                "payee": PayeeDetailsResponse.from_dict(obj["payee"])
+                "payee": PayeeDetailsResponse.from_dict(obj.get("payee"))
                 if obj.get("payee") is not None
                 else None,
-                "payer": PayerDetailsResponse.from_dict(obj["payer"])
+                "payer": PayerDetailsResponse.from_dict(obj.get("payer"))
                 if obj.get("payer") is not None
                 else None,
-                "amount": AmountDetailsResponse.from_dict(obj["amount"])
+                "amount": AmountDetailsResponse.from_dict(obj.get("amount"))
                 if obj.get("amount") is not None
                 else None,
             }

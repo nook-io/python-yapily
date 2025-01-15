@@ -18,16 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Set
-from typing_extensions import Self
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 
 
 class ProfileConsent(BaseModel):
     """
-    Details of a consent linked to a `User Profile`.
-    """  # noqa: E501
+    Details of a consent linked to a `User Profile`.  # noqa: E501
+    """
 
     id: Optional[StrictStr] = Field(
         default=None,
@@ -37,34 +35,34 @@ class ProfileConsent(BaseModel):
         default=None, description="The status, can be PENDING, COMPLETED or ERROR."
     )
     user_id: Optional[StrictStr] = Field(
-        default=None, description="The userUuid.", alias="userId"
+        default=None, alias="userId", description="The userUuid."
     )
     reference_consent_id: Optional[StrictStr] = Field(
         default=None,
-        description="Unique identifier of the consent.",
         alias="referenceConsentId",
+        description="Unique identifier of the consent.",
     )
     institution_id: Optional[StrictStr] = Field(
         default=None,
-        description="__Mandatory__. The  `Institution` the authorisation request is sent to.",
         alias="institutionId",
+        description="__Mandatory__. The  `Institution` the authorisation request is sent to.",
     )
     created_at: Optional[datetime] = Field(
         default=None,
-        description="When a profile consent is created.",
         alias="createdAt",
+        description="When a profile consent is created.",
     )
     expires_at: Optional[datetime] = Field(
         default=None,
-        description="When a profile consent is expired after created + X.",
         alias="expiresAt",
+        description="When a profile consent is expired after created + X.",
     )
     data_inserted_at: Optional[datetime] = Field(
         default=None,
-        description="After data retrieval from aggregated profile consent is completed.",
         alias="dataInsertedAt",
+        description="After data retrieval from aggregated profile consent is completed.",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "status",
         "userId",
@@ -75,64 +73,49 @@ class ProfileConsent(BaseModel):
         "dataInsertedAt",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> ProfileConsent:
         """Create an instance of ProfileConsent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> ProfileConsent:
         """Create an instance of ProfileConsent from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return ProfileConsent.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = ProfileConsent.parse_obj(
             {
                 "id": obj.get("id"),
                 "status": obj.get("status"),
-                "userId": obj.get("userId"),
-                "referenceConsentId": obj.get("referenceConsentId"),
-                "institutionId": obj.get("institutionId"),
-                "createdAt": obj.get("createdAt"),
-                "expiresAt": obj.get("expiresAt"),
-                "dataInsertedAt": obj.get("dataInsertedAt"),
+                "user_id": obj.get("userId"),
+                "reference_consent_id": obj.get("referenceConsentId"),
+                "institution_id": obj.get("institutionId"),
+                "created_at": obj.get("createdAt"),
+                "expires_at": obj.get("expiresAt"),
+                "data_inserted_at": obj.get("dataInsertedAt"),
             }
         )
         return _obj

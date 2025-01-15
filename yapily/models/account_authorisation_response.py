@@ -18,18 +18,16 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from yapily.models.authorisation_status import AuthorisationStatus
 from yapily.models.feature_enum import FeatureEnum
-from typing import Set
-from typing_extensions import Self
 
 
 class AccountAuthorisationResponse(BaseModel):
     """
     AccountAuthorisationResponse
-    """  # noqa: E501
+    """
 
     id: Optional[StrictStr] = Field(
         default=None,
@@ -37,54 +35,54 @@ class AccountAuthorisationResponse(BaseModel):
     )
     user_uuid: Optional[StrictStr] = Field(
         default=None,
-        description="The `User` that the authorisation request was created for.",
         alias="userUuid",
+        description="The `User` that the authorisation request was created for.",
     )
     application_user_id: Optional[StrictStr] = Field(
         default=None,
-        description="The user-friendly reference to the `User` that the authorisation request was created for.",
         alias="applicationUserId",
+        description="The user-friendly reference to the `User` that the authorisation request was created for.",
     )
     reference_id: Optional[StrictStr] = Field(default=None, alias="referenceId")
     institution_id: Optional[StrictStr] = Field(
         default=None,
-        description="The `Institution` the authorisation request was sent to.",
         alias="institutionId",
+        description="The `Institution` the authorisation request was sent to.",
     )
     status: Optional[AuthorisationStatus] = None
     created_at: Optional[datetime] = Field(
         default=None,
-        description="Date and time the consent was created.",
         alias="createdAt",
+        description="Date and time the consent was created.",
     )
     transaction_from: Optional[datetime] = Field(
         default=None,
-        description="When performing a transaction query using the consent, this is the earliest date of transaction records that can be retrieved.",
         alias="transactionFrom",
+        description="When performing a transaction query using the consent, this is the earliest date of transaction records that can be retrieved.",
     )
     transaction_to: Optional[datetime] = Field(
         default=None,
-        description="When performing a transaction query using the consent, this is the latest date of transaction records that can be retrieved.",
         alias="transactionTo",
+        description="When performing a transaction query using the consent, this is the latest date of transaction records that can be retrieved.",
     )
     expires_at: Optional[datetime] = Field(
         default=None,
-        description="Date and time the authorisation expires. Re-authorisation is needed to retain access.",
         alias="expiresAt",
+        description="Date and time the authorisation expires. Re-authorisation is needed to retain access.",
     )
     time_to_expire_in_millis: Optional[StrictInt] = Field(
         default=None, alias="timeToExpireInMillis"
     )
     time_to_expire: Optional[StrictStr] = Field(default=None, alias="timeToExpire")
-    feature_scope: Optional[List[FeatureEnum]] = Field(
+    feature_scope: Optional[conlist(FeatureEnum, unique_items=True)] = Field(
         default=None,
-        description="The set of features the consent provides access to.",
         alias="featureScope",
+        description="The set of features the consent provides access to.",
     )
     consent_token: Optional[StrictStr] = Field(
         default=None,
-        description="Represents the authorisation to gain access to the requested features. Required to access account information.",
         alias="consentToken",
+        description="Represents the authorisation to gain access to the requested features. Required to access account information.",
     )
     state: Optional[StrictStr] = Field(
         default=None,
@@ -92,33 +90,33 @@ class AccountAuthorisationResponse(BaseModel):
     )
     authorized_at: Optional[datetime] = Field(
         default=None,
-        description="Date and time the request was authorised by the `Institution`.",
         alias="authorizedAt",
+        description="Date and time the request was authorised by the `Institution`.",
     )
     last_confirmed_at: Optional[datetime] = Field(
         default=None,
-        description="The time the PSU last confirmed access to their account information, either through full authentication with the institution, or through reconfirmation with the TPP.",
         alias="lastConfirmedAt",
+        description="The time the PSU last confirmed access to their account information, either through full authentication with the institution, or through reconfirmation with the TPP.",
     )
     reconfirm_by: Optional[datetime] = Field(
         default=None,
-        description="The date and time the consent must be reconfirmed by to ensure continued access to the account information.",
         alias="reconfirmBy",
+        description="The date and time the consent must be reconfirmed by to ensure continued access to the account information.",
     )
     institution_consent_id: Optional[StrictStr] = Field(
         default=None,
-        description="Unique identifier of the consent assigned by the `Institution`.",
         alias="institutionConsentId",
+        description="Unique identifier of the consent assigned by the `Institution`.",
     )
     authorisation_url: Optional[StrictStr] = Field(
         default=None, alias="authorisationUrl"
     )
     qr_code_url: Optional[StrictStr] = Field(
         default=None,
-        description="The URL link for the QR code that may be scanned via a mobile device to make an authorisation redirect to the bank (authURL encoded).",
         alias="qrCodeUrl",
+        description="The URL link for the QR code that may be scanned via a mobile device to make an authorisation redirect to the bank (authURL encoded).",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "userUuid",
         "applicationUserId",
@@ -142,77 +140,62 @@ class AccountAuthorisationResponse(BaseModel):
         "qrCodeUrl",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> AccountAuthorisationResponse:
         """Create an instance of AccountAuthorisationResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> AccountAuthorisationResponse:
         """Create an instance of AccountAuthorisationResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return AccountAuthorisationResponse.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = AccountAuthorisationResponse.parse_obj(
             {
                 "id": obj.get("id"),
-                "userUuid": obj.get("userUuid"),
-                "applicationUserId": obj.get("applicationUserId"),
-                "referenceId": obj.get("referenceId"),
-                "institutionId": obj.get("institutionId"),
+                "user_uuid": obj.get("userUuid"),
+                "application_user_id": obj.get("applicationUserId"),
+                "reference_id": obj.get("referenceId"),
+                "institution_id": obj.get("institutionId"),
                 "status": obj.get("status"),
-                "createdAt": obj.get("createdAt"),
-                "transactionFrom": obj.get("transactionFrom"),
-                "transactionTo": obj.get("transactionTo"),
-                "expiresAt": obj.get("expiresAt"),
-                "timeToExpireInMillis": obj.get("timeToExpireInMillis"),
-                "timeToExpire": obj.get("timeToExpire"),
-                "featureScope": obj.get("featureScope"),
-                "consentToken": obj.get("consentToken"),
+                "created_at": obj.get("createdAt"),
+                "transaction_from": obj.get("transactionFrom"),
+                "transaction_to": obj.get("transactionTo"),
+                "expires_at": obj.get("expiresAt"),
+                "time_to_expire_in_millis": obj.get("timeToExpireInMillis"),
+                "time_to_expire": obj.get("timeToExpire"),
+                "feature_scope": obj.get("featureScope"),
+                "consent_token": obj.get("consentToken"),
                 "state": obj.get("state"),
-                "authorizedAt": obj.get("authorizedAt"),
-                "lastConfirmedAt": obj.get("lastConfirmedAt"),
-                "reconfirmBy": obj.get("reconfirmBy"),
-                "institutionConsentId": obj.get("institutionConsentId"),
-                "authorisationUrl": obj.get("authorisationUrl"),
-                "qrCodeUrl": obj.get("qrCodeUrl"),
+                "authorized_at": obj.get("authorizedAt"),
+                "last_confirmed_at": obj.get("lastConfirmedAt"),
+                "reconfirm_by": obj.get("reconfirmBy"),
+                "institution_consent_id": obj.get("institutionConsentId"),
+                "authorisation_url": obj.get("authorisationUrl"),
+                "qr_code_url": obj.get("qrCodeUrl"),
             }
         )
         return _obj

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -28,7 +27,7 @@ json = "{}"
 # create an instance of SubmissionResponse from a JSON string
 submission_response_instance = SubmissionResponse.from_json(json)
 # print the JSON string representation of the object
-print(SubmissionResponse.to_json())
+print SubmissionResponse.to_json()
 
 # convert the object into a dict
 submission_response_dict = submission_response_instance.to_dict()

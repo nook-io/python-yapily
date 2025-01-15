@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**GetAccountsTransactionsCategorised200ResponseMeta**](GetAccountsTransactionsCategorised200ResponseMeta.md) |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of GetAccountsTransactionsCategorised200Response from a JSON string
 get_accounts_transactions_categorised200_response_instance = GetAccountsTransactionsCategorised200Response.from_json(json)
 # print the JSON string representation of the object
-print(GetAccountsTransactionsCategorised200Response.to_json())
+print GetAccountsTransactionsCategorised200Response.to_json()
 
 # convert the object into a dict
 get_accounts_transactions_categorised200_response_dict = get_accounts_transactions_categorised200_response_instance.to_dict()

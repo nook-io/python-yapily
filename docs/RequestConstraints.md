@@ -3,7 +3,6 @@
 Object defining the constraints rules applicable for a given requests.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **headers** | [**ModelSchema**](ModelSchema.md) |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of RequestConstraints from a JSON string
 request_constraints_instance = RequestConstraints.from_json(json)
 # print the JSON string representation of the object
-print(RequestConstraints.to_json())
+print RequestConstraints.to_json()
 
 # convert the object into a dict
 request_constraints_dict = request_constraints_instance.to_dict()

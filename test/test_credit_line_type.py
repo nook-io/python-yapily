@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestCreditLineType(unittest.TestCase):
     """CreditLineType unit test stubs"""
 

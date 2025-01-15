@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **event_type_id** | **str** | Unique identifier of the event type (for which notifications will be sent) | 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of EventSubscriptionDeleteResponse from a JSON string
 event_subscription_delete_response_instance = EventSubscriptionDeleteResponse.from_json(json)
 # print the JSON string representation of the object
-print(EventSubscriptionDeleteResponse.to_json())
+print EventSubscriptionDeleteResponse.to_json()
 
 # convert the object into a dict
 event_subscription_delete_response_dict = event_subscription_delete_response_instance.to_dict()

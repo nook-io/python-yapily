@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **last_confirmed_at** | **datetime** | __Mandatory__. The time that the user confirmed access to their account information | 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of ExtendConsentRequest from a JSON string
 extend_consent_request_instance = ExtendConsentRequest.from_json(json)
 # print the JSON string representation of the object
-print(ExtendConsentRequest.to_json())
+print ExtendConsentRequest.to_json()
 
 # convert the object into a dict
 extend_consent_request_dict = extend_consent_request_instance.to_dict()

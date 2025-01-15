@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **main_balance_amount** | [**Amount**](Amount.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of Balances from a JSON string
 balances_instance = Balances.from_json(json)
 # print the JSON string representation of the object
-print(Balances.to_json())
+print Balances.to_json()
 
 # convert the object into a dict
 balances_dict = balances_instance.to_dict()

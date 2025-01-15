@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | __Mandatory__. The account holder name. | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of DirectDebitPayee from a JSON string
 direct_debit_payee_instance = DirectDebitPayee.from_json(json)
 # print the JSON string representation of the object
-print(DirectDebitPayee.to_json())
+print DirectDebitPayee.to_json()
 
 # convert the object into a dict
 direct_debit_payee_dict = direct_debit_payee_instance.to_dict()

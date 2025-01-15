@@ -3,7 +3,6 @@
 A list of Aggregated Account Balances for historic date range.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_date** | **date** | The date for which Aggregated Balance amount across Bank accounts is calculated. | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of EnrichedHistoricBalance from a JSON string
 enriched_historic_balance_instance = EnrichedHistoricBalance.from_json(json)
 # print the JSON string representation of the object
-print(EnrichedHistoricBalance.to_json())
+print EnrichedHistoricBalance.to_json()
 
 # convert the object into a dict
 enriched_historic_balance_dict = enriched_historic_balance_instance.to_dict()

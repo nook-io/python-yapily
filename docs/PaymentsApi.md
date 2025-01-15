@@ -20,8 +20,9 @@ Creates a bulk payment after obtaining the user's authorisation. <br><br>Feature
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_response import ApiResponseOfPaymentResponse
 from yapily.models.submit_bulk_payment_request import SubmitBulkPaymentRequest
@@ -69,7 +70,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -93,7 +93,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -111,8 +110,9 @@ Creates a payment after obtaining the user's authorisation. <br><br>Features:<ul
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_response import ApiResponseOfPaymentResponse
 from yapily.models.payment_request import PaymentRequest
@@ -161,7 +161,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -186,7 +185,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -204,8 +202,9 @@ Returns the bulk file status of the bulk payment for given bulkPaymentId
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.get_bulk_payment_status200_response import GetBulkPaymentStatus200Response
 from yapily.rest import ApiException
@@ -248,7 +247,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -268,7 +266,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -289,8 +286,9 @@ Returns the details of a payment. <br><br>Most commonly used to check for paymen
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_responses import ApiResponseOfPaymentResponses
 from yapily.rest import ApiException
@@ -338,7 +336,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_id** | **str**| __Mandatory__. The payment Id of the payment. | 
@@ -363,7 +360,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

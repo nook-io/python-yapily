@@ -3,7 +3,6 @@
 The fund confirmation object defining the details of the account and funds to be checked under the Variable Recurring Payment consent.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reference** | **str** | __Optional__. The payment reference or description. Limited to a maximum of 18 characters long. | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of FundsConfirmationRequest from a JSON string
 funds_confirmation_request_instance = FundsConfirmationRequest.from_json(json)
 # print the JSON string representation of the object
-print(FundsConfirmationRequest.to_json())
+print FundsConfirmationRequest.to_json()
 
 # convert the object into a dict
 funds_confirmation_request_dict = funds_confirmation_request_instance.to_dict()

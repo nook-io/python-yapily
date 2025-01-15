@@ -17,43 +17,44 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from yapily.models.account_identification import AccountIdentification
 from yapily.models.address import Address
-from typing import Set
-from typing_extensions import Self
 
 
 class Payee(BaseModel):
     """
-    __Mandatory__. Details of the beneficiary [person or business].
-    """  # noqa: E501
+    __Mandatory__. Details of the beneficiary [person or business].  # noqa: E501
+    """
 
     name: StrictStr = Field(
-        description="__Mandatory__. The account holder name of the beneficiary."
+        default=...,
+        description="__Mandatory__. The account holder name of the beneficiary.",
     )
-    account_identifications: List[AccountIdentification] = Field(
-        description="__Mandatory__. The account identifications that identify the `Payee` bank account.",
+    account_identifications: conlist(AccountIdentification, unique_items=True) = Field(
+        default=...,
         alias="accountIdentifications",
+        description="__Mandatory__. The account identifications that identify the `Payee` bank account.",
     )
     account_type: Optional[StrictStr] = Field(
         default=None,
-        description="__Optional__. The payee account type. <br><br>Allowed values: BUSINESS, BUSINESS_SAVING, CHARITY, COLLECTION, CORPORATE, E_WALLET, GOVERNMENT, INVESTMENT, INVESTMENT_ISA, JOINT_PERSONAL, PENSION, PERSONAL, PERSONAL_SAVING, PREMIER, WEALTH .",
         alias="accountType",
+        description="__Optional__. The payee account type. <br><br>Allowed values: BUSINESS, BUSINESS_SAVING, CHARITY, COLLECTION, CORPORATE, E_WALLET, GOVERNMENT, INVESTMENT, INVESTMENT_ISA, JOINT_PERSONAL, PENSION, PERSONAL, PERSONAL_SAVING, PREMIER, WEALTH .",
     )
     address: Optional[Address] = None
     merchant_id: Optional[StrictStr] = Field(
         default=None,
-        description="__Optional__. The merchant ID is a unique code provided by the payment processor to the merchant.",
         alias="merchantId",
+        description="__Optional__. The merchant ID is a unique code provided by the payment processor to the merchant.",
     )
     merchant_category_code: Optional[StrictStr] = Field(
         default=None,
-        description="__Optional__. The category code of the merchant in case the `Payee` is a business. Specified as a 3-letter ISO 18245 code.",
         alias="merchantCategoryCode",
+        description="__Optional__. The category code of the merchant in case the `Payee` is a business. Specified as a 3-letter ISO 18245 code.",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "name",
         "accountIdentifications",
         "accountType",
@@ -62,49 +63,34 @@ class Payee(BaseModel):
         "merchantCategoryCode",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Payee:
         """Create an instance of Payee from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in account_identifications (list)
         _items = []
         if self.account_identifications:
-            for _item_account_identifications in self.account_identifications:
-                if _item_account_identifications:
-                    _items.append(_item_account_identifications.to_dict())
+            for _item in self.account_identifications:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["accountIdentifications"] = _items
         # override the default output from pydantic by calling `to_dict()` of address
         if self.address:
@@ -112,29 +98,29 @@ class Payee(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> Payee:
         """Create an instance of Payee from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return Payee.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = Payee.parse_obj(
             {
                 "name": obj.get("name"),
-                "accountIdentifications": [
+                "account_identifications": [
                     AccountIdentification.from_dict(_item)
-                    for _item in obj["accountIdentifications"]
+                    for _item in obj.get("accountIdentifications")
                 ]
                 if obj.get("accountIdentifications") is not None
                 else None,
-                "accountType": obj.get("accountType"),
-                "address": Address.from_dict(obj["address"])
+                "account_type": obj.get("accountType"),
+                "address": Address.from_dict(obj.get("address"))
                 if obj.get("address") is not None
                 else None,
-                "merchantId": obj.get("merchantId"),
-                "merchantCategoryCode": obj.get("merchantCategoryCode"),
+                "merchant_id": obj.get("merchantId"),
+                "merchant_category_code": obj.get("merchantCategoryCode"),
             }
         )
         return _obj

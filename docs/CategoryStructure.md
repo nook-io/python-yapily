@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | webhook event category name | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of CategoryStructure from a JSON string
 category_structure_instance = CategoryStructure.from_json(json)
 # print the JSON string representation of the object
-print(CategoryStructure.to_json())
+print CategoryStructure.to_json()
 
 # convert the object into a dict
 category_structure_dict = category_structure_instance.to_dict()

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tracing_id** | **str** |  | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of ResponseMeta from a JSON string
 response_meta_instance = ResponseMeta.from_json(json)
 # print the JSON string representation of the object
-print(ResponseMeta.to_json())
+print ResponseMeta.to_json()
 
 # convert the object into a dict
 response_meta_dict = response_meta_instance.to_dict()

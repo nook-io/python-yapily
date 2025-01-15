@@ -17,21 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from yapily.models.country import Country
 from yapily.models.credentials_type import CredentialsType
 from yapily.models.environment_type import EnvironmentType
 from yapily.models.feature_enum import FeatureEnum
 from yapily.models.media import Media
-from typing import Set
-from typing_extensions import Self
 
 
 class Institution(BaseModel):
     """
-    Typically, a bank or business unit within a bank e.g. (AIB Business, AIB Ireland, AIB UK).
-    """  # noqa: E501
+    Typically, a bank or business unit within a bank e.g. (AIB Business, AIB Ireland, AIB UK).  # noqa: E501
+    """
 
     id: Optional[StrictStr] = Field(
         default=None, description="Unique identifier for the `Institution`."
@@ -41,10 +40,10 @@ class Institution(BaseModel):
     )
     full_name: Optional[StrictStr] = Field(
         default=None,
-        description="The full name of the `Institution`.",
         alias="fullName",
+        description="The full name of the `Institution`.",
     )
-    countries: Optional[List[Country]] = Field(
+    countries: Optional[conlist(Country, unique_items=True)] = Field(
         default=None,
         description="An array of `Country` denoting which regions the `Institution` provides coverage for",
     )
@@ -54,12 +53,12 @@ class Institution(BaseModel):
     credentials_type: Optional[CredentialsType] = Field(
         default=None, alias="credentialsType"
     )
-    media: Optional[List[Media]] = Field(
+    media: Optional[conlist(Media, unique_items=True)] = Field(
         default=None,
         description="Contains links to the logo and the icons for the `Institution`",
     )
-    features: Optional[List[FeatureEnum]] = None
-    __properties: ClassVar[List[str]] = [
+    features: Optional[conlist(FeatureEnum, unique_items=True)] = None
+    __properties = [
         "id",
         "name",
         "fullName",
@@ -70,79 +69,66 @@ class Institution(BaseModel):
         "features",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Institution:
         """Create an instance of Institution from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in countries (list)
         _items = []
         if self.countries:
-            for _item_countries in self.countries:
-                if _item_countries:
-                    _items.append(_item_countries.to_dict())
+            for _item in self.countries:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["countries"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in media (list)
         _items = []
         if self.media:
-            for _item_media in self.media:
-                if _item_media:
-                    _items.append(_item_media.to_dict())
+            for _item in self.media:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["media"] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> Institution:
         """Create an instance of Institution from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return Institution.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = Institution.parse_obj(
             {
                 "id": obj.get("id"),
                 "name": obj.get("name"),
-                "fullName": obj.get("fullName"),
-                "countries": [Country.from_dict(_item) for _item in obj["countries"]]
+                "full_name": obj.get("fullName"),
+                "countries": [
+                    Country.from_dict(_item) for _item in obj.get("countries")
+                ]
                 if obj.get("countries") is not None
                 else None,
-                "environmentType": obj.get("environmentType"),
-                "credentialsType": obj.get("credentialsType"),
-                "media": [Media.from_dict(_item) for _item in obj["media"]]
+                "environment_type": obj.get("environmentType"),
+                "credentials_type": obj.get("credentialsType"),
+                "media": [Media.from_dict(_item) for _item in obj.get("media")]
                 if obj.get("media") is not None
                 else None,
                 "features": obj.get("features"),

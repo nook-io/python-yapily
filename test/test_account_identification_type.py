@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestAccountIdentificationType(unittest.TestCase):
     """AccountIdentificationType unit test stubs"""
 

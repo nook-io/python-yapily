@@ -3,7 +3,6 @@
 A Balance Prediction profile for a User.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** | The status, will be COMPLETED which represents successful retreival of profile. | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of BalancePredictionProfile from a JSON string
 balance_prediction_profile_instance = BalancePredictionProfile.from_json(json)
 # print the JSON string representation of the object
-print(BalancePredictionProfile.to_json())
+print BalancePredictionProfile.to_json()
 
 # convert the object into a dict
 balance_prediction_profile_dict = balance_prediction_profile_instance.to_dict()

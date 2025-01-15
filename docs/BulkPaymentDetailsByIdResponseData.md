@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of BulkPaymentDetailsByIdResponseData from a JSON string
 bulk_payment_details_by_id_response_data_instance = BulkPaymentDetailsByIdResponseData.from_json(json)
 # print the JSON string representation of the object
-print(BulkPaymentDetailsByIdResponseData.to_json())
+print BulkPaymentDetailsByIdResponseData.to_json()
 
 # convert the object into a dict
 bulk_payment_details_by_id_response_data_dict = bulk_payment_details_by_id_response_data_instance.to_dict()

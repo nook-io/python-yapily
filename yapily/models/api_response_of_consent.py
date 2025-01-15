@@ -17,75 +17,52 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Dict, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from yapily.models.consent import Consent
 from yapily.models.raw_response import RawResponse
 from yapily.models.response_forwarded_data import ResponseForwardedData
 from yapily.models.response_meta import ResponseMeta
-from typing import Set
-from typing_extensions import Self
 
 
 class ApiResponseOfConsent(BaseModel):
     """
     ApiResponseOfConsent
-    """  # noqa: E501
+    """
 
     meta: Optional[ResponseMeta] = None
     data: Optional[Consent] = None
     links: Optional[Dict[str, StrictStr]] = None
-    forwarded_data: Optional[List[ResponseForwardedData]] = Field(
+    forwarded_data: Optional[conlist(ResponseForwardedData)] = Field(
         default=None, alias="forwardedData"
     )
-    raw: Optional[List[RawResponse]] = None
+    raw: Optional[conlist(RawResponse)] = None
     tracing_id: Optional[StrictStr] = Field(default=None, alias="tracingId")
-    __properties: ClassVar[List[str]] = [
-        "meta",
-        "data",
-        "links",
-        "forwardedData",
-        "raw",
-        "tracingId",
-    ]
+    __properties = ["meta", "data", "links", "forwardedData", "raw", "tracingId"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> ApiResponseOfConsent:
         """Create an instance of ApiResponseOfConsent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of meta
         if self.meta:
             _dict["meta"] = self.meta.to_dict()
@@ -95,47 +72,47 @@ class ApiResponseOfConsent(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in forwarded_data (list)
         _items = []
         if self.forwarded_data:
-            for _item_forwarded_data in self.forwarded_data:
-                if _item_forwarded_data:
-                    _items.append(_item_forwarded_data.to_dict())
+            for _item in self.forwarded_data:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["forwardedData"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in raw (list)
         _items = []
         if self.raw:
-            for _item_raw in self.raw:
-                if _item_raw:
-                    _items.append(_item_raw.to_dict())
+            for _item in self.raw:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["raw"] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> ApiResponseOfConsent:
         """Create an instance of ApiResponseOfConsent from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return ApiResponseOfConsent.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = ApiResponseOfConsent.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj["meta"])
+                "meta": ResponseMeta.from_dict(obj.get("meta"))
                 if obj.get("meta") is not None
                 else None,
-                "data": Consent.from_dict(obj["data"])
+                "data": Consent.from_dict(obj.get("data"))
                 if obj.get("data") is not None
                 else None,
                 "links": obj.get("links"),
-                "forwardedData": [
+                "forwarded_data": [
                     ResponseForwardedData.from_dict(_item)
-                    for _item in obj["forwardedData"]
+                    for _item in obj.get("forwardedData")
                 ]
                 if obj.get("forwardedData") is not None
                 else None,
-                "raw": [RawResponse.from_dict(_item) for _item in obj["raw"]]
+                "raw": [RawResponse.from_dict(_item) for _item in obj.get("raw")]
                 if obj.get("raw") is not None
                 else None,
-                "tracingId": obj.get("tracingId"),
+                "tracing_id": obj.get("tracingId"),
             }
         )
         return _obj

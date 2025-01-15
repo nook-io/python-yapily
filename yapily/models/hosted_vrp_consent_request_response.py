@@ -18,36 +18,35 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 from yapily.models.institution_identifiers import InstitutionIdentifiers
 from yapily.models.user_settings import UserSettings
 from yapily.models.vrp_setup_request import VRPSetupRequest
-from typing import Set
-from typing_extensions import Self
 
 
 class HostedVRPConsentRequestResponse(BaseModel):
     """
     HostedVRPConsentRequestResponse
-    """  # noqa: E501
+    """
 
     id: StrictStr = Field(
-        description="Represents the Unique Id of the VRP consent request"
+        default=..., description="Represents the Unique Id of the VRP consent request"
     )
     user_id: Optional[StrictStr] = Field(
         default=None,
-        description="Represents the Unique Id for the `User` assigned by Yapily.",
         alias="userId",
+        description="Represents the Unique Id for the `User` assigned by Yapily.",
     )
     application_user_id: Optional[StrictStr] = Field(
         default=None,
-        description="Represents the user-friendly reference to the `User`.",
         alias="applicationUserId",
+        description="Represents the user-friendly reference to the `User`.",
     )
     application_id: StrictStr = Field(
-        description="Represents the Unique Id of the `Application` the user is associated with.",
+        default=...,
         alias="applicationId",
+        description="Represents the Unique Id of the `Application` the user is associated with.",
     )
     institution_identifiers: Optional[InstitutionIdentifiers] = Field(
         default=None, alias="institutionIdentifiers"
@@ -55,28 +54,31 @@ class HostedVRPConsentRequestResponse(BaseModel):
     user_settings: Optional[UserSettings] = Field(default=None, alias="userSettings")
     redirect_url: Optional[StrictStr] = Field(
         default=None,
-        description="URL of client's server to redirect the PSU after completion of the consent authorisation.",
         alias="redirectUrl",
+        description="URL of client's server to redirect the PSU after completion of the consent authorisation.",
     )
     vrp_setup: Optional[VRPSetupRequest] = Field(default=None, alias="vrpSetup")
     hosted_url: StrictStr = Field(
-        description="Represents the URL of Hosted UI page for the applicationId which initiates the user journey for the Consent. <br> URL would be appended with authToken, applicationId and userSettings.",
+        default=...,
         alias="hostedUrl",
+        description="Represents the URL of Hosted UI page for the applicationId which initiates the user journey for the Consent. <br> URL would be appended with authToken, applicationId and userSettings.",
     )
     auth_token: StrictStr = Field(
-        description="Represents the JWT Token signed by the certificate-vault using Yapily's keys.",
+        default=...,
         alias="authToken",
+        description="Represents the JWT Token signed by the certificate-vault using Yapily's keys.",
     )
     created_at: datetime = Field(
-        description="Represents the date and time at which the Consent was created.",
+        default=...,
         alias="createdAt",
+        description="Represents the date and time at which the Consent was created.",
     )
     authorisation_expires_at: Optional[datetime] = Field(
         default=None,
-        description="Represents the date and time at which the auth Token will expire.",
         alias="authorisationExpiresAt",
+        description="Represents the date and time at which the auth Token will expire.",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "userId",
         "applicationUserId",
@@ -91,43 +93,28 @@ class HostedVRPConsentRequestResponse(BaseModel):
         "authorisationExpiresAt",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> HostedVRPConsentRequestResponse:
         """Create an instance of HostedVRPConsentRequestResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of institution_identifiers
         if self.institution_identifiers:
             _dict["institutionIdentifiers"] = self.institution_identifiers.to_dict()
@@ -140,36 +127,36 @@ class HostedVRPConsentRequestResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> HostedVRPConsentRequestResponse:
         """Create an instance of HostedVRPConsentRequestResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return HostedVRPConsentRequestResponse.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = HostedVRPConsentRequestResponse.parse_obj(
             {
                 "id": obj.get("id"),
-                "userId": obj.get("userId"),
-                "applicationUserId": obj.get("applicationUserId"),
-                "applicationId": obj.get("applicationId"),
-                "institutionIdentifiers": InstitutionIdentifiers.from_dict(
-                    obj["institutionIdentifiers"]
+                "user_id": obj.get("userId"),
+                "application_user_id": obj.get("applicationUserId"),
+                "application_id": obj.get("applicationId"),
+                "institution_identifiers": InstitutionIdentifiers.from_dict(
+                    obj.get("institutionIdentifiers")
                 )
                 if obj.get("institutionIdentifiers") is not None
                 else None,
-                "userSettings": UserSettings.from_dict(obj["userSettings"])
+                "user_settings": UserSettings.from_dict(obj.get("userSettings"))
                 if obj.get("userSettings") is not None
                 else None,
-                "redirectUrl": obj.get("redirectUrl"),
-                "vrpSetup": VRPSetupRequest.from_dict(obj["vrpSetup"])
+                "redirect_url": obj.get("redirectUrl"),
+                "vrp_setup": VRPSetupRequest.from_dict(obj.get("vrpSetup"))
                 if obj.get("vrpSetup") is not None
                 else None,
-                "hostedUrl": obj.get("hostedUrl"),
-                "authToken": obj.get("authToken"),
-                "createdAt": obj.get("createdAt"),
-                "authorisationExpiresAt": obj.get("authorisationExpiresAt"),
+                "hosted_url": obj.get("hostedUrl"),
+                "auth_token": obj.get("authToken"),
+                "created_at": obj.get("createdAt"),
+                "authorisation_expires_at": obj.get("authorisationExpiresAt"),
             }
         )
         return _obj

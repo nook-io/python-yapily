@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reference** | **str** | The payment reference or description. Limited to a maximum of 18 characters for UK institutions. | [optional] 
@@ -23,7 +22,7 @@ json = "{}"
 # create an instance of HostedPaymentRequestDetailsLink from a JSON string
 hosted_payment_request_details_link_instance = HostedPaymentRequestDetailsLink.from_json(json)
 # print the JSON string representation of the object
-print(HostedPaymentRequestDetailsLink.to_json())
+print HostedPaymentRequestDetailsLink.to_json()
 
 # convert the object into a dict
 hosted_payment_request_details_link_dict = hosted_payment_request_details_link_instance.to_dict()

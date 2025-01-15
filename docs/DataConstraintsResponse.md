@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **institution_id** | **str** | The id to represent the &#x60;Institution&#x60;. | 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of DataConstraintsResponse from a JSON string
 data_constraints_response_instance = DataConstraintsResponse.from_json(json)
 # print the JSON string representation of the object
-print(DataConstraintsResponse.to_json())
+print DataConstraintsResponse.to_json()
 
 # convert the object into a dict
 data_constraints_response_dict = data_constraints_response_instance.to_dict()

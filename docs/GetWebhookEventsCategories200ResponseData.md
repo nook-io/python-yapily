@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **categories** | [**List[CategoryStructure]**](CategoryStructure.md) |  | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of GetWebhookEventsCategories200ResponseData from a JSON string
 get_webhook_events_categories200_response_data_instance = GetWebhookEventsCategories200ResponseData.from_json(json)
 # print the JSON string representation of the object
-print(GetWebhookEventsCategories200ResponseData.to_json())
+print GetWebhookEventsCategories200ResponseData.to_json()
 
 # convert the object into a dict
 get_webhook_events_categories200_response_data_dict = get_webhook_events_categories200_response_data_instance.to_dict()

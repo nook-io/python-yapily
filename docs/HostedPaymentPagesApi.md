@@ -26,8 +26,9 @@ Used to initiate a payment request using Yapily Hosted Pages.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_create_hosted_payment_request import ApiResponseOfCreateHostedPaymentRequest
 from yapily.models.create_hosted_payment_request import CreateHostedPaymentRequest
@@ -70,7 +71,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_hosted_payment_request** | [**CreateHostedPaymentRequest**](CreateHostedPaymentRequest.md)|  | 
@@ -89,7 +89,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -110,8 +109,9 @@ Used to created a long lived payment request for Pay By Link
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_create_hosted_payment_request_link import ApiResponseOfCreateHostedPaymentRequestLink
 from yapily.models.create_hosted_payment_request_link import CreateHostedPaymentRequestLink
@@ -154,7 +154,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_hosted_payment_request_link** | [**CreateHostedPaymentRequestLink**](CreateHostedPaymentRequestLink.md)|  | 
@@ -173,7 +172,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -194,8 +192,9 @@ Used to initiate a VRP consent / mandate request through Yapily Hosted Pages
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_create_hosted_vrp_consent_request import ApiResponseOfCreateHostedVRPConsentRequest
 from yapily.models.create_hosted_vrp_consent_request import CreateHostedVRPConsentRequest
@@ -239,7 +238,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sub_application** | **str**| __Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant) | 
@@ -259,7 +257,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -279,8 +276,9 @@ Confirms whether there are available funds on the Payer account to execute a Var
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_funds_confirmation_response import ApiResponseOfFundsConfirmationResponse
 from yapily.models.funds_confirmation_request import FundsConfirmationRequest
@@ -326,7 +324,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_request_id** | **str**| Unique Identifier of the Consent Request | 
@@ -348,7 +345,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -367,8 +363,9 @@ Creates a Variable Recurring Payment
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_create_hosted_vrp_payment_request import ApiResponseOfCreateHostedVRPPaymentRequest
 from yapily.models.create_hosted_vrp_payment_request import CreateHostedVRPPaymentRequest
@@ -414,7 +411,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_request_id** | **str**| Unique Identifier of the Consent Request | 
@@ -436,7 +432,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -455,8 +450,9 @@ Used to get details of a payment request
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_get_hosted_payment_request import ApiResponseOfGetHostedPaymentRequest
 from yapily.rest import ApiException
@@ -498,7 +494,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_request_id** | **str**| Unique Identifier of the payment request | 
@@ -517,7 +512,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -538,8 +532,9 @@ Used to get details of a VRP Consent Request
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_get_hosted_vrp_consent_request import ApiResponseOfGetHostedVRPConsentRequest
 from yapily.rest import ApiException
@@ -582,7 +577,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_request_id** | **str**| Unique Identifier of the Consent Request | 
@@ -602,7 +596,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -622,8 +615,9 @@ Used to get all VRP consent requests initiated through Yapily Hosted Pages
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_get_hosted_vrp_consents_request import ApiResponseOfGetHostedVRPConsentsRequest
 from yapily.rest import ApiException
@@ -665,7 +659,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sub_application** | **str**| __Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant) | 
@@ -684,7 +677,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -704,8 +696,9 @@ Used to get details of a VRP Payment
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_get_hosted_vrp_payment_request import ApiResponseOfGetHostedVRPPaymentRequest
 from yapily.rest import ApiException
@@ -749,7 +742,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_request_id** | **str**| Unique Identifier of the Consent Request | 
@@ -770,7 +762,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -790,8 +781,9 @@ Revoke Hosted VRP Consent Request
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_revoke_hosted_vrp_consent_request import ApiResponseOfRevokeHostedVRPConsentRequest
 from yapily.rest import ApiException
@@ -834,7 +826,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_request_id** | **str**| Unique Identifier of the Consent Request | 
@@ -854,7 +845,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

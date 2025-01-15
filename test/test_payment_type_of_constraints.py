@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestPaymentTypeOfConstraints(unittest.TestCase):
     """PaymentTypeOfConstraints unit test stubs"""
 

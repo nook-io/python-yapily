@@ -3,7 +3,6 @@
 Details of the benefactor [person or business].
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The account holder name of the Payer. | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of PayerDetailsResponse from a JSON string
 payer_details_response_instance = PayerDetailsResponse.from_json(json)
 # print the JSON string representation of the object
-print(PayerDetailsResponse.to_json())
+print PayerDetailsResponse.to_json()
 
 # convert the object into a dict
 payer_details_response_dict = payer_details_response_instance.to_dict()

@@ -3,7 +3,6 @@
 Define the restrictions and limits for payment orders as part of Sweeping VRP consent
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **psu_authentication_methods** | **List[str]** | __Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED]. | 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of SweepingControlParameters from a JSON string
 sweeping_control_parameters_instance = SweepingControlParameters.from_json(json)
 # print the JSON string representation of the object
-print(SweepingControlParameters.to_json())
+print SweepingControlParameters.to_json()
 
 # convert the object into a dict
 sweeping_control_parameters_dict = sweeping_control_parameters_instance.to_dict()

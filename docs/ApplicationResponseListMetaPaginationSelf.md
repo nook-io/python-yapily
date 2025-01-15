@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **offset** | **int** | The number of skipped applications. | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of ApplicationResponseListMetaPaginationSelf from a JSON string
 application_response_list_meta_pagination_self_instance = ApplicationResponseListMetaPaginationSelf.from_json(json)
 # print the JSON string representation of the object
-print(ApplicationResponseListMetaPaginationSelf.to_json())
+print ApplicationResponseListMetaPaginationSelf.to_json()
 
 # convert the object into a dict
 application_response_list_meta_pagination_self_dict = application_response_list_meta_pagination_self_instance.to_dict()

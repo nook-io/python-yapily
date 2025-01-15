@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr
 from yapily.models.amount import Amount
 from yapily.models.international_payment_request import InternationalPaymentRequest
 from yapily.models.payee import Payee
@@ -27,18 +27,17 @@ from yapily.models.payer import Payer
 from yapily.models.payment_context_type import PaymentContextType
 from yapily.models.payment_type import PaymentType
 from yapily.models.periodic_payment_request import PeriodicPaymentRequest
-from typing import Set
-from typing_extensions import Self
 
 
 class PaymentRequest(BaseModel):
     """
-    __Mandatory__. The payment request object defining the details of the payment.
-    """  # noqa: E501
+    __Mandatory__. The payment request object defining the details of the payment.  # noqa: E501
+    """
 
     payment_idempotency_id: StrictStr = Field(
-        description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
+        default=...,
         alias="paymentIdempotencyId",
+        description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
     )
     payer: Optional[Payer] = None
     reference: Optional[StrictStr] = Field(
@@ -46,33 +45,33 @@ class PaymentRequest(BaseModel):
         description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.",
     )
     context_type: Optional[PaymentContextType] = Field(
-        default=PaymentContextType.OTHER, alias="contextType"
+        default=None, alias="contextType"
     )
     purpose_code: Optional[StrictStr] = Field(
         default=None,
-        description="__Optional__. The payment purpose code. <br><br>Allowed values: INTP, DEPT, BEXP, LICF, SERV, SUPP, TRAD, SUBS, GDSV, ROYA, COMT, CHAR, ECPR, CLPR, INTE, LOAN, LOAR, INPC, INPR, INSC, INSU, LIFI, PPTI, HLRP, HLST, PDEP, IVPT, REBT, REFU, CDBL, CPKC, EDUC, FEES, GAMB, LOTT, GIFT, INSM, REOD, GOVT, TCSC, BLDM, RENT, DIVD, INVS, SAVG, HLTI, DNTS, LTCF, MDCS, VIEW, BECH, BENE, SSBE, PEFC, PENS, ADCS, BONU, COMM, SALA, ESTX, HSTX, INTX, PTXP, RDTX, TAXS, VATX, WHLD, TAXR, CBTV, ELEC, GASB, PHON, UBIL, WTER . <br><br>See [Payment Purpose code](https://docs.yapily.com/pages/payments/payments-resources/tri-pilot/) to see the definition of each code",
         alias="purposeCode",
+        description="__Optional__. The payment purpose code. <br><br>Allowed values: INTP, DEPT, BEXP, LICF, SERV, SUPP, TRAD, SUBS, GDSV, ROYA, COMT, CHAR, ECPR, CLPR, INTE, LOAN, LOAR, INPC, INPR, INSC, INSU, LIFI, PPTI, HLRP, HLST, PDEP, IVPT, REBT, REFU, CDBL, CPKC, EDUC, FEES, GAMB, LOTT, GIFT, INSM, REOD, GOVT, TCSC, BLDM, RENT, DIVD, INVS, SAVG, HLTI, DNTS, LTCF, MDCS, VIEW, BECH, BENE, SSBE, PEFC, PENS, ADCS, BONU, COMM, SALA, ESTX, HSTX, INTX, PTXP, RDTX, TAXS, VATX, WHLD, TAXR, CBTV, ELEC, GASB, PHON, UBIL, WTER . <br><br>See [Payment Purpose code](https://docs.yapily.com/pages/payments/payments-resources/tri-pilot/) to see the definition of each code",
     )
-    type: PaymentType
-    payee: Payee
+    type: PaymentType = Field(...)
+    payee: Payee = Field(...)
     periodic_payment: Optional[PeriodicPaymentRequest] = Field(
         default=None, alias="periodicPayment"
     )
     international_payment: Optional[InternationalPaymentRequest] = Field(
         default=None, alias="internationalPayment"
     )
-    amount: Amount
+    amount: Amount = Field(...)
     payment_date_time: Optional[datetime] = Field(
         default=None,
-        description="__Conditional__. Used to specify the date of the payment when the payment type is one of the following:<ul>    <li><code>DOMESTIC_SCHEDULED_PAYMENT</code></li>    <li><code>DOMESTIC_PERIODIC_PAYMENT</code></li>    <li><code>INTERNATIONAL_SCHEDULED_PAYMENT</code></li>    <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>",
         alias="paymentDateTime",
+        description="__Conditional__. Used to specify the date of the payment when the payment type is one of the following:<ul>    <li><code>DOMESTIC_SCHEDULED_PAYMENT</code></li>    <li><code>DOMESTIC_PERIODIC_PAYMENT</code></li>    <li><code>INTERNATIONAL_SCHEDULED_PAYMENT</code></li>    <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>",
     )
     read_refund_account: Optional[StrictBool] = Field(
         default=None,
-        description="__Optional__. Used to request the payer details in the payment response when the `Institution` provides the feature `READ_DOMESTIC_SINGLE_REFUND`.<br><br>See [Reverse Payments](https://docs.yapily.com/pages/knowledge/open-banking/reverse_payments/) for more information.",
         alias="readRefundAccount",
+        description="__Optional__. Used to request the payer details in the payment response when the `Institution` provides the feature `READ_DOMESTIC_SINGLE_REFUND`.<br><br>See [Reverse Payments](https://docs.yapily.com/pages/knowledge/open-banking/reverse_payments/) for more information.",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "paymentIdempotencyId",
         "payer",
         "reference",
@@ -87,43 +86,28 @@ class PaymentRequest(BaseModel):
         "readRefundAccount",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> PaymentRequest:
         """Create an instance of PaymentRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of payer
         if self.payer:
             _dict["payer"] = self.payer.to_dict()
@@ -142,44 +126,42 @@ class PaymentRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> PaymentRequest:
         """Create an instance of PaymentRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PaymentRequest.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = PaymentRequest.parse_obj(
             {
-                "paymentIdempotencyId": obj.get("paymentIdempotencyId"),
-                "payer": Payer.from_dict(obj["payer"])
+                "payment_idempotency_id": obj.get("paymentIdempotencyId"),
+                "payer": Payer.from_dict(obj.get("payer"))
                 if obj.get("payer") is not None
                 else None,
                 "reference": obj.get("reference"),
-                "contextType": obj.get("contextType")
-                if obj.get("contextType") is not None
-                else PaymentContextType.OTHER,
-                "purposeCode": obj.get("purposeCode"),
+                "context_type": obj.get("contextType"),
+                "purpose_code": obj.get("purposeCode"),
                 "type": obj.get("type"),
-                "payee": Payee.from_dict(obj["payee"])
+                "payee": Payee.from_dict(obj.get("payee"))
                 if obj.get("payee") is not None
                 else None,
-                "periodicPayment": PeriodicPaymentRequest.from_dict(
-                    obj["periodicPayment"]
+                "periodic_payment": PeriodicPaymentRequest.from_dict(
+                    obj.get("periodicPayment")
                 )
                 if obj.get("periodicPayment") is not None
                 else None,
-                "internationalPayment": InternationalPaymentRequest.from_dict(
-                    obj["internationalPayment"]
+                "international_payment": InternationalPaymentRequest.from_dict(
+                    obj.get("internationalPayment")
                 )
                 if obj.get("internationalPayment") is not None
                 else None,
-                "amount": Amount.from_dict(obj["amount"])
+                "amount": Amount.from_dict(obj.get("amount"))
                 if obj.get("amount") is not None
                 else None,
-                "paymentDateTime": obj.get("paymentDateTime"),
-                "readRefundAccount": obj.get("readRefundAccount"),
+                "payment_date_time": obj.get("paymentDateTime"),
+                "read_refund_account": obj.get("readRefundAccount"),
             }
         )
         return _obj

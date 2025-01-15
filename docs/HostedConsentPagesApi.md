@@ -18,8 +18,9 @@ Used to initiate a consent request using Yapily Hosted Pages.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_create_hosted_consent_request import ApiResponseOfCreateHostedConsentRequest
 from yapily.models.create_hosted_consent_request import CreateHostedConsentRequest
@@ -62,7 +63,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_hosted_consent_request** | [**CreateHostedConsentRequest**](CreateHostedConsentRequest.md)|  | 
@@ -81,7 +81,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -102,8 +101,9 @@ Used to get details of a hosted consent request
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_get_hosted_consent_request import ApiResponseOfGetHostedConsentRequest
 from yapily.rest import ApiException
@@ -145,7 +145,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_request_id** | **str**| Unique Identifier of the consent request | 
@@ -164,7 +163,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

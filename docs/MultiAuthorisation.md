@@ -3,7 +3,6 @@
 Details the additional levels of authorisation which are required from, and being managed by, the `Institution`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** | _Mandatory_. Specifies the current status of the multi-authorisation flow. | [optional] 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of MultiAuthorisation from a JSON string
 multi_authorisation_instance = MultiAuthorisation.from_json(json)
 # print the JSON string representation of the object
-print(MultiAuthorisation.to_json())
+print MultiAuthorisation.to_json()
 
 # convert the object into a dict
 multi_authorisation_dict = multi_authorisation_instance.to_dict()

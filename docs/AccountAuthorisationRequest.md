@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** | &#x60;User&#x60; for which the authorisation request was created. | [optional] 
@@ -24,7 +23,7 @@ json = "{}"
 # create an instance of AccountAuthorisationRequest from a JSON string
 account_authorisation_request_instance = AccountAuthorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print(AccountAuthorisationRequest.to_json())
+print AccountAuthorisationRequest.to_json()
 
 # convert the object into a dict
 account_authorisation_request_dict = account_authorisation_request_instance.to_dict()

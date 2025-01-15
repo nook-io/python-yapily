@@ -17,8 +17,9 @@ Get the information about the institutions configured in your application
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.application import Application
 from yapily.rest import ApiException
@@ -58,7 +59,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -75,7 +75,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

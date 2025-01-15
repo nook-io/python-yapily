@@ -3,7 +3,6 @@
 Details of the Account Request.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **transaction_from** | **datetime** | Specifies the earliest date of the transaction records to be returned.&lt;br&gt;&lt;br&gt; You must supply this field to retrieve transactions older than 90 days for banks accessed via the the [CBI Globe Gateway](https://docs.yapily.com/pages/data/financial-data-resources/data-restrictions/#cbi-globe-gateway). | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of HostedAccountRequestDetailsResponse from a JSON string
 hosted_account_request_details_response_instance = HostedAccountRequestDetailsResponse.from_json(json)
 # print the JSON string representation of the object
-print(HostedAccountRequestDetailsResponse.to_json())
+print HostedAccountRequestDetailsResponse.to_json()
 
 # convert the object into a dict
 hosted_account_request_details_response_dict = hosted_account_request_details_response_instance.to_dict()

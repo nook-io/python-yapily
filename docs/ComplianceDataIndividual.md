@@ -3,7 +3,6 @@
 __Conditional__. Mandatory if the type is INDIVIDUAL.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | This is the first and last name of your end user. | 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of ComplianceDataIndividual from a JSON string
 compliance_data_individual_instance = ComplianceDataIndividual.from_json(json)
 # print the JSON string representation of the object
-print(ComplianceDataIndividual.to_json())
+print ComplianceDataIndividual.to_json()
 
 # convert the object into a dict
 compliance_data_individual_dict = compliance_data_individual_instance.to_dict()

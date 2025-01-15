@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tracing_id** | **str** | Unique identifier of the request, used by Yapily for support purposes | 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of ErrorDetails from a JSON string
 error_details_instance = ErrorDetails.from_json(json)
 # print the JSON string representation of the object
-print(ErrorDetails.to_json())
+print ErrorDetails.to_json()
 
 # convert the object into a dict
 error_details_dict = error_details_instance.to_dict()

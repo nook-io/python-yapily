@@ -3,7 +3,6 @@
 The payment amount and currency
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount_to_pay** | **float** | The payment amount | 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of HostedAmountDetails from a JSON string
 hosted_amount_details_instance = HostedAmountDetails.from_json(json)
 # print the JSON string representation of the object
-print(HostedAmountDetails.to_json())
+print HostedAmountDetails.to_json()
 
 # convert the object into a dict
 hosted_amount_details_dict = hosted_amount_details_instance.to_dict()

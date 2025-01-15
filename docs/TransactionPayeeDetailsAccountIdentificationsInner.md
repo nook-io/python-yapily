@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**AccountIdentificationType**](AccountIdentificationType.md) | Describes the format of the account. | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of TransactionPayeeDetailsAccountIdentificationsInner from a JSON string
 transaction_payee_details_account_identifications_inner_instance = TransactionPayeeDetailsAccountIdentificationsInner.from_json(json)
 # print the JSON string representation of the object
-print(TransactionPayeeDetailsAccountIdentificationsInner.to_json())
+print TransactionPayeeDetailsAccountIdentificationsInner.to_json()
 
 # convert the object into a dict
 transaction_payee_details_account_identifications_inner_dict = transaction_payee_details_account_identifications_inner_instance.to_dict()

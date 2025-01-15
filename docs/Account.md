@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the account. | [optional] 
@@ -29,7 +28,7 @@ json = "{}"
 # create an instance of Account from a JSON string
 account_instance = Account.from_json(json)
 # print the JSON string representation of the object
-print(Account.to_json())
+print Account.to_json()
 
 # convert the object into a dict
 account_dict = account_instance.to_dict()

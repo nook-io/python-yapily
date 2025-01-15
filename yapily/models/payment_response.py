@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Optional, Union
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, conlist
 from yapily.models.amount import Amount
 from yapily.models.exchange_rate_information_response import (
     ExchangeRateInformationResponse,
@@ -32,27 +32,25 @@ from yapily.models.payment_status import PaymentStatus
 from yapily.models.payment_status_details import PaymentStatusDetails
 from yapily.models.priority_code_enum import PriorityCodeEnum
 from yapily.models.refund_account import RefundAccount
-from typing import Set
-from typing_extensions import Self
 
 
 class PaymentResponse(BaseModel):
     """
     PaymentResponse
-    """  # noqa: E501
+    """
 
     id: Optional[StrictStr] = Field(
         default=None, description="Unique identifier of the payment."
     )
     institution_consent_id: Optional[StrictStr] = Field(
         default=None,
-        description="Identification of the consent at the Institution.",
         alias="institutionConsentId",
+        description="Identification of the consent at the Institution.",
     )
     payment_idempotency_id: Optional[StrictStr] = Field(
         default=None,
-        description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
         alias="paymentIdempotencyId",
+        description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
     )
     payment_lifecycle_id: Optional[StrictStr] = Field(
         default=None, alias="paymentLifecycleId"
@@ -77,64 +75,64 @@ class PaymentResponse(BaseModel):
     amount_details: Optional[Amount] = Field(default=None, alias="amountDetails")
     created_at: Optional[datetime] = Field(
         default=None,
-        description="Date and time of when the payment request was created.",
         alias="createdAt",
+        description="Date and time of when the payment request was created.",
     )
     first_payment_amount: Optional[Amount] = Field(
         default=None, alias="firstPaymentAmount"
     )
     first_payment_date_time: Optional[datetime] = Field(
         default=None,
-        description="Date and time of when the first payment request is to be made.",
         alias="firstPaymentDateTime",
+        description="Date and time of when the first payment request is to be made.",
     )
     next_payment_amount: Optional[Amount] = Field(
         default=None, alias="nextPaymentAmount"
     )
     next_payment_date_time: Optional[datetime] = Field(
         default=None,
-        description="__Conditional__. Defines when the recurring payment is to be made.",
         alias="nextPaymentDateTime",
+        description="__Conditional__. Defines when the recurring payment is to be made.",
     )
     final_payment_amount: Optional[Amount] = Field(
         default=None, alias="finalPaymentAmount"
     )
     final_payment_date_time: Optional[datetime] = Field(
         default=None,
-        description="Date and time of when the final payment is to be made.",
         alias="finalPaymentDateTime",
+        description="Date and time of when the final payment is to be made.",
     )
     number_of_payments: Optional[StrictInt] = Field(
         default=None,
-        description="Number of recurring payment requests to be made as part of the instructed payment schedule.",
         alias="numberOfPayments",
+        description="Number of recurring payment requests to be made as part of the instructed payment schedule.",
     )
     previous_payment_amount: Optional[Amount] = Field(
         default=None, alias="previousPaymentAmount"
     )
     previous_payment_date_time: Optional[datetime] = Field(
         default=None,
-        description="Date and time of when the previous payment request was posted.",
         alias="previousPaymentDateTime",
+        description="Date and time of when the previous payment request was posted.",
     )
-    charge_details: Optional[List[PaymentChargeDetails]] = Field(
+    charge_details: Optional[conlist(PaymentChargeDetails)] = Field(
         default=None, alias="chargeDetails"
     )
     scheduled_payment_type: Optional[StrictStr] = Field(
         default=None,
-        description="Details the execution type and the payment date between the payer and the payee.",
         alias="scheduledPaymentType",
+        description="Details the execution type and the payment date between the payer and the payee.",
     )
     scheduled_payment_date_time: Optional[datetime] = Field(
         default=None,
-        description="Date and time of when the scheduled payment request will be made.",
         alias="scheduledPaymentDateTime",
+        description="Date and time of when the scheduled payment request will be made.",
     )
     frequency: Optional[FrequencyResponse] = None
     currency_of_transfer: Optional[StrictStr] = Field(
         default=None,
-        description="__Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer's account. Specified as a 3-letter code (ISO 4217).",
         alias="currencyOfTransfer",
+        description="__Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer's account. Specified as a 3-letter code (ISO 4217).",
     )
     purpose: Optional[StrictStr] = Field(
         default=None,
@@ -148,7 +146,7 @@ class PaymentResponse(BaseModel):
     bulk_amount_sum: Optional[Union[StrictFloat, StrictInt]] = Field(
         default=None, alias="bulkAmountSum"
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "institutionConsentId",
         "paymentIdempotencyId",
@@ -183,43 +181,28 @@ class PaymentResponse(BaseModel):
         "bulkAmountSum",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> PaymentResponse:
         """Create an instance of PaymentResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of status_details
         if self.status_details:
             _dict["statusDetails"] = self.status_details.to_dict()
@@ -247,9 +230,9 @@ class PaymentResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in charge_details (list)
         _items = []
         if self.charge_details:
-            for _item_charge_details in self.charge_details:
-                if _item_charge_details:
-                    _items.append(_item_charge_details.to_dict())
+            for _item in self.charge_details:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["chargeDetails"] = _items
         # override the default output from pydantic by calling `to_dict()` of frequency
         if self.frequency:
@@ -263,77 +246,81 @@ class PaymentResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> PaymentResponse:
         """Create an instance of PaymentResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PaymentResponse.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = PaymentResponse.parse_obj(
             {
                 "id": obj.get("id"),
-                "institutionConsentId": obj.get("institutionConsentId"),
-                "paymentIdempotencyId": obj.get("paymentIdempotencyId"),
-                "paymentLifecycleId": obj.get("paymentLifecycleId"),
+                "institution_consent_id": obj.get("institutionConsentId"),
+                "payment_idempotency_id": obj.get("paymentIdempotencyId"),
+                "payment_lifecycle_id": obj.get("paymentLifecycleId"),
                 "status": obj.get("status"),
-                "statusDetails": PaymentStatusDetails.from_dict(obj["statusDetails"])
+                "status_details": PaymentStatusDetails.from_dict(
+                    obj.get("statusDetails")
+                )
                 if obj.get("statusDetails") is not None
                 else None,
-                "payer": Payer.from_dict(obj["payer"])
+                "payer": Payer.from_dict(obj.get("payer"))
                 if obj.get("payer") is not None
                 else None,
-                "payeeDetails": Payee.from_dict(obj["payeeDetails"])
+                "payee_details": Payee.from_dict(obj.get("payeeDetails"))
                 if obj.get("payeeDetails") is not None
                 else None,
                 "reference": obj.get("reference"),
                 "amount": obj.get("amount"),
                 "currency": obj.get("currency"),
-                "amountDetails": Amount.from_dict(obj["amountDetails"])
+                "amount_details": Amount.from_dict(obj.get("amountDetails"))
                 if obj.get("amountDetails") is not None
                 else None,
-                "createdAt": obj.get("createdAt"),
-                "firstPaymentAmount": Amount.from_dict(obj["firstPaymentAmount"])
+                "created_at": obj.get("createdAt"),
+                "first_payment_amount": Amount.from_dict(obj.get("firstPaymentAmount"))
                 if obj.get("firstPaymentAmount") is not None
                 else None,
-                "firstPaymentDateTime": obj.get("firstPaymentDateTime"),
-                "nextPaymentAmount": Amount.from_dict(obj["nextPaymentAmount"])
+                "first_payment_date_time": obj.get("firstPaymentDateTime"),
+                "next_payment_amount": Amount.from_dict(obj.get("nextPaymentAmount"))
                 if obj.get("nextPaymentAmount") is not None
                 else None,
-                "nextPaymentDateTime": obj.get("nextPaymentDateTime"),
-                "finalPaymentAmount": Amount.from_dict(obj["finalPaymentAmount"])
+                "next_payment_date_time": obj.get("nextPaymentDateTime"),
+                "final_payment_amount": Amount.from_dict(obj.get("finalPaymentAmount"))
                 if obj.get("finalPaymentAmount") is not None
                 else None,
-                "finalPaymentDateTime": obj.get("finalPaymentDateTime"),
-                "numberOfPayments": obj.get("numberOfPayments"),
-                "previousPaymentAmount": Amount.from_dict(obj["previousPaymentAmount"])
+                "final_payment_date_time": obj.get("finalPaymentDateTime"),
+                "number_of_payments": obj.get("numberOfPayments"),
+                "previous_payment_amount": Amount.from_dict(
+                    obj.get("previousPaymentAmount")
+                )
                 if obj.get("previousPaymentAmount") is not None
                 else None,
-                "previousPaymentDateTime": obj.get("previousPaymentDateTime"),
-                "chargeDetails": [
+                "previous_payment_date_time": obj.get("previousPaymentDateTime"),
+                "charge_details": [
                     PaymentChargeDetails.from_dict(_item)
-                    for _item in obj["chargeDetails"]
+                    for _item in obj.get("chargeDetails")
                 ]
                 if obj.get("chargeDetails") is not None
                 else None,
-                "scheduledPaymentType": obj.get("scheduledPaymentType"),
-                "scheduledPaymentDateTime": obj.get("scheduledPaymentDateTime"),
-                "frequency": FrequencyResponse.from_dict(obj["frequency"])
+                "scheduled_payment_type": obj.get("scheduledPaymentType"),
+                "scheduled_payment_date_time": obj.get("scheduledPaymentDateTime"),
+                "frequency": FrequencyResponse.from_dict(obj.get("frequency"))
                 if obj.get("frequency") is not None
                 else None,
-                "currencyOfTransfer": obj.get("currencyOfTransfer"),
+                "currency_of_transfer": obj.get("currencyOfTransfer"),
                 "purpose": obj.get("purpose"),
                 "priority": obj.get("priority"),
-                "exchangeRate": ExchangeRateInformationResponse.from_dict(
-                    obj["exchangeRate"]
+                "exchange_rate": ExchangeRateInformationResponse.from_dict(
+                    obj.get("exchangeRate")
                 )
                 if obj.get("exchangeRate") is not None
                 else None,
-                "refundAccount": RefundAccount.from_dict(obj["refundAccount"])
+                "refund_account": RefundAccount.from_dict(obj.get("refundAccount"))
                 if obj.get("refundAccount") is not None
                 else None,
-                "bulkAmountSum": obj.get("bulkAmountSum"),
+                "bulk_amount_sum": obj.get("bulkAmountSum"),
             }
         )
         return _obj

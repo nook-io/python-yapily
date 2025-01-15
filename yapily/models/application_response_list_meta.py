@@ -17,85 +17,68 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, conint
 from yapily.models.application_response_list_meta_pagination import (
     ApplicationResponseListMetaPagination,
 )
-from typing import Set
-from typing_extensions import Self
 
 
 class ApplicationResponseListMeta(BaseModel):
     """
     ApplicationResponseListMeta
-    """  # noqa: E501
+    """
 
     tracing_id: Optional[StrictStr] = Field(default=None, alias="tracingId")
-    count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(
+    count: Optional[conint(strict=True, ge=0)] = Field(
         default=None, description="The number of applications in the current page."
     )
     pagination: Optional[ApplicationResponseListMetaPagination] = None
-    __properties: ClassVar[List[str]] = ["tracingId", "count", "pagination"]
+    __properties = ["tracingId", "count", "pagination"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> ApplicationResponseListMeta:
         """Create an instance of ApplicationResponseListMeta from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of pagination
         if self.pagination:
             _dict["pagination"] = self.pagination.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> ApplicationResponseListMeta:
         """Create an instance of ApplicationResponseListMeta from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return ApplicationResponseListMeta.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = ApplicationResponseListMeta.parse_obj(
             {
-                "tracingId": obj.get("tracingId"),
+                "tracing_id": obj.get("tracingId"),
                 "count": obj.get("count"),
                 "pagination": ApplicationResponseListMetaPagination.from_dict(
-                    obj["pagination"]
+                    obj.get("pagination")
                 )
                 if obj.get("pagination") is not None
                 else None,

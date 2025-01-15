@@ -18,94 +18,78 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Set
-from typing_extensions import Self
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 
 
 class PostAccountsAccountIdTransactionsCategorisationRequest(BaseModel):
     """
     PostAccountsAccountIdTransactionsCategorisationRequest
-    """  # noqa: E501
+    """
 
     country_code: StrictStr = Field(
-        description="_Mandatory_, ISO 3166-1 alpha-2 two-letter country codes e.g. GB",
+        default=...,
         alias="countryCode",
+        description="_Mandatory_, ISO 3166-1 alpha-2 two-letter country codes e.g. GB",
     )
     categorisation_type: StrictStr = Field(
-        description="__Mandatory__. Allowed values are `consumer` and `business`.",
+        default=...,
         alias="categorisationType",
+        description="__Mandatory__. Allowed values are `consumer` and `business`.",
     )
     var_from: Optional[datetime] = Field(
         default=None,
-        description="__Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). ",
         alias="from",
+        description="__Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). ",
     )
     before: Optional[datetime] = Field(
         default=None,
         description="__Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).",
     )
-    __properties: ClassVar[List[str]] = [
-        "countryCode",
-        "categorisationType",
-        "from",
-        "before",
-    ]
+    __properties = ["countryCode", "categorisationType", "from", "before"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(
+        cls, json_str: str
+    ) -> PostAccountsAccountIdTransactionsCategorisationRequest:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisationRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(
+        cls, obj: dict
+    ) -> PostAccountsAccountIdTransactionsCategorisationRequest:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisationRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PostAccountsAccountIdTransactionsCategorisationRequest.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = PostAccountsAccountIdTransactionsCategorisationRequest.parse_obj(
             {
-                "countryCode": obj.get("countryCode"),
-                "categorisationType": obj.get("categorisationType"),
-                "from": obj.get("from"),
+                "country_code": obj.get("countryCode"),
+                "categorisation_type": obj.get("categorisationType"),
+                "var_from": obj.get("from"),
                 "before": obj.get("before"),
             }
         )

@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestAuthorisationStatus(unittest.TestCase):
     """AuthorisationStatus unit test stubs"""
 

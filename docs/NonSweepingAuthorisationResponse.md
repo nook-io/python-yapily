@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -32,7 +31,7 @@ json = "{}"
 # create an instance of NonSweepingAuthorisationResponse from a JSON string
 non_sweeping_authorisation_response_instance = NonSweepingAuthorisationResponse.from_json(json)
 # print the JSON string representation of the object
-print(NonSweepingAuthorisationResponse.to_json())
+print NonSweepingAuthorisationResponse.to_json()
 
 # convert the object into a dict
 non_sweeping_authorisation_response_dict = non_sweeping_authorisation_response_instance.to_dict()

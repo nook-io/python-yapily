@@ -30,8 +30,9 @@ Used to initiate the authorisation process and direct users to the login screen 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_authorisation_request_response import ApiResponseOfPaymentAuthorisationRequestResponse
 from yapily.models.bulk_payment_authorisation_request import BulkPaymentAuthorisationRequest
@@ -78,7 +79,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bulk_payment_authorisation_request** | [**BulkPaymentAuthorisationRequest**](BulkPaymentAuthorisationRequest.md)|  | 
@@ -101,7 +101,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -119,8 +118,9 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
 from yapily.models.bulk_payment_embedded_authorisation_request import BulkPaymentEmbeddedAuthorisationRequest
@@ -167,7 +167,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bulk_payment_embedded_authorisation_request** | [**BulkPaymentEmbeddedAuthorisationRequest**](BulkPaymentEmbeddedAuthorisationRequest.md)|  | 
@@ -190,7 +189,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -208,8 +206,9 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
 from yapily.models.payment_embedded_authorisation_request import PaymentEmbeddedAuthorisationRequest
@@ -257,7 +256,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_embedded_authorisation_request** | [**PaymentEmbeddedAuthorisationRequest**](PaymentEmbeddedAuthorisationRequest.md)|  | 
@@ -281,7 +279,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -299,8 +296,9 @@ Used to initiate the authorisation process and direct users to the login screen 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_authorisation_request_response import ApiResponseOfPaymentAuthorisationRequestResponse
 from yapily.models.payment_authorisation_request import PaymentAuthorisationRequest
@@ -348,7 +346,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_authorisation_request** | [**PaymentAuthorisationRequest**](PaymentAuthorisationRequest.md)|  | 
@@ -372,7 +369,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -390,8 +386,9 @@ Used to initiate the pre-authorisation process for payments for CBI Globe instit
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_pre_authorisation_response import ApiResponseOfPreAuthorisationResponse
 from yapily.models.payment_pre_authorisation_request import PaymentPreAuthorisationRequest
@@ -437,7 +434,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_pre_authorisation_request** | [**PaymentPreAuthorisationRequest**](PaymentPreAuthorisationRequest.md)|  | 
@@ -459,7 +455,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -477,8 +472,9 @@ Used to initiate the pre-authorisation process for any `Institution` that contai
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_pre_authorisation_response import ApiResponseOfPreAuthorisationResponse
 from yapily.models.pre_authorisation_request import PreAuthorisationRequest
@@ -526,7 +522,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pre_authorisation_request** | [**PreAuthorisationRequest**](PreAuthorisationRequest.md)|  | 
@@ -550,7 +545,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -568,8 +562,9 @@ Used to initiate the authorisation process and direct users to the login screen 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.account_authorisation_request import AccountAuthorisationRequest
 from yapily.models.api_response_of_account_authorisation_response import ApiResponseOfAccountAuthorisationResponse
@@ -617,7 +612,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_authorisation_request** | [**AccountAuthorisationRequest**](AccountAuthorisationRequest.md)|  | 
@@ -641,7 +635,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -659,8 +652,9 @@ Used to initiate the embedded authorisation process for an `Institution` that co
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_embedded_account_authorisation_response import ApiResponseOfEmbeddedAccountAuthorisationResponse
 from yapily.models.embedded_account_authorisation_request import EmbeddedAccountAuthorisationRequest
@@ -708,7 +702,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **embedded_account_authorisation_request** | [**EmbeddedAccountAuthorisationRequest**](EmbeddedAccountAuthorisationRequest.md)|  | 
@@ -732,7 +725,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -750,8 +742,9 @@ Used to prompt the account holder for continued access to their financial data. 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_account_authorisation_response import ApiResponseOfAccountAuthorisationResponse
 from yapily.rest import ApiException
@@ -798,7 +791,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -822,7 +814,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -840,8 +831,9 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_embedded_account_authorisation_response import ApiResponseOfEmbeddedAccountAuthorisationResponse
 from yapily.models.embedded_account_authorisation_request import EmbeddedAccountAuthorisationRequest
@@ -890,7 +882,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_id** | **str**| __Mandatory__. The consent Id of the &#x60;Consent&#x60; to update. | 
@@ -915,7 +906,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -933,8 +923,9 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
 from yapily.models.bulk_payment_embedded_authorisation_request import BulkPaymentEmbeddedAuthorisationRequest
@@ -982,7 +973,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_id** | **str**| __Mandatory__. The consent Id of the &#x60;Consent&#x60; to update. | 
@@ -1006,7 +996,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -1024,8 +1013,9 @@ Used to pass the SCA Code received from the `Institution` (and the SCA method se
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_embedded_authorisation_request_response import ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
 from yapily.models.payment_embedded_authorisation_request import PaymentEmbeddedAuthorisationRequest
@@ -1074,7 +1064,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_id** | **str**| __Mandatory__. The consent Id of the &#x60;Consent&#x60; to update. | 
@@ -1099,7 +1088,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -1117,8 +1105,9 @@ Used to continue the authorisation process and for any `Institution` that contai
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_payment_authorisation_request_response import ApiResponseOfPaymentAuthorisationRequestResponse
 from yapily.models.payment_authorisation_request import PaymentAuthorisationRequest
@@ -1166,7 +1155,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -1190,7 +1178,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -1208,8 +1195,9 @@ Used to continue the authorisation process and for any `Institution` that contai
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.account_authorisation_request import AccountAuthorisationRequest
 from yapily.models.api_response_of_account_authorisation_response import ApiResponseOfAccountAuthorisationResponse
@@ -1258,7 +1246,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -1283,7 +1270,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

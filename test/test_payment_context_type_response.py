@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestPaymentContextTypeResponse(unittest.TestCase):
     """PaymentContextTypeResponse unit test stubs"""
 

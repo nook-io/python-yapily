@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the UUID of the registered webhook, used to update or remove the webhook | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of RegisteredWebhook from a JSON string
 registered_webhook_instance = RegisteredWebhook.from_json(json)
 # print the JSON string representation of the object
-print(RegisteredWebhook.to_json())
+print RegisteredWebhook.to_json()
 
 # convert the object into a dict
 registered_webhook_dict = registered_webhook_instance.to_dict()

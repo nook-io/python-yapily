@@ -3,7 +3,6 @@
 Details the charges that will apply to the transaction.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **charge_amount** | [**Amount**](Amount.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of TransactionChargeDetails from a JSON string
 transaction_charge_details_instance = TransactionChargeDetails.from_json(json)
 # print the JSON string representation of the object
-print(TransactionChargeDetails.to_json())
+print TransactionChargeDetails.to_json()
 
 # convert the object into a dict
 transaction_charge_details_dict = transaction_charge_details_instance.to_dict()

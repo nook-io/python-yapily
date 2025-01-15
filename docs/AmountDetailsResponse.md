@@ -3,7 +3,6 @@
 Monetary Amount.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **float** | The monetary value | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of AmountDetailsResponse from a JSON string
 amount_details_response_instance = AmountDetailsResponse.from_json(json)
 # print the JSON string representation of the object
-print(AmountDetailsResponse.to_json())
+print AmountDetailsResponse.to_json()
 
 # convert the object into a dict
 amount_details_response_dict = amount_details_response_instance.to_dict()

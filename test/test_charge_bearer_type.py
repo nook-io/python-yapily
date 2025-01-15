@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestChargeBearerType(unittest.TestCase):
     """ChargeBearerType unit test stubs"""
 

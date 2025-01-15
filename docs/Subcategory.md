@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of Subcategory from a JSON string
 subcategory_instance = Subcategory.from_json(json)
 # print the JSON string representation of the object
-print(Subcategory.to_json())
+print Subcategory.to_json()
 
 # convert the object into a dict
 subcategory_dict = subcategory_instance.to_dict()

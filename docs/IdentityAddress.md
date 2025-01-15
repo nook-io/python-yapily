@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_lines** | **List[str]** |  | [optional] 
@@ -24,7 +23,7 @@ json = "{}"
 # create an instance of IdentityAddress from a JSON string
 identity_address_instance = IdentityAddress.from_json(json)
 # print the JSON string representation of the object
-print(IdentityAddress.to_json())
+print IdentityAddress.to_json()
 
 # convert the object into a dict
 identity_address_dict = identity_address_instance.to_dict()

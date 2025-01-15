@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_line** | **str** | Information, in free format text, that identifies a specific address. | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of AddressDetails from a JSON string
 address_details_instance = AddressDetails.from_json(json)
 # print the JSON string representation of the object
-print(AddressDetails.to_json())
+print AddressDetails.to_json()
 
 # convert the object into a dict
 address_details_dict = address_details_instance.to_dict()

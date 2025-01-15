@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the embedded account authorisation request. | [optional] 
@@ -37,7 +36,7 @@ json = "{}"
 # create an instance of EmbeddedAccountAuthorisationResponse from a JSON string
 embedded_account_authorisation_response_instance = EmbeddedAccountAuthorisationResponse.from_json(json)
 # print the JSON string representation of the object
-print(EmbeddedAccountAuthorisationResponse.to_json())
+print EmbeddedAccountAuthorisationResponse.to_json()
 
 # convert the object into a dict
 embedded_account_authorisation_response_dict = embedded_account_authorisation_response_instance.to_dict()

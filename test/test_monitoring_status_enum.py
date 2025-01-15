@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestMonitoringStatusEnum(unittest.TestCase):
     """MonitoringStatusEnum unit test stubs"""
 

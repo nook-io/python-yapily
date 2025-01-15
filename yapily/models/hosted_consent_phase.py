@@ -18,81 +18,64 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Set
-from typing_extensions import Self
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 
 
 class HostedConsentPhase(BaseModel):
     """
-    The phase of the Consent Request.
-    """  # noqa: E501
+    The phase of the Consent Request.  # noqa: E501
+    """
 
     phase_name: Optional[StrictStr] = Field(
         default=None,
-        description="The name of the hosted consent process phase. Allowed values are : <ul> <li> INITIATED - Process initiated </li> <li> INSTITUTION_SUBMITTED - Consent institution submitted </li> <li>    AUTHORISATION_INITIATED - All details required for consent initiation have been collected</li> <li> AUTHORISATION_CREATED - Consent authorisation request created with Institution, awaiting authorisation completion </li> <li> AUTHORISATION_FAILED - Consent authorisation failed and will not proceed further</li> <li> AUTHORISATION_REJECTED - Consent Authorisation request rejected by Institution and will not proceed further </li> <li>    DECOUPLED_AUTHORISATION - For embedded banks, decoupled authorisation was initiated by the bank</li> <li>    EMBEDDED_CREDENTIAL_REQUESTED - For embedded banks, a UI element to collect user credentials was displayed</li> <li>    EMBEDDED_CODE_REQUESTED - For embedded banks, a UI element to collect SCA for initiated consent was displayed</li><li>    EMBEDDED_TYPE_REQUESTED - For embedded banks, a UI element to allow the user to select their preferred SCA method for this consent authorisation was displayed</li> <li>    EMBEDDED_CODE_COLLECTED - For embedded banks, SCA code was collected for consent authorisation</li><li>    EMBEDDED_TYPE_SELECTED - For embedded banks, preferred SCA method was selected for consent authorisation</li> <li>    CONSENT_POLLING_STARTED - We start polling the bank for consent authorisation status</li><li>    CONSENT_POLLING_ENDED - We finish polling the bank for consent authorisation status</li> <li> AUTHORISED - Consent authorisation completed </li> <li> FINISHED - Process finished </li>  </ul>",
         alias="phaseName",
+        description="The name of the hosted consent process phase. Allowed values are : <ul> <li> INITIATED - Process initiated </li> <li> INSTITUTION_SUBMITTED - Consent institution submitted </li> <li>    AUTHORISATION_INITIATED - All details required for consent initiation have been collected</li> <li> AUTHORISATION_CREATED - Consent authorisation request created with Institution, awaiting authorisation completion </li> <li> AUTHORISATION_FAILED - Consent authorisation failed and will not proceed further</li> <li> AUTHORISATION_REJECTED - Consent Authorisation request rejected by Institution and will not proceed further </li> <li>    DECOUPLED_AUTHORISATION - For embedded banks, decoupled authorisation was initiated by the bank</li> <li>    EMBEDDED_CREDENTIAL_REQUESTED - For embedded banks, a UI element to collect user credentials was displayed</li> <li>    EMBEDDED_CODE_REQUESTED - For embedded banks, a UI element to collect SCA for initiated consent was displayed</li><li>    EMBEDDED_TYPE_REQUESTED - For embedded banks, a UI element to allow the user to select their preferred SCA method for this consent authorisation was displayed</li> <li>    EMBEDDED_CODE_COLLECTED - For embedded banks, SCA code was collected for consent authorisation</li><li>    EMBEDDED_TYPE_SELECTED - For embedded banks, preferred SCA method was selected for consent authorisation</li> <li>    CONSENT_POLLING_STARTED - We start polling the bank for consent authorisation status</li><li>    CONSENT_POLLING_ENDED - We finish polling the bank for consent authorisation status</li> <li> AUTHORISED - Consent authorisation completed </li> <li> FINISHED - Process finished </li>  </ul>",
     )
     phase_created_at: Optional[datetime] = Field(
         default=None,
-        description="The date and time at which the phase of the hosted Consent was created.",
         alias="phaseCreatedAt",
+        description="The date and time at which the phase of the hosted Consent was created.",
     )
-    __properties: ClassVar[List[str]] = ["phaseName", "phaseCreatedAt"]
+    __properties = ["phaseName", "phaseCreatedAt"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> HostedConsentPhase:
         """Create an instance of HostedConsentPhase from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> HostedConsentPhase:
         """Create an instance of HostedConsentPhase from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return HostedConsentPhase.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = HostedConsentPhase.parse_obj(
             {
-                "phaseName": obj.get("phaseName"),
-                "phaseCreatedAt": obj.get("phaseCreatedAt"),
+                "phase_name": obj.get("phaseName"),
+                "phase_created_at": obj.get("phaseCreatedAt"),
             }
         )
         return _obj

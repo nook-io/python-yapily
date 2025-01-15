@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode from a JSON string
 get_accounts_transactions_categorised200_response_data_transactions_inner_proprietary_bank_transaction_code_instance = GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode.from_json(json)
 # print the JSON string representation of the object
-print(GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode.to_json())
+print GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode.to_json()
 
 # convert the object into a dict
 get_accounts_transactions_categorised200_response_data_transactions_inner_proprietary_bank_transaction_code_dict = get_accounts_transactions_categorised200_response_data_transactions_inner_proprietary_bank_transaction_code_instance.to_dict()

@@ -3,7 +3,6 @@
 The payment request object defining the details of the bulk payment
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **idempotency_id** | **str** | __Optional__. An alphanumeric string (1-40 chars) used for idempotency. Unique per consent ID for 24 hours. Prevents duplicate bulk file payment submissions. | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of SubmitBulkPaymentRequest from a JSON string
 submit_bulk_payment_request_instance = SubmitBulkPaymentRequest.from_json(json)
 # print the JSON string representation of the object
-print(SubmitBulkPaymentRequest.to_json())
+print SubmitBulkPaymentRequest.to_json()
 
 # convert the object into a dict
 submit_bulk_payment_request_dict = submit_bulk_payment_request_instance.to_dict()

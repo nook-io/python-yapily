@@ -3,7 +3,6 @@
 __Conditional__. Used to capture the user's credentials to allow them to login to an `Institution` that uses the embedded account authorisation flow. <br><br>This is the first step required in the embedded account authorisation flow to authorise the `Consent`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | __Mandatory__. The login id for the user for a particular &#x60;Institution&#x60;. | 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of UserCredentials from a JSON string
 user_credentials_instance = UserCredentials.from_json(json)
 # print the JSON string representation of the object
-print(UserCredentials.to_json())
+print UserCredentials.to_json()
 
 # convert the object into a dict
 user_credentials_dict = user_credentials_instance.to_dict()

@@ -3,7 +3,6 @@
 Details of the transaction, identified by Yapily data services.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **transaction_id** | **str** | Unique identifier of the transaction | [optional] 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of EnrichedTransaction from a JSON string
 enriched_transaction_instance = EnrichedTransaction.from_json(json)
 # print the JSON string representation of the object
-print(EnrichedTransaction.to_json())
+print EnrichedTransaction.to_json()
 
 # convert the object into a dict
 enriched_transaction_dict = enriched_transaction_instance.to_dict()

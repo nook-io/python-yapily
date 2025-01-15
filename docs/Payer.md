@@ -3,7 +3,6 @@
 __Conditional__. Details of the benefactor [person or business].
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The account holder name of the Payer. | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of Payer from a JSON string
 payer_instance = Payer.from_json(json)
 # print the JSON string representation of the object
-print(Payer.to_json())
+print Payer.to_json()
 
 # convert the object into a dict
 payer_dict = payer_instance.to_dict()

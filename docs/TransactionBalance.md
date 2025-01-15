@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**AccountBalanceType**](AccountBalanceType.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of TransactionBalance from a JSON string
 transaction_balance_instance = TransactionBalance.from_json(json)
 # print the JSON string representation of the object
-print(TransactionBalance.to_json())
+print TransactionBalance.to_json()
 
 # convert the object into a dict
 transaction_balance_dict = transaction_balance_instance.to_dict()

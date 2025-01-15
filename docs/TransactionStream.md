@@ -3,7 +3,6 @@
 Lists all possible transaction streams identified for the `Application User`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the Transaction Stream. | [optional] 
@@ -26,7 +25,7 @@ json = "{}"
 # create an instance of TransactionStream from a JSON string
 transaction_stream_instance = TransactionStream.from_json(json)
 # print the JSON string representation of the object
-print(TransactionStream.to_json())
+print TransactionStream.to_json()
 
 # convert the object into a dict
 transaction_stream_dict = transaction_stream_instance.to_dict()

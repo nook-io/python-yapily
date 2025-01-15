@@ -3,7 +3,6 @@
 The restrictions and limits for payments executed under the VRP consent
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **periodic_limits** | [**List[HostedNonSweepingPeriodicLimits]**](HostedNonSweepingPeriodicLimits.md) |  | [optional] 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of HostedVRPLimits from a JSON string
 hosted_vrp_limits_instance = HostedVRPLimits.from_json(json)
 # print the JSON string representation of the object
-print(HostedVRPLimits.to_json())
+print HostedVRPLimits.to_json()
 
 # convert the object into a dict
 hosted_vrp_limits_dict = hosted_vrp_limits_instance.to_dict()

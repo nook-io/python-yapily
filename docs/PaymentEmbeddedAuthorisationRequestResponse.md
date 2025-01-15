@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the embedded payment authorisation request. | [optional] 
@@ -40,7 +39,7 @@ json = "{}"
 # create an instance of PaymentEmbeddedAuthorisationRequestResponse from a JSON string
 payment_embedded_authorisation_request_response_instance = PaymentEmbeddedAuthorisationRequestResponse.from_json(json)
 # print the JSON string representation of the object
-print(PaymentEmbeddedAuthorisationRequestResponse.to_json())
+print PaymentEmbeddedAuthorisationRequestResponse.to_json()
 
 # convert the object into a dict
 payment_embedded_authorisation_request_response_dict = payment_embedded_authorisation_request_response_instance.to_dict()

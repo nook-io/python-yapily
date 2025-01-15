@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_from** | **datetime** |  | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of Next from a JSON string
 next_instance = Next.from_json(json)
 # print the JSON string representation of the object
-print(Next.to_json())
+print Next.to_json()
 
 # convert the object into a dict
 next_dict = next_instance.to_dict()

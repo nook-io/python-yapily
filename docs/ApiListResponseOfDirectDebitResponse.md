@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseListMeta**](ResponseListMeta.md) |  | [optional] 
@@ -23,7 +22,7 @@ json = "{}"
 # create an instance of ApiListResponseOfDirectDebitResponse from a JSON string
 api_list_response_of_direct_debit_response_instance = ApiListResponseOfDirectDebitResponse.from_json(json)
 # print the JSON string representation of the object
-print(ApiListResponseOfDirectDebitResponse.to_json())
+print ApiListResponseOfDirectDebitResponse.to_json()
 
 # convert the object into a dict
 api_list_response_of_direct_debit_response_dict = api_list_response_of_direct_debit_response_instance.to_dict()

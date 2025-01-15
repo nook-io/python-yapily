@@ -3,7 +3,6 @@
 API Error Response
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **error** | [**ApiErrorResponseV2Error**](ApiErrorResponseV2Error.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ApiErrorResponseV2 from a JSON string
 api_error_response_v2_instance = ApiErrorResponseV2.from_json(json)
 # print the JSON string representation of the object
-print(ApiErrorResponseV2.to_json())
+print ApiErrorResponseV2.to_json()
 
 # convert the object into a dict
 api_error_response_v2_dict = api_error_response_v2_instance.to_dict()

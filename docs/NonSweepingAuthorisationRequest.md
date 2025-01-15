@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **str** | This is the Yapily user identifier for the user returned by the create user step POST ../users | [optional] 
@@ -27,7 +26,7 @@ json = "{}"
 # create an instance of NonSweepingAuthorisationRequest from a JSON string
 non_sweeping_authorisation_request_instance = NonSweepingAuthorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print(NonSweepingAuthorisationRequest.to_json())
+print NonSweepingAuthorisationRequest.to_json()
 
 # convert the object into a dict
 non_sweeping_authorisation_request_dict = non_sweeping_authorisation_request_instance.to_dict()

@@ -3,7 +3,6 @@
 __Mandatory__. The payment submission object defining the details of the payment instruction to be executed under the Variable Recurring Payment.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reference** | **str** | __Optional__. The payment reference or description. Limited to a maximum of 18 characters long. | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of SubmissionDetails from a JSON string
 submission_details_instance = SubmissionDetails.from_json(json)
 # print the JSON string representation of the object
-print(SubmissionDetails.to_json())
+print SubmissionDetails.to_json()
 
 # convert the object into a dict
 submission_details_dict = submission_details_instance.to_dict()

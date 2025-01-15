@@ -3,7 +3,6 @@
 __Mandatory__. Monetary Amount.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **float** | __Mandatory__. The monetary value | 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of Amount from a JSON string
 amount_instance = Amount.from_json(json)
 # print the JSON string representation of the object
-print(Amount.to_json())
+print Amount.to_json()
 
 # convert the object into a dict
 amount_dict = amount_instance.to_dict()

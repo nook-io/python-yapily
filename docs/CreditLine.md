@@ -3,7 +3,6 @@
 __Mandatory__. Details whether the account has access to a credit line from an `Institution`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**CreditLineType**](CreditLineType.md) |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of CreditLine from a JSON string
 credit_line_instance = CreditLine.from_json(json)
 # print the JSON string representation of the object
-print(CreditLine.to_json())
+print CreditLine.to_json()
 
 # convert the object into a dict
 credit_line_dict = credit_line_instance.to_dict()

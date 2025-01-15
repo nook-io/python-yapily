@@ -3,7 +3,6 @@
 Interaction (raw request and response) that occured with the `Institution` in order to fulfil a request.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **request** | [**RawRequest**](RawRequest.md) |  | [optional] 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of RawResponse from a JSON string
 raw_response_instance = RawResponse.from_json(json)
 # print the JSON string representation of the object
-print(RawResponse.to_json())
+print RawResponse.to_json()
 
 # convert the object into a dict
 raw_response_dict = raw_response_instance.to_dict()

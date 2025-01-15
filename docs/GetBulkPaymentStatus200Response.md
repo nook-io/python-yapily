@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**GetBulkPaymentStatus200ResponseMeta**](GetBulkPaymentStatus200ResponseMeta.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of GetBulkPaymentStatus200Response from a JSON string
 get_bulk_payment_status200_response_instance = GetBulkPaymentStatus200Response.from_json(json)
 # print the JSON string representation of the object
-print(GetBulkPaymentStatus200Response.to_json())
+print GetBulkPaymentStatus200Response.to_json()
 
 # convert the object into a dict
 get_bulk_payment_status200_response_dict = get_bulk_payment_status200_response_instance.to_dict()

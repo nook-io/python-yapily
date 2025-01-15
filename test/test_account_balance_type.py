@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestAccountBalanceType(unittest.TestCase):
     """AccountBalanceType unit test stubs"""
 

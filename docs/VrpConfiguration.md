@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **maximum_individual_amount** | [**Amount**](Amount.md) | Maximum amount per transaction | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of VrpConfiguration from a JSON string
 vrp_configuration_instance = VrpConfiguration.from_json(json)
 # print the JSON string representation of the object
-print(VrpConfiguration.to_json())
+print VrpConfiguration.to_json()
 
 # convert the object into a dict
 vrp_configuration_dict = vrp_configuration_instance.to_dict()

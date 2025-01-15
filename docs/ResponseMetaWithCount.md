@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tracing_id** | **str** |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ResponseMetaWithCount from a JSON string
 response_meta_with_count_instance = ResponseMetaWithCount.from_json(json)
 # print the JSON string representation of the object
-print(ResponseMetaWithCount.to_json())
+print ResponseMetaWithCount.to_json()
 
 # convert the object into a dict
 response_meta_with_count_dict = response_meta_with_count_instance.to_dict()

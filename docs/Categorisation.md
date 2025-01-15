@@ -3,7 +3,6 @@
 Income and Expense categorisation that the Yapily categorisation engine has determined for the transaction.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **categories** | **List[str]** |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of Categorisation from a JSON string
 categorisation_instance = Categorisation.from_json(json)
 # print the JSON string representation of the object
-print(Categorisation.to_json())
+print Categorisation.to_json()
 
 # convert the object into a dict
 categorisation_dict = categorisation_instance.to_dict()

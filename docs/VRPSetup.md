@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payer** | [**HostedVrpPayerResponse**](HostedVrpPayerResponse.md) |  | [optional] 
@@ -25,7 +24,7 @@ json = "{}"
 # create an instance of VRPSetup from a JSON string
 vrp_setup_instance = VRPSetup.from_json(json)
 # print the JSON string representation of the object
-print(VRPSetup.to_json())
+print VRPSetup.to_json()
 
 # convert the object into a dict
 vrp_setup_dict = vrp_setup_instance.to_dict()

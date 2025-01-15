@@ -17,81 +17,65 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, conlist
 from yapily.models.registered_webhook_with_status import RegisteredWebhookWithStatus
-from typing import Set
-from typing_extensions import Self
 
 
 class GetRegisteredWebhooks200ResponseData(BaseModel):
     """
     GetRegisteredWebhooks200ResponseData
-    """  # noqa: E501
+    """
 
-    active: Optional[List[RegisteredWebhookWithStatus]] = None
-    __properties: ClassVar[List[str]] = ["active"]
+    active: Optional[conlist(RegisteredWebhookWithStatus)] = None
+    __properties = ["active"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> GetRegisteredWebhooks200ResponseData:
         """Create an instance of GetRegisteredWebhooks200ResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in active (list)
         _items = []
         if self.active:
-            for _item_active in self.active:
-                if _item_active:
-                    _items.append(_item_active.to_dict())
+            for _item in self.active:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["active"] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> GetRegisteredWebhooks200ResponseData:
         """Create an instance of GetRegisteredWebhooks200ResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return GetRegisteredWebhooks200ResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = GetRegisteredWebhooks200ResponseData.parse_obj(
             {
                 "active": [
                     RegisteredWebhookWithStatus.from_dict(_item)
-                    for _item in obj["active"]
+                    for _item in obj.get("active")
                 ]
                 if obj.get("active") is not None
                 else None

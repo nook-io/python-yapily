@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -29,7 +28,7 @@ json = "{}"
 # create an instance of HostedVRPPaymentResponse from a JSON string
 hosted_vrp_payment_response_instance = HostedVRPPaymentResponse.from_json(json)
 # print the JSON string representation of the object
-print(HostedVRPPaymentResponse.to_json())
+print HostedVRPPaymentResponse.to_json()
 
 # convert the object into a dict
 hosted_vrp_payment_response_dict = hosted_vrp_payment_response_instance.to_dict()

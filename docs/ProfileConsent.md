@@ -3,7 +3,6 @@
 Details of a consent linked to a `User Profile`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the &#x60;consent&#x60; in context of a user&#39;s profile. | [optional] 
@@ -25,7 +24,7 @@ json = "{}"
 # create an instance of ProfileConsent from a JSON string
 profile_consent_instance = ProfileConsent.from_json(json)
 # print the JSON string representation of the object
-print(ProfileConsent.to_json())
+print ProfileConsent.to_json()
 
 # convert the object into a dict
 profile_consent_dict = profile_consent_instance.to_dict()

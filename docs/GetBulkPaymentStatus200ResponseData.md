@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the Bulk Payment | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of GetBulkPaymentStatus200ResponseData from a JSON string
 get_bulk_payment_status200_response_data_instance = GetBulkPaymentStatus200ResponseData.from_json(json)
 # print the JSON string representation of the object
-print(GetBulkPaymentStatus200ResponseData.to_json())
+print GetBulkPaymentStatus200ResponseData.to_json()
 
 # convert the object into a dict
 get_bulk_payment_status200_response_data_dict = get_bulk_payment_status200_response_data_instance.to_dict()

@@ -17,82 +17,68 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 from yapily.models.account_identification import AccountIdentification
-from typing import Set
-from typing_extensions import Self
 
 
 class AccountInfo(BaseModel):
     """
-    __Conditional__. Used to create a request for the balance of the account specified. Once the user authorises the request, only the balance can be obtained by executing [GET Account Balances](./#get-account-balances).<br><br> This can be specified in conjunction with `accountIdentifiersForTransaction` to generate a `Consent` that can both access the accounts balance and transactions.
-    """  # noqa: E501
+    __Conditional__. Used to create a request for the balance of the account specified. Once the user authorises the request, only the balance can be obtained by executing [GET Account Balances](./#get-account-balances).<br><br> This can be specified in conjunction with `accountIdentifiersForTransaction` to generate a `Consent` that can both access the accounts balance and transactions.  # noqa: E501
+    """
 
     account_id: Optional[StrictStr] = Field(
         default=None,
-        description="__Conditional__. Unique identifier of the account.",
         alias="accountId",
+        description="__Conditional__. Unique identifier of the account.",
     )
-    account_identification: AccountIdentification = Field(alias="accountIdentification")
-    __properties: ClassVar[List[str]] = ["accountId", "accountIdentification"]
+    account_identification: AccountIdentification = Field(
+        default=..., alias="accountIdentification"
+    )
+    __properties = ["accountId", "accountIdentification"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> AccountInfo:
         """Create an instance of AccountInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of account_identification
         if self.account_identification:
             _dict["accountIdentification"] = self.account_identification.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> AccountInfo:
         """Create an instance of AccountInfo from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return AccountInfo.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = AccountInfo.parse_obj(
             {
-                "accountId": obj.get("accountId"),
-                "accountIdentification": AccountIdentification.from_dict(
-                    obj["accountIdentification"]
+                "account_id": obj.get("accountId"),
+                "account_identification": AccountIdentification.from_dict(
+                    obj.get("accountIdentification")
                 )
                 if obj.get("accountIdentification") is not None
                 else None,

@@ -3,7 +3,6 @@
 __Conditional__. Information needed to complete compliance checks. Mandatory for Yapily Connect customers.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payer** | [**ComplianceDataPayer**](ComplianceDataPayer.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ComplianceData from a JSON string
 compliance_data_instance = ComplianceData.from_json(json)
 # print the JSON string representation of the object
-print(ComplianceData.to_json())
+print ComplianceData.to_json()
 
 # convert the object into a dict
 compliance_data_dict = compliance_data_instance.to_dict()

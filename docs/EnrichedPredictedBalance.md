@@ -3,7 +3,6 @@
 A list of Predicted Account Balances for future date range.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_date** | **date** | The date for which Balance amount is predicted. | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of EnrichedPredictedBalance from a JSON string
 enriched_predicted_balance_instance = EnrichedPredictedBalance.from_json(json)
 # print the JSON string representation of the object
-print(EnrichedPredictedBalance.to_json())
+print EnrichedPredictedBalance.to_json()
 
 # convert the object into a dict
 enriched_predicted_balance_dict = enriched_predicted_balance_instance.to_dict()

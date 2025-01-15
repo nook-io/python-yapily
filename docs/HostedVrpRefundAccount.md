@@ -3,7 +3,6 @@
 The account to which funds should be returned if the payment is to be later refunded.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of HostedVrpRefundAccount from a JSON string
 hosted_vrp_refund_account_instance = HostedVrpRefundAccount.from_json(json)
 # print the JSON string representation of the object
-print(HostedVrpRefundAccount.to_json())
+print HostedVrpRefundAccount.to_json()
 
 # convert the object into a dict
 hosted_vrp_refund_account_dict = hosted_vrp_refund_account_instance.to_dict()

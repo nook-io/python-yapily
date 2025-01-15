@@ -3,7 +3,6 @@
 primary webhook url used to send events to
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of RegisteredWebhookCallbackUrlMain from a JSON string
 registered_webhook_callback_url_main_instance = RegisteredWebhookCallbackUrlMain.from_json(json)
 # print the JSON string representation of the object
-print(RegisteredWebhookCallbackUrlMain.to_json())
+print RegisteredWebhookCallbackUrlMain.to_json()
 
 # convert the object into a dict
 registered_webhook_callback_url_main_dict = registered_webhook_callback_url_main_instance.to_dict()

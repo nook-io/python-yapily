@@ -18,24 +18,22 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 from yapily.models.amount import Amount
 from yapily.models.hosted_vrp_limits import HostedVRPLimits
 from yapily.models.hosted_vrp_payer_response import HostedVrpPayerResponse
 from yapily.models.payee import Payee
 from yapily.models.payment_risk import PaymentRisk
-from typing import Set
-from typing_extensions import Self
 
 
 class VRPSetup(BaseModel):
     """
     VRPSetup
-    """  # noqa: E501
+    """
 
     payer: Optional[HostedVrpPayerResponse] = None
-    payee: Payee
+    payee: Payee = Field(...)
     reference: Optional[StrictStr] = Field(
         default=None,
         description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.",
@@ -43,26 +41,26 @@ class VRPSetup(BaseModel):
     limits: Optional[HostedVRPLimits] = None
     valid_from: Optional[datetime] = Field(
         default=None,
-        description="__Optional__. Start date when the consent becomes valid.",
         alias="validFrom",
+        description="__Optional__. Start date when the consent becomes valid.",
     )
     valid_to: Optional[datetime] = Field(
         default=None,
-        description="__Optional__. End date when the consent expires and becomes invalid.",
         alias="validTo",
+        description="__Optional__. End date when the consent expires and becomes invalid.",
     )
     recurring_payment_category: Optional[StrictStr] = Field(
         default=None,
-        description="The use-case for the VRP consent supported by the bank. Allowed values: <br>`ONGOING` <br>`SUBSCRIPTION`",
         alias="recurringPaymentCategory",
+        description="The use-case for the VRP consent supported by the bank. Allowed values: <br>`ONGOING` <br>`SUBSCRIPTION`",
     )
     initial_payment: Optional[Amount] = Field(
         default=None,
-        description="__Optional__. Initial payment to be charged under this consent. If enforced, this amount must match the first payment amount executed using this consent.",
         alias="initialPayment",
+        description="__Optional__. Initial payment to be charged under this consent. If enforced, this amount must match the first payment amount executed using this consent.",
     )
     risk: Optional[PaymentRisk] = None
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "payer",
         "payee",
         "reference",
@@ -74,43 +72,28 @@ class VRPSetup(BaseModel):
         "risk",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> VRPSetup:
         """Create an instance of VRPSetup from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of payer
         if self.payer:
             _dict["payer"] = self.payer.to_dict()
@@ -129,33 +112,33 @@ class VRPSetup(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> VRPSetup:
         """Create an instance of VRPSetup from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return VRPSetup.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = VRPSetup.parse_obj(
             {
-                "payer": HostedVrpPayerResponse.from_dict(obj["payer"])
+                "payer": HostedVrpPayerResponse.from_dict(obj.get("payer"))
                 if obj.get("payer") is not None
                 else None,
-                "payee": Payee.from_dict(obj["payee"])
+                "payee": Payee.from_dict(obj.get("payee"))
                 if obj.get("payee") is not None
                 else None,
                 "reference": obj.get("reference"),
-                "limits": HostedVRPLimits.from_dict(obj["limits"])
+                "limits": HostedVRPLimits.from_dict(obj.get("limits"))
                 if obj.get("limits") is not None
                 else None,
-                "validFrom": obj.get("validFrom"),
-                "validTo": obj.get("validTo"),
-                "recurringPaymentCategory": obj.get("recurringPaymentCategory"),
-                "initialPayment": Amount.from_dict(obj["initialPayment"])
+                "valid_from": obj.get("validFrom"),
+                "valid_to": obj.get("validTo"),
+                "recurring_payment_category": obj.get("recurringPaymentCategory"),
+                "initial_payment": Amount.from_dict(obj.get("initialPayment"))
                 if obj.get("initialPayment") is not None
                 else None,
-                "risk": PaymentRisk.from_dict(obj["risk"])
+                "risk": PaymentRisk.from_dict(obj.get("risk"))
                 if obj.get("risk") is not None
                 else None,
             }

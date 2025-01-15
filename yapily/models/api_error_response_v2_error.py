@@ -17,114 +17,94 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from yapily.models.api_error_response_v2_error_issues_inner import (
     ApiErrorResponseV2ErrorIssuesInner,
 )
-from typing import Set
-from typing_extensions import Self
 
 
 class ApiErrorResponseV2Error(BaseModel):
     """
     ApiErrorResponseV2Error
-    """  # noqa: E501
+    """
 
     tracing_id: StrictStr = Field(
-        description="Unique identifier of the request, used by Yapily for support purposes",
+        default=...,
         alias="tracingId",
+        description="Unique identifier of the request, used by Yapily for support purposes",
     )
     code: StrictInt = Field(
-        description="Numeric HTTP status code associated with the error"
+        default=..., description="Numeric HTTP status code associated with the error"
     )
-    status: StrictStr = Field(description="Textual description of the HTTP status")
+    status: StrictStr = Field(
+        default=..., description="Textual description of the HTTP status"
+    )
     support_url: Optional[StrictStr] = Field(
         default=None,
-        description="Link to where further information regarding the error can be found",
         alias="supportUrl",
+        description="Link to where further information regarding the error can be found",
     )
     source: Optional[StrictStr] = Field(
         default=None,
         description="Source of the error. This may be YAPILY, the INSTITUTION, or the USER",
     )
-    issues: List[ApiErrorResponseV2ErrorIssuesInner] = Field(
-        description="List of issues relating to the error"
+    issues: conlist(ApiErrorResponseV2ErrorIssuesInner) = Field(
+        default=..., description="List of issues relating to the error"
     )
-    __properties: ClassVar[List[str]] = [
-        "tracingId",
-        "code",
-        "status",
-        "supportUrl",
-        "source",
-        "issues",
-    ]
+    __properties = ["tracingId", "code", "status", "supportUrl", "source", "issues"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> ApiErrorResponseV2Error:
         """Create an instance of ApiErrorResponseV2Error from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in issues (list)
         _items = []
         if self.issues:
-            for _item_issues in self.issues:
-                if _item_issues:
-                    _items.append(_item_issues.to_dict())
+            for _item in self.issues:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["issues"] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> ApiErrorResponseV2Error:
         """Create an instance of ApiErrorResponseV2Error from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return ApiErrorResponseV2Error.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = ApiErrorResponseV2Error.parse_obj(
             {
-                "tracingId": obj.get("tracingId"),
+                "tracing_id": obj.get("tracingId"),
                 "code": obj.get("code"),
                 "status": obj.get("status"),
-                "supportUrl": obj.get("supportUrl"),
+                "support_url": obj.get("supportUrl"),
                 "source": obj.get("source"),
                 "issues": [
                     ApiErrorResponseV2ErrorIssuesInner.from_dict(_item)
-                    for _item in obj["issues"]
+                    for _item in obj.get("issues")
                 ]
                 if obj.get("issues") is not None
                 else None,

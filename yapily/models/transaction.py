@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, Dict, Optional, Union
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, conlist
 from yapily.models.address_details import AddressDetails
 from yapily.models.amount import Amount
 from yapily.models.currency_exchange import CurrencyExchange
@@ -35,14 +35,12 @@ from yapily.models.transaction_charge_details import TransactionChargeDetails
 from yapily.models.transaction_payee_details import TransactionPayeeDetails
 from yapily.models.transaction_payer_details import TransactionPayerDetails
 from yapily.models.transaction_status_enum import TransactionStatusEnum
-from typing import Set
-from typing_extensions import Self
 
 
 class Transaction(BaseModel):
     """
-    Details of a transaction (credit or debit) that has occurred on the account.
-    """  # noqa: E501
+    Details of a transaction (credit or debit) that has occurred on the account.  # noqa: E501
+    """
 
     id: Optional[StrictStr] = Field(
         default=None, description="Unique identifier of the transaction."
@@ -50,13 +48,13 @@ class Transaction(BaseModel):
     var_date: Optional[datetime] = Field(default=None, alias="date")
     booking_date_time: Optional[datetime] = Field(
         default=None,
-        description="Date and time in UTC format of when a transaction was booked.",
         alias="bookingDateTime",
+        description="Date and time in UTC format of when a transaction was booked.",
     )
     value_date_time: Optional[datetime] = Field(
         default=None,
-        description="Date and time in UTC format when the funds either cease to be available (for debit transactions) or become available (for credit transactions) to the account owner.",
         alias="valueDateTime",
+        description="Date and time in UTC format when the funds either cease to be available (for debit transactions) or become available (for credit transactions) to the account owner.",
     )
     status: Optional[TransactionStatusEnum] = None
     amount: Optional[Union[StrictFloat, StrictInt]] = Field(
@@ -77,14 +75,14 @@ class Transaction(BaseModel):
         default=None, alias="chargeDetails"
     )
     reference: Optional[StrictStr] = None
-    statement_references: Optional[List[StatementReference]] = Field(
+    statement_references: Optional[conlist(StatementReference)] = Field(
         default=None, alias="statementReferences"
     )
     description: Optional[StrictStr] = None
-    transaction_information: Optional[List[StrictStr]] = Field(
+    transaction_information: Optional[conlist(StrictStr)] = Field(
         default=None,
-        description="Further details on the transaction. This is narrative data, caught as unstructured text.",
         alias="transactionInformation",
+        description="Further details on the transaction. This is narrative data, caught as unstructured text.",
     )
     address_details: Optional[AddressDetails] = Field(
         default=None, alias="addressDetails"
@@ -106,15 +104,15 @@ class Transaction(BaseModel):
     enrichment: Optional[Enrichment] = None
     supplementary_data: Optional[Dict[str, Any]] = Field(
         default=None,
-        description="Additional information that cannot be captured in a structured field or block.",
         alias="supplementaryData",
+        description="Additional information that cannot be captured in a structured field or block.",
     )
     transaction_mutability: Optional[StrictStr] = Field(
         default=None,
-        description="__Optional__. Specifies the Mutability of the Transaction record.<ul><li>A transaction with a `Status` of `Pending` is mutable.</li><li>A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is not guaranteed to be immutable (although in most instances it will be).</li><li>A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.</li><li>A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.</li></ul>",
         alias="transactionMutability",
+        description="__Optional__. Specifies the Mutability of the Transaction record.<ul><li>A transaction with a `Status` of `Pending` is mutable.</li><li>A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is not guaranteed to be immutable (although in most instances it will be).</li><li>A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.</li><li>A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.</li></ul>",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "date",
         "bookingDateTime",
@@ -142,43 +140,28 @@ class Transaction(BaseModel):
         "transactionMutability",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Transaction:
         """Create an instance of Transaction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of transaction_amount
         if self.transaction_amount:
             _dict["transactionAmount"] = self.transaction_amount.to_dict()
@@ -194,9 +177,9 @@ class Transaction(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in statement_references (list)
         _items = []
         if self.statement_references:
-            for _item_statement_references in self.statement_references:
-                if _item_statement_references:
-                    _items.append(_item_statement_references.to_dict())
+            for _item in self.statement_references:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["statementReferences"] = _items
         # override the default output from pydantic by calling `to_dict()` of address_details
         if self.address_details:
@@ -227,76 +210,82 @@ class Transaction(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> Transaction:
         """Create an instance of Transaction from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return Transaction.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = Transaction.parse_obj(
             {
                 "id": obj.get("id"),
-                "date": obj.get("date"),
-                "bookingDateTime": obj.get("bookingDateTime"),
-                "valueDateTime": obj.get("valueDateTime"),
+                "var_date": obj.get("date"),
+                "booking_date_time": obj.get("bookingDateTime"),
+                "value_date_time": obj.get("valueDateTime"),
                 "status": obj.get("status"),
                 "amount": obj.get("amount"),
                 "currency": obj.get("currency"),
-                "transactionAmount": Amount.from_dict(obj["transactionAmount"])
+                "transaction_amount": Amount.from_dict(obj.get("transactionAmount"))
                 if obj.get("transactionAmount") is not None
                 else None,
-                "grossAmount": Amount.from_dict(obj["grossAmount"])
+                "gross_amount": Amount.from_dict(obj.get("grossAmount"))
                 if obj.get("grossAmount") is not None
                 else None,
-                "currencyExchange": CurrencyExchange.from_dict(obj["currencyExchange"])
+                "currency_exchange": CurrencyExchange.from_dict(
+                    obj.get("currencyExchange")
+                )
                 if obj.get("currencyExchange") is not None
                 else None,
-                "chargeDetails": TransactionChargeDetails.from_dict(
-                    obj["chargeDetails"]
+                "charge_details": TransactionChargeDetails.from_dict(
+                    obj.get("chargeDetails")
                 )
                 if obj.get("chargeDetails") is not None
                 else None,
                 "reference": obj.get("reference"),
-                "statementReferences": [
+                "statement_references": [
                     StatementReference.from_dict(_item)
-                    for _item in obj["statementReferences"]
+                    for _item in obj.get("statementReferences")
                 ]
                 if obj.get("statementReferences") is not None
                 else None,
                 "description": obj.get("description"),
-                "transactionInformation": obj.get("transactionInformation"),
-                "addressDetails": AddressDetails.from_dict(obj["addressDetails"])
+                "transaction_information": obj.get("transactionInformation"),
+                "address_details": AddressDetails.from_dict(obj.get("addressDetails"))
                 if obj.get("addressDetails") is not None
                 else None,
-                "isoBankTransactionCode": IsoBankTransactionCode.from_dict(
-                    obj["isoBankTransactionCode"]
+                "iso_bank_transaction_code": IsoBankTransactionCode.from_dict(
+                    obj.get("isoBankTransactionCode")
                 )
                 if obj.get("isoBankTransactionCode") is not None
                 else None,
-                "proprietaryBankTransactionCode": ProprietaryBankTransactionCode.from_dict(
-                    obj["proprietaryBankTransactionCode"]
+                "proprietary_bank_transaction_code": ProprietaryBankTransactionCode.from_dict(
+                    obj.get("proprietaryBankTransactionCode")
                 )
                 if obj.get("proprietaryBankTransactionCode") is not None
                 else None,
-                "balance": TransactionBalance.from_dict(obj["balance"])
+                "balance": TransactionBalance.from_dict(obj.get("balance"))
                 if obj.get("balance") is not None
                 else None,
-                "payeeDetails": TransactionPayeeDetails.from_dict(obj["payeeDetails"])
+                "payee_details": TransactionPayeeDetails.from_dict(
+                    obj.get("payeeDetails")
+                )
                 if obj.get("payeeDetails") is not None
                 else None,
-                "payerDetails": TransactionPayerDetails.from_dict(obj["payerDetails"])
+                "payer_details": TransactionPayerDetails.from_dict(
+                    obj.get("payerDetails")
+                )
                 if obj.get("payerDetails") is not None
                 else None,
-                "merchant": Merchant.from_dict(obj["merchant"])
+                "merchant": Merchant.from_dict(obj.get("merchant"))
                 if obj.get("merchant") is not None
                 else None,
-                "enrichment": Enrichment.from_dict(obj["enrichment"])
+                "enrichment": Enrichment.from_dict(obj.get("enrichment"))
                 if obj.get("enrichment") is not None
                 else None,
-                "supplementaryData": obj.get("supplementaryData"),
-                "transactionMutability": obj.get("transactionMutability"),
+                "supplementary_data": obj.get("supplementaryData"),
+                "transaction_mutability": obj.get("transactionMutability"),
             }
         )
         return _obj

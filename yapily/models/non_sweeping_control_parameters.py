@@ -18,62 +18,61 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from yapily.models.amount import Amount
 from yapily.models.non_sweeping_periodic_limits import NonSweepingPeriodicLimits
-from typing import Set
-from typing_extensions import Self
 
 
 class NonSweepingControlParameters(BaseModel):
     """
-    Define the restrictions and limits for payment orders as part of Non-Sweeping VRP consent
-    """  # noqa: E501
+    Define the restrictions and limits for payment orders as part of Non-Sweeping VRP consent  # noqa: E501
+    """
 
-    psu_authentication_methods: List[StrictStr] = Field(
-        description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
+    psu_authentication_methods: conlist(StrictStr) = Field(
+        default=...,
         alias="psuAuthenticationMethods",
+        description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
     )
-    periodic_limits: Optional[List[NonSweepingPeriodicLimits]] = Field(
+    periodic_limits: Optional[conlist(NonSweepingPeriodicLimits)] = Field(
         default=None, alias="periodicLimits"
     )
     max_amount_per_payment: Optional[Amount] = Field(
         default=None,
-        description="__Mandatory__. Max amount that can be submitted per payment.",
         alias="maxAmountPerPayment",
+        description="__Mandatory__. Max amount that can be submitted per payment.",
     )
     max_cumulative_amount: Optional[Amount] = Field(
         default=None,
-        description="__Optional__. Max cumulative amount that can be submitted under this consent.",
         alias="maxCumulativeAmount",
+        description="__Optional__. Max cumulative amount that can be submitted under this consent.",
     )
     initial_payment: Optional[Amount] = Field(
         default=None,
-        description="__Mandatory__. Initial payment to be charged under this consent. If enforced, this amount must match the first payment amount executed using this consent.",
         alias="initialPayment",
+        description="__Mandatory__. Initial payment to be charged under this consent. If enforced, this amount must match the first payment amount executed using this consent.",
     )
     max_cumulative_number_of_payments: Optional[StrictInt] = Field(
         default=None,
-        description="__Optional__. Max number of payments that can be submitted under this consent.",
         alias="maxCumulativeNumberOfPayments",
+        description="__Optional__. Max number of payments that can be submitted under this consent.",
     )
     valid_from: Optional[datetime] = Field(
         default=None,
-        description="__Optional__. Start date when the consent becomes valid.",
         alias="validFrom",
+        description="__Optional__. Start date when the consent becomes valid.",
     )
     valid_to: Optional[datetime] = Field(
         default=None,
-        description="__Optional__. End date when the consent expires and becomes invalid.",
         alias="validTo",
+        description="__Optional__. End date when the consent expires and becomes invalid.",
     )
     recurring_payment_category: Optional[StrictStr] = Field(
         default=None,
-        description="The use-case for the VRP consent supported by the bank. Allowed values: <br>`ONGOING` <br>`SUBSCRIPTION`",
         alias="recurringPaymentCategory",
+        description="The use-case for the VRP consent supported by the bank. Allowed values: <br>`ONGOING` <br>`SUBSCRIPTION`",
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "psuAuthenticationMethods",
         "periodicLimits",
         "maxAmountPerPayment",
@@ -85,49 +84,34 @@ class NonSweepingControlParameters(BaseModel):
         "recurringPaymentCategory",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> NonSweepingControlParameters:
         """Create an instance of NonSweepingControlParameters from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in periodic_limits (list)
         _items = []
         if self.periodic_limits:
-            for _item_periodic_limits in self.periodic_limits:
-                if _item_periodic_limits:
-                    _items.append(_item_periodic_limits.to_dict())
+            for _item in self.periodic_limits:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["periodicLimits"] = _items
         # override the default output from pydantic by calling `to_dict()` of max_amount_per_payment
         if self.max_amount_per_payment:
@@ -141,38 +125,42 @@ class NonSweepingControlParameters(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> NonSweepingControlParameters:
         """Create an instance of NonSweepingControlParameters from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return NonSweepingControlParameters.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = NonSweepingControlParameters.parse_obj(
             {
-                "psuAuthenticationMethods": obj.get("psuAuthenticationMethods"),
-                "periodicLimits": [
+                "psu_authentication_methods": obj.get("psuAuthenticationMethods"),
+                "periodic_limits": [
                     NonSweepingPeriodicLimits.from_dict(_item)
-                    for _item in obj["periodicLimits"]
+                    for _item in obj.get("periodicLimits")
                 ]
                 if obj.get("periodicLimits") is not None
                 else None,
-                "maxAmountPerPayment": Amount.from_dict(obj["maxAmountPerPayment"])
+                "max_amount_per_payment": Amount.from_dict(
+                    obj.get("maxAmountPerPayment")
+                )
                 if obj.get("maxAmountPerPayment") is not None
                 else None,
-                "maxCumulativeAmount": Amount.from_dict(obj["maxCumulativeAmount"])
+                "max_cumulative_amount": Amount.from_dict(
+                    obj.get("maxCumulativeAmount")
+                )
                 if obj.get("maxCumulativeAmount") is not None
                 else None,
-                "initialPayment": Amount.from_dict(obj["initialPayment"])
+                "initial_payment": Amount.from_dict(obj.get("initialPayment"))
                 if obj.get("initialPayment") is not None
                 else None,
-                "maxCumulativeNumberOfPayments": obj.get(
+                "max_cumulative_number_of_payments": obj.get(
                     "maxCumulativeNumberOfPayments"
                 ),
-                "validFrom": obj.get("validFrom"),
-                "validTo": obj.get("validTo"),
-                "recurringPaymentCategory": obj.get("recurringPaymentCategory"),
+                "valid_from": obj.get("validFrom"),
+                "valid_to": obj.get("validTo"),
+                "recurring_payment_category": obj.get("recurringPaymentCategory"),
             }
         )
         return _obj

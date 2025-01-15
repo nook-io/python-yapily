@@ -20,8 +20,9 @@ Used to subscribe to notifications relating to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_event_subscription_response import ApiResponseOfEventSubscriptionResponse
 from yapily.models.event_subscription_request import EventSubscriptionRequest
@@ -65,7 +66,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **event_subscription_request** | [**EventSubscriptionRequest**](EventSubscriptionRequest.md)|  | 
@@ -85,7 +85,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Event subscription created successfully |  -  |
@@ -105,8 +104,9 @@ Used to unsubscribe to notifications relating to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_event_subscription_delete_response import ApiResponseOfEventSubscriptionDeleteResponse
 from yapily.rest import ApiException
@@ -149,7 +149,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent).  | 
@@ -169,7 +168,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscription deleted successfully |  -  |
@@ -188,8 +186,9 @@ Used to get details of your subscription to a specified event type.
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_event_subscription_response import ApiResponseOfEventSubscriptionResponse
 from yapily.rest import ApiException
@@ -232,7 +231,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **event_type_id** | **str**| Unique identifier of the event type (for which notifications will be sent).  | 
@@ -252,7 +250,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscription data found |  -  |
@@ -271,8 +268,9 @@ Get all event subscriptions that your application is subscribed to
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_response_of_event_subscription_response import ApiListResponseOfEventSubscriptionResponse
 from yapily.rest import ApiException
@@ -314,7 +312,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sub_application** | **str**| The sub-application ID for which all event subscriptions will be returned | [optional] 
@@ -333,7 +330,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Event subscriptions for the application |  -  |

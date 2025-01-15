@@ -3,7 +3,6 @@
 Account information belonging to the target beneficiary (person/ business).
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the &#x60;beneficiary&#x60;. | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of Beneficiary from a JSON string
 beneficiary_instance = Beneficiary.from_json(json)
 # print the JSON string representation of the object
-print(Beneficiary.to_json())
+print Beneficiary.to_json()
 
 # convert the object into a dict
 beneficiary_dict = beneficiary_instance.to_dict()

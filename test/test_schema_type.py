@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestSchemaType(unittest.TestCase):
     """SchemaType unit test stubs"""
 

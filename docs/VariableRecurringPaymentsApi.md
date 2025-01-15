@@ -23,8 +23,9 @@ Used to initiate the authorisation process and direct users to the login screen 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_non_sweeping_authorisation_response import ApiResponseOfNonSweepingAuthorisationResponse
 from yapily.models.non_sweeping_authorisation_request import NonSweepingAuthorisationRequest
@@ -67,7 +68,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **non_sweeping_authorisation_request** | [**NonSweepingAuthorisationRequest**](NonSweepingAuthorisationRequest.md)|  | 
@@ -86,7 +86,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -105,8 +104,9 @@ Used to initiate the authorisation process and direct users to the login screen 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_sweeping_authorisation_response import ApiResponseOfSweepingAuthorisationResponse
 from yapily.models.sweeping_authorisation_request import SweepingAuthorisationRequest
@@ -149,7 +149,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sweeping_authorisation_request** | [**SweepingAuthorisationRequest**](SweepingAuthorisationRequest.md)|  | 
@@ -168,7 +167,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -187,8 +185,9 @@ Confirms whether there are available funds on the Payer account to execute a Var
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_funds_confirmation_response import ApiResponseOfFundsConfirmationResponse
 from yapily.models.funds_confirmation_request import FundsConfirmationRequest
@@ -232,7 +231,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -252,7 +250,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -271,8 +268,9 @@ Creates a Variable Recurring Payment transaction after obtaining the user's auth
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_submission_response import ApiResponseOfSubmissionResponse
 from yapily.models.submission_request import SubmissionRequest
@@ -316,7 +314,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -336,7 +333,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -355,8 +351,9 @@ Get Non-Sweeping Variable Recurring Payments consent details using the consent I
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_non_sweeping_authorisation_response import ApiResponseOfNonSweepingAuthorisationResponse
 from yapily.rest import ApiException
@@ -398,7 +395,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_id** | **str**| __Mandatory__. The consent Id of the &#x60;Variable Recurring Payments Consent&#x60; to retrieve. | 
@@ -417,7 +413,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -436,8 +431,9 @@ Get Sweeping Variable Recurring Payments consent details using the consent Id
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_sweeping_authorisation_response import ApiResponseOfSweepingAuthorisationResponse
 from yapily.rest import ApiException
@@ -479,7 +475,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent_id** | **str**| __Mandatory__. The consent Id of the &#x60;Variable Recurring Payments Consent&#x60; to retrieve. | 
@@ -498,7 +493,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -517,8 +511,9 @@ Get Variable Recurring Payment details using the Payment Id
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_submission_response import ApiResponseOfSubmissionResponse
 from yapily.rest import ApiException
@@ -561,7 +556,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_id** | **str**| __Mandatory__. The Payment Id of the &#x60;Variable Recurring Payments&#x60; to retrieve. | 
@@ -581,7 +575,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

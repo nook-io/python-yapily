@@ -3,7 +3,6 @@
 __Mandatory__. Details the identification of the ISO code.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** | __Mandatory__. Unique identifier of the ISO code. | [optional] [default to 'UNKNOWN']
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of IsoCodeDetails from a JSON string
 iso_code_details_instance = IsoCodeDetails.from_json(json)
 # print the JSON string representation of the object
-print(IsoCodeDetails.to_json())
+print IsoCodeDetails.to_json()
 
 # convert the object into a dict
 iso_code_details_dict = iso_code_details_instance.to_dict()

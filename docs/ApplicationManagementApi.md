@@ -24,8 +24,9 @@ Create application vrp configuration
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.vrp_configuration import VrpConfiguration
 from yapily.rest import ApiException
@@ -66,7 +67,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_id** | **str**| The id of the application that vrp configuration being created for | 
@@ -86,7 +86,6 @@ void (empty response body)
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Application vrp configuration was successfully created |  -  |
@@ -108,8 +107,9 @@ Creates a sub-application under the given root application id provided in the au
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_application_response import ApiResponseOfApplicationResponse
 from yapily.models.application_request import ApplicationRequest
@@ -152,7 +152,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_request** | [**ApplicationRequest**](ApplicationRequest.md)| The sub-application to create | 
@@ -171,7 +170,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Sub-application was successfully created |  -  |
@@ -193,8 +191,9 @@ Deletes the application with the given ID in the path
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.rest import ApiException
 from pprint import pprint
@@ -233,7 +232,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_id** | **str**| The id of the application being deleted | 
@@ -252,7 +250,6 @@ void (empty response body)
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Application was successfully deleted |  -  |
@@ -273,8 +270,9 @@ Retrieves an application by the id provided in the path
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_application_response import ApiResponseOfApplicationResponse
 from yapily.rest import ApiException
@@ -316,7 +314,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_id** | **str**| The id of the application being fetched | 
@@ -335,7 +332,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Application was successfully fetched |  -  |
@@ -356,8 +352,9 @@ Get application vrp configuration
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.vrp_configuration import VrpConfiguration
 from yapily.rest import ApiException
@@ -399,7 +396,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_id** | **str**| The id of the application that vrp configuration being created for | 
@@ -418,7 +414,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Application vrp configuration was successfully fetched |  -  |
@@ -440,8 +435,9 @@ Retrieves sub-applications for the root application provided in the authenticati
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_list_of_application_response import ApiListOfApplicationResponse
 from yapily.models.search_applications_public_filter_values_parameter import SearchApplicationsPublicFilterValuesParameter
@@ -484,7 +480,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **public_filter_values** | [**SearchApplicationsPublicFilterValuesParameter**](.md)|  | [optional] 
@@ -503,7 +498,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The sub-applications that are returned as part of the search results. |  -  |
@@ -524,8 +518,9 @@ Updates the application properties for the application with the given ID in the 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.api_response_of_application_response import ApiResponseOfApplicationResponse
 from yapily.models.application_request import ApplicationRequest
@@ -569,7 +564,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_id** | **str**| The id of the application being updated | 
@@ -589,7 +583,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Application was successfully updated |  -  |
@@ -610,8 +603,9 @@ Update application vrp configuration
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.vrp_configuration import VrpConfiguration
 from yapily.rest import ApiException
@@ -652,7 +646,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_id** | **str**| The id of the application that vrp configuration being created for | 
@@ -672,7 +665,6 @@ void (empty response body)
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Application vrp configuration was successfully updated |  -  |

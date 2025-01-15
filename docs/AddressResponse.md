@@ -3,7 +3,6 @@
 The address of the `Payee` or `Payer`.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_lines** | **List[str]** | The address line of the address | [optional] 
@@ -27,7 +26,7 @@ json = "{}"
 # create an instance of AddressResponse from a JSON string
 address_response_instance = AddressResponse.from_json(json)
 # print the JSON string representation of the object
-print(AddressResponse.to_json())
+print AddressResponse.to_json()
 
 # convert the object into a dict
 address_response_dict = address_response_instance.to_dict()

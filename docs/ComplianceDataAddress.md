@@ -3,7 +3,6 @@
 This is the registered company or trading address of your end user.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_line1** | **str** | __Mandatory__. AddressLine1 of the business. | 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of ComplianceDataAddress from a JSON string
 compliance_data_address_instance = ComplianceDataAddress.from_json(json)
 # print the JSON string representation of the object
-print(ComplianceDataAddress.to_json())
+print ComplianceDataAddress.to_json()
 
 # convert the object into a dict
 compliance_data_address_dict = compliance_data_address_instance.to_dict()

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first** | **str** |  | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of GetAccountsTransactionsCategorised200ResponseLinks from a JSON string
 get_accounts_transactions_categorised200_response_links_instance = GetAccountsTransactionsCategorised200ResponseLinks.from_json(json)
 # print the JSON string representation of the object
-print(GetAccountsTransactionsCategorised200ResponseLinks.to_json())
+print GetAccountsTransactionsCategorised200ResponseLinks.to_json()
 
 # convert the object into a dict
 get_accounts_transactions_categorised200_response_links_dict = get_accounts_transactions_categorised200_response_links_instance.to_dict()

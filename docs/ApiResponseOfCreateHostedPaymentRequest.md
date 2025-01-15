@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseMeta**](ResponseMeta.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ApiResponseOfCreateHostedPaymentRequest from a JSON string
 api_response_of_create_hosted_payment_request_instance = ApiResponseOfCreateHostedPaymentRequest.from_json(json)
 # print the JSON string representation of the object
-print(ApiResponseOfCreateHostedPaymentRequest.to_json())
+print ApiResponseOfCreateHostedPaymentRequest.to_json()
 
 # convert the object into a dict
 api_response_of_create_hosted_payment_request_dict = api_response_of_create_hosted_payment_request_instance.to_dict()

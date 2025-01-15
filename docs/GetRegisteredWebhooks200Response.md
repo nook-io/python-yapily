@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | [**Metadata**](Metadata.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of GetRegisteredWebhooks200Response from a JSON string
 get_registered_webhooks200_response_instance = GetRegisteredWebhooks200Response.from_json(json)
 # print the JSON string representation of the object
-print(GetRegisteredWebhooks200Response.to_json())
+print GetRegisteredWebhooks200Response.to_json()
 
 # convert the object into a dict
 get_registered_webhooks200_response_dict = get_registered_webhooks200_response_instance.to_dict()

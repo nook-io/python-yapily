@@ -17,44 +17,44 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
 from yapily.models.compliance_data import ComplianceData
 from yapily.models.initiation_details import InitiationDetails
 from yapily.models.non_sweeping_control_parameters import NonSweepingControlParameters
 from yapily.models.redirect_request import RedirectRequest
-from typing import Set
-from typing_extensions import Self
 
 
 class NonSweepingAuthorisationRequest(BaseModel):
     """
     NonSweepingAuthorisationRequest
-    """  # noqa: E501
+    """
 
     user_id: Optional[StrictStr] = Field(
         default=None,
-        description="This is the Yapily user identifier for the user returned by the create user step POST ../users",
         alias="userId",
+        description="This is the Yapily user identifier for the user returned by the create user step POST ../users",
     )
     application_user_id: Optional[StrictStr] = Field(
         default=None,
-        description="A client's own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls.",
         alias="applicationUserId",
+        description="A client's own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls.",
     )
-    forward_parameters: Optional[List[StrictStr]] = Field(
+    forward_parameters: Optional[conlist(StrictStr)] = Field(
         default=None,
-        description="Extra parameters the TPP may want to get forwarded in the callback request after the PSU redirect.",
         alias="forwardParameters",
+        description="Extra parameters the TPP may want to get forwarded in the callback request after the PSU redirect.",
     )
     context_type: Optional[StrictStr] = Field(
         default=None,
-        description="__Optional__. The payment context code. Allowed values are [BILL_IN_ADVANCE, BILL_IN_ARREARS, ECOMMERCE_MERCHANT, FACE_TO_FACE_POS, TRANSFER_TO_SELF,TRANSFER_TO_THIRD_PARTY, PISP_PAYEE ].",
         alias="contextType",
+        description="__Optional__. The payment context code. Allowed values are [BILL_IN_ADVANCE, BILL_IN_ARREARS, ECOMMERCE_MERCHANT, FACE_TO_FACE_POS, TRANSFER_TO_SELF,TRANSFER_TO_THIRD_PARTY, PISP_PAYEE ].",
     )
     institution_id: StrictStr = Field(
-        description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
+        default=...,
         alias="institutionId",
+        description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
     )
     callback: Optional[StrictStr] = Field(
         default=None,
@@ -63,15 +63,19 @@ class NonSweepingAuthorisationRequest(BaseModel):
     redirect: Optional[RedirectRequest] = None
     one_time_token: Optional[StrictBool] = Field(
         default=None,
-        description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
         alias="oneTimeToken",
+        description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
     )
-    control_parameters: NonSweepingControlParameters = Field(alias="controlParameters")
-    initiation_details: InitiationDetails = Field(alias="initiationDetails")
+    control_parameters: NonSweepingControlParameters = Field(
+        default=..., alias="controlParameters"
+    )
+    initiation_details: InitiationDetails = Field(
+        default=..., alias="initiationDetails"
+    )
     compliance_data: Optional[ComplianceData] = Field(
         default=None, alias="complianceData"
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "userId",
         "applicationUserId",
         "forwardParameters",
@@ -85,43 +89,28 @@ class NonSweepingAuthorisationRequest(BaseModel):
         "complianceData",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> NonSweepingAuthorisationRequest:
         """Create an instance of NonSweepingAuthorisationRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of redirect
         if self.redirect:
             _dict["redirect"] = self.redirect.to_dict()
@@ -137,37 +126,37 @@ class NonSweepingAuthorisationRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> NonSweepingAuthorisationRequest:
         """Create an instance of NonSweepingAuthorisationRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return NonSweepingAuthorisationRequest.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = NonSweepingAuthorisationRequest.parse_obj(
             {
-                "userId": obj.get("userId"),
-                "applicationUserId": obj.get("applicationUserId"),
-                "forwardParameters": obj.get("forwardParameters"),
-                "contextType": obj.get("contextType"),
-                "institutionId": obj.get("institutionId"),
+                "user_id": obj.get("userId"),
+                "application_user_id": obj.get("applicationUserId"),
+                "forward_parameters": obj.get("forwardParameters"),
+                "context_type": obj.get("contextType"),
+                "institution_id": obj.get("institutionId"),
                 "callback": obj.get("callback"),
-                "redirect": RedirectRequest.from_dict(obj["redirect"])
+                "redirect": RedirectRequest.from_dict(obj.get("redirect"))
                 if obj.get("redirect") is not None
                 else None,
-                "oneTimeToken": obj.get("oneTimeToken"),
-                "controlParameters": NonSweepingControlParameters.from_dict(
-                    obj["controlParameters"]
+                "one_time_token": obj.get("oneTimeToken"),
+                "control_parameters": NonSweepingControlParameters.from_dict(
+                    obj.get("controlParameters")
                 )
                 if obj.get("controlParameters") is not None
                 else None,
-                "initiationDetails": InitiationDetails.from_dict(
-                    obj["initiationDetails"]
+                "initiation_details": InitiationDetails.from_dict(
+                    obj.get("initiationDetails")
                 )
                 if obj.get("initiationDetails") is not None
                 else None,
-                "complianceData": ComplianceData.from_dict(obj["complianceData"])
+                "compliance_data": ComplianceData.from_dict(obj.get("complianceData"))
                 if obj.get("complianceData") is not None
                 else None,
             }

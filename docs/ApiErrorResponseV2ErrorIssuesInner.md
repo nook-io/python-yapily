@@ -3,7 +3,6 @@
 Detailed information regarding the issue that was experienced during processing of the request
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Category of the issue | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of ApiErrorResponseV2ErrorIssuesInner from a JSON string
 api_error_response_v2_error_issues_inner_instance = ApiErrorResponseV2ErrorIssuesInner.from_json(json)
 # print the JSON string representation of the object
-print(ApiErrorResponseV2ErrorIssuesInner.to_json())
+print ApiErrorResponseV2ErrorIssuesInner.to_json()
 
 # convert the object into a dict
 api_error_response_v2_error_issues_inner_dict = api_error_response_v2_error_issues_inner_instance.to_dict()

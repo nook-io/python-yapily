@@ -3,7 +3,6 @@
 __Conditional__. Used to further specify details of the `Consent` to request <br><br>Conditions:<ol><li>Mandatory to specify the individual scopes to request from the user at the `Institution` for an account authorisation</li><li>Mandatory to specify an expiry time on the created `Consent` at which time will render it unusable</li><li>Mandatory to specify the date range that the created `Consent` will be able to access transactions for (given the range is support for the `Institution`)</li></ol>
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **transaction_from** | **datetime** | __Optional__. Specifies the earliest date of the transaction records to be returned.&lt;br&gt;&lt;br&gt; You must supply this field to retrieve transactions older than 90 days for banks accessed via the the [CBI Globe Gateway](https://docs.yapily.com/pages/data/financial-data-resources/data-restrictions/#cbi-globe-gateway). | [optional] 
@@ -21,7 +20,7 @@ json = "{}"
 # create an instance of HostedAccountRequest from a JSON string
 hosted_account_request_instance = HostedAccountRequest.from_json(json)
 # print the JSON string representation of the object
-print(HostedAccountRequest.to_json())
+print HostedAccountRequest.to_json()
 
 # convert the object into a dict
 hosted_account_request_dict = hosted_account_request_instance.to_dict()

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseListMeta**](ResponseListMeta.md) |  | [optional] 
@@ -23,7 +22,7 @@ json = "{}"
 # create an instance of ApiListResponseOfInstitution from a JSON string
 api_list_response_of_institution_instance = ApiListResponseOfInstitution.from_json(json)
 # print the JSON string representation of the object
-print(ApiListResponseOfInstitution.to_json())
+print ApiListResponseOfInstitution.to_json()
 
 # convert the object into a dict
 api_list_response_of_institution_dict = api_list_response_of_institution_instance.to_dict()

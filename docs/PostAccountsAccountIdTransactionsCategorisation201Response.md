@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**GetBulkPaymentStatus200ResponseMeta**](GetBulkPaymentStatus200ResponseMeta.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of PostAccountsAccountIdTransactionsCategorisation201Response from a JSON string
 post_accounts_account_id_transactions_categorisation201_response_instance = PostAccountsAccountIdTransactionsCategorisation201Response.from_json(json)
 # print the JSON string representation of the object
-print(PostAccountsAccountIdTransactionsCategorisation201Response.to_json())
+print PostAccountsAccountIdTransactionsCategorisation201Response.to_json()
 
 # convert the object into a dict
 post_accounts_account_id_transactions_categorisation201_response_dict = post_accounts_account_id_transactions_categorisation201_response_instance.to_dict()

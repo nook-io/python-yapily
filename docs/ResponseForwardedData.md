@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **headers** | **Dict[str, str]** |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ResponseForwardedData from a JSON string
 response_forwarded_data_instance = ResponseForwardedData.from_json(json)
 # print the JSON string representation of the object
-print(ResponseForwardedData.to_json())
+print ResponseForwardedData.to_json()
 
 # convert the object into a dict
 response_forwarded_data_dict = response_forwarded_data_instance.to_dict()

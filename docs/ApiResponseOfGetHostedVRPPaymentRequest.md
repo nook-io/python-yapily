@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseMeta**](ResponseMeta.md) |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of ApiResponseOfGetHostedVRPPaymentRequest from a JSON string
 api_response_of_get_hosted_vrp_payment_request_instance = ApiResponseOfGetHostedVRPPaymentRequest.from_json(json)
 # print the JSON string representation of the object
-print(ApiResponseOfGetHostedVRPPaymentRequest.to_json())
+print ApiResponseOfGetHostedVRPPaymentRequest.to_json()
 
 # convert the object into a dict
 api_response_of_get_hosted_vrp_payment_request_dict = api_response_of_get_hosted_vrp_payment_request_instance.to_dict()

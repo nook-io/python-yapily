@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **errors** | [**List[ValidationError]**](ValidationError.md) |  | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of ValidationErrorResponse from a JSON string
 validation_error_response_instance = ValidationErrorResponse.from_json(json)
 # print the JSON string representation of the object
-print(ValidationErrorResponse.to_json())
+print ValidationErrorResponse.to_json()
 
 # convert the object into a dict
 validation_error_response_dict = validation_error_response_instance.to_dict()

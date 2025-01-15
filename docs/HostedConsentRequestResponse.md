@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **consent_request_id** | **str** | Unique Id of the consent request. | [optional] 
@@ -27,7 +26,7 @@ json = "{}"
 # create an instance of HostedConsentRequestResponse from a JSON string
 hosted_consent_request_response_instance = HostedConsentRequestResponse.from_json(json)
 # print the JSON string representation of the object
-print(HostedConsentRequestResponse.to_json())
+print HostedConsentRequestResponse.to_json()
 
 # convert the object into a dict
 hosted_consent_request_response_dict = hosted_consent_request_response_instance.to_dict()

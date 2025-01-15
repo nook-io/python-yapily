@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | [**Metadata**](Metadata.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of WebhookDetailsWithSecret from a JSON string
 webhook_details_with_secret_instance = WebhookDetailsWithSecret.from_json(json)
 # print the JSON string representation of the object
-print(WebhookDetailsWithSecret.to_json())
+print WebhookDetailsWithSecret.to_json()
 
 # convert the object into a dict
 webhook_details_with_secret_dict = webhook_details_with_secret_instance.to_dict()

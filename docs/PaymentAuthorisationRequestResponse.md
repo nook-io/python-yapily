@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the payment authorisation request. &lt;br&gt;&lt;br&gt;The &#x60;consentID&#x60; used to [retrieve a consent](/api/reference/#operation/getConsentById). | [optional] 
@@ -38,7 +37,7 @@ json = "{}"
 # create an instance of PaymentAuthorisationRequestResponse from a JSON string
 payment_authorisation_request_response_instance = PaymentAuthorisationRequestResponse.from_json(json)
 # print the JSON string representation of the object
-print(PaymentAuthorisationRequestResponse.to_json())
+print PaymentAuthorisationRequestResponse.to_json()
 
 # convert the object into a dict
 payment_authorisation_request_response_dict = payment_authorisation_request_response_instance.to_dict()

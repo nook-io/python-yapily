@@ -3,7 +3,6 @@
 The payment status code, as denoted by a 3-letter ISO 20022 code.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | [**PaymentIsoStatusCodeEnum**](PaymentIsoStatusCodeEnum.md) |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of PaymentIsoStatus from a JSON string
 payment_iso_status_instance = PaymentIsoStatus.from_json(json)
 # print the JSON string representation of the object
-print(PaymentIsoStatus.to_json())
+print PaymentIsoStatus.to_json()
 
 # convert the object into a dict
 payment_iso_status_dict = payment_iso_status_instance.to_dict()

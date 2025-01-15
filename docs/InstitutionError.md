@@ -3,7 +3,6 @@
 Raw error details provided by the `Institution`, when it was the error source.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **error_message** | **str** | Textual description of the &#x60;Institution&#x60; error. | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of InstitutionError from a JSON string
 institution_error_instance = InstitutionError.from_json(json)
 # print the JSON string representation of the object
-print(InstitutionError.to_json())
+print InstitutionError.to_json()
 
 # convert the object into a dict
 institution_error_dict = institution_error_instance.to_dict()

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **str** | __Conditional__. Yapily Identifier for the &#x60;User&#x60; returned by the create user step POST /users. You must either provide &#x60;userId&#x60; or &#x60;applicationUserId&#x60;. | [optional] 
@@ -23,7 +22,7 @@ json = "{}"
 # create an instance of CreateHostedPaymentRequestLink from a JSON string
 create_hosted_payment_request_link_instance = CreateHostedPaymentRequestLink.from_json(json)
 # print the JSON string representation of the object
-print(CreateHostedPaymentRequestLink.to_json())
+print CreateHostedPaymentRequestLink.to_json()
 
 # convert the object into a dict
 create_hosted_payment_request_link_dict = create_hosted_payment_request_link_instance.to_dict()

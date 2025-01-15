@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestAddressTypeEnumResponse(unittest.TestCase):
     """AddressTypeEnumResponse unit test stubs"""
 

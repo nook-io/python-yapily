@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestPriorityCodeEnum(unittest.TestCase):
     """PriorityCodeEnum unit test stubs"""
 

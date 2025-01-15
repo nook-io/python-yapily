@@ -3,7 +3,6 @@
 Identification details of a party associated with an account e.g. (account owner or operator).
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -26,7 +25,7 @@ json = "{}"
 # create an instance of Identity from a JSON string
 identity_instance = Identity.from_json(json)
 # print the JSON string representation of the object
-print(Identity.to_json())
+print Identity.to_json()
 
 # convert the object into a dict
 identity_dict = identity_instance.to_dict()

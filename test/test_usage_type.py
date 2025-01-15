@@ -15,7 +15,6 @@ Do not edit the class manually.
 import unittest
 
 
-
 class TestUsageType(unittest.TestCase):
     """UsageType unit test stubs"""
 

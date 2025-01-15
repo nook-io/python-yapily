@@ -3,7 +3,6 @@
 Detailed information regarding the issue that was experienced during processing of the request
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Category of the issue | 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of ErrorIssue from a JSON string
 error_issue_instance = ErrorIssue.from_json(json)
 # print the JSON string representation of the object
-print(ErrorIssue.to_json())
+print ErrorIssue.to_json()
 
 # convert the object into a dict
 error_issue_dict = error_issue_instance.to_dict()

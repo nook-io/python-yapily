@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total_max_amount** | [**Amount**](Amount.md) | __Mandatory__. Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the Alignment is Calendar, the limit is pro-rated in the first period to the remaining number of days. | 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of SweepingPeriodicLimits from a JSON string
 sweeping_periodic_limits_instance = SweepingPeriodicLimits.from_json(json)
 # print the JSON string representation of the object
-print(SweepingPeriodicLimits.to_json())
+print SweepingPeriodicLimits.to_json()
 
 # convert the object into a dict
 sweeping_periodic_limits_dict = sweeping_periodic_limits_instance.to_dict()

@@ -19,8 +19,9 @@ Retrieve a set of categorised transactions using a provided categorisation ID (_
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.get_accounts_transactions_categorised200_response import GetAccountsTransactionsCategorised200Response
 from yapily.rest import ApiException
@@ -67,7 +68,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -91,7 +91,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -112,8 +111,9 @@ Returns the list of categories that can be returned for a specific account type 
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.get_categorisation_account_type200_response import GetCategorisationAccountType200Response
 from yapily.rest import ApiException
@@ -156,7 +156,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_type** | **str**| type of bank account (consumer or business) | 
@@ -176,7 +175,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -197,8 +195,9 @@ Trigger categorisation for a specified set of transactions
 ### Example
 
 * Basic Authentication (basicAuth):
-
 ```python
+import time
+import os
 import yapily
 from yapily.models.post_accounts_account_id_transactions_categorisation201_response import PostAccountsAccountIdTransactionsCategorisation201Response
 from yapily.models.post_accounts_account_id_transactions_categorisation_request import PostAccountsAccountIdTransactionsCategorisationRequest
@@ -247,7 +246,6 @@ async with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -272,7 +270,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |

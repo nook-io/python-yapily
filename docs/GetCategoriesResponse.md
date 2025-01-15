@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **labels** | **List[str]** |  | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of GetCategoriesResponse from a JSON string
 get_categories_response_instance = GetCategoriesResponse.from_json(json)
 # print the JSON string representation of the object
-print(GetCategoriesResponse.to_json())
+print GetCategoriesResponse.to_json()
 
 # convert the object into a dict
 get_categories_response_dict = get_categories_response_instance.to_dict()

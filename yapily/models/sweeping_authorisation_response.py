@@ -18,56 +18,54 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from yapily.models.authorisation_status import AuthorisationStatus
 from yapily.models.feature_enum import FeatureEnum
 from yapily.models.initiation_details import InitiationDetails
 from yapily.models.payer import Payer
 from yapily.models.sweeping_control_parameters import SweepingControlParameters
-from typing import Set
-from typing_extensions import Self
 
 
 class SweepingAuthorisationResponse(BaseModel):
     """
     SweepingAuthorisationResponse
-    """  # noqa: E501
+    """
 
     id: Optional[StrictStr] = None
     user_id: Optional[StrictStr] = Field(
         default=None,
-        description="This is the Yapily user identifier for the user returned by the create user step POST ../users",
         alias="userId",
+        description="This is the Yapily user identifier for the user returned by the create user step POST ../users",
     )
     application_user_id: Optional[StrictStr] = Field(
         default=None,
-        description="A client's own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls.",
         alias="applicationUserId",
+        description="A client's own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls.",
     )
     institution_id: Optional[StrictStr] = Field(
         default=None,
-        description="The reference to the Institution which identifies which institution the authorisation request is sent to.",
         alias="institutionId",
+        description="The reference to the Institution which identifies which institution the authorisation request is sent to.",
     )
     status: Optional[AuthorisationStatus] = None
     created_at: Optional[datetime] = Field(default=None, alias="createdAt")
-    feature_scope: Optional[List[FeatureEnum]] = Field(
+    feature_scope: Optional[conlist(FeatureEnum, unique_items=True)] = Field(
         default=None,
-        description="__Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).",
         alias="featureScope",
+        description="__Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).",
     )
     consent_token: Optional[StrictStr] = Field(
         default=None,
-        description="The `consent-token` containing the user's authorisation to make the payment request.",
         alias="consentToken",
+        description="The `consent-token` containing the user's authorisation to make the payment request.",
     )
     state: Optional[StrictStr] = None
     authorized_at: Optional[datetime] = Field(default=None, alias="authorizedAt")
     institution_consent_id: Optional[StrictStr] = Field(
         default=None,
-        description="Identification of the consent at the Institution.",
         alias="institutionConsentId",
+        description="Identification of the consent at the Institution.",
     )
     authorisation_url: Optional[StrictStr] = Field(
         default=None, alias="authorisationUrl"
@@ -80,7 +78,7 @@ class SweepingAuthorisationResponse(BaseModel):
     initiation_details: Optional[InitiationDetails] = Field(
         default=None, alias="initiationDetails"
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "userId",
         "applicationUserId",
@@ -99,43 +97,28 @@ class SweepingAuthorisationResponse(BaseModel):
         "initiationDetails",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> SweepingAuthorisationResponse:
         """Create an instance of SweepingAuthorisationResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of control_parameters
         if self.control_parameters:
             _dict["controlParameters"] = self.control_parameters.to_dict()
@@ -148,39 +131,39 @@ class SweepingAuthorisationResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> SweepingAuthorisationResponse:
         """Create an instance of SweepingAuthorisationResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return SweepingAuthorisationResponse.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = SweepingAuthorisationResponse.parse_obj(
             {
                 "id": obj.get("id"),
-                "userId": obj.get("userId"),
-                "applicationUserId": obj.get("applicationUserId"),
-                "institutionId": obj.get("institutionId"),
+                "user_id": obj.get("userId"),
+                "application_user_id": obj.get("applicationUserId"),
+                "institution_id": obj.get("institutionId"),
                 "status": obj.get("status"),
-                "createdAt": obj.get("createdAt"),
-                "featureScope": obj.get("featureScope"),
-                "consentToken": obj.get("consentToken"),
+                "created_at": obj.get("createdAt"),
+                "feature_scope": obj.get("featureScope"),
+                "consent_token": obj.get("consentToken"),
                 "state": obj.get("state"),
-                "authorizedAt": obj.get("authorizedAt"),
-                "institutionConsentId": obj.get("institutionConsentId"),
-                "authorisationUrl": obj.get("authorisationUrl"),
-                "qrCodeUrl": obj.get("qrCodeUrl"),
-                "controlParameters": SweepingControlParameters.from_dict(
-                    obj["controlParameters"]
+                "authorized_at": obj.get("authorizedAt"),
+                "institution_consent_id": obj.get("institutionConsentId"),
+                "authorisation_url": obj.get("authorisationUrl"),
+                "qr_code_url": obj.get("qrCodeUrl"),
+                "control_parameters": SweepingControlParameters.from_dict(
+                    obj.get("controlParameters")
                 )
                 if obj.get("controlParameters") is not None
                 else None,
-                "payer": Payer.from_dict(obj["payer"])
+                "payer": Payer.from_dict(obj.get("payer"))
                 if obj.get("payer") is not None
                 else None,
-                "initiationDetails": InitiationDetails.from_dict(
-                    obj["initiationDetails"]
+                "initiation_details": InitiationDetails.from_dict(
+                    obj.get("initiationDetails")
                 )
                 if obj.get("initiationDetails") is not None
                 else None,

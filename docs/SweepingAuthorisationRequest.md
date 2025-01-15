@@ -2,13 +2,12 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **str** | This is the Yapily user identifier for the user returned by the create user step POST ../users | [optional] 
 **application_user_id** | **str** | A client&#39;s own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls. | [optional] 
 **forward_parameters** | **List[str]** | Extra parameters the TPP may want to get forwarded in the callback request after the PSU redirect. | [optional] 
-**context_type** | [**PaymentContextType**](PaymentContextType.md) |  | [optional] [default to PaymentContextType.OTHER]
+**context_type** | [**PaymentContextType**](PaymentContextType.md) |  | [optional] 
 **institution_id** | **str** | __Mandatory__. The reference to the &#x60;Institution&#x60; which identifies which institution the authorisation request is sent to. | 
 **callback** | **str** | __Optional__. The server to redirect the user to after the user complete the authorisation at the &#x60;Institution&#x60;. &lt;br&gt;&lt;br&gt;See [Using a callback (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-optional) for more information. | [optional] 
 **redirect** | [**RedirectRequest**](RedirectRequest.md) |  | [optional] 
@@ -27,7 +26,7 @@ json = "{}"
 # create an instance of SweepingAuthorisationRequest from a JSON string
 sweeping_authorisation_request_instance = SweepingAuthorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print(SweepingAuthorisationRequest.to_json())
+print SweepingAuthorisationRequest.to_json()
 
 # convert the object into a dict
 sweeping_authorisation_request_dict = sweeping_authorisation_request_instance.to_dict()

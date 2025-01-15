@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -22,7 +21,7 @@ json = "{}"
 # create an instance of DirectDebitResponse from a JSON string
 direct_debit_response_instance = DirectDebitResponse.from_json(json)
 # print the JSON string representation of the object
-print(DirectDebitResponse.to_json())
+print DirectDebitResponse.to_json()
 
 # convert the object into a dict
 direct_debit_response_dict = direct_debit_response_instance.to_dict()

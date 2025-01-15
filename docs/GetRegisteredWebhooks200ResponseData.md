@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active** | [**List[RegisteredWebhookWithStatus]**](RegisteredWebhookWithStatus.md) |  | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of GetRegisteredWebhooks200ResponseData from a JSON string
 get_registered_webhooks200_response_data_instance = GetRegisteredWebhooks200ResponseData.from_json(json)
 # print the JSON string representation of the object
-print(GetRegisteredWebhooks200ResponseData.to_json())
+print GetRegisteredWebhooks200ResponseData.to_json()
 
 # convert the object into a dict
 get_registered_webhooks200_response_data_dict = get_registered_webhooks200_response_data_instance.to_dict()

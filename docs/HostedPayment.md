@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payment_id** | **str** | The Unique Identifier of the payment. | [optional] 
@@ -32,7 +31,7 @@ json = "{}"
 # create an instance of HostedPayment from a JSON string
 hosted_payment_instance = HostedPayment.from_json(json)
 # print the JSON string representation of the object
-print(HostedPayment.to_json())
+print HostedPayment.to_json()
 
 # convert the object into a dict
 hosted_payment_dict = hosted_payment_instance.to_dict()

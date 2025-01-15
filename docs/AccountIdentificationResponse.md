@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**AccountIdentificationTypeResponse**](AccountIdentificationTypeResponse.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of AccountIdentificationResponse from a JSON string
 account_identification_response_instance = AccountIdentificationResponse.from_json(json)
 # print the JSON string representation of the object
-print(AccountIdentificationResponse.to_json())
+print AccountIdentificationResponse.to_json()
 
 # convert the object into a dict
 account_identification_response_dict = account_identification_response_instance.to_dict()

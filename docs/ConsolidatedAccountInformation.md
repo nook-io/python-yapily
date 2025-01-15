@@ -3,7 +3,6 @@
 Summary information regarding account balances of the overall account provided by the bank
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Identifier of the consolidated account. When used in Get Account Transactions calls, the transactions between the sub-accounts will not be reported | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of ConsolidatedAccountInformation from a JSON string
 consolidated_account_information_instance = ConsolidatedAccountInformation.from_json(json)
 # print the JSON string representation of the object
-print(ConsolidatedAccountInformation.to_json())
+print ConsolidatedAccountInformation.to_json()
 
 # convert the object into a dict
 consolidated_account_information_dict = consolidated_account_information_instance.to_dict()

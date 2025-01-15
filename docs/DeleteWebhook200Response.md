@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | [**Metadata**](Metadata.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of DeleteWebhook200Response from a JSON string
 delete_webhook200_response_instance = DeleteWebhook200Response.from_json(json)
 # print the JSON string representation of the object
-print(DeleteWebhook200Response.to_json())
+print DeleteWebhook200Response.to_json()
 
 # convert the object into a dict
 delete_webhook200_response_dict = delete_webhook200_response_instance.to_dict()

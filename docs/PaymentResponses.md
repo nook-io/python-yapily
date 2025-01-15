@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payments** | [**List[PaymentResponse]**](PaymentResponse.md) |  | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of PaymentResponses from a JSON string
 payment_responses_instance = PaymentResponses.from_json(json)
 # print the JSON string representation of the object
-print(PaymentResponses.to_json())
+print PaymentResponses.to_json()
 
 # convert the object into a dict
 payment_responses_dict = payment_responses_instance.to_dict()

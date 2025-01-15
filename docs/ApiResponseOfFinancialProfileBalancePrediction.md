@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseMeta**](ResponseMeta.md) |  | [optional] 
@@ -19,7 +18,7 @@ json = "{}"
 # create an instance of ApiResponseOfFinancialProfileBalancePrediction from a JSON string
 api_response_of_financial_profile_balance_prediction_instance = ApiResponseOfFinancialProfileBalancePrediction.from_json(json)
 # print the JSON string representation of the object
-print(ApiResponseOfFinancialProfileBalancePrediction.to_json())
+print ApiResponseOfFinancialProfileBalancePrediction.to_json()
 
 # convert the object into a dict
 api_response_of_financial_profile_balance_prediction_dict = api_response_of_financial_profile_balance_prediction_instance.to_dict()

@@ -17,33 +17,32 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Dict, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from yapily.models.registered_webhook_callback_url import RegisteredWebhookCallbackUrl
 from yapily.models.webhook_status_type import WebhookStatusType
-from typing import Set
-from typing_extensions import Self
 
 
 class RegisteredWebhookWithStatus(BaseModel):
     """
     RegisteredWebhookWithStatus
-    """  # noqa: E501
+    """
 
     id: Optional[StrictStr] = Field(
         default=None,
         description="the UUID of the registered webhook, used to update or remove the webhook",
     )
     application_id: Optional[StrictStr] = Field(
-        default=None, description="user applicaiton id", alias="applicationId"
+        default=None, alias="applicationId", description="user applicaiton id"
     )
-    categories: Optional[List[StrictStr]] = None
+    categories: Optional[conlist(StrictStr)] = None
     callback_url: Optional[RegisteredWebhookCallbackUrl] = Field(
         default=None, alias="callbackUrl"
     )
     metadata: Optional[Dict[str, StrictStr]] = None
     status: Optional[WebhookStatusType] = None
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "applicationId",
         "categories",
@@ -52,64 +51,49 @@ class RegisteredWebhookWithStatus(BaseModel):
         "status",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> RegisteredWebhookWithStatus:
         """Create an instance of RegisteredWebhookWithStatus from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of callback_url
         if self.callback_url:
             _dict["callbackUrl"] = self.callback_url.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> RegisteredWebhookWithStatus:
         """Create an instance of RegisteredWebhookWithStatus from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return RegisteredWebhookWithStatus.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = RegisteredWebhookWithStatus.parse_obj(
             {
                 "id": obj.get("id"),
-                "applicationId": obj.get("applicationId"),
+                "application_id": obj.get("applicationId"),
                 "categories": obj.get("categories"),
-                "callbackUrl": RegisteredWebhookCallbackUrl.from_dict(
-                    obj["callbackUrl"]
+                "callback_url": RegisteredWebhookCallbackUrl.from_dict(
+                    obj.get("callbackUrl")
                 )
                 if obj.get("callbackUrl") is not None
                 else None,

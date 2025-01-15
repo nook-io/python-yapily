@@ -3,7 +3,6 @@
 Typically, a bank or business unit within a bank e.g. (AIB Business, AIB Ireland, AIB UK).
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the &#x60;Institution&#x60;. | [optional] 
@@ -25,7 +24,7 @@ json = "{}"
 # create an instance of Institution from a JSON string
 institution_instance = Institution.from_json(json)
 # print the JSON string representation of the object
-print(Institution.to_json())
+print Institution.to_json()
 
 # convert the object into a dict
 institution_dict = institution_instance.to_dict()

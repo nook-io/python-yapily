@@ -3,7 +3,6 @@
 Information about a user of an application.
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uuid** | **str** | A unique identifier for the &#39;User&#39; assigned by Yapily. | [optional] 
@@ -23,7 +22,7 @@ json = "{}"
 # create an instance of ApplicationUser from a JSON string
 application_user_instance = ApplicationUser.from_json(json)
 # print the JSON string representation of the object
-print(ApplicationUser.to_json())
+print ApplicationUser.to_json()
 
 # convert the object into a dict
 application_user_dict = application_user_instance.to_dict()

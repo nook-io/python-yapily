@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **max_duration_from_now** | **str** |  | [optional] 
@@ -17,7 +16,7 @@ json = "{}"
 # create an instance of SchemaXYapilyValidations from a JSON string
 schema_x_yapily_validations_instance = SchemaXYapilyValidations.from_json(json)
 # print the JSON string representation of the object
-print(SchemaXYapilyValidations.to_json())
+print SchemaXYapilyValidations.to_json()
 
 # convert the object into a dict
 schema_x_yapily_validations_dict = schema_x_yapily_validations_instance.to_dict()

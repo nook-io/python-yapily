@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+
+from typing import Optional, Union
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, conlist
 from yapily.models.account_balance import AccountBalance
 from yapily.models.account_identification import AccountIdentification
 from yapily.models.account_name import AccountName
@@ -27,14 +28,12 @@ from yapily.models.consolidated_account_information import (
     ConsolidatedAccountInformation,
 )
 from yapily.models.usage_type import UsageType
-from typing import Set
-from typing_extensions import Self
 
 
 class Account(BaseModel):
     """
     Account
-    """  # noqa: E501
+    """
 
     id: Optional[StrictStr] = Field(
         default=None, description="Unique identifier of the account."
@@ -65,19 +64,19 @@ class Account(BaseModel):
         default=None,
         description="Supplementary specifications that might be provided by the Bank. These provide further characteristics about the account.",
     )
-    account_names: Optional[List[AccountName]] = Field(
+    account_names: Optional[conlist(AccountName)] = Field(
         default=None, alias="accountNames"
     )
-    account_identifications: Optional[List[AccountIdentification]] = Field(
-        default=None, alias="accountIdentifications"
-    )
-    account_balances: Optional[List[AccountBalance]] = Field(
+    account_identifications: Optional[
+        conlist(AccountIdentification, unique_items=True)
+    ] = Field(default=None, alias="accountIdentifications")
+    account_balances: Optional[conlist(AccountBalance)] = Field(
         default=None, alias="accountBalances"
     )
     consolidated_account_information: Optional[ConsolidatedAccountInformation] = Field(
         default=None, alias="consolidatedAccountInformation"
     )
-    __properties: ClassVar[List[str]] = [
+    __properties = [
         "id",
         "type",
         "description",
@@ -93,63 +92,48 @@ class Account(BaseModel):
         "consolidatedAccountInformation",
     ]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    class Config:
+        """Pydantic configuration"""
+
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Account:
         """Create an instance of Account from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in account_names (list)
         _items = []
         if self.account_names:
-            for _item_account_names in self.account_names:
-                if _item_account_names:
-                    _items.append(_item_account_names.to_dict())
+            for _item in self.account_names:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["accountNames"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in account_identifications (list)
         _items = []
         if self.account_identifications:
-            for _item_account_identifications in self.account_identifications:
-                if _item_account_identifications:
-                    _items.append(_item_account_identifications.to_dict())
+            for _item in self.account_identifications:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["accountIdentifications"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in account_balances (list)
         _items = []
         if self.account_balances:
-            for _item_account_balances in self.account_balances:
-                if _item_account_balances:
-                    _items.append(_item_account_balances.to_dict())
+            for _item in self.account_balances:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict["accountBalances"] = _items
         # override the default output from pydantic by calling `to_dict()` of consolidated_account_information
         if self.consolidated_account_information:
@@ -159,43 +143,44 @@ class Account(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> Account:
         """Create an instance of Account from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return Account.parse_obj(obj)
 
-        _obj = cls.model_validate(
+        _obj = Account.parse_obj(
             {
                 "id": obj.get("id"),
                 "type": obj.get("type"),
                 "description": obj.get("description"),
                 "balance": obj.get("balance"),
                 "currency": obj.get("currency"),
-                "usageType": obj.get("usageType"),
-                "accountType": obj.get("accountType"),
+                "usage_type": obj.get("usageType"),
+                "account_type": obj.get("accountType"),
                 "nickname": obj.get("nickname"),
                 "details": obj.get("details"),
-                "accountNames": [
-                    AccountName.from_dict(_item) for _item in obj["accountNames"]
+                "account_names": [
+                    AccountName.from_dict(_item) for _item in obj.get("accountNames")
                 ]
                 if obj.get("accountNames") is not None
                 else None,
-                "accountIdentifications": [
+                "account_identifications": [
                     AccountIdentification.from_dict(_item)
-                    for _item in obj["accountIdentifications"]
+                    for _item in obj.get("accountIdentifications")
                 ]
                 if obj.get("accountIdentifications") is not None
                 else None,
-                "accountBalances": [
-                    AccountBalance.from_dict(_item) for _item in obj["accountBalances"]
+                "account_balances": [
+                    AccountBalance.from_dict(_item)
+                    for _item in obj.get("accountBalances")
                 ]
                 if obj.get("accountBalances") is not None
                 else None,
-                "consolidatedAccountInformation": ConsolidatedAccountInformation.from_dict(
-                    obj["consolidatedAccountInformation"]
+                "consolidated_account_information": ConsolidatedAccountInformation.from_dict(
+                    obj.get("consolidatedAccountInformation")
                 )
                 if obj.get("consolidatedAccountInformation") is not None
                 else None,

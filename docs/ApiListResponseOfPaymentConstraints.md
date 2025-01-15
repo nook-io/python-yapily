@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseListMeta**](ResponseListMeta.md) |  | [optional] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ApiListResponseOfPaymentConstraints from a JSON string
 api_list_response_of_payment_constraints_instance = ApiListResponseOfPaymentConstraints.from_json(json)
 # print the JSON string representation of the object
-print(ApiListResponseOfPaymentConstraints.to_json())
+print ApiListResponseOfPaymentConstraints.to_json()
 
 # convert the object into a dict
 api_list_response_of_payment_constraints_dict = api_list_response_of_payment_constraints_instance.to_dict()
