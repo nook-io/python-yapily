@@ -17,4 +17,3 @@ from yapily.api.payments_api import PaymentsApi
 from yapily.api.users_api import UsersApi
 from yapily.api.variable_recurring_payments_api import VariableRecurringPaymentsApi
 from yapily.api.webhooks_api import WebhooksApi
-
