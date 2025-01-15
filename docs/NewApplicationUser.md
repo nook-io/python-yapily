@@ -3,6 +3,7 @@
 Details of a new user to be created for the application.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application_user_id** | **str** | __Optional__. The unique identifier of the &#x60;Application User&#x60; assigned by the Application Owner. | [optional] 
@@ -18,12 +19,12 @@ json = "{}"
 # create an instance of NewApplicationUser from a JSON string
 new_application_user_instance = NewApplicationUser.from_json(json)
 # print the JSON string representation of the object
-print NewApplicationUser.to_json()
+print(NewApplicationUser.to_json())
 
 # convert the object into a dict
 new_application_user_dict = new_application_user_instance.to_dict()
 # create an instance of NewApplicationUser from a dict
-new_application_user_form_dict = new_application_user.from_dict(new_application_user_dict)
+new_application_user_from_dict = NewApplicationUser.from_dict(new_application_user_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

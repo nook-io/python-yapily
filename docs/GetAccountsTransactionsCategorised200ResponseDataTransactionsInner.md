@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -31,12 +32,12 @@ json = "{}"
 # create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInner from a JSON string
 get_accounts_transactions_categorised200_response_data_transactions_inner_instance = GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.from_json(json)
 # print the JSON string representation of the object
-print GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.to_json()
+print(GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.to_json())
 
 # convert the object into a dict
 get_accounts_transactions_categorised200_response_data_transactions_inner_dict = get_accounts_transactions_categorised200_response_data_transactions_inner_instance.to_dict()
 # create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInner from a dict
-get_accounts_transactions_categorised200_response_data_transactions_inner_form_dict = get_accounts_transactions_categorised200_response_data_transactions_inner.from_dict(get_accounts_transactions_categorised200_response_data_transactions_inner_dict)
+get_accounts_transactions_categorised200_response_data_transactions_inner_from_dict = GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.from_dict(get_accounts_transactions_categorised200_response_data_transactions_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -3,6 +3,7 @@
 __Conditional__. Used to further specify details of the `Consent` to request <br><br>Conditions:<ol><li>Mandatory to specify the individual scopes to request from the user at the `Institution` for an account authorisation</li><li>Mandatory to specify an expiry time on the created `Consent` at which time will render it unusable</li><li>Mandatory to specify the date range that the created `Consent` will be able to access transactions for (given the range is support for the `Institution`)</li></ol>
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **transaction_from** | **datetime** | __Optional__. Specifies the earliest date of the transaction records to be returned.&lt;br&gt;&lt;br&gt; You must supply this field to retrieve transactions older than 90 days for banks accessed via the the [CBI Globe Gateway](https://docs.yapily.com/pages/data/financial-data-resources/data-restrictions/#cbi-globe-gateway). | [optional] 
@@ -23,12 +24,12 @@ json = "{}"
 # create an instance of AccountRequest from a JSON string
 account_request_instance = AccountRequest.from_json(json)
 # print the JSON string representation of the object
-print AccountRequest.to_json()
+print(AccountRequest.to_json())
 
 # convert the object into a dict
 account_request_dict = account_request_instance.to_dict()
 # create an instance of AccountRequest from a dict
-account_request_form_dict = account_request.from_dict(account_request_dict)
+account_request_from_dict = AccountRequest.from_dict(account_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

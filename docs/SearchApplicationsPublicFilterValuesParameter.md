@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application_ids** | **List[str]** | Sub-application ids to filter the results for. If provided, the results will only include sub-applications with the given ids. Non-existent ids will be ignored. | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of SearchApplicationsPublicFilterValuesParameter from a JSON string
 search_applications_public_filter_values_parameter_instance = SearchApplicationsPublicFilterValuesParameter.from_json(json)
 # print the JSON string representation of the object
-print SearchApplicationsPublicFilterValuesParameter.to_json()
+print(SearchApplicationsPublicFilterValuesParameter.to_json())
 
 # convert the object into a dict
 search_applications_public_filter_values_parameter_dict = search_applications_public_filter_values_parameter_instance.to_dict()
 # create an instance of SearchApplicationsPublicFilterValuesParameter from a dict
-search_applications_public_filter_values_parameter_form_dict = search_applications_public_filter_values_parameter.from_dict(search_applications_public_filter_values_parameter_dict)
+search_applications_public_filter_values_parameter_from_dict = SearchApplicationsPublicFilterValuesParameter.from_dict(search_applications_public_filter_values_parameter_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

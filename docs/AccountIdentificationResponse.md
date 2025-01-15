@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**AccountIdentificationTypeResponse**](AccountIdentificationTypeResponse.md) |  | [optional] 
@@ -17,12 +18,12 @@ json = "{}"
 # create an instance of AccountIdentificationResponse from a JSON string
 account_identification_response_instance = AccountIdentificationResponse.from_json(json)
 # print the JSON string representation of the object
-print AccountIdentificationResponse.to_json()
+print(AccountIdentificationResponse.to_json())
 
 # convert the object into a dict
 account_identification_response_dict = account_identification_response_instance.to_dict()
 # create an instance of AccountIdentificationResponse from a dict
-account_identification_response_form_dict = account_identification_response.from_dict(account_identification_response_dict)
+account_identification_response_from_dict = AccountIdentificationResponse.from_dict(account_identification_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

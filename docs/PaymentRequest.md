@@ -3,13 +3,14 @@
 __Mandatory__. The payment request object defining the details of the payment.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payment_idempotency_id** | **str** | __Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters. | 
 **payer** | [**Payer**](Payer.md) |  | [optional] 
 **reference** | **str** | __Optional__. The payment reference or description. Limited to a maximum of 18 characters long. | [optional] 
-**context_type** | [**PaymentContextType**](PaymentContextType.md) |  | [optional] 
-**purpose_code** | **str** | __Optional__. The payment purpose code. &lt;br&gt;&lt;br&gt;Allowed values: INTP,DEPT,BEXP,LICF,SERV,SUPP,TRAD,SUBS,GDSV,ROYA,COMT,CHAR,ECPR,CLPR,INTE,LOAN,LOAR,INPC,INPR,INSC,INSU,LIFI,PPTI,HLRP,HLST,PDEP,IVPT,REBT,REFU,CDBL,CPKC,EDUC,FEES,GAMB,LOTT,GIFT,INSM,REOD,GOVT,TCSC,BLDM,RENT,DIVD,INVS,SAVG,HLTI,DNTS,LTCF,MDCS,VIEW,BECH,BENE,SSBE,PEFC,PENS,ADCS,BONU,COMM,SALA,ESTX,HSTX,INTX,PTXP,RDTX,TAXS,VATX,WHLD,TAXR,CBTV,ELEC,GASB,PHON,UBIL,WTER . &lt;br&gt;&lt;br&gt;See [Payment Purpose code](https://docs.yapily.com/pages/payments/payments-resources/tri-pilot/) to see the definition of each code | [optional] 
+**context_type** | [**PaymentContextType**](PaymentContextType.md) |  | [optional] [default to PaymentContextType.OTHER]
+**purpose_code** | **str** | __Optional__. The payment purpose code. &lt;br&gt;&lt;br&gt;Allowed values: INTP, DEPT, BEXP, LICF, SERV, SUPP, TRAD, SUBS, GDSV, ROYA, COMT, CHAR, ECPR, CLPR, INTE, LOAN, LOAR, INPC, INPR, INSC, INSU, LIFI, PPTI, HLRP, HLST, PDEP, IVPT, REBT, REFU, CDBL, CPKC, EDUC, FEES, GAMB, LOTT, GIFT, INSM, REOD, GOVT, TCSC, BLDM, RENT, DIVD, INVS, SAVG, HLTI, DNTS, LTCF, MDCS, VIEW, BECH, BENE, SSBE, PEFC, PENS, ADCS, BONU, COMM, SALA, ESTX, HSTX, INTX, PTXP, RDTX, TAXS, VATX, WHLD, TAXR, CBTV, ELEC, GASB, PHON, UBIL, WTER . &lt;br&gt;&lt;br&gt;See [Payment Purpose code](https://docs.yapily.com/pages/payments/payments-resources/tri-pilot/) to see the definition of each code | [optional] 
 **type** | [**PaymentType**](PaymentType.md) |  | 
 **payee** | [**Payee**](Payee.md) |  | 
 **periodic_payment** | [**PeriodicPaymentRequest**](PeriodicPaymentRequest.md) |  | [optional] 
@@ -28,12 +29,12 @@ json = "{}"
 # create an instance of PaymentRequest from a JSON string
 payment_request_instance = PaymentRequest.from_json(json)
 # print the JSON string representation of the object
-print PaymentRequest.to_json()
+print(PaymentRequest.to_json())
 
 # convert the object into a dict
 payment_request_dict = payment_request_instance.to_dict()
 # create an instance of PaymentRequest from a dict
-payment_request_form_dict = payment_request.from_dict(payment_request_dict)
+payment_request_from_dict = PaymentRequest.from_dict(payment_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

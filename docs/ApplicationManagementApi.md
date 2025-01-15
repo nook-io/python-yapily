@@ -24,9 +24,8 @@ Create application vrp configuration
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.vrp_configuration import VrpConfiguration
 from yapily.rest import ApiException
@@ -50,7 +49,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationManagementApi(api_client)
     application_id = 'application_id_example' # str | The id of the application that vrp configuration being created for
@@ -58,7 +57,7 @@ with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Create application VRP configuration by Application Id
-        api_instance.create_application_vrp_configuration_by_application_id(application_id, vrp_configuration)
+        await api_instance.create_application_vrp_configuration_by_application_id(application_id, vrp_configuration)
     except Exception as e:
         print("Exception when calling ApplicationManagementApi->create_application_vrp_configuration_by_application_id: %s\n" % e)
 ```
@@ -66,6 +65,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -86,6 +86,7 @@ void (empty response body)
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Application vrp configuration was successfully created |  -  |
@@ -107,9 +108,8 @@ Creates a sub-application under the given root application id provided in the au
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.api_response_of_application_response import ApiResponseOfApplicationResponse
 from yapily.models.application_request import ApplicationRequest
@@ -134,14 +134,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationManagementApi(api_client)
     application_request = yapily.ApplicationRequest() # ApplicationRequest | The sub-application to create
 
     try:
         # Creates a sub-application for the root application id provided in the authentication token
-        api_response = api_instance.create_sub_application(application_request)
+        api_response = await api_instance.create_sub_application(application_request)
         print("The response of ApplicationManagementApi->create_sub_application:\n")
         pprint(api_response)
     except Exception as e:
@@ -151,6 +151,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -170,6 +171,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Sub-application was successfully created |  -  |
@@ -191,9 +193,8 @@ Deletes the application with the given ID in the path
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.rest import ApiException
 from pprint import pprint
@@ -216,14 +217,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationManagementApi(api_client)
     application_id = 'application_id_example' # str | The id of the application being deleted
 
     try:
         # Delete an application
-        api_instance.delete_application(application_id)
+        await api_instance.delete_application(application_id)
     except Exception as e:
         print("Exception when calling ApplicationManagementApi->delete_application: %s\n" % e)
 ```
@@ -231,6 +232,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -250,6 +252,7 @@ void (empty response body)
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Application was successfully deleted |  -  |
@@ -270,9 +273,8 @@ Retrieves an application by the id provided in the path
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.api_response_of_application_response import ApiResponseOfApplicationResponse
 from yapily.rest import ApiException
@@ -296,14 +298,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationManagementApi(api_client)
     application_id = 'application_id_example' # str | The id of the application being fetched
 
     try:
         # Get application details
-        api_response = api_instance.get_application_by_id(application_id)
+        api_response = await api_instance.get_application_by_id(application_id)
         print("The response of ApplicationManagementApi->get_application_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -313,6 +315,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -332,6 +335,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Application was successfully fetched |  -  |
@@ -352,9 +356,8 @@ Get application vrp configuration
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.vrp_configuration import VrpConfiguration
 from yapily.rest import ApiException
@@ -378,14 +381,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationManagementApi(api_client)
     application_id = 'application_id_example' # str | The id of the application that vrp configuration being created for
 
     try:
         # Get application VRP configuration by Application Id
-        api_response = api_instance.get_application_vrp_configuration_by_application_id(application_id)
+        api_response = await api_instance.get_application_vrp_configuration_by_application_id(application_id)
         print("The response of ApplicationManagementApi->get_application_vrp_configuration_by_application_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -395,6 +398,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -414,6 +418,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Application vrp configuration was successfully fetched |  -  |
@@ -435,9 +440,8 @@ Retrieves sub-applications for the root application provided in the authenticati
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.api_list_of_application_response import ApiListOfApplicationResponse
 from yapily.models.search_applications_public_filter_values_parameter import SearchApplicationsPublicFilterValuesParameter
@@ -462,14 +466,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationManagementApi(api_client)
     public_filter_values = yapily.SearchApplicationsPublicFilterValuesParameter() # SearchApplicationsPublicFilterValuesParameter |  (optional)
 
     try:
         # Retrieve sub-applications for the root application provided in the authentication token.
-        api_response = api_instance.search_applications(public_filter_values=public_filter_values)
+        api_response = await api_instance.search_applications(public_filter_values=public_filter_values)
         print("The response of ApplicationManagementApi->search_applications:\n")
         pprint(api_response)
     except Exception as e:
@@ -479,6 +483,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -498,6 +503,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The sub-applications that are returned as part of the search results. |  -  |
@@ -518,9 +524,8 @@ Updates the application properties for the application with the given ID in the 
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.api_response_of_application_response import ApiResponseOfApplicationResponse
 from yapily.models.application_request import ApplicationRequest
@@ -545,7 +550,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationManagementApi(api_client)
     application_id = 'application_id_example' # str | The id of the application being updated
@@ -553,7 +558,7 @@ with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Update an Application
-        api_response = api_instance.update_application(application_id, application_request)
+        api_response = await api_instance.update_application(application_id, application_request)
         print("The response of ApplicationManagementApi->update_application:\n")
         pprint(api_response)
     except Exception as e:
@@ -563,6 +568,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -583,6 +589,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Application was successfully updated |  -  |
@@ -603,9 +610,8 @@ Update application vrp configuration
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.vrp_configuration import VrpConfiguration
 from yapily.rest import ApiException
@@ -629,7 +635,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ApplicationManagementApi(api_client)
     application_id = 'application_id_example' # str | The id of the application that vrp configuration being created for
@@ -637,7 +643,7 @@ with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Update application VRP configuration by Application Id
-        api_instance.update_application_vrp_configuration_by_application_id(application_id, vrp_configuration)
+        await api_instance.update_application_vrp_configuration_by_application_id(application_id, vrp_configuration)
     except Exception as e:
         print("Exception when calling ApplicationManagementApi->update_application_vrp_configuration_by_application_id: %s\n" % e)
 ```
@@ -645,6 +651,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -665,6 +672,7 @@ void (empty response body)
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Application vrp configuration was successfully updated |  -  |

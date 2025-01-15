@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_accounts_transactions_categorised**
-> GetAccountsTransactionsCategorised200Response get_accounts_transactions_categorised(consent, account_id, categorisation_id, limit=limit)
+> GetAccountsTransactionsCategorised200Response get_accounts_transactions_categorised(consent, account_id, categorisation_id, sub_application=sub_application, limit=limit, page=page)
 
 Get Categorised Transactions
 
@@ -19,9 +19,8 @@ Retrieve a set of categorised transactions using a provided categorisation ID (_
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.get_accounts_transactions_categorised200_response import GetAccountsTransactionsCategorised200Response
 from yapily.rest import ApiException
@@ -45,17 +44,19 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.EnrichmentApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
     account_id = 'account_id_example' # str | Unique identifier for account
     categorisation_id = 'categorisation_id_example' # str | Unique identifier for transaction categorisation request
-    limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 1 and 1000. (optional)
+    sub_application = 'sub_application_example' # str | The sub-application ID to which event type is being subscribed to (optional)
+    limit = 56 # int | __Optional__. The maximum number of transaction records to be returned. Must be between 100 and 1000. If not specified will default to 100. (optional)
+    page = 56 # int | __Optional__. The page number to be returned. If not specified will default to 1. (optional)
 
     try:
         # Get Categorised Transactions
-        api_response = api_instance.get_accounts_transactions_categorised(consent, account_id, categorisation_id, limit=limit)
+        api_response = await api_instance.get_accounts_transactions_categorised(consent, account_id, categorisation_id, sub_application=sub_application, limit=limit, page=page)
         print("The response of EnrichmentApi->get_accounts_transactions_categorised:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,12 +67,15 @@ with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
  **account_id** | **str**| Unique identifier for account | 
  **categorisation_id** | **str**| Unique identifier for transaction categorisation request | 
- **limit** | **int**| __Optional__. The maximum number of transaction records to be returned. Must be between 1 and 1000. | [optional] 
+ **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
+ **limit** | **int**| __Optional__. The maximum number of transaction records to be returned. Must be between 100 and 1000. If not specified will default to 100. | [optional] 
+ **page** | **int**| __Optional__. The page number to be returned. If not specified will default to 1. | [optional] 
 
 ### Return type
 
@@ -84,20 +88,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**500** | Internal Server Error |  -  |
+**400** | There are validation errors |  -  |
+**401** | Authentication Error |  -  |
+**404** | Webhook id not found |  -  |
+**500** | An unexpected error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_categorisation_account_type**
-> GetCategorisationAccountType200Response get_categorisation_account_type(account_type)
+> GetCategorisationAccountType200Response get_categorisation_account_type(account_type, sub_application=sub_application)
 
 Get the list of all categories for a specific account type
 
@@ -106,9 +112,8 @@ Returns the list of categories that can be returned for a specific account type 
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.get_categorisation_account_type200_response import GetCategorisationAccountType200Response
 from yapily.rest import ApiException
@@ -132,14 +137,15 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.EnrichmentApi(api_client)
     account_type = 'account_type_example' # str | type of bank account (consumer or business)
+    sub_application = 'sub_application_example' # str | The sub-application ID to which event type is being subscribed to (optional)
 
     try:
         # Get the list of all categories for a specific account type
-        api_response = api_instance.get_categorisation_account_type(account_type)
+        api_response = await api_instance.get_categorisation_account_type(account_type, sub_application=sub_application)
         print("The response of EnrichmentApi->get_categorisation_account_type:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,9 +156,11 @@ with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_type** | **str**| type of bank account (consumer or business) | 
+ **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
 
 ### Return type
 
@@ -165,20 +173,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**500** | Internal Server Error |  -  |
+**400** | There are validation errors |  -  |
+**401** | Authentication Error |  -  |
+**404** | Webhook id not found |  -  |
+**500** | An unexpected error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_accounts_account_id_transactions_categorisation**
-> PostAccountsAccountIdTransactionsCategorisation201Response post_accounts_account_id_transactions_categorisation(consent, account_id, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, post_accounts_account_id_transactions_categorisation_request=post_accounts_account_id_transactions_categorisation_request)
+> PostAccountsAccountIdTransactionsCategorisation201Response post_accounts_account_id_transactions_categorisation(consent, account_id, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, sub_application=sub_application, post_accounts_account_id_transactions_categorisation_request=post_accounts_account_id_transactions_categorisation_request)
 
 Trigger transaction categorisation
 
@@ -187,9 +197,8 @@ Trigger categorisation for a specified set of transactions
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.post_accounts_account_id_transactions_categorisation201_response import PostAccountsAccountIdTransactionsCategorisation201Response
 from yapily.models.post_accounts_account_id_transactions_categorisation_request import PostAccountsAccountIdTransactionsCategorisationRequest
@@ -214,7 +223,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.EnrichmentApi(api_client)
     consent = '{consentToken}' # str | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
@@ -222,11 +231,12 @@ with yapily.ApiClient(configuration) as api_client:
     psu_id = 'psu_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
     psu_corporate_id = 'psu_corporate_id_example' # str | __Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
     psu_ip_address = 'psu_ip_address_example' # str | __Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. (optional)
-    post_accounts_account_id_transactions_categorisation_request = {"countryCode":"GB","from":"2019-08-24T14:15:22Z","before":"2019-08-24T14:15:22Z","sort":"-date"} # PostAccountsAccountIdTransactionsCategorisationRequest |  (optional)
+    sub_application = 'sub_application_example' # str | The sub-application ID to which event type is being subscribed to (optional)
+    post_accounts_account_id_transactions_categorisation_request = {"countryCode":"GB","categorisationType":"consumer","from":"2019-08-24T14:15:22Z","before":"2019-08-24T14:15:22Z"} # PostAccountsAccountIdTransactionsCategorisationRequest |  (optional)
 
     try:
         # Trigger transaction categorisation
-        api_response = api_instance.post_accounts_account_id_transactions_categorisation(consent, account_id, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, post_accounts_account_id_transactions_categorisation_request=post_accounts_account_id_transactions_categorisation_request)
+        api_response = await api_instance.post_accounts_account_id_transactions_categorisation(consent, account_id, psu_id=psu_id, psu_corporate_id=psu_corporate_id, psu_ip_address=psu_ip_address, sub_application=sub_application, post_accounts_account_id_transactions_categorisation_request=post_accounts_account_id_transactions_categorisation_request)
         print("The response of EnrichmentApi->post_accounts_account_id_transactions_categorisation:\n")
         pprint(api_response)
     except Exception as e:
@@ -237,6 +247,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **str**| __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. | 
@@ -244,6 +255,7 @@ Name | Type | Description  | Notes
  **psu_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
  **psu_corporate_id** | **str**| __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
  **psu_ip_address** | **str**| __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/pages/knowledge/open-banking/psu_identifiers/) to see if this header is required. | [optional] 
+ **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
  **post_accounts_account_id_transactions_categorisation_request** | [**PostAccountsAccountIdTransactionsCategorisationRequest**](PostAccountsAccountIdTransactionsCategorisationRequest.md)|  | [optional] 
 
 ### Return type
@@ -257,15 +269,16 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**500** | Internal Server Error |  -  |
+**400** | There are validation errors |  -  |
+**401** | Authentication Error |  -  |
+**500** | An unexpected error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

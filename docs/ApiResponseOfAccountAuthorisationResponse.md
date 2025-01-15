@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseMeta**](ResponseMeta.md) |  | [optional] 
@@ -21,12 +22,12 @@ json = "{}"
 # create an instance of ApiResponseOfAccountAuthorisationResponse from a JSON string
 api_response_of_account_authorisation_response_instance = ApiResponseOfAccountAuthorisationResponse.from_json(json)
 # print the JSON string representation of the object
-print ApiResponseOfAccountAuthorisationResponse.to_json()
+print(ApiResponseOfAccountAuthorisationResponse.to_json())
 
 # convert the object into a dict
 api_response_of_account_authorisation_response_dict = api_response_of_account_authorisation_response_instance.to_dict()
 # create an instance of ApiResponseOfAccountAuthorisationResponse from a dict
-api_response_of_account_authorisation_response_form_dict = api_response_of_account_authorisation_response.from_dict(api_response_of_account_authorisation_response_dict)
+api_response_of_account_authorisation_response_from_dict = ApiResponseOfAccountAuthorisationResponse.from_dict(api_response_of_account_authorisation_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

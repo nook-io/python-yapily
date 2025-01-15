@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **delete_webhook**
-> DeleteWebhook200Response delete_webhook(webhook_id)
+> DeleteWebhook200Response delete_webhook(webhook_id, sub_application=sub_application)
 
 Delete Webhook Event
 
@@ -21,9 +21,8 @@ Delete a webhook event for a specified webhook ID, unregistering it from receivi
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.delete_webhook200_response import DeleteWebhook200Response
 from yapily.rest import ApiException
@@ -47,14 +46,15 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.WebhooksApi(api_client)
     webhook_id = 'webhook_id_example' # str | Registered webhook id
+    sub_application = 'sub_application_example' # str | The sub-application ID to which event type is being subscribed to (optional)
 
     try:
         # Delete Webhook Event
-        api_response = api_instance.delete_webhook(webhook_id)
+        api_response = await api_instance.delete_webhook(webhook_id, sub_application=sub_application)
         print("The response of WebhooksApi->delete_webhook:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,9 +65,11 @@ with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhook_id** | **str**| Registered webhook id | 
+ **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
 
 ### Return type
 
@@ -83,9 +85,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | delete webhook succeeded |  -  |
+**401** | Authentication Error |  -  |
 **400** | There are validation errors |  -  |
 **404** | Webhook id not found |  -  |
 **500** | An unexpected error occurred. |  -  |
@@ -93,7 +97,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_registered_webhooks**
-> GetRegisteredWebhooks200Response get_registered_webhooks()
+> GetRegisteredWebhooks200Response get_registered_webhooks(sub_application=sub_application)
 
 Retrieve All Webhook Events
 
@@ -102,9 +106,8 @@ Retrieve the list of registered webhooks for your application
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.get_registered_webhooks200_response import GetRegisteredWebhooks200Response
 from yapily.rest import ApiException
@@ -128,13 +131,14 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.WebhooksApi(api_client)
+    sub_application = 'sub_application_example' # str | The sub-application ID to which event type is being subscribed to (optional)
 
     try:
         # Retrieve All Webhook Events
-        api_response = api_instance.get_registered_webhooks()
+        api_response = await api_instance.get_registered_webhooks(sub_application=sub_application)
         print("The response of WebhooksApi->get_registered_webhooks:\n")
         pprint(api_response)
     except Exception as e:
@@ -144,7 +148,11 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
 
 ### Return type
 
@@ -160,9 +168,11 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | retrieve all registered webhook |  -  |
+**401** | Authentication Error |  -  |
 **400** | There are validation errors |  -  |
 **500** | An unexpected error occurred. |  -  |
 
@@ -178,9 +188,8 @@ Retrieve a comprehensive list of event categories that can be registered for web
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.get_webhook_events_categories200_response import GetWebhookEventsCategories200Response
 from yapily.rest import ApiException
@@ -204,13 +213,13 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.WebhooksApi(api_client)
 
     try:
         # Get Webhook Categories
-        api_response = api_instance.get_webhook_events_categories()
+        api_response = await api_instance.get_webhook_events_categories()
         print("The response of WebhooksApi->get_webhook_events_categories:\n")
         pprint(api_response)
     except Exception as e:
@@ -220,6 +229,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -236,16 +246,18 @@ This endpoint does not need any parameter.
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
+**401** | Authentication Error |  -  |
 **400** | There are validation errors |  -  |
 **500** | An unexpected error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **register_webhook**
-> RegisterWebhook201Response register_webhook(register_webhook_request=register_webhook_request)
+> RegisterWebhook201Response register_webhook(sub_application=sub_application, register_webhook_request=register_webhook_request)
 
 Register Webhook Event
 
@@ -254,9 +266,8 @@ Register a webhook to one or multiple event categories to receive real-time noti
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.register_webhook201_response import RegisterWebhook201Response
 from yapily.models.register_webhook_request import RegisterWebhookRequest
@@ -281,14 +292,15 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.WebhooksApi(api_client)
+    sub_application = 'sub_application_example' # str | The sub-application ID to which event type is being subscribed to (optional)
     register_webhook_request = yapily.RegisterWebhookRequest() # RegisterWebhookRequest |  (optional)
 
     try:
         # Register Webhook Event
-        api_response = api_instance.register_webhook(register_webhook_request=register_webhook_request)
+        api_response = await api_instance.register_webhook(sub_application=sub_application, register_webhook_request=register_webhook_request)
         print("The response of WebhooksApi->register_webhook:\n")
         pprint(api_response)
     except Exception as e:
@@ -299,8 +311,10 @@ with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
  **register_webhook_request** | [**RegisterWebhookRequest**](RegisterWebhookRequest.md)|  | [optional] 
 
 ### Return type
@@ -317,16 +331,19 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | webhook details including the secret |  -  |
+**401** | Authentication Error |  -  |
 **400** | There are validation errors |  -  |
+**406** | Maximum number of registered webhooks has been reached |  -  |
 **500** | An unexpected error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **webhook_secret_reset**
-> RegisterWebhook201Response webhook_secret_reset(webhook_id, webhook_secret_reset_request=webhook_secret_reset_request)
+> RegisterWebhook201Response webhook_secret_reset(webhook_id, sub_application=sub_application, webhook_secret_reset_request=webhook_secret_reset_request)
 
 Reset Webhook Secret
 
@@ -335,9 +352,8 @@ Reset webhook secret for a webhook that is already registered to your applicatio
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.register_webhook201_response import RegisterWebhook201Response
 from yapily.models.webhook_secret_reset_request import WebhookSecretResetRequest
@@ -362,15 +378,16 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.WebhooksApi(api_client)
     webhook_id = 'webhook_id_example' # str | Registered webhook id
+    sub_application = 'sub_application_example' # str | The sub-application ID to which event type is being subscribed to (optional)
     webhook_secret_reset_request = yapily.WebhookSecretResetRequest() # WebhookSecretResetRequest |  (optional)
 
     try:
         # Reset Webhook Secret
-        api_response = api_instance.webhook_secret_reset(webhook_id, webhook_secret_reset_request=webhook_secret_reset_request)
+        api_response = await api_instance.webhook_secret_reset(webhook_id, sub_application=sub_application, webhook_secret_reset_request=webhook_secret_reset_request)
         print("The response of WebhooksApi->webhook_secret_reset:\n")
         pprint(api_response)
     except Exception as e:
@@ -381,9 +398,11 @@ with yapily.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhook_id** | **str**| Registered webhook id | 
+ **sub_application** | **str**| The sub-application ID to which event type is being subscribed to | [optional] 
  **webhook_secret_reset_request** | [**WebhookSecretResetRequest**](WebhookSecretResetRequest.md)|  | [optional] 
 
 ### Return type
@@ -400,9 +419,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | webhook details including the secret |  -  |
+**401** | Authentication Error |  -  |
 **400** | There are validation errors |  -  |
 **404** | Webhook id not found |  -  |
 **500** | An unexpected error occurred. |  -  |

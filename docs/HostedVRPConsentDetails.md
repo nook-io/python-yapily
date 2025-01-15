@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the consent request. | 
@@ -28,12 +29,12 @@ json = "{}"
 # create an instance of HostedVRPConsentDetails from a JSON string
 hosted_vrp_consent_details_instance = HostedVRPConsentDetails.from_json(json)
 # print the JSON string representation of the object
-print HostedVRPConsentDetails.to_json()
+print(HostedVRPConsentDetails.to_json())
 
 # convert the object into a dict
 hosted_vrp_consent_details_dict = hosted_vrp_consent_details_instance.to_dict()
 # create an instance of HostedVRPConsentDetails from a dict
-hosted_vrp_consent_details_form_dict = hosted_vrp_consent_details.from_dict(hosted_vrp_consent_details_dict)
+hosted_vrp_consent_details_from_dict = HostedVRPConsentDetails.from_dict(hosted_vrp_consent_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

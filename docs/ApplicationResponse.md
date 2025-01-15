@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The id of the application returned | [optional] 
@@ -22,12 +23,12 @@ json = "{}"
 # create an instance of ApplicationResponse from a JSON string
 application_response_instance = ApplicationResponse.from_json(json)
 # print the JSON string representation of the object
-print ApplicationResponse.to_json()
+print(ApplicationResponse.to_json())
 
 # convert the object into a dict
 application_response_dict = application_response_instance.to_dict()
 # create an instance of ApplicationResponse from a dict
-application_response_form_dict = application_response.from_dict(application_response_dict)
+application_response_from_dict = ApplicationResponse.from_dict(application_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

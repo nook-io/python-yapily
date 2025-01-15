@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_call** | **object** |  | [optional] 
@@ -21,12 +22,12 @@ json = "{}"
 # create an instance of FilteredClientPayloadListTransaction from a JSON string
 filtered_client_payload_list_transaction_instance = FilteredClientPayloadListTransaction.from_json(json)
 # print the JSON string representation of the object
-print FilteredClientPayloadListTransaction.to_json()
+print(FilteredClientPayloadListTransaction.to_json())
 
 # convert the object into a dict
 filtered_client_payload_list_transaction_dict = filtered_client_payload_list_transaction_instance.to_dict()
 # create an instance of FilteredClientPayloadListTransaction from a dict
-filtered_client_payload_list_transaction_form_dict = filtered_client_payload_list_transaction.from_dict(filtered_client_payload_list_transaction_dict)
+filtered_client_payload_list_transaction_from_dict = FilteredClientPayloadListTransaction.from_dict(filtered_client_payload_list_transaction_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

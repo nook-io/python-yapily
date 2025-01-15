@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** | &#x60;User&#x60; for which the authorisation request was created. | [optional] 
@@ -26,12 +27,12 @@ json = "{}"
 # create an instance of EmbeddedAccountAuthorisationRequest from a JSON string
 embedded_account_authorisation_request_instance = EmbeddedAccountAuthorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print EmbeddedAccountAuthorisationRequest.to_json()
+print(EmbeddedAccountAuthorisationRequest.to_json())
 
 # convert the object into a dict
 embedded_account_authorisation_request_dict = embedded_account_authorisation_request_instance.to_dict()
 # create an instance of EmbeddedAccountAuthorisationRequest from a dict
-embedded_account_authorisation_request_form_dict = embedded_account_authorisation_request.from_dict(embedded_account_authorisation_request_dict)
+embedded_account_authorisation_request_from_dict = EmbeddedAccountAuthorisationRequest.from_dict(embedded_account_authorisation_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

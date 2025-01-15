@@ -3,6 +3,7 @@
 __Mandatory__. Details of the beneficiary [person or business].
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | __Mandatory__. The account holder name of the beneficiary. | 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of PayeeDetails from a JSON string
 payee_details_instance = PayeeDetails.from_json(json)
 # print the JSON string representation of the object
-print PayeeDetails.to_json()
+print(PayeeDetails.to_json())
 
 # convert the object into a dict
 payee_details_dict = payee_details_instance.to_dict()
 # create an instance of PayeeDetails from a dict
-payee_details_form_dict = payee_details.from_dict(payee_details_dict)
+payee_details_from_dict = PayeeDetails.from_dict(payee_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

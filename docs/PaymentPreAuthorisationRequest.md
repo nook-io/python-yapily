@@ -3,6 +3,7 @@
 __Mandatory__. The payment pre authorisation request object defining the details of the payment and pre auth.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** |  | [optional] 
@@ -28,12 +29,12 @@ json = "{}"
 # create an instance of PaymentPreAuthorisationRequest from a JSON string
 payment_pre_authorisation_request_instance = PaymentPreAuthorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print PaymentPreAuthorisationRequest.to_json()
+print(PaymentPreAuthorisationRequest.to_json())
 
 # convert the object into a dict
 payment_pre_authorisation_request_dict = payment_pre_authorisation_request_instance.to_dict()
 # create an instance of PaymentPreAuthorisationRequest from a dict
-payment_pre_authorisation_request_form_dict = payment_pre_authorisation_request.from_dict(payment_pre_authorisation_request_dict)
+payment_pre_authorisation_request_from_dict = PaymentPreAuthorisationRequest.from_dict(payment_pre_authorisation_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -36,12 +37,12 @@ json = "{}"
 # create an instance of RealTimeTransaction from a JSON string
 real_time_transaction_instance = RealTimeTransaction.from_json(json)
 # print the JSON string representation of the object
-print RealTimeTransaction.to_json()
+print(RealTimeTransaction.to_json())
 
 # convert the object into a dict
 real_time_transaction_dict = real_time_transaction_instance.to_dict()
 # create an instance of RealTimeTransaction from a dict
-real_time_transaction_form_dict = real_time_transaction.from_dict(real_time_transaction_dict)
+real_time_transaction_from_dict = RealTimeTransaction.from_dict(real_time_transaction_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

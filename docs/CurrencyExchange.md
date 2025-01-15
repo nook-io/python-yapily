@@ -3,6 +3,7 @@
 Provides details on the currrency exchange.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source_currency** | **str** | Currency from which an amount is to be converted. | [optional] 
@@ -20,12 +21,12 @@ json = "{}"
 # create an instance of CurrencyExchange from a JSON string
 currency_exchange_instance = CurrencyExchange.from_json(json)
 # print the JSON string representation of the object
-print CurrencyExchange.to_json()
+print(CurrencyExchange.to_json())
 
 # convert the object into a dict
 currency_exchange_dict = currency_exchange_instance.to_dict()
 # create an instance of CurrencyExchange from a dict
-currency_exchange_form_dict = currency_exchange.from_dict(currency_exchange_dict)
+currency_exchange_from_dict = CurrencyExchange.from_dict(currency_exchange_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

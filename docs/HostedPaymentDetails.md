@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payment_request_id** | **str** | The unique ID of the payment request. | [optional] 
@@ -27,12 +28,12 @@ json = "{}"
 # create an instance of HostedPaymentDetails from a JSON string
 hosted_payment_details_instance = HostedPaymentDetails.from_json(json)
 # print the JSON string representation of the object
-print HostedPaymentDetails.to_json()
+print(HostedPaymentDetails.to_json())
 
 # convert the object into a dict
 hosted_payment_details_dict = hosted_payment_details_instance.to_dict()
 # create an instance of HostedPaymentDetails from a dict
-hosted_payment_details_form_dict = hosted_payment_details.from_dict(hosted_payment_details_dict)
+hosted_payment_details_from_dict = HostedPaymentDetails.from_dict(hosted_payment_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

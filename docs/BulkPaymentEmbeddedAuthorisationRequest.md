@@ -3,6 +3,7 @@
 The request body containing a `BulkPaymentEmbeddedAuthorisationRequest` json payload
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** | __Conditional__. The reference to the &#x60;User&#x60; that will authorise the authorisation request using the Yapily generated UUID. Either the &#x60;userUuid&#x60; or &#x60;applicationUserId&#x60; must be provided. | [optional] 
@@ -26,12 +27,12 @@ json = "{}"
 # create an instance of BulkPaymentEmbeddedAuthorisationRequest from a JSON string
 bulk_payment_embedded_authorisation_request_instance = BulkPaymentEmbeddedAuthorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print BulkPaymentEmbeddedAuthorisationRequest.to_json()
+print(BulkPaymentEmbeddedAuthorisationRequest.to_json())
 
 # convert the object into a dict
 bulk_payment_embedded_authorisation_request_dict = bulk_payment_embedded_authorisation_request_instance.to_dict()
 # create an instance of BulkPaymentEmbeddedAuthorisationRequest from a dict
-bulk_payment_embedded_authorisation_request_form_dict = bulk_payment_embedded_authorisation_request.from_dict(bulk_payment_embedded_authorisation_request_dict)
+bulk_payment_embedded_authorisation_request_from_dict = BulkPaymentEmbeddedAuthorisationRequest.from_dict(bulk_payment_embedded_authorisation_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

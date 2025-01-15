@@ -3,6 +3,7 @@
 __Mandatory__. The payment initiation object defining the details of the payment under the Variable Recurring Payment consent.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reference** | **str** | __Optional__. The payment reference or description. Limited to a maximum of 18 characters long. | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of InitiationDetails from a JSON string
 initiation_details_instance = InitiationDetails.from_json(json)
 # print the JSON string representation of the object
-print InitiationDetails.to_json()
+print(InitiationDetails.to_json())
 
 # convert the object into a dict
 initiation_details_dict = initiation_details_instance.to_dict()
 # create an instance of InitiationDetails from a dict
-initiation_details_form_dict = initiation_details.from_dict(initiation_details_dict)
+initiation_details_from_dict = InitiationDetails.from_dict(initiation_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

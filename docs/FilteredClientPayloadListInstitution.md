@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_call** | **object** |  | [optional] 
@@ -21,12 +22,12 @@ json = "{}"
 # create an instance of FilteredClientPayloadListInstitution from a JSON string
 filtered_client_payload_list_institution_instance = FilteredClientPayloadListInstitution.from_json(json)
 # print the JSON string representation of the object
-print FilteredClientPayloadListInstitution.to_json()
+print(FilteredClientPayloadListInstitution.to_json())
 
 # convert the object into a dict
 filtered_client_payload_list_institution_dict = filtered_client_payload_list_institution_instance.to_dict()
 # create an instance of FilteredClientPayloadListInstitution from a dict
-filtered_client_payload_list_institution_form_dict = filtered_client_payload_list_institution.from_dict(filtered_client_payload_list_institution_dict)
+filtered_client_payload_list_institution_from_dict = FilteredClientPayloadListInstitution.from_dict(filtered_client_payload_list_institution_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,9 +18,8 @@ Get Data Constraints Rules against an Institution for Account Authorisation requ
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.api_list_response_of_data_constraints import ApiListResponseOfDataConstraints
 from yapily.rest import ApiException
@@ -44,7 +43,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ConstraintsApi(api_client)
     institution_ids = ['institution_ids_example'] # List[str] | Unique Id(s) of the `Institution`(s) to retrieve the Data Constraints for. Multiple institutionIds need to be separated by `,`
@@ -54,7 +53,7 @@ with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Get Data Constraints Rules
-        api_response = api_instance.get_account_constraints_rules_by_institution(institution_ids, institution_country_code, endpoint_path=endpoint_path, endpoint_method=endpoint_method)
+        api_response = await api_instance.get_account_constraints_rules_by_institution(institution_ids, institution_country_code, endpoint_path=endpoint_path, endpoint_method=endpoint_method)
         print("The response of ConstraintsApi->get_account_constraints_rules_by_institution:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,6 +63,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -86,6 +86,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -106,9 +107,8 @@ Retrieve institution specific constraints for payment authorisation and submissi
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import yapily
 from yapily.models.api_list_response_of_payment_constraints import ApiListResponseOfPaymentConstraints
 from yapily.rest import ApiException
@@ -132,7 +132,7 @@ configuration = yapily.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with yapily.ApiClient(configuration) as api_client:
+async with yapily.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yapily.ConstraintsApi(api_client)
     institution_ids = ['institution_ids_example'] # List[str] | Unique Id(s) of the `Institution`(s) to retrieve the Payment Constraints for. Multiple institutionIds need to be separated by `,`
@@ -143,7 +143,7 @@ with yapily.ApiClient(configuration) as api_client:
 
     try:
         # Get Payment Constraints Rules
-        api_response = api_instance.get_payment_constraints_rules_by_institution(institution_ids, institution_country_code, payment_type, endpoint_path=endpoint_path, endpoint_method=endpoint_method)
+        api_response = await api_instance.get_payment_constraints_rules_by_institution(institution_ids, institution_country_code, payment_type, endpoint_path=endpoint_path, endpoint_method=endpoint_method)
         print("The response of ConstraintsApi->get_payment_constraints_rules_by_institution:\n")
         pprint(api_response)
     except Exception as e:
@@ -153,6 +153,7 @@ with yapily.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -176,6 +177,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json;charset=UTF-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |

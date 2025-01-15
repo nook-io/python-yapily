@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **str** | __Conditional__. Yapily Identifier for the &#x60;User&#x60; returned by the create user step POST /users. Clients must either provide userId or applicationUserId. | [optional] 
@@ -22,12 +23,12 @@ json = "{}"
 # create an instance of CreateHostedVRPConsentRequest from a JSON string
 create_hosted_vrp_consent_request_instance = CreateHostedVRPConsentRequest.from_json(json)
 # print the JSON string representation of the object
-print CreateHostedVRPConsentRequest.to_json()
+print(CreateHostedVRPConsentRequest.to_json())
 
 # convert the object into a dict
 create_hosted_vrp_consent_request_dict = create_hosted_vrp_consent_request_instance.to_dict()
 # create an instance of CreateHostedVRPConsentRequest from a dict
-create_hosted_vrp_consent_request_form_dict = create_hosted_vrp_consent_request.from_dict(create_hosted_vrp_consent_request_dict)
+create_hosted_vrp_consent_request_from_dict = CreateHostedVRPConsentRequest.from_dict(create_hosted_vrp_consent_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

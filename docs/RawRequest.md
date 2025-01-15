@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **method** | **str** |  | [optional] 
@@ -23,12 +24,12 @@ json = "{}"
 # create an instance of RawRequest from a JSON string
 raw_request_instance = RawRequest.from_json(json)
 # print the JSON string representation of the object
-print RawRequest.to_json()
+print(RawRequest.to_json())
 
 # convert the object into a dict
 raw_request_dict = raw_request_instance.to_dict()
 # create an instance of RawRequest from a dict
-raw_request_form_dict = raw_request.from_dict(raw_request_dict)
+raw_request_from_dict = RawRequest.from_dict(raw_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

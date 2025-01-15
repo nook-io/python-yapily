@@ -3,6 +3,7 @@
 The payment request object defining the details of the bulk payment
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payments** | [**List[PaymentRequest]**](PaymentRequest.md) | __Mandatory__. The array of &#x60;PaymentRequest&#x60; objects to initiate in the bulk payment. | 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of BulkPaymentRequest from a JSON string
 bulk_payment_request_instance = BulkPaymentRequest.from_json(json)
 # print the JSON string representation of the object
-print BulkPaymentRequest.to_json()
+print(BulkPaymentRequest.to_json())
 
 # convert the object into a dict
 bulk_payment_request_dict = bulk_payment_request_instance.to_dict()
 # create an instance of BulkPaymentRequest from a dict
-bulk_payment_request_form_dict = bulk_payment_request.from_dict(bulk_payment_request_dict)
+bulk_payment_request_from_dict = BulkPaymentRequest.from_dict(bulk_payment_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

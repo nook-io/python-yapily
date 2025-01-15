@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**AccountIdentificationType**](AccountIdentificationType.md) |  | 
@@ -17,12 +18,12 @@ json = "{}"
 # create an instance of AccountIdentification from a JSON string
 account_identification_instance = AccountIdentification.from_json(json)
 # print the JSON string representation of the object
-print AccountIdentification.to_json()
+print(AccountIdentification.to_json())
 
 # convert the object into a dict
 account_identification_dict = account_identification_instance.to_dict()
 # create an instance of AccountIdentification from a dict
-account_identification_form_dict = account_identification.from_dict(account_identification_dict)
+account_identification_from_dict = AccountIdentification.from_dict(account_identification_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

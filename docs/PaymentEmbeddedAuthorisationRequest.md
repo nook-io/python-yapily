@@ -3,6 +3,7 @@
 The request body containing an `PaymentEmbeddedAuthorisationRequest` json payload
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** |  | [optional] 
@@ -26,12 +27,12 @@ json = "{}"
 # create an instance of PaymentEmbeddedAuthorisationRequest from a JSON string
 payment_embedded_authorisation_request_instance = PaymentEmbeddedAuthorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print PaymentEmbeddedAuthorisationRequest.to_json()
+print(PaymentEmbeddedAuthorisationRequest.to_json())
 
 # convert the object into a dict
 payment_embedded_authorisation_request_dict = payment_embedded_authorisation_request_instance.to_dict()
 # create an instance of PaymentEmbeddedAuthorisationRequest from a dict
-payment_embedded_authorisation_request_form_dict = payment_embedded_authorisation_request.from_dict(payment_embedded_authorisation_request_dict)
+payment_embedded_authorisation_request_from_dict = PaymentEmbeddedAuthorisationRequest.from_dict(payment_embedded_authorisation_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

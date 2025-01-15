@@ -3,6 +3,7 @@
 Enriched Balance information generated which include historic aggregated balances and predicted balances
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_ids** | **List[str]** | A list of Account Ids used to generate Balance Prediction Profile. | [optional] 
@@ -20,12 +21,12 @@ json = "{}"
 # create an instance of EnrichedBalances from a JSON string
 enriched_balances_instance = EnrichedBalances.from_json(json)
 # print the JSON string representation of the object
-print EnrichedBalances.to_json()
+print(EnrichedBalances.to_json())
 
 # convert the object into a dict
 enriched_balances_dict = enriched_balances_instance.to_dict()
 # create an instance of EnrichedBalances from a dict
-enriched_balances_form_dict = enriched_balances.from_dict(enriched_balances_dict)
+enriched_balances_from_dict = EnrichedBalances.from_dict(enriched_balances_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

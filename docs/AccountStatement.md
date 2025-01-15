@@ -3,6 +3,7 @@
 Statement information belonging to the account.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the statement. | [optional] 
@@ -20,12 +21,12 @@ json = "{}"
 # create an instance of AccountStatement from a JSON string
 account_statement_instance = AccountStatement.from_json(json)
 # print the JSON string representation of the object
-print AccountStatement.to_json()
+print(AccountStatement.to_json())
 
 # convert the object into a dict
 account_statement_dict = account_statement_instance.to_dict()
 # create an instance of AccountStatement from a dict
-account_statement_form_dict = account_statement.from_dict(account_statement_dict)
+account_statement_from_dict = AccountStatement.from_dict(account_statement_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

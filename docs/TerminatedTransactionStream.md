@@ -3,6 +3,7 @@
 Terminated transaction stream generated as part of the financial profile for a User.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the TransactionStream | [optional] 
@@ -26,12 +27,12 @@ json = "{}"
 # create an instance of TerminatedTransactionStream from a JSON string
 terminated_transaction_stream_instance = TerminatedTransactionStream.from_json(json)
 # print the JSON string representation of the object
-print TerminatedTransactionStream.to_json()
+print(TerminatedTransactionStream.to_json())
 
 # convert the object into a dict
 terminated_transaction_stream_dict = terminated_transaction_stream_instance.to_dict()
 # create an instance of TerminatedTransactionStream from a dict
-terminated_transaction_stream_form_dict = terminated_transaction_stream.from_dict(terminated_transaction_stream_dict)
+terminated_transaction_stream_from_dict = TerminatedTransactionStream.from_dict(terminated_transaction_stream_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

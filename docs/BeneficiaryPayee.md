@@ -3,6 +3,7 @@
 __Mandatory__. Account details belonging to the `Beneficiary Payee` (person/ business). You must define this in your payment request along with all of the nested mandatory properties.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The account holder name of the beneficiary. | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of BeneficiaryPayee from a JSON string
 beneficiary_payee_instance = BeneficiaryPayee.from_json(json)
 # print the JSON string representation of the object
-print BeneficiaryPayee.to_json()
+print(BeneficiaryPayee.to_json())
 
 # convert the object into a dict
 beneficiary_payee_dict = beneficiary_payee_instance.to_dict()
 # create an instance of BeneficiaryPayee from a dict
-beneficiary_payee_form_dict = beneficiary_payee.from_dict(beneficiary_payee_dict)
+beneficiary_payee_from_dict = BeneficiaryPayee.from_dict(beneficiary_payee_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

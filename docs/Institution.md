@@ -3,6 +3,7 @@
 Typically, a bank or business unit within a bank e.g. (AIB Business, AIB Ireland, AIB UK).
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the &#x60;Institution&#x60;. | [optional] 
@@ -13,7 +14,6 @@ Name | Type | Description | Notes
 **credentials_type** | [**CredentialsType**](CredentialsType.md) |  | [optional] 
 **media** | [**List[Media]**](Media.md) | Contains links to the logo and the icons for the &#x60;Institution&#x60; | [optional] 
 **features** | [**List[FeatureEnum]**](FeatureEnum.md) |  | [optional] 
-**monitoring** | [**Dict[str, MonitoringFeatureStatus]**](MonitoringFeatureStatus.md) |  | [optional] 
 
 ## Example
 
@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of Institution from a JSON string
 institution_instance = Institution.from_json(json)
 # print the JSON string representation of the object
-print Institution.to_json()
+print(Institution.to_json())
 
 # convert the object into a dict
 institution_dict = institution_instance.to_dict()
 # create an instance of Institution from a dict
-institution_form_dict = institution.from_dict(institution_dict)
+institution_from_dict = Institution.from_dict(institution_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

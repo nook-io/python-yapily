@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_uuid** | **str** |  | [optional] 
@@ -23,12 +24,12 @@ json = "{}"
 # create an instance of PreAuthorisationRequest from a JSON string
 pre_authorisation_request_instance = PreAuthorisationRequest.from_json(json)
 # print the JSON string representation of the object
-print PreAuthorisationRequest.to_json()
+print(PreAuthorisationRequest.to_json())
 
 # convert the object into a dict
 pre_authorisation_request_dict = pre_authorisation_request_instance.to_dict()
 # create an instance of PreAuthorisationRequest from a dict
-pre_authorisation_request_form_dict = pre_authorisation_request.from_dict(pre_authorisation_request_dict)
+pre_authorisation_request_from_dict = PreAuthorisationRequest.from_dict(pre_authorisation_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

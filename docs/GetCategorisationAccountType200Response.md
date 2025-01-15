@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**meta** | [**PostAccountsAccountIdTransactionsCategorisation201ResponseMeta**](PostAccountsAccountIdTransactionsCategorisation201ResponseMeta.md) |  | [optional] 
-**data** | [**GetCategorisationAccountType200ResponseData**](GetCategorisationAccountType200ResponseData.md) |  | [optional] 
+**meta** | [**GetBulkPaymentStatus200ResponseMeta**](GetBulkPaymentStatus200ResponseMeta.md) |  | [optional] 
+**data** | [**GetCategoriesResponse**](GetCategoriesResponse.md) |  | [optional] 
 
 ## Example
 
@@ -17,12 +18,12 @@ json = "{}"
 # create an instance of GetCategorisationAccountType200Response from a JSON string
 get_categorisation_account_type200_response_instance = GetCategorisationAccountType200Response.from_json(json)
 # print the JSON string representation of the object
-print GetCategorisationAccountType200Response.to_json()
+print(GetCategorisationAccountType200Response.to_json())
 
 # convert the object into a dict
 get_categorisation_account_type200_response_dict = get_categorisation_account_type200_response_instance.to_dict()
 # create an instance of GetCategorisationAccountType200Response from a dict
-get_categorisation_account_type200_response_form_dict = get_categorisation_account_type200_response.from_dict(get_categorisation_account_type200_response_dict)
+get_categorisation_account_type200_response_from_dict = GetCategorisationAccountType200Response.from_dict(get_categorisation_account_type200_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**ResponseListMeta**](ResponseListMeta.md) |  | [optional] 
@@ -22,12 +23,12 @@ json = "{}"
 # create an instance of ApiListResponseOfCategory from a JSON string
 api_list_response_of_category_instance = ApiListResponseOfCategory.from_json(json)
 # print the JSON string representation of the object
-print ApiListResponseOfCategory.to_json()
+print(ApiListResponseOfCategory.to_json())
 
 # convert the object into a dict
 api_list_response_of_category_dict = api_list_response_of_category_instance.to_dict()
 # create an instance of ApiListResponseOfCategory from a dict
-api_list_response_of_category_form_dict = api_list_response_of_category.from_dict(api_list_response_of_category_dict)
+api_list_response_of_category_from_dict = ApiListResponseOfCategory.from_dict(api_list_response_of_category_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

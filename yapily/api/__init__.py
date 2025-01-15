@@ -9,7 +9,8 @@ from yapily.api.constraints_api import ConstraintsApi
 from yapily.api.enrichment_api import EnrichmentApi
 from yapily.api.financial_data_api import FinancialDataApi
 from yapily.api.financial_profile_api import FinancialProfileApi
-from yapily.api.hosted_pages_api import HostedPagesApi
+from yapily.api.hosted_consent_pages_api import HostedConsentPagesApi
+from yapily.api.hosted_payment_pages_api import HostedPaymentPagesApi
 from yapily.api.institutions_api import InstitutionsApi
 from yapily.api.notifications_api import NotificationsApi
 from yapily.api.payments_api import PaymentsApi

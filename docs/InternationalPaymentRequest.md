@@ -3,6 +3,7 @@
 __Conditional__. Used to specify properties to define an international payment. <br><br>Must be specified when the payment `type` is one of the following:<ul>     <li><code>INTERNATIONAL_SINGLE_PAYMENT</code></li>     <li><code>INTERNATIONAL_SCHEDULED_PAYMENT</code></li>     <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency_of_transfer** | **str** | __Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer&#39;s account. Specified as a 3-letter code (ISO 4217). | 
@@ -21,12 +22,12 @@ json = "{}"
 # create an instance of InternationalPaymentRequest from a JSON string
 international_payment_request_instance = InternationalPaymentRequest.from_json(json)
 # print the JSON string representation of the object
-print InternationalPaymentRequest.to_json()
+print(InternationalPaymentRequest.to_json())
 
 # convert the object into a dict
 international_payment_request_dict = international_payment_request_instance.to_dict()
 # create an instance of InternationalPaymentRequest from a dict
-international_payment_request_form_dict = international_payment_request.from_dict(international_payment_request_dict)
+international_payment_request_from_dict = InternationalPaymentRequest.from_dict(international_payment_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

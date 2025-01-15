@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of FundsConfirmationResponse from a JSON string
 funds_confirmation_response_instance = FundsConfirmationResponse.from_json(json)
 # print the JSON string representation of the object
-print FundsConfirmationResponse.to_json()
+print(FundsConfirmationResponse.to_json())
 
 # convert the object into a dict
 funds_confirmation_response_dict = funds_confirmation_response_instance.to_dict()
 # create an instance of FundsConfirmationResponse from a dict
-funds_confirmation_response_form_dict = funds_confirmation_response.from_dict(funds_confirmation_response_dict)
+funds_confirmation_response_from_dict = FundsConfirmationResponse.from_dict(funds_confirmation_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
