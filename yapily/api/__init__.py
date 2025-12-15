@@ -1,6 +1,3 @@
-# flake8: noqa
-
-# import apis into api package
 from yapily.api.application_api import ApplicationApi
 from yapily.api.application_management_api import ApplicationManagementApi
 from yapily.api.authorisations_api import AuthorisationsApi
