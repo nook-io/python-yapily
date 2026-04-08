@@ -15,7 +15,6 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
@@ -28,7 +27,7 @@ class HostedVrpRefundAccount(BaseModel):
     """
 
     name: StrictStr | None = None
-    account_identifications: Annotated[list[HostedVrpAccountIdentification], Field(unique_items=True)] | None = Field(
+    account_identifications: list[HostedVrpAccountIdentification] | None = Field(
         default=None, alias="accountIdentifications"
     )
     __properties = ["name", "accountIdentifications"]

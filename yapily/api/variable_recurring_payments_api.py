@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -42,7 +42,7 @@ class VariableRecurringPaymentsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_non_sweeping_authorisation(
         self, non_sweeping_authorisation_request: NonSweepingAuthorisationRequest, **kwargs
     ) -> ApiResponseOfNonSweepingAuthorisationResponse:
@@ -67,7 +67,7 @@ class VariableRecurringPaymentsApi:
             raise ValueError(message)
         return await self.create_non_sweeping_authorisation_with_http_info(non_sweeping_authorisation_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_non_sweeping_authorisation_with_http_info(
         self, non_sweeping_authorisation_request: NonSweepingAuthorisationRequest, **kwargs
     ) -> ApiResponse:
@@ -173,7 +173,7 @@ class VariableRecurringPaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_sweeping_authorisation(
         self, sweeping_authorisation_request: SweepingAuthorisationRequest, **kwargs
     ) -> ApiResponseOfSweepingAuthorisationResponse:
@@ -198,7 +198,7 @@ class VariableRecurringPaymentsApi:
             raise ValueError(message)
         return await self.create_sweeping_authorisation_with_http_info(sweeping_authorisation_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_sweeping_authorisation_with_http_info(
         self, sweeping_authorisation_request: SweepingAuthorisationRequest, **kwargs
     ) -> ApiResponse:
@@ -304,7 +304,7 @@ class VariableRecurringPaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_vrp_funds_confirmation(
         self,
         consent: Annotated[
@@ -340,7 +340,7 @@ class VariableRecurringPaymentsApi:
             raise ValueError(message)
         return await self.create_vrp_funds_confirmation_with_http_info(consent, funds_confirmation_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_vrp_funds_confirmation_with_http_info(
         self,
         consent: Annotated[
@@ -460,7 +460,7 @@ class VariableRecurringPaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_vrp_payment(
         self,
         consent: Annotated[
@@ -496,7 +496,7 @@ class VariableRecurringPaymentsApi:
             raise ValueError(message)
         return await self.create_vrp_payment_with_http_info(consent, submission_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_vrp_payment_with_http_info(
         self,
         consent: Annotated[
@@ -614,7 +614,7 @@ class VariableRecurringPaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_non_sweeping_vrp_consent_by_id(
         self,
         consent_id: Annotated[
@@ -647,7 +647,7 @@ class VariableRecurringPaymentsApi:
             raise ValueError(message)
         return await self.get_non_sweeping_vrp_consent_by_id_with_http_info(consent_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_non_sweeping_vrp_consent_by_id_with_http_info(
         self,
         consent_id: Annotated[
@@ -753,7 +753,7 @@ class VariableRecurringPaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_sweeping_vrp_consent_by_id(
         self,
         consent_id: Annotated[
@@ -786,7 +786,7 @@ class VariableRecurringPaymentsApi:
             raise ValueError(message)
         return await self.get_sweeping_vrp_consent_by_id_with_http_info(consent_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_sweeping_vrp_consent_by_id_with_http_info(
         self,
         consent_id: Annotated[
@@ -892,7 +892,7 @@ class VariableRecurringPaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_vrp_payment_details(
         self,
         payment_id: Annotated[
@@ -931,7 +931,7 @@ class VariableRecurringPaymentsApi:
             raise ValueError(message)
         return await self.get_vrp_payment_details_with_http_info(payment_id, consent, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_vrp_payment_details_with_http_info(
         self,
         payment_id: Annotated[

@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -42,7 +42,7 @@ class EnrichmentApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def get_accounts_transactions_categorised(
         self,
         consent: Annotated[
@@ -104,7 +104,7 @@ class EnrichmentApi:
             consent, account_id, categorisation_id, sub_application, limit, page, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_accounts_transactions_categorised_with_http_info(
         self,
         consent: Annotated[
@@ -260,7 +260,7 @@ class EnrichmentApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_categorisation_account_type(
         self,
         account_type: Annotated[StrictStr, Field(..., description="type of bank account (consumer or business)")],
@@ -292,7 +292,7 @@ class EnrichmentApi:
             raise ValueError(message)
         return await self.get_categorisation_account_type_with_http_info(account_type, sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_categorisation_account_type_with_http_info(
         self,
         account_type: Annotated[StrictStr, Field(..., description="type of bank account (consumer or business)")],
@@ -408,7 +408,7 @@ class EnrichmentApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def post_accounts_account_id_transactions_categorisation(
         self,
         consent: Annotated[
@@ -486,7 +486,7 @@ class EnrichmentApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def post_accounts_account_id_transactions_categorisation_with_http_info(
         self,
         consent: Annotated[

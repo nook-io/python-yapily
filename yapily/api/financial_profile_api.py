@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -43,7 +43,7 @@ class FinancialProfileApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_profile_consent(
         self,
         user_uuid: Annotated[
@@ -78,7 +78,7 @@ class FinancialProfileApi:
             raise ValueError(message)
         return await self.create_profile_consent_with_http_info(user_uuid, consent, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_profile_consent_with_http_info(
         self,
         user_uuid: Annotated[
@@ -192,7 +192,7 @@ class FinancialProfileApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def delete_profile_consent(
         self,
         user_uuid: Annotated[
@@ -224,7 +224,7 @@ class FinancialProfileApi:
             raise ValueError(message)
         return await self.delete_profile_consent_with_http_info(user_uuid, profile_consent_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def delete_profile_consent_with_http_info(
         self,
         user_uuid: Annotated[
@@ -335,7 +335,7 @@ class FinancialProfileApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_balance_prediction(
         self,
         user_uuid: Annotated[
@@ -364,7 +364,7 @@ class FinancialProfileApi:
             raise ValueError(message)
         return await self.get_balance_prediction_with_http_info(user_uuid, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_balance_prediction_with_http_info(
         self,
         user_uuid: Annotated[
@@ -469,7 +469,7 @@ class FinancialProfileApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_profile_consent(
         self,
         user_uuid: Annotated[
@@ -501,7 +501,7 @@ class FinancialProfileApi:
             raise ValueError(message)
         return await self.get_profile_consent_with_http_info(user_uuid, profile_consent_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_profile_consent_with_http_info(
         self,
         user_uuid: Annotated[
@@ -612,7 +612,7 @@ class FinancialProfileApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_user_profile(
         self,
         user_uuid: Annotated[
@@ -641,7 +641,7 @@ class FinancialProfileApi:
             raise ValueError(message)
         return await self.get_user_profile_with_http_info(user_uuid, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_user_profile_with_http_info(
         self,
         user_uuid: Annotated[

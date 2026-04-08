@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictBool, StrictStr, validate_arguments
+from pydantic import Field, StrictBool, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -37,7 +37,7 @@ class PaymentsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_bulk_payment(
         self,
         consent: Annotated[
@@ -107,7 +107,7 @@ class PaymentsApi:
             consent, submit_bulk_payment_request, psu_id, psu_corporate_id, psu_ip_address, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_bulk_payment_with_http_info(
         self,
         consent: Annotated[
@@ -269,7 +269,7 @@ class PaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_payment(
         self,
         consent: Annotated[
@@ -344,7 +344,7 @@ class PaymentsApi:
             consent, payment_request, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_payment_with_http_info(
         self,
         consent: Annotated[
@@ -522,7 +522,7 @@ class PaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_bulk_payment_status(
         self,
         consent: Annotated[
@@ -561,7 +561,7 @@ class PaymentsApi:
             raise ValueError(message)
         return await self.get_bulk_payment_status_with_http_info(consent, bulk_payment_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_bulk_payment_status_with_http_info(
         self,
         consent: Annotated[
@@ -682,7 +682,7 @@ class PaymentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_payments(
         self,
         payment_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The payment Id of the payment.")],
@@ -757,7 +757,7 @@ class PaymentsApi:
             payment_id, consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_payments_with_http_info(
         self,
         payment_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The payment Id of the payment.")],

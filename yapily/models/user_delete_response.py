@@ -16,7 +16,6 @@ import json
 import pprint
 import re  # noqa: F401
 from datetime import datetime
-from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
@@ -34,9 +33,7 @@ class UserDeleteResponse(BaseModel):
     creation_date: datetime | None = Field(
         default=None, alias="creationDate", description="Date and time that the user was created."
     )
-    user_consents: Annotated[list[ConsentDeleteResponse], Field(unique_items=True)] | None = Field(
-        default=None, alias="userConsents"
-    )
+    user_consents: list[ConsentDeleteResponse] | None = Field(default=None, alias="userConsents")
     __properties = ["id", "deleteStatus", "creationDate", "userConsents"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -15,7 +15,6 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
@@ -28,9 +27,7 @@ class RefundAccount(BaseModel):
     """
 
     name: StrictStr | None = None
-    account_identifications: Annotated[list[AccountIdentification], Field(unique_items=True)] | None = Field(
-        default=None, alias="accountIdentifications"
-    )
+    account_identifications: list[AccountIdentification] | None = Field(default=None, alias="accountIdentifications")
     __properties = ["name", "accountIdentifications"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

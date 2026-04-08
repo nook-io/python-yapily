@@ -24,6 +24,7 @@ from yapily.models.credentials_type import CredentialsType
 from yapily.models.environment_type import EnvironmentType
 from yapily.models.feature_enum import FeatureEnum
 from yapily.models.media import Media
+from yapily.validators import Unique
 
 
 class Institution(BaseModel):
@@ -36,15 +37,15 @@ class Institution(BaseModel):
     full_name: StrictStr | None = Field(
         default=None, alias="fullName", description="The full name of the `Institution`."
     )
-    countries: Annotated[list[Country], Field(unique_items=True)] | None = Field(
+    countries: list[Country] | None = Field(
         default=None, description="An array of `Country` denoting which regions the `Institution` provides coverage for"
     )
     environment_type: EnvironmentType | None = Field(default=None, alias="environmentType")
     credentials_type: CredentialsType | None = Field(default=None, alias="credentialsType")
-    media: Annotated[list[Media], Field(unique_items=True)] | None = Field(
+    media: list[Media] | None = Field(
         default=None, description="Contains links to the logo and the icons for the `Institution`"
     )
-    features: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = None
+    features: Annotated[list[FeatureEnum], Unique] | None = None
     __properties = ["id", "name", "fullName", "countries", "environmentType", "credentialsType", "media", "features"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

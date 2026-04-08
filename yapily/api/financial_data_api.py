@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictBool, StrictInt, StrictStr, validate_arguments
+from pydantic import Field, StrictBool, StrictInt, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -45,7 +45,7 @@ class FinancialDataApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def get_account(
         self,
         account_id: Annotated[
@@ -122,7 +122,7 @@ class FinancialDataApi:
             account_id, consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_with_http_info(
         self,
         account_id: Annotated[
@@ -294,7 +294,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_balances(
         self,
         account_id: Annotated[
@@ -371,7 +371,7 @@ class FinancialDataApi:
             account_id, consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_balances_with_http_info(
         self,
         account_id: Annotated[
@@ -543,7 +543,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_direct_debits(
         self,
         account_id: Annotated[
@@ -604,7 +604,7 @@ class FinancialDataApi:
             account_id, consent, sub_application, limit, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_direct_debits_with_http_info(
         self,
         account_id: Annotated[
@@ -746,7 +746,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_periodic_payments(
         self,
         account_id: Annotated[
@@ -807,7 +807,7 @@ class FinancialDataApi:
             account_id, consent, sub_application, limit, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_periodic_payments_with_http_info(
         self,
         account_id: Annotated[
@@ -951,7 +951,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_scheduled_payments(
         self,
         account_id: Annotated[
@@ -1012,7 +1012,7 @@ class FinancialDataApi:
             account_id, consent, sub_application, limit, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_scheduled_payments_with_http_info(
         self,
         account_id: Annotated[
@@ -1156,7 +1156,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_accounts(
         self,
         consent: Annotated[
@@ -1228,7 +1228,7 @@ class FinancialDataApi:
             consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_accounts_with_http_info(
         self,
         consent: Annotated[
@@ -1385,7 +1385,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_beneficiaries(
         self,
         account_id: Annotated[
@@ -1436,7 +1436,7 @@ class FinancialDataApi:
             raise ValueError(message)
         return await self.get_beneficiaries_with_http_info(account_id, consent, sub_application, raw, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_beneficiaries_with_http_info(
         self,
         account_id: Annotated[
@@ -1567,7 +1567,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_categories(
         self,
         country: Annotated[StrictStr, Field(..., description="__Mandatory__. The 2 letter country code e.g. 'GB'.")],
@@ -1594,7 +1594,7 @@ class FinancialDataApi:
             raise ValueError(message)
         return await self.get_categories_with_http_info(country, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_categories_with_http_info(
         self,
         country: Annotated[StrictStr, Field(..., description="__Mandatory__. The 2 letter country code e.g. 'GB'.")],
@@ -1692,7 +1692,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_identity(
         self,
         consent: Annotated[
@@ -1738,7 +1738,7 @@ class FinancialDataApi:
             raise ValueError(message)
         return await self.get_identity_with_http_info(consent, sub_application, raw, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_identity_with_http_info(
         self,
         consent: Annotated[
@@ -1862,7 +1862,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_real_time_transactions(
         self,
         account_id: Annotated[
@@ -1973,7 +1973,7 @@ class FinancialDataApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def get_real_time_transactions_with_http_info(
         self,
         account_id: Annotated[
@@ -2181,7 +2181,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_statement(
         self,
         consent: Annotated[
@@ -2239,7 +2239,7 @@ class FinancialDataApi:
             consent, account_id, statement_id, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_statement_with_http_info(
         self,
         consent: Annotated[
@@ -2378,7 +2378,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_statement_file(
         self,
         consent: Annotated[
@@ -2436,7 +2436,7 @@ class FinancialDataApi:
             consent, account_id, statement_id, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_statement_file_with_http_info(
         self,
         consent: Annotated[
@@ -2577,7 +2577,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_statements(
         self,
         consent: Annotated[
@@ -2670,7 +2670,7 @@ class FinancialDataApi:
             consent, account_id, sub_application, var_from, before, limit, sort, offset, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_statements_with_http_info(
         self,
         consent: Annotated[
@@ -2866,7 +2866,7 @@ class FinancialDataApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_transactions(
         self,
         account_id: Annotated[
@@ -3010,7 +3010,7 @@ class FinancialDataApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def get_transactions_with_http_info(
         self,
         account_id: Annotated[

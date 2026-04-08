@@ -15,7 +15,6 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -27,7 +26,7 @@ class PayerDetails(BaseModel):
     __Conditional__. Details of the benefactor [person or business].  # noqa: E501
     """
 
-    account_identifications: Annotated[list[AccountIdentification], Field(unique_items=True)] = Field(
+    account_identifications: list[AccountIdentification] = Field(
         default=...,
         alias="accountIdentifications",
         description="__Mandatory__. The account identifications that identify the `Payer` bank account.",

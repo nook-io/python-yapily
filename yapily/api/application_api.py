@@ -12,7 +12,7 @@ Do not edit the class manually.
 
 import re  # noqa: F401
 
-from pydantic import validate_arguments
+from pydantic import validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -32,7 +32,7 @@ class ApplicationApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def get_application_me(self, **kwargs) -> Application:
         """Get Application Self  # noqa: E501
 
@@ -53,7 +53,7 @@ class ApplicationApi:
             raise ValueError(message)
         return await self.get_application_me_with_http_info(**kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_application_me_with_http_info(self, **kwargs) -> ApiResponse:
         """Get Application Self  # noqa: E501
 

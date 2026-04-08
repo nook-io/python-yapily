@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from yapily.models.account_info import AccountInfo
 from yapily.models.feature_enum import FeatureEnum
+from yapily.validators import Unique
 
 
 class AccountRequest(BaseModel):
@@ -55,7 +56,7 @@ class AccountRequest(BaseModel):
         alias="accountIdentifiersForBalance",
         description="__Conditional__. Used to create a request for the balance of the account specified. Once the user authorises the request, only the balance can be obtained by executing [GET Account Balances](./#get-account-balances).<br><br> This can be specified in conjunction with `accountIdentifiersForTransaction` to generate a `Consent` that can both access the accounts balance and transactions.",
     )
-    feature_scope: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = Field(
+    feature_scope: Annotated[list[FeatureEnum], Unique] | None = Field(
         default=None,
         alias="featureScope",
         description="__Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).",

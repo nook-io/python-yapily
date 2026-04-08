@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictBool, StrictInt, StrictStr, validate_arguments
+from pydantic import Field, StrictBool, StrictInt, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -25,6 +25,7 @@ from yapily.models.consent import Consent
 from yapily.models.consent_auth_code_request import ConsentAuthCodeRequest
 from yapily.models.extend_consent_request import ExtendConsentRequest
 from yapily.models.one_time_token_request import OneTimeTokenRequest
+from yapily.validators import Unique
 
 
 class ConsentsApi:
@@ -39,7 +40,7 @@ class ConsentsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_consent_with_code(self, consent_auth_code_request: ConsentAuthCodeRequest, **kwargs) -> Consent:
         """Exchange OAuth2 Code  # noqa: E501
 
@@ -62,7 +63,7 @@ class ConsentsApi:
             raise ValueError(message)
         return await self.create_consent_with_code_with_http_info(consent_auth_code_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_consent_with_code_with_http_info(
         self, consent_auth_code_request: ConsentAuthCodeRequest, **kwargs
     ) -> ApiResponse:
@@ -166,7 +167,7 @@ class ConsentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def delete(
         self,
         consent_id: Annotated[
@@ -200,7 +201,7 @@ class ConsentsApi:
             raise ValueError(message)
         return await self.delete_with_http_info(consent_id, force_delete, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def delete_with_http_info(
         self,
         consent_id: Annotated[
@@ -308,7 +309,7 @@ class ConsentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def extend_consent(
         self,
         consent_id: Annotated[
@@ -340,7 +341,7 @@ class ConsentsApi:
             raise ValueError(message)
         return await self.extend_consent_with_http_info(consent_id, extend_consent_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def extend_consent_with_http_info(
         self,
         consent_id: Annotated[
@@ -453,7 +454,7 @@ class ConsentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_consent_by_id(
         self,
         consent_id: Annotated[
@@ -482,7 +483,7 @@ class ConsentsApi:
             raise ValueError(message)
         return await self.get_consent_by_id_with_http_info(consent_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_consent_by_id_with_http_info(
         self,
         consent_id: Annotated[
@@ -582,7 +583,7 @@ class ConsentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_consent_by_single_access_consent(
         self, one_time_token_request: OneTimeTokenRequest, **kwargs
     ) -> Consent:
@@ -607,7 +608,7 @@ class ConsentsApi:
             raise ValueError(message)
         return await self.get_consent_by_single_access_consent_with_http_info(one_time_token_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_consent_by_single_access_consent_with_http_info(
         self, one_time_token_request: OneTimeTokenRequest, **kwargs
     ) -> ApiResponse:
@@ -713,23 +714,23 @@ class ConsentsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_consents(
         self,
         filter_application_user_id: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(description="__Optional__. Filter records based on the list of `applicationUserId` users provided."),
         ] = None,
         filter_user_uuid: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(description="__Optional__. Filter records based on the list of `userUuid` users provided."),
         ] = None,
         filter_institution: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(description="__Optional__. Filter records based on the list of `Institution` provided."),
         ] = None,
         filter_status: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(
                 description="__Optional__. Filter records based on the list of `Consent` [statuses](https://docs.yapily.com/api/reference/#operation/getConsents!c=200&path=data/status&t=response)."
             ),
@@ -805,23 +806,23 @@ class ConsentsApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def get_consents_with_http_info(
         self,
         filter_application_user_id: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(description="__Optional__. Filter records based on the list of `applicationUserId` users provided."),
         ] = None,
         filter_user_uuid: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(description="__Optional__. Filter records based on the list of `userUuid` users provided."),
         ] = None,
         filter_institution: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(description="__Optional__. Filter records based on the list of `Institution` provided."),
         ] = None,
         filter_status: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(
                 description="__Optional__. Filter records based on the list of `Consent` [statuses](https://docs.yapily.com/api/reference/#operation/getConsents!c=200&path=data/status&t=response)."
             ),

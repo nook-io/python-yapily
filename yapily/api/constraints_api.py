@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -34,7 +34,7 @@ class ConstraintsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def get_account_constraints_rules_by_institution(
         self,
         institution_ids: Annotated[
@@ -94,7 +94,7 @@ class ConstraintsApi:
             institution_ids, institution_country_code, endpoint_path, endpoint_method, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_account_constraints_rules_by_institution_with_http_info(
         self,
         institution_ids: Annotated[
@@ -243,7 +243,7 @@ class ConstraintsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_payment_constraints_rules_by_institution(
         self,
         institution_ids: Annotated[
@@ -308,7 +308,7 @@ class ConstraintsApi:
             institution_ids, institution_country_code, payment_type, endpoint_path, endpoint_method, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_payment_constraints_rules_by_institution_with_http_info(
         self,
         institution_ids: Annotated[

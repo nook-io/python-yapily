@@ -56,9 +56,7 @@ class Account(BaseModel):
         description="Supplementary specifications that might be provided by the Bank. These provide further characteristics about the account.",
     )
     account_names: Annotated[list[AccountName], Field()] | None = Field(default=None, alias="accountNames")
-    account_identifications: Annotated[list[AccountIdentification], Field(unique_items=True)] | None = Field(
-        default=None, alias="accountIdentifications"
-    )
+    account_identifications: list[AccountIdentification] | None = Field(default=None, alias="accountIdentifications")
     account_balances: Annotated[list[AccountBalance], Field()] | None = Field(default=None, alias="accountBalances")
     consolidated_account_information: ConsolidatedAccountInformation | None = Field(
         default=None, alias="consolidatedAccountInformation"

@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -38,7 +38,7 @@ class WebhooksApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def delete_webhook(
         self,
         webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
@@ -70,7 +70,7 @@ class WebhooksApi:
             raise ValueError(message)
         return await self.delete_webhook_with_http_info(webhook_id, sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def delete_webhook_with_http_info(
         self,
         webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
@@ -182,7 +182,7 @@ class WebhooksApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_registered_webhooks(
         self,
         sub_application: Annotated[
@@ -211,7 +211,7 @@ class WebhooksApi:
             raise ValueError(message)
         return await self.get_registered_webhooks_with_http_info(sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_registered_webhooks_with_http_info(
         self,
         sub_application: Annotated[
@@ -317,7 +317,7 @@ class WebhooksApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_webhook_events_categories(self, **kwargs) -> GetWebhookEventsCategories200Response:
         """Get Webhook Categories  # noqa: E501
 
@@ -338,7 +338,7 @@ class WebhooksApi:
             raise ValueError(message)
         return await self.get_webhook_events_categories_with_http_info(**kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_webhook_events_categories_with_http_info(self, **kwargs) -> ApiResponse:
         """Get Webhook Categories  # noqa: E501
 
@@ -435,7 +435,7 @@ class WebhooksApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def register_webhook(
         self,
         sub_application: Annotated[
@@ -467,7 +467,7 @@ class WebhooksApi:
             raise ValueError(message)
         return await self.register_webhook_with_http_info(sub_application, register_webhook_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def register_webhook_with_http_info(
         self,
         sub_application: Annotated[
@@ -587,7 +587,7 @@ class WebhooksApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def webhook_secret_reset(
         self,
         webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
@@ -624,7 +624,7 @@ class WebhooksApi:
             webhook_id, sub_application, webhook_secret_reset_request, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def webhook_secret_reset_with_http_info(
         self,
         webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],

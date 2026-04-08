@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -39,7 +39,7 @@ class ApplicationManagementApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
@@ -73,7 +73,7 @@ class ApplicationManagementApi:
             application_id, vrp_configuration, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[
@@ -189,7 +189,7 @@ class ApplicationManagementApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_sub_application(
         self,
         application_request: Annotated[ApplicationRequest, Field(..., description="The sub-application to create")],
@@ -216,7 +216,7 @@ class ApplicationManagementApi:
             raise ValueError(message)
         return await self.create_sub_application_with_http_info(application_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_sub_application_with_http_info(
         self,
         application_request: Annotated[ApplicationRequest, Field(..., description="The sub-application to create")],
@@ -329,7 +329,7 @@ class ApplicationManagementApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def delete_application(
         self,
         application_id: Annotated[StrictStr, Field(..., description="The id of the application being deleted")],
@@ -356,7 +356,7 @@ class ApplicationManagementApi:
             raise ValueError(message)
         return await self.delete_application_with_http_info(application_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def delete_application_with_http_info(
         self,
         application_id: Annotated[StrictStr, Field(..., description="The id of the application being deleted")],
@@ -454,7 +454,7 @@ class ApplicationManagementApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_application_by_id(
         self,
         application_id: Annotated[StrictStr, Field(..., description="The id of the application being fetched")],
@@ -481,7 +481,7 @@ class ApplicationManagementApi:
             raise ValueError(message)
         return await self.get_application_by_id_with_http_info(application_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_application_by_id_with_http_info(
         self,
         application_id: Annotated[StrictStr, Field(..., description="The id of the application being fetched")],
@@ -585,7 +585,7 @@ class ApplicationManagementApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
@@ -614,7 +614,7 @@ class ApplicationManagementApi:
             raise ValueError(message)
         return await self.get_application_vrp_configuration_by_application_id_with_http_info(application_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[
@@ -724,7 +724,7 @@ class ApplicationManagementApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def search_applications(
         self, public_filter_values: SearchApplicationsPublicFilterValuesParameter | None = None, **kwargs
     ) -> ApiListOfApplicationResponse:
@@ -749,7 +749,7 @@ class ApplicationManagementApi:
             raise ValueError(message)
         return await self.search_applications_with_http_info(public_filter_values, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def search_applications_with_http_info(
         self, public_filter_values: SearchApplicationsPublicFilterValuesParameter | None = None, **kwargs
     ) -> ApiResponse:
@@ -854,7 +854,7 @@ class ApplicationManagementApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def update_application(
         self,
         application_id: Annotated[StrictStr, Field(..., description="The id of the application being updated")],
@@ -884,7 +884,7 @@ class ApplicationManagementApi:
             raise ValueError(message)
         return await self.update_application_with_http_info(application_id, application_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def update_application_with_http_info(
         self,
         application_id: Annotated[StrictStr, Field(..., description="The id of the application being updated")],
@@ -1001,7 +1001,7 @@ class ApplicationManagementApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def update_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
@@ -1035,7 +1035,7 @@ class ApplicationManagementApi:
             application_id, vrp_configuration, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def update_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[

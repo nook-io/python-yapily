@@ -21,6 +21,7 @@ from typing import Annotated
 from pydantic import BaseModel, ConfigDict, Field
 
 from yapily.models.feature_enum import FeatureEnum
+from yapily.validators import Unique
 
 
 class HostedAccountRequest(BaseModel):
@@ -43,7 +44,7 @@ class HostedAccountRequest(BaseModel):
         alias="expiresAt",
         description="__Optional__. Used to set a hard date for when the user's associated `Consent` will expire.<br><br>**Note**: If this supported by the bank, specifying this is property is opting out of having a long-lived consent that can be perpetually re-authorised by the user. This will add an `expiresAt` field on the `Consent` object which will render it unusable after this date.<br><br>**Note**: This is not supported by every `Institution`. In such case, the request will not fail but the property will be ignored and the created `Consent` will not have an expiry date.",
     )
-    feature_scope: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = Field(
+    feature_scope: Annotated[list[FeatureEnum], Unique] | None = Field(
         default=None,
         alias="featureScope",
         description="__Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).",

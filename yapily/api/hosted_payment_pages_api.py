@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -47,7 +47,7 @@ class HostedPaymentPagesApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_payment_request(
         self, create_hosted_payment_request: CreateHostedPaymentRequest, **kwargs
     ) -> ApiResponseOfCreateHostedPaymentRequest:
@@ -72,7 +72,7 @@ class HostedPaymentPagesApi:
             raise ValueError(message)
         return await self.create_hosted_payment_request_with_http_info(create_hosted_payment_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_payment_request_with_http_info(
         self, create_hosted_payment_request: CreateHostedPaymentRequest, **kwargs
     ) -> ApiResponse:
@@ -183,7 +183,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_payment_request_link(
         self, create_hosted_payment_request_link: CreateHostedPaymentRequestLink, **kwargs
     ) -> ApiResponseOfCreateHostedPaymentRequestLink:
@@ -210,7 +210,7 @@ class HostedPaymentPagesApi:
             create_hosted_payment_request_link, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_payment_request_link_with_http_info(
         self, create_hosted_payment_request_link: CreateHostedPaymentRequestLink, **kwargs
     ) -> ApiResponse:
@@ -321,7 +321,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_vrp_consent_request(
         self,
         sub_application: Annotated[
@@ -359,7 +359,7 @@ class HostedPaymentPagesApi:
             sub_application, create_hosted_vrp_consent_request, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_vrp_consent_request_with_http_info(
         self,
         sub_application: Annotated[
@@ -484,7 +484,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_vrp_funds_confirmation(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -533,7 +533,7 @@ class HostedPaymentPagesApi:
             consent_request_id, consent_token, funds_confirmation_request, sub_application, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_vrp_funds_confirmation_with_http_info(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -669,7 +669,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_vrp_payment(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -718,7 +718,7 @@ class HostedPaymentPagesApi:
             consent_request_id, consent_token, create_hosted_vrp_payment_request, sub_application, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_vrp_payment_with_http_info(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -852,7 +852,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_payment_request(
         self,
         payment_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the payment request")],
@@ -879,7 +879,7 @@ class HostedPaymentPagesApi:
             raise ValueError(message)
         return await self.get_hosted_payment_request_with_http_info(payment_request_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_payment_request_with_http_info(
         self,
         payment_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the payment request")],
@@ -982,7 +982,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_vrp_consent_request(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -1017,7 +1017,7 @@ class HostedPaymentPagesApi:
             raise ValueError(message)
         return await self.get_hosted_vrp_consent_request_with_http_info(consent_request_id, sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_vrp_consent_request_with_http_info(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -1133,7 +1133,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_vrp_consent_requests(
         self,
         sub_application: Annotated[
@@ -1166,7 +1166,7 @@ class HostedPaymentPagesApi:
             raise ValueError(message)
         return await self.get_hosted_vrp_consent_requests_with_http_info(sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_vrp_consent_requests_with_http_info(
         self,
         sub_application: Annotated[
@@ -1278,7 +1278,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_vrp_payment_request(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -1318,7 +1318,7 @@ class HostedPaymentPagesApi:
             consent_request_id, payment_id, sub_application, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_vrp_payment_request_with_http_info(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -1440,7 +1440,7 @@ class HostedPaymentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def revoke_hosted_consent_request(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
@@ -1475,7 +1475,7 @@ class HostedPaymentPagesApi:
             raise ValueError(message)
         return await self.revoke_hosted_consent_request_with_http_info(consent_request_id, sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def revoke_hosted_consent_request_with_http_info(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],

@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -38,7 +38,7 @@ class NotificationsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_event_subscription(
         self,
         event_subscription_request: EventSubscriptionRequest,
@@ -72,7 +72,7 @@ class NotificationsApi:
             event_subscription_request, sub_application, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_event_subscription_with_http_info(
         self,
         event_subscription_request: EventSubscriptionRequest,
@@ -186,7 +186,7 @@ class NotificationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def delete_event_subscription_by_id(
         self,
         event_type_id: Annotated[
@@ -221,7 +221,7 @@ class NotificationsApi:
             raise ValueError(message)
         return await self.delete_event_subscription_by_id_with_http_info(event_type_id, sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def delete_event_subscription_by_id_with_http_info(
         self,
         event_type_id: Annotated[
@@ -332,7 +332,7 @@ class NotificationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_event_subscription_by_id(
         self,
         event_type_id: Annotated[
@@ -367,7 +367,7 @@ class NotificationsApi:
             raise ValueError(message)
         return await self.get_event_subscription_by_id_with_http_info(event_type_id, sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_event_subscription_by_id_with_http_info(
         self,
         event_type_id: Annotated[
@@ -478,7 +478,7 @@ class NotificationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_event_subscriptions(
         self,
         sub_application: Annotated[
@@ -508,7 +508,7 @@ class NotificationsApi:
             raise ValueError(message)
         return await self.get_event_subscriptions_with_http_info(sub_application, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_event_subscriptions_with_http_info(
         self,
         sub_application: Annotated[

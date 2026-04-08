@@ -25,6 +25,7 @@ from yapily.models.feature_enum import FeatureEnum
 from yapily.models.initiation_details import InitiationDetails
 from yapily.models.non_sweeping_control_parameters import NonSweepingControlParameters
 from yapily.models.payer import Payer
+from yapily.validators import Unique
 
 
 class NonSweepingAuthorisationResponse(BaseModel):
@@ -50,7 +51,7 @@ class NonSweepingAuthorisationResponse(BaseModel):
     )
     status: AuthorisationStatus | None = None
     created_at: datetime | None = Field(default=None, alias="createdAt")
-    feature_scope: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = Field(
+    feature_scope: Annotated[list[FeatureEnum], Unique] | None = Field(
         default=None,
         alias="featureScope",
         description="__Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).",

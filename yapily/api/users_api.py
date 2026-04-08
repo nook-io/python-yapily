@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -21,6 +21,7 @@ from yapily.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 from yapily.models.api_response_of_user_delete_response import ApiResponseOfUserDeleteResponse
 from yapily.models.application_user import ApplicationUser
 from yapily.models.new_application_user import NewApplicationUser
+from yapily.validators import Unique
 
 
 class UsersApi:
@@ -35,7 +36,7 @@ class UsersApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def add_user(self, new_application_user: NewApplicationUser, **kwargs) -> ApplicationUser:
         """Create User  # noqa: E501
 
@@ -58,7 +59,7 @@ class UsersApi:
             raise ValueError(message)
         return await self.add_user_with_http_info(new_application_user, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def add_user_with_http_info(self, new_application_user: NewApplicationUser, **kwargs) -> ApiResponse:
         """Create User  # noqa: E501
 
@@ -160,7 +161,7 @@ class UsersApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def delete_user(
         self,
         user_uuid: Annotated[
@@ -189,7 +190,7 @@ class UsersApi:
             raise ValueError(message)
         return await self.delete_user_with_http_info(user_uuid, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def delete_user_with_http_info(
         self,
         user_uuid: Annotated[
@@ -289,7 +290,7 @@ class UsersApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_user(
         self,
         user_uuid: Annotated[
@@ -318,7 +319,7 @@ class UsersApi:
             raise ValueError(message)
         return await self.get_user_with_http_info(user_uuid, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_user_with_http_info(
         self,
         user_uuid: Annotated[
@@ -418,11 +419,11 @@ class UsersApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_users(
         self,
         filter_application_user_id: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(description="__Optional__. Filter records based on the list of `applicationUserId` users provided."),
         ] = None,
         **kwargs,
@@ -448,11 +449,11 @@ class UsersApi:
             raise ValueError(message)
         return await self.get_users_with_http_info(filter_application_user_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_users_with_http_info(
         self,
         filter_application_user_id: Annotated[
-            Annotated[list[StrictStr], Field(unique_items=True)] | None,
+            Annotated[list[StrictStr], Unique] | None,
             Field(description="__Optional__. Filter records based on the list of `applicationUserId` users provided."),
         ] = None,
         **kwargs,

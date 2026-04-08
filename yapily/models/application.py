@@ -35,8 +35,8 @@ class Application(BaseModel):
     name: StrictStr | None = Field(default=None, description="The individual name of the `Application`.")
     active: StrictBool | None = Field(default=None, description="States whether an `Application` is active.")
     auth_callbacks: Annotated[list[StrictStr], Field()] | None = Field(default=None, alias="authCallbacks")
-    institutions: Annotated[list[Institution], Field(unique_items=True)] | None = None
-    media: Annotated[list[Media], Field(unique_items=True)] | None = None
+    institutions: list[Institution] | None = None
+    media: list[Media] | None = None
     created: datetime | None = Field(default=None, description="Date and time of when the application was created.")
     updated: datetime | None = Field(
         default=None, description="Date and time of when the application was last updated."

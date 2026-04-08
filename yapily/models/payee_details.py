@@ -15,7 +15,6 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
@@ -28,7 +27,7 @@ class PayeeDetails(BaseModel):
     """
 
     name: StrictStr = Field(default=..., description="__Mandatory__. The account holder name of the beneficiary.")
-    account_identifications: Annotated[list[AccountIdentification], Field(unique_items=True)] = Field(
+    account_identifications: list[AccountIdentification] = Field(
         default=...,
         alias="accountIdentifications",
         description="__Mandatory__. The account identifications that identify the `Payee` bank account.",

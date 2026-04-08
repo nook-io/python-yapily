@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -35,7 +35,7 @@ class InstitutionsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def get_feature_details(self, **kwargs) -> ApiListResponseOfFeatureDetails:
         """Get Features  # noqa: E501
 
@@ -56,7 +56,7 @@ class InstitutionsApi:
             raise ValueError(message)
         return await self.get_feature_details_with_http_info(**kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_feature_details_with_http_info(self, **kwargs) -> ApiResponse:
         """Get Features  # noqa: E501
 
@@ -146,7 +146,7 @@ class InstitutionsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_institution(
         self,
         institution_id: Annotated[
@@ -175,7 +175,7 @@ class InstitutionsApi:
             raise ValueError(message)
         return await self.get_institution_with_http_info(institution_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_institution_with_http_info(
         self,
         institution_id: Annotated[
@@ -275,7 +275,7 @@ class InstitutionsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_institutions(self, **kwargs) -> ApiListResponseOfInstitution:
         """Get Institutions  # noqa: E501
 
@@ -296,7 +296,7 @@ class InstitutionsApi:
             raise ValueError(message)
         return await self.get_institutions_with_http_info(**kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_institutions_with_http_info(self, **kwargs) -> ApiResponse:
         """Get Institutions  # noqa: E501
 

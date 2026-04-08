@@ -24,6 +24,7 @@ from yapily.models.authorisation_status import AuthorisationStatus
 from yapily.models.exchange_rate_information_response import ExchangeRateInformationResponse
 from yapily.models.feature_enum import FeatureEnum
 from yapily.models.payment_charge_details import PaymentChargeDetails
+from yapily.validators import Unique
 
 
 class PaymentAuthorisationRequestResponse(BaseModel):
@@ -68,7 +69,7 @@ class PaymentAuthorisationRequestResponse(BaseModel):
     )
     time_to_expire_in_millis: StrictInt | None = Field(default=None, alias="timeToExpireInMillis")
     time_to_expire: StrictStr | None = Field(default=None, alias="timeToExpire")
-    feature_scope: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = Field(
+    feature_scope: Annotated[list[FeatureEnum], Unique] | None = Field(
         default=None, alias="featureScope", description="The set of features the consent provides access to."
     )
     consent_token: StrictStr | None = Field(

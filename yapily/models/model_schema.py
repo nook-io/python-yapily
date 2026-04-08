@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, Stri
 from yapily.models.schema_type import SchemaType
 from yapily.models.schema_x_yapily_annotations import SchemaXYapilyAnnotations
 from yapily.models.schema_x_yapily_validations import SchemaXYapilyValidations
+from yapily.validators import Unique
 
 
 class ModelSchema(BaseModel):
@@ -38,8 +39,8 @@ class ModelSchema(BaseModel):
     max_items: Annotated[int, Field(strict=True, ge=0)] | None = Field(default=None, alias="maxItems")
     min_items: Annotated[int, Field(strict=True, ge=0)] | None = Field(default=None, alias="minItems")
     unique_items: StrictBool | None = Field(default=None, alias="uniqueItems")
-    required: Annotated[list[StrictStr], Field(min_items=1, unique_items=True)] | None = None
-    enum: Annotated[list[Any], Field(min_items=1)] | None = None
+    required: Annotated[list[StrictStr], Field(min_length=1), Unique] | None = None
+    enum: Annotated[list[Any], Field(min_length=1)] | None = None
     type: SchemaType | None = None
     contains: ModelSchema | None = None
     var_not: ModelSchema | None = Field(default=None, alias="not")
@@ -55,7 +56,7 @@ class ModelSchema(BaseModel):
     format: StrictStr | None = None
     default: Any | None = None
     example: Any | None = None
-    dependent_required: dict[str, Annotated[list[StrictStr], Field(unique_items=True)]] | None = Field(
+    dependent_required: dict[str, Annotated[list[StrictStr], Unique]] | None = Field(
         default=None,
         alias="dependentRequired",
         description="dependentRequired keyword is used to satisfy dependency between fields",
@@ -246,4 +247,4 @@ class ModelSchema(BaseModel):
         )
 
 
-ModelSchema.update_forward_refs()
+ModelSchema.model_rebuild()

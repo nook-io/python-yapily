@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictStr, validate_arguments
+from pydantic import Field, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -35,7 +35,7 @@ class HostedConsentPagesApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_consent_request(
         self, create_hosted_consent_request: CreateHostedConsentRequest, **kwargs
     ) -> ApiResponseOfCreateHostedConsentRequest:
@@ -60,7 +60,7 @@ class HostedConsentPagesApi:
             raise ValueError(message)
         return await self.create_hosted_consent_request_with_http_info(create_hosted_consent_request, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def create_hosted_consent_request_with_http_info(
         self, create_hosted_consent_request: CreateHostedConsentRequest, **kwargs
     ) -> ApiResponse:
@@ -171,7 +171,7 @@ class HostedConsentPagesApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_consent_request(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the consent request")],
@@ -198,7 +198,7 @@ class HostedConsentPagesApi:
             raise ValueError(message)
         return await self.get_hosted_consent_request_with_http_info(consent_request_id, **kwargs)
 
-    @validate_arguments
+    @validate_call
     async def get_hosted_consent_request_with_http_info(
         self,
         consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the consent request")],

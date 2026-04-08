@@ -16,7 +16,6 @@ import json
 import pprint
 import re  # noqa: F401
 from datetime import datetime
-from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
@@ -65,7 +64,7 @@ class HostedPaymentDetails(BaseModel):
         default=None,
         description="Current status of the payment request. <br> Possible values: <br> ACTIVE <br> INACTIVE",
     )
-    payments: Annotated[list[HostedPayment], Field(unique_items=True)] | None = Field(
+    payments: list[HostedPayment] | None = Field(
         default=None, description="Payments that have been initiated as part of this request"
     )
     __properties = [

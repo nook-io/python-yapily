@@ -13,7 +13,7 @@ Do not edit the class manually.
 import re  # noqa: F401
 from typing import Annotated
 
-from pydantic import Field, StrictBool, StrictStr, validate_arguments
+from pydantic import Field, StrictBool, StrictStr, validate_call
 
 from yapily.api_client import ApiClient
 from yapily.api_response import ApiResponse
@@ -51,7 +51,7 @@ class AuthorisationsApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
+    @validate_call
     async def create_bulk_payment_authorisation(
         self,
         bulk_payment_authorisation_request: BulkPaymentAuthorisationRequest,
@@ -112,7 +112,7 @@ class AuthorisationsApi:
             bulk_payment_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_bulk_payment_authorisation_with_http_info(
         self,
         bulk_payment_authorisation_request: BulkPaymentAuthorisationRequest,
@@ -264,7 +264,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_embedded_bulk_payment_authorisation(
         self,
         bulk_payment_embedded_authorisation_request: BulkPaymentEmbeddedAuthorisationRequest,
@@ -325,7 +325,7 @@ class AuthorisationsApi:
             bulk_payment_embedded_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_embedded_bulk_payment_authorisation_with_http_info(
         self,
         bulk_payment_embedded_authorisation_request: BulkPaymentEmbeddedAuthorisationRequest,
@@ -483,7 +483,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_embedded_payment_authorisation(
         self,
         payment_embedded_authorisation_request: PaymentEmbeddedAuthorisationRequest,
@@ -555,7 +555,7 @@ class AuthorisationsApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def create_embedded_payment_authorisation_with_http_info(
         self,
         payment_embedded_authorisation_request: PaymentEmbeddedAuthorisationRequest,
@@ -722,7 +722,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_payment_authorisation(
         self,
         payment_authorisation_request: PaymentAuthorisationRequest,
@@ -788,7 +788,7 @@ class AuthorisationsApi:
             payment_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_payment_authorisation_with_http_info(
         self,
         payment_authorisation_request: PaymentAuthorisationRequest,
@@ -955,7 +955,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_payment_pre_authorisation_request(
         self,
         payment_pre_authorisation_request: PaymentPreAuthorisationRequest,
@@ -1005,7 +1005,7 @@ class AuthorisationsApi:
             payment_pre_authorisation_request, raw, psu_ip_address, sub_application, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_payment_pre_authorisation_request_with_http_info(
         self,
         payment_pre_authorisation_request: PaymentPreAuthorisationRequest,
@@ -1143,7 +1143,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def create_pre_authorisation_request(
         self,
         pre_authorisation_request: PreAuthorisationRequest,
@@ -1209,7 +1209,7 @@ class AuthorisationsApi:
             pre_authorisation_request, raw, psu_id, psu_corporate_id, psu_ip_address, sub_application, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def create_pre_authorisation_request_with_http_info(
         self,
         pre_authorisation_request: PreAuthorisationRequest,
@@ -1376,7 +1376,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def initiate_account_request(
         self,
         account_authorisation_request: AccountAuthorisationRequest,
@@ -1442,7 +1442,7 @@ class AuthorisationsApi:
             account_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def initiate_account_request_with_http_info(
         self,
         account_authorisation_request: AccountAuthorisationRequest,
@@ -1607,7 +1607,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def initiate_embedded_account_request(
         self,
         embedded_account_authorisation_request: EmbeddedAccountAuthorisationRequest,
@@ -1679,7 +1679,7 @@ class AuthorisationsApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def initiate_embedded_account_request_with_http_info(
         self,
         embedded_account_authorisation_request: EmbeddedAccountAuthorisationRequest,
@@ -1846,7 +1846,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def re_authorise_account(
         self,
         consent: Annotated[
@@ -1918,7 +1918,7 @@ class AuthorisationsApi:
             consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def re_authorise_account_with_http_info(
         self,
         consent: Annotated[
@@ -2075,7 +2075,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def update_embedded_account_request(
         self,
         consent_id: Annotated[
@@ -2153,7 +2153,7 @@ class AuthorisationsApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def update_embedded_account_request_with_http_info(
         self,
         consent_id: Annotated[
@@ -2328,7 +2328,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def update_embedded_bulk_payment_authorisation(
         self,
         consent_id: Annotated[
@@ -2400,7 +2400,7 @@ class AuthorisationsApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def update_embedded_bulk_payment_authorisation_with_http_info(
         self,
         consent_id: Annotated[
@@ -2566,7 +2566,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def update_embedded_payment_authorisation(
         self,
         consent_id: Annotated[
@@ -2644,7 +2644,7 @@ class AuthorisationsApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def update_embedded_payment_authorisation_with_http_info(
         self,
         consent_id: Annotated[
@@ -2819,7 +2819,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def update_payment_authorisation(
         self,
         consent: Annotated[
@@ -2889,7 +2889,7 @@ class AuthorisationsApi:
             consent, payment_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, raw, **kwargs
         )
 
-    @validate_arguments
+    @validate_call
     async def update_payment_authorisation_with_http_info(
         self,
         consent: Annotated[
@@ -3060,7 +3060,7 @@ class AuthorisationsApi:
             _request_auth=_params.get("_request_auth"),
         )
 
-    @validate_arguments
+    @validate_call
     async def update_pre_authorise_account_consent(
         self,
         consent: Annotated[
@@ -3142,7 +3142,7 @@ class AuthorisationsApi:
             **kwargs,
         )
 
-    @validate_arguments
+    @validate_call
     async def update_pre_authorise_account_consent_with_http_info(
         self,
         consent: Annotated[
