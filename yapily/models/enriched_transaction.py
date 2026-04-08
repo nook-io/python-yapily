@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,18 +26,12 @@ class EnrichedTransaction(BaseModel):
     """
 
     transaction_id: StrictStr | None = Field(
-        default=None,
-        alias="transactionId",
-        description="Unique identifier of the transaction",
+        default=None, alias="transactionId", description="Unique identifier of the transaction"
     )
     transaction_information: StrictStr | None = Field(
-        default=None,
-        alias="transactionInformation",
-        description="Information for the transaction",
+        default=None, alias="transactionInformation", description="Information for the transaction"
     )
-    amount: StrictFloat | StrictInt | None = Field(
-        default=None, description="Monetary amount."
-    )
+    amount: StrictFloat | StrictInt | None = Field(default=None, description="Monetary amount.")
     institution: StrictStr | None = Field(
         default=None, description="The `Institution` that the transaction is sent to."
     )
@@ -47,13 +40,7 @@ class EnrichedTransaction(BaseModel):
         alias="bookingDateTime",
         description="Date and time of when a transaction entry occured and was posted to the account servicer's books.",
     )
-    __properties = [
-        "transactionId",
-        "transactionInformation",
-        "amount",
-        "institution",
-        "bookingDateTime",
-    ]
+    __properties = ["transactionId", "transactionInformation", "amount", "institution", "bookingDateTime"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:

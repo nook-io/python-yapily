@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -62,9 +61,5 @@ class ComplianceData(BaseModel):
             return ComplianceData.parse_obj(obj)
 
         return ComplianceData.parse_obj(
-            {
-                "payer": ComplianceDataPayer.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None
-            }
+            {"payer": ComplianceDataPayer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None}
         )

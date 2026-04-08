@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,34 +27,22 @@ class ApiError(BaseModel):
     """
 
     code: StrictInt | None = Field(
-        default=None,
-        description="_Mandatory_. Numeric `HTTP` status code associated with the error.",
+        default=None, description="_Mandatory_. Numeric `HTTP` status code associated with the error."
     )
-    institution_error: InstitutionError | None = Field(
-        default=None, alias="institutionError"
-    )
+    institution_error: InstitutionError | None = Field(default=None, alias="institutionError")
     message: StrictStr | None = Field(
-        default=None,
-        description="__Mandatory__. Description of the exact error that has been experienced.",
+        default=None, description="__Mandatory__. Description of the exact error that has been experienced."
     )
     source: StrictStr | None = None
     status: StrictStr | None = Field(
-        default=None,
-        description="__Mandatory__. Textual description of the `HTTP` error status type.",
+        default=None, description="__Mandatory__. Textual description of the `HTTP` error status type."
     )
     tracing_id: StrictStr | None = Field(
         default=None,
         alias="tracingId",
         description="_Optional_.  A unique identifier assigned by Yapily for the request that can be used for support purposes.",
     )
-    __properties = [
-        "code",
-        "institutionError",
-        "message",
-        "source",
-        "status",
-        "tracingId",
-    ]
+    __properties = ["code", "institutionError", "message", "source", "status", "tracingId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -91,9 +78,7 @@ class ApiError(BaseModel):
         return ApiError.parse_obj(
             {
                 "code": obj.get("code"),
-                "institution_error": InstitutionError.from_dict(
-                    obj.get("institutionError")
-                )
+                "institution_error": InstitutionError.from_dict(obj.get("institutionError"))
                 if obj.get("institutionError") is not None
                 else None,
                 "message": obj.get("message"),

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -35,31 +34,21 @@ class SweepingControlParameters(BaseModel):
         alias="psuAuthenticationMethods",
         description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
     )
-    periodic_limits: Annotated[list[SweepingPeriodicLimits], Field()] = Field(
-        default=..., alias="periodicLimits"
-    )
+    periodic_limits: Annotated[list[SweepingPeriodicLimits], Field()] = Field(default=..., alias="periodicLimits")
     max_amount_per_payment: Amount = Field(
         default=...,
         alias="maxAmountPerPayment",
         description="__Mandatory__. Max amount that can be submitted per payment.",
     )
     valid_from: datetime | None = Field(
-        default=None,
-        alias="validFrom",
-        description="__Optional__. Start date when the consent becomes valid.",
+        default=None, alias="validFrom", description="__Optional__. Start date when the consent becomes valid."
     )
     valid_to: datetime | None = Field(
         default=None,
         alias="validTo",
         description="__Optional__. End date when the consent expires and becomes invalid.",
     )
-    __properties = [
-        "psuAuthenticationMethods",
-        "periodicLimits",
-        "maxAmountPerPayment",
-        "validFrom",
-        "validTo",
-    ]
+    __properties = ["psuAuthenticationMethods", "periodicLimits", "maxAmountPerPayment", "validFrom", "validTo"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -102,15 +91,10 @@ class SweepingControlParameters(BaseModel):
         return SweepingControlParameters.parse_obj(
             {
                 "psu_authentication_methods": obj.get("psuAuthenticationMethods"),
-                "periodic_limits": [
-                    SweepingPeriodicLimits.from_dict(_item)
-                    for _item in obj.get("periodicLimits")
-                ]
+                "periodic_limits": [SweepingPeriodicLimits.from_dict(_item) for _item in obj.get("periodicLimits")]
                 if obj.get("periodicLimits") is not None
                 else None,
-                "max_amount_per_payment": Amount.from_dict(
-                    obj.get("maxAmountPerPayment")
-                )
+                "max_amount_per_payment": Amount.from_dict(obj.get("maxAmountPerPayment"))
                 if obj.get("maxAmountPerPayment") is not None
                 else None,
                 "valid_from": obj.get("validFrom"),

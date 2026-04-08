@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class PostAccountsAccountIdTransactionsCategorisationRequest(BaseModel):
     """
 
     country_code: StrictStr = Field(
-        default=...,
-        alias="countryCode",
-        description="_Mandatory_, ISO 3166-1 alpha-2 two-letter country codes e.g. GB",
+        default=..., alias="countryCode", description="_Mandatory_, ISO 3166-1 alpha-2 two-letter country codes e.g. GB"
     )
     categorisation_type: StrictStr = Field(
         default=...,
@@ -57,9 +54,7 @@ class PostAccountsAccountIdTransactionsCategorisationRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> PostAccountsAccountIdTransactionsCategorisationRequest:
+    def from_json(cls, json_str: str) -> PostAccountsAccountIdTransactionsCategorisationRequest:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisationRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,9 +63,7 @@ class PostAccountsAccountIdTransactionsCategorisationRequest(BaseModel):
         return self.dict(by_alias=True, exclude={}, exclude_none=True)
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> PostAccountsAccountIdTransactionsCategorisationRequest:
+    def from_dict(cls, obj: dict) -> PostAccountsAccountIdTransactionsCategorisationRequest:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisationRequest from a dict"""
         if obj is None:
             return None

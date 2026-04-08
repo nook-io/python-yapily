@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class TestPostAccountsAccountIdTransactionsCategorisation500Response(unittest.Te
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> PostAccountsAccountIdTransactionsCategorisation500Response:
+    def make_instance(self, include_optional) -> PostAccountsAccountIdTransactionsCategorisation500Response:
         """Test PostAccountsAccountIdTransactionsCategorisation500Response
         include_option is a boolean, when False only required
         params are included, when True both required and

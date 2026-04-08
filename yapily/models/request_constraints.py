@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -67,11 +66,7 @@ class RequestConstraints(BaseModel):
 
         return RequestConstraints.parse_obj(
             {
-                "headers": ModelSchema.from_dict(obj.get("headers"))
-                if obj.get("headers") is not None
-                else None,
-                "body": ModelSchema.from_dict(obj.get("body"))
-                if obj.get("body") is not None
-                else None,
+                "headers": ModelSchema.from_dict(obj.get("headers")) if obj.get("headers") is not None else None,
+                "body": ModelSchema.from_dict(obj.get("body")) if obj.get("body") is not None else None,
             }
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,9 +67,7 @@ class ApiResponseOfGetHostedConsentRequest(BaseModel):
 
         return ApiResponseOfGetHostedConsentRequest.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
+                "meta": ResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
                 "data": HostedGetConsentRequestResponse.from_dict(obj.get("data"))
                 if obj.get("data") is not None
                 else None,

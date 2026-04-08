@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -20,9 +19,7 @@ import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 
 
-class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount(
-    BaseModel
-):
+class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount(BaseModel):
     """
     GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount
     """
@@ -60,9 +57,7 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransact
             return None
 
         if not isinstance(obj, dict):
-            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount.parse_obj(
-                obj
-            )
+            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount.parse_obj(obj)
 
         return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount.parse_obj(
             {"amount": obj.get("amount"), "currency": obj.get("currency")}

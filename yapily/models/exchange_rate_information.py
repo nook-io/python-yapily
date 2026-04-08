@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -42,12 +41,7 @@ class ExchangeRateInformation(BaseModel):
         alias="foreignExchangeContractReference",
         description="__Optional__. The unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent.",
     )
-    __properties = [
-        "unitCurrency",
-        "rate",
-        "rateType",
-        "foreignExchangeContractReference",
-    ]
+    __properties = ["unitCurrency", "rate", "rateType", "foreignExchangeContractReference"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -81,8 +75,6 @@ class ExchangeRateInformation(BaseModel):
                 "unit_currency": obj.get("unitCurrency"),
                 "rate": obj.get("rate"),
                 "rate_type": obj.get("rateType"),
-                "foreign_exchange_contract_reference": obj.get(
-                    "foreignExchangeContractReference"
-                ),
+                "foreign_exchange_contract_reference": obj.get("foreignExchangeContractReference"),
             }
         )

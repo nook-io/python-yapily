@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -60,6 +59,4 @@ class ExtendConsentRequest(BaseModel):
         if not isinstance(obj, dict):
             return ExtendConsentRequest.parse_obj(obj)
 
-        return ExtendConsentRequest.parse_obj(
-            {"last_confirmed_at": obj.get("lastConfirmedAt")}
-        )
+        return ExtendConsentRequest.parse_obj({"last_confirmed_at": obj.get("lastConfirmedAt")})

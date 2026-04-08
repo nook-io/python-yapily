@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -18,9 +17,7 @@ from yapily.models.get_accounts_transactions_categorised200_response_data_transa
 )
 
 
-class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
-    unittest.TestCase
-):
+class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(unittest.TestCase):
     """GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance unit test stubs"""
 
     def setUp(self):
@@ -51,9 +48,7 @@ class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBala
         )
         """
 
-    def testGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
-        self,
-    ):
+    def testGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(self):
         """Test GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)

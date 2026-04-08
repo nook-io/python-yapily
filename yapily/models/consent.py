@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,9 +29,7 @@ class Consent(BaseModel):
     Consent detailing the requested authorisation from a user to a specific `Institution`.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the consent."
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier of the consent.")
     user_uuid: StrictStr | None = Field(default=None, alias="userUuid")
     application_user_id: StrictStr | None = Field(
         default=None,
@@ -47,9 +44,7 @@ class Consent(BaseModel):
     )
     status: AuthorisationStatus | None = None
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="Date and time of when the consent was created.",
+        default=None, alias="createdAt", description="Date and time of when the consent was created."
     )
     transaction_from: datetime | None = Field(
         default=None,
@@ -66,14 +61,10 @@ class Consent(BaseModel):
         alias="expiresAt",
         description="Date and time of when the authorisation will expire by. Reauthorisation will be needed to retain access.",
     )
-    time_to_expire_in_millis: StrictInt | None = Field(
-        default=None, alias="timeToExpireInMillis"
-    )
+    time_to_expire_in_millis: StrictInt | None = Field(default=None, alias="timeToExpireInMillis")
     time_to_expire: StrictStr | None = Field(default=None, alias="timeToExpire")
     feature_scope: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = Field(
-        default=None,
-        alias="featureScope",
-        description="The set of features that the consent will provide access to.",
+        default=None, alias="featureScope", description="The set of features that the consent will provide access to."
     )
     consent_token: StrictStr | None = Field(
         default=None,
@@ -81,8 +72,7 @@ class Consent(BaseModel):
         description="Represents the authorisation to gain access to the requested features. Required to access account information or make a payment request.",
     )
     state: StrictStr | None = Field(
-        default=None,
-        description="Correlation ID used with the `Institution` during the authorisation process.",
+        default=None, description="Correlation ID used with the `Institution` during the authorisation process."
     )
     authorized_at: datetime | None = Field(
         default=None,
@@ -100,9 +90,7 @@ class Consent(BaseModel):
         description="The time by which the consent should be reconfirmed to ensure continued access to the account information.",
     )
     institution_consent_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionConsentId",
-        description="Identification of the consent at the Institution.",
+        default=None, alias="institutionConsentId", description="Identification of the consent at the Institution."
     )
     is_deleted_by_institution: StrictBool | None = Field(
         default=None,

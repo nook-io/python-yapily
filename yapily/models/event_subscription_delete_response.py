@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -34,13 +33,9 @@ class EventSubscriptionDeleteResponse(BaseModel):
         description="Unique identifier of the event type (for which notifications will be sent)",
     )
     application_id: StrictStr = Field(
-        default=...,
-        alias="applicationId",
-        description="Application related to event subscription.",
+        default=..., alias="applicationId", description="Application related to event subscription."
     )
-    created: datetime = Field(
-        default=..., description="Creation datetime of event subscription."
-    )
+    created: datetime = Field(default=..., description="Creation datetime of event subscription.")
     delete_status: DeleteStatusEnum = Field(default=..., alias="deleteStatus")
     __properties = ["eventTypeId", "applicationId", "created", "deleteStatus"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

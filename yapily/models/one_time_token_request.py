@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -59,6 +58,4 @@ class OneTimeTokenRequest(BaseModel):
         if not isinstance(obj, dict):
             return OneTimeTokenRequest.parse_obj(obj)
 
-        return OneTimeTokenRequest.parse_obj(
-            {"one_time_token": obj.get("oneTimeToken")}
-        )
+        return OneTimeTokenRequest.parse_obj({"one_time_token": obj.get("oneTimeToken")})

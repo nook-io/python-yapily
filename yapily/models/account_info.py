@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,13 +27,9 @@ class AccountInfo(BaseModel):
     """
 
     account_id: StrictStr | None = Field(
-        default=None,
-        alias="accountId",
-        description="__Conditional__. Unique identifier of the account.",
+        default=None, alias="accountId", description="__Conditional__. Unique identifier of the account."
     )
-    account_identification: AccountIdentification = Field(
-        default=..., alias="accountIdentification"
-    )
+    account_identification: AccountIdentification = Field(default=..., alias="accountIdentification")
     __properties = ["accountId", "accountIdentification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -71,9 +66,7 @@ class AccountInfo(BaseModel):
         return AccountInfo.parse_obj(
             {
                 "account_id": obj.get("accountId"),
-                "account_identification": AccountIdentification.from_dict(
-                    obj.get("accountIdentification")
-                )
+                "account_identification": AccountIdentification.from_dict(obj.get("accountIdentification"))
                 if obj.get("accountIdentification") is not None
                 else None,
             }

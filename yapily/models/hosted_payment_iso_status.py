@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,9 +28,7 @@ class HostedPaymentIsoStatus(BaseModel):
         default=None,
         description="The ISO 20022 `PaymentStatusCode`. One of : <br> ACSC <br> ACCC <br> ACCP  <br> ACSP <br> ACTC <br> ACWC <br> ACWP <br> ACFC <br> RCVD <br> PART <br> PATC <br> PDNG <br> RJCT <br> CANC",
     )
-    name: StrictStr | None = Field(
-        default=None, description="The full name of the ISO 20022 `PaymentStatusCode`."
-    )
+    name: StrictStr | None = Field(default=None, description="The full name of the ISO 20022 `PaymentStatusCode`.")
     __properties = ["code", "name"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -61,6 +58,4 @@ class HostedPaymentIsoStatus(BaseModel):
         if not isinstance(obj, dict):
             return HostedPaymentIsoStatus.parse_obj(obj)
 
-        return HostedPaymentIsoStatus.parse_obj(
-            {"code": obj.get("code"), "name": obj.get("name")}
-        )
+        return HostedPaymentIsoStatus.parse_obj({"code": obj.get("code"), "name": obj.get("name")})

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -38,16 +37,9 @@ class SubmissionRequest(BaseModel):
         alias="psuAuthenticationMethod",
         description="__Mandatory__. Chosen authentication method for submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
     )
-    context_type: PaymentContextType | None = Field(
-        default=None, alias="contextType"
-    )
+    context_type: PaymentContextType | None = Field(default=None, alias="contextType")
     payment_amount: Amount = Field(default=..., alias="paymentAmount")
-    __properties = [
-        "paymentIdempotencyId",
-        "psuAuthenticationMethod",
-        "contextType",
-        "paymentAmount",
-    ]
+    __properties = ["paymentIdempotencyId", "psuAuthenticationMethod", "contextType", "paymentAmount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:

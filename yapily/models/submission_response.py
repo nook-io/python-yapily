@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -34,33 +33,17 @@ class SubmissionResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    payment_idempotency_id: StrictStr | None = Field(
-        default=None, alias="paymentIdempotencyId"
-    )
-    payment_lifecycle_id: StrictStr | None = Field(
-        default=None, alias="paymentLifecycleId"
-    )
-    institution_consent_id: StrictStr | None = Field(
-        default=None, alias="institutionConsentId"
-    )
+    payment_idempotency_id: StrictStr | None = Field(default=None, alias="paymentIdempotencyId")
+    payment_lifecycle_id: StrictStr | None = Field(default=None, alias="paymentLifecycleId")
+    institution_consent_id: StrictStr | None = Field(default=None, alias="institutionConsentId")
     status: PaymentStatus | None = None
-    status_details: PaymentStatusDetails | None = Field(
-        default=None, alias="statusDetails"
-    )
-    initiation_details: InitiationDetails = Field(
-        default=..., alias="initiationDetails"
-    )
-    submission_details: SubmissionDetails = Field(
-        default=..., alias="submissionDetails"
-    )
+    status_details: PaymentStatusDetails | None = Field(default=None, alias="statusDetails")
+    initiation_details: InitiationDetails = Field(default=..., alias="initiationDetails")
+    submission_details: SubmissionDetails = Field(default=..., alias="submissionDetails")
     payer: Payer | None = None
     refund_account: RefundAccount | None = Field(default=None, alias="refundAccount")
-    expected_execution_time: datetime | None = Field(
-        default=None, alias="expectedExecutionTime"
-    )
-    expected_settlement_time: datetime | None = Field(
-        default=None, alias="expectedSettlementTime"
-    )
+    expected_execution_time: datetime | None = Field(default=None, alias="expectedExecutionTime")
+    expected_settlement_time: datetime | None = Field(default=None, alias="expectedSettlementTime")
     __properties = [
         "id",
         "paymentIdempotencyId",
@@ -126,24 +109,16 @@ class SubmissionResponse(BaseModel):
                 "payment_lifecycle_id": obj.get("paymentLifecycleId"),
                 "institution_consent_id": obj.get("institutionConsentId"),
                 "status": obj.get("status"),
-                "status_details": PaymentStatusDetails.from_dict(
-                    obj.get("statusDetails")
-                )
+                "status_details": PaymentStatusDetails.from_dict(obj.get("statusDetails"))
                 if obj.get("statusDetails") is not None
                 else None,
-                "initiation_details": InitiationDetails.from_dict(
-                    obj.get("initiationDetails")
-                )
+                "initiation_details": InitiationDetails.from_dict(obj.get("initiationDetails"))
                 if obj.get("initiationDetails") is not None
                 else None,
-                "submission_details": SubmissionDetails.from_dict(
-                    obj.get("submissionDetails")
-                )
+                "submission_details": SubmissionDetails.from_dict(obj.get("submissionDetails"))
                 if obj.get("submissionDetails") is not None
                 else None,
-                "payer": Payer.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
+                "payer": Payer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
                 "refund_account": RefundAccount.from_dict(obj.get("refundAccount"))
                 if obj.get("refundAccount") is not None
                 else None,

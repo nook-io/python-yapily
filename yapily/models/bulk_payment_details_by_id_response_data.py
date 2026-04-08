@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -77,8 +76,7 @@ class BulkPaymentDetailsByIdResponseData(BaseModel):
                 "consent_id": obj.get("consentId"),
                 "created_at": obj.get("createdAt"),
                 "payments": [
-                    BulkPaymentDetailsByIdResponseDataPaymentsInner.from_dict(_item)
-                    for _item in obj.get("payments")
+                    BulkPaymentDetailsByIdResponseDataPaymentsInner.from_dict(_item) for _item in obj.get("payments")
                 ]
                 if obj.get("payments") is not None
                 else None,

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -38,85 +37,60 @@ class PaymentResponse(BaseModel):
     PaymentResponse
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the payment."
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier of the payment.")
     institution_consent_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionConsentId",
-        description="Identification of the consent at the Institution.",
+        default=None, alias="institutionConsentId", description="Identification of the consent at the Institution."
     )
     payment_idempotency_id: StrictStr | None = Field(
         default=None,
         alias="paymentIdempotencyId",
         description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
     )
-    payment_lifecycle_id: StrictStr | None = Field(
-        default=None, alias="paymentLifecycleId"
-    )
+    payment_lifecycle_id: StrictStr | None = Field(default=None, alias="paymentLifecycleId")
     status: PaymentStatus | None = None
-    status_details: PaymentStatusDetails | None = Field(
-        default=None, alias="statusDetails"
-    )
+    status_details: PaymentStatusDetails | None = Field(default=None, alias="statusDetails")
     payer: Payer | None = None
     payee_details: Payee | None = Field(default=None, alias="payeeDetails")
     reference: StrictStr | None = Field(
         default=None,
         description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.",
     )
-    amount: StrictFloat | StrictInt | None = Field(
-        default=None, description="Monetary amount."
-    )
+    amount: StrictFloat | StrictInt | None = Field(default=None, description="Monetary amount.")
     currency: StrictStr | None = Field(
-        default=None,
-        description="Currency the payment amount is denoted in. Specified as a 3-letter ISO 4217 code.",
+        default=None, description="Currency the payment amount is denoted in. Specified as a 3-letter ISO 4217 code."
     )
     amount_details: Amount | None = Field(default=None, alias="amountDetails")
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="Date and time of when the payment request was created.",
+        default=None, alias="createdAt", description="Date and time of when the payment request was created."
     )
-    first_payment_amount: Amount | None = Field(
-        default=None, alias="firstPaymentAmount"
-    )
+    first_payment_amount: Amount | None = Field(default=None, alias="firstPaymentAmount")
     first_payment_date_time: datetime | None = Field(
         default=None,
         alias="firstPaymentDateTime",
         description="Date and time of when the first payment request is to be made.",
     )
-    next_payment_amount: Amount | None = Field(
-        default=None, alias="nextPaymentAmount"
-    )
+    next_payment_amount: Amount | None = Field(default=None, alias="nextPaymentAmount")
     next_payment_date_time: datetime | None = Field(
         default=None,
         alias="nextPaymentDateTime",
         description="__Conditional__. Defines when the recurring payment is to be made.",
     )
-    final_payment_amount: Amount | None = Field(
-        default=None, alias="finalPaymentAmount"
-    )
+    final_payment_amount: Amount | None = Field(default=None, alias="finalPaymentAmount")
     final_payment_date_time: datetime | None = Field(
-        default=None,
-        alias="finalPaymentDateTime",
-        description="Date and time of when the final payment is to be made.",
+        default=None, alias="finalPaymentDateTime", description="Date and time of when the final payment is to be made."
     )
     number_of_payments: StrictInt | None = Field(
         default=None,
         alias="numberOfPayments",
         description="Number of recurring payment requests to be made as part of the instructed payment schedule.",
     )
-    previous_payment_amount: Amount | None = Field(
-        default=None, alias="previousPaymentAmount"
-    )
+    previous_payment_amount: Amount | None = Field(default=None, alias="previousPaymentAmount")
     previous_payment_date_time: datetime | None = Field(
         default=None,
         alias="previousPaymentDateTime",
         description="Date and time of when the previous payment request was posted.",
     )
-    charge_details: Annotated[list[PaymentChargeDetails], Field()] | None = Field(
-        default=None, alias="chargeDetails"
-    )
+    charge_details: Annotated[list[PaymentChargeDetails], Field()] | None = Field(default=None, alias="chargeDetails")
     scheduled_payment_type: StrictStr | None = Field(
         default=None,
         alias="scheduledPaymentType",
@@ -134,17 +108,12 @@ class PaymentResponse(BaseModel):
         description="__Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer's account. Specified as a 3-letter code (ISO 4217).",
     )
     purpose: StrictStr | None = Field(
-        default=None,
-        description="Specifies the external purpose code for the `Institution` - IS0 20022.",
+        default=None, description="Specifies the external purpose code for the `Institution` - IS0 20022."
     )
     priority: PriorityCodeEnum | None = None
-    exchange_rate: ExchangeRateInformationResponse | None = Field(
-        default=None, alias="exchangeRate"
-    )
+    exchange_rate: ExchangeRateInformationResponse | None = Field(default=None, alias="exchangeRate")
     refund_account: RefundAccount | None = Field(default=None, alias="refundAccount")
-    bulk_amount_sum: StrictFloat | StrictInt | None = Field(
-        default=None, alias="bulkAmountSum"
-    )
+    bulk_amount_sum: StrictFloat | StrictInt | None = Field(default=None, alias="bulkAmountSum")
     __properties = [
         "id",
         "institutionConsentId",
@@ -255,14 +224,10 @@ class PaymentResponse(BaseModel):
                 "payment_idempotency_id": obj.get("paymentIdempotencyId"),
                 "payment_lifecycle_id": obj.get("paymentLifecycleId"),
                 "status": obj.get("status"),
-                "status_details": PaymentStatusDetails.from_dict(
-                    obj.get("statusDetails")
-                )
+                "status_details": PaymentStatusDetails.from_dict(obj.get("statusDetails"))
                 if obj.get("statusDetails") is not None
                 else None,
-                "payer": Payer.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
+                "payer": Payer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
                 "payee_details": Payee.from_dict(obj.get("payeeDetails"))
                 if obj.get("payeeDetails") is not None
                 else None,
@@ -286,16 +251,11 @@ class PaymentResponse(BaseModel):
                 else None,
                 "final_payment_date_time": obj.get("finalPaymentDateTime"),
                 "number_of_payments": obj.get("numberOfPayments"),
-                "previous_payment_amount": Amount.from_dict(
-                    obj.get("previousPaymentAmount")
-                )
+                "previous_payment_amount": Amount.from_dict(obj.get("previousPaymentAmount"))
                 if obj.get("previousPaymentAmount") is not None
                 else None,
                 "previous_payment_date_time": obj.get("previousPaymentDateTime"),
-                "charge_details": [
-                    PaymentChargeDetails.from_dict(_item)
-                    for _item in obj.get("chargeDetails")
-                ]
+                "charge_details": [PaymentChargeDetails.from_dict(_item) for _item in obj.get("chargeDetails")]
                 if obj.get("chargeDetails") is not None
                 else None,
                 "scheduled_payment_type": obj.get("scheduledPaymentType"),
@@ -306,9 +266,7 @@ class PaymentResponse(BaseModel):
                 "currency_of_transfer": obj.get("currencyOfTransfer"),
                 "purpose": obj.get("purpose"),
                 "priority": obj.get("priority"),
-                "exchange_rate": ExchangeRateInformationResponse.from_dict(
-                    obj.get("exchangeRate")
-                )
+                "exchange_rate": ExchangeRateInformationResponse.from_dict(obj.get("exchangeRate"))
                 if obj.get("exchangeRate") is not None
                 else None,
                 "refund_account": RefundAccount.from_dict(obj.get("refundAccount"))

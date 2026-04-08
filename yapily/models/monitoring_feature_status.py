@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -61,9 +60,5 @@ class MonitoringFeatureStatus(BaseModel):
             return MonitoringFeatureStatus.parse_obj(obj)
 
         return MonitoringFeatureStatus.parse_obj(
-            {
-                "last_tested": obj.get("lastTested"),
-                "span": obj.get("span"),
-                "status": obj.get("status"),
-            }
+            {"last_tested": obj.get("lastTested"), "span": obj.get("span"), "status": obj.get("status")}
         )

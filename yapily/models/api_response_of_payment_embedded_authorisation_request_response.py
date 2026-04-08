@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -34,9 +33,7 @@ class ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(BaseModel):
     meta: ResponseMeta | None = None
     data: PaymentEmbeddedAuthorisationRequestResponse | None = None
     links: dict[str, StrictStr] | None = None
-    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(
-        default=None, alias="forwardedData"
-    )
+    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(default=None, alias="forwardedData")
     raw: Annotated[list[RawResponse], Field()] | None = None
     tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
     __properties = ["meta", "data", "links", "forwardedData", "raw", "tracingId"]
@@ -51,9 +48,7 @@ class ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse:
+    def from_json(cls, json_str: str) -> ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse:
         """Create an instance of ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -83,33 +78,22 @@ class ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse:
+    def from_dict(cls, obj: dict) -> ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse:
         """Create an instance of ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse.parse_obj(
-                obj
-            )
+            return ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse.parse_obj(obj)
 
         return ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
-                "data": PaymentEmbeddedAuthorisationRequestResponse.from_dict(
-                    obj.get("data")
-                )
+                "meta": ResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
+                "data": PaymentEmbeddedAuthorisationRequestResponse.from_dict(obj.get("data"))
                 if obj.get("data") is not None
                 else None,
                 "links": obj.get("links"),
-                "forwarded_data": [
-                    ResponseForwardedData.from_dict(_item)
-                    for _item in obj.get("forwardedData")
-                ]
+                "forwarded_data": [ResponseForwardedData.from_dict(_item) for _item in obj.get("forwardedData")]
                 if obj.get("forwardedData") is not None
                 else None,
                 "raw": [RawResponse.from_dict(_item) for _item in obj.get("raw")]

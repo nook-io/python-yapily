@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -35,21 +34,11 @@ class ApiListResponseOfInstitution(BaseModel):
     meta: ResponseListMeta | None = None
     data: Annotated[list[Institution], Field()] | None = None
     links: dict[str, StrictStr] | None = None
-    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(
-        default=None, alias="forwardedData"
-    )
+    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(default=None, alias="forwardedData")
     raw: Annotated[list[RawResponse], Field()] | None = None
     paging: FilteredClientPayloadListInstitution | None = None
     tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
-    __properties = [
-        "meta",
-        "data",
-        "links",
-        "forwardedData",
-        "raw",
-        "paging",
-        "tracingId",
-    ]
+    __properties = ["meta", "data", "links", "forwardedData", "raw", "paging", "tracingId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -108,25 +97,18 @@ class ApiListResponseOfInstitution(BaseModel):
 
         return ApiListResponseOfInstitution.parse_obj(
             {
-                "meta": ResponseListMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
+                "meta": ResponseListMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
                 "data": [Institution.from_dict(_item) for _item in obj.get("data")]
                 if obj.get("data") is not None
                 else None,
                 "links": obj.get("links"),
-                "forwarded_data": [
-                    ResponseForwardedData.from_dict(_item)
-                    for _item in obj.get("forwardedData")
-                ]
+                "forwarded_data": [ResponseForwardedData.from_dict(_item) for _item in obj.get("forwardedData")]
                 if obj.get("forwardedData") is not None
                 else None,
                 "raw": [RawResponse.from_dict(_item) for _item in obj.get("raw")]
                 if obj.get("raw") is not None
                 else None,
-                "paging": FilteredClientPayloadListInstitution.from_dict(
-                    obj.get("paging")
-                )
+                "paging": FilteredClientPayloadListInstitution.from_dict(obj.get("paging"))
                 if obj.get("paging") is not None
                 else None,
                 "tracing_id": obj.get("tracingId"),

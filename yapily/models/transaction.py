@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -41,9 +40,7 @@ class Transaction(BaseModel):
     Details of a transaction (credit or debit) that has occurred on the account.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the transaction."
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier of the transaction.")
     var_date: datetime | None = Field(default=None, alias="date")
     booking_date_time: datetime | None = Field(
         default=None,
@@ -56,23 +53,15 @@ class Transaction(BaseModel):
         description="Date and time in UTC format when the funds either cease to be available (for debit transactions) or become available (for credit transactions) to the account owner.",
     )
     status: TransactionStatusEnum | None = None
-    amount: StrictFloat | StrictInt | None = Field(
-        default=None, description="The transaction amount."
-    )
+    amount: StrictFloat | StrictInt | None = Field(default=None, description="The transaction amount.")
     currency: StrictStr | None = Field(
         default=None,
         description="Currency the transaction amount is denoted in. Specified as a 3-letter ISO 4217 code.",
     )
-    transaction_amount: Amount | None = Field(
-        default=None, alias="transactionAmount"
-    )
+    transaction_amount: Amount | None = Field(default=None, alias="transactionAmount")
     gross_amount: Amount | None = Field(default=None, alias="grossAmount")
-    currency_exchange: CurrencyExchange | None = Field(
-        default=None, alias="currencyExchange"
-    )
-    charge_details: TransactionChargeDetails | None = Field(
-        default=None, alias="chargeDetails"
-    )
+    currency_exchange: CurrencyExchange | None = Field(default=None, alias="currencyExchange")
+    charge_details: TransactionChargeDetails | None = Field(default=None, alias="chargeDetails")
     reference: StrictStr | None = None
     statement_references: Annotated[list[StatementReference], Field()] | None = Field(
         default=None, alias="statementReferences"
@@ -83,22 +72,14 @@ class Transaction(BaseModel):
         alias="transactionInformation",
         description="Further details on the transaction. This is narrative data, caught as unstructured text.",
     )
-    address_details: AddressDetails | None = Field(
-        default=None, alias="addressDetails"
-    )
-    iso_bank_transaction_code: IsoBankTransactionCode | None = Field(
-        default=None, alias="isoBankTransactionCode"
-    )
+    address_details: AddressDetails | None = Field(default=None, alias="addressDetails")
+    iso_bank_transaction_code: IsoBankTransactionCode | None = Field(default=None, alias="isoBankTransactionCode")
     proprietary_bank_transaction_code: ProprietaryBankTransactionCode | None = Field(
         default=None, alias="proprietaryBankTransactionCode"
     )
     balance: TransactionBalance | None = None
-    payee_details: TransactionPayeeDetails | None = Field(
-        default=None, alias="payeeDetails"
-    )
-    payer_details: TransactionPayerDetails | None = Field(
-        default=None, alias="payerDetails"
-    )
+    payee_details: TransactionPayeeDetails | None = Field(default=None, alias="payeeDetails")
+    payer_details: TransactionPayerDetails | None = Field(default=None, alias="payerDetails")
     merchant: Merchant | None = None
     enrichment: Enrichment | None = None
     supplementary_data: dict[str, Any] | None = Field(
@@ -183,9 +164,7 @@ class Transaction(BaseModel):
             _dict["isoBankTransactionCode"] = self.iso_bank_transaction_code.to_dict()
         # override the default output from pydantic by calling `to_dict()` of proprietary_bank_transaction_code
         if self.proprietary_bank_transaction_code:
-            _dict["proprietaryBankTransactionCode"] = (
-                self.proprietary_bank_transaction_code.to_dict()
-            )
+            _dict["proprietaryBankTransactionCode"] = self.proprietary_bank_transaction_code.to_dict()
         # override the default output from pydantic by calling `to_dict()` of balance
         if self.balance:
             _dict["balance"] = self.balance.to_dict()
@@ -227,20 +206,15 @@ class Transaction(BaseModel):
                 "gross_amount": Amount.from_dict(obj.get("grossAmount"))
                 if obj.get("grossAmount") is not None
                 else None,
-                "currency_exchange": CurrencyExchange.from_dict(
-                    obj.get("currencyExchange")
-                )
+                "currency_exchange": CurrencyExchange.from_dict(obj.get("currencyExchange"))
                 if obj.get("currencyExchange") is not None
                 else None,
-                "charge_details": TransactionChargeDetails.from_dict(
-                    obj.get("chargeDetails")
-                )
+                "charge_details": TransactionChargeDetails.from_dict(obj.get("chargeDetails"))
                 if obj.get("chargeDetails") is not None
                 else None,
                 "reference": obj.get("reference"),
                 "statement_references": [
-                    StatementReference.from_dict(_item)
-                    for _item in obj.get("statementReferences")
+                    StatementReference.from_dict(_item) for _item in obj.get("statementReferences")
                 ]
                 if obj.get("statementReferences") is not None
                 else None,
@@ -249,9 +223,7 @@ class Transaction(BaseModel):
                 "address_details": AddressDetails.from_dict(obj.get("addressDetails"))
                 if obj.get("addressDetails") is not None
                 else None,
-                "iso_bank_transaction_code": IsoBankTransactionCode.from_dict(
-                    obj.get("isoBankTransactionCode")
-                )
+                "iso_bank_transaction_code": IsoBankTransactionCode.from_dict(obj.get("isoBankTransactionCode"))
                 if obj.get("isoBankTransactionCode") is not None
                 else None,
                 "proprietary_bank_transaction_code": ProprietaryBankTransactionCode.from_dict(
@@ -259,22 +231,14 @@ class Transaction(BaseModel):
                 )
                 if obj.get("proprietaryBankTransactionCode") is not None
                 else None,
-                "balance": TransactionBalance.from_dict(obj.get("balance"))
-                if obj.get("balance") is not None
-                else None,
-                "payee_details": TransactionPayeeDetails.from_dict(
-                    obj.get("payeeDetails")
-                )
+                "balance": TransactionBalance.from_dict(obj.get("balance")) if obj.get("balance") is not None else None,
+                "payee_details": TransactionPayeeDetails.from_dict(obj.get("payeeDetails"))
                 if obj.get("payeeDetails") is not None
                 else None,
-                "payer_details": TransactionPayerDetails.from_dict(
-                    obj.get("payerDetails")
-                )
+                "payer_details": TransactionPayerDetails.from_dict(obj.get("payerDetails"))
                 if obj.get("payerDetails") is not None
                 else None,
-                "merchant": Merchant.from_dict(obj.get("merchant"))
-                if obj.get("merchant") is not None
-                else None,
+                "merchant": Merchant.from_dict(obj.get("merchant")) if obj.get("merchant") is not None else None,
                 "enrichment": Enrichment.from_dict(obj.get("enrichment"))
                 if obj.get("enrichment") is not None
                 else None,

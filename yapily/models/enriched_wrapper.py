@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -44,12 +43,10 @@ class EnrichedWrapper(BaseModel):
         alias="recentlyTerminatedIncomeStreams",
         description="A list of terminated transaction income streams",
     )
-    recently_terminated_expenditure_streams: Annotated[list[TerminatedTransactionStream], Field()] = (
-        Field(
-            default=...,
-            alias="recentlyTerminatedExpenditureStreams",
-            description="A list of terminated transaction expenditure streams",
-        )
+    recently_terminated_expenditure_streams: Annotated[list[TerminatedTransactionStream], Field()] = Field(
+        default=...,
+        alias="recentlyTerminatedExpenditureStreams",
+        description="A list of terminated transaction expenditure streams",
     )
     __properties = [
         "incomeStreams",
@@ -116,21 +113,14 @@ class EnrichedWrapper(BaseModel):
 
         return EnrichedWrapper.parse_obj(
             {
-                "income_streams": [
-                    TransactionStream.from_dict(_item)
-                    for _item in obj.get("incomeStreams")
-                ]
+                "income_streams": [TransactionStream.from_dict(_item) for _item in obj.get("incomeStreams")]
                 if obj.get("incomeStreams") is not None
                 else None,
-                "expenditure_streams": [
-                    TransactionStream.from_dict(_item)
-                    for _item in obj.get("expenditureStreams")
-                ]
+                "expenditure_streams": [TransactionStream.from_dict(_item) for _item in obj.get("expenditureStreams")]
                 if obj.get("expenditureStreams") is not None
                 else None,
                 "recently_terminated_income_streams": [
-                    TerminatedTransactionStream.from_dict(_item)
-                    for _item in obj.get("recentlyTerminatedIncomeStreams")
+                    TerminatedTransactionStream.from_dict(_item) for _item in obj.get("recentlyTerminatedIncomeStreams")
                 ]
                 if obj.get("recentlyTerminatedIncomeStreams") is not None
                 else None,

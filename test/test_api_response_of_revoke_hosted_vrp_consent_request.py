@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,9 +24,7 @@ class TestApiResponseOfRevokeHostedVRPConsentRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> ApiResponseOfRevokeHostedVRPConsentRequest:
+    def make_instance(self, include_optional) -> ApiResponseOfRevokeHostedVRPConsentRequest:
         """Test ApiResponseOfRevokeHostedVRPConsentRequest
         include_option is a boolean, when False only required
         params are included, when True both required and

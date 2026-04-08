@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -38,9 +37,7 @@ class PostAccountsAccountIdTransactionsCategorisation201ResponseMeta(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> PostAccountsAccountIdTransactionsCategorisation201ResponseMeta:
+    def from_json(cls, json_str: str) -> PostAccountsAccountIdTransactionsCategorisation201ResponseMeta:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation201ResponseMeta from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -49,17 +46,13 @@ class PostAccountsAccountIdTransactionsCategorisation201ResponseMeta(BaseModel):
         return self.dict(by_alias=True, exclude={}, exclude_none=True)
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> PostAccountsAccountIdTransactionsCategorisation201ResponseMeta:
+    def from_dict(cls, obj: dict) -> PostAccountsAccountIdTransactionsCategorisation201ResponseMeta:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation201ResponseMeta from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PostAccountsAccountIdTransactionsCategorisation201ResponseMeta.parse_obj(
-                obj
-            )
+            return PostAccountsAccountIdTransactionsCategorisation201ResponseMeta.parse_obj(obj)
 
         return PostAccountsAccountIdTransactionsCategorisation201ResponseMeta.parse_obj(
             {"tracing_id": obj.get("tracingId")}

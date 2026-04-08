@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -57,6 +56,4 @@ class Categorisation(BaseModel):
         if not isinstance(obj, dict):
             return Categorisation.parse_obj(obj)
 
-        return Categorisation.parse_obj(
-            {"categories": obj.get("categories"), "source": obj.get("source")}
-        )
+        return Categorisation.parse_obj({"categories": obj.get("categories"), "source": obj.get("source")})

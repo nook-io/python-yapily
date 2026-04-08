@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,19 +29,13 @@ class VrpConfiguration(BaseModel):
     """
 
     maximum_individual_amount: Amount | None = Field(
-        default=None,
-        alias="maximumIndividualAmount",
-        description="Maximum amount per transaction",
+        default=None, alias="maximumIndividualAmount", description="Maximum amount per transaction"
     )
     maximum_cumulative_amount: Amount | None = Field(
-        default=None,
-        alias="maximumCumulativeAmount",
-        description="Maximum cumulative amount",
+        default=None, alias="maximumCumulativeAmount", description="Maximum cumulative amount"
     )
     maximum_cumulative_number_of_payments: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=None,
-        alias="maximumCumulativeNumberOfPayments",
-        description="Maximum cumulative number of payments",
+        default=None, alias="maximumCumulativeNumberOfPayments", description="Maximum cumulative number of payments"
     )
     periodic_limits: Annotated[list[VrpPeriodicLimit], Field(min_length=1)] | None = Field(
         default=None, alias="periodicLimits"
@@ -103,23 +96,14 @@ class VrpConfiguration(BaseModel):
 
         return VrpConfiguration.parse_obj(
             {
-                "maximum_individual_amount": Amount.from_dict(
-                    obj.get("maximumIndividualAmount")
-                )
+                "maximum_individual_amount": Amount.from_dict(obj.get("maximumIndividualAmount"))
                 if obj.get("maximumIndividualAmount") is not None
                 else None,
-                "maximum_cumulative_amount": Amount.from_dict(
-                    obj.get("maximumCumulativeAmount")
-                )
+                "maximum_cumulative_amount": Amount.from_dict(obj.get("maximumCumulativeAmount"))
                 if obj.get("maximumCumulativeAmount") is not None
                 else None,
-                "maximum_cumulative_number_of_payments": obj.get(
-                    "maximumCumulativeNumberOfPayments"
-                ),
-                "periodic_limits": [
-                    VrpPeriodicLimit.from_dict(_item)
-                    for _item in obj.get("periodicLimits")
-                ]
+                "maximum_cumulative_number_of_payments": obj.get("maximumCumulativeNumberOfPayments"),
+                "periodic_limits": [VrpPeriodicLimit.from_dict(_item) for _item in obj.get("periodicLimits")]
                 if obj.get("periodicLimits") is not None
                 else None,
                 "recurring_payment_category": obj.get("recurringPaymentCategory"),

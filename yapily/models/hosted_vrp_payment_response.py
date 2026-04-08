@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -34,9 +33,7 @@ class HostedVRPPaymentResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    payment_idempotency_id: StrictStr | None = Field(
-        default=None, alias="paymentIdempotencyId"
-    )
+    payment_idempotency_id: StrictStr | None = Field(default=None, alias="paymentIdempotencyId")
     amount: Amount | None = None
     reference: StrictStr | None = Field(
         default=None,
@@ -44,27 +41,17 @@ class HostedVRPPaymentResponse(BaseModel):
     )
     payee: Payee | None = None
     payer: HostedVrpPayerResponse | None = None
-    refund_account: HostedVrpRefundAccount | None = Field(
-        default=None, alias="refundAccount"
-    )
+    refund_account: HostedVrpRefundAccount | None = Field(default=None, alias="refundAccount")
     risk: PaymentRisk | None = None
     payment_lifecycle_id: StrictStr | None = Field(
         default=None,
         alias="paymentLifecycleId",
         description="The Unique Identifier provided by TPP in the Payment request to identify the payment.",
     )
-    expected_execution_time: datetime | None = Field(
-        default=None, alias="expectedExecutionTime"
-    )
-    expected_settlement_time: datetime | None = Field(
-        default=None, alias="expectedSettlementTime"
-    )
-    institution_payment_id: StrictStr | None = Field(
-        default=None, alias="institutionPaymentId"
-    )
-    status_details: HostedPaymentStatusDetails | None = Field(
-        default=None, alias="statusDetails"
-    )
+    expected_execution_time: datetime | None = Field(default=None, alias="expectedExecutionTime")
+    expected_settlement_time: datetime | None = Field(default=None, alias="expectedSettlementTime")
+    institution_payment_id: StrictStr | None = Field(default=None, alias="institutionPaymentId")
+    status_details: HostedPaymentStatusDetails | None = Field(default=None, alias="statusDetails")
     __properties = [
         "id",
         "paymentIdempotencyId",
@@ -131,31 +118,19 @@ class HostedVRPPaymentResponse(BaseModel):
             {
                 "id": obj.get("id"),
                 "payment_idempotency_id": obj.get("paymentIdempotencyId"),
-                "amount": Amount.from_dict(obj.get("amount"))
-                if obj.get("amount") is not None
-                else None,
+                "amount": Amount.from_dict(obj.get("amount")) if obj.get("amount") is not None else None,
                 "reference": obj.get("reference"),
-                "payee": Payee.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
-                "payer": HostedVrpPayerResponse.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
-                "refund_account": HostedVrpRefundAccount.from_dict(
-                    obj.get("refundAccount")
-                )
+                "payee": Payee.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
+                "payer": HostedVrpPayerResponse.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+                "refund_account": HostedVrpRefundAccount.from_dict(obj.get("refundAccount"))
                 if obj.get("refundAccount") is not None
                 else None,
-                "risk": PaymentRisk.from_dict(obj.get("risk"))
-                if obj.get("risk") is not None
-                else None,
+                "risk": PaymentRisk.from_dict(obj.get("risk")) if obj.get("risk") is not None else None,
                 "payment_lifecycle_id": obj.get("paymentLifecycleId"),
                 "expected_execution_time": obj.get("expectedExecutionTime"),
                 "expected_settlement_time": obj.get("expectedSettlementTime"),
                 "institution_payment_id": obj.get("institutionPaymentId"),
-                "status_details": HostedPaymentStatusDetails.from_dict(
-                    obj.get("statusDetails")
-                )
+                "status_details": HostedPaymentStatusDetails.from_dict(obj.get("statusDetails"))
                 if obj.get("statusDetails") is not None
                 else None,
             }

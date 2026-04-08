@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -92,11 +91,7 @@ class ConstraintsApi:
             message = "Error! Please call the get_account_constraints_rules_by_institution_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_account_constraints_rules_by_institution_with_http_info(
-            institution_ids,
-            institution_country_code,
-            endpoint_path,
-            endpoint_method,
-            **kwargs,
+            institution_ids, institution_country_code, endpoint_path, endpoint_method, **kwargs
         )
 
     @validate_arguments
@@ -167,12 +162,7 @@ class ConstraintsApi:
 
         _params = locals()
 
-        _all_params = [
-            "institution_ids",
-            "institution_country_code",
-            "endpoint_path",
-            "endpoint_method",
-        ]
+        _all_params = ["institution_ids", "institution_country_code", "endpoint_path", "endpoint_method"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -206,9 +196,7 @@ class ConstraintsApi:
             _collection_formats["institutionIds"] = "multi"
 
         if _params.get("institution_country_code") is not None:
-            _query_params.append(
-                ("institutionCountryCode", _params["institution_country_code"])
-            )
+            _query_params.append(("institutionCountryCode", _params["institution_country_code"]))
 
         if _params.get("endpoint_path") is not None:
             _query_params.append(("endpointPath", _params["endpoint_path"]))
@@ -224,9 +212,7 @@ class ConstraintsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -275,10 +261,7 @@ class ConstraintsApi:
             ),
         ],
         payment_type: Annotated[
-            StrictStr,
-            Field(
-                ..., description="Type of payment to retrieve payment constraints for"
-            ),
+            StrictStr, Field(..., description="Type of payment to retrieve payment constraints for")
         ],
         endpoint_path: Annotated[
             StrictStr | None,
@@ -322,12 +305,7 @@ class ConstraintsApi:
             message = "Error! Please call the get_payment_constraints_rules_by_institution_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_payment_constraints_rules_by_institution_with_http_info(
-            institution_ids,
-            institution_country_code,
-            payment_type,
-            endpoint_path,
-            endpoint_method,
-            **kwargs,
+            institution_ids, institution_country_code, payment_type, endpoint_path, endpoint_method, **kwargs
         )
 
     @validate_arguments
@@ -348,10 +326,7 @@ class ConstraintsApi:
             ),
         ],
         payment_type: Annotated[
-            StrictStr,
-            Field(
-                ..., description="Type of payment to retrieve payment constraints for"
-            ),
+            StrictStr, Field(..., description="Type of payment to retrieve payment constraints for")
         ],
         endpoint_path: Annotated[
             StrictStr | None,
@@ -446,9 +421,7 @@ class ConstraintsApi:
             _collection_formats["institutionIds"] = "multi"
 
         if _params.get("institution_country_code") is not None:
-            _query_params.append(
-                ("institutionCountryCode", _params["institution_country_code"])
-            )
+            _query_params.append(("institutionCountryCode", _params["institution_country_code"]))
 
         if _params.get("payment_type") is not None:
             _query_params.append(("paymentType", _params["payment_type"]))
@@ -467,9 +440,7 @@ class ConstraintsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]

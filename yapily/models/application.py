@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -31,37 +30,18 @@ class Application(BaseModel):
     """
 
     uuid: StrictStr | None = Field(
-        default=None,
-        description="Unique identification for the `Application` as assigned by Yapily.",
+        default=None, description="Unique identification for the `Application` as assigned by Yapily."
     )
-    name: StrictStr | None = Field(
-        default=None, description="The individual name of the `Application`."
-    )
-    active: StrictBool | None = Field(
-        default=None, description="States whether an `Application` is active."
-    )
-    auth_callbacks: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None, alias="authCallbacks"
-    )
+    name: StrictStr | None = Field(default=None, description="The individual name of the `Application`.")
+    active: StrictBool | None = Field(default=None, description="States whether an `Application` is active.")
+    auth_callbacks: Annotated[list[StrictStr], Field()] | None = Field(default=None, alias="authCallbacks")
     institutions: Annotated[list[Institution], Field(unique_items=True)] | None = None
     media: Annotated[list[Media], Field(unique_items=True)] | None = None
-    created: datetime | None = Field(
-        default=None, description="Date and time of when the application was created."
-    )
+    created: datetime | None = Field(default=None, description="Date and time of when the application was created.")
     updated: datetime | None = Field(
-        default=None,
-        description="Date and time of when the application was last updated.",
+        default=None, description="Date and time of when the application was last updated."
     )
-    __properties = [
-        "uuid",
-        "name",
-        "active",
-        "authCallbacks",
-        "institutions",
-        "media",
-        "created",
-        "updated",
-    ]
+    __properties = ["uuid", "name", "active", "authCallbacks", "institutions", "media", "created", "updated"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -111,9 +91,7 @@ class Application(BaseModel):
                 "name": obj.get("name"),
                 "active": obj.get("active"),
                 "auth_callbacks": obj.get("authCallbacks"),
-                "institutions": [
-                    Institution.from_dict(_item) for _item in obj.get("institutions")
-                ]
+                "institutions": [Institution.from_dict(_item) for _item in obj.get("institutions")]
                 if obj.get("institutions") is not None
                 else None,
                 "media": [Media.from_dict(_item) for _item in obj.get("media")]

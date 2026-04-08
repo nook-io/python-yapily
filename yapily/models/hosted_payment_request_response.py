@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -31,55 +30,39 @@ class HostedPaymentRequestResponse(BaseModel):
     """
 
     payment_request_id: StrictStr | None = Field(
-        default=None,
-        alias="paymentRequestId",
-        description="Unique Id of the payment request.",
+        default=None, alias="paymentRequestId", description="Unique Id of the payment request."
     )
     user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="Unique Id for the `User` assigned by Yapily.",
+        default=None, alias="userId", description="Unique Id for the `User` assigned by Yapily."
     )
     application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="Your reference to the `User`.",
+        default=None, alias="applicationUserId", description="Your reference to the `User`."
     )
     application_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationId",
-        description="Unique Id of the `Application` the user is associated with.",
+        default=None, alias="applicationId", description="Unique Id of the `Application` the user is associated with."
     )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(
-        default=None, alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
     user_settings: UserSettings | None = Field(default=None, alias="userSettings")
     redirect_url: StrictStr | None = Field(
         default=None,
         alias="redirectUrl",
         description="URL of payment server to redirect the user after completion of the payment flow.",
     )
-    payment_request_details: HostedPaymentResponseDetails | None = Field(
-        default=None, alias="paymentRequestDetails"
-    )
+    payment_request_details: HostedPaymentResponseDetails | None = Field(default=None, alias="paymentRequestDetails")
     hosted_url: StrictStr | None = Field(
         default=None,
         alias="hostedUrl",
         description="The URL of Hosted UI page for the applicationId which initiates the user journey for the payment. <br> URL would be appended with authToken, applicationId and userSettings.",
     )
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="The date and time at which the payment was created.",
+        default=None, alias="createdAt", description="The date and time at which the payment was created."
     )
     authorisation_expires_at: datetime | None = Field(
         default=None,
         alias="authorisationExpiresAt",
         description="The date and time at which the auth Token will expire.",
     )
-    status: StrictStr | None = Field(
-        default=None, description="Current status of the payment request."
-    )
+    status: StrictStr | None = Field(default=None, description="Current status of the payment request.")
     __properties = [
         "paymentRequestId",
         "userId",
@@ -138,18 +121,14 @@ class HostedPaymentRequestResponse(BaseModel):
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),
                 "application_id": obj.get("applicationId"),
-                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "user_settings": UserSettings.from_dict(obj.get("userSettings"))
                 if obj.get("userSettings") is not None
                 else None,
                 "redirect_url": obj.get("redirectUrl"),
-                "payment_request_details": HostedPaymentResponseDetails.from_dict(
-                    obj.get("paymentRequestDetails")
-                )
+                "payment_request_details": HostedPaymentResponseDetails.from_dict(obj.get("paymentRequestDetails"))
                 if obj.get("paymentRequestDetails") is not None
                 else None,
                 "hosted_url": obj.get("hostedUrl"),

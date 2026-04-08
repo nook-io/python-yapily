@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -35,9 +34,7 @@ class ApiListResponseOfRealTimeTransaction(BaseModel):
     meta: ResponseMetaWithCount | None = None
     data: Annotated[list[RealTimeTransaction], Field()] | None = None
     links: ApiListResponseOfRealTimeTransactionLinks | None = None
-    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(
-        default=None, alias="forwardedData"
-    )
+    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(default=None, alias="forwardedData")
     raw: Annotated[list[RawResponse], Field()] | None = None
     tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
     __properties = ["meta", "data", "links", "forwardedData", "raw", "tracingId"]
@@ -99,23 +96,14 @@ class ApiListResponseOfRealTimeTransaction(BaseModel):
 
         return ApiListResponseOfRealTimeTransaction.parse_obj(
             {
-                "meta": ResponseMetaWithCount.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
-                "data": [
-                    RealTimeTransaction.from_dict(_item) for _item in obj.get("data")
-                ]
+                "meta": ResponseMetaWithCount.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
+                "data": [RealTimeTransaction.from_dict(_item) for _item in obj.get("data")]
                 if obj.get("data") is not None
                 else None,
-                "links": ApiListResponseOfRealTimeTransactionLinks.from_dict(
-                    obj.get("links")
-                )
+                "links": ApiListResponseOfRealTimeTransactionLinks.from_dict(obj.get("links"))
                 if obj.get("links") is not None
                 else None,
-                "forwarded_data": [
-                    ResponseForwardedData.from_dict(_item)
-                    for _item in obj.get("forwardedData")
-                ]
+                "forwarded_data": [ResponseForwardedData.from_dict(_item) for _item in obj.get("forwardedData")]
                 if obj.get("forwardedData") is not None
                 else None,
                 "raw": [RawResponse.from_dict(_item) for _item in obj.get("raw")]

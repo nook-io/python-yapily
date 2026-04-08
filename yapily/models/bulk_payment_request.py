@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,8 +29,7 @@ class BulkPaymentRequest(BaseModel):
     """
 
     payments: Annotated[list[PaymentRequest], Field()] = Field(
-        default=...,
-        description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment.",
+        default=..., description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment."
     )
     originator_identification_number: StrictStr | None = Field(
         default=None,
@@ -82,14 +80,10 @@ class BulkPaymentRequest(BaseModel):
 
         return BulkPaymentRequest.parse_obj(
             {
-                "payments": [
-                    PaymentRequest.from_dict(_item) for _item in obj.get("payments")
-                ]
+                "payments": [PaymentRequest.from_dict(_item) for _item in obj.get("payments")]
                 if obj.get("payments") is not None
                 else None,
-                "originator_identification_number": obj.get(
-                    "originatorIdentificationNumber"
-                ),
+                "originator_identification_number": obj.get("originatorIdentificationNumber"),
                 "execution_date_time": obj.get("executionDateTime"),
             }
         )

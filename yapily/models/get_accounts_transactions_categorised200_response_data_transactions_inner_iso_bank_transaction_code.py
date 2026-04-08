@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -24,16 +23,20 @@ from yapily.models.get_accounts_transactions_categorised200_response_data_transa
 )
 
 
-class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCode(
-    BaseModel
-):
+class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCode(BaseModel):
     """
     GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCode
     """
 
-    domain_code: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None = Field(default=None, alias="domainCode")
-    family_code: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None = Field(default=None, alias="familyCode")
-    sub_family_code: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None = Field(default=None, alias="subFamilyCode")
+    domain_code: (
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None
+    ) = Field(default=None, alias="domainCode")
+    family_code: (
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None
+    ) = Field(default=None, alias="familyCode")
+    sub_family_code: (
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None
+    ) = Field(default=None, alias="subFamilyCode")
     __properties = ["domainCode", "familyCode", "subFamilyCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

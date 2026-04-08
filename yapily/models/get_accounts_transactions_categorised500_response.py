@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,9 +28,7 @@ class GetAccountsTransactionsCategorised500Response(BaseModel):
     GetAccountsTransactionsCategorised500Response
     """
 
-    error: PostAccountsAccountIdTransactionsCategorisation400ResponseError | None = (
-        None
-    )
+    error: PostAccountsAccountIdTransactionsCategorisation400ResponseError | None = None
     __properties = ["error"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -67,9 +64,7 @@ class GetAccountsTransactionsCategorised500Response(BaseModel):
 
         return GetAccountsTransactionsCategorised500Response.parse_obj(
             {
-                "error": PostAccountsAccountIdTransactionsCategorisation400ResponseError.from_dict(
-                    obj.get("error")
-                )
+                "error": PostAccountsAccountIdTransactionsCategorisation400ResponseError.from_dict(obj.get("error"))
                 if obj.get("error") is not None
                 else None
             }

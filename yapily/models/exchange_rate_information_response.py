@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -43,16 +42,8 @@ class ExchangeRateInformationResponse(BaseModel):
         alias="foreignExchangeContractReference",
         description="__Optional__. The unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent.",
     )
-    exchange_rate_expiry_date: datetime | None = Field(
-        default=None, alias="exchangeRateExpiryDate"
-    )
-    __properties = [
-        "unitCurrency",
-        "rate",
-        "rateType",
-        "foreignExchangeContractReference",
-        "exchangeRateExpiryDate",
-    ]
+    exchange_rate_expiry_date: datetime | None = Field(default=None, alias="exchangeRateExpiryDate")
+    __properties = ["unitCurrency", "rate", "rateType", "foreignExchangeContractReference", "exchangeRateExpiryDate"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -86,9 +77,7 @@ class ExchangeRateInformationResponse(BaseModel):
                 "unit_currency": obj.get("unitCurrency"),
                 "rate": obj.get("rate"),
                 "rate_type": obj.get("rateType"),
-                "foreign_exchange_contract_reference": obj.get(
-                    "foreignExchangeContractReference"
-                ),
+                "foreign_exchange_contract_reference": obj.get("foreignExchangeContractReference"),
                 "exchange_rate_expiry_date": obj.get("exchangeRateExpiryDate"),
             }
         )

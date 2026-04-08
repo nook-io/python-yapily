@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,9 +67,7 @@ class RawResponse(BaseModel):
 
         return RawResponse.parse_obj(
             {
-                "request": RawRequest.from_dict(obj.get("request"))
-                if obj.get("request") is not None
-                else None,
+                "request": RawRequest.from_dict(obj.get("request")) if obj.get("request") is not None else None,
                 "duration": obj.get("duration"),
                 "headers": obj.get("headers"),
                 "result_code": obj.get("resultCode"),

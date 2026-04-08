@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,12 +67,8 @@ class GetWebhookEventsCategories200Response(BaseModel):
 
         return GetWebhookEventsCategories200Response.parse_obj(
             {
-                "metadata": Metadata.from_dict(obj.get("metadata"))
-                if obj.get("metadata") is not None
-                else None,
-                "data": GetWebhookEventsCategories200ResponseData.from_dict(
-                    obj.get("data")
-                )
+                "metadata": Metadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+                "data": GetWebhookEventsCategories200ResponseData.from_dict(obj.get("data"))
                 if obj.get("data") is not None
                 else None,
             }

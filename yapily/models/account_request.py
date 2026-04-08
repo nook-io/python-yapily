@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -45,9 +44,7 @@ class AccountRequest(BaseModel):
         alias="expiresAt",
         description="__Optional__. Used to set a hard date for when the user's associated `Consent` will expire.<br><br>**Note**: If this supported by the bank, specifying this is property is opting out of having a long-lived consent that can be perpetually re-authorised by the user. This will add an `expiresAt` field on the `Consent` object which will render it unusable after this date.<br><br>**Note**: This is not supported by every `Institution`. In such case, the request will not fail but the property will be ignored and the created `Consent` will not have an expiry date.",
     )
-    account_identifiers: AccountInfo | None = Field(
-        default=None, alias="accountIdentifiers"
-    )
+    account_identifiers: AccountInfo | None = Field(default=None, alias="accountIdentifiers")
     account_identifiers_for_transaction: Annotated[list[AccountInfo], Field()] | None = Field(
         default=None,
         alias="accountIdentifiersForTransaction",
@@ -123,20 +120,16 @@ class AccountRequest(BaseModel):
                 "transaction_from": obj.get("transactionFrom"),
                 "transaction_to": obj.get("transactionTo"),
                 "expires_at": obj.get("expiresAt"),
-                "account_identifiers": AccountInfo.from_dict(
-                    obj.get("accountIdentifiers")
-                )
+                "account_identifiers": AccountInfo.from_dict(obj.get("accountIdentifiers"))
                 if obj.get("accountIdentifiers") is not None
                 else None,
                 "account_identifiers_for_transaction": [
-                    AccountInfo.from_dict(_item)
-                    for _item in obj.get("accountIdentifiersForTransaction")
+                    AccountInfo.from_dict(_item) for _item in obj.get("accountIdentifiersForTransaction")
                 ]
                 if obj.get("accountIdentifiersForTransaction") is not None
                 else None,
                 "account_identifiers_for_balance": [
-                    AccountInfo.from_dict(_item)
-                    for _item in obj.get("accountIdentifiersForBalance")
+                    AccountInfo.from_dict(_item) for _item in obj.get("accountIdentifiersForBalance")
                 ]
                 if obj.get("accountIdentifiersForBalance") is not None
                 else None,

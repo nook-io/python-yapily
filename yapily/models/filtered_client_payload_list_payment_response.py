@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -33,18 +32,9 @@ class FilteredClientPayloadListPaymentResponse(BaseModel):
     data: Annotated[list[PaymentResponse], Field()] | None = None
     next_cursor_hash: StrictStr | None = Field(default=None, alias="nextCursorHash")
     next_link: StrictStr | None = Field(default=None, alias="nextLink")
-    paging_map: dict[str, FilterAndSort] | None = Field(
-        default=None, alias="pagingMap"
-    )
+    paging_map: dict[str, FilterAndSort] | None = Field(default=None, alias="pagingMap")
     total_count: StrictInt | None = Field(default=None, alias="totalCount")
-    __properties = [
-        "apiCall",
-        "data",
-        "nextCursorHash",
-        "nextLink",
-        "pagingMap",
-        "totalCount",
-    ]
+    __properties = ["apiCall", "data", "nextCursorHash", "nextLink", "pagingMap", "totalCount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -96,10 +86,7 @@ class FilteredClientPayloadListPaymentResponse(BaseModel):
                 else None,
                 "next_cursor_hash": obj.get("nextCursorHash"),
                 "next_link": obj.get("nextLink"),
-                "paging_map": {
-                    _k: FilterAndSort.from_dict(_v)
-                    for _k, _v in obj.get("pagingMap").items()
-                }
+                "paging_map": {_k: FilterAndSort.from_dict(_v) for _k, _v in obj.get("pagingMap").items()}
                 if obj.get("pagingMap") is not None
                 else None,
                 "total_count": obj.get("totalCount"),

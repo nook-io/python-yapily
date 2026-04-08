@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,9 +67,7 @@ class RegisterWebhook201Response(BaseModel):
 
         return RegisterWebhook201Response.parse_obj(
             {
-                "metadata": Metadata.from_dict(obj.get("metadata"))
-                if obj.get("metadata") is not None
-                else None,
+                "metadata": Metadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
                 "data": RegisterWebhook201ResponseData.from_dict(obj.get("data"))
                 if obj.get("data") is not None
                 else None,

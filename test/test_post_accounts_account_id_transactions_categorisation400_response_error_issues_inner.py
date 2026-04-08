@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -18,9 +17,7 @@ from yapily.models.post_accounts_account_id_transactions_categorisation400_respo
 )
 
 
-class TestPostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner(
-    unittest.TestCase
-):
+class TestPostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner(unittest.TestCase):
     """PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner unit test stubs"""
 
     def setUp(self):
@@ -50,9 +47,7 @@ class TestPostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesI
         )
         """
 
-    def testPostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner(
-        self,
-    ):
+    def testPostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner(self):
         """Test PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)

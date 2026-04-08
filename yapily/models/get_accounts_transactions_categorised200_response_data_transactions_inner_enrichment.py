@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,27 +29,21 @@ from yapily.models.get_accounts_transactions_categorised200_response_data_transa
 )
 
 
-class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment(
-    BaseModel
-):
+class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment(BaseModel):
     """
     GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment
     """
 
-    categorisation: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentCategorisation | None = None
+    categorisation: (
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentCategorisation | None
+    ) = None
     recurrence: StrictStr | None = None
-    transaction_hash: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentTransactionHash | None = Field(default=None, alias="transactionHash")
+    transaction_hash: (
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentTransactionHash | None
+    ) = Field(default=None, alias="transactionHash")
     merchant: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentMerchant | None = None
-    payment_processor: StrictStr | None = Field(
-        default=None, alias="paymentProcessor"
-    )
-    __properties = [
-        "categorisation",
-        "recurrence",
-        "transactionHash",
-        "merchant",
-        "paymentProcessor",
-    ]
+    payment_processor: StrictStr | None = Field(default=None, alias="paymentProcessor")
+    __properties = ["categorisation", "recurrence", "transactionHash", "merchant", "paymentProcessor"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -62,9 +55,7 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichme
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment:
+    def from_json(cls, json_str: str) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -83,17 +74,13 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichme
         return _dict
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment:
+    def from_dict(cls, obj: dict) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment.parse_obj(
-                obj
-            )
+            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment.parse_obj(obj)
 
         return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment.parse_obj(
             {

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,14 +25,10 @@ class CurrencyExchange(BaseModel):
     """
 
     source_currency: StrictStr | None = Field(
-        default=None,
-        alias="sourceCurrency",
-        description="Currency from which an amount is to be converted.",
+        default=None, alias="sourceCurrency", description="Currency from which an amount is to be converted."
     )
     target_currency: StrictStr | None = Field(
-        default=None,
-        alias="targetCurrency",
-        description="Currency to which an amount is to be converted.",
+        default=None, alias="targetCurrency", description="Currency to which an amount is to be converted."
     )
     unit_currency: StrictStr | None = Field(
         default=None,

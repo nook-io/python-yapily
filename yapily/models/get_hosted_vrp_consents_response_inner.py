@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,36 +28,23 @@ class GetHostedVRPConsentsResponseInner(BaseModel):
     GetHostedVRPConsentsResponseInner
     """
 
-    id: StrictStr = Field(
-        default=..., description="Represents the Unique Id of the VRP consent request"
-    )
+    id: StrictStr = Field(default=..., description="Represents the Unique Id of the VRP consent request")
     application_id: StrictStr = Field(
         default=...,
         alias="applicationId",
         description="Represents the Unique Id of the `Application` the user is associated with.",
     )
-    institution_identifiers: InstitutionIdentifiers | None = Field(
-        default=None, alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiers | None = Field(default=None, alias="institutionIdentifiers")
     vrp_setup: VRPSetupRequest | None = Field(default=None, alias="vrpSetup")
     updated_at: datetime | None = Field(
-        default=None,
-        alias="updatedAt",
-        description="Represents the date and time at which the Consent was updated.",
+        default=None, alias="updatedAt", description="Represents the date and time at which the Consent was updated."
     )
     consent_status: StrictStr | None = Field(
         default=None,
         alias="consentStatus",
         description="Current status of the authorisation. Can be one of [AWAITING_AUTHORIZATION, AUTHORIZED, REJECTED, REVOKED, FAILED, EXPIRED]",
     )
-    __properties = [
-        "id",
-        "applicationId",
-        "institutionIdentifiers",
-        "vrpSetup",
-        "updatedAt",
-        "consentStatus",
-    ]
+    __properties = ["id", "applicationId", "institutionIdentifiers", "vrpSetup", "updatedAt", "consentStatus"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -98,9 +84,7 @@ class GetHostedVRPConsentsResponseInner(BaseModel):
             {
                 "id": obj.get("id"),
                 "application_id": obj.get("applicationId"),
-                "institution_identifiers": InstitutionIdentifiers.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiers.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "vrp_setup": VRPSetupRequest.from_dict(obj.get("vrpSetup"))

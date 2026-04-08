@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -105,13 +104,7 @@ class PaymentsApi:
             message = "Error! Please call the create_bulk_payment_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_bulk_payment_with_http_info(
-            consent,
-            submit_bulk_payment_request,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            raw,
-            **kwargs,
+            consent, submit_bulk_payment_request, psu_id, psu_corporate_id, psu_ip_address, raw, **kwargs
         )
 
     @validate_arguments
@@ -192,14 +185,7 @@ class PaymentsApi:
 
         _params = locals()
 
-        _all_params = [
-            "consent",
-            "submit_bulk_payment_request",
-            "psu_id",
-            "psu_corporate_id",
-            "psu_ip_address",
-            "raw",
-        ]
+        _all_params = ["consent", "submit_bulk_payment_request", "psu_id", "psu_corporate_id", "psu_ip_address", "raw"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -214,10 +200,7 @@ class PaymentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_bulk_payment"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_bulk_payment")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -254,16 +237,11 @@ class PaymentsApi:
             _body_params = _params["submit_bulk_payment_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -271,9 +249,7 @@ class PaymentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfPaymentResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfPaymentResponse"}
 
         return await self.api_client.call_api(
             "/bulk-payments",
@@ -323,10 +299,7 @@ class PaymentsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -368,14 +341,7 @@ class PaymentsApi:
             message = "Error! Please call the create_payment_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_payment_with_http_info(
-            consent,
-            payment_request,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            raw,
-            **kwargs,
+            consent, payment_request, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
     @validate_arguments
@@ -408,10 +374,7 @@ class PaymentsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -487,10 +450,7 @@ class PaymentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_payment"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_payment")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -530,16 +490,11 @@ class PaymentsApi:
             _body_params = _params["payment_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -547,9 +502,7 @@ class PaymentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfPaymentResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfPaymentResponse"}
 
         return await self.api_client.call_api(
             "/payments",
@@ -581,10 +534,7 @@ class PaymentsApi:
         ],
         bulk_payment_id: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. Bulk payment id returned when bulk payment request was submitted.",
-            ),
+            Field(..., description="__Mandatory__. Bulk payment id returned when bulk payment request was submitted."),
         ],
         **kwargs,
     ) -> GetBulkPaymentStatus200Response:
@@ -609,9 +559,7 @@ class PaymentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_bulk_payment_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_bulk_payment_status_with_http_info(
-            consent, bulk_payment_id, **kwargs
-        )
+        return await self.get_bulk_payment_status_with_http_info(consent, bulk_payment_id, **kwargs)
 
     @validate_arguments
     async def get_bulk_payment_status_with_http_info(
@@ -625,10 +573,7 @@ class PaymentsApi:
         ],
         bulk_payment_id: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. Bulk payment id returned when bulk payment request was submitted.",
-            ),
+            Field(..., description="__Mandatory__. Bulk payment id returned when bulk payment request was submitted."),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -680,10 +625,7 @@ class PaymentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_bulk_payment_status"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_bulk_payment_status")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -743,10 +685,7 @@ class PaymentsApi:
     @validate_arguments
     async def get_payments(
         self,
-        payment_id: Annotated[
-            StrictStr,
-            Field(..., description="__Mandatory__. The payment Id of the payment."),
-        ],
+        payment_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The payment Id of the payment.")],
         consent: Annotated[
             StrictStr,
             Field(
@@ -773,10 +712,7 @@ class PaymentsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -818,23 +754,13 @@ class PaymentsApi:
             message = "Error! Please call the get_payments_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_payments_with_http_info(
-            payment_id,
-            consent,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            raw,
-            **kwargs,
+            payment_id, consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
     @validate_arguments
     async def get_payments_with_http_info(
         self,
-        payment_id: Annotated[
-            StrictStr,
-            Field(..., description="__Mandatory__. The payment Id of the payment."),
-        ],
+        payment_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The payment Id of the payment.")],
         consent: Annotated[
             StrictStr,
             Field(
@@ -861,10 +787,7 @@ class PaymentsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -940,10 +863,7 @@ class PaymentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_payments"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_payments")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -982,16 +902,12 @@ class PaymentsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfPaymentResponses",
-        }
+        _response_types_map = {"200": "ApiResponseOfPaymentResponses"}
 
         return await self.api_client.call_api(
             "/payments/{paymentId}/details",

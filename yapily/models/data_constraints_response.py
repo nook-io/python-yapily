@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,33 +27,19 @@ class DataConstraintsResponse(BaseModel):
     """
 
     institution_id: StrictStr = Field(
-        default=...,
-        alias="institutionId",
-        description="The id to represent the `Institution`.",
+        default=..., alias="institutionId", description="The id to represent the `Institution`."
     )
     institution_country_code: StrictStr | None = Field(
-        default=None,
-        alias="institutionCountryCode",
-        description="2 letter ISO Country code of the `Institution`.",
+        default=None, alias="institutionCountryCode", description="2 letter ISO Country code of the `Institution`."
     )
     endpoint_path: StrictStr | None = Field(
-        default=None,
-        alias="endpointPath",
-        description="Define the applicable API end point.",
+        default=None, alias="endpointPath", description="Define the applicable API end point."
     )
     endpoint_method: StrictStr | None = Field(
-        default=None,
-        alias="endpointMethod",
-        description="Https Method for the endpoint.",
+        default=None, alias="endpointMethod", description="Https Method for the endpoint."
     )
     request: RequestConstraints = Field(...)
-    __properties = [
-        "institutionId",
-        "institutionCountryCode",
-        "endpointPath",
-        "endpointMethod",
-        "request",
-    ]
+    __properties = ["institutionId", "institutionCountryCode", "endpointPath", "endpointMethod", "request"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -93,8 +78,6 @@ class DataConstraintsResponse(BaseModel):
                 "institution_country_code": obj.get("institutionCountryCode"),
                 "endpoint_path": obj.get("endpointPath"),
                 "endpoint_method": obj.get("endpointMethod"),
-                "request": RequestConstraints.from_dict(obj.get("request"))
-                if obj.get("request") is not None
-                else None,
+                "request": RequestConstraints.from_dict(obj.get("request")) if obj.get("request") is not None else None,
             }
         )

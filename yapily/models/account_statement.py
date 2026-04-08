@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,23 +25,15 @@ class AccountStatement(BaseModel):
     Statement information belonging to the account.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier for the statement."
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier for the statement.")
     start_date_time: datetime | None = Field(
-        default=None,
-        alias="startDateTime",
-        description="Date and time of when the statement period starts.",
+        default=None, alias="startDateTime", description="Date and time of when the statement period starts."
     )
     end_date_time: datetime | None = Field(
-        default=None,
-        alias="endDateTime",
-        description="Date and time of when the statement period ends.",
+        default=None, alias="endDateTime", description="Date and time of when the statement period ends."
     )
     creation_date_time: datetime | None = Field(
-        default=None,
-        alias="creationDateTime",
-        description="Date and time of when the statement was created.",
+        default=None, alias="creationDateTime", description="Date and time of when the statement was created."
     )
     __properties = ["id", "startDateTime", "endDateTime", "creationDateTime"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

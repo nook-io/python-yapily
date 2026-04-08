@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class ValidationError(BaseModel):
     ValidationError
     """
 
-    field_name: StrictStr = Field(
-        default=..., alias="fieldName", description="name of the field with error"
-    )
+    field_name: StrictStr = Field(default=..., alias="fieldName", description="name of the field with error")
     error: EnumError = Field(...)
     __properties = ["fieldName", "error"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -60,6 +57,4 @@ class ValidationError(BaseModel):
         if not isinstance(obj, dict):
             return ValidationError.parse_obj(obj)
 
-        return ValidationError.parse_obj(
-            {"field_name": obj.get("fieldName"), "error": obj.get("error")}
-        )
+        return ValidationError.parse_obj({"field_name": obj.get("fieldName"), "error": obj.get("error")})

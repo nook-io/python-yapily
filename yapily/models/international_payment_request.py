@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -34,24 +33,14 @@ class InternationalPaymentRequest(BaseModel):
         alias="currencyOfTransfer",
         description="__Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer's account. Specified as a 3-letter code (ISO 4217).",
     )
-    exchange_rate_information: ExchangeRateInformation | None = Field(
-        default=None, alias="exchangeRateInformation"
-    )
+    exchange_rate_information: ExchangeRateInformation | None = Field(default=None, alias="exchangeRateInformation")
     purpose: StrictStr | None = Field(
         default=None,
         description="__Optional__. Used to indicate the external purpose as a [ISO20022 purpose code](https://www.rba.hr/documents/20182/183267/External+purpose+codes+list/8a28f888-1f83-5e29-d6ed-fce05f428689?version=1.1) value.",
     )
     priority: PriorityCodeEnum | None = None
-    charge_bearer: ChargeBearerType | None = Field(
-        default=None, alias="chargeBearer"
-    )
-    __properties = [
-        "currencyOfTransfer",
-        "exchangeRateInformation",
-        "purpose",
-        "priority",
-        "chargeBearer",
-    ]
+    charge_bearer: ChargeBearerType | None = Field(default=None, alias="chargeBearer")
+    __properties = ["currencyOfTransfer", "exchangeRateInformation", "purpose", "priority", "chargeBearer"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -87,9 +76,7 @@ class InternationalPaymentRequest(BaseModel):
         return InternationalPaymentRequest.parse_obj(
             {
                 "currency_of_transfer": obj.get("currencyOfTransfer"),
-                "exchange_rate_information": ExchangeRateInformation.from_dict(
-                    obj.get("exchangeRateInformation")
-                )
+                "exchange_rate_information": ExchangeRateInformation.from_dict(obj.get("exchangeRateInformation"))
                 if obj.get("exchangeRateInformation") is not None
                 else None,
                 "purpose": obj.get("purpose"),

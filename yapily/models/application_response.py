@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,17 +25,11 @@ class ApplicationResponse(BaseModel):
     ApplicationResponse
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="The id of the application returned"
-    )
+    id: StrictStr | None = Field(default=None, description="The id of the application returned")
     root_application_id: StrictStr | None = Field(
-        default=None,
-        alias="rootApplicationId",
-        description="The id of the root application",
+        default=None, alias="rootApplicationId", description="The id of the root application"
     )
-    name: StrictStr | None = Field(
-        default=None, description="The name of the application"
-    )
+    name: StrictStr | None = Field(default=None, description="The name of the application")
     merchant_category_code: StrictStr | None = Field(
         default=None,
         alias="merchantCategoryCode",

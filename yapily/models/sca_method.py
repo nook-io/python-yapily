@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,13 +28,11 @@ class ScaMethod(BaseModel):
     """
 
     id: StrictStr = Field(
-        default=...,
-        description="__Mandatory__. The id of the sca method provided by the `Institution`",
+        default=..., description="__Mandatory__. The id of the sca method provided by the `Institution`"
     )
     type: Type | None = None
     description: StrictStr | None = Field(
-        default=None,
-        description="__Optional__. A description of the sca method if provided by the `Institution`",
+        default=None, description="__Optional__. A description of the sca method if provided by the `Institution`"
     )
     information: StrictStr | None = Field(
         default=None,

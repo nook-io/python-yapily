@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -94,16 +93,10 @@ class EnrichedBalances(BaseModel):
             {
                 "account_ids": obj.get("accountIds"),
                 "institutions": obj.get("institutions"),
-                "historic": [
-                    EnrichedHistoricBalance.from_dict(_item)
-                    for _item in obj.get("historic")
-                ]
+                "historic": [EnrichedHistoricBalance.from_dict(_item) for _item in obj.get("historic")]
                 if obj.get("historic") is not None
                 else None,
-                "predicted": [
-                    EnrichedPredictedBalance.from_dict(_item)
-                    for _item in obj.get("predicted")
-                ]
+                "predicted": [EnrichedPredictedBalance.from_dict(_item) for _item in obj.get("predicted")]
                 if obj.get("predicted") is not None
                 else None,
             }

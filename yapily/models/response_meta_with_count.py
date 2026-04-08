@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -56,6 +55,4 @@ class ResponseMetaWithCount(BaseModel):
         if not isinstance(obj, dict):
             return ResponseMetaWithCount.parse_obj(obj)
 
-        return ResponseMetaWithCount.parse_obj(
-            {"tracing_id": obj.get("tracingId"), "count": obj.get("count")}
-        )
+        return ResponseMetaWithCount.parse_obj({"tracing_id": obj.get("tracingId"), "count": obj.get("count")})

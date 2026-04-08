@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -32,15 +31,9 @@ class PaymentStatusDetails(BaseModel):
 
     status: PaymentStatus | None = None
     status_reason: StrictStr | None = Field(default=None, alias="statusReason")
-    status_reason_description: StrictStr | None = Field(
-        default=None, alias="statusReasonDescription"
-    )
-    status_update_date: datetime | None = Field(
-        default=None, alias="statusUpdateDate"
-    )
-    multi_authorisation_status: MultiAuthorisation | None = Field(
-        default=None, alias="multiAuthorisationStatus"
-    )
+    status_reason_description: StrictStr | None = Field(default=None, alias="statusReasonDescription")
+    status_update_date: datetime | None = Field(default=None, alias="statusUpdateDate")
+    multi_authorisation_status: MultiAuthorisation | None = Field(default=None, alias="multiAuthorisationStatus")
     iso_status: PaymentIsoStatus | None = Field(default=None, alias="isoStatus")
     __properties = [
         "status",
@@ -70,9 +63,7 @@ class PaymentStatusDetails(BaseModel):
         _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of multi_authorisation_status
         if self.multi_authorisation_status:
-            _dict["multiAuthorisationStatus"] = (
-                self.multi_authorisation_status.to_dict()
-            )
+            _dict["multiAuthorisationStatus"] = self.multi_authorisation_status.to_dict()
         # override the default output from pydantic by calling `to_dict()` of iso_status
         if self.iso_status:
             _dict["isoStatus"] = self.iso_status.to_dict()
@@ -93,9 +84,7 @@ class PaymentStatusDetails(BaseModel):
                 "status_reason": obj.get("statusReason"),
                 "status_reason_description": obj.get("statusReasonDescription"),
                 "status_update_date": obj.get("statusUpdateDate"),
-                "multi_authorisation_status": MultiAuthorisation.from_dict(
-                    obj.get("multiAuthorisationStatus")
-                )
+                "multi_authorisation_status": MultiAuthorisation.from_dict(obj.get("multiAuthorisationStatus"))
                 if obj.get("multiAuthorisationStatus") is not None
                 else None,
                 "iso_status": PaymentIsoStatus.from_dict(obj.get("isoStatus"))

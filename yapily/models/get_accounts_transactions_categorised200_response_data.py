@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,7 +29,9 @@ class GetAccountsTransactionsCategorised200ResponseData(BaseModel):
     GetAccountsTransactionsCategorised200ResponseData
     """
 
-    transactions: Annotated[list[GetAccountsTransactionsCategorised200ResponseDataTransactionsInner], Field()] | None = None
+    transactions: (
+        Annotated[list[GetAccountsTransactionsCategorised200ResponseDataTransactionsInner], Field()] | None
+    ) = None
     __properties = ["transactions"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -43,9 +44,7 @@ class GetAccountsTransactionsCategorised200ResponseData(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> GetAccountsTransactionsCategorised200ResponseData:
+    def from_json(cls, json_str: str) -> GetAccountsTransactionsCategorised200ResponseData:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,9 +72,7 @@ class GetAccountsTransactionsCategorised200ResponseData(BaseModel):
         return GetAccountsTransactionsCategorised200ResponseData.parse_obj(
             {
                 "transactions": [
-                    GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.from_dict(
-                        _item
-                    )
+                    GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.from_dict(_item)
                     for _item in obj.get("transactions")
                 ]
                 if obj.get("transactions") is not None

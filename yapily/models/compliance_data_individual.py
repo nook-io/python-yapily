@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,14 +25,8 @@ class ComplianceDataIndividual(BaseModel):
     __Conditional__. Mandatory if the type is INDIVIDUAL.  # noqa: E501
     """
 
-    name: StrictStr = Field(
-        default=..., description="This is the first and last name of your end user."
-    )
-    birth_date: date = Field(
-        default=...,
-        alias="birthDate",
-        description="This is the date of birth of your end user.",
-    )
+    name: StrictStr = Field(default=..., description="This is the first and last name of your end user.")
+    birth_date: date = Field(default=..., alias="birthDate", description="This is the date of birth of your end user.")
     __properties = ["name", "birthDate"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -63,6 +56,4 @@ class ComplianceDataIndividual(BaseModel):
         if not isinstance(obj, dict):
             return ComplianceDataIndividual.parse_obj(obj)
 
-        return ComplianceDataIndividual.parse_obj(
-            {"name": obj.get("name"), "birth_date": obj.get("birthDate")}
-        )
+        return ComplianceDataIndividual.parse_obj({"name": obj.get("name"), "birth_date": obj.get("birthDate")})

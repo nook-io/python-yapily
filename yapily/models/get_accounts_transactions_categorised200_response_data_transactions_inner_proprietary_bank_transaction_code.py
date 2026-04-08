@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -20,9 +19,7 @@ import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, StrictStr
 
 
-class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode(
-    BaseModel
-):
+class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode(BaseModel):
     """
     GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode
     """
@@ -64,6 +61,8 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerPropriet
                 obj
             )
 
-        return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode.parse_obj(
-            {"code": obj.get("code"), "issuer": obj.get("issuer")}
+        return (
+            GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode.parse_obj(
+                {"code": obj.get("code"), "issuer": obj.get("issuer")}
+            )
         )

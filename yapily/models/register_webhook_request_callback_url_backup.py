@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -55,6 +54,4 @@ class RegisterWebhookRequestCallbackUrlBackup(BaseModel):
         if not isinstance(obj, dict):
             return RegisterWebhookRequestCallbackUrlBackup.parse_obj(obj)
 
-        return RegisterWebhookRequestCallbackUrlBackup.parse_obj(
-            {"url": obj.get("url")}
-        )
+        return RegisterWebhookRequestCallbackUrlBackup.parse_obj({"url": obj.get("url")})

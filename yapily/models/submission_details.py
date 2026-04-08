@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -73,9 +72,7 @@ class SubmissionDetails(BaseModel):
         return SubmissionDetails.parse_obj(
             {
                 "reference": obj.get("reference"),
-                "payee": Payee.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
+                "payee": Payee.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
                 "payment_amount": Amount.from_dict(obj.get("paymentAmount"))
                 if obj.get("paymentAmount") is not None
                 else None,

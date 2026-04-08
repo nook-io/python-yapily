@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -42,14 +41,9 @@ class WebhooksApi:
     @validate_arguments
     async def delete_webhook(
         self,
-        webhook_id: Annotated[
-            StrictStr, Field(..., description="Registered webhook id")
-        ],
+        webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> DeleteWebhook200Response:
@@ -74,21 +68,14 @@ class WebhooksApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the delete_webhook_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.delete_webhook_with_http_info(
-            webhook_id, sub_application, **kwargs
-        )
+        return await self.delete_webhook_with_http_info(webhook_id, sub_application, **kwargs)
 
     @validate_arguments
     async def delete_webhook_with_http_info(
         self,
-        webhook_id: Annotated[
-            StrictStr, Field(..., description="Registered webhook id")
-        ],
+        webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -140,10 +127,7 @@ class WebhooksApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_webhook"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_webhook")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -167,9 +151,7 @@ class WebhooksApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -204,10 +186,7 @@ class WebhooksApi:
     async def get_registered_webhooks(
         self,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> GetRegisteredWebhooks200Response:
@@ -230,18 +209,13 @@ class WebhooksApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_registered_webhooks_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_registered_webhooks_with_http_info(
-            sub_application, **kwargs
-        )
+        return await self.get_registered_webhooks_with_http_info(sub_application, **kwargs)
 
     @validate_arguments
     async def get_registered_webhooks_with_http_info(
         self,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -291,10 +265,7 @@ class WebhooksApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_registered_webhooks"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_registered_webhooks")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -316,9 +287,7 @@ class WebhooksApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -349,9 +318,7 @@ class WebhooksApi:
         )
 
     @validate_arguments
-    async def get_webhook_events_categories(
-        self, **kwargs
-    ) -> GetWebhookEventsCategories200Response:
+    async def get_webhook_events_categories(self, **kwargs) -> GetWebhookEventsCategories200Response:
         """Get Webhook Categories  # noqa: E501
 
         Retrieve a comprehensive list of event categories that can be registered for webhook notifications in your application. These event categories can be used to subscribe a webhook to specific events, enabling your application to receive real-time notifications when these events occur.  # noqa: E501
@@ -372,9 +339,7 @@ class WebhooksApi:
         return await self.get_webhook_events_categories_with_http_info(**kwargs)
 
     @validate_arguments
-    async def get_webhook_events_categories_with_http_info(
-        self, **kwargs
-    ) -> ApiResponse:
+    async def get_webhook_events_categories_with_http_info(self, **kwargs) -> ApiResponse:
         """Get Webhook Categories  # noqa: E501
 
         Retrieve a comprehensive list of event categories that can be registered for webhook notifications in your application. These event categories can be used to subscribe a webhook to specific events, enabling your application to receive real-time notifications when these events occur.  # noqa: E501
@@ -420,8 +385,7 @@ class WebhooksApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_webhook_events_categories"
+                    f"Got an unexpected keyword argument '{_key}' to method get_webhook_events_categories"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -441,9 +405,7 @@ class WebhooksApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -477,10 +439,7 @@ class WebhooksApi:
     async def register_webhook(
         self,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         register_webhook_request: RegisterWebhookRequest | None = None,
         **kwargs,
@@ -506,18 +465,13 @@ class WebhooksApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the register_webhook_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.register_webhook_with_http_info(
-            sub_application, register_webhook_request, **kwargs
-        )
+        return await self.register_webhook_with_http_info(sub_application, register_webhook_request, **kwargs)
 
     @validate_arguments
     async def register_webhook_with_http_info(
         self,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         register_webhook_request: RegisterWebhookRequest | None = None,
         **kwargs,
@@ -570,10 +524,7 @@ class WebhooksApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method register_webhook"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method register_webhook")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -598,16 +549,11 @@ class WebhooksApi:
             _body_params = _params["register_webhook_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -644,14 +590,9 @@ class WebhooksApi:
     @validate_arguments
     async def webhook_secret_reset(
         self,
-        webhook_id: Annotated[
-            StrictStr, Field(..., description="Registered webhook id")
-        ],
+        webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         webhook_secret_reset_request: WebhookSecretResetRequest | None = None,
         **kwargs,
@@ -686,14 +627,9 @@ class WebhooksApi:
     @validate_arguments
     async def webhook_secret_reset_with_http_info(
         self,
-        webhook_id: Annotated[
-            StrictStr, Field(..., description="Registered webhook id")
-        ],
+        webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         webhook_secret_reset_request: WebhookSecretResetRequest | None = None,
         **kwargs,
@@ -748,10 +684,7 @@ class WebhooksApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method webhook_secret_reset"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method webhook_secret_reset")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -778,16 +711,11 @@ class WebhooksApi:
             _body_params = _params["webhook_secret_reset_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list

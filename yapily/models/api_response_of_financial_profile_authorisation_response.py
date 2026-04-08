@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -44,9 +43,7 @@ class ApiResponseOfFinancialProfileAuthorisationResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> ApiResponseOfFinancialProfileAuthorisationResponse:
+    def from_json(cls, json_str: str) -> ApiResponseOfFinancialProfileAuthorisationResponse:
         """Create an instance of ApiResponseOfFinancialProfileAuthorisationResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -76,9 +73,7 @@ class ApiResponseOfFinancialProfileAuthorisationResponse(BaseModel):
 
         return ApiResponseOfFinancialProfileAuthorisationResponse.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
+                "meta": ResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
                 "data": [ProfileConsent.from_dict(_item) for _item in obj.get("data")]
                 if obj.get("data") is not None
                 else None,

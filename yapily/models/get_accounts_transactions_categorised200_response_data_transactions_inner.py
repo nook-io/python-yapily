@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -50,14 +49,20 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInner(BaseMod
     status: StrictStr | None = None
     amount: StrictInt | None = None
     currency: StrictStr | None = None
-    transaction_amount: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount | None = Field(default=None, alias="transactionAmount")
+    transaction_amount: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount | None = (
+        Field(default=None, alias="transactionAmount")
+    )
     reference: StrictStr | None = None
     description: StrictStr | None = None
     transaction_information: Annotated[list[StrictStr], Field()] | None = Field(
         default=None, alias="transactionInformation"
     )
-    proprietary_bank_transaction_code: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode | None = Field(default=None, alias="proprietaryBankTransactionCode")
-    iso_bank_transaction_code: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCode | None = Field(default=None, alias="isoBankTransactionCode")
+    proprietary_bank_transaction_code: (
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode | None
+    ) = Field(default=None, alias="proprietaryBankTransactionCode")
+    iso_bank_transaction_code: (
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCode | None
+    ) = Field(default=None, alias="isoBankTransactionCode")
     balance: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance | None = None
     enrichment: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment | None = None
     hash: StrictStr | None = None
@@ -90,9 +95,7 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInner(BaseMod
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInner:
+    def from_json(cls, json_str: str) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInner:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -104,9 +107,7 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInner(BaseMod
             _dict["transactionAmount"] = self.transaction_amount.to_dict()
         # override the default output from pydantic by calling `to_dict()` of proprietary_bank_transaction_code
         if self.proprietary_bank_transaction_code:
-            _dict["proprietaryBankTransactionCode"] = (
-                self.proprietary_bank_transaction_code.to_dict()
-            )
+            _dict["proprietaryBankTransactionCode"] = self.proprietary_bank_transaction_code.to_dict()
         # override the default output from pydantic by calling `to_dict()` of iso_bank_transaction_code
         if self.iso_bank_transaction_code:
             _dict["isoBankTransactionCode"] = self.iso_bank_transaction_code.to_dict()
@@ -119,17 +120,13 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInner(BaseMod
         return _dict
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInner:
+    def from_dict(cls, obj: dict) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInner:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.parse_obj(
-                obj
-            )
+            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.parse_obj(obj)
 
         return GetAccountsTransactionsCategorised200ResponseDataTransactionsInner.parse_obj(
             {

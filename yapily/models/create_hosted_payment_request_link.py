@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -40,9 +39,7 @@ class CreateHostedPaymentRequestLink(BaseModel):
         alias="applicationUserId",
         description="__Conditional__. Your own `User` reference. If you want to work with their own unique references for individual PSUs then you can use the `applicationUserId` property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied `applicationUserId`, then a new Yapily userId is created automatically and linked to the `applicationUserId` value. You must either provide userId or `applicationUserId`.",
     )
-    institution_identifiers: InstitutionIdentifiers = Field(
-        default=..., alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiers = Field(default=..., alias="institutionIdentifiers")
     user_settings: UserSettings | None = Field(default=None, alias="userSettings")
     redirect_url: StrictStr = Field(
         default=...,
@@ -54,9 +51,7 @@ class CreateHostedPaymentRequestLink(BaseModel):
         alias="authorisationExpiresAt",
         description="The date and time that the authorisation expires. Must be between 10 minutes and 30 days in the future. If not specified, the authorisation URL will expire 10 minutes after creation.",
     )
-    payment_request_details: HostedPaymentRequestDetailsLink = Field(
-        default=..., alias="paymentRequestDetails"
-    )
+    payment_request_details: HostedPaymentRequestDetailsLink = Field(default=..., alias="paymentRequestDetails")
     __properties = [
         "userId",
         "applicationUserId",
@@ -108,9 +103,7 @@ class CreateHostedPaymentRequestLink(BaseModel):
             {
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),
-                "institution_identifiers": InstitutionIdentifiers.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiers.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "user_settings": UserSettings.from_dict(obj.get("userSettings"))
@@ -118,9 +111,7 @@ class CreateHostedPaymentRequestLink(BaseModel):
                 else None,
                 "redirect_url": obj.get("redirectUrl"),
                 "authorisation_expires_at": obj.get("authorisationExpiresAt"),
-                "payment_request_details": HostedPaymentRequestDetailsLink.from_dict(
-                    obj.get("paymentRequestDetails")
-                )
+                "payment_request_details": HostedPaymentRequestDetailsLink.from_dict(obj.get("paymentRequestDetails"))
                 if obj.get("paymentRequestDetails") is not None
                 else None,
             }

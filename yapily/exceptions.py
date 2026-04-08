@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -17,9 +16,7 @@ class OpenApiException(Exception):
 
 
 class ApiTypeError(OpenApiException, TypeError):
-    def __init__(
-        self, msg, path_to_item=None, valid_classes=None, key_type=None
-    ) -> None:
+    def __init__(self, msg, path_to_item=None, valid_classes=None, key_type=None) -> None:
         """Raises an exception for TypeErrors
 
         Args:

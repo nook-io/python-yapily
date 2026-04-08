@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,9 +25,7 @@ class GetAccountsTransactionsCategorised200ResponseMeta(BaseModel):
     """
 
     tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
-    count: StrictInt | None = Field(
-        default=None, description="total number of transactions available"
-    )
+    count: StrictInt | None = Field(default=None, description="total number of transactions available")
     page_count: StrictInt | None = Field(
         default=None,
         alias="pageCount",
@@ -46,9 +43,7 @@ class GetAccountsTransactionsCategorised200ResponseMeta(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> GetAccountsTransactionsCategorised200ResponseMeta:
+    def from_json(cls, json_str: str) -> GetAccountsTransactionsCategorised200ResponseMeta:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseMeta from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,9 +61,5 @@ class GetAccountsTransactionsCategorised200ResponseMeta(BaseModel):
             return GetAccountsTransactionsCategorised200ResponseMeta.parse_obj(obj)
 
         return GetAccountsTransactionsCategorised200ResponseMeta.parse_obj(
-            {
-                "tracing_id": obj.get("tracingId"),
-                "count": obj.get("count"),
-                "page_count": obj.get("pageCount"),
-            }
+            {"tracing_id": obj.get("tracingId"), "count": obj.get("count"), "page_count": obj.get("pageCount")}
         )

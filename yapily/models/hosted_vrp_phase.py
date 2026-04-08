@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -66,8 +65,5 @@ class HostedVRPPhase(BaseModel):
             return HostedVRPPhase.parse_obj(obj)
 
         return HostedVRPPhase.parse_obj(
-            {
-                "phase_name": obj.get("phaseName"),
-                "phase_created_at": obj.get("phaseCreatedAt"),
-            }
+            {"phase_name": obj.get("phaseName"), "phase_created_at": obj.get("phaseCreatedAt")}
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -44,15 +43,9 @@ class ApplicationManagementApi:
     async def create_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="The id of the application that vrp configuration being created for",
-            ),
+            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
         ],
-        vrp_configuration: Annotated[
-            VrpConfiguration, Field(..., description="The vrp configuration to create")
-        ],
+        vrp_configuration: Annotated[VrpConfiguration, Field(..., description="The vrp configuration to create")],
         **kwargs,
     ) -> None:
         """Create application VRP configuration by Application Id  # noqa: E501
@@ -84,15 +77,9 @@ class ApplicationManagementApi:
     async def create_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="The id of the application that vrp configuration being created for",
-            ),
+            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
         ],
-        vrp_configuration: Annotated[
-            VrpConfiguration, Field(..., description="The vrp configuration to create")
-        ],
+        vrp_configuration: Annotated[VrpConfiguration, Field(..., description="The vrp configuration to create")],
         **kwargs,
     ) -> ApiResponse:
         """Create application VRP configuration by Application Id  # noqa: E501
@@ -170,14 +157,11 @@ class ApplicationManagementApi:
             _body_params = _params["vrp_configuration"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -208,9 +192,7 @@ class ApplicationManagementApi:
     @validate_arguments
     async def create_sub_application(
         self,
-        application_request: Annotated[
-            ApplicationRequest, Field(..., description="The sub-application to create")
-        ],
+        application_request: Annotated[ApplicationRequest, Field(..., description="The sub-application to create")],
         **kwargs,
     ) -> ApiResponseOfApplicationResponse:
         """Creates a sub-application for the root application id provided in the authentication token  # noqa: E501
@@ -232,16 +214,12 @@ class ApplicationManagementApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_sub_application_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_sub_application_with_http_info(
-            application_request, **kwargs
-        )
+        return await self.create_sub_application_with_http_info(application_request, **kwargs)
 
     @validate_arguments
     async def create_sub_application_with_http_info(
         self,
-        application_request: Annotated[
-            ApplicationRequest, Field(..., description="The sub-application to create")
-        ],
+        application_request: Annotated[ApplicationRequest, Field(..., description="The sub-application to create")],
         **kwargs,
     ) -> ApiResponse:
         """Creates a sub-application for the root application id provided in the authentication token  # noqa: E501
@@ -290,10 +268,7 @@ class ApplicationManagementApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_sub_application"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_sub_application")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -315,14 +290,11 @@ class ApplicationManagementApi:
             _body_params = _params["application_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -360,9 +332,7 @@ class ApplicationManagementApi:
     @validate_arguments
     async def delete_application(
         self,
-        application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application being deleted")
-        ],
+        application_id: Annotated[StrictStr, Field(..., description="The id of the application being deleted")],
         **kwargs,
     ) -> None:
         """Delete an application  # noqa: E501
@@ -389,9 +359,7 @@ class ApplicationManagementApi:
     @validate_arguments
     async def delete_application_with_http_info(
         self,
-        application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application being deleted")
-        ],
+        application_id: Annotated[StrictStr, Field(..., description="The id of the application being deleted")],
         **kwargs,
     ) -> ApiResponse:
         """Delete an application  # noqa: E501
@@ -440,10 +408,7 @@ class ApplicationManagementApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_application"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_application")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -464,9 +429,7 @@ class ApplicationManagementApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -494,9 +457,7 @@ class ApplicationManagementApi:
     @validate_arguments
     async def get_application_by_id(
         self,
-        application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application being fetched")
-        ],
+        application_id: Annotated[StrictStr, Field(..., description="The id of the application being fetched")],
         **kwargs,
     ) -> ApiResponseOfApplicationResponse:
         """Get application details  # noqa: E501
@@ -523,9 +484,7 @@ class ApplicationManagementApi:
     @validate_arguments
     async def get_application_by_id_with_http_info(
         self,
-        application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application being fetched")
-        ],
+        application_id: Annotated[StrictStr, Field(..., description="The id of the application being fetched")],
         **kwargs,
     ) -> ApiResponse:
         """Get application details  # noqa: E501
@@ -574,10 +533,7 @@ class ApplicationManagementApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_application_by_id"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_application_by_id")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -598,9 +554,7 @@ class ApplicationManagementApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -635,11 +589,7 @@ class ApplicationManagementApi:
     async def get_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="The id of the application that vrp configuration being created for",
-            ),
+            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
         ],
         **kwargs,
     ) -> VrpConfiguration:
@@ -662,19 +612,13 @@ class ApplicationManagementApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_application_vrp_configuration_by_application_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_application_vrp_configuration_by_application_id_with_http_info(
-            application_id, **kwargs
-        )
+        return await self.get_application_vrp_configuration_by_application_id_with_http_info(application_id, **kwargs)
 
     @validate_arguments
     async def get_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="The id of the application that vrp configuration being created for",
-            ),
+            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -748,9 +692,7 @@ class ApplicationManagementApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -784,9 +726,7 @@ class ApplicationManagementApi:
 
     @validate_arguments
     async def search_applications(
-        self,
-        public_filter_values: SearchApplicationsPublicFilterValuesParameter | None = None,
-        **kwargs,
+        self, public_filter_values: SearchApplicationsPublicFilterValuesParameter | None = None, **kwargs
     ) -> ApiListOfApplicationResponse:
         """Retrieve sub-applications for the root application provided in the authentication token.  # noqa: E501
 
@@ -807,15 +747,11 @@ class ApplicationManagementApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the search_applications_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.search_applications_with_http_info(
-            public_filter_values, **kwargs
-        )
+        return await self.search_applications_with_http_info(public_filter_values, **kwargs)
 
     @validate_arguments
     async def search_applications_with_http_info(
-        self,
-        public_filter_values: SearchApplicationsPublicFilterValuesParameter | None = None,
-        **kwargs,
+        self, public_filter_values: SearchApplicationsPublicFilterValuesParameter | None = None, **kwargs
     ) -> ApiResponse:
         """Retrieve sub-applications for the root application provided in the authentication token.  # noqa: E501
 
@@ -863,10 +799,7 @@ class ApplicationManagementApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method search_applications"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method search_applications")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -878,9 +811,7 @@ class ApplicationManagementApi:
         # process the query parameters
         _query_params = []
         if _params.get("public_filter_values") is not None:
-            _query_params.append(
-                ("publicFilterValues", _params["public_filter_values"])
-            )
+            _query_params.append(("publicFilterValues", _params["public_filter_values"]))
 
         # process the header parameters
         _header_params = dict(_params.get("_headers", {}))
@@ -926,12 +857,8 @@ class ApplicationManagementApi:
     @validate_arguments
     async def update_application(
         self,
-        application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application being updated")
-        ],
-        application_request: Annotated[
-            ApplicationRequest, Field(..., description="The application to update")
-        ],
+        application_id: Annotated[StrictStr, Field(..., description="The id of the application being updated")],
+        application_request: Annotated[ApplicationRequest, Field(..., description="The application to update")],
         **kwargs,
     ) -> ApiResponseOfApplicationResponse:
         """Update an Application  # noqa: E501
@@ -955,19 +882,13 @@ class ApplicationManagementApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the update_application_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.update_application_with_http_info(
-            application_id, application_request, **kwargs
-        )
+        return await self.update_application_with_http_info(application_id, application_request, **kwargs)
 
     @validate_arguments
     async def update_application_with_http_info(
         self,
-        application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application being updated")
-        ],
-        application_request: Annotated[
-            ApplicationRequest, Field(..., description="The application to update")
-        ],
+        application_id: Annotated[StrictStr, Field(..., description="The id of the application being updated")],
+        application_request: Annotated[ApplicationRequest, Field(..., description="The application to update")],
         **kwargs,
     ) -> ApiResponse:
         """Update an Application  # noqa: E501
@@ -1018,10 +939,7 @@ class ApplicationManagementApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_application"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_application")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1045,14 +963,11 @@ class ApplicationManagementApi:
             _body_params = _params["application_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -1090,15 +1005,9 @@ class ApplicationManagementApi:
     async def update_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="The id of the application that vrp configuration being created for",
-            ),
+            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
         ],
-        vrp_configuration: Annotated[
-            VrpConfiguration, Field(..., description="The vrp configuration to create")
-        ],
+        vrp_configuration: Annotated[VrpConfiguration, Field(..., description="The vrp configuration to create")],
         **kwargs,
     ) -> None:
         """Update application VRP configuration by Application Id  # noqa: E501
@@ -1130,15 +1039,9 @@ class ApplicationManagementApi:
     async def update_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="The id of the application that vrp configuration being created for",
-            ),
+            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
         ],
-        vrp_configuration: Annotated[
-            VrpConfiguration, Field(..., description="The vrp configuration to create")
-        ],
+        vrp_configuration: Annotated[VrpConfiguration, Field(..., description="The vrp configuration to create")],
         **kwargs,
     ) -> ApiResponse:
         """Update application VRP configuration by Application Id  # noqa: E501
@@ -1216,14 +1119,11 @@ class ApplicationManagementApi:
             _body_params = _params["vrp_configuration"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list

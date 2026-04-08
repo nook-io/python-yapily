@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -32,31 +31,19 @@ class HostedGetConsentRequestResponse(BaseModel):
     """
 
     consent_request_id: StrictStr | None = Field(
-        default=None,
-        alias="consentRequestId",
-        description="Unique Id of the consent request.",
+        default=None, alias="consentRequestId", description="Unique Id of the consent request."
     )
-    consent_id: StrictStr | None = Field(
-        default=None, alias="consentId", description="Identification of the consent."
-    )
+    consent_id: StrictStr | None = Field(default=None, alias="consentId", description="Identification of the consent.")
     user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="Unique Id for the `User` assigned by Yapily.",
+        default=None, alias="userId", description="Unique Id for the `User` assigned by Yapily."
     )
     application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="Your reference to the `User`.",
+        default=None, alias="applicationUserId", description="Your reference to the `User`."
     )
     application_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationId",
-        description="Unique Id of the `Application` the user is associated with.",
+        default=None, alias="applicationId", description="Unique Id of the `Application` the user is associated with."
     )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(
-        default=None, alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
     user_settings: UserSettings | None = Field(default=None, alias="userSettings")
     redirect_url: StrictStr | None = Field(
         default=None,
@@ -64,9 +51,7 @@ class HostedGetConsentRequestResponse(BaseModel):
         description="URL of consent server to redirect the user after completion of the consent flow.",
     )
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="The date and time at which the payment was created.",
+        default=None, alias="createdAt", description="The date and time at which the payment was created."
     )
     authorisation_expires_at: datetime | None = Field(
         default=None,
@@ -149,9 +134,7 @@ class HostedGetConsentRequestResponse(BaseModel):
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),
                 "application_id": obj.get("applicationId"),
-                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "user_settings": UserSettings.from_dict(obj.get("userSettings"))
@@ -161,9 +144,7 @@ class HostedGetConsentRequestResponse(BaseModel):
                 "created_at": obj.get("createdAt"),
                 "authorisation_expires_at": obj.get("authorisationExpiresAt"),
                 "status": obj.get("status"),
-                "phases": [
-                    HostedConsentPhase.from_dict(_item) for _item in obj.get("phases")
-                ]
+                "phases": [HostedConsentPhase.from_dict(_item) for _item in obj.get("phases")]
                 if obj.get("phases") is not None
                 else None,
                 "consent_token": obj.get("consentToken"),

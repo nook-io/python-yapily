@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,13 +27,9 @@ class RegisterWebhookRequest(BaseModel):
     RegisterWebhookRequest
     """
 
-    application_id: StrictStr = Field(
-        default=..., alias="applicationId", description="user application id"
-    )
+    application_id: StrictStr = Field(default=..., alias="applicationId", description="user application id")
     categories: Annotated[list[StrictStr], Field()] = Field(...)
-    callback_url: RegisterWebhookRequestCallbackUrl = Field(
-        default=..., alias="callbackUrl"
-    )
+    callback_url: RegisterWebhookRequestCallbackUrl = Field(default=..., alias="callbackUrl")
     metadata: dict[str, StrictStr] | None = None
     __properties = ["applicationId", "categories", "callbackUrl", "metadata"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -73,9 +68,7 @@ class RegisterWebhookRequest(BaseModel):
             {
                 "application_id": obj.get("applicationId"),
                 "categories": obj.get("categories"),
-                "callback_url": RegisterWebhookRequestCallbackUrl.from_dict(
-                    obj.get("callbackUrl")
-                )
+                "callback_url": RegisterWebhookRequestCallbackUrl.from_dict(obj.get("callbackUrl"))
                 if obj.get("callbackUrl") is not None
                 else None,
                 "metadata": obj.get("metadata"),

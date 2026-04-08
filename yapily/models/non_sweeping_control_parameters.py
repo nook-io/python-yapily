@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -59,9 +58,7 @@ class NonSweepingControlParameters(BaseModel):
         description="__Optional__. Max number of payments that can be submitted under this consent.",
     )
     valid_from: datetime | None = Field(
-        default=None,
-        alias="validFrom",
-        description="__Optional__. Start date when the consent becomes valid.",
+        default=None, alias="validFrom", description="__Optional__. Start date when the consent becomes valid."
     )
     valid_to: datetime | None = Field(
         default=None,
@@ -132,28 +129,19 @@ class NonSweepingControlParameters(BaseModel):
         return NonSweepingControlParameters.parse_obj(
             {
                 "psu_authentication_methods": obj.get("psuAuthenticationMethods"),
-                "periodic_limits": [
-                    NonSweepingPeriodicLimits.from_dict(_item)
-                    for _item in obj.get("periodicLimits")
-                ]
+                "periodic_limits": [NonSweepingPeriodicLimits.from_dict(_item) for _item in obj.get("periodicLimits")]
                 if obj.get("periodicLimits") is not None
                 else None,
-                "max_amount_per_payment": Amount.from_dict(
-                    obj.get("maxAmountPerPayment")
-                )
+                "max_amount_per_payment": Amount.from_dict(obj.get("maxAmountPerPayment"))
                 if obj.get("maxAmountPerPayment") is not None
                 else None,
-                "max_cumulative_amount": Amount.from_dict(
-                    obj.get("maxCumulativeAmount")
-                )
+                "max_cumulative_amount": Amount.from_dict(obj.get("maxCumulativeAmount"))
                 if obj.get("maxCumulativeAmount") is not None
                 else None,
                 "initial_payment": Amount.from_dict(obj.get("initialPayment"))
                 if obj.get("initialPayment") is not None
                 else None,
-                "max_cumulative_number_of_payments": obj.get(
-                    "maxCumulativeNumberOfPayments"
-                ),
+                "max_cumulative_number_of_payments": obj.get("maxCumulativeNumberOfPayments"),
                 "valid_from": obj.get("validFrom"),
                 "valid_to": obj.get("validTo"),
                 "recurring_payment_category": obj.get("recurringPaymentCategory"),

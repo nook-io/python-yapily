@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -18,9 +17,7 @@ from yapily.models.post_accounts_account_id_transactions_categorisation400_respo
 )
 
 
-class TestPostAccountsAccountIdTransactionsCategorisation400ResponseError(
-    unittest.TestCase
-):
+class TestPostAccountsAccountIdTransactionsCategorisation400ResponseError(unittest.TestCase):
     """PostAccountsAccountIdTransactionsCategorisation400ResponseError unit test stubs"""
 
     def setUp(self):
@@ -29,9 +26,7 @@ class TestPostAccountsAccountIdTransactionsCategorisation400ResponseError(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> PostAccountsAccountIdTransactionsCategorisation400ResponseError:
+    def make_instance(self, include_optional) -> PostAccountsAccountIdTransactionsCategorisation400ResponseError:
         """Test PostAccountsAccountIdTransactionsCategorisation400ResponseError
         include_option is a boolean, when False only required
         params are included, when True both required and

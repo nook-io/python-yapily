@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,41 +28,25 @@ class AddressResponse(BaseModel):
     """
 
     address_lines: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None,
-        alias="addressLines",
-        description="The address line of the address",
+        default=None, alias="addressLines", description="The address line of the address"
     )
     street_name: StrictStr | None = Field(
         default=None, alias="streetName", description="The street name of the address"
     )
     building_number: StrictStr | None = Field(
-        default=None,
-        alias="buildingNumber",
-        description="The building number of the address",
+        default=None, alias="buildingNumber", description="The building number of the address"
     )
-    post_code: StrictStr | None = Field(
-        default=None, alias="postCode", description="The post code of the address"
-    )
-    town_name: StrictStr | None = Field(
-        default=None, alias="townName", description="The town name of the address"
-    )
+    post_code: StrictStr | None = Field(default=None, alias="postCode", description="The post code of the address")
+    town_name: StrictStr | None = Field(default=None, alias="townName", description="The town name of the address")
     county: Annotated[list[StrictStr], Field()] | None = Field(
         default=None, description="The list of counties for the address"
     )
-    country: StrictStr | None = Field(
-        default=None, description="The 2-letter country code for the address."
-    )
-    department: StrictStr | None = Field(
-        default=None, description="The department for the address"
-    )
+    country: StrictStr | None = Field(default=None, description="The 2-letter country code for the address.")
+    department: StrictStr | None = Field(default=None, description="The department for the address")
     sub_department: StrictStr | None = Field(
-        default=None,
-        alias="subDepartment",
-        description="The sub-department for the address",
+        default=None, alias="subDepartment", description="The sub-department for the address"
     )
-    address_type: AddressTypeEnumResponse | None = Field(
-        default=None, alias="addressType"
-    )
+    address_type: AddressTypeEnumResponse | None = Field(default=None, alias="addressType")
     __properties = [
         "addressLines",
         "streetName",

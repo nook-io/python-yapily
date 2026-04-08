@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -110,12 +109,7 @@ class AuthorisationsApi:
             message = "Error! Please call the create_bulk_payment_authorisation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_bulk_payment_authorisation_with_http_info(
-            bulk_payment_authorisation_request,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            raw,
-            **kwargs,
+            bulk_payment_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, raw, **kwargs
         )
 
     @validate_arguments
@@ -187,13 +181,7 @@ class AuthorisationsApi:
 
         _params = locals()
 
-        _all_params = [
-            "bulk_payment_authorisation_request",
-            "psu_id",
-            "psu_corporate_id",
-            "psu_ip_address",
-            "raw",
-        ]
+        _all_params = ["bulk_payment_authorisation_request", "psu_id", "psu_corporate_id", "psu_ip_address", "raw"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -209,8 +197,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_bulk_payment_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method create_bulk_payment_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -245,16 +232,11 @@ class AuthorisationsApi:
             _body_params = _params["bulk_payment_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -262,9 +244,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfPaymentAuthorisationRequestResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfPaymentAuthorisationRequestResponse"}
 
         return await self.api_client.call_api(
             "/bulk-payment-auth-requests",
@@ -342,12 +322,7 @@ class AuthorisationsApi:
             message = "Error! Please call the create_embedded_bulk_payment_authorisation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_embedded_bulk_payment_authorisation_with_http_info(
-            bulk_payment_embedded_authorisation_request,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            raw,
-            **kwargs,
+            bulk_payment_embedded_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, raw, **kwargs
         )
 
     @validate_arguments
@@ -441,8 +416,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_embedded_bulk_payment_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method create_embedded_bulk_payment_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -477,16 +451,11 @@ class AuthorisationsApi:
             _body_params = _params["bulk_payment_embedded_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -494,9 +463,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse"}
 
         return await self.api_client.call_api(
             "/embedded-bulk-payment-auth-requests",
@@ -539,10 +506,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -614,10 +578,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -691,8 +652,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_embedded_payment_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method create_embedded_payment_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -730,16 +690,11 @@ class AuthorisationsApi:
             _body_params = _params["payment_embedded_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -747,9 +702,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse"}
 
         return await self.api_client.call_api(
             "/embedded-payment-auth-requests",
@@ -792,10 +745,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -835,13 +785,7 @@ class AuthorisationsApi:
             message = "Error! Please call the create_payment_authorisation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_payment_authorisation_with_http_info(
-            payment_authorisation_request,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            raw,
-            **kwargs,
+            payment_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
     @validate_arguments
@@ -867,10 +811,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -944,8 +885,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_payment_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method create_payment_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -983,16 +923,11 @@ class AuthorisationsApi:
             _body_params = _params["payment_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -1000,9 +935,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfPaymentAuthorisationRequestResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfPaymentAuthorisationRequestResponse"}
 
         return await self.api_client.call_api(
             "/payment-auth-requests",
@@ -1039,10 +972,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponseOfPreAuthorisationResponse:
@@ -1072,11 +1002,7 @@ class AuthorisationsApi:
             message = "Error! Please call the create_payment_pre_authorisation_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_payment_pre_authorisation_request_with_http_info(
-            payment_pre_authorisation_request,
-            raw,
-            psu_ip_address,
-            sub_application,
-            **kwargs,
+            payment_pre_authorisation_request, raw, psu_ip_address, sub_application, **kwargs
         )
 
     @validate_arguments
@@ -1096,10 +1022,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -1140,12 +1063,7 @@ class AuthorisationsApi:
 
         _params = locals()
 
-        _all_params = [
-            "payment_pre_authorisation_request",
-            "raw",
-            "psu_ip_address",
-            "sub_application",
-        ]
+        _all_params = ["payment_pre_authorisation_request", "raw", "psu_ip_address", "sub_application"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1161,8 +1079,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_payment_pre_authorisation_request"
+                    f"Got an unexpected keyword argument '{_key}' to method create_payment_pre_authorisation_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1194,16 +1111,11 @@ class AuthorisationsApi:
             _body_params = _params["payment_pre_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -1211,9 +1123,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfPreAuthorisationResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfPreAuthorisationResponse"}
 
         return await self.api_client.call_api(
             "/payment-pre-auth-requests",
@@ -1262,10 +1172,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponseOfPreAuthorisationResponse:
@@ -1299,13 +1206,7 @@ class AuthorisationsApi:
             message = "Error! Please call the create_pre_authorisation_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_pre_authorisation_request_with_http_info(
-            pre_authorisation_request,
-            raw,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            **kwargs,
+            pre_authorisation_request, raw, psu_id, psu_corporate_id, psu_ip_address, sub_application, **kwargs
         )
 
     @validate_arguments
@@ -1337,10 +1238,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -1408,8 +1306,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_pre_authorisation_request"
+                    f"Got an unexpected keyword argument '{_key}' to method create_pre_authorisation_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1447,16 +1344,11 @@ class AuthorisationsApi:
             _body_params = _params["pre_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -1464,9 +1356,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfPreAuthorisationResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfPreAuthorisationResponse"}
 
         return await self.api_client.call_api(
             "/pre-auth-requests",
@@ -1509,10 +1399,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1552,13 +1439,7 @@ class AuthorisationsApi:
             message = "Error! Please call the initiate_account_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.initiate_account_request_with_http_info(
-            account_authorisation_request,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            raw,
-            **kwargs,
+            account_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
     @validate_arguments
@@ -1584,10 +1465,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1660,10 +1538,7 @@ class AuthorisationsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method initiate_account_request"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method initiate_account_request")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1700,16 +1575,11 @@ class AuthorisationsApi:
             _body_params = _params["account_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -1717,9 +1587,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfAccountAuthorisationResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfAccountAuthorisationResponse"}
 
         return await self.api_client.call_api(
             "/account-auth-requests",
@@ -1762,10 +1630,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1837,10 +1702,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1914,8 +1776,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method initiate_embedded_account_request"
+                    f"Got an unexpected keyword argument '{_key}' to method initiate_embedded_account_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1953,16 +1814,11 @@ class AuthorisationsApi:
             _body_params = _params["embedded_account_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -1970,9 +1826,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfEmbeddedAccountAuthorisationResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfEmbeddedAccountAuthorisationResponse"}
 
         return await self.api_client.call_api(
             "/embedded-account-auth-requests",
@@ -2021,10 +1875,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2064,13 +1915,7 @@ class AuthorisationsApi:
             message = "Error! Please call the re_authorise_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.re_authorise_account_with_http_info(
-            consent,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            raw,
-            **kwargs,
+            consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
     @validate_arguments
@@ -2102,10 +1947,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2156,14 +1998,7 @@ class AuthorisationsApi:
 
         _params = locals()
 
-        _all_params = [
-            "consent",
-            "psu_id",
-            "psu_corporate_id",
-            "psu_ip_address",
-            "sub_application",
-            "raw",
-        ]
+        _all_params = ["consent", "psu_id", "psu_corporate_id", "psu_ip_address", "sub_application", "raw"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -2178,10 +2013,7 @@ class AuthorisationsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method re_authorise_account"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method re_authorise_account")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -2218,16 +2050,12 @@ class AuthorisationsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfAccountAuthorisationResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfAccountAuthorisationResponse"}
 
         return await self.api_client.call_api(
             "/account-auth-requests",
@@ -2251,11 +2079,7 @@ class AuthorisationsApi:
     async def update_embedded_account_request(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         embedded_account_authorisation_request: EmbeddedAccountAuthorisationRequest,
         psu_id: Annotated[
@@ -2277,10 +2101,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2336,11 +2157,7 @@ class AuthorisationsApi:
     async def update_embedded_account_request_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         embedded_account_authorisation_request: EmbeddedAccountAuthorisationRequest,
         psu_id: Annotated[
@@ -2362,10 +2179,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2442,8 +2256,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_embedded_account_request"
+                    f"Got an unexpected keyword argument '{_key}' to method update_embedded_account_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2483,16 +2296,11 @@ class AuthorisationsApi:
             _body_params = _params["embedded_account_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -2500,9 +2308,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfEmbeddedAccountAuthorisationResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfEmbeddedAccountAuthorisationResponse"}
 
         return await self.api_client.call_api(
             "/embedded-account-auth-requests/{consentId}",
@@ -2526,11 +2332,7 @@ class AuthorisationsApi:
     async def update_embedded_bulk_payment_authorisation(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         bulk_payment_embedded_authorisation_request: BulkPaymentEmbeddedAuthorisationRequest,
         psu_id: Annotated[
@@ -2602,11 +2404,7 @@ class AuthorisationsApi:
     async def update_embedded_bulk_payment_authorisation_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         bulk_payment_embedded_authorisation_request: BulkPaymentEmbeddedAuthorisationRequest,
         psu_id: Annotated[
@@ -2699,8 +2497,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_embedded_bulk_payment_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method update_embedded_bulk_payment_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2737,16 +2534,11 @@ class AuthorisationsApi:
             _body_params = _params["bulk_payment_embedded_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -2754,9 +2546,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse"}
 
         return await self.api_client.call_api(
             "/embedded-bulk-payment-auth-requests/{consentId}",
@@ -2780,11 +2570,7 @@ class AuthorisationsApi:
     async def update_embedded_payment_authorisation(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         payment_embedded_authorisation_request: PaymentEmbeddedAuthorisationRequest,
         psu_id: Annotated[
@@ -2806,10 +2592,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2865,11 +2648,7 @@ class AuthorisationsApi:
     async def update_embedded_payment_authorisation_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         payment_embedded_authorisation_request: PaymentEmbeddedAuthorisationRequest,
         psu_id: Annotated[
@@ -2891,10 +2670,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2971,8 +2747,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_embedded_payment_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method update_embedded_payment_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3012,16 +2787,11 @@ class AuthorisationsApi:
             _body_params = _params["payment_embedded_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -3029,9 +2799,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse"}
 
         return await self.api_client.call_api(
             "/embedded-payment-auth-requests/{consentId}",
@@ -3118,13 +2886,7 @@ class AuthorisationsApi:
             message = "Error! Please call the update_payment_authorisation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.update_payment_authorisation_with_http_info(
-            consent,
-            payment_authorisation_request,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            raw,
-            **kwargs,
+            consent, payment_authorisation_request, psu_id, psu_corporate_id, psu_ip_address, raw, **kwargs
         )
 
     @validate_arguments
@@ -3228,8 +2990,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_payment_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method update_payment_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3267,16 +3028,11 @@ class AuthorisationsApi:
             _body_params = _params["payment_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -3284,9 +3040,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfPaymentAuthorisationRequestResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfPaymentAuthorisationRequestResponse"}
 
         return await self.api_client.call_api(
             "/payment-auth-requests",
@@ -3336,10 +3090,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -3421,10 +3172,7 @@ class AuthorisationsApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -3501,8 +3249,7 @@ class AuthorisationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_pre_authorise_account_consent"
+                    f"Got an unexpected keyword argument '{_key}' to method update_pre_authorise_account_consent"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3543,16 +3290,11 @@ class AuthorisationsApi:
             _body_params = _params["account_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -3560,9 +3302,7 @@ class AuthorisationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfAccountAuthorisationResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfAccountAuthorisationResponse"}
 
         return await self.api_client.call_api(
             "/account-auth-requests",

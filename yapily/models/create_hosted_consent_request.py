@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -39,9 +38,7 @@ class CreateHostedConsentRequest(BaseModel):
         alias="applicationUserId",
         description="__Conditional__. Your own `User` reference. This field allows you to use your own unique references for individual users. Where the `User` reference doesn't have an associated Yapily `userId`, a new `userId` is created and linked to it. You must provide either a `userId` or `applicationUserId`.",
     )
-    institution_identifiers: InstitutionIdentifiers = Field(
-        default=..., alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiers = Field(default=..., alias="institutionIdentifiers")
     user_settings: UserSettings | None = Field(default=None, alias="userSettings")
     redirect_url: StrictStr = Field(
         default=...,
@@ -53,9 +50,7 @@ class CreateHostedConsentRequest(BaseModel):
         alias="oneTimeToken",
         description="Used to receive a oneTimeToken rather than a consentToken at the redirectUrl for additional security.",
     )
-    account_request: HostedAccountRequest | None = Field(
-        default=None, alias="accountRequest"
-    )
+    account_request: HostedAccountRequest | None = Field(default=None, alias="accountRequest")
     __properties = [
         "userId",
         "applicationUserId",
@@ -107,9 +102,7 @@ class CreateHostedConsentRequest(BaseModel):
             {
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),
-                "institution_identifiers": InstitutionIdentifiers.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiers.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "user_settings": UserSettings.from_dict(obj.get("userSettings"))
@@ -117,9 +110,7 @@ class CreateHostedConsentRequest(BaseModel):
                 else None,
                 "redirect_url": obj.get("redirectUrl"),
                 "one_time_token": obj.get("oneTimeToken"),
-                "account_request": HostedAccountRequest.from_dict(
-                    obj.get("accountRequest")
-                )
+                "account_request": HostedAccountRequest.from_dict(obj.get("accountRequest"))
                 if obj.get("accountRequest") is not None
                 else None,
             }

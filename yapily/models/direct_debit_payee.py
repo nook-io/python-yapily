@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,9 +24,7 @@ class DirectDebitPayee(BaseModel):
     DirectDebitPayee
     """
 
-    name: StrictStr | None = Field(
-        default=None, description="__Mandatory__. The account holder name."
-    )
+    name: StrictStr | None = Field(default=None, description="__Mandatory__. The account holder name.")
     __properties = ["name"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

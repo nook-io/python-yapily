@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -36,9 +35,7 @@ class HostedPayment(BaseModel):
     """
 
     payment_id: StrictStr | None = Field(
-        default=None,
-        alias="paymentId",
-        description="The Unique Identifier of the payment.",
+        default=None, alias="paymentId", description="The Unique Identifier of the payment."
     )
     hosted_payment_id: StrictStr | None = Field(
         default=None,
@@ -46,13 +43,9 @@ class HostedPayment(BaseModel):
         description="The Unique Identifier of the payment created using Yapily hosted application.",
     )
     consent_id: StrictStr | None = Field(
-        default=None,
-        alias="consentId",
-        description="The Unique Identifier of the consent.",
+        default=None, alias="consentId", description="The Unique Identifier of the consent."
     )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(
-        default=None, alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
     phases: Annotated[list[HostedPaymentPhase], Field()] | None = Field(
         default=None, description="The phase reached by the payment and its timestamp."
     )
@@ -62,9 +55,7 @@ class HostedPayment(BaseModel):
         description="Payment status based on latest HostedAuthPaymentPhase in phases. Value can be <ul> <li>PENDING  -  Payment pending processing</li> <li>COMPLETED  -  Payment processing completed</li> <li>FAILED  -  Payment process failed</li></ul>",
     )
     status_details: Annotated[list[HostedPaymentStatusDetails], Field()] | None = Field(
-        default=None,
-        alias="statusDetails",
-        description="Details of the payment status.",
+        default=None, alias="statusDetails", description="Details of the payment status."
     )
     institution_payment_id: StrictStr | None = Field(
         default=None,
@@ -85,9 +76,7 @@ class HostedPayment(BaseModel):
         default=None,
         description="The payment reference or description. Limited to a maximum of 18 characters for UK institutions.",
     )
-    context_type: PaymentContextTypeResponse | None = Field(
-        default=None, alias="contextType"
-    )
+    context_type: PaymentContextTypeResponse | None = Field(default=None, alias="contextType")
     type: PaymentTypeResponse | None = None
     payee: PayeeDetailsResponse | None = None
     payer: PayerDetailsResponse | None = None
@@ -170,21 +159,14 @@ class HostedPayment(BaseModel):
                 "payment_id": obj.get("paymentId"),
                 "hosted_payment_id": obj.get("hostedPaymentId"),
                 "consent_id": obj.get("consentId"),
-                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
-                "phases": [
-                    HostedPaymentPhase.from_dict(_item) for _item in obj.get("phases")
-                ]
+                "phases": [HostedPaymentPhase.from_dict(_item) for _item in obj.get("phases")]
                 if obj.get("phases") is not None
                 else None,
                 "payment_status": obj.get("paymentStatus"),
-                "status_details": [
-                    HostedPaymentStatusDetails.from_dict(_item)
-                    for _item in obj.get("statusDetails")
-                ]
+                "status_details": [HostedPaymentStatusDetails.from_dict(_item) for _item in obj.get("statusDetails")]
                 if obj.get("statusDetails") is not None
                 else None,
                 "institution_payment_id": obj.get("institutionPaymentId"),
@@ -193,14 +175,8 @@ class HostedPayment(BaseModel):
                 "reference": obj.get("reference"),
                 "context_type": obj.get("contextType"),
                 "type": obj.get("type"),
-                "payee": PayeeDetailsResponse.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
-                "payer": PayerDetailsResponse.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
-                "amount": AmountDetailsResponse.from_dict(obj.get("amount"))
-                if obj.get("amount") is not None
-                else None,
+                "payee": PayeeDetailsResponse.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
+                "payer": PayerDetailsResponse.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+                "amount": AmountDetailsResponse.from_dict(obj.get("amount")) if obj.get("amount") is not None else None,
             }
         )

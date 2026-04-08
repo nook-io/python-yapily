@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,8 +29,7 @@ class ApplicationResponseListMetaPaginationSelf(BaseModel):
         default=None, description="The number of skipped applications."
     )
     limit: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=None,
-        description="The maximum number of applications for the current page.",
+        default=None, description="The maximum number of applications for the current page."
     )
     sort: StrictStr | None = Field(
         default=None,
@@ -67,9 +65,5 @@ class ApplicationResponseListMetaPaginationSelf(BaseModel):
             return ApplicationResponseListMetaPaginationSelf.parse_obj(obj)
 
         return ApplicationResponseListMetaPaginationSelf.parse_obj(
-            {
-                "offset": obj.get("offset"),
-                "limit": obj.get("limit"),
-                "sort": obj.get("sort"),
-            }
+            {"offset": obj.get("offset"), "limit": obj.get("limit"), "sort": obj.get("sort")}
         )

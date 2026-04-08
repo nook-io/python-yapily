@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -70,11 +69,7 @@ class Pagination(BaseModel):
         return Pagination.parse_obj(
             {
                 "total_count": obj.get("totalCount"),
-                "var_self": FilterAndSort.from_dict(obj.get("self"))
-                if obj.get("self") is not None
-                else None,
-                "next": Next.from_dict(obj.get("next"))
-                if obj.get("next") is not None
-                else None,
+                "var_self": FilterAndSort.from_dict(obj.get("self")) if obj.get("self") is not None else None,
+                "next": Next.from_dict(obj.get("next")) if obj.get("next") is not None else None,
             }
         )

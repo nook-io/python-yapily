@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -65,8 +64,5 @@ class InstitutionIdentifiersResponse(BaseModel):
             return InstitutionIdentifiersResponse.parse_obj(obj)
 
         return InstitutionIdentifiersResponse.parse_obj(
-            {
-                "institution_id": obj.get("institutionId"),
-                "institution_country_code": obj.get("institutionCountryCode"),
-            }
+            {"institution_id": obj.get("institutionId"), "institution_country_code": obj.get("institutionCountryCode")}
         )

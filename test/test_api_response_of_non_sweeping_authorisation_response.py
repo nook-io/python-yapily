@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class TestApiResponseOfNonSweepingAuthorisationResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> ApiResponseOfNonSweepingAuthorisationResponse:
+    def make_instance(self, include_optional) -> ApiResponseOfNonSweepingAuthorisationResponse:
         """Test ApiResponseOfNonSweepingAuthorisationResponse
         include_option is a boolean, when False only required
         params are included, when True both required and

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,12 +26,9 @@ class TransactionPayeeDetailsAccountIdentificationsInner(BaseModel):
     TransactionPayeeDetailsAccountIdentificationsInner
     """
 
-    type: AccountIdentificationType | None = Field(
-        default=None, description="Describes the format of the account."
-    )
+    type: AccountIdentificationType | None = Field(default=None, description="Describes the format of the account.")
     identification: StrictStr | None = Field(
-        default=None,
-        description="The value associated with the account identification type.",
+        default=None, description="The value associated with the account identification type."
     )
     __properties = ["type", "identification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -46,9 +42,7 @@ class TransactionPayeeDetailsAccountIdentificationsInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> TransactionPayeeDetailsAccountIdentificationsInner:
+    def from_json(cls, json_str: str) -> TransactionPayeeDetailsAccountIdentificationsInner:
         """Create an instance of TransactionPayeeDetailsAccountIdentificationsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -32,21 +31,10 @@ class RawRequest(BaseModel):
     request_instant: datetime | None = Field(default=None, alias="requestInstant")
     headers: dict[str, StrictStr] | None = None
     body: dict[str, Any] | None = None
-    body_parameters: dict[str, StrictStr] | None = Field(
-        default=None, alias="bodyParameters"
-    )
+    body_parameters: dict[str, StrictStr] | None = Field(default=None, alias="bodyParameters")
     start_time: datetime | None = Field(default=None, alias="startTime")
     started_at: datetime | None = Field(default=None, alias="startedAt")
-    __properties = [
-        "method",
-        "url",
-        "requestInstant",
-        "headers",
-        "body",
-        "bodyParameters",
-        "startTime",
-        "startedAt",
-    ]
+    __properties = ["method", "url", "requestInstant", "headers", "body", "bodyParameters", "startTime", "startedAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:

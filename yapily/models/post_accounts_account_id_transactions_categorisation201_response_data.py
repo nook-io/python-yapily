@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,9 +24,7 @@ class PostAccountsAccountIdTransactionsCategorisation201ResponseData(BaseModel):
     PostAccountsAccountIdTransactionsCategorisation201ResponseData
     """
 
-    categorisation_id: StrictStr | None = Field(
-        default=None, alias="categorisationId"
-    )
+    categorisation_id: StrictStr | None = Field(default=None, alias="categorisationId")
     __properties = ["categorisationId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -40,9 +37,7 @@ class PostAccountsAccountIdTransactionsCategorisation201ResponseData(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> PostAccountsAccountIdTransactionsCategorisation201ResponseData:
+    def from_json(cls, json_str: str) -> PostAccountsAccountIdTransactionsCategorisation201ResponseData:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation201ResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -51,17 +46,13 @@ class PostAccountsAccountIdTransactionsCategorisation201ResponseData(BaseModel):
         return self.dict(by_alias=True, exclude={}, exclude_none=True)
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> PostAccountsAccountIdTransactionsCategorisation201ResponseData:
+    def from_dict(cls, obj: dict) -> PostAccountsAccountIdTransactionsCategorisation201ResponseData:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation201ResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PostAccountsAccountIdTransactionsCategorisation201ResponseData.parse_obj(
-                obj
-            )
+            return PostAccountsAccountIdTransactionsCategorisation201ResponseData.parse_obj(obj)
 
         return PostAccountsAccountIdTransactionsCategorisation201ResponseData.parse_obj(
             {"categorisation_id": obj.get("categorisationId")}

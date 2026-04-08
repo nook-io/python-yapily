@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -31,9 +30,7 @@ class PostAccountsAccountIdTransactionsCategorisation201Response(BaseModel):
     """
 
     meta: GetBulkPaymentStatus200ResponseMeta | None = None
-    data: PostAccountsAccountIdTransactionsCategorisation201ResponseData | None = (
-        None
-    )
+    data: PostAccountsAccountIdTransactionsCategorisation201ResponseData | None = None
     __properties = ["meta", "data"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -46,9 +43,7 @@ class PostAccountsAccountIdTransactionsCategorisation201Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> PostAccountsAccountIdTransactionsCategorisation201Response:
+    def from_json(cls, json_str: str) -> PostAccountsAccountIdTransactionsCategorisation201Response:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation201Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -64,26 +59,20 @@ class PostAccountsAccountIdTransactionsCategorisation201Response(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> PostAccountsAccountIdTransactionsCategorisation201Response:
+    def from_dict(cls, obj: dict) -> PostAccountsAccountIdTransactionsCategorisation201Response:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation201Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PostAccountsAccountIdTransactionsCategorisation201Response.parse_obj(
-                obj
-            )
+            return PostAccountsAccountIdTransactionsCategorisation201Response.parse_obj(obj)
 
         return PostAccountsAccountIdTransactionsCategorisation201Response.parse_obj(
             {
                 "meta": GetBulkPaymentStatus200ResponseMeta.from_dict(obj.get("meta"))
                 if obj.get("meta") is not None
                 else None,
-                "data": PostAccountsAccountIdTransactionsCategorisation201ResponseData.from_dict(
-                    obj.get("data")
-                )
+                "data": PostAccountsAccountIdTransactionsCategorisation201ResponseData.from_dict(obj.get("data"))
                 if obj.get("data") is not None
                 else None,
             }

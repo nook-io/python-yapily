@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -79,19 +78,13 @@ class GetAccountsTransactionsCategorised200Response(BaseModel):
 
         return GetAccountsTransactionsCategorised200Response.parse_obj(
             {
-                "meta": GetAccountsTransactionsCategorised200ResponseMeta.from_dict(
-                    obj.get("meta")
-                )
+                "meta": GetAccountsTransactionsCategorised200ResponseMeta.from_dict(obj.get("meta"))
                 if obj.get("meta") is not None
                 else None,
-                "data": GetAccountsTransactionsCategorised200ResponseData.from_dict(
-                    obj.get("data")
-                )
+                "data": GetAccountsTransactionsCategorised200ResponseData.from_dict(obj.get("data"))
                 if obj.get("data") is not None
                 else None,
-                "links": GetAccountsTransactionsCategorised200ResponseLinks.from_dict(
-                    obj.get("links")
-                )
+                "links": GetAccountsTransactionsCategorised200ResponseLinks.from_dict(obj.get("links"))
                 if obj.get("links") is not None
                 else None,
             }

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -59,9 +58,7 @@ class HostedConsentPagesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_hosted_consent_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_hosted_consent_request_with_http_info(
-            create_hosted_consent_request, **kwargs
-        )
+        return await self.create_hosted_consent_request_with_http_info(create_hosted_consent_request, **kwargs)
 
     @validate_arguments
     async def create_hosted_consent_request_with_http_info(
@@ -114,8 +111,7 @@ class HostedConsentPagesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_hosted_consent_request"
+                    f"Got an unexpected keyword argument '{_key}' to method create_hosted_consent_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -138,16 +134,11 @@ class HostedConsentPagesApi:
             _body_params = _params["create_hosted_consent_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -183,10 +174,7 @@ class HostedConsentPagesApi:
     @validate_arguments
     async def get_hosted_consent_request(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the consent request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the consent request")],
         **kwargs,
     ) -> ApiResponseOfGetHostedConsentRequest:
         """Get Hosted Consent Request  # noqa: E501
@@ -208,17 +196,12 @@ class HostedConsentPagesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_hosted_consent_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_hosted_consent_request_with_http_info(
-            consent_request_id, **kwargs
-        )
+        return await self.get_hosted_consent_request_with_http_info(consent_request_id, **kwargs)
 
     @validate_arguments
     async def get_hosted_consent_request_with_http_info(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the consent request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the consent request")],
         **kwargs,
     ) -> ApiResponse:
         """Get Hosted Consent Request  # noqa: E501
@@ -267,10 +250,7 @@ class HostedConsentPagesApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_hosted_consent_request"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_hosted_consent_request")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -291,9 +271,7 @@ class HostedConsentPagesApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]

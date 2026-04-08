@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -73,9 +72,7 @@ class ApiResponseError(BaseModel):
 
         return ApiResponseError.parse_obj(
             {
-                "error": ApiError.from_dict(obj.get("error"))
-                if obj.get("error") is not None
-                else None,
+                "error": ApiError.from_dict(obj.get("error")) if obj.get("error") is not None else None,
                 "raw": [RawResponse.from_dict(_item) for _item in obj.get("raw")]
                 if obj.get("raw") is not None
                 else None,

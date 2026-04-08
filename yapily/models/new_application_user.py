@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -65,8 +64,5 @@ class NewApplicationUser(BaseModel):
             return NewApplicationUser.parse_obj(obj)
 
         return NewApplicationUser.parse_obj(
-            {
-                "application_user_id": obj.get("applicationUserId"),
-                "reference_id": obj.get("referenceId"),
-            }
+            {"application_user_id": obj.get("applicationUserId"), "reference_id": obj.get("referenceId")}
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,10 +29,7 @@ class ApiErrorResponseV2ErrorIssuesInner(BaseModel):
         default=...,
         description="5 digit Error Code that uniquely identifies the type of issue, for full list of error codes pelase check our documentation",
     )
-    message: StrictStr = Field(
-        default=...,
-        description="Human readable description of the issue that was experienced",
-    )
+    message: StrictStr = Field(default=..., description="Human readable description of the issue that was experienced")
     __properties = ["type", "code", "message"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -64,9 +60,5 @@ class ApiErrorResponseV2ErrorIssuesInner(BaseModel):
             return ApiErrorResponseV2ErrorIssuesInner.parse_obj(obj)
 
         return ApiErrorResponseV2ErrorIssuesInner.parse_obj(
-            {
-                "type": obj.get("type"),
-                "code": obj.get("code"),
-                "message": obj.get("message"),
-            }
+            {"type": obj.get("type"), "code": obj.get("code"), "message": obj.get("message")}
         )

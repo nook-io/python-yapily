@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -73,13 +72,8 @@ class Model403VirtualAccountsApiErrorResponse(BaseModel):
 
         return Model403VirtualAccountsApiErrorResponse.parse_obj(
             {
-                "error": ErrorDetails.from_dict(obj.get("error"))
-                if obj.get("error") is not None
-                else None,
-                "monitoring": [
-                    MonitoringEndpointStatus.from_dict(_item)
-                    for _item in obj.get("monitoring")
-                ]
+                "error": ErrorDetails.from_dict(obj.get("error")) if obj.get("error") is not None else None,
+                "monitoring": [MonitoringEndpointStatus.from_dict(_item) for _item in obj.get("monitoring")]
                 if obj.get("monitoring") is not None
                 else None,
             }

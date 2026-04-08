@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class FundsAvailable(BaseModel):
     """
 
     funds_available: StrictBool = Field(
-        default=...,
-        alias="fundsAvailable",
-        description="__Mandatory__. Indicates whether funds are available or not.",
+        default=..., alias="fundsAvailable", description="__Mandatory__. Indicates whether funds are available or not."
     )
     funds_available_at: datetime = Field(
         default=...,
@@ -66,8 +63,5 @@ class FundsAvailable(BaseModel):
             return FundsAvailable.parse_obj(obj)
 
         return FundsAvailable.parse_obj(
-            {
-                "funds_available": obj.get("fundsAvailable"),
-                "funds_available_at": obj.get("fundsAvailableAt"),
-            }
+            {"funds_available": obj.get("fundsAvailable"), "funds_available_at": obj.get("fundsAvailableAt")}
         )

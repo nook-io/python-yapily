@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class Beneficiary(BaseModel):
     Account information belonging to the target beneficiary (person/ business).  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the `beneficiary`."
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier of the `beneficiary`.")
     reference: StrictStr | None = Field(
         default=None,
         description="A creditor reference that is requested to be used for all payment instructions to this beneficiary.",
@@ -76,9 +73,7 @@ class Beneficiary(BaseModel):
             {
                 "id": obj.get("id"),
                 "reference": obj.get("reference"),
-                "payee": BeneficiaryPayee.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
+                "payee": BeneficiaryPayee.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
                 "trusted": obj.get("trusted"),
             }
         )

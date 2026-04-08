@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -37,9 +36,7 @@ class PaymentAuthorisationRequestResponse(BaseModel):
         description="Unique identifier for the payment authorisation request. <br><br>The `consentID` used to [retrieve a consent](/api/reference/#operation/getConsentById).",
     )
     user_uuid: StrictStr | None = Field(
-        default=None,
-        alias="userUuid",
-        description="The `User` that the authorisation request was created for.",
+        default=None, alias="userUuid", description="The `User` that the authorisation request was created for."
     )
     application_user_id: StrictStr | None = Field(
         default=None,
@@ -48,15 +45,11 @@ class PaymentAuthorisationRequestResponse(BaseModel):
     )
     reference_id: StrictStr | None = Field(default=None, alias="referenceId")
     institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="The `Institution` the authorisation request was sent to.",
+        default=None, alias="institutionId", description="The `Institution` the authorisation request was sent to."
     )
     status: AuthorisationStatus | None = None
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="Date and time the consent was created.",
+        default=None, alias="createdAt", description="Date and time the consent was created."
     )
     transaction_from: datetime | None = Field(
         default=None,
@@ -73,14 +66,10 @@ class PaymentAuthorisationRequestResponse(BaseModel):
         alias="expiresAt",
         description="Date and time the authorisation expires. Re-authorisation is needed to retain access.",
     )
-    time_to_expire_in_millis: StrictInt | None = Field(
-        default=None, alias="timeToExpireInMillis"
-    )
+    time_to_expire_in_millis: StrictInt | None = Field(default=None, alias="timeToExpireInMillis")
     time_to_expire: StrictStr | None = Field(default=None, alias="timeToExpire")
     feature_scope: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = Field(
-        default=None,
-        alias="featureScope",
-        description="The set of features the consent provides access to.",
+        default=None, alias="featureScope", description="The set of features the consent provides access to."
     )
     consent_token: StrictStr | None = Field(
         default=None,
@@ -88,13 +77,10 @@ class PaymentAuthorisationRequestResponse(BaseModel):
         description="Represents the authorisation to gain access to the requested features. Required to make a payment request.",
     )
     state: StrictStr | None = Field(
-        default=None,
-        description="Correlation ID used with the `Institution` during the authorisation process.",
+        default=None, description="Correlation ID used with the `Institution` during the authorisation process."
     )
     authorized_at: datetime | None = Field(
-        default=None,
-        alias="authorizedAt",
-        description="Date and time the request was authorised by the `Institution`.",
+        default=None, alias="authorizedAt", description="Date and time the request was authorised by the `Institution`."
     )
     institution_consent_id: StrictStr | None = Field(
         default=None,
@@ -105,9 +91,7 @@ class PaymentAuthorisationRequestResponse(BaseModel):
     exchange_rate_information: ExchangeRateInformationResponse | None = Field(
         default=None, alias="exchangeRateInformation"
     )
-    authorisation_url: StrictStr | None = Field(
-        default=None, alias="authorisationUrl"
-    )
+    authorisation_url: StrictStr | None = Field(default=None, alias="authorisationUrl")
     qr_code_url: StrictStr | None = Field(
         default=None,
         alias="qrCodeUrl",
@@ -199,10 +183,7 @@ class PaymentAuthorisationRequestResponse(BaseModel):
                 "state": obj.get("state"),
                 "authorized_at": obj.get("authorizedAt"),
                 "institution_consent_id": obj.get("institutionConsentId"),
-                "charges": [
-                    PaymentChargeDetails.from_dict(_item)
-                    for _item in obj.get("charges")
-                ]
+                "charges": [PaymentChargeDetails.from_dict(_item) for _item in obj.get("charges")]
                 if obj.get("charges") is not None
                 else None,
                 "exchange_rate_information": ExchangeRateInformationResponse.from_dict(

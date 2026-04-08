@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,12 +25,10 @@ class UserSettings(BaseModel):
     """
 
     language: StrictStr | None = Field(
-        default=None,
-        description="2 letter ISO Language code which denotes the language preference for the `User`.",
+        default=None, description="2 letter ISO Language code which denotes the language preference for the `User`."
     )
     location: StrictStr | None = Field(
-        default=None,
-        description="2 letter ISO Country code which denotes the location preference for the `User`.",
+        default=None, description="2 letter ISO Country code which denotes the location preference for the `User`."
     )
     __properties = ["language", "location"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -62,6 +59,4 @@ class UserSettings(BaseModel):
         if not isinstance(obj, dict):
             return UserSettings.parse_obj(obj)
 
-        return UserSettings.parse_obj(
-            {"language": obj.get("language"), "location": obj.get("location")}
-        )
+        return UserSettings.parse_obj({"language": obj.get("language"), "location": obj.get("location")})

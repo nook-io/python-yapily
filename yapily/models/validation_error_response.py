@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,9 +67,7 @@ class ValidationErrorResponse(BaseModel):
 
         return ValidationErrorResponse.parse_obj(
             {
-                "errors": [
-                    ValidationError.from_dict(_item) for _item in obj.get("errors")
-                ]
+                "errors": [ValidationError.from_dict(_item) for _item in obj.get("errors")]
                 if obj.get("errors") is not None
                 else None
             }

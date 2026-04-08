@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,12 +25,9 @@ class ProprietaryBankTransactionCode(BaseModel):
     """
 
     code: StrictStr | None = Field(
-        default=None,
-        description="__Mandatory__. Properietary code used to identify the underlying transaction.",
+        default=None, description="__Mandatory__. Properietary code used to identify the underlying transaction."
     )
-    issuer: StrictStr | None = Field(
-        default=None, description="__Mandatory__. Issuer of the properitary code."
-    )
+    issuer: StrictStr | None = Field(default=None, description="__Mandatory__. Issuer of the properitary code.")
     __properties = ["code", "issuer"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -61,6 +57,4 @@ class ProprietaryBankTransactionCode(BaseModel):
         if not isinstance(obj, dict):
             return ProprietaryBankTransactionCode.parse_obj(obj)
 
-        return ProprietaryBankTransactionCode.parse_obj(
-            {"code": obj.get("code"), "issuer": obj.get("issuer")}
-        )
+        return ProprietaryBankTransactionCode.parse_obj({"code": obj.get("code"), "issuer": obj.get("issuer")})

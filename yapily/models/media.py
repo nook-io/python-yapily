@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,12 +25,9 @@ class Media(BaseModel):
     """
 
     source: StrictStr | None = Field(
-        default=None,
-        description="__Mandatory__. URL from where the media can be retrieved.",
+        default=None, description="__Mandatory__. URL from where the media can be retrieved."
     )
-    type: StrictStr | None = Field(
-        default=None, description="__Mandatory__. The type of media e.g. (logo, icon)."
-    )
+    type: StrictStr | None = Field(default=None, description="__Mandatory__. The type of media e.g. (logo, icon).")
     __properties = ["source", "type"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

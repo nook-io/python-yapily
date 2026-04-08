@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,13 +29,10 @@ class FinancialProfile(BaseModel):
     """
 
     status: StrictStr | None = Field(
-        default=None,
-        description="The status, can be EMPTY, PARTIAL, PENDING, COMPLETED or ERROR.",
+        default=None, description="The status, can be EMPTY, PARTIAL, PENDING, COMPLETED or ERROR."
     )
     profile_consents: Annotated[list[ProfileConsent], Field()] | None = Field(
-        default=None,
-        alias="profileConsents",
-        description="A list of ProfileConsent used in the financial profile.",
+        default=None, alias="profileConsents", description="A list of ProfileConsent used in the financial profile."
     )
     enrichment: EnrichedWrapper | None = None
     __properties = ["status", "profileConsents", "enrichment"]
@@ -82,10 +78,7 @@ class FinancialProfile(BaseModel):
         return FinancialProfile.parse_obj(
             {
                 "status": obj.get("status"),
-                "profile_consents": [
-                    ProfileConsent.from_dict(_item)
-                    for _item in obj.get("profileConsents")
-                ]
+                "profile_consents": [ProfileConsent.from_dict(_item) for _item in obj.get("profileConsents")]
                 if obj.get("profileConsents") is not None
                 else None,
                 "enrichment": EnrichedWrapper.from_dict(obj.get("enrichment"))

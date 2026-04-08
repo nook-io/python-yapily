@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,11 +67,7 @@ class DeleteWebhook200Response(BaseModel):
 
         return DeleteWebhook200Response.parse_obj(
             {
-                "metadata": Metadata.from_dict(obj.get("metadata"))
-                if obj.get("metadata") is not None
-                else None,
-                "data": RegisteredWebhook.from_dict(obj.get("data"))
-                if obj.get("data") is not None
-                else None,
+                "metadata": Metadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+                "data": RegisteredWebhook.from_dict(obj.get("data")) if obj.get("data") is not None else None,
             }
         )

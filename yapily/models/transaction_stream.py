@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,35 +29,24 @@ class TransactionStream(BaseModel):
     Lists all possible transaction streams identified for the `Application User`.  # noqa: E501
     """
 
-    name: StrictStr | None = Field(
-        default=None, description="The name of the Transaction Stream."
-    )
+    name: StrictStr | None = Field(default=None, description="The name of the Transaction Stream.")
     transactions: Annotated[list[EnrichedTransaction], Field()] | None = Field(
-        default=None,
-        description="A list of transaction details, identified by Yapily data services.",
+        default=None, description="A list of transaction details, identified by Yapily data services."
     )
-    transaction_schedule: TransactionSchedule | None = Field(
-        default=None, alias="transactionSchedule"
-    )
+    transaction_schedule: TransactionSchedule | None = Field(default=None, alias="transactionSchedule")
     schedule_consistency_score: StrictFloat | StrictInt | None = Field(
         default=None,
         alias="scheduleConsistencyScore",
         description="The consistency of the transaction.  This is a number between 0 and 1 with 1 being the most consistent schedule.",
     )
     next_expected_transaction_date: date | None = Field(
-        default=None,
-        alias="nextExpectedTransactionDate",
-        description="When is the transaction expected to occur next.",
+        default=None, alias="nextExpectedTransactionDate", description="When is the transaction expected to occur next."
     )
     earliest_transaction_date: date | None = Field(
-        default=None,
-        alias="earliestTransactionDate",
-        description="When is the first recorded transaction date",
+        default=None, alias="earliestTransactionDate", description="When is the first recorded transaction date"
     )
     most_recent_transaction_date: date | None = Field(
-        default=None,
-        alias="mostRecentTransactionDate",
-        description="When is the most recent transaction date",
+        default=None, alias="mostRecentTransactionDate", description="When is the most recent transaction date"
     )
     amount_consistency_score: StrictFloat | StrictInt | None = Field(
         default=None,
@@ -66,9 +54,7 @@ class TransactionStream(BaseModel):
         description="The consistency of the amount of the transaction.  This is a number between 0 and 1 with 1 being the most consistent amount.",
     )
     average_amount: StrictFloat | StrictInt | None = Field(
-        default=None,
-        alias="averageAmount",
-        description="The average amount of the transaction stream",
+        default=None, alias="averageAmount", description="The average amount of the transaction stream"
     )
     __properties = [
         "name",
@@ -123,21 +109,14 @@ class TransactionStream(BaseModel):
         return TransactionStream.parse_obj(
             {
                 "name": obj.get("name"),
-                "transactions": [
-                    EnrichedTransaction.from_dict(_item)
-                    for _item in obj.get("transactions")
-                ]
+                "transactions": [EnrichedTransaction.from_dict(_item) for _item in obj.get("transactions")]
                 if obj.get("transactions") is not None
                 else None,
-                "transaction_schedule": TransactionSchedule.from_dict(
-                    obj.get("transactionSchedule")
-                )
+                "transaction_schedule": TransactionSchedule.from_dict(obj.get("transactionSchedule"))
                 if obj.get("transactionSchedule") is not None
                 else None,
                 "schedule_consistency_score": obj.get("scheduleConsistencyScore"),
-                "next_expected_transaction_date": obj.get(
-                    "nextExpectedTransactionDate"
-                ),
+                "next_expected_transaction_date": obj.get("nextExpectedTransactionDate"),
                 "earliest_transaction_date": obj.get("earliestTransactionDate"),
                 "most_recent_transaction_date": obj.get("mostRecentTransactionDate"),
                 "amount_consistency_score": obj.get("amountConsistencyScore"),

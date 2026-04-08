@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -37,9 +36,7 @@ class UsersApi:
         self.api_client = api_client
 
     @validate_arguments
-    async def add_user(
-        self, new_application_user: NewApplicationUser, **kwargs
-    ) -> ApplicationUser:
+    async def add_user(self, new_application_user: NewApplicationUser, **kwargs) -> ApplicationUser:
         """Create User  # noqa: E501
 
         Create a new user in your application  # noqa: E501
@@ -62,9 +59,7 @@ class UsersApi:
         return await self.add_user_with_http_info(new_application_user, **kwargs)
 
     @validate_arguments
-    async def add_user_with_http_info(
-        self, new_application_user: NewApplicationUser, **kwargs
-    ) -> ApiResponse:
+    async def add_user_with_http_info(self, new_application_user: NewApplicationUser, **kwargs) -> ApiResponse:
         """Create User  # noqa: E501
 
         Create a new user in your application  # noqa: E501
@@ -111,9 +106,7 @@ class UsersApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method add_user"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method add_user")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -135,16 +128,11 @@ class UsersApi:
             _body_params = _params["new_application_user"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -152,9 +140,7 @@ class UsersApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApplicationUser",
-        }
+        _response_types_map = {"201": "ApplicationUser"}
 
         return await self.api_client.call_api(
             "/users",
@@ -178,11 +164,7 @@ class UsersApi:
     async def delete_user(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         **kwargs,
     ) -> ApiResponseOfUserDeleteResponse:
@@ -211,11 +193,7 @@ class UsersApi:
     async def delete_user_with_http_info(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -265,10 +243,7 @@ class UsersApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_user"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_user")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -289,16 +264,12 @@ class UsersApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfUserDeleteResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfUserDeleteResponse"}
 
         return await self.api_client.call_api(
             "/users/{userUuid}",
@@ -322,11 +293,7 @@ class UsersApi:
     async def get_user(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         **kwargs,
     ) -> ApplicationUser:
@@ -355,11 +322,7 @@ class UsersApi:
     async def get_user_with_http_info(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -409,9 +372,7 @@ class UsersApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_user"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_user")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -432,16 +393,12 @@ class UsersApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApplicationUser",
-        }
+        _response_types_map = {"200": "ApplicationUser"}
 
         return await self.api_client.call_api(
             "/users/{userUuid}",
@@ -466,9 +423,7 @@ class UsersApi:
         self,
         filter_application_user_id: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
-            Field(
-                description="__Optional__. Filter records based on the list of `applicationUserId` users provided."
-            ),
+            Field(description="__Optional__. Filter records based on the list of `applicationUserId` users provided."),
         ] = None,
         **kwargs,
     ) -> list[ApplicationUser]:
@@ -498,9 +453,7 @@ class UsersApi:
         self,
         filter_application_user_id: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
-            Field(
-                description="__Optional__. Filter records based on the list of `applicationUserId` users provided."
-            ),
+            Field(description="__Optional__. Filter records based on the list of `applicationUserId` users provided."),
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -550,9 +503,7 @@ class UsersApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_users"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_users")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -564,9 +515,7 @@ class UsersApi:
         # process the query parameters
         _query_params = []
         if _params.get("filter_application_user_id") is not None:
-            _query_params.append(
-                ("filter[applicationUserId]", _params["filter_application_user_id"])
-            )
+            _query_params.append(("filter[applicationUserId]", _params["filter_application_user_id"]))
             _collection_formats["filter[applicationUserId]"] = "multi"
 
         # process the header parameters
@@ -577,16 +526,12 @@ class UsersApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "List[ApplicationUser]",
-        }
+        _response_types_map = {"200": "List[ApplicationUser]"}
 
         return await self.api_client.call_api(
             "/users",

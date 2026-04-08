@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -34,9 +33,7 @@ class ApiResponseOfConsentDeleteResponse(BaseModel):
     meta: ResponseMeta | None = None
     data: ConsentDeleteResponse | None = None
     links: dict[str, StrictStr] | None = None
-    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(
-        default=None, alias="forwardedData"
-    )
+    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(default=None, alias="forwardedData")
     raw: Annotated[list[RawResponse], Field()] | None = None
     tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
     __properties = ["meta", "data", "links", "forwardedData", "raw", "tracingId"]
@@ -91,17 +88,10 @@ class ApiResponseOfConsentDeleteResponse(BaseModel):
 
         return ApiResponseOfConsentDeleteResponse.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
-                "data": ConsentDeleteResponse.from_dict(obj.get("data"))
-                if obj.get("data") is not None
-                else None,
+                "meta": ResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
+                "data": ConsentDeleteResponse.from_dict(obj.get("data")) if obj.get("data") is not None else None,
                 "links": obj.get("links"),
-                "forwarded_data": [
-                    ResponseForwardedData.from_dict(_item)
-                    for _item in obj.get("forwardedData")
-                ]
+                "forwarded_data": [ResponseForwardedData.from_dict(_item) for _item in obj.get("forwardedData")]
                 if obj.get("forwardedData") is not None
                 else None,
                 "raw": [RawResponse.from_dict(_item) for _item in obj.get("raw")]

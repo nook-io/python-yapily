@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -33,13 +32,9 @@ class EventSubscriptionResponse(BaseModel):
         description="Unique identifier of the event type (for which notifications will be sent)",
     )
     application_id: StrictStr = Field(
-        default=...,
-        alias="applicationId",
-        description="Application related to event subscription.",
+        default=..., alias="applicationId", description="Application related to event subscription."
     )
-    created: StrictStr = Field(
-        default=..., description="Creation date of event subscription."
-    )
+    created: StrictStr = Field(default=..., description="Creation date of event subscription.")
     notification: Notification = Field(...)
     __properties = ["eventTypeId", "applicationId", "created", "notification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

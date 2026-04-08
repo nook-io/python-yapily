@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,9 +28,7 @@ class Balances(BaseModel):
     Balances
     """
 
-    main_balance_amount: Amount | None = Field(
-        default=None, alias="mainBalanceAmount"
-    )
+    main_balance_amount: Amount | None = Field(default=None, alias="mainBalanceAmount")
     balances: Annotated[list[AccountBalance], Field()] | None = None
     __properties = ["mainBalanceAmount", "balances"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -78,9 +75,7 @@ class Balances(BaseModel):
                 "main_balance_amount": Amount.from_dict(obj.get("mainBalanceAmount"))
                 if obj.get("mainBalanceAmount") is not None
                 else None,
-                "balances": [
-                    AccountBalance.from_dict(_item) for _item in obj.get("balances")
-                ]
+                "balances": [AccountBalance.from_dict(_item) for _item in obj.get("balances")]
                 if obj.get("balances") is not None
                 else None,
             }

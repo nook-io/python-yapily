@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -34,13 +33,10 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
     """
 
     id: StrictStr | None = Field(
-        default=None,
-        description="Unique identifier for the embedded payment authorisation request.",
+        default=None, description="Unique identifier for the embedded payment authorisation request."
     )
     user_uuid: StrictStr | None = Field(
-        default=None,
-        alias="userUuid",
-        description="The `User` that the authorisation request was created for.",
+        default=None, alias="userUuid", description="The `User` that the authorisation request was created for."
     )
     application_user_id: StrictStr | None = Field(
         default=None,
@@ -49,15 +45,11 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
     )
     reference_id: StrictStr | None = Field(default=None, alias="referenceId")
     institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="The  `Institution` the authorisation request was sent to.",
+        default=None, alias="institutionId", description="The  `Institution` the authorisation request was sent to."
     )
     status: AuthorisationStatus | None = None
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="Date and time the embedded payment authorisation was created.",
+        default=None, alias="createdAt", description="Date and time the embedded payment authorisation was created."
     )
     transaction_from: datetime | None = Field(
         default=None,
@@ -74,14 +66,10 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
         alias="expiresAt",
         description="Date and time the authorisation expires. Re-authorisation is needed to retain access.",
     )
-    time_to_expire_in_millis: StrictInt | None = Field(
-        default=None, alias="timeToExpireInMillis"
-    )
+    time_to_expire_in_millis: StrictInt | None = Field(default=None, alias="timeToExpireInMillis")
     time_to_expire: StrictStr | None = Field(default=None, alias="timeToExpire")
     feature_scope: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = Field(
-        default=None,
-        alias="featureScope",
-        description="The set of features the consent provides access to.",
+        default=None, alias="featureScope", description="The set of features the consent provides access to."
     )
     consent_token: StrictStr | None = Field(
         default=None,
@@ -89,26 +77,19 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
         description="Represents the authorisation to gain access to the requested features. Required to make a payment request.",
     )
     state: StrictStr | None = Field(
-        default=None,
-        description="Correlation ID used with the `Institution` during the authorisation process.",
+        default=None, description="Correlation ID used with the `Institution` during the authorisation process."
     )
     authorized_at: datetime | None = Field(
-        default=None,
-        alias="authorizedAt",
-        description="Date and time the request was authorised by the `Institution`.",
+        default=None, alias="authorizedAt", description="Date and time the request was authorised by the `Institution`."
     )
     institution_consent_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionConsentId",
-        description="Identification of the consent at the `Institution`.",
+        default=None, alias="institutionConsentId", description="Identification of the consent at the `Institution`."
     )
     charges: Annotated[list[PaymentChargeDetails], Field()] | None = None
     exchange_rate_information: ExchangeRateInformationResponse | None = Field(
         default=None, alias="exchangeRateInformation"
     )
-    authorisation_url: StrictStr | None = Field(
-        default=None, alias="authorisationUrl"
-    )
+    authorisation_url: StrictStr | None = Field(default=None, alias="authorisationUrl")
     qr_code_url: StrictStr | None = Field(
         default=None,
         alias="qrCodeUrl",
@@ -116,9 +97,7 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
     )
     explanation: StrictStr | None = None
     sca_methods: Annotated[list[ScaMethod], Field()] | None = Field(default=None, alias="scaMethods")
-    selected_sca_method: ScaMethod | None = Field(
-        default=None, alias="selectedScaMethod"
-    )
+    selected_sca_method: ScaMethod | None = Field(default=None, alias="selectedScaMethod")
     __properties = [
         "id",
         "userUuid",
@@ -213,10 +192,7 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
                 "state": obj.get("state"),
                 "authorized_at": obj.get("authorizedAt"),
                 "institution_consent_id": obj.get("institutionConsentId"),
-                "charges": [
-                    PaymentChargeDetails.from_dict(_item)
-                    for _item in obj.get("charges")
-                ]
+                "charges": [PaymentChargeDetails.from_dict(_item) for _item in obj.get("charges")]
                 if obj.get("charges") is not None
                 else None,
                 "exchange_rate_information": ExchangeRateInformationResponse.from_dict(
@@ -227,9 +203,7 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
                 "authorisation_url": obj.get("authorisationUrl"),
                 "qr_code_url": obj.get("qrCodeUrl"),
                 "explanation": obj.get("explanation"),
-                "sca_methods": [
-                    ScaMethod.from_dict(_item) for _item in obj.get("scaMethods")
-                ]
+                "sca_methods": [ScaMethod.from_dict(_item) for _item in obj.get("scaMethods")]
                 if obj.get("scaMethods") is not None
                 else None,
                 "selected_sca_method": ScaMethod.from_dict(obj.get("selectedScaMethod"))

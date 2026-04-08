@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -35,7 +34,9 @@ class PostAccountsAccountIdTransactionsCategorisation400ResponseError(BaseModel)
     status: StrictStr | None = None
     support_url: StrictStr | None = Field(None, alias="supportUrl")
     source: StrictStr | None = None
-    issues: Annotated[list[PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner], Field()] | None = None
+    issues: (
+        Annotated[list[PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner], Field()] | None
+    ) = None
     __properties = ["tracingId", "code", "status", "supportUrl", "source", "issues"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -48,9 +49,7 @@ class PostAccountsAccountIdTransactionsCategorisation400ResponseError(BaseModel)
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> PostAccountsAccountIdTransactionsCategorisation400ResponseError:
+    def from_json(cls, json_str: str) -> PostAccountsAccountIdTransactionsCategorisation400ResponseError:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation400ResponseError from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,17 +66,13 @@ class PostAccountsAccountIdTransactionsCategorisation400ResponseError(BaseModel)
         return _dict
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> PostAccountsAccountIdTransactionsCategorisation400ResponseError:
+    def from_dict(cls, obj: dict) -> PostAccountsAccountIdTransactionsCategorisation400ResponseError:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation400ResponseError from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PostAccountsAccountIdTransactionsCategorisation400ResponseError.parse_obj(
-                obj
-            )
+            return PostAccountsAccountIdTransactionsCategorisation400ResponseError.parse_obj(obj)
 
         return PostAccountsAccountIdTransactionsCategorisation400ResponseError.parse_obj(
             {
@@ -87,9 +82,7 @@ class PostAccountsAccountIdTransactionsCategorisation400ResponseError(BaseModel)
                 "support_url": obj.get("supportUrl"),
                 "source": obj.get("source"),
                 "issues": [
-                    PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner.from_dict(
-                        _item
-                    )
+                    PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner.from_dict(_item)
                     for _item in obj.get("issues")
                 ]
                 if obj.get("issues") is not None

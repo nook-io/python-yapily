@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,28 +25,14 @@ class ComplianceDataAddress(BaseModel):
     """
 
     address_line1: StrictStr = Field(
-        default=...,
-        alias="addressLine1",
-        description="__Mandatory__. AddressLine1 of the business.",
+        default=..., alias="addressLine1", description="__Mandatory__. AddressLine1 of the business."
     )
     address_line2: StrictStr | None = Field(
-        default=None,
-        alias="addressLine2",
-        description="__Optional__. AddressLine2 of the business.",
+        default=None, alias="addressLine2", description="__Optional__. AddressLine2 of the business."
     )
-    town_name: StrictStr = Field(
-        default=...,
-        alias="townName",
-        description="__Mandatory__. Town name of the business.",
-    )
-    post_code: StrictStr = Field(
-        default=...,
-        alias="postCode",
-        description="__Mandatory__. Post code of the business.",
-    )
-    country: StrictStr = Field(
-        default=..., description="__Mandatory__. Country of the business."
-    )
+    town_name: StrictStr = Field(default=..., alias="townName", description="__Mandatory__. Town name of the business.")
+    post_code: StrictStr = Field(default=..., alias="postCode", description="__Mandatory__. Post code of the business.")
+    country: StrictStr = Field(default=..., description="__Mandatory__. Country of the business.")
     __properties = ["addressLine1", "addressLine2", "townName", "postCode", "country"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -33,9 +32,7 @@ class FeatureDetails(BaseModel):
         description="Endpoints that are associated with the feature e.g. (available for use if an Institution supports a feature).",
     )
     documentation_url: StrictStr | None = Field(
-        default=None,
-        alias="documentationUrl",
-        description="The link to further documentation regarding the feature.",
+        default=None, alias="documentationUrl", description="The link to further documentation regarding the feature."
     )
     __properties = ["feature", "endpoint", "documentationUrl"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

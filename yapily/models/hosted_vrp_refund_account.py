@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,7 +28,9 @@ class HostedVrpRefundAccount(BaseModel):
     """
 
     name: StrictStr | None = None
-    account_identifications: Annotated[list[HostedVrpAccountIdentification], Field(unique_items=True)] | None = Field(default=None, alias="accountIdentifications")
+    account_identifications: Annotated[list[HostedVrpAccountIdentification], Field(unique_items=True)] | None = Field(
+        default=None, alias="accountIdentifications"
+    )
     __properties = ["name", "accountIdentifications"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -71,8 +72,7 @@ class HostedVrpRefundAccount(BaseModel):
             {
                 "name": obj.get("name"),
                 "account_identifications": [
-                    HostedVrpAccountIdentification.from_dict(_item)
-                    for _item in obj.get("accountIdentifications")
+                    HostedVrpAccountIdentification.from_dict(_item) for _item in obj.get("accountIdentifications")
                 ]
                 if obj.get("accountIdentifications") is not None
                 else None,

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -56,6 +55,4 @@ class ResponseForwardedData(BaseModel):
         if not isinstance(obj, dict):
             return ResponseForwardedData.parse_obj(obj)
 
-        return ResponseForwardedData.parse_obj(
-            {"headers": obj.get("headers"), "url": obj.get("url")}
-        )
+        return ResponseForwardedData.parse_obj({"headers": obj.get("headers"), "url": obj.get("url")})

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,9 +29,7 @@ class AccountAuthorisationRequest(BaseModel):
     """
 
     user_uuid: StrictStr | None = Field(
-        default=None,
-        alias="userUuid",
-        description="`User` for which the authorisation request was created.",
+        default=None, alias="userUuid", description="`User` for which the authorisation request was created."
     )
     application_user_id: StrictStr | None = Field(
         default=None,
@@ -59,9 +56,7 @@ class AccountAuthorisationRequest(BaseModel):
         alias="oneTimeToken",
         description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
     )
-    account_request: AccountRequest | None = Field(
-        default=None, alias="accountRequest"
-    )
+    account_request: AccountRequest | None = Field(default=None, alias="accountRequest")
     __properties = [
         "userUuid",
         "applicationUserId",
@@ -114,9 +109,7 @@ class AccountAuthorisationRequest(BaseModel):
                 "forward_parameters": obj.get("forwardParameters"),
                 "institution_id": obj.get("institutionId"),
                 "callback": obj.get("callback"),
-                "redirect": RedirectRequest.from_dict(obj.get("redirect"))
-                if obj.get("redirect") is not None
-                else None,
+                "redirect": RedirectRequest.from_dict(obj.get("redirect")) if obj.get("redirect") is not None else None,
                 "one_time_token": obj.get("oneTimeToken"),
                 "account_request": AccountRequest.from_dict(obj.get("accountRequest"))
                 if obj.get("accountRequest") is not None

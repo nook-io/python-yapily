@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -49,9 +48,7 @@ class RESTClientObject:
 
         ssl_context = ssl.create_default_context(cafile=configuration.ssl_ca_cert)
         if configuration.cert_file:
-            ssl_context.load_cert_chain(
-                configuration.cert_file, keyfile=configuration.key_file
-            )
+            ssl_context.load_cert_chain(configuration.cert_file, keyfile=configuration.key_file)
 
         if not configuration.verify_ssl:
             ssl_context.check_hostname = False
@@ -100,9 +97,7 @@ class RESTClientObject:
         assert method in ["GET", "HEAD", "DELETE", "POST", "PUT", "PATCH", "OPTIONS"]
 
         if post_params and body:
-            raise ApiValueError(
-                "body parameter cannot be used with post_params parameter."
-            )
+            raise ApiValueError("body parameter cannot be used with post_params parameter.")
 
         post_params = post_params or {}
         headers = headers or {}
@@ -175,14 +170,7 @@ class RESTClientObject:
 
         return r
 
-    async def get_request(
-        self,
-        url,
-        headers=None,
-        query_params=None,
-        _preload_content=True,
-        _request_timeout=None,
-    ):
+    async def get_request(self, url, headers=None, query_params=None, _preload_content=True, _request_timeout=None):
         return await self.request(
             "GET",
             url,
@@ -192,14 +180,7 @@ class RESTClientObject:
             query_params=query_params,
         )
 
-    async def head_request(
-        self,
-        url,
-        headers=None,
-        query_params=None,
-        _preload_content=True,
-        _request_timeout=None,
-    ):
+    async def head_request(self, url, headers=None, query_params=None, _preload_content=True, _request_timeout=None):
         return await self.request(
             "HEAD",
             url,
@@ -231,13 +212,7 @@ class RESTClientObject:
         )
 
     async def delete_request(
-        self,
-        url,
-        headers=None,
-        query_params=None,
-        body=None,
-        _preload_content=True,
-        _request_timeout=None,
+        self, url, headers=None, query_params=None, body=None, _preload_content=True, _request_timeout=None
     ):
         return await self.request(
             "DELETE",

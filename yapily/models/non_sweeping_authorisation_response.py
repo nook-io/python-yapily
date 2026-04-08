@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -63,20 +62,12 @@ class NonSweepingAuthorisationResponse(BaseModel):
     )
     state: StrictStr | None = None
     authorized_at: datetime | None = Field(default=None, alias="authorizedAt")
-    institution_consent_id: StrictStr | None = Field(
-        default=None, alias="institutionConsentId"
-    )
-    authorisation_url: StrictStr | None = Field(
-        default=None, alias="authorisationUrl"
-    )
+    institution_consent_id: StrictStr | None = Field(default=None, alias="institutionConsentId")
+    authorisation_url: StrictStr | None = Field(default=None, alias="authorisationUrl")
     qr_code_url: StrictStr | None = Field(default=None, alias="qrCodeUrl")
-    control_parameters: NonSweepingControlParameters | None = Field(
-        default=None, alias="controlParameters"
-    )
+    control_parameters: NonSweepingControlParameters | None = Field(default=None, alias="controlParameters")
     payer: Payer | None = None
-    initiation_details: InitiationDetails | None = Field(
-        default=None, alias="initiationDetails"
-    )
+    initiation_details: InitiationDetails | None = Field(default=None, alias="initiationDetails")
     __properties = [
         "id",
         "userId",
@@ -148,17 +139,11 @@ class NonSweepingAuthorisationResponse(BaseModel):
                 "institution_consent_id": obj.get("institutionConsentId"),
                 "authorisation_url": obj.get("authorisationUrl"),
                 "qr_code_url": obj.get("qrCodeUrl"),
-                "control_parameters": NonSweepingControlParameters.from_dict(
-                    obj.get("controlParameters")
-                )
+                "control_parameters": NonSweepingControlParameters.from_dict(obj.get("controlParameters"))
                 if obj.get("controlParameters") is not None
                 else None,
-                "payer": Payer.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
-                "initiation_details": InitiationDetails.from_dict(
-                    obj.get("initiationDetails")
-                )
+                "payer": Payer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+                "initiation_details": InitiationDetails.from_dict(obj.get("initiationDetails"))
                 if obj.get("initiationDetails") is not None
                 else None,
             }

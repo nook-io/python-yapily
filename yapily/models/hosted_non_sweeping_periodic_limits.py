@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -75,9 +74,7 @@ class HostedNonSweepingPeriodicLimits(BaseModel):
 
         return HostedNonSweepingPeriodicLimits.parse_obj(
             {
-                "max_amount": Amount.from_dict(obj.get("maxAmount"))
-                if obj.get("maxAmount") is not None
-                else None,
+                "max_amount": Amount.from_dict(obj.get("maxAmount")) if obj.get("maxAmount") is not None else None,
                 "frequency": obj.get("frequency"),
                 "alignment": obj.get("alignment"),
             }

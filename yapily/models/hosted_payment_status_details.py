@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -31,13 +30,9 @@ class HostedPaymentStatusDetails(BaseModel):
 
     status: PaymentStatus | None = None
     status_update_date: datetime | None = Field(
-        default=None,
-        alias="statusUpdateDate",
-        description="Date and time the status was updated.",
+        default=None, alias="statusUpdateDate", description="Date and time the status was updated."
     )
-    iso_status: HostedPaymentIsoStatus | None = Field(
-        default=None, alias="isoStatus"
-    )
+    iso_status: HostedPaymentIsoStatus | None = Field(default=None, alias="isoStatus")
     __properties = ["status", "statusUpdateDate", "isoStatus"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

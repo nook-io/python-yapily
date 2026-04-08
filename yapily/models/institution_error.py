@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,9 +25,7 @@ class InstitutionError(BaseModel):
     """
 
     error_message: StrictStr | None = Field(
-        default=None,
-        alias="errorMessage",
-        description="Textual description of the `Institution` error.",
+        default=None, alias="errorMessage", description="Textual description of the `Institution` error."
     )
     http_status_code: StrictInt | None = Field(
         default=None,
@@ -65,8 +62,5 @@ class InstitutionError(BaseModel):
             return InstitutionError.parse_obj(obj)
 
         return InstitutionError.parse_obj(
-            {
-                "error_message": obj.get("errorMessage"),
-                "http_status_code": obj.get("httpStatusCode"),
-            }
+            {"error_message": obj.get("errorMessage"), "http_status_code": obj.get("httpStatusCode")}
         )

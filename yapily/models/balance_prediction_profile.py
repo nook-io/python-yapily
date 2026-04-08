@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,8 +29,7 @@ class BalancePredictionProfile(BaseModel):
     """
 
     status: StrictStr | None = Field(
-        default=None,
-        description="The status, will be COMPLETED which represents successful retreival of profile.",
+        default=None, description="The status, will be COMPLETED which represents successful retreival of profile."
     )
     profile_consents: Annotated[list[ProfileConsent], Field()] | None = Field(
         default=None,
@@ -39,9 +37,7 @@ class BalancePredictionProfile(BaseModel):
         description="A list of ProfileConsents used in the Balance Prediction profile.",
     )
     enriched_balances: Annotated[list[EnrichedBalances], Field()] | None = Field(
-        default=None,
-        alias="enrichedBalances",
-        description="A list of Balances returned by Balance Prediction profile.",
+        default=None, alias="enrichedBalances", description="A list of Balances returned by Balance Prediction profile."
     )
     __properties = ["status", "profileConsents", "enrichedBalances"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -90,16 +86,10 @@ class BalancePredictionProfile(BaseModel):
         return BalancePredictionProfile.parse_obj(
             {
                 "status": obj.get("status"),
-                "profile_consents": [
-                    ProfileConsent.from_dict(_item)
-                    for _item in obj.get("profileConsents")
-                ]
+                "profile_consents": [ProfileConsent.from_dict(_item) for _item in obj.get("profileConsents")]
                 if obj.get("profileConsents") is not None
                 else None,
-                "enriched_balances": [
-                    EnrichedBalances.from_dict(_item)
-                    for _item in obj.get("enrichedBalances")
-                ]
+                "enriched_balances": [EnrichedBalances.from_dict(_item) for _item in obj.get("enrichedBalances")]
                 if obj.get("enrichedBalances") is not None
                 else None,
             }

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,13 +27,9 @@ class ApplicationResponseListMetaPagination(BaseModel):
     ApplicationResponseListMetaPagination
     """
 
-    var_self: ApplicationResponseListMetaPaginationSelf | None = Field(
-        default=None, alias="self"
-    )
+    var_self: ApplicationResponseListMetaPaginationSelf | None = Field(default=None, alias="self")
     total_count: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=None,
-        alias="totalCount",
-        description="The total number of applications that match the given filter.",
+        default=None, alias="totalCount", description="The total number of applications that match the given filter."
     )
     __properties = ["self", "totalCount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -71,9 +66,7 @@ class ApplicationResponseListMetaPagination(BaseModel):
 
         return ApplicationResponseListMetaPagination.parse_obj(
             {
-                "var_self": ApplicationResponseListMetaPaginationSelf.from_dict(
-                    obj.get("self")
-                )
+                "var_self": ApplicationResponseListMetaPaginationSelf.from_dict(obj.get("self"))
                 if obj.get("self") is not None
                 else None,
                 "total_count": obj.get("totalCount"),

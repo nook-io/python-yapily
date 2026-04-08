@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,8 +25,7 @@ class GetBulkPaymentStatus200ResponseDataStatusDetails(BaseModel):
     """
 
     status: StrictStr | None = Field(
-        default=None,
-        description="Bulk file status. Enum: `COMPLETED` `PENDING` `FAILED` `UNKNOWN`",
+        default=None, description="Bulk file status. Enum: `COMPLETED` `PENDING` `FAILED` `UNKNOWN`"
     )
     updated_at: StrictStr | None = Field(default=None, alias="updatedAt")
     __properties = ["status", "updatedAt"]
@@ -42,9 +40,7 @@ class GetBulkPaymentStatus200ResponseDataStatusDetails(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> GetBulkPaymentStatus200ResponseDataStatusDetails:
+    def from_json(cls, json_str: str) -> GetBulkPaymentStatus200ResponseDataStatusDetails:
         """Create an instance of GetBulkPaymentStatus200ResponseDataStatusDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 

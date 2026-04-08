@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -55,6 +54,4 @@ class GetBulkPaymentStatus200ResponseMeta(BaseModel):
         if not isinstance(obj, dict):
             return GetBulkPaymentStatus200ResponseMeta.parse_obj(obj)
 
-        return GetBulkPaymentStatus200ResponseMeta.parse_obj(
-            {"tracing_id": obj.get("tracingId")}
-        )
+        return GetBulkPaymentStatus200ResponseMeta.parse_obj({"tracing_id": obj.get("tracingId")})

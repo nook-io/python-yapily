@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -48,9 +47,7 @@ class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnri
         )
         """
 
-    def testGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentTransactionHash(
-        self,
-    ):
+    def testGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentTransactionHash(self):
         """Test GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentTransactionHash"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)

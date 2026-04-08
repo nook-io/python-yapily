@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -33,9 +32,7 @@ class AccountBalance(BaseModel):
 
     type: AccountBalanceType | None = None
     date_time: datetime | None = Field(
-        default=None,
-        alias="dateTime",
-        description="Date and time of the reported balance.",
+        default=None, alias="dateTime", description="Date and time of the reported balance."
     )
     balance_amount: Amount | None = Field(default=None, alias="balanceAmount")
     credit_line_included: StrictBool | None = Field(
@@ -44,17 +41,9 @@ class AccountBalance(BaseModel):
         description="_Optional_. Indicates whether any credit lines are included in the balance.",
     )
     credit_lines: Annotated[list[CreditLine], Field()] | None = Field(
-        default=None,
-        alias="creditLines",
-        description="_Optional_. Specifies the type of balance.",
+        default=None, alias="creditLines", description="_Optional_. Specifies the type of balance."
     )
-    __properties = [
-        "type",
-        "dateTime",
-        "balanceAmount",
-        "creditLineIncluded",
-        "creditLines",
-    ]
+    __properties = ["type", "dateTime", "balanceAmount", "creditLineIncluded", "creditLines"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -102,9 +91,7 @@ class AccountBalance(BaseModel):
                 if obj.get("balanceAmount") is not None
                 else None,
                 "credit_line_included": obj.get("creditLineIncluded"),
-                "credit_lines": [
-                    CreditLine.from_dict(_item) for _item in obj.get("creditLines")
-                ]
+                "credit_lines": [CreditLine.from_dict(_item) for _item in obj.get("creditLines")]
                 if obj.get("creditLines") is not None
                 else None,
             }

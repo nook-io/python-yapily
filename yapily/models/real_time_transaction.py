@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -45,16 +44,10 @@ class RealTimeTransaction(BaseModel):
     booking_date_time: datetime | None = Field(default=None, alias="bookingDateTime")
     value_date_time: datetime | None = Field(default=None, alias="valueDateTime")
     status: TransactionStatusEnum | None = None
-    transaction_amount: Amount | None = Field(
-        default=None, alias="transactionAmount"
-    )
+    transaction_amount: Amount | None = Field(default=None, alias="transactionAmount")
     gross_amount: Amount | None = Field(default=None, alias="grossAmount")
-    currency_exchange: CurrencyExchange | None = Field(
-        default=None, alias="currencyExchange"
-    )
-    charge_details: TransactionChargeDetails | None = Field(
-        default=None, alias="chargeDetails"
-    )
+    currency_exchange: CurrencyExchange | None = Field(default=None, alias="currencyExchange")
+    charge_details: TransactionChargeDetails | None = Field(default=None, alias="chargeDetails")
     reference: StrictStr | None = None
     statement_references: Annotated[list[StatementReference], Field()] | None = Field(
         default=None, alias="statementReferences"
@@ -63,12 +56,8 @@ class RealTimeTransaction(BaseModel):
     transaction_information: Annotated[list[StrictStr], Field()] | None = Field(
         default=None, alias="transactionInformation"
     )
-    address_details: AddressDetails | None = Field(
-        default=None, alias="addressDetails"
-    )
-    iso_bank_transaction_code: IsoBankTransactionCode | None = Field(
-        default=None, alias="isoBankTransactionCode"
-    )
+    address_details: AddressDetails | None = Field(default=None, alias="addressDetails")
+    iso_bank_transaction_code: IsoBankTransactionCode | None = Field(default=None, alias="isoBankTransactionCode")
     proprietary_bank_transaction_code: ProprietaryBankTransactionCode | None = Field(
         default=None, alias="proprietaryBankTransactionCode"
     )
@@ -76,9 +65,7 @@ class RealTimeTransaction(BaseModel):
     payee_details: Payee | None = Field(default=None, alias="payeeDetails")
     payer_details: Payer | None = Field(default=None, alias="payerDetails")
     merchant: Merchant | None = None
-    supplementary_data: dict[str, Any] | None = Field(
-        default=None, alias="supplementaryData"
-    )
+    supplementary_data: dict[str, Any] | None = Field(default=None, alias="supplementaryData")
     __properties = [
         "id",
         "date",
@@ -147,9 +134,7 @@ class RealTimeTransaction(BaseModel):
             _dict["isoBankTransactionCode"] = self.iso_bank_transaction_code.to_dict()
         # override the default output from pydantic by calling `to_dict()` of proprietary_bank_transaction_code
         if self.proprietary_bank_transaction_code:
-            _dict["proprietaryBankTransactionCode"] = (
-                self.proprietary_bank_transaction_code.to_dict()
-            )
+            _dict["proprietaryBankTransactionCode"] = self.proprietary_bank_transaction_code.to_dict()
         # override the default output from pydantic by calling `to_dict()` of balance
         if self.balance:
             _dict["balance"] = self.balance.to_dict()
@@ -186,20 +171,15 @@ class RealTimeTransaction(BaseModel):
                 "gross_amount": Amount.from_dict(obj.get("grossAmount"))
                 if obj.get("grossAmount") is not None
                 else None,
-                "currency_exchange": CurrencyExchange.from_dict(
-                    obj.get("currencyExchange")
-                )
+                "currency_exchange": CurrencyExchange.from_dict(obj.get("currencyExchange"))
                 if obj.get("currencyExchange") is not None
                 else None,
-                "charge_details": TransactionChargeDetails.from_dict(
-                    obj.get("chargeDetails")
-                )
+                "charge_details": TransactionChargeDetails.from_dict(obj.get("chargeDetails"))
                 if obj.get("chargeDetails") is not None
                 else None,
                 "reference": obj.get("reference"),
                 "statement_references": [
-                    StatementReference.from_dict(_item)
-                    for _item in obj.get("statementReferences")
+                    StatementReference.from_dict(_item) for _item in obj.get("statementReferences")
                 ]
                 if obj.get("statementReferences") is not None
                 else None,
@@ -208,9 +188,7 @@ class RealTimeTransaction(BaseModel):
                 "address_details": AddressDetails.from_dict(obj.get("addressDetails"))
                 if obj.get("addressDetails") is not None
                 else None,
-                "iso_bank_transaction_code": IsoBankTransactionCode.from_dict(
-                    obj.get("isoBankTransactionCode")
-                )
+                "iso_bank_transaction_code": IsoBankTransactionCode.from_dict(obj.get("isoBankTransactionCode"))
                 if obj.get("isoBankTransactionCode") is not None
                 else None,
                 "proprietary_bank_transaction_code": ProprietaryBankTransactionCode.from_dict(
@@ -218,18 +196,14 @@ class RealTimeTransaction(BaseModel):
                 )
                 if obj.get("proprietaryBankTransactionCode") is not None
                 else None,
-                "balance": TransactionBalance.from_dict(obj.get("balance"))
-                if obj.get("balance") is not None
-                else None,
+                "balance": TransactionBalance.from_dict(obj.get("balance")) if obj.get("balance") is not None else None,
                 "payee_details": Payee.from_dict(obj.get("payeeDetails"))
                 if obj.get("payeeDetails") is not None
                 else None,
                 "payer_details": Payer.from_dict(obj.get("payerDetails"))
                 if obj.get("payerDetails") is not None
                 else None,
-                "merchant": Merchant.from_dict(obj.get("merchant"))
-                if obj.get("merchant") is not None
-                else None,
+                "merchant": Merchant.from_dict(obj.get("merchant")) if obj.get("merchant") is not None else None,
                 "supplementary_data": obj.get("supplementaryData"),
             }
         )

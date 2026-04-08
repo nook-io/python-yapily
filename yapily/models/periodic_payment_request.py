@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -40,17 +39,13 @@ class PeriodicPaymentRequest(BaseModel):
         alias="nextPaymentDateTime",
         description="__Conditional__. Defines when to start the recurring payment date and time. Specify this if you want the first payment to start on a different day than what the frequency object defines.",
     )
-    next_payment_amount: Amount | None = Field(
-        default=None, alias="nextPaymentAmount"
-    )
+    next_payment_amount: Amount | None = Field(default=None, alias="nextPaymentAmount")
     final_payment_date_time: datetime | None = Field(
         default=None,
         alias="finalPaymentDateTime",
         description="__Conditional__. Defines the final payment date and time. To create an open-ended periodic payment, do not specify this property.",
     )
-    final_payment_amount: Amount | None = Field(
-        default=None, alias="finalPaymentAmount"
-    )
+    final_payment_amount: Amount | None = Field(default=None, alias="finalPaymentAmount")
     __properties = [
         "frequency",
         "numberOfPayments",

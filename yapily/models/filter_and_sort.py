@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -38,8 +37,7 @@ class FilterAndSort(BaseModel):
         description="__Optional__. The latest date and time of resources / records that should be returned.",
     )
     limit: StrictInt | None = Field(
-        default=None,
-        description="__Optional__. The maximum number of resources / records that should be returned.",
+        default=None, description="__Optional__. The maximum number of resources / records that should be returned."
     )
     sort: SortEnum | None = None
     offset: StrictInt | None = None

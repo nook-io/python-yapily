@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,9 +28,7 @@ class Payer(BaseModel):
     __Conditional__. Details of the benefactor [person or business].  # noqa: E501
     """
 
-    name: StrictStr | None = Field(
-        default=None, description="The account holder name of the Payer."
-    )
+    name: StrictStr | None = Field(default=None, description="The account holder name of the Payer.")
     account_identifications: Annotated[list[AccountIdentification], Field(unique_items=True)] = Field(
         default=...,
         alias="accountIdentifications",
@@ -82,13 +79,10 @@ class Payer(BaseModel):
             {
                 "name": obj.get("name"),
                 "account_identifications": [
-                    AccountIdentification.from_dict(_item)
-                    for _item in obj.get("accountIdentifications")
+                    AccountIdentification.from_dict(_item) for _item in obj.get("accountIdentifications")
                 ]
                 if obj.get("accountIdentifications") is not None
                 else None,
-                "address": Address.from_dict(obj.get("address"))
-                if obj.get("address") is not None
-                else None,
+                "address": Address.from_dict(obj.get("address")) if obj.get("address") is not None else None,
             }
         )

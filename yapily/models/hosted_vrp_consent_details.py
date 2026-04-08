@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -32,27 +31,19 @@ class HostedVRPConsentDetails(BaseModel):
     HostedVRPConsentDetails
     """
 
-    id: StrictStr = Field(
-        default=..., description="The unique ID of the consent request."
-    )
+    id: StrictStr = Field(default=..., description="The unique ID of the consent request.")
     user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="Represents the Unique Identifier for the `User` assigned by Yapily.",
+        default=None, alias="userId", description="Represents the Unique Identifier for the `User` assigned by Yapily."
     )
     application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="Represents the User-friendly reference to the `User`.",
+        default=None, alias="applicationUserId", description="Represents the User-friendly reference to the `User`."
     )
     application_id: StrictStr = Field(
         default=...,
         alias="applicationId",
         description="Represens the Unique Identifier of the `Application` the user is associated with.",
     )
-    institution_identifiers: InstitutionIdentifiers | None = Field(
-        default=None, alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiers | None = Field(default=None, alias="institutionIdentifiers")
     user_settings: UserSettings | None = Field(default=None, alias="userSettings")
     redirect_url: StrictStr | None = Field(
         default=None,
@@ -67,9 +58,7 @@ class HostedVRPConsentDetails(BaseModel):
         description="Represents the date and time at which the auth Token will expire.",
     )
     consent_token: StrictStr | None = Field(
-        default=None,
-        alias="consentToken",
-        description="Represents the authorisation to make VRP payments",
+        default=None, alias="consentToken", description="Represents the authorisation to make VRP payments"
     )
     consent_status: StrictStr = Field(
         default=...,
@@ -143,25 +132,19 @@ class HostedVRPConsentDetails(BaseModel):
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),
                 "application_id": obj.get("applicationId"),
-                "institution_identifiers": InstitutionIdentifiers.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiers.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "user_settings": UserSettings.from_dict(obj.get("userSettings"))
                 if obj.get("userSettings") is not None
                 else None,
                 "redirect_url": obj.get("redirectUrl"),
-                "vrp_setup": VRPSetup.from_dict(obj.get("vrpSetup"))
-                if obj.get("vrpSetup") is not None
-                else None,
+                "vrp_setup": VRPSetup.from_dict(obj.get("vrpSetup")) if obj.get("vrpSetup") is not None else None,
                 "created_at": obj.get("createdAt"),
                 "authorisation_expires_at": obj.get("authorisationExpiresAt"),
                 "consent_token": obj.get("consentToken"),
                 "consent_status": obj.get("consentStatus"),
-                "phases": [
-                    HostedVRPPhase.from_dict(_item) for _item in obj.get("phases")
-                ]
+                "phases": [HostedVRPPhase.from_dict(_item) for _item in obj.get("phases")]
                 if obj.get("phases") is not None
                 else None,
             }

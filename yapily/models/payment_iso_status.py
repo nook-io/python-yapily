@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,9 +27,7 @@ class PaymentIsoStatus(BaseModel):
     """
 
     code: PaymentIsoStatusCodeEnum | None = None
-    name: StrictStr | None = Field(
-        default=None, description="The full name of the ISO 20022 `PaymentStatusCode`."
-    )
+    name: StrictStr | None = Field(default=None, description="The full name of the ISO 20022 `PaymentStatusCode`.")
     __properties = ["code", "name"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -60,6 +57,4 @@ class PaymentIsoStatus(BaseModel):
         if not isinstance(obj, dict):
             return PaymentIsoStatus.parse_obj(obj)
 
-        return PaymentIsoStatus.parse_obj(
-            {"code": obj.get("code"), "name": obj.get("name")}
-        )
+        return PaymentIsoStatus.parse_obj({"code": obj.get("code"), "name": obj.get("name")})

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,20 +26,12 @@ class ComplianceDataBusiness(BaseModel):
     __Conditional__. Mandatory if the type is BUSINESS.  # noqa: E501
     """
 
-    name: StrictStr = Field(
-        default=..., description="This is the registered company name of your end user."
-    )
+    name: StrictStr = Field(default=..., description="This is the registered company name of your end user.")
     registration_number: StrictStr = Field(
-        default=...,
-        alias="registrationNumber",
-        description="This is the registered company number of the business.",
+        default=..., alias="registrationNumber", description="This is the registered company number of the business."
     )
-    registered_address: ComplianceDataAddress = Field(
-        default=..., alias="registeredAddress"
-    )
-    trading_address: ComplianceDataAddress | None = Field(
-        default=None, alias="tradingAddress"
-    )
+    registered_address: ComplianceDataAddress = Field(default=..., alias="registeredAddress")
+    trading_address: ComplianceDataAddress | None = Field(default=None, alias="tradingAddress")
     __properties = ["name", "registrationNumber", "registeredAddress", "tradingAddress"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -81,14 +72,10 @@ class ComplianceDataBusiness(BaseModel):
             {
                 "name": obj.get("name"),
                 "registration_number": obj.get("registrationNumber"),
-                "registered_address": ComplianceDataAddress.from_dict(
-                    obj.get("registeredAddress")
-                )
+                "registered_address": ComplianceDataAddress.from_dict(obj.get("registeredAddress"))
                 if obj.get("registeredAddress") is not None
                 else None,
-                "trading_address": ComplianceDataAddress.from_dict(
-                    obj.get("tradingAddress")
-                )
+                "trading_address": ComplianceDataAddress.from_dict(obj.get("tradingAddress"))
                 if obj.get("tradingAddress") is not None
                 else None,
             }

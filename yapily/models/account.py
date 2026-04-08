@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -33,16 +32,10 @@ class Account(BaseModel):
     Account
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the account."
-    )
-    type: StrictStr | None = Field(
-        default=None,
-        description="Specifies the type of account e.g. (BUSINESS_CURRENT).",
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier of the account.")
+    type: StrictStr | None = Field(default=None, description="Specifies the type of account e.g. (BUSINESS_CURRENT).")
     description: StrictStr | None = Field(
-        default=None,
-        description="Product name as defined by the financial institution for this account",
+        default=None, description="Product name as defined by the financial institution for this account"
     )
     balance: StrictFloat | StrictInt | None = Field(
         default=None,
@@ -62,13 +55,11 @@ class Account(BaseModel):
         default=None,
         description="Supplementary specifications that might be provided by the Bank. These provide further characteristics about the account.",
     )
-    account_names: Annotated[list[AccountName], Field()] | None = Field(
-        default=None, alias="accountNames"
+    account_names: Annotated[list[AccountName], Field()] | None = Field(default=None, alias="accountNames")
+    account_identifications: Annotated[list[AccountIdentification], Field(unique_items=True)] | None = Field(
+        default=None, alias="accountIdentifications"
     )
-    account_identifications: Annotated[list[AccountIdentification], Field(unique_items=True)] | None = Field(default=None, alias="accountIdentifications")
-    account_balances: Annotated[list[AccountBalance], Field()] | None = Field(
-        default=None, alias="accountBalances"
-    )
+    account_balances: Annotated[list[AccountBalance], Field()] | None = Field(default=None, alias="accountBalances")
     consolidated_account_information: ConsolidatedAccountInformation | None = Field(
         default=None, alias="consolidatedAccountInformation"
     )
@@ -128,9 +119,7 @@ class Account(BaseModel):
             _dict["accountBalances"] = _items
         # override the default output from pydantic by calling `to_dict()` of consolidated_account_information
         if self.consolidated_account_information:
-            _dict["consolidatedAccountInformation"] = (
-                self.consolidated_account_information.to_dict()
-            )
+            _dict["consolidatedAccountInformation"] = self.consolidated_account_information.to_dict()
         return _dict
 
     @classmethod
@@ -153,21 +142,15 @@ class Account(BaseModel):
                 "account_type": obj.get("accountType"),
                 "nickname": obj.get("nickname"),
                 "details": obj.get("details"),
-                "account_names": [
-                    AccountName.from_dict(_item) for _item in obj.get("accountNames")
-                ]
+                "account_names": [AccountName.from_dict(_item) for _item in obj.get("accountNames")]
                 if obj.get("accountNames") is not None
                 else None,
                 "account_identifications": [
-                    AccountIdentification.from_dict(_item)
-                    for _item in obj.get("accountIdentifications")
+                    AccountIdentification.from_dict(_item) for _item in obj.get("accountIdentifications")
                 ]
                 if obj.get("accountIdentifications") is not None
                 else None,
-                "account_balances": [
-                    AccountBalance.from_dict(_item)
-                    for _item in obj.get("accountBalances")
-                ]
+                "account_balances": [AccountBalance.from_dict(_item) for _item in obj.get("accountBalances")]
                 if obj.get("accountBalances") is not None
                 else None,
                 "consolidated_account_information": ConsolidatedAccountInformation.from_dict(

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -73,12 +72,8 @@ class ApiListOfApplicationResponse(BaseModel):
 
         return ApiListOfApplicationResponse.parse_obj(
             {
-                "meta": ApplicationResponseListMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
-                "data": [
-                    ApplicationResponse.from_dict(_item) for _item in obj.get("data")
-                ]
+                "meta": ApplicationResponseListMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
+                "data": [ApplicationResponse.from_dict(_item) for _item in obj.get("data")]
                 if obj.get("data") is not None
                 else None,
             }

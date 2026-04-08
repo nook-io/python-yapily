@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -53,21 +52,12 @@ class EnrichmentApi:
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
-        account_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for account")
-        ],
+        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for account")],
         categorisation_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="Unique identifier for transaction categorisation request",
-            ),
+            StrictStr, Field(..., description="Unique identifier for transaction categorisation request")
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         limit: Annotated[
             Annotated[int, Field(strict=True, le=1000, ge=100)] | None,
@@ -77,9 +67,7 @@ class EnrichmentApi:
         ] = None,
         page: Annotated[
             Annotated[int, Field(strict=True, ge=1)] | None,
-            Field(
-                description="__Optional__. The page number to be returned. If not specified will default to 1."
-            ),
+            Field(description="__Optional__. The page number to be returned. If not specified will default to 1."),
         ] = None,
         **kwargs,
     ) -> GetAccountsTransactionsCategorised200Response:
@@ -113,13 +101,7 @@ class EnrichmentApi:
             message = "Error! Please call the get_accounts_transactions_categorised_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_accounts_transactions_categorised_with_http_info(
-            consent,
-            account_id,
-            categorisation_id,
-            sub_application,
-            limit,
-            page,
-            **kwargs,
+            consent, account_id, categorisation_id, sub_application, limit, page, **kwargs
         )
 
     @validate_arguments
@@ -132,21 +114,12 @@ class EnrichmentApi:
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
-        account_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for account")
-        ],
+        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for account")],
         categorisation_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="Unique identifier for transaction categorisation request",
-            ),
+            StrictStr, Field(..., description="Unique identifier for transaction categorisation request")
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         limit: Annotated[
             Annotated[int, Field(strict=True, le=1000, ge=100)] | None,
@@ -156,9 +129,7 @@ class EnrichmentApi:
         ] = None,
         page: Annotated[
             Annotated[int, Field(strict=True, ge=1)] | None,
-            Field(
-                description="__Optional__. The page number to be returned. If not specified will default to 1."
-            ),
+            Field(description="__Optional__. The page number to be returned. If not specified will default to 1."),
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -203,14 +174,7 @@ class EnrichmentApi:
 
         _params = locals()
 
-        _all_params = [
-            "consent",
-            "account_id",
-            "categorisation_id",
-            "sub_application",
-            "limit",
-            "page",
-        ]
+        _all_params = ["consent", "account_id", "categorisation_id", "sub_application", "limit", "page"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -226,8 +190,7 @@ class EnrichmentApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_accounts_transactions_categorised"
+                    f"Got an unexpected keyword argument '{_key}' to method get_accounts_transactions_categorised"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -300,15 +263,9 @@ class EnrichmentApi:
     @validate_arguments
     async def get_categorisation_account_type(
         self,
-        account_type: Annotated[
-            StrictStr,
-            Field(..., description="type of bank account (consumer or business)"),
-        ],
+        account_type: Annotated[StrictStr, Field(..., description="type of bank account (consumer or business)")],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> GetCategorisationAccountType200Response:
@@ -333,22 +290,14 @@ class EnrichmentApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_categorisation_account_type_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_categorisation_account_type_with_http_info(
-            account_type, sub_application, **kwargs
-        )
+        return await self.get_categorisation_account_type_with_http_info(account_type, sub_application, **kwargs)
 
     @validate_arguments
     async def get_categorisation_account_type_with_http_info(
         self,
-        account_type: Annotated[
-            StrictStr,
-            Field(..., description="type of bank account (consumer or business)"),
-        ],
+        account_type: Annotated[StrictStr, Field(..., description="type of bank account (consumer or business)")],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -401,8 +350,7 @@ class EnrichmentApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_categorisation_account_type"
+                    f"Got an unexpected keyword argument '{_key}' to method get_categorisation_account_type"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -470,9 +418,7 @@ class EnrichmentApi:
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
-        account_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for account")
-        ],
+        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for account")],
         psu_id: Annotated[
             StrictStr | None,
             Field(
@@ -492,12 +438,10 @@ class EnrichmentApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
-        post_accounts_account_id_transactions_categorisation_request: PostAccountsAccountIdTransactionsCategorisationRequest | None = None,
+        post_accounts_account_id_transactions_categorisation_request: PostAccountsAccountIdTransactionsCategorisationRequest
+        | None = None,
         **kwargs,
     ) -> PostAccountsAccountIdTransactionsCategorisation201Response:
         """Trigger transaction categorisation  # noqa: E501
@@ -552,9 +496,7 @@ class EnrichmentApi:
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
-        account_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for account")
-        ],
+        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for account")],
         psu_id: Annotated[
             StrictStr | None,
             Field(
@@ -574,12 +516,10 @@ class EnrichmentApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
-        post_accounts_account_id_transactions_categorisation_request: PostAccountsAccountIdTransactionsCategorisationRequest | None = None,
+        post_accounts_account_id_transactions_categorisation_request: PostAccountsAccountIdTransactionsCategorisationRequest
+        | None = None,
         **kwargs,
     ) -> ApiResponse:
         """Trigger transaction categorisation  # noqa: E501
@@ -686,13 +626,8 @@ class EnrichmentApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if (
-            _params["post_accounts_account_id_transactions_categorisation_request"]
-            is not None
-        ):
-            _body_params = _params[
-                "post_accounts_account_id_transactions_categorisation_request"
-            ]
+        if _params["post_accounts_account_id_transactions_categorisation_request"] is not None:
+            _body_params = _params["post_accounts_account_id_transactions_categorisation_request"]
 
         # set the HTTP header `Accept`
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -701,8 +636,7 @@ class EnrichmentApi:
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list

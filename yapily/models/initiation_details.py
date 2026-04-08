@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -73,11 +72,7 @@ class InitiationDetails(BaseModel):
         return InitiationDetails.parse_obj(
             {
                 "reference": obj.get("reference"),
-                "payer": Payer.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
-                "payee": Payee.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
+                "payer": Payer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+                "payee": Payee.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
             }
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,15 +28,9 @@ class GetBulkPaymentStatus200ResponseData(BaseModel):
     GetBulkPaymentStatus200ResponseData
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the Bulk Payment"
-    )
-    consent_id: StrictStr | None = Field(
-        default=None, alias="consentId", description="Identification of the consent."
-    )
-    status_details: GetBulkPaymentStatus200ResponseDataStatusDetails | None = Field(
-        default=None, alias="statusDetails"
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier of the Bulk Payment")
+    consent_id: StrictStr | None = Field(default=None, alias="consentId", description="Identification of the consent.")
+    status_details: GetBulkPaymentStatus200ResponseDataStatusDetails | None = Field(default=None, alias="statusDetails")
     created_at: StrictStr | None = Field(default=None, alias="createdAt")
     __properties = ["id", "consentId", "statusDetails", "createdAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -76,9 +69,7 @@ class GetBulkPaymentStatus200ResponseData(BaseModel):
             {
                 "id": obj.get("id"),
                 "consent_id": obj.get("consentId"),
-                "status_details": GetBulkPaymentStatus200ResponseDataStatusDetails.from_dict(
-                    obj.get("statusDetails")
-                )
+                "status_details": GetBulkPaymentStatus200ResponseDataStatusDetails.from_dict(obj.get("statusDetails"))
                 if obj.get("statusDetails") is not None
                 else None,
                 "created_at": obj.get("createdAt"),

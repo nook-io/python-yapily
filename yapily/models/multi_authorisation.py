@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,8 +26,7 @@ class MultiAuthorisation(BaseModel):
     """
 
     status: StrictStr | None = Field(
-        default=None,
-        description="_Mandatory_. Specifies the current status of the multi-authorisation flow.",
+        default=None, description="_Mandatory_. Specifies the current status of the multi-authorisation flow."
     )
     number_of_authorisation_required: StrictInt | None = Field(
         default=None,
@@ -88,12 +86,8 @@ class MultiAuthorisation(BaseModel):
         return MultiAuthorisation.parse_obj(
             {
                 "status": obj.get("status"),
-                "number_of_authorisation_required": obj.get(
-                    "numberOfAuthorisationRequired"
-                ),
-                "number_of_authorisation_received": obj.get(
-                    "numberOfAuthorisationReceived"
-                ),
+                "number_of_authorisation_required": obj.get("numberOfAuthorisationRequired"),
+                "number_of_authorisation_received": obj.get("numberOfAuthorisationReceived"),
                 "last_updated_date_time": obj.get("lastUpdatedDateTime"),
                 "expiration_date_time": obj.get("expirationDateTime"),
             }

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -49,9 +48,7 @@ class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProp
         )
         """
 
-    def testGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode(
-        self,
-    ):
+    def testGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode(self):
         """Test GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)

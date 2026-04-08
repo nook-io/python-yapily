@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -66,8 +65,5 @@ class HostedPaymentPhase(BaseModel):
             return HostedPaymentPhase.parse_obj(obj)
 
         return HostedPaymentPhase.parse_obj(
-            {
-                "phase_name": obj.get("phaseName"),
-                "phase_created_at": obj.get("phaseCreatedAt"),
-            }
+            {"phase_name": obj.get("phaseName"), "phase_created_at": obj.get("phaseCreatedAt")}
         )

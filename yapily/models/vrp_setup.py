@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -40,9 +39,7 @@ class VRPSetup(BaseModel):
     )
     limits: HostedVRPLimits | None = None
     valid_from: datetime | None = Field(
-        default=None,
-        alias="validFrom",
-        description="__Optional__. Start date when the consent becomes valid.",
+        default=None, alias="validFrom", description="__Optional__. Start date when the consent becomes valid."
     )
     valid_to: datetime | None = Field(
         default=None,
@@ -117,24 +114,16 @@ class VRPSetup(BaseModel):
 
         return VRPSetup.parse_obj(
             {
-                "payer": HostedVrpPayerResponse.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
-                "payee": Payee.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
+                "payer": HostedVrpPayerResponse.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+                "payee": Payee.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
                 "reference": obj.get("reference"),
-                "limits": HostedVRPLimits.from_dict(obj.get("limits"))
-                if obj.get("limits") is not None
-                else None,
+                "limits": HostedVRPLimits.from_dict(obj.get("limits")) if obj.get("limits") is not None else None,
                 "valid_from": obj.get("validFrom"),
                 "valid_to": obj.get("validTo"),
                 "recurring_payment_category": obj.get("recurringPaymentCategory"),
                 "initial_payment": Amount.from_dict(obj.get("initialPayment"))
                 if obj.get("initialPayment") is not None
                 else None,
-                "risk": PaymentRisk.from_dict(obj.get("risk"))
-                if obj.get("risk") is not None
-                else None,
+                "risk": PaymentRisk.from_dict(obj.get("risk")) if obj.get("risk") is not None else None,
             }
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class TestApiResponseOfEmbeddedAccountAuthorisationResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> ApiResponseOfEmbeddedAccountAuthorisationResponse:
+    def make_instance(self, include_optional) -> ApiResponseOfEmbeddedAccountAuthorisationResponse:
         """Test ApiResponseOfEmbeddedAccountAuthorisationResponse
         include_option is a boolean, when False only required
         params are included, when True both required and

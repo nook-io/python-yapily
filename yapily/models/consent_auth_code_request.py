@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,16 +24,8 @@ class ConsentAuthCodeRequest(BaseModel):
     The request body containing the `ConsentAuthCodeRequest` json payload  # noqa: E501
     """
 
-    auth_code: StrictStr = Field(
-        default=...,
-        alias="authCode",
-        description="__Mandatory__. The authorisation code",
-    )
-    auth_state: StrictStr = Field(
-        default=...,
-        alias="authState",
-        description="__Mandatory__. The authorisation state",
-    )
+    auth_code: StrictStr = Field(default=..., alias="authCode", description="__Mandatory__. The authorisation code")
+    auth_state: StrictStr = Field(default=..., alias="authState", description="__Mandatory__. The authorisation state")
     __properties = ["authCode", "authState"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -64,6 +55,4 @@ class ConsentAuthCodeRequest(BaseModel):
         if not isinstance(obj, dict):
             return ConsentAuthCodeRequest.parse_obj(obj)
 
-        return ConsentAuthCodeRequest.parse_obj(
-            {"auth_code": obj.get("authCode"), "auth_state": obj.get("authState")}
-        )
+        return ConsentAuthCodeRequest.parse_obj({"auth_code": obj.get("authCode"), "auth_state": obj.get("authState")})

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -37,17 +36,7 @@ class Identity(BaseModel):
     email: StrictStr | None = None
     phone: StrictStr | None = None
     addresses: Annotated[list[IdentityAddress], Field()] | None = None
-    __properties = [
-        "id",
-        "firstName",
-        "lastName",
-        "fullName",
-        "gender",
-        "birthdate",
-        "email",
-        "phone",
-        "addresses",
-    ]
+    __properties = ["id", "firstName", "lastName", "fullName", "gender", "birthdate", "email", "phone", "addresses"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -94,9 +83,7 @@ class Identity(BaseModel):
                 "birthdate": obj.get("birthdate"),
                 "email": obj.get("email"),
                 "phone": obj.get("phone"),
-                "addresses": [
-                    IdentityAddress.from_dict(_item) for _item in obj.get("addresses")
-                ]
+                "addresses": [IdentityAddress.from_dict(_item) for _item in obj.get("addresses")]
                 if obj.get("addresses") is not None
                 else None,
             }

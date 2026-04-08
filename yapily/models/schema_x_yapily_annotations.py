@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -56,6 +55,4 @@ class SchemaXYapilyAnnotations(BaseModel):
         if not isinstance(obj, dict):
             return SchemaXYapilyAnnotations.parse_obj(obj)
 
-        return SchemaXYapilyAnnotations.parse_obj(
-            {"last_updated_at": obj.get("lastUpdatedAt")}
-        )
+        return SchemaXYapilyAnnotations.parse_obj({"last_updated_at": obj.get("lastUpdatedAt")})

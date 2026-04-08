@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -32,9 +31,7 @@ class ConsolidatedAccountInformation(BaseModel):
         default=None,
         description="Identifier of the consolidated account. When used in Get Account Transactions calls, the transactions between the sub-accounts will not be reported",
     )
-    account_balances: Annotated[list[AccountBalance], Field()] | None = Field(
-        default=None, alias="accountBalances"
-    )
+    account_balances: Annotated[list[AccountBalance], Field()] | None = Field(default=None, alias="accountBalances")
     __properties = ["id", "accountBalances"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -75,10 +72,7 @@ class ConsolidatedAccountInformation(BaseModel):
         return ConsolidatedAccountInformation.parse_obj(
             {
                 "id": obj.get("id"),
-                "account_balances": [
-                    AccountBalance.from_dict(_item)
-                    for _item in obj.get("accountBalances")
-                ]
+                "account_balances": [AccountBalance.from_dict(_item) for _item in obj.get("accountBalances")]
                 if obj.get("accountBalances") is not None
                 else None,
             }

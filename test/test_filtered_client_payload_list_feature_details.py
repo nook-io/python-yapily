@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,9 +24,7 @@ class TestFilteredClientPayloadListFeatureDetails(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> FilteredClientPayloadListFeatureDetails:
+    def make_instance(self, include_optional) -> FilteredClientPayloadListFeatureDetails:
         """Test FilteredClientPayloadListFeatureDetails
         include_option is a boolean, when False only required
         params are included, when True both required and

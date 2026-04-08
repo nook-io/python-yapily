@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,12 +27,8 @@ class Category(BaseModel):
     Income and Expense `Category` in which the transaction resides.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the category"
-    )
-    label: StrictStr | None = Field(
-        default=None, description="Descriptive identifier of the category."
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier of the category")
+    label: StrictStr | None = Field(default=None, description="Descriptive identifier of the category.")
     country: StrictStr | None = Field(
         default=None,
         description="The country code of where the category transaction took place, denoted as a 3-digit character code - ISO 3166.",
@@ -81,9 +76,7 @@ class Category(BaseModel):
                 "id": obj.get("id"),
                 "label": obj.get("label"),
                 "country": obj.get("country"),
-                "subcategories": [
-                    Subcategory.from_dict(_item) for _item in obj.get("subcategories")
-                ]
+                "subcategories": [Subcategory.from_dict(_item) for _item in obj.get("subcategories")]
                 if obj.get("subcategories") is not None
                 else None,
             }

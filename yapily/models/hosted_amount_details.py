@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,13 +25,10 @@ class HostedAmountDetails(BaseModel):
     The payment amount and currency  # noqa: E501
     """
 
-    amount_to_pay: Annotated[float, Field(ge=0.01, strict=True)] | Annotated[int, Field(ge=1, strict=True)] = (
-        Field(default=..., alias="amountToPay", description="The payment amount")
+    amount_to_pay: Annotated[float, Field(ge=0.01, strict=True)] | Annotated[int, Field(ge=1, strict=True)] = Field(
+        default=..., alias="amountToPay", description="The payment amount"
     )
-    currency: StrictStr = Field(
-        default=...,
-        description="The [ISO 4217](https://www.xe.com/iso4217.php) currency code",
-    )
+    currency: StrictStr = Field(default=..., description="The [ISO 4217](https://www.xe.com/iso4217.php) currency code")
     __properties = ["amountToPay", "currency"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -62,6 +58,4 @@ class HostedAmountDetails(BaseModel):
         if not isinstance(obj, dict):
             return HostedAmountDetails.parse_obj(obj)
 
-        return HostedAmountDetails.parse_obj(
-            {"amount_to_pay": obj.get("amountToPay"), "currency": obj.get("currency")}
-        )
+        return HostedAmountDetails.parse_obj({"amount_to_pay": obj.get("amountToPay"), "currency": obj.get("currency")})

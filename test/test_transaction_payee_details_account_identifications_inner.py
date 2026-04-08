@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class TestTransactionPayeeDetailsAccountIdentificationsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> TransactionPayeeDetailsAccountIdentificationsInner:
+    def make_instance(self, include_optional) -> TransactionPayeeDetailsAccountIdentificationsInner:
         """Test TransactionPayeeDetailsAccountIdentificationsInner
         include_option is a boolean, when False only required
         params are included, when True both required and

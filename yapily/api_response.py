@@ -13,17 +13,11 @@ class ApiResponse:
     """
 
     status_code: StrictInt | None = Field(None, description="HTTP status code")
-    headers: dict[StrictStr, StrictStr] | None = Field(
-        None, description="HTTP headers"
-    )
-    data: Any | None = Field(
-        None, description="Deserialized data given the data type"
-    )
+    headers: dict[StrictStr, StrictStr] | None = Field(None, description="HTTP headers")
+    data: Any | None = Field(None, description="Deserialized data given the data type")
     raw_data: Any | None = Field(None, description="Raw data (HTTP response body)")
 
-    def __init__(
-        self, status_code=None, headers=None, data=None, raw_data=None
-    ) -> None:
+    def __init__(self, status_code=None, headers=None, data=None, raw_data=None) -> None:
         self.status_code = status_code
         self.headers = headers
         self.data = data

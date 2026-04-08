@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -36,29 +35,17 @@ class HostedPaymentRequestDetailsLink(BaseModel):
         default=None,
         description="The payment reference or description. Limited to a maximum of 18 characters for UK institutions.",
     )
-    context_type: PaymentContextTypeResponse | None = Field(
-        default=None, alias="contextType"
-    )
+    context_type: PaymentContextTypeResponse | None = Field(default=None, alias="contextType")
     type: PaymentTypeResponse | None = None
     payee: PayeeDetailsResponse | None = None
     payer: PayerDetailsResponse | None = None
-    amount_details: AmountDetailsResponse | None = Field(
-        default=None, alias="amountDetails"
-    )
+    amount_details: AmountDetailsResponse | None = Field(default=None, alias="amountDetails")
     payment_due_date: date | None = Field(
         default=None,
         alias="paymentDueDate",
         description="The date that the payment is due. Displayed to the end user in the payment summary screen.",
     )
-    __properties = [
-        "reference",
-        "contextType",
-        "type",
-        "payee",
-        "payer",
-        "amountDetails",
-        "paymentDueDate",
-    ]
+    __properties = ["reference", "contextType", "type", "payee", "payer", "amountDetails", "paymentDueDate"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -102,15 +89,9 @@ class HostedPaymentRequestDetailsLink(BaseModel):
                 "reference": obj.get("reference"),
                 "context_type": obj.get("contextType"),
                 "type": obj.get("type"),
-                "payee": PayeeDetailsResponse.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
-                "payer": PayerDetailsResponse.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
-                "amount_details": AmountDetailsResponse.from_dict(
-                    obj.get("amountDetails")
-                )
+                "payee": PayeeDetailsResponse.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
+                "payer": PayerDetailsResponse.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+                "amount_details": AmountDetailsResponse.from_dict(obj.get("amountDetails"))
                 if obj.get("amountDetails") is not None
                 else None,
                 "payment_due_date": obj.get("paymentDueDate"),

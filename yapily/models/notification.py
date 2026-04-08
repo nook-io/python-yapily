@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,12 +25,9 @@ class Notification(BaseModel):
     """
 
     type: StrictStr = Field(
-        default=...,
-        description="How the notification will be delivered. This is currently only via WEBHOOK.",
+        default=..., description="How the notification will be delivered. This is currently only via WEBHOOK."
     )
-    url: StrictStr = Field(
-        default=..., description="URL to which the notification will be sent."
-    )
+    url: StrictStr = Field(default=..., description="URL to which the notification will be sent.")
     __properties = ["type", "url"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

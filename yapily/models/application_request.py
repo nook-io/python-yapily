@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -45,13 +44,7 @@ class ApplicationRequest(BaseModel):
         alias="isContractPresent",
         description="Indicates if a contract is in place with the merchant and a KYB process has been completed",
     )
-    __properties = [
-        "name",
-        "merchantCategoryCode",
-        "ppcUserGroup",
-        "callbackUrls",
-        "isContractPresent",
-    ]
+    __properties = ["name", "merchantCategoryCode", "ppcUserGroup", "callbackUrls", "isContractPresent"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -50,11 +49,7 @@ class FinancialDataApi:
     async def get_account(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -82,10 +77,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -127,25 +119,14 @@ class FinancialDataApi:
             message = "Error! Please call the get_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_account_with_http_info(
-            account_id,
-            consent,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            raw,
-            **kwargs,
+            account_id, consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
     @validate_arguments
     async def get_account_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -173,10 +154,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -252,10 +230,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_account"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_account")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -294,16 +269,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfAccount",
-        }
+        _response_types_map = {"200": "ApiResponseOfAccount"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}",
@@ -327,11 +298,7 @@ class FinancialDataApi:
     async def get_account_balances(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -359,10 +326,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -404,25 +368,14 @@ class FinancialDataApi:
             message = "Error! Please call the get_account_balances_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_account_balances_with_http_info(
-            account_id,
-            consent,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            raw,
-            **kwargs,
+            account_id, consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
     @validate_arguments
     async def get_account_balances_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -450,10 +403,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -529,10 +479,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_account_balances"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_account_balances")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -571,16 +518,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfBalances",
-        }
+        _response_types_map = {"200": "ApiResponseOfBalances"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/balances",
@@ -604,11 +547,7 @@ class FinancialDataApi:
     async def get_account_direct_debits(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -618,10 +557,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         limit: Annotated[
             StrictInt | None,
@@ -672,11 +608,7 @@ class FinancialDataApi:
     async def get_account_direct_debits_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -686,10 +618,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         limit: Annotated[
             StrictInt | None,
@@ -759,10 +688,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_account_direct_debits"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_account_direct_debits")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -795,16 +721,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfDirectDebitResponse",
-        }
+        _response_types_map = {"200": "ApiListResponseOfDirectDebitResponse"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/direct-debits",
@@ -828,11 +750,7 @@ class FinancialDataApi:
     async def get_account_periodic_payments(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -842,10 +760,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         limit: Annotated[
             StrictInt | None,
@@ -896,11 +811,7 @@ class FinancialDataApi:
     async def get_account_periodic_payments_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -910,10 +821,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         limit: Annotated[
             StrictInt | None,
@@ -984,8 +892,7 @@ class FinancialDataApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_account_periodic_payments"
+                    f"Got an unexpected keyword argument '{_key}' to method get_account_periodic_payments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1019,16 +926,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfPaymentResponse",
-        }
+        _response_types_map = {"200": "ApiListResponseOfPaymentResponse"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/periodic-payments",
@@ -1052,11 +955,7 @@ class FinancialDataApi:
     async def get_account_scheduled_payments(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -1066,10 +965,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         limit: Annotated[
             StrictInt | None,
@@ -1120,11 +1016,7 @@ class FinancialDataApi:
     async def get_account_scheduled_payments_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -1134,10 +1026,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         limit: Annotated[
             StrictInt | None,
@@ -1208,8 +1097,7 @@ class FinancialDataApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_account_scheduled_payments"
+                    f"Got an unexpected keyword argument '{_key}' to method get_account_scheduled_payments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1243,16 +1131,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfPaymentResponse",
-        }
+        _response_types_map = {"200": "ApiListResponseOfPaymentResponse"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/scheduled-payments",
@@ -1301,10 +1185,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1344,13 +1225,7 @@ class FinancialDataApi:
             message = "Error! Please call the get_accounts_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_accounts_with_http_info(
-            consent,
-            psu_id,
-            psu_corporate_id,
-            psu_ip_address,
-            sub_application,
-            raw,
-            **kwargs,
+            consent, psu_id, psu_corporate_id, psu_ip_address, sub_application, raw, **kwargs
         )
 
     @validate_arguments
@@ -1382,10 +1257,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1436,14 +1308,7 @@ class FinancialDataApi:
 
         _params = locals()
 
-        _all_params = [
-            "consent",
-            "psu_id",
-            "psu_corporate_id",
-            "psu_ip_address",
-            "sub_application",
-            "raw",
-        ]
+        _all_params = ["consent", "psu_id", "psu_corporate_id", "psu_ip_address", "sub_application", "raw"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1458,10 +1323,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_accounts"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_accounts")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1498,16 +1360,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "AccountApiListResponse",
-        }
+        _response_types_map = {"200": "AccountApiListResponse"}
 
         return await self.api_client.call_api(
             "/accounts",
@@ -1531,11 +1389,7 @@ class FinancialDataApi:
     async def get_beneficiaries(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -1545,10 +1399,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1583,19 +1434,13 @@ class FinancialDataApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_beneficiaries_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_beneficiaries_with_http_info(
-            account_id, consent, sub_application, raw, **kwargs
-        )
+        return await self.get_beneficiaries_with_http_info(account_id, consent, sub_application, raw, **kwargs)
 
     @validate_arguments
     async def get_beneficiaries_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -1605,10 +1450,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1670,10 +1512,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_beneficiaries"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_beneficiaries")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1703,16 +1542,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfBeneficiary",
-        }
+        _response_types_map = {"200": "ApiListResponseOfBeneficiary"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/beneficiaries",
@@ -1735,12 +1570,7 @@ class FinancialDataApi:
     @validate_arguments
     async def get_categories(
         self,
-        country: Annotated[
-            StrictStr,
-            Field(
-                ..., description="__Mandatory__. The 2 letter country code e.g. 'GB'."
-            ),
-        ],
+        country: Annotated[StrictStr, Field(..., description="__Mandatory__. The 2 letter country code e.g. 'GB'.")],
         **kwargs,
     ) -> ApiListResponseOfCategory:
         """Get Categories  # noqa: E501
@@ -1767,12 +1597,7 @@ class FinancialDataApi:
     @validate_arguments
     async def get_categories_with_http_info(
         self,
-        country: Annotated[
-            StrictStr,
-            Field(
-                ..., description="__Mandatory__. The 2 letter country code e.g. 'GB'."
-            ),
-        ],
+        country: Annotated[StrictStr, Field(..., description="__Mandatory__. The 2 letter country code e.g. 'GB'.")],
         **kwargs,
     ) -> ApiResponse:
         """Get Categories  # noqa: E501
@@ -1821,10 +1646,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_categories"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_categories")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1845,16 +1667,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfCategory",
-        }
+        _response_types_map = {"200": "ApiListResponseOfCategory"}
 
         return await self.api_client.call_api(
             "/categories/{country}",
@@ -1885,10 +1703,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1921,9 +1736,7 @@ class FinancialDataApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_identity_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_identity_with_http_info(
-            consent, sub_application, raw, **kwargs
-        )
+        return await self.get_identity_with_http_info(consent, sub_application, raw, **kwargs)
 
     @validate_arguments
     async def get_identity_with_http_info(
@@ -1936,10 +1749,7 @@ class FinancialDataApi:
             ),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -1999,10 +1809,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_identity"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_identity")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -2030,16 +1837,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfIdentity",
-        }
+        _response_types_map = {"200": "ApiResponseOfIdentity"}
 
         return await self.api_client.call_api(
             "/identity",
@@ -2063,11 +1866,7 @@ class FinancialDataApi:
     async def get_real_time_transactions(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -2095,10 +1894,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         var_from: Annotated[
             StrictStr | None,
@@ -2181,11 +1977,7 @@ class FinancialDataApi:
     async def get_real_time_transactions_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -2213,10 +2005,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         var_from: Annotated[
             StrictStr | None,
@@ -2319,10 +2108,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_real_time_transactions"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_real_time_transactions")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -2370,17 +2156,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfRealTimeTransaction",
-            "401": "ApiResponseError",
-        }
+        _response_types_map = {"200": "ApiListResponseOfRealTimeTransaction", "401": "ApiResponseError"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/real-time/transactions",
@@ -2411,24 +2192,13 @@ class FinancialDataApi:
             ),
         ],
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         statement_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The statement Id of the statement file.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The statement Id of the statement file.")
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2480,24 +2250,13 @@ class FinancialDataApi:
             ),
         ],
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         statement_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The statement Id of the statement file.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The statement Id of the statement file.")
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2546,13 +2305,7 @@ class FinancialDataApi:
 
         _params = locals()
 
-        _all_params = [
-            "consent",
-            "account_id",
-            "statement_id",
-            "sub_application",
-            "raw",
-        ]
+        _all_params = ["consent", "account_id", "statement_id", "sub_application", "raw"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -2567,10 +2320,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_statement"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_statement")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -2603,16 +2353,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfAccountStatement",
-        }
+        _response_types_map = {"200": "ApiResponseOfAccountStatement"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/statements/{statementId}",
@@ -2643,24 +2389,13 @@ class FinancialDataApi:
             ),
         ],
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         statement_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The statement Id of the statement file.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The statement Id of the statement file.")
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2712,24 +2447,13 @@ class FinancialDataApi:
             ),
         ],
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         statement_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The statement Id of the statement file.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The statement Id of the statement file.")
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -2778,13 +2502,7 @@ class FinancialDataApi:
 
         _params = locals()
 
-        _all_params = [
-            "consent",
-            "account_id",
-            "statement_id",
-            "sub_application",
-            "raw",
-        ]
+        _all_params = ["consent", "account_id", "statement_id", "sub_application", "raw"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -2799,10 +2517,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_statement_file"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_statement_file")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -2842,9 +2557,7 @@ class FinancialDataApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "bytearray",
-        }
+        _response_types_map = {"200": "bytearray"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/statements/{statementId}/file",
@@ -2875,17 +2588,10 @@ class FinancialDataApi:
             ),
         ],
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         var_from: Annotated[
             StrictStr | None,
@@ -2961,16 +2667,7 @@ class FinancialDataApi:
             message = "Error! Please call the get_statements_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_statements_with_http_info(
-            consent,
-            account_id,
-            sub_application,
-            var_from,
-            before,
-            limit,
-            sort,
-            offset,
-            raw,
-            **kwargs,
+            consent, account_id, sub_application, var_from, before, limit, sort, offset, raw, **kwargs
         )
 
     @validate_arguments
@@ -2984,17 +2681,10 @@ class FinancialDataApi:
             ),
         ],
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         var_from: Annotated[
             StrictStr | None,
@@ -3106,10 +2796,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_statements"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_statements")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -3154,16 +2841,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfAccountStatement",
-        }
+        _response_types_map = {"200": "ApiListResponseOfAccountStatement"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/statements",
@@ -3187,11 +2870,7 @@ class FinancialDataApi:
     async def get_transactions(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -3219,10 +2898,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         var_with: Annotated[
             Annotated[list[StrictStr], Field()] | None,
@@ -3261,8 +2937,7 @@ class FinancialDataApi:
             ),
         ] = None,
         cursor: Annotated[
-            StrictStr | None,
-            Field(description="__Optional__. This property is not currently in use."),
+            StrictStr | None, Field(description="__Optional__. This property is not currently in use.")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -3339,11 +3014,7 @@ class FinancialDataApi:
     async def get_transactions_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The account Id of the user's bank account.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
@@ -3371,10 +3042,7 @@ class FinancialDataApi:
             ),
         ] = None,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         var_with: Annotated[
             Annotated[list[StrictStr], Field()] | None,
@@ -3413,8 +3081,7 @@ class FinancialDataApi:
             ),
         ] = None,
         cursor: Annotated[
-            StrictStr | None,
-            Field(description="__Optional__. This property is not currently in use."),
+            StrictStr | None, Field(description="__Optional__. This property is not currently in use.")
         ] = None,
         raw: Annotated[
             StrictBool | None,
@@ -3511,10 +3178,7 @@ class FinancialDataApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_transactions"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_transactions")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -3575,16 +3239,12 @@ class FinancialDataApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfTransaction",
-        }
+        _response_types_map = {"200": "ApiListResponseOfTransaction"}
 
         return await self.api_client.call_api(
             "/accounts/{accountId}/transactions",

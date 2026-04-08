@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,24 +28,16 @@ class PaymentConstraintsResponse(BaseModel):
     """
 
     institution_id: StrictStr = Field(
-        default=...,
-        alias="institutionId",
-        description="The id to represent the `Institution`.",
+        default=..., alias="institutionId", description="The id to represent the `Institution`."
     )
     institution_country_code: StrictStr | None = Field(
-        default=None,
-        alias="institutionCountryCode",
-        description="2 letter ISO Country code of the `Institution`.",
+        default=None, alias="institutionCountryCode", description="2 letter ISO Country code of the `Institution`."
     )
     endpoint_path: StrictStr | None = Field(
-        default=None,
-        alias="endpointPath",
-        description="Define the applicable API end point.",
+        default=None, alias="endpointPath", description="Define the applicable API end point."
     )
     endpoint_method: StrictStr | None = Field(
-        default=None,
-        alias="endpointMethod",
-        description="Https Method for the endpoint.",
+        default=None, alias="endpointMethod", description="Https Method for the endpoint."
     )
     payment_type: PaymentTypeOfConstraints = Field(default=..., alias="paymentType")
     request: RequestConstraints = Field(...)
@@ -97,8 +88,6 @@ class PaymentConstraintsResponse(BaseModel):
                 "endpoint_path": obj.get("endpointPath"),
                 "endpoint_method": obj.get("endpointMethod"),
                 "payment_type": obj.get("paymentType"),
-                "request": RequestConstraints.from_dict(obj.get("request"))
-                if obj.get("request") is not None
-                else None,
+                "request": RequestConstraints.from_dict(obj.get("request")) if obj.get("request") is not None else None,
             }
         )

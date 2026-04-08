@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -70,9 +69,7 @@ class ApplicationResponseListMeta(BaseModel):
             {
                 "tracing_id": obj.get("tracingId"),
                 "count": obj.get("count"),
-                "pagination": ApplicationResponseListMetaPagination.from_dict(
-                    obj.get("pagination")
-                )
+                "pagination": ApplicationResponseListMetaPagination.from_dict(obj.get("pagination"))
                 if obj.get("pagination") is not None
                 else None,
             }

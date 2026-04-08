@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -21,9 +20,7 @@ from typing import Annotated
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
 
-class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentCategorisation(
-    BaseModel
-):
+class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentCategorisation(BaseModel):
     """
     GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentCategorisation
     """

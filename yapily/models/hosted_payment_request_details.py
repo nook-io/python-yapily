@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -41,9 +40,7 @@ class HostedPaymentRequestDetails(BaseModel):
         default=None,
         description="The payment reference or description. Limited to a maximum of 18 characters for UK institutions.",
     )
-    context_type: PaymentContextType | None = Field(
-        default=None, alias="contextType"
-    )
+    context_type: PaymentContextType | None = Field(default=None, alias="contextType")
     type: PaymentType = Field(...)
     payee: Payee = Field(...)
     payer: Payer | None = None
@@ -107,15 +104,9 @@ class HostedPaymentRequestDetails(BaseModel):
                 "reference": obj.get("reference"),
                 "context_type": obj.get("contextType"),
                 "type": obj.get("type"),
-                "payee": Payee.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
-                "payer": Payer.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
-                "amount_details": HostedAmountDetails.from_dict(
-                    obj.get("amountDetails")
-                )
+                "payee": Payee.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
+                "payer": Payer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+                "amount_details": HostedAmountDetails.from_dict(obj.get("amountDetails"))
                 if obj.get("amountDetails") is not None
                 else None,
                 "payment_due_date": obj.get("paymentDueDate"),

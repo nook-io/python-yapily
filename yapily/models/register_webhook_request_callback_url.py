@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -71,9 +70,7 @@ class RegisterWebhookRequestCallbackUrl(BaseModel):
                 "main": RegisterWebhookRequestCallbackUrlMain.from_dict(obj.get("main"))
                 if obj.get("main") is not None
                 else None,
-                "backup": RegisterWebhookRequestCallbackUrlBackup.from_dict(
-                    obj.get("backup")
-                )
+                "backup": RegisterWebhookRequestCallbackUrlBackup.from_dict(obj.get("backup"))
                 if obj.get("backup") is not None
                 else None,
             }

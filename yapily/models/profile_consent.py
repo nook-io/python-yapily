@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,19 +26,12 @@ class ProfileConsent(BaseModel):
     """
 
     id: StrictStr | None = Field(
-        default=None,
-        description="Unique identifier of the `consent` in context of a user's profile.",
+        default=None, description="Unique identifier of the `consent` in context of a user's profile."
     )
-    status: StrictStr | None = Field(
-        default=None, description="The status, can be PENDING, COMPLETED or ERROR."
-    )
-    user_id: StrictStr | None = Field(
-        default=None, alias="userId", description="The userUuid."
-    )
+    status: StrictStr | None = Field(default=None, description="The status, can be PENDING, COMPLETED or ERROR.")
+    user_id: StrictStr | None = Field(default=None, alias="userId", description="The userUuid.")
     reference_consent_id: StrictStr | None = Field(
-        default=None,
-        alias="referenceConsentId",
-        description="Unique identifier of the consent.",
+        default=None, alias="referenceConsentId", description="Unique identifier of the consent."
     )
     institution_id: StrictStr | None = Field(
         default=None,
@@ -47,14 +39,10 @@ class ProfileConsent(BaseModel):
         description="__Mandatory__. The  `Institution` the authorisation request is sent to.",
     )
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="When a profile consent is created.",
+        default=None, alias="createdAt", description="When a profile consent is created."
     )
     expires_at: datetime | None = Field(
-        default=None,
-        alias="expiresAt",
-        description="When a profile consent is expired after created + X.",
+        default=None, alias="expiresAt", description="When a profile consent is expired after created + X."
     )
     data_inserted_at: datetime | None = Field(
         default=None,

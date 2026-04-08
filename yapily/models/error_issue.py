@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,20 +27,15 @@ class ErrorIssue(BaseModel):
     """
 
     type: StrictStr = Field(default=..., description="Category of the issue")
-    code: StrictStr = Field(
-        default=..., description="Code that uniquely identifies the type of issue"
-    )
+    code: StrictStr = Field(default=..., description="Code that uniquely identifies the type of issue")
     parameter: StrictStr | None = Field(
         default=None,
         description="Identfies the parameter / property within the request (headers, query parameters or body) that the issue relates to. For headers and query parameters, it refers to the parameter name. For the body, it refers to the JSONPath of the property",
     )
     message: StrictStr | None = Field(
-        default=None,
-        description="Human readable description of the issue that was experienced",
+        default=None, description="Human readable description of the issue that was experienced"
     )
-    institution_error: InstitutionError | None = Field(
-        default=None, alias="institutionError"
-    )
+    institution_error: InstitutionError | None = Field(default=None, alias="institutionError")
     __properties = ["type", "code", "parameter", "message", "institutionError"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -81,9 +75,7 @@ class ErrorIssue(BaseModel):
                 "code": obj.get("code"),
                 "parameter": obj.get("parameter"),
                 "message": obj.get("message"),
-                "institution_error": InstitutionError.from_dict(
-                    obj.get("institutionError")
-                )
+                "institution_error": InstitutionError.from_dict(obj.get("institutionError"))
                 if obj.get("institutionError") is not None
                 else None,
             }

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,9 +24,7 @@ class Metadata(BaseModel):
     Metadata
     """
 
-    tracing_id: StrictStr | None = Field(
-        default=None, alias="tracingId", description="yapily tracing id"
-    )
+    tracing_id: StrictStr | None = Field(default=None, alias="tracingId", description="yapily tracing id")
     __properties = ["tracingId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

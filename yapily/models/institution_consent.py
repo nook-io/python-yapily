@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -59,6 +58,4 @@ class InstitutionConsent(BaseModel):
         if not isinstance(obj, dict):
             return InstitutionConsent.parse_obj(obj)
 
-        return InstitutionConsent.parse_obj(
-            {"institution_id": obj.get("institutionId")}
-        )
+        return InstitutionConsent.parse_obj({"institution_id": obj.get("institutionId")})

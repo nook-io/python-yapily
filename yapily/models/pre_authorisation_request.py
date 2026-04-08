@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -55,8 +54,7 @@ class PreAuthorisationRequest(BaseModel):
         description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
     )
     scope: StrictStr = Field(
-        default=...,
-        description="__Mandatory__. Defines the scope of the pre-authorisation request.",
+        default=..., description="__Mandatory__. Defines the scope of the pre-authorisation request."
     )
     __properties = [
         "userUuid",
@@ -107,9 +105,7 @@ class PreAuthorisationRequest(BaseModel):
                 "forward_parameters": obj.get("forwardParameters"),
                 "institution_id": obj.get("institutionId"),
                 "callback": obj.get("callback"),
-                "redirect": RedirectRequest.from_dict(obj.get("redirect"))
-                if obj.get("redirect") is not None
-                else None,
+                "redirect": RedirectRequest.from_dict(obj.get("redirect")) if obj.get("redirect") is not None else None,
                 "one_time_token": obj.get("oneTimeToken"),
                 "scope": obj.get("scope"),
             }

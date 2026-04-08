@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -65,8 +64,5 @@ class EnrichmentMerchant(BaseModel):
             return EnrichmentMerchant.parse_obj(obj)
 
         return EnrichmentMerchant.parse_obj(
-            {
-                "merchant_name": obj.get("merchantName"),
-                "parent_group": obj.get("parentGroup"),
-            }
+            {"merchant_name": obj.get("merchantName"), "parent_group": obj.get("parentGroup")}
         )

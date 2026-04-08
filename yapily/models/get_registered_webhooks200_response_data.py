@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,10 +67,7 @@ class GetRegisteredWebhooks200ResponseData(BaseModel):
 
         return GetRegisteredWebhooks200ResponseData.parse_obj(
             {
-                "active": [
-                    RegisteredWebhookWithStatus.from_dict(_item)
-                    for _item in obj.get("active")
-                ]
+                "active": [RegisteredWebhookWithStatus.from_dict(_item) for _item in obj.get("active")]
                 if obj.get("active") is not None
                 else None
             }

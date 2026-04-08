@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -28,9 +27,7 @@ class IdentityAddress(BaseModel):
     IdentityAddress
     """
 
-    address_lines: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None, alias="addressLines"
-    )
+    address_lines: Annotated[list[StrictStr], Field()] | None = Field(default=None, alias="addressLines")
     city: StrictStr | None = None
     postal_code: StrictStr | None = Field(default=None, alias="postalCode")
     country: StrictStr | None = None
@@ -38,16 +35,7 @@ class IdentityAddress(BaseModel):
     building_number: StrictStr | None = Field(default=None, alias="buildingNumber")
     type: AddressTypeEnum | None = None
     county: StrictStr | None = None
-    __properties = [
-        "addressLines",
-        "city",
-        "postalCode",
-        "country",
-        "streetName",
-        "buildingNumber",
-        "type",
-        "county",
-    ]
+    __properties = ["addressLines", "city", "postalCode", "country", "streetName", "buildingNumber", "type", "county"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:

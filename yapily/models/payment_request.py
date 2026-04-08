@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -44,9 +43,7 @@ class PaymentRequest(BaseModel):
         default=None,
         description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.",
     )
-    context_type: PaymentContextType | None = Field(
-        default=None, alias="contextType"
-    )
+    context_type: PaymentContextType | None = Field(default=None, alias="contextType")
     purpose_code: StrictStr | None = Field(
         default=None,
         alias="purposeCode",
@@ -54,12 +51,8 @@ class PaymentRequest(BaseModel):
     )
     type: PaymentType = Field(...)
     payee: Payee = Field(...)
-    periodic_payment: PeriodicPaymentRequest | None = Field(
-        default=None, alias="periodicPayment"
-    )
-    international_payment: InternationalPaymentRequest | None = Field(
-        default=None, alias="internationalPayment"
-    )
+    periodic_payment: PeriodicPaymentRequest | None = Field(default=None, alias="periodicPayment")
+    international_payment: InternationalPaymentRequest | None = Field(default=None, alias="internationalPayment")
     amount: Amount = Field(...)
     payment_date_time: datetime | None = Field(
         default=None,
@@ -132,29 +125,19 @@ class PaymentRequest(BaseModel):
         return PaymentRequest.parse_obj(
             {
                 "payment_idempotency_id": obj.get("paymentIdempotencyId"),
-                "payer": Payer.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
+                "payer": Payer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
                 "reference": obj.get("reference"),
                 "context_type": obj.get("contextType"),
                 "purpose_code": obj.get("purposeCode"),
                 "type": obj.get("type"),
-                "payee": Payee.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
-                "periodic_payment": PeriodicPaymentRequest.from_dict(
-                    obj.get("periodicPayment")
-                )
+                "payee": Payee.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
+                "periodic_payment": PeriodicPaymentRequest.from_dict(obj.get("periodicPayment"))
                 if obj.get("periodicPayment") is not None
                 else None,
-                "international_payment": InternationalPaymentRequest.from_dict(
-                    obj.get("internationalPayment")
-                )
+                "international_payment": InternationalPaymentRequest.from_dict(obj.get("internationalPayment"))
                 if obj.get("internationalPayment") is not None
                 else None,
-                "amount": Amount.from_dict(obj.get("amount"))
-                if obj.get("amount") is not None
-                else None,
+                "amount": Amount.from_dict(obj.get("amount")) if obj.get("amount") is not None else None,
                 "payment_date_time": obj.get("paymentDateTime"),
                 "read_refund_account": obj.get("readRefundAccount"),
             }

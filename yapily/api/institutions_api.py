@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -103,10 +102,7 @@ class InstitutionsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_feature_details"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_feature_details")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -125,16 +121,12 @@ class InstitutionsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfFeatureDetails",
-        }
+        _response_types_map = {"200": "ApiListResponseOfFeatureDetails"}
 
         return await self.api_client.call_api(
             "/features",
@@ -158,11 +150,7 @@ class InstitutionsApi:
     async def get_institution(
         self,
         institution_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily institution Id for the `Institution`.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily institution Id for the `Institution`.")
         ],
         **kwargs,
     ) -> Institution:
@@ -191,11 +179,7 @@ class InstitutionsApi:
     async def get_institution_with_http_info(
         self,
         institution_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily institution Id for the `Institution`.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily institution Id for the `Institution`.")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -245,10 +229,7 @@ class InstitutionsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_institution"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_institution")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -269,16 +250,12 @@ class InstitutionsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "Institution",
-        }
+        _response_types_map = {"200": "Institution"}
 
         return await self.api_client.call_api(
             "/institutions/{institutionId}",
@@ -365,10 +342,7 @@ class InstitutionsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_institutions"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_institutions")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -387,16 +361,12 @@ class InstitutionsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfInstitution",
-        }
+        _response_types_map = {"200": "ApiListResponseOfInstitution"}
 
         return await self.api_client.call_api(
             "/institutions",

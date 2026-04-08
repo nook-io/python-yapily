@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -69,12 +68,8 @@ class ApiResponseOfCreateHostedVRPPaymentRequest(BaseModel):
 
         return ApiResponseOfCreateHostedVRPPaymentRequest.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
-                "data": HostedVRPPaymentResponse.from_dict(obj.get("data"))
-                if obj.get("data") is not None
-                else None,
+                "meta": ResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
+                "data": HostedVRPPaymentResponse.from_dict(obj.get("data")) if obj.get("data") is not None else None,
                 "tracing_id": obj.get("tracingId"),
             }
         )

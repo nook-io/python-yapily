@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -73,13 +72,8 @@ class ApiListResponseOfPaymentConstraints(BaseModel):
 
         return ApiListResponseOfPaymentConstraints.parse_obj(
             {
-                "meta": ResponseListMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
-                "data": [
-                    PaymentConstraintsResponse.from_dict(_item)
-                    for _item in obj.get("data")
-                ]
+                "meta": ResponseListMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
+                "data": [PaymentConstraintsResponse.from_dict(_item) for _item in obj.get("data")]
                 if obj.get("data") is not None
                 else None,
             }

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -52,12 +51,8 @@ class PaymentEmbeddedAuthorisationRequest(BaseModel):
         description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
     )
     payment_request: PaymentRequest = Field(default=..., alias="paymentRequest")
-    user_credentials: UserCredentials | None = Field(
-        default=None, alias="userCredentials"
-    )
-    selected_sca_method: ScaMethod | None = Field(
-        default=None, alias="selectedScaMethod"
-    )
+    user_credentials: UserCredentials | None = Field(default=None, alias="userCredentials")
+    selected_sca_method: ScaMethod | None = Field(default=None, alias="selectedScaMethod")
     sca_code: StrictStr | None = Field(
         default=None,
         alias="scaCode",
@@ -122,16 +117,12 @@ class PaymentEmbeddedAuthorisationRequest(BaseModel):
                 "application_user_id": obj.get("applicationUserId"),
                 "institution_id": obj.get("institutionId"),
                 "callback": obj.get("callback"),
-                "redirect": RedirectRequest.from_dict(obj.get("redirect"))
-                if obj.get("redirect") is not None
-                else None,
+                "redirect": RedirectRequest.from_dict(obj.get("redirect")) if obj.get("redirect") is not None else None,
                 "one_time_token": obj.get("oneTimeToken"),
                 "payment_request": PaymentRequest.from_dict(obj.get("paymentRequest"))
                 if obj.get("paymentRequest") is not None
                 else None,
-                "user_credentials": UserCredentials.from_dict(
-                    obj.get("userCredentials")
-                )
+                "user_credentials": UserCredentials.from_dict(obj.get("userCredentials"))
                 if obj.get("userCredentials") is not None
                 else None,
                 "selected_sca_method": ScaMethod.from_dict(obj.get("selectedScaMethod"))

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,9 +24,7 @@ class TestApiResponseOfCreateHostedPaymentRequestLink(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> ApiResponseOfCreateHostedPaymentRequestLink:
+    def make_instance(self, include_optional) -> ApiResponseOfCreateHostedPaymentRequestLink:
         """Test ApiResponseOfCreateHostedPaymentRequestLink
         include_option is a boolean, when False only required
         params are included, when True both required and

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,11 +67,7 @@ class ApiResponseOfGetHostedVRPConsentRequest(BaseModel):
 
         return ApiResponseOfGetHostedVRPConsentRequest.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
-                "data": HostedVRPConsentDetails.from_dict(obj.get("data"))
-                if obj.get("data") is not None
-                else None,
+                "meta": ResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
+                "data": HostedVRPConsentDetails.from_dict(obj.get("data")) if obj.get("data") is not None else None,
             }
         )

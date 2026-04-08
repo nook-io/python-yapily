@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -35,8 +34,7 @@ class SubmitBulkPaymentRequest(BaseModel):
         description="__Optional__. An alphanumeric string (1-40 chars) used for idempotency. Unique per consent ID for 24 hours. Prevents duplicate bulk file payment submissions.",
     )
     payments: Annotated[list[PaymentRequest], Field()] = Field(
-        default=...,
-        description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment.",
+        default=..., description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment."
     )
     originator_identification_number: StrictStr | None = Field(
         default=None,
@@ -48,12 +46,7 @@ class SubmitBulkPaymentRequest(BaseModel):
         alias="executionDateTime",
         description="__Optional__. Used to schedule the bulk payment to be executed at a future date if supported by the `Institution`.",
     )
-    __properties = [
-        "idempotencyId",
-        "payments",
-        "originatorIdentificationNumber",
-        "executionDateTime",
-    ]
+    __properties = ["idempotencyId", "payments", "originatorIdentificationNumber", "executionDateTime"]
 
     @field_validator("idempotency_id")
     @classmethod
@@ -65,6 +58,7 @@ class SubmitBulkPaymentRequest(BaseModel):
         if not re.match(r"^\S{1,40}$", value):
             raise ValueError(r"must validate the regular expression /^\S{1,40}$/")
         return value
+
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -104,14 +98,10 @@ class SubmitBulkPaymentRequest(BaseModel):
         return SubmitBulkPaymentRequest.parse_obj(
             {
                 "idempotency_id": obj.get("idempotencyId"),
-                "payments": [
-                    PaymentRequest.from_dict(_item) for _item in obj.get("payments")
-                ]
+                "payments": [PaymentRequest.from_dict(_item) for _item in obj.get("payments")]
                 if obj.get("payments") is not None
                 else None,
-                "originator_identification_number": obj.get(
-                    "originatorIdentificationNumber"
-                ),
+                "originator_identification_number": obj.get("originatorIdentificationNumber"),
                 "execution_date_time": obj.get("executionDateTime"),
             }
         )

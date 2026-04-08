@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,31 +26,18 @@ class EnrichedPredictedBalance(BaseModel):
     """
 
     var_date: date | None = Field(
-        default=None,
-        alias="date",
-        description="The date for which Balance amount is predicted.",
+        default=None, alias="date", description="The date for which Balance amount is predicted."
     )
     median_balance: StrictFloat | StrictInt | None = Field(
-        default=None,
-        alias="medianBalance",
-        description="The median Balance amount for a future date.",
+        default=None, alias="medianBalance", description="The median Balance amount for a future date."
     )
     var_90percentile_balance: StrictFloat | StrictInt | None = Field(
-        default=None,
-        alias="90percentileBalance",
-        description="The 90th percentile Balance amount for a future date.",
+        default=None, alias="90percentileBalance", description="The 90th percentile Balance amount for a future date."
     )
     var_10percentile_balance: StrictFloat | StrictInt | None = Field(
-        default=None,
-        alias="10percentileBalance",
-        description="The 10th percentile Balance amount for a future date.",
+        default=None, alias="10percentileBalance", description="The 10th percentile Balance amount for a future date."
     )
-    __properties = [
-        "date",
-        "medianBalance",
-        "90percentileBalance",
-        "10percentileBalance",
-    ]
+    __properties = ["date", "medianBalance", "90percentileBalance", "10percentileBalance"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:

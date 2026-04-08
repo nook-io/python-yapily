@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,9 +28,7 @@ class IsoBankTransactionCode(BaseModel):
 
     domain_code: IsoCodeDetails | None = Field(default=None, alias="domainCode")
     family_code: IsoCodeDetails | None = Field(default=None, alias="familyCode")
-    sub_family_code: IsoCodeDetails | None = Field(
-        default=None, alias="subFamilyCode"
-    )
+    sub_family_code: IsoCodeDetails | None = Field(default=None, alias="subFamilyCode")
     __properties = ["domainCode", "familyCode", "subFamilyCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

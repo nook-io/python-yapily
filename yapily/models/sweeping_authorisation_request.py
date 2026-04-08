@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -47,9 +46,7 @@ class SweepingAuthorisationRequest(BaseModel):
         alias="forwardParameters",
         description="Extra parameters the TPP may want to get forwarded in the callback request after the PSU redirect.",
     )
-    context_type: PaymentContextType | None = Field(
-        default=None, alias="contextType"
-    )
+    context_type: PaymentContextType | None = Field(default=None, alias="contextType")
     institution_id: StrictStr = Field(
         default=...,
         alias="institutionId",
@@ -65,15 +62,9 @@ class SweepingAuthorisationRequest(BaseModel):
         alias="oneTimeToken",
         description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
     )
-    control_parameters: SweepingControlParameters = Field(
-        default=..., alias="controlParameters"
-    )
-    initiation_details: InitiationDetails = Field(
-        default=..., alias="initiationDetails"
-    )
-    compliance_data: ComplianceData | None = Field(
-        default=None, alias="complianceData"
-    )
+    control_parameters: SweepingControlParameters = Field(default=..., alias="controlParameters")
+    initiation_details: InitiationDetails = Field(default=..., alias="initiationDetails")
+    compliance_data: ComplianceData | None = Field(default=None, alias="complianceData")
     __properties = [
         "userId",
         "applicationUserId",
@@ -136,18 +127,12 @@ class SweepingAuthorisationRequest(BaseModel):
                 "context_type": obj.get("contextType"),
                 "institution_id": obj.get("institutionId"),
                 "callback": obj.get("callback"),
-                "redirect": RedirectRequest.from_dict(obj.get("redirect"))
-                if obj.get("redirect") is not None
-                else None,
+                "redirect": RedirectRequest.from_dict(obj.get("redirect")) if obj.get("redirect") is not None else None,
                 "one_time_token": obj.get("oneTimeToken"),
-                "control_parameters": SweepingControlParameters.from_dict(
-                    obj.get("controlParameters")
-                )
+                "control_parameters": SweepingControlParameters.from_dict(obj.get("controlParameters"))
                 if obj.get("controlParameters") is not None
                 else None,
-                "initiation_details": InitiationDetails.from_dict(
-                    obj.get("initiationDetails")
-                )
+                "initiation_details": InitiationDetails.from_dict(obj.get("initiationDetails"))
                 if obj.get("initiationDetails") is not None
                 else None,
                 "compliance_data": ComplianceData.from_dict(obj.get("complianceData"))

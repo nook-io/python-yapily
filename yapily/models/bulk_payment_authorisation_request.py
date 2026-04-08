@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -59,9 +58,7 @@ class BulkPaymentAuthorisationRequest(BaseModel):
         alias="oneTimeToken",
         description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
     )
-    payment_request: BulkPaymentRequest | None = Field(
-        default=None, alias="paymentRequest"
-    )
+    payment_request: BulkPaymentRequest | None = Field(default=None, alias="paymentRequest")
     __properties = [
         "userUuid",
         "applicationUserId",
@@ -114,13 +111,9 @@ class BulkPaymentAuthorisationRequest(BaseModel):
                 "forward_parameters": obj.get("forwardParameters"),
                 "institution_id": obj.get("institutionId"),
                 "callback": obj.get("callback"),
-                "redirect": RedirectRequest.from_dict(obj.get("redirect"))
-                if obj.get("redirect") is not None
-                else None,
+                "redirect": RedirectRequest.from_dict(obj.get("redirect")) if obj.get("redirect") is not None else None,
                 "one_time_token": obj.get("oneTimeToken"),
-                "payment_request": BulkPaymentRequest.from_dict(
-                    obj.get("paymentRequest")
-                )
+                "payment_request": BulkPaymentRequest.from_dict(obj.get("paymentRequest"))
                 if obj.get("paymentRequest") is not None
                 else None,
             }

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class FrequencyResponse(BaseModel):
     __Mandatory__. Defines the intervals at which payment should be made.  # noqa: E501
     """
 
-    frequency_type: FrequencyEnumExtended | None = Field(
-        default=None, alias="frequencyType"
-    )
+    frequency_type: FrequencyEnumExtended | None = Field(default=None, alias="frequencyType")
     interval_week: StrictInt | None = Field(
         default=None,
         alias="intervalWeek",

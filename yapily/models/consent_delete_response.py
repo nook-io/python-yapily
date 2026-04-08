@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -32,31 +31,19 @@ class ConsentDeleteResponse(BaseModel):
         default=None,
         description="__Conditional__. User-friendly identifier of the `User` that provides authorisation. If a `User` with the specified `applicationUserId` exists, it will be used otherwise, a new `User` with the specified `applicationUserId` will be created and used. Either the `userUuid` or `applicationUserId` must be provided.",
     )
-    delete_status: DeleteStatusEnum | None = Field(
-        default=None, alias="deleteStatus"
-    )
+    delete_status: DeleteStatusEnum | None = Field(default=None, alias="deleteStatus")
     institution_id: StrictStr | None = Field(
         default=None,
         alias="institutionId",
         description="__Mandatory__. The `Institution` the authorisation request is sent to.",
     )
     institution_consent_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionConsentId",
-        description="Identification of the consent at the Institution.",
+        default=None, alias="institutionConsentId", description="Identification of the consent at the Institution."
     )
     creation_date: datetime | None = Field(
-        default=None,
-        alias="creationDate",
-        description="Date and time of when the consent was authorised.",
+        default=None, alias="creationDate", description="Date and time of when the consent was authorised."
     )
-    __properties = [
-        "id",
-        "deleteStatus",
-        "institutionId",
-        "institutionConsentId",
-        "creationDate",
-    ]
+    __properties = ["id", "deleteStatus", "institutionId", "institutionConsentId", "creationDate"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:

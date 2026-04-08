@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,9 +28,7 @@ class PostAccountsAccountIdTransactionsCategorisation401Response(BaseModel):
     PostAccountsAccountIdTransactionsCategorisation401Response
     """
 
-    error: PostAccountsAccountIdTransactionsCategorisation400ResponseError | None = (
-        None
-    )
+    error: PostAccountsAccountIdTransactionsCategorisation400ResponseError | None = None
     __properties = ["error"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -44,9 +41,7 @@ class PostAccountsAccountIdTransactionsCategorisation401Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> PostAccountsAccountIdTransactionsCategorisation401Response:
+    def from_json(cls, json_str: str) -> PostAccountsAccountIdTransactionsCategorisation401Response:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation401Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -59,23 +54,17 @@ class PostAccountsAccountIdTransactionsCategorisation401Response(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> PostAccountsAccountIdTransactionsCategorisation401Response:
+    def from_dict(cls, obj: dict) -> PostAccountsAccountIdTransactionsCategorisation401Response:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation401Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PostAccountsAccountIdTransactionsCategorisation401Response.parse_obj(
-                obj
-            )
+            return PostAccountsAccountIdTransactionsCategorisation401Response.parse_obj(obj)
 
         return PostAccountsAccountIdTransactionsCategorisation401Response.parse_obj(
             {
-                "error": PostAccountsAccountIdTransactionsCategorisation400ResponseError.from_dict(
-                    obj.get("error")
-                )
+                "error": PostAccountsAccountIdTransactionsCategorisation400ResponseError.from_dict(obj.get("error"))
                 if obj.get("error") is not None
                 else None
             }

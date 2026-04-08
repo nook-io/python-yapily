@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -24,15 +23,15 @@ from yapily.models.get_accounts_transactions_categorised200_response_data_transa
 )
 
 
-class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
-    BaseModel
-):
+class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(BaseModel):
     """
     GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance
     """
 
     type: StrictStr | None = None
-    balance_amount: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount | None = Field(default=None, alias="balanceAmount")
+    balance_amount: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount | None = Field(
+        default=None, alias="balanceAmount"
+    )
     __properties = ["type", "balanceAmount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -45,9 +44,7 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance:
+    def from_json(cls, json_str: str) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -60,17 +57,13 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
         return _dict
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance:
+    def from_dict(cls, obj: dict) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance.parse_obj(
-                obj
-            )
+            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance.parse_obj(obj)
 
         return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance.parse_obj(
             {

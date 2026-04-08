@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -39,18 +38,14 @@ class CreateHostedPaymentRequest(BaseModel):
         alias="applicationUserId",
         description="__Conditional__. Your own `User` reference. This field allows you to use your own unique references for individual users. Where the `User` reference doesn't have an associated Yapily `userId`, a new `userId` is created and linked to it. You must provide either a `userId` or `applicationUserId`.",
     )
-    institution_identifiers: InstitutionIdentifiers = Field(
-        default=..., alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiers = Field(default=..., alias="institutionIdentifiers")
     user_settings: UserSettings | None = Field(default=None, alias="userSettings")
     redirect_url: StrictStr = Field(
         default=...,
         alias="redirectUrl",
         description="URL of your server to redirect the user after completion of the payment flow.",
     )
-    payment_request_details: HostedPaymentRequestDetails = Field(
-        default=..., alias="paymentRequestDetails"
-    )
+    payment_request_details: HostedPaymentRequestDetails = Field(default=..., alias="paymentRequestDetails")
     __properties = [
         "userId",
         "applicationUserId",
@@ -101,18 +96,14 @@ class CreateHostedPaymentRequest(BaseModel):
             {
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),
-                "institution_identifiers": InstitutionIdentifiers.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiers.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "user_settings": UserSettings.from_dict(obj.get("userSettings"))
                 if obj.get("userSettings") is not None
                 else None,
                 "redirect_url": obj.get("redirectUrl"),
-                "payment_request_details": HostedPaymentRequestDetails.from_dict(
-                    obj.get("paymentRequestDetails")
-                )
+                "payment_request_details": HostedPaymentRequestDetails.from_dict(obj.get("paymentRequestDetails"))
                 if obj.get("paymentRequestDetails") is not None
                 else None,
             }

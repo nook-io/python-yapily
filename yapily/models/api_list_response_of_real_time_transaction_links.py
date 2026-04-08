@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,24 +24,13 @@ class ApiListResponseOfRealTimeTransactionLinks(BaseModel):
     ApiListResponseOfRealTimeTransactionLinks
     """
 
-    first: StrictStr | None = Field(
-        default=None, description="A cursor or link to the first page in the data set."
-    )
-    prev: StrictStr | None = Field(
-        default=None,
-        description="A cursor or link to the previous page in the data set.",
-    )
+    first: StrictStr | None = Field(default=None, description="A cursor or link to the first page in the data set.")
+    prev: StrictStr | None = Field(default=None, description="A cursor or link to the previous page in the data set.")
     var_self: StrictStr | None = Field(
-        default=None,
-        alias="self",
-        description="A cursor or link to the current page in the data set.",
+        default=None, alias="self", description="A cursor or link to the current page in the data set."
     )
-    next: StrictStr | None = Field(
-        default=None, description="A cursor or link to the next page in the data set."
-    )
-    last: StrictStr | None = Field(
-        default=None, description="A cursor or link to the last page in the data set."
-    )
+    next: StrictStr | None = Field(default=None, description="A cursor or link to the next page in the data set.")
+    last: StrictStr | None = Field(default=None, description="A cursor or link to the last page in the data set.")
     __properties = ["first", "prev", "self", "next", "last"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

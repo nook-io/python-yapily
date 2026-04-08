@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,10 +28,7 @@ class Payee(BaseModel):
     __Mandatory__. Details of the beneficiary [person or business].  # noqa: E501
     """
 
-    name: StrictStr = Field(
-        default=...,
-        description="__Mandatory__. The account holder name of the beneficiary.",
-    )
+    name: StrictStr = Field(default=..., description="__Mandatory__. The account holder name of the beneficiary.")
     account_identifications: Annotated[list[AccountIdentification], Field(unique_items=True)] = Field(
         default=...,
         alias="accountIdentifications",
@@ -54,14 +50,7 @@ class Payee(BaseModel):
         alias="merchantCategoryCode",
         description="__Optional__. The category code of the merchant in case the `Payee` is a business. Specified as a 3-letter ISO 18245 code.",
     )
-    __properties = [
-        "name",
-        "accountIdentifications",
-        "accountType",
-        "address",
-        "merchantId",
-        "merchantCategoryCode",
-    ]
+    __properties = ["name", "accountIdentifications", "accountType", "address", "merchantId", "merchantCategoryCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -105,15 +94,12 @@ class Payee(BaseModel):
             {
                 "name": obj.get("name"),
                 "account_identifications": [
-                    AccountIdentification.from_dict(_item)
-                    for _item in obj.get("accountIdentifications")
+                    AccountIdentification.from_dict(_item) for _item in obj.get("accountIdentifications")
                 ]
                 if obj.get("accountIdentifications") is not None
                 else None,
                 "account_type": obj.get("accountType"),
-                "address": Address.from_dict(obj.get("address"))
-                if obj.get("address") is not None
-                else None,
+                "address": Address.from_dict(obj.get("address")) if obj.get("address") is not None else None,
                 "merchant_id": obj.get("merchantId"),
                 "merchant_category_code": obj.get("merchantCategoryCode"),
             }

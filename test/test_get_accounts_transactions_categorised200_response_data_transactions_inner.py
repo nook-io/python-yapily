@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -18,9 +17,7 @@ from yapily.models.get_accounts_transactions_categorised200_response_data_transa
 )
 
 
-class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInner(
-    unittest.TestCase
-):
+class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInner(unittest.TestCase):
     """GetAccountsTransactionsCategorised200ResponseDataTransactionsInner unit test stubs"""
 
     def setUp(self):
@@ -29,9 +26,7 @@ class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInner(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInner:
+    def make_instance(self, include_optional) -> GetAccountsTransactionsCategorised200ResponseDataTransactionsInner:
         """Test GetAccountsTransactionsCategorised200ResponseDataTransactionsInner
         include_option is a boolean, when False only required
         params are included, when True both required and

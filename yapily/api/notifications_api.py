@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -44,10 +43,7 @@ class NotificationsApi:
         self,
         event_subscription_request: EventSubscriptionRequest,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponseOfEventSubscriptionResponse:
@@ -81,10 +77,7 @@ class NotificationsApi:
         self,
         event_subscription_request: EventSubscriptionRequest,
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -136,10 +129,7 @@ class NotificationsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_event_subscription"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_event_subscription")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -164,14 +154,11 @@ class NotificationsApi:
             _body_params = _params["event_subscription_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -179,12 +166,7 @@ class NotificationsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfEventSubscriptionResponse",
-            "400": None,
-            "401": None,
-            "409": None,
-        }
+        _response_types_map = {"201": "ApiResponseOfEventSubscriptionResponse", "400": None, "401": None, "409": None}
 
         return await self.api_client.call_api(
             "/notifications/event-subscriptions",
@@ -209,16 +191,10 @@ class NotificationsApi:
         self,
         event_type_id: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="Unique identifier of the event type (for which notifications will be sent). ",
-            ),
+            Field(..., description="Unique identifier of the event type (for which notifications will be sent). "),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID for which event type will be deleted"
-            ),
+            StrictStr | None, Field(description="The sub-application ID for which event type will be deleted")
         ] = None,
         **kwargs,
     ) -> ApiResponseOfEventSubscriptionDeleteResponse:
@@ -243,25 +219,17 @@ class NotificationsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the delete_event_subscription_by_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.delete_event_subscription_by_id_with_http_info(
-            event_type_id, sub_application, **kwargs
-        )
+        return await self.delete_event_subscription_by_id_with_http_info(event_type_id, sub_application, **kwargs)
 
     @validate_arguments
     async def delete_event_subscription_by_id_with_http_info(
         self,
         event_type_id: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="Unique identifier of the event type (for which notifications will be sent). ",
-            ),
+            Field(..., description="Unique identifier of the event type (for which notifications will be sent). "),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID for which event type will be deleted"
-            ),
+            StrictStr | None, Field(description="The sub-application ID for which event type will be deleted")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -314,8 +282,7 @@ class NotificationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_event_subscription_by_id"
+                    f"Got an unexpected keyword argument '{_key}' to method delete_event_subscription_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -340,18 +307,12 @@ class NotificationsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfEventSubscriptionDeleteResponse",
-            "401": None,
-            "404": None,
-        }
+        _response_types_map = {"200": "ApiResponseOfEventSubscriptionDeleteResponse", "401": None, "404": None}
 
         return await self.api_client.call_api(
             "/notifications/event-subscriptions/{eventTypeId}",
@@ -376,16 +337,10 @@ class NotificationsApi:
         self,
         event_type_id: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="Unique identifier of the event type (for which notifications will be sent). ",
-            ),
+            Field(..., description="Unique identifier of the event type (for which notifications will be sent). "),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponseOfEventSubscriptionResponse:
@@ -410,25 +365,17 @@ class NotificationsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_event_subscription_by_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_event_subscription_by_id_with_http_info(
-            event_type_id, sub_application, **kwargs
-        )
+        return await self.get_event_subscription_by_id_with_http_info(event_type_id, sub_application, **kwargs)
 
     @validate_arguments
     async def get_event_subscription_by_id_with_http_info(
         self,
         event_type_id: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="Unique identifier of the event type (for which notifications will be sent). ",
-            ),
+            Field(..., description="Unique identifier of the event type (for which notifications will be sent). "),
         ],
         sub_application: Annotated[
-            StrictStr | None,
-            Field(
-                description="The sub-application ID to which event type is being subscribed to"
-            ),
+            StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -481,8 +428,7 @@ class NotificationsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_event_subscription_by_id"
+                    f"Got an unexpected keyword argument '{_key}' to method get_event_subscription_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -507,18 +453,12 @@ class NotificationsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfEventSubscriptionResponse",
-            "401": None,
-            "404": None,
-        }
+        _response_types_map = {"200": "ApiResponseOfEventSubscriptionResponse", "401": None, "404": None}
 
         return await self.api_client.call_api(
             "/notifications/event-subscriptions/{eventTypeId}",
@@ -543,9 +483,7 @@ class NotificationsApi:
         self,
         sub_application: Annotated[
             StrictStr | None,
-            Field(
-                description="The sub-application ID for which all event subscriptions will be returned"
-            ),
+            Field(description="The sub-application ID for which all event subscriptions will be returned"),
         ] = None,
         **kwargs,
     ) -> ApiListResponseOfEventSubscriptionResponse:
@@ -568,18 +506,14 @@ class NotificationsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_event_subscriptions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_event_subscriptions_with_http_info(
-            sub_application, **kwargs
-        )
+        return await self.get_event_subscriptions_with_http_info(sub_application, **kwargs)
 
     @validate_arguments
     async def get_event_subscriptions_with_http_info(
         self,
         sub_application: Annotated[
             StrictStr | None,
-            Field(
-                description="The sub-application ID for which all event subscriptions will be returned"
-            ),
+            Field(description="The sub-application ID for which all event subscriptions will be returned"),
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -629,10 +563,7 @@ class NotificationsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_event_subscriptions"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_event_subscriptions")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -654,17 +585,12 @@ class NotificationsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfEventSubscriptionResponse",
-            "401": None,
-        }
+        _response_types_map = {"200": "ApiListResponseOfEventSubscriptionResponse", "401": None}
 
         return await self.api_client.call_api(
             "/notifications/event-subscriptions",

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,10 +28,7 @@ class ApplicationUser(BaseModel):
     Information about a user of an application.  # noqa: E501
     """
 
-    uuid: StrictStr | None = Field(
-        default=None,
-        description="A unique identifier for the 'User' assigned by Yapily.",
-    )
+    uuid: StrictStr | None = Field(default=None, description="A unique identifier for the 'User' assigned by Yapily.")
     application_uuid: StrictStr | None = Field(
         default=None,
         alias="applicationUuid",
@@ -45,21 +41,12 @@ class ApplicationUser(BaseModel):
     )
     reference_id: StrictStr | None = Field(default=None, alias="referenceId")
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="Date and time of when the user was created.",
+        default=None, alias="createdAt", description="Date and time of when the user was created."
     )
     institution_consents: Annotated[list[InstitutionConsent], Field()] | None = Field(
         default=None, alias="institutionConsents"
     )
-    __properties = [
-        "uuid",
-        "applicationUuid",
-        "applicationUserId",
-        "referenceId",
-        "createdAt",
-        "institutionConsents",
-    ]
+    __properties = ["uuid", "applicationUuid", "applicationUserId", "referenceId", "createdAt", "institutionConsents"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -104,8 +91,7 @@ class ApplicationUser(BaseModel):
                 "reference_id": obj.get("referenceId"),
                 "created_at": obj.get("createdAt"),
                 "institution_consents": [
-                    InstitutionConsent.from_dict(_item)
-                    for _item in obj.get("institutionConsents")
+                    InstitutionConsent.from_dict(_item) for _item in obj.get("institutionConsents")
                 ]
                 if obj.get("institutionConsents") is not None
                 else None,

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -78,9 +77,7 @@ class HostedPagesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_hosted_payment_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return self.create_hosted_payment_request_with_http_info(
-            create_hosted_payment_request, **kwargs
-        )
+        return self.create_hosted_payment_request_with_http_info(create_hosted_payment_request, **kwargs)
 
     @validate_arguments
     def create_hosted_payment_request_with_http_info(
@@ -141,8 +138,7 @@ class HostedPagesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_hosted_payment_request"
+                    f"Got an unexpected keyword argument '{_key}' to method create_hosted_payment_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -165,16 +161,11 @@ class HostedPagesApi:
             _body_params = _params["create_hosted_payment_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -210,9 +201,7 @@ class HostedPagesApi:
 
     @validate_arguments
     def create_hosted_payment_request_link(
-        self,
-        create_hosted_payment_request_link: CreateHostedPaymentRequestLink,
-        **kwargs,
+        self, create_hosted_payment_request_link: CreateHostedPaymentRequestLink, **kwargs
     ) -> ApiResponseOfCreateHostedPaymentRequestLink:
         """Create Pay By Link  # noqa: E501
 
@@ -240,15 +229,11 @@ class HostedPagesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_hosted_payment_request_link_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return self.create_hosted_payment_request_link_with_http_info(
-            create_hosted_payment_request_link, **kwargs
-        )
+        return self.create_hosted_payment_request_link_with_http_info(create_hosted_payment_request_link, **kwargs)
 
     @validate_arguments
     def create_hosted_payment_request_link_with_http_info(
-        self,
-        create_hosted_payment_request_link: CreateHostedPaymentRequestLink,
-        **kwargs,
+        self, create_hosted_payment_request_link: CreateHostedPaymentRequestLink, **kwargs
     ) -> ApiResponse:
         """Create Pay By Link  # noqa: E501
 
@@ -305,8 +290,7 @@ class HostedPagesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_hosted_payment_request_link"
+                    f"Got an unexpected keyword argument '{_key}' to method create_hosted_payment_request_link"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -329,16 +313,11 @@ class HostedPagesApi:
             _body_params = _params["create_hosted_payment_request_link"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -487,8 +466,7 @@ class HostedPagesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_hosted_vrp_consent_request"
+                    f"Got an unexpected keyword argument '{_key}' to method create_hosted_vrp_consent_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -514,16 +492,11 @@ class HostedPagesApi:
             _body_params = _params["create_hosted_vrp_consent_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -560,10 +533,7 @@ class HostedPagesApi:
     @validate_arguments
     def create_hosted_vrp_funds_confirmation(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
             Field(
@@ -613,20 +583,13 @@ class HostedPagesApi:
             message = "Error! Please call the create_hosted_vrp_funds_confirmation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return self.create_hosted_vrp_funds_confirmation_with_http_info(
-            consent_request_id,
-            consent_token,
-            funds_confirmation_request,
-            sub_application,
-            **kwargs,
+            consent_request_id, consent_token, funds_confirmation_request, sub_application, **kwargs
         )
 
     @validate_arguments
     def create_hosted_vrp_funds_confirmation_with_http_info(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
             Field(
@@ -687,12 +650,7 @@ class HostedPagesApi:
 
         _params = locals()
 
-        _all_params = [
-            "consent_request_id",
-            "consent_token",
-            "funds_confirmation_request",
-            "sub_application",
-        ]
+        _all_params = ["consent_request_id", "consent_token", "funds_confirmation_request", "sub_application"]
         _all_params.extend(
             [
                 "async_req",
@@ -709,8 +667,7 @@ class HostedPagesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_hosted_vrp_funds_confirmation"
+                    f"Got an unexpected keyword argument '{_key}' to method create_hosted_vrp_funds_confirmation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -741,16 +698,11 @@ class HostedPagesApi:
             _body_params = _params["funds_confirmation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -758,10 +710,7 @@ class HostedPagesApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfFundsConfirmationResponse",
-            "401": "ApiResponseError",
-        }
+        _response_types_map = {"201": "ApiResponseOfFundsConfirmationResponse", "401": "ApiResponseError"}
 
         return self.api_client.call_api(
             "/hosted/vrp/consent-requests/{consentRequestId}/funds-confirmation",
@@ -785,10 +734,7 @@ class HostedPagesApi:
     @validate_arguments
     def create_hosted_vrp_payment(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
             Field(
@@ -838,20 +784,13 @@ class HostedPagesApi:
             message = "Error! Please call the create_hosted_vrp_payment_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return self.create_hosted_vrp_payment_with_http_info(
-            consent_request_id,
-            consent_token,
-            create_hosted_vrp_payment_request,
-            sub_application,
-            **kwargs,
+            consent_request_id, consent_token, create_hosted_vrp_payment_request, sub_application, **kwargs
         )
 
     @validate_arguments
     def create_hosted_vrp_payment_with_http_info(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
             Field(
@@ -912,12 +851,7 @@ class HostedPagesApi:
 
         _params = locals()
 
-        _all_params = [
-            "consent_request_id",
-            "consent_token",
-            "create_hosted_vrp_payment_request",
-            "sub_application",
-        ]
+        _all_params = ["consent_request_id", "consent_token", "create_hosted_vrp_payment_request", "sub_application"]
         _all_params.extend(
             [
                 "async_req",
@@ -933,10 +867,7 @@ class HostedPagesApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_hosted_vrp_payment"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_hosted_vrp_payment")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -966,16 +897,11 @@ class HostedPagesApi:
             _body_params = _params["create_hosted_vrp_payment_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -983,10 +909,7 @@ class HostedPagesApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfCreateHostedVRPPaymentRequest",
-            "401": "ApiResponseError",
-        }
+        _response_types_map = {"201": "ApiResponseOfCreateHostedVRPPaymentRequest", "401": "ApiResponseError"}
 
         return self.api_client.call_api(
             "/hosted/vrp/consent-requests/{consentRequestId}/payments",
@@ -1010,10 +933,7 @@ class HostedPagesApi:
     @validate_arguments
     def get_hosted_consent_request(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1050,17 +970,12 @@ class HostedPagesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_hosted_consent_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return self.get_hosted_consent_request_with_http_info(
-            consent_request_id, sub_application, **kwargs
-        )
+        return self.get_hosted_consent_request_with_http_info(consent_request_id, sub_application, **kwargs)
 
     @validate_arguments
     def get_hosted_consent_request_with_http_info(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1125,10 +1040,7 @@ class HostedPagesApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_hosted_consent_request"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_hosted_consent_request")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1152,9 +1064,7 @@ class HostedPagesApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -1188,10 +1098,7 @@ class HostedPagesApi:
     @validate_arguments
     def get_hosted_payment_request(
         self,
-        payment_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the payment request"),
-        ],
+        payment_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the payment request")],
         **kwargs,
     ) -> ApiResponseOfGetHostedPaymentRequest:
         """Get Hosted payment request  # noqa: E501
@@ -1220,17 +1127,12 @@ class HostedPagesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_hosted_payment_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return self.get_hosted_payment_request_with_http_info(
-            payment_request_id, **kwargs
-        )
+        return self.get_hosted_payment_request_with_http_info(payment_request_id, **kwargs)
 
     @validate_arguments
     def get_hosted_payment_request_with_http_info(
         self,
-        payment_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the payment request"),
-        ],
+        payment_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the payment request")],
         **kwargs,
     ) -> ApiResponse:
         """Get Hosted payment request  # noqa: E501
@@ -1287,10 +1189,7 @@ class HostedPagesApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_hosted_payment_request"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_hosted_payment_request")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1311,9 +1210,7 @@ class HostedPagesApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -1382,9 +1279,7 @@ class HostedPagesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_hosted_vrp_consent_requests_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return self.get_hosted_vrp_consent_requests_with_http_info(
-            sub_application, **kwargs
-        )
+        return self.get_hosted_vrp_consent_requests_with_http_info(sub_application, **kwargs)
 
     @validate_arguments
     def get_hosted_vrp_consent_requests_with_http_info(
@@ -1453,8 +1348,7 @@ class HostedPagesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_hosted_vrp_consent_requests"
+                    f"Got an unexpected keyword argument '{_key}' to method get_hosted_vrp_consent_requests"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1477,9 +1371,7 @@ class HostedPagesApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -1513,14 +1405,8 @@ class HostedPagesApi:
     @validate_arguments
     def get_hosted_vrp_payment_request(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
-        payment_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        payment_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1566,14 +1452,8 @@ class HostedPagesApi:
     @validate_arguments
     def get_hosted_vrp_payment_request_with_http_info(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
-        payment_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        payment_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1641,8 +1521,7 @@ class HostedPagesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_hosted_vrp_payment_request"
+                    f"Got an unexpected keyword argument '{_key}' to method get_hosted_vrp_payment_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1670,9 +1549,7 @@ class HostedPagesApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -1706,10 +1583,7 @@ class HostedPagesApi:
     @validate_arguments
     def revoke_hosted_consent_request(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1746,17 +1620,12 @@ class HostedPagesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the revoke_hosted_consent_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return self.revoke_hosted_consent_request_with_http_info(
-            consent_request_id, sub_application, **kwargs
-        )
+        return self.revoke_hosted_consent_request_with_http_info(consent_request_id, sub_application, **kwargs)
 
     @validate_arguments
     def revoke_hosted_consent_request_with_http_info(
         self,
-        consent_request_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique Identifier of the Consent Request"),
-        ],
+        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1822,8 +1691,7 @@ class HostedPagesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method revoke_hosted_consent_request"
+                    f"Got an unexpected keyword argument '{_key}' to method revoke_hosted_consent_request"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1848,9 +1716,7 @@ class HostedPagesApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]

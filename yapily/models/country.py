@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,13 +24,9 @@ class Country(BaseModel):
     An array of `Country` denoting which regions the `Institution` provides coverage for  # noqa: E501
     """
 
-    display_name: StrictStr | None = Field(
-        default=None, alias="displayName", description="Country name."
-    )
+    display_name: StrictStr | None = Field(default=None, alias="displayName", description="Country name.")
     country_code2: StrictStr | None = Field(
-        default=None,
-        alias="countryCode2",
-        description="Two character ISO 3166 country code.",
+        default=None, alias="countryCode2", description="Two character ISO 3166 country code."
     )
     __properties = ["displayName", "countryCode2"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -62,9 +57,4 @@ class Country(BaseModel):
         if not isinstance(obj, dict):
             return Country.parse_obj(obj)
 
-        return Country.parse_obj(
-            {
-                "display_name": obj.get("displayName"),
-                "country_code2": obj.get("countryCode2"),
-            }
-        )
+        return Country.parse_obj({"display_name": obj.get("displayName"), "country_code2": obj.get("countryCode2")})

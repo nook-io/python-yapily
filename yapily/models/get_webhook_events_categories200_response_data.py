@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,10 +67,7 @@ class GetWebhookEventsCategories200ResponseData(BaseModel):
 
         return GetWebhookEventsCategories200ResponseData.parse_obj(
             {
-                "categories": [
-                    CategoryStructure.from_dict(_item)
-                    for _item in obj.get("categories")
-                ]
+                "categories": [CategoryStructure.from_dict(_item) for _item in obj.get("categories")]
                 if obj.get("categories") is not None
                 else None
             }

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -29,16 +28,11 @@ class RegisteredWebhook(BaseModel):
     """
 
     id: StrictStr | None = Field(
-        default=None,
-        description="the UUID of the registered webhook, used to update or remove the webhook",
+        default=None, description="the UUID of the registered webhook, used to update or remove the webhook"
     )
-    application_id: StrictStr | None = Field(
-        default=None, alias="applicationId", description="user applicaiton id"
-    )
+    application_id: StrictStr | None = Field(default=None, alias="applicationId", description="user applicaiton id")
     categories: Annotated[list[StrictStr], Field()] | None = None
-    callback_url: RegisteredWebhookCallbackUrl | None = Field(
-        default=None, alias="callbackUrl"
-    )
+    callback_url: RegisteredWebhookCallbackUrl | None = Field(default=None, alias="callbackUrl")
     metadata: dict[str, StrictStr] | None = None
     __properties = ["id", "applicationId", "categories", "callbackUrl", "metadata"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -78,9 +72,7 @@ class RegisteredWebhook(BaseModel):
                 "id": obj.get("id"),
                 "application_id": obj.get("applicationId"),
                 "categories": obj.get("categories"),
-                "callback_url": RegisteredWebhookCallbackUrl.from_dict(
-                    obj.get("callbackUrl")
-                )
+                "callback_url": RegisteredWebhookCallbackUrl.from_dict(obj.get("callbackUrl"))
                 if obj.get("callbackUrl") is not None
                 else None,
                 "metadata": obj.get("metadata"),

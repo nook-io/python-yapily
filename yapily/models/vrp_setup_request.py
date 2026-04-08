@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -40,9 +39,7 @@ class VRPSetupRequest(BaseModel):
     )
     limits: HostedVRPLimitsRequest | None = None
     valid_from: datetime | None = Field(
-        default=None,
-        alias="validFrom",
-        description="__Optional__. Start date when the consent becomes valid.",
+        default=None, alias="validFrom", description="__Optional__. Start date when the consent becomes valid."
     )
     valid_to: datetime | None = Field(
         default=None,
@@ -117,12 +114,8 @@ class VRPSetupRequest(BaseModel):
 
         return VRPSetupRequest.parse_obj(
             {
-                "payer": Payer.from_dict(obj.get("payer"))
-                if obj.get("payer") is not None
-                else None,
-                "payee": Payee.from_dict(obj.get("payee"))
-                if obj.get("payee") is not None
-                else None,
+                "payer": Payer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+                "payee": Payee.from_dict(obj.get("payee")) if obj.get("payee") is not None else None,
                 "reference": obj.get("reference"),
                 "limits": HostedVRPLimitsRequest.from_dict(obj.get("limits"))
                 if obj.get("limits") is not None
@@ -133,8 +126,6 @@ class VRPSetupRequest(BaseModel):
                 "initial_payment": Amount.from_dict(obj.get("initialPayment"))
                 if obj.get("initialPayment") is not None
                 else None,
-                "risk": PaymentRisk.from_dict(obj.get("risk"))
-                if obj.get("risk") is not None
-                else None,
+                "risk": PaymentRisk.from_dict(obj.get("risk")) if obj.get("risk") is not None else None,
             }
         )

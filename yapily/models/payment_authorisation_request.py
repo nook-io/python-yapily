@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -108,9 +107,7 @@ class PaymentAuthorisationRequest(BaseModel):
                 "forward_parameters": obj.get("forwardParameters"),
                 "institution_id": obj.get("institutionId"),
                 "callback": obj.get("callback"),
-                "redirect": RedirectRequest.from_dict(obj.get("redirect"))
-                if obj.get("redirect") is not None
-                else None,
+                "redirect": RedirectRequest.from_dict(obj.get("redirect")) if obj.get("redirect") is not None else None,
                 "one_time_token": obj.get("oneTimeToken"),
                 "payment_request": PaymentRequest.from_dict(obj.get("paymentRequest"))
                 if obj.get("paymentRequest") is not None

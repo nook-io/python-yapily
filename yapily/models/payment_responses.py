@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -68,9 +67,7 @@ class PaymentResponses(BaseModel):
 
         return PaymentResponses.parse_obj(
             {
-                "payments": [
-                    PaymentResponse.from_dict(_item) for _item in obj.get("payments")
-                ]
+                "payments": [PaymentResponse.from_dict(_item) for _item in obj.get("payments")]
                 if obj.get("payments") is not None
                 else None
             }

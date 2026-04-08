@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -33,41 +32,29 @@ class HostedPaymentDetails(BaseModel):
     """
 
     payment_request_id: StrictStr | None = Field(
-        default=None,
-        alias="paymentRequestId",
-        description="The unique ID of the payment request.",
+        default=None, alias="paymentRequestId", description="The unique ID of the payment request."
     )
     user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="The Unique Identifier for the `User` assigned by Yapily.",
+        default=None, alias="userId", description="The Unique Identifier for the `User` assigned by Yapily."
     )
     application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="Your reference to the `User`.",
+        default=None, alias="applicationUserId", description="Your reference to the `User`."
     )
     application_id: StrictStr | None = Field(
         default=None,
         alias="applicationId",
         description="The Unique Identifier of the `Application` the user is associated with.",
     )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(
-        default=None, alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
     user_settings: UserSettings | None = Field(default=None, alias="userSettings")
     redirect_url: StrictStr | None = Field(
         default=None,
         alias="redirectUrl",
         description="URL of your server to redirect the user after completion of the payment flow.",
     )
-    payment_request_details: HostedPaymentRequestDetailsLink | None = Field(
-        default=None, alias="paymentRequestDetails"
-    )
+    payment_request_details: HostedPaymentRequestDetailsLink | None = Field(default=None, alias="paymentRequestDetails")
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="The date and time at which the payment request was created.",
+        default=None, alias="createdAt", description="The date and time at which the payment request was created."
     )
     authorisation_expires_at: datetime | None = Field(
         default=None,
@@ -79,8 +66,7 @@ class HostedPaymentDetails(BaseModel):
         description="Current status of the payment request. <br> Possible values: <br> ACTIVE <br> INACTIVE",
     )
     payments: Annotated[list[HostedPayment], Field(unique_items=True)] | None = Field(
-        default=None,
-        description="Payments that have been initiated as part of this request",
+        default=None, description="Payments that have been initiated as part of this request"
     )
     __properties = [
         "paymentRequestId",
@@ -147,26 +133,20 @@ class HostedPaymentDetails(BaseModel):
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),
                 "application_id": obj.get("applicationId"),
-                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiersResponse.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "user_settings": UserSettings.from_dict(obj.get("userSettings"))
                 if obj.get("userSettings") is not None
                 else None,
                 "redirect_url": obj.get("redirectUrl"),
-                "payment_request_details": HostedPaymentRequestDetailsLink.from_dict(
-                    obj.get("paymentRequestDetails")
-                )
+                "payment_request_details": HostedPaymentRequestDetailsLink.from_dict(obj.get("paymentRequestDetails"))
                 if obj.get("paymentRequestDetails") is not None
                 else None,
                 "created_at": obj.get("createdAt"),
                 "authorisation_expires_at": obj.get("authorisationExpiresAt"),
                 "status": obj.get("status"),
-                "payments": [
-                    HostedPayment.from_dict(_item) for _item in obj.get("payments")
-                ]
+                "payments": [HostedPayment.from_dict(_item) for _item in obj.get("payments")]
                 if obj.get("payments") is not None
                 else None,
             }

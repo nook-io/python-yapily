@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,9 +25,7 @@ class Merchant(BaseModel):
     """
 
     merchant_name: StrictStr | None = Field(
-        default=None,
-        alias="merchantName",
-        description="The name of the merchant involved in the transaction.",
+        default=None, alias="merchantName", description="The name of the merchant involved in the transaction."
     )
     merchant_category_code: StrictStr | None = Field(
         default=None,
@@ -65,8 +62,5 @@ class Merchant(BaseModel):
             return Merchant.parse_obj(obj)
 
         return Merchant.parse_obj(
-            {
-                "merchant_name": obj.get("merchantName"),
-                "merchant_category_code": obj.get("merchantCategoryCode"),
-            }
+            {"merchant_name": obj.get("merchantName"), "merchant_category_code": obj.get("merchantCategoryCode")}
         )

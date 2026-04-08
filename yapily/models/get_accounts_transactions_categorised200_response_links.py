@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -42,9 +41,7 @@ class GetAccountsTransactionsCategorised200ResponseLinks(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> GetAccountsTransactionsCategorised200ResponseLinks:
+    def from_json(cls, json_str: str) -> GetAccountsTransactionsCategorised200ResponseLinks:
         """Create an instance of GetAccountsTransactionsCategorised200ResponseLinks from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 

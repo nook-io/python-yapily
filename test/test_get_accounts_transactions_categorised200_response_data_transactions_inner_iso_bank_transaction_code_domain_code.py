@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -49,9 +48,7 @@ class TestGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoB
         )
         """
 
-    def testGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode(
-        self,
-    ):
+    def testGetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode(self):
         """Test GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)

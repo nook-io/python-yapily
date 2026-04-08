@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,27 +29,19 @@ class HostedVRPConsentRequestResponse(BaseModel):
     HostedVRPConsentRequestResponse
     """
 
-    id: StrictStr = Field(
-        default=..., description="Represents the Unique Id of the VRP consent request"
-    )
+    id: StrictStr = Field(default=..., description="Represents the Unique Id of the VRP consent request")
     user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="Represents the Unique Id for the `User` assigned by Yapily.",
+        default=None, alias="userId", description="Represents the Unique Id for the `User` assigned by Yapily."
     )
     application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="Represents the user-friendly reference to the `User`.",
+        default=None, alias="applicationUserId", description="Represents the user-friendly reference to the `User`."
     )
     application_id: StrictStr = Field(
         default=...,
         alias="applicationId",
         description="Represents the Unique Id of the `Application` the user is associated with.",
     )
-    institution_identifiers: InstitutionIdentifiers | None = Field(
-        default=None, alias="institutionIdentifiers"
-    )
+    institution_identifiers: InstitutionIdentifiers | None = Field(default=None, alias="institutionIdentifiers")
     user_settings: UserSettings | None = Field(default=None, alias="userSettings")
     redirect_url: StrictStr | None = Field(
         default=None,
@@ -69,9 +60,7 @@ class HostedVRPConsentRequestResponse(BaseModel):
         description="Represents the JWT Token signed by the certificate-vault using Yapily's keys.",
     )
     created_at: datetime = Field(
-        default=...,
-        alias="createdAt",
-        description="Represents the date and time at which the Consent was created.",
+        default=..., alias="createdAt", description="Represents the date and time at which the Consent was created."
     )
     authorisation_expires_at: datetime | None = Field(
         default=None,
@@ -136,9 +125,7 @@ class HostedVRPConsentRequestResponse(BaseModel):
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),
                 "application_id": obj.get("applicationId"),
-                "institution_identifiers": InstitutionIdentifiers.from_dict(
-                    obj.get("institutionIdentifiers")
-                )
+                "institution_identifiers": InstitutionIdentifiers.from_dict(obj.get("institutionIdentifiers"))
                 if obj.get("institutionIdentifiers") is not None
                 else None,
                 "user_settings": UserSettings.from_dict(obj.get("userSettings"))

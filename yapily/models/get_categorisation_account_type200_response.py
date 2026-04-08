@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -71,8 +70,6 @@ class GetCategorisationAccountType200Response(BaseModel):
                 "meta": GetBulkPaymentStatus200ResponseMeta.from_dict(obj.get("meta"))
                 if obj.get("meta") is not None
                 else None,
-                "data": GetCategoriesResponse.from_dict(obj.get("data"))
-                if obj.get("data") is not None
-                else None,
+                "data": GetCategoriesResponse.from_dict(obj.get("data")) if obj.get("data") is not None else None,
             }
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,9 +24,7 @@ class SchemaXYapilyValidations(BaseModel):
     SchemaXYapilyValidations
     """
 
-    max_duration_from_now: StrictStr | None = Field(
-        default=None, alias="maxDurationFromNow"
-    )
+    max_duration_from_now: StrictStr | None = Field(default=None, alias="maxDurationFromNow")
     __properties = ["maxDurationFromNow"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -57,6 +54,4 @@ class SchemaXYapilyValidations(BaseModel):
         if not isinstance(obj, dict):
             return SchemaXYapilyValidations.parse_obj(obj)
 
-        return SchemaXYapilyValidations.parse_obj(
-            {"max_duration_from_now": obj.get("maxDurationFromNow")}
-        )
+        return SchemaXYapilyValidations.parse_obj({"max_duration_from_now": obj.get("maxDurationFromNow")})

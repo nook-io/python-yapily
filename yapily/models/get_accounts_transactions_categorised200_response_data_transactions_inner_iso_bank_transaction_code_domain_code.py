@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -20,9 +19,7 @@ import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, StrictStr
 
 
-class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode(
-    BaseModel
-):
+class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode(BaseModel):
     """
     GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode
     """

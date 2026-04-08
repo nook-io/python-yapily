@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -63,6 +62,4 @@ class EnrichedHistoricBalance(BaseModel):
         if not isinstance(obj, dict):
             return EnrichedHistoricBalance.parse_obj(obj)
 
-        return EnrichedHistoricBalance.parse_obj(
-            {"var_date": obj.get("date"), "balance": obj.get("balance")}
-        )
+        return EnrichedHistoricBalance.parse_obj({"var_date": obj.get("date"), "balance": obj.get("balance")})

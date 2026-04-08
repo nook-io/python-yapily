@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -48,18 +47,11 @@ class FinancialProfileApi:
     async def create_profile_consent(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The `consent-token` obtained from the original authorisation.",
-            ),
+            Field(..., description="__Mandatory__. The `consent-token` obtained from the original authorisation."),
         ],
         **kwargs,
     ) -> ApiResponseOfFinancialProfileAuthorisationResponse:
@@ -84,26 +76,17 @@ class FinancialProfileApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_profile_consent_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_profile_consent_with_http_info(
-            user_uuid, consent, **kwargs
-        )
+        return await self.create_profile_consent_with_http_info(user_uuid, consent, **kwargs)
 
     @validate_arguments
     async def create_profile_consent_with_http_info(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The `consent-token` obtained from the original authorisation.",
-            ),
+            Field(..., description="__Mandatory__. The `consent-token` obtained from the original authorisation."),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -155,10 +138,7 @@ class FinancialProfileApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_profile_consent"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_profile_consent")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -182,9 +162,7 @@ class FinancialProfileApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -218,16 +196,9 @@ class FinancialProfileApi:
     async def delete_profile_consent(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
-        profile_consent_id: Annotated[
-            StrictStr,
-            Field(..., description="__Mandatory__. The ID of the ProfileConsent"),
-        ],
+        profile_consent_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The ID of the ProfileConsent")],
         **kwargs,
     ) -> ApiResponseOfFinancialProfileConsentRemoveResponse:
         """Delete Profile Consent  # noqa: E501
@@ -251,24 +222,15 @@ class FinancialProfileApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the delete_profile_consent_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.delete_profile_consent_with_http_info(
-            user_uuid, profile_consent_id, **kwargs
-        )
+        return await self.delete_profile_consent_with_http_info(user_uuid, profile_consent_id, **kwargs)
 
     @validate_arguments
     async def delete_profile_consent_with_http_info(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
-        profile_consent_id: Annotated[
-            StrictStr,
-            Field(..., description="__Mandatory__. The ID of the ProfileConsent"),
-        ],
+        profile_consent_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The ID of the ProfileConsent")],
         **kwargs,
     ) -> ApiResponse:
         """Delete Profile Consent  # noqa: E501
@@ -319,10 +281,7 @@ class FinancialProfileApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_profile_consent"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_profile_consent")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -346,9 +305,7 @@ class FinancialProfileApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -382,11 +339,7 @@ class FinancialProfileApi:
     async def get_balance_prediction(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         **kwargs,
     ) -> ApiResponseOfFinancialProfileBalancePrediction:
@@ -415,11 +368,7 @@ class FinancialProfileApi:
     async def get_balance_prediction_with_http_info(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -469,10 +418,7 @@ class FinancialProfileApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_balance_prediction"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_balance_prediction")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -493,9 +439,7 @@ class FinancialProfileApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -529,16 +473,9 @@ class FinancialProfileApi:
     async def get_profile_consent(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
-        profile_consent_id: Annotated[
-            StrictStr,
-            Field(..., description="__Mandatory__. The ID of the ProfileConsent"),
-        ],
+        profile_consent_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The ID of the ProfileConsent")],
         **kwargs,
     ) -> ApiResponseOfFinancialProfileConsent:
         """Get Profile Consent  # noqa: E501
@@ -562,24 +499,15 @@ class FinancialProfileApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_profile_consent_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_profile_consent_with_http_info(
-            user_uuid, profile_consent_id, **kwargs
-        )
+        return await self.get_profile_consent_with_http_info(user_uuid, profile_consent_id, **kwargs)
 
     @validate_arguments
     async def get_profile_consent_with_http_info(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
-        profile_consent_id: Annotated[
-            StrictStr,
-            Field(..., description="__Mandatory__. The ID of the ProfileConsent"),
-        ],
+        profile_consent_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The ID of the ProfileConsent")],
         **kwargs,
     ) -> ApiResponse:
         """Get Profile Consent  # noqa: E501
@@ -630,10 +558,7 @@ class FinancialProfileApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_profile_consent"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_profile_consent")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -657,9 +582,7 @@ class FinancialProfileApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
@@ -693,11 +616,7 @@ class FinancialProfileApi:
     async def get_user_profile(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         **kwargs,
     ) -> ApiResponseOfFinancialProfile:
@@ -726,11 +645,7 @@ class FinancialProfileApi:
     async def get_user_profile_with_http_info(
         self,
         user_uuid: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Yapily generated UUID for the user.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -780,10 +695,7 @@ class FinancialProfileApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_user_profile"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_user_profile")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -804,9 +716,7 @@ class FinancialProfileApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]

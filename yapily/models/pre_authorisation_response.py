@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,13 +29,9 @@ class PreAuthorisationResponse(BaseModel):
     PreAuthorisationResponse
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier for the pre-authorisation request."
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier for the pre-authorisation request.")
     user_uuid: StrictStr | None = Field(
-        default=None,
-        alias="userUuid",
-        description="The `User` that the authorisation request was created for.",
+        default=None, alias="userUuid", description="The `User` that the authorisation request was created for."
     )
     application_user_id: StrictStr | None = Field(
         default=None,
@@ -45,15 +40,11 @@ class PreAuthorisationResponse(BaseModel):
     )
     reference_id: StrictStr | None = Field(default=None, alias="referenceId")
     institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="The `Institution` the authorisation request was sent to.",
+        default=None, alias="institutionId", description="The `Institution` the authorisation request was sent to."
     )
     status: AuthorisationStatus | None = None
     created_at: datetime | None = Field(
-        default=None,
-        alias="createdAt",
-        description="Date and time the consent was created.",
+        default=None, alias="createdAt", description="Date and time the consent was created."
     )
     transaction_from: datetime | None = Field(
         default=None,
@@ -70,14 +61,10 @@ class PreAuthorisationResponse(BaseModel):
         alias="expiresAt",
         description="Date and time the authorisation expires. Re-authorisation is needed to retain access.",
     )
-    time_to_expire_in_millis: StrictInt | None = Field(
-        default=None, alias="timeToExpireInMillis"
-    )
+    time_to_expire_in_millis: StrictInt | None = Field(default=None, alias="timeToExpireInMillis")
     time_to_expire: StrictStr | None = Field(default=None, alias="timeToExpire")
     feature_scope: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = Field(
-        default=None,
-        alias="featureScope",
-        description="The set of features the consent provides access to.",
+        default=None, alias="featureScope", description="The set of features the consent provides access to."
     )
     consent_token: StrictStr | None = Field(
         default=None,
@@ -85,22 +72,17 @@ class PreAuthorisationResponse(BaseModel):
         description="Represents the authorisation to gain access to the requested features. Required to access account information or make a payment request.",
     )
     state: StrictStr | None = Field(
-        default=None,
-        description="Corellation ID used with the `Institution` during the authorisation process.",
+        default=None, description="Corellation ID used with the `Institution` during the authorisation process."
     )
     authorized_at: datetime | None = Field(
-        default=None,
-        alias="authorizedAt",
-        description="Date and time the request was authorised by the `Institution`.",
+        default=None, alias="authorizedAt", description="Date and time the request was authorised by the `Institution`."
     )
     institution_consent_id: StrictStr | None = Field(
         default=None,
         alias="institutionConsentId",
         description="Unique identifier of the consent assigned by the `Institution`.",
     )
-    authorisation_url: StrictStr | None = Field(
-        default=None, alias="authorisationUrl"
-    )
+    authorisation_url: StrictStr | None = Field(default=None, alias="authorisationUrl")
     qr_code_url: StrictStr | None = Field(
         default=None,
         alias="qrCodeUrl",

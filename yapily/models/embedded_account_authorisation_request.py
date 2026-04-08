@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -32,9 +31,7 @@ class EmbeddedAccountAuthorisationRequest(BaseModel):
     """
 
     user_uuid: StrictStr | None = Field(
-        default=None,
-        alias="userUuid",
-        description="`User` for which the authorisation request was created.",
+        default=None, alias="userUuid", description="`User` for which the authorisation request was created."
     )
     application_user_id: StrictStr | None = Field(
         default=None,
@@ -61,20 +58,14 @@ class EmbeddedAccountAuthorisationRequest(BaseModel):
         alias="oneTimeToken",
         description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
     )
-    user_credentials: UserCredentials | None = Field(
-        default=None, alias="userCredentials"
-    )
-    selected_sca_method: ScaMethod | None = Field(
-        default=None, alias="selectedScaMethod"
-    )
+    user_credentials: UserCredentials | None = Field(default=None, alias="userCredentials")
+    selected_sca_method: ScaMethod | None = Field(default=None, alias="selectedScaMethod")
     sca_code: StrictStr | None = Field(
         default=None,
         alias="scaCode",
         description="__Conditional__. Used to update the authorisation with the sca code received by the user from the `Institution` using the embedded account authorisation flow.<br><br>This is the penultimate step required in the embedded account authorisation flow to authorise the `Consent`. After sending the sca code, to obtain an authorised consent, the last step is to poll [Get Consent](https://docs.yapily.com/api/reference/#operation/getConsentById) until the `Institution` authorises the request and the `Consent` `status` transitions to `AUTHORIZED`.",
     )
-    account_request: AccountRequest | None = Field(
-        default=None, alias="accountRequest"
-    )
+    account_request: AccountRequest | None = Field(default=None, alias="accountRequest")
     __properties = [
         "userUuid",
         "applicationUserId",
@@ -136,13 +127,9 @@ class EmbeddedAccountAuthorisationRequest(BaseModel):
                 "forward_parameters": obj.get("forwardParameters"),
                 "institution_id": obj.get("institutionId"),
                 "callback": obj.get("callback"),
-                "redirect": RedirectRequest.from_dict(obj.get("redirect"))
-                if obj.get("redirect") is not None
-                else None,
+                "redirect": RedirectRequest.from_dict(obj.get("redirect")) if obj.get("redirect") is not None else None,
                 "one_time_token": obj.get("oneTimeToken"),
-                "user_credentials": UserCredentials.from_dict(
-                    obj.get("userCredentials")
-                )
+                "user_credentials": UserCredentials.from_dict(obj.get("userCredentials"))
                 if obj.get("userCredentials") is not None
                 else None,
                 "selected_sca_method": ScaMethod.from_dict(obj.get("selectedScaMethod"))

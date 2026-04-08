@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -73,8 +72,7 @@ class PayerDetails(BaseModel):
         return PayerDetails.parse_obj(
             {
                 "account_identifications": [
-                    AccountIdentification.from_dict(_item)
-                    for _item in obj.get("accountIdentifications")
+                    AccountIdentification.from_dict(_item) for _item in obj.get("accountIdentifications")
                 ]
                 if obj.get("accountIdentifications") is not None
                 else None

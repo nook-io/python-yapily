@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -45,9 +44,7 @@ class VariableRecurringPaymentsApi:
 
     @validate_arguments
     async def create_non_sweeping_authorisation(
-        self,
-        non_sweeping_authorisation_request: NonSweepingAuthorisationRequest,
-        **kwargs,
+        self, non_sweeping_authorisation_request: NonSweepingAuthorisationRequest, **kwargs
     ) -> ApiResponseOfNonSweepingAuthorisationResponse:
         """Create Non-Sweeping Variable Recurring Payment Authorisation  # noqa: E501
 
@@ -68,15 +65,11 @@ class VariableRecurringPaymentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_non_sweeping_authorisation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_non_sweeping_authorisation_with_http_info(
-            non_sweeping_authorisation_request, **kwargs
-        )
+        return await self.create_non_sweeping_authorisation_with_http_info(non_sweeping_authorisation_request, **kwargs)
 
     @validate_arguments
     async def create_non_sweeping_authorisation_with_http_info(
-        self,
-        non_sweeping_authorisation_request: NonSweepingAuthorisationRequest,
-        **kwargs,
+        self, non_sweeping_authorisation_request: NonSweepingAuthorisationRequest, **kwargs
     ) -> ApiResponse:
         """Create Non-Sweeping Variable Recurring Payment Authorisation  # noqa: E501
 
@@ -125,8 +118,7 @@ class VariableRecurringPaymentsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_non_sweeping_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method create_non_sweeping_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -149,16 +141,11 @@ class VariableRecurringPaymentsApi:
             _body_params = _params["non_sweeping_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -166,10 +153,7 @@ class VariableRecurringPaymentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfNonSweepingAuthorisationResponse",
-            "401": "ApiErrorResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfNonSweepingAuthorisationResponse", "401": "ApiErrorResponse"}
 
         return await self.api_client.call_api(
             "/variable-recurring-payments/non-sweeping/consents",
@@ -212,9 +196,7 @@ class VariableRecurringPaymentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_sweeping_authorisation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_sweeping_authorisation_with_http_info(
-            sweeping_authorisation_request, **kwargs
-        )
+        return await self.create_sweeping_authorisation_with_http_info(sweeping_authorisation_request, **kwargs)
 
     @validate_arguments
     async def create_sweeping_authorisation_with_http_info(
@@ -267,8 +249,7 @@ class VariableRecurringPaymentsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_sweeping_authorisation"
+                    f"Got an unexpected keyword argument '{_key}' to method create_sweeping_authorisation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -291,16 +272,11 @@ class VariableRecurringPaymentsApi:
             _body_params = _params["sweeping_authorisation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -308,10 +284,7 @@ class VariableRecurringPaymentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfSweepingAuthorisationResponse",
-            "401": "ApiErrorResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfSweepingAuthorisationResponse", "401": "ApiErrorResponse"}
 
         return await self.api_client.call_api(
             "/variable-recurring-payments/sweeping/consents",
@@ -365,9 +338,7 @@ class VariableRecurringPaymentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_vrp_funds_confirmation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_vrp_funds_confirmation_with_http_info(
-            consent, funds_confirmation_request, **kwargs
-        )
+        return await self.create_vrp_funds_confirmation_with_http_info(consent, funds_confirmation_request, **kwargs)
 
     @validate_arguments
     async def create_vrp_funds_confirmation_with_http_info(
@@ -431,8 +402,7 @@ class VariableRecurringPaymentsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_vrp_funds_confirmation"
+                    f"Got an unexpected keyword argument '{_key}' to method create_vrp_funds_confirmation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -458,16 +428,11 @@ class VariableRecurringPaymentsApi:
             _body_params = _params["funds_confirmation_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -475,10 +440,7 @@ class VariableRecurringPaymentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfFundsConfirmationResponse",
-            "401": "ApiErrorResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfFundsConfirmationResponse", "401": "ApiErrorResponse"}
 
         return await self.api_client.call_api(
             "/variable-recurring-payments/funds-confirmation",
@@ -532,9 +494,7 @@ class VariableRecurringPaymentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_vrp_payment_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_vrp_payment_with_http_info(
-            consent, submission_request, **kwargs
-        )
+        return await self.create_vrp_payment_with_http_info(consent, submission_request, **kwargs)
 
     @validate_arguments
     async def create_vrp_payment_with_http_info(
@@ -597,10 +557,7 @@ class VariableRecurringPaymentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_vrp_payment"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_vrp_payment")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -625,16 +582,11 @@ class VariableRecurringPaymentsApi:
             _body_params = _params["submission_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -642,10 +594,7 @@ class VariableRecurringPaymentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "ApiResponseOfSubmissionResponse",
-            "401": "ApiErrorResponse",
-        }
+        _response_types_map = {"201": "ApiResponseOfSubmissionResponse", "401": "ApiErrorResponse"}
 
         return await self.api_client.call_api(
             "/variable-recurring-payments/payments",
@@ -696,9 +645,7 @@ class VariableRecurringPaymentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_non_sweeping_vrp_consent_by_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_non_sweeping_vrp_consent_by_id_with_http_info(
-            consent_id, **kwargs
-        )
+        return await self.get_non_sweeping_vrp_consent_by_id_with_http_info(consent_id, **kwargs)
 
     @validate_arguments
     async def get_non_sweeping_vrp_consent_by_id_with_http_info(
@@ -759,8 +706,7 @@ class VariableRecurringPaymentsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_non_sweeping_vrp_consent_by_id"
+                    f"Got an unexpected keyword argument '{_key}' to method get_non_sweeping_vrp_consent_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -782,17 +728,12 @@ class VariableRecurringPaymentsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfNonSweepingAuthorisationResponse",
-            "401": "ApiErrorResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfNonSweepingAuthorisationResponse", "401": "ApiErrorResponse"}
 
         return await self.api_client.call_api(
             "/variable-recurring-payments/non-sweeping/consents/{consentId}",
@@ -843,9 +784,7 @@ class VariableRecurringPaymentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_sweeping_vrp_consent_by_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_sweeping_vrp_consent_by_id_with_http_info(
-            consent_id, **kwargs
-        )
+        return await self.get_sweeping_vrp_consent_by_id_with_http_info(consent_id, **kwargs)
 
     @validate_arguments
     async def get_sweeping_vrp_consent_by_id_with_http_info(
@@ -906,8 +845,7 @@ class VariableRecurringPaymentsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_sweeping_vrp_consent_by_id"
+                    f"Got an unexpected keyword argument '{_key}' to method get_sweeping_vrp_consent_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -929,17 +867,12 @@ class VariableRecurringPaymentsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfSweepingAuthorisationResponse",
-            "401": "ApiErrorResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfSweepingAuthorisationResponse", "401": "ApiErrorResponse"}
 
         return await self.api_client.call_api(
             "/variable-recurring-payments/sweeping/consents/{consentId}",
@@ -964,10 +897,7 @@ class VariableRecurringPaymentsApi:
         self,
         payment_id: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve.",
-            ),
+            Field(..., description="__Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve."),
         ],
         consent: Annotated[
             StrictStr,
@@ -999,19 +929,14 @@ class VariableRecurringPaymentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_vrp_payment_details_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_vrp_payment_details_with_http_info(
-            payment_id, consent, **kwargs
-        )
+        return await self.get_vrp_payment_details_with_http_info(payment_id, consent, **kwargs)
 
     @validate_arguments
     async def get_vrp_payment_details_with_http_info(
         self,
         payment_id: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve.",
-            ),
+            Field(..., description="__Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve."),
         ],
         consent: Annotated[
             StrictStr,
@@ -1070,10 +995,7 @@ class VariableRecurringPaymentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_vrp_payment_details"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_vrp_payment_details")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1097,17 +1019,12 @@ class VariableRecurringPaymentsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfSubmissionResponse",
-            "401": "ApiErrorResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfSubmissionResponse", "401": "ApiErrorResponse"}
 
         return await self.api_client.call_api(
             "/variable-recurring-payments/payments/{paymentId}/details",

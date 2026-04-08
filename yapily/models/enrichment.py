@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -31,18 +30,14 @@ class Enrichment(BaseModel):
     """
 
     categorisation: Categorisation | None = None
-    transaction_hash: TransactionHash | None = Field(
-        default=None, alias="transactionHash"
-    )
+    transaction_hash: TransactionHash | None = Field(default=None, alias="transactionHash")
     cleansed_description: StrictStr | None = Field(
         default=None,
         alias="cleansedDescription",
         description="Cleaned version of the `Transaction Description` that removes miscellaneous, generic and unhelpful text.",
     )
     merchant: EnrichmentMerchant | None = None
-    location: StrictStr | None = Field(
-        default=None, description="The location of where the transaction took place."
-    )
+    location: StrictStr | None = Field(default=None, description="The location of where the transaction took place.")
     payment_processor: StrictStr | None = Field(
         default=None,
         alias="paymentProcessor",
@@ -105,9 +100,7 @@ class Enrichment(BaseModel):
                 "categorisation": Categorisation.from_dict(obj.get("categorisation"))
                 if obj.get("categorisation") is not None
                 else None,
-                "transaction_hash": TransactionHash.from_dict(
-                    obj.get("transactionHash")
-                )
+                "transaction_hash": TransactionHash.from_dict(obj.get("transactionHash"))
                 if obj.get("transactionHash") is not None
                 else None,
                 "cleansed_description": obj.get("cleansedDescription"),

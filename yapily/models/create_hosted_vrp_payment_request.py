@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -69,8 +68,6 @@ class CreateHostedVRPPaymentRequest(BaseModel):
         return CreateHostedVRPPaymentRequest.parse_obj(
             {
                 "payment_idempotency_id": obj.get("paymentIdempotencyId"),
-                "amount": Amount.from_dict(obj.get("amount"))
-                if obj.get("amount") is not None
-                else None,
+                "amount": Amount.from_dict(obj.get("amount")) if obj.get("amount") is not None else None,
             }
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -41,9 +40,7 @@ class ConsentsApi:
         self.api_client = api_client
 
     @validate_arguments
-    async def create_consent_with_code(
-        self, consent_auth_code_request: ConsentAuthCodeRequest, **kwargs
-    ) -> Consent:
+    async def create_consent_with_code(self, consent_auth_code_request: ConsentAuthCodeRequest, **kwargs) -> Consent:
         """Exchange OAuth2 Code  # noqa: E501
 
         Used to obtain a Yapily Consent object containing the `consentToken` once the user has authenticated and you have an OAuth2 authorisation code `auth-code` and state `auth-state`.  # noqa: E501
@@ -63,9 +60,7 @@ class ConsentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_consent_with_code_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_consent_with_code_with_http_info(
-            consent_auth_code_request, **kwargs
-        )
+        return await self.create_consent_with_code_with_http_info(consent_auth_code_request, **kwargs)
 
     @validate_arguments
     async def create_consent_with_code_with_http_info(
@@ -117,10 +112,7 @@ class ConsentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_consent_with_code"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_consent_with_code")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -142,14 +134,11 @@ class ConsentsApi:
             _body_params = _params["consent_auth_code_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -157,9 +146,7 @@ class ConsentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "Consent",
-        }
+        _response_types_map = {"200": "Consent"}
 
         return await self.api_client.call_api(
             "/consent-auth-code",
@@ -183,15 +170,10 @@ class ConsentsApi:
     async def delete(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         force_delete: Annotated[
-            StrictBool | None,
-            Field(description="__Optional__. Whether to force the deletion."),
+            StrictBool | None, Field(description="__Optional__. Whether to force the deletion.")
         ] = None,
         **kwargs,
     ) -> ApiResponseOfConsentDeleteResponse:
@@ -222,15 +204,10 @@ class ConsentsApi:
     async def delete_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         force_delete: Annotated[
-            StrictBool | None,
-            Field(description="__Optional__. Whether to force the deletion."),
+            StrictBool | None, Field(description="__Optional__. Whether to force the deletion.")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -282,9 +259,7 @@ class ConsentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method delete"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -308,16 +283,12 @@ class ConsentsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfConsentDeleteResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfConsentDeleteResponse"}
 
         return await self.api_client.call_api(
             "/consents/{consentId}",
@@ -341,11 +312,7 @@ class ConsentsApi:
     async def extend_consent(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         extend_consent_request: ExtendConsentRequest,
         **kwargs,
@@ -371,19 +338,13 @@ class ConsentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the extend_consent_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.extend_consent_with_http_info(
-            consent_id, extend_consent_request, **kwargs
-        )
+        return await self.extend_consent_with_http_info(consent_id, extend_consent_request, **kwargs)
 
     @validate_arguments
     async def extend_consent_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         extend_consent_request: ExtendConsentRequest,
         **kwargs,
@@ -436,10 +397,7 @@ class ConsentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method extend_consent"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method extend_consent")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -463,16 +421,11 @@ class ConsentsApi:
             _body_params = _params["extend_consent_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(
-                ["application/json;charset=UTF-8"]
-            ),
+            "_content_type", self.api_client.select_header_content_type(["application/json;charset=UTF-8"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -480,10 +433,7 @@ class ConsentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfConsent",
-            "400": "ApiErrorResponse",
-        }
+        _response_types_map = {"200": "ApiResponseOfConsent", "400": "ApiErrorResponse"}
 
         return await self.api_client.call_api(
             "/consents/{consentId}/extend",
@@ -507,11 +457,7 @@ class ConsentsApi:
     async def get_consent_by_id(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         **kwargs,
     ) -> ApiResponseOfConsent:
@@ -540,11 +486,7 @@ class ConsentsApi:
     async def get_consent_by_id_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="__Mandatory__. The consent Id of the `Consent` to update.",
-            ),
+            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -594,10 +536,7 @@ class ConsentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_consent_by_id"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_consent_by_id")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -618,16 +557,12 @@ class ConsentsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiResponseOfConsent",
-        }
+        _response_types_map = {"200": "ApiResponseOfConsent"}
 
         return await self.api_client.call_api(
             "/consents/{consentId}",
@@ -670,9 +605,7 @@ class ConsentsApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_consent_by_single_access_consent_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_consent_by_single_access_consent_with_http_info(
-            one_time_token_request, **kwargs
-        )
+        return await self.get_consent_by_single_access_consent_with_http_info(one_time_token_request, **kwargs)
 
     @validate_arguments
     async def get_consent_by_single_access_consent_with_http_info(
@@ -725,8 +658,7 @@ class ConsentsApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_consent_by_single_access_consent"
+                    f"Got an unexpected keyword argument '{_key}' to method get_consent_by_single_access_consent"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -749,14 +681,11 @@ class ConsentsApi:
             _body_params = _params["one_time_token_request"]
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
@@ -764,9 +693,7 @@ class ConsentsApi:
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "201": "Consent",
-        }
+        _response_types_map = {"201": "Consent"}
 
         return await self.api_client.call_api(
             "/consent-one-time-token",
@@ -791,21 +718,15 @@ class ConsentsApi:
         self,
         filter_application_user_id: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
-            Field(
-                description="__Optional__. Filter records based on the list of `applicationUserId` users provided."
-            ),
+            Field(description="__Optional__. Filter records based on the list of `applicationUserId` users provided."),
         ] = None,
         filter_user_uuid: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
-            Field(
-                description="__Optional__. Filter records based on the list of `userUuid` users provided."
-            ),
+            Field(description="__Optional__. Filter records based on the list of `userUuid` users provided."),
         ] = None,
         filter_institution: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
-            Field(
-                description="__Optional__. Filter records based on the list of `Institution` provided."
-            ),
+            Field(description="__Optional__. Filter records based on the list of `Institution` provided."),
         ] = None,
         filter_status: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
@@ -889,21 +810,15 @@ class ConsentsApi:
         self,
         filter_application_user_id: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
-            Field(
-                description="__Optional__. Filter records based on the list of `applicationUserId` users provided."
-            ),
+            Field(description="__Optional__. Filter records based on the list of `applicationUserId` users provided."),
         ] = None,
         filter_user_uuid: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
-            Field(
-                description="__Optional__. Filter records based on the list of `userUuid` users provided."
-            ),
+            Field(description="__Optional__. Filter records based on the list of `userUuid` users provided."),
         ] = None,
         filter_institution: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
-            Field(
-                description="__Optional__. Filter records based on the list of `Institution` provided."
-            ),
+            Field(description="__Optional__. Filter records based on the list of `Institution` provided."),
         ] = None,
         filter_status: Annotated[
             Annotated[list[StrictStr], Field(unique_items=True)] | None,
@@ -1006,10 +921,7 @@ class ConsentsApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_consents"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_consents")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -1021,9 +933,7 @@ class ConsentsApi:
         # process the query parameters
         _query_params = []
         if _params.get("filter_application_user_id") is not None:
-            _query_params.append(
-                ("filter[applicationUserId]", _params["filter_application_user_id"])
-            )
+            _query_params.append(("filter[applicationUserId]", _params["filter_application_user_id"]))
             _collection_formats["filter[applicationUserId]"] = "multi"
 
         if _params.get("filter_user_uuid") is not None:
@@ -1058,16 +968,12 @@ class ConsentsApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "ApiListResponseOfConsent",
-        }
+        _response_types_map = {"200": "ApiListResponseOfConsent"}
 
         return await self.api_client.call_api(
             "/consents",

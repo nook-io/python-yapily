@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -32,42 +31,21 @@ class Institution(BaseModel):
     Typically, a bank or business unit within a bank e.g. (AIB Business, AIB Ireland, AIB UK).  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier for the `Institution`."
-    )
-    name: StrictStr | None = Field(
-        default=None, description="The friendly name of the `Institution`."
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier for the `Institution`.")
+    name: StrictStr | None = Field(default=None, description="The friendly name of the `Institution`.")
     full_name: StrictStr | None = Field(
-        default=None,
-        alias="fullName",
-        description="The full name of the `Institution`.",
+        default=None, alias="fullName", description="The full name of the `Institution`."
     )
     countries: Annotated[list[Country], Field(unique_items=True)] | None = Field(
-        default=None,
-        description="An array of `Country` denoting which regions the `Institution` provides coverage for",
+        default=None, description="An array of `Country` denoting which regions the `Institution` provides coverage for"
     )
-    environment_type: EnvironmentType | None = Field(
-        default=None, alias="environmentType"
-    )
-    credentials_type: CredentialsType | None = Field(
-        default=None, alias="credentialsType"
-    )
+    environment_type: EnvironmentType | None = Field(default=None, alias="environmentType")
+    credentials_type: CredentialsType | None = Field(default=None, alias="credentialsType")
     media: Annotated[list[Media], Field(unique_items=True)] | None = Field(
-        default=None,
-        description="Contains links to the logo and the icons for the `Institution`",
+        default=None, description="Contains links to the logo and the icons for the `Institution`"
     )
     features: Annotated[list[FeatureEnum], Field(unique_items=True)] | None = None
-    __properties = [
-        "id",
-        "name",
-        "fullName",
-        "countries",
-        "environmentType",
-        "credentialsType",
-        "media",
-        "features",
-    ]
+    __properties = ["id", "name", "fullName", "countries", "environmentType", "credentialsType", "media", "features"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -116,9 +94,7 @@ class Institution(BaseModel):
                 "id": obj.get("id"),
                 "name": obj.get("name"),
                 "full_name": obj.get("fullName"),
-                "countries": [
-                    Country.from_dict(_item) for _item in obj.get("countries")
-                ]
+                "countries": [Country.from_dict(_item) for _item in obj.get("countries")]
                 if obj.get("countries") is not None
                 else None,
                 "environment_type": obj.get("environmentType"),

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,12 +24,8 @@ class CategoryStructure(BaseModel):
     CategoryStructure
     """
 
-    name: StrictStr | None = Field(
-        default=None, description="webhook event category name"
-    )
-    description: StrictStr | None = Field(
-        default=None, description="description of the webhook event category"
-    )
+    name: StrictStr | None = Field(default=None, description="webhook event category name")
+    description: StrictStr | None = Field(default=None, description="description of the webhook event category")
     __properties = ["name", "description"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
@@ -60,6 +55,4 @@ class CategoryStructure(BaseModel):
         if not isinstance(obj, dict):
             return CategoryStructure.parse_obj(obj)
 
-        return CategoryStructure.parse_obj(
-            {"name": obj.get("name"), "description": obj.get("description")}
-        )
+        return CategoryStructure.parse_obj({"name": obj.get("name"), "description": obj.get("description")})

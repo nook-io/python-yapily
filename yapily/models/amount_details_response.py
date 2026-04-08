@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,12 +24,9 @@ class AmountDetailsResponse(BaseModel):
     Monetary Amount.  # noqa: E501
     """
 
-    amount: StrictFloat | StrictInt | None = Field(
-        default=None, description="The monetary value"
-    )
+    amount: StrictFloat | StrictInt | None = Field(default=None, description="The monetary value")
     currency: StrictStr | None = Field(
-        default=None,
-        description="The [ISO 4217](https://www.xe.com/iso4217.php) currency code",
+        default=None, description="The [ISO 4217](https://www.xe.com/iso4217.php) currency code"
     )
     __properties = ["amount", "currency"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -61,6 +57,4 @@ class AmountDetailsResponse(BaseModel):
         if not isinstance(obj, dict):
             return AmountDetailsResponse.parse_obj(obj)
 
-        return AmountDetailsResponse.parse_obj(
-            {"amount": obj.get("amount"), "currency": obj.get("currency")}
-        )
+        return AmountDetailsResponse.parse_obj({"amount": obj.get("amount"), "currency": obj.get("currency")})

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -20,17 +19,13 @@ import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 
 
-class PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner(
-    BaseModel
-):
+class PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner(BaseModel):
     """
     PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner
     """
 
     type: StrictStr | None = None
-    code: StrictFloat | StrictInt | None = Field(
-        None, description="A 5 digit error code"
-    )
+    code: StrictFloat | StrictInt | None = Field(None, description="A 5 digit error code")
     message: StrictStr | None = None
     __properties = ["type", "code", "message"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -44,9 +39,7 @@ class PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner:
+    def from_json(cls, json_str: str) -> PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -55,22 +48,14 @@ class PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner
         return self.dict(by_alias=True, exclude={}, exclude_none=True)
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner:
+    def from_dict(cls, obj: dict) -> PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner:
         """Create an instance of PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner.parse_obj(
-                obj
-            )
+            return PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner.parse_obj(obj)
 
         return PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner.parse_obj(
-            {
-                "type": obj.get("type"),
-                "code": obj.get("code"),
-                "message": obj.get("message"),
-            }
+            {"type": obj.get("type"), "code": obj.get("code"), "message": obj.get("message")}
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -25,9 +24,7 @@ class TestBulkPaymentEmbeddedAuthorisationRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> BulkPaymentEmbeddedAuthorisationRequest:
+    def make_instance(self, include_optional) -> BulkPaymentEmbeddedAuthorisationRequest:
         """Test BulkPaymentEmbeddedAuthorisationRequest
         include_option is a boolean, when False only required
         params are included, when True both required and

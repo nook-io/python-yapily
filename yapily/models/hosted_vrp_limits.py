@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -104,24 +103,17 @@ class HostedVRPLimits(BaseModel):
         return HostedVRPLimits.parse_obj(
             {
                 "periodic_limits": [
-                    HostedNonSweepingPeriodicLimits.from_dict(_item)
-                    for _item in obj.get("periodicLimits")
+                    HostedNonSweepingPeriodicLimits.from_dict(_item) for _item in obj.get("periodicLimits")
                 ]
                 if obj.get("periodicLimits") is not None
                 else None,
-                "max_amount_per_payment": Amount.from_dict(
-                    obj.get("maxAmountPerPayment")
-                )
+                "max_amount_per_payment": Amount.from_dict(obj.get("maxAmountPerPayment"))
                 if obj.get("maxAmountPerPayment") is not None
                 else None,
-                "max_cumulative_amount": Amount.from_dict(
-                    obj.get("maxCumulativeAmount")
-                )
+                "max_cumulative_amount": Amount.from_dict(obj.get("maxCumulativeAmount"))
                 if obj.get("maxCumulativeAmount") is not None
                 else None,
-                "max_cumulative_number_of_payments": obj.get(
-                    "maxCumulativeNumberOfPayments"
-                ),
+                "max_cumulative_number_of_payments": obj.get("maxCumulativeNumberOfPayments"),
                 "edited_by_user": obj.get("editedByUser"),
             }
         )

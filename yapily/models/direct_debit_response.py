@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -31,19 +30,11 @@ class DirectDebitResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    status_details: PaymentStatusDetails | None = Field(
-        default=None, alias="statusDetails"
-    )
-    payee_details: DirectDebitPayee | None = Field(
-        default=None, alias="payeeDetails"
-    )
+    status_details: PaymentStatusDetails | None = Field(default=None, alias="statusDetails")
+    payee_details: DirectDebitPayee | None = Field(default=None, alias="payeeDetails")
     reference: StrictStr | None = None
-    previous_payment_amount: Amount | None = Field(
-        default=None, alias="previousPaymentAmount"
-    )
-    previous_payment_date_time: datetime | None = Field(
-        default=None, alias="previousPaymentDateTime"
-    )
+    previous_payment_amount: Amount | None = Field(default=None, alias="previousPaymentAmount")
+    previous_payment_date_time: datetime | None = Field(default=None, alias="previousPaymentDateTime")
     __properties = [
         "id",
         "statusDetails",
@@ -93,18 +84,14 @@ class DirectDebitResponse(BaseModel):
         return DirectDebitResponse.parse_obj(
             {
                 "id": obj.get("id"),
-                "status_details": PaymentStatusDetails.from_dict(
-                    obj.get("statusDetails")
-                )
+                "status_details": PaymentStatusDetails.from_dict(obj.get("statusDetails"))
                 if obj.get("statusDetails") is not None
                 else None,
                 "payee_details": DirectDebitPayee.from_dict(obj.get("payeeDetails"))
                 if obj.get("payeeDetails") is not None
                 else None,
                 "reference": obj.get("reference"),
-                "previous_payment_amount": Amount.from_dict(
-                    obj.get("previousPaymentAmount")
-                )
+                "previous_payment_amount": Amount.from_dict(obj.get("previousPaymentAmount"))
                 if obj.get("previousPaymentAmount") is not None
                 else None,
                 "previous_payment_date_time": obj.get("previousPaymentDateTime"),

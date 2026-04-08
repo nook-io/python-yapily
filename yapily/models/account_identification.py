@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -61,6 +60,4 @@ class AccountIdentification(BaseModel):
         if not isinstance(obj, dict):
             return AccountIdentification.parse_obj(obj)
 
-        return AccountIdentification.parse_obj(
-            {"type": obj.get("type"), "identification": obj.get("identification")}
-        )
+        return AccountIdentification.parse_obj({"type": obj.get("type"), "identification": obj.get("identification")})

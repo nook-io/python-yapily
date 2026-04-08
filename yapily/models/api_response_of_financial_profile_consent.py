@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -69,12 +68,8 @@ class ApiResponseOfFinancialProfileConsent(BaseModel):
 
         return ApiResponseOfFinancialProfileConsent.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
-                "data": ProfileConsent.from_dict(obj.get("data"))
-                if obj.get("data") is not None
-                else None,
+                "meta": ResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
+                "data": ProfileConsent.from_dict(obj.get("data")) if obj.get("data") is not None else None,
                 "links": obj.get("links"),
             }
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -41,9 +40,7 @@ class ApiResponseOfFinancialProfileConsentRemoveResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> ApiResponseOfFinancialProfileConsentRemoveResponse:
+    def from_json(cls, json_str: str) -> ApiResponseOfFinancialProfileConsentRemoveResponse:
         """Create an instance of ApiResponseOfFinancialProfileConsentRemoveResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,9 +63,7 @@ class ApiResponseOfFinancialProfileConsentRemoveResponse(BaseModel):
 
         return ApiResponseOfFinancialProfileConsentRemoveResponse.parse_obj(
             {
-                "meta": ResponseMeta.from_dict(obj.get("meta"))
-                if obj.get("meta") is not None
-                else None,
+                "meta": ResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None,
                 "links": obj.get("links"),
             }
         )

@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -27,9 +26,7 @@ class TestGetBulkPaymentStatus200ResponseDataStatusDetails(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> GetBulkPaymentStatus200ResponseDataStatusDetails:
+    def make_instance(self, include_optional) -> GetBulkPaymentStatus200ResponseDataStatusDetails:
         """Test GetBulkPaymentStatus200ResponseDataStatusDetails
         include_optional is a boolean, when False only required
         params are included, when True both required and

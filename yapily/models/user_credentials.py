@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -26,8 +25,7 @@ class UserCredentials(BaseModel):
     """
 
     id: StrictStr = Field(
-        default=...,
-        description="__Mandatory__. The login id for the user for a particular `Institution`.",
+        default=..., description="__Mandatory__. The login id for the user for a particular `Institution`."
     )
     corporate_id: StrictStr | None = Field(
         default=None,
@@ -35,8 +33,7 @@ class UserCredentials(BaseModel):
         description="__Conditional__. The corporate login for the user for a particular corporate `Institution`.",
     )
     password: StrictStr = Field(
-        default=...,
-        description="__Mandatory__. The password of the user to login to a particular `Institution`.",
+        default=..., description="__Mandatory__. The password of the user to login to a particular `Institution`."
     )
     __properties = ["id", "corporateId", "password"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
@@ -68,9 +65,5 @@ class UserCredentials(BaseModel):
             return UserCredentials.parse_obj(obj)
 
         return UserCredentials.parse_obj(
-            {
-                "id": obj.get("id"),
-                "corporate_id": obj.get("corporateId"),
-                "password": obj.get("password"),
-            }
+            {"id": obj.get("id"), "corporate_id": obj.get("corporateId"), "password": obj.get("password")}
         )

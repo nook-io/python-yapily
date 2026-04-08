@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -100,10 +99,7 @@ class ApplicationApi:
         # validate the arguments
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_application_me"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_application_me")
             _params[_key] = _val
         del _params["kwargs"]
 
@@ -122,16 +118,12 @@ class ApplicationApi:
         # process the body parameter
         _body_params = None
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json;charset=UTF-8"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json;charset=UTF-8"])
 
         # authentication setting
         _auth_settings = ["basicAuth"]
 
-        _response_types_map = {
-            "200": "Application",
-        }
+        _response_types_map = {"200": "Application"}
 
         return await self.api_client.call_api(
             "/me",

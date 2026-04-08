@@ -1,4 +1,3 @@
-
 """
 Yapily API
 
@@ -30,16 +29,10 @@ class UserDeleteResponse(BaseModel):
     Deletion of the user. Includes the user profile and all associate consents.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the user."
-    )
-    delete_status: DeleteStatusEnum | None = Field(
-        default=None, alias="deleteStatus"
-    )
+    id: StrictStr | None = Field(default=None, description="Unique identifier of the user.")
+    delete_status: DeleteStatusEnum | None = Field(default=None, alias="deleteStatus")
     creation_date: datetime | None = Field(
-        default=None,
-        alias="creationDate",
-        description="Date and time that the user was created.",
+        default=None, alias="creationDate", description="Date and time that the user was created."
     )
     user_consents: Annotated[list[ConsentDeleteResponse], Field(unique_items=True)] | None = Field(
         default=None, alias="userConsents"
@@ -86,10 +79,7 @@ class UserDeleteResponse(BaseModel):
                 "id": obj.get("id"),
                 "delete_status": obj.get("deleteStatus"),
                 "creation_date": obj.get("creationDate"),
-                "user_consents": [
-                    ConsentDeleteResponse.from_dict(_item)
-                    for _item in obj.get("userConsents")
-                ]
+                "user_consents": [ConsentDeleteResponse.from_dict(_item) for _item in obj.get("userConsents")]
                 if obj.get("userConsents") is not None
                 else None,
             }
