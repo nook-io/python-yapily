@@ -362,8 +362,7 @@ git_push.sh
 pyproject.toml
 requirements.txt
 setup.cfg
-setup.py
-test-requirements.txt
+uv.lock
 test/__init__.py
 tox.ini
 yapily/__init__.py

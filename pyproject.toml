@@ -1,31 +1,93 @@
-[tool.poetry]
-name = "yapily"
-version = "1.0.0"
+[project]
+name = "python-yapily"
+version = "2.0.0"
 description = "Yapily API"
-authors = ["Yapily Support <support@yapily.com>"]
-license = "NoLicense"
 readme = "README.md"
-repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+requires-python = ">=3.8"
+license = { text = "NoLicense" }
+authors = [{ name = "Yapily Support", email = "support@yapily.com" }]
 keywords = ["OpenAPI", "OpenAPI-Generator", "Yapily API"]
-include = ["yapily/py.typed"]
+dependencies = [
+  "urllib3>=1.25.3",
+  "python-dateutil>=2.8.2",
+  "aiohttp>=3.8.4",
+  "pydantic>=2,<3",
+  "aenum>=3.1.11",
+]
 
-[tool.poetry.dependencies]
-python = "^3.8"
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.2.1",
+  "pytest-cov>=2.8.1",
+  "pytest-randomly>=3.12.0",
+  "tox>=3.9.0",
+  "flake8>=4.0.0",
+  "ruff",
+]
 
-urllib3 = ">= 1.25.3"
-python-dateutil = ">=2.8.2"
-aiohttp = ">= 3.8.4"
-pydantic = "^1.10.5, <2"
-aenum = ">=3.1.11"
-
-[tool.poetry.dev-dependencies]
-pytest = ">=7.2.1"
-tox = ">=3.9.0"
-flake8 = ">=4.0.0"
+[project.urls]
+Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
 
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.11,<0.12"]
+build-backend = "uv_build"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+exclude = ["app/schema/xero/"]
+
+[tool.ruff.lint]
+ignore = [
+  # E501 and W191 can conflict with black formatting.
+  "E501",
+  "W191",
+  # E741 we have no control over most ambiguous variable names
+  "E741",
+  # UP040 warns about the deprecation of TypeAlias, as Python 3.12 introduced
+  # the PEP 695 syntax for type aliases, but this is not yet supported by
+  # Pydantic.
+  "UP040",
+  # UP046 and UP047 are about type parameter syntax, which our version of
+  # Pydantic does not like.
+  "UP046",
+  "UP047",
+  "TRY002", # Do not require use of custom exceptions
+  "TRY003", # Do not require error messages to be a variable
+  "TRY301", # Allow raising exceptions in try blocks
+  "RUF001", # Ambiguous characters come directly from the OpenAPI spec.
+  "RUF012", # Not Pydantic friendly.
+]
+select = [
+  "B",
+  "C4",
+  "E",
+  "F",
+  "FAST",
+  "FURB",
+  "I001",
+  "INP",
+  "PIE",
+  "RET",
+  "RUF",
+  "TRY",
+  "UP",
+  "W",
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 20
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.ruff.format]
+quote-style = "double"
+skip-magic-trailing-comma = true
+
+[tool.uv.build-backend]
+module-name = "yapily"
+module-root = ""
 
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
