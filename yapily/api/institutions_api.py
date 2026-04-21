@@ -150,7 +150,7 @@ class InstitutionsApi:
     async def get_institution(
         self,
         institution_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily institution Id for the `Institution`.")
+            StrictStr, Field(description="__Mandatory__. The Yapily institution Id for the `Institution`.")
         ],
         **kwargs,
     ) -> Institution:
@@ -179,7 +179,7 @@ class InstitutionsApi:
     async def get_institution_with_http_info(
         self,
         institution_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily institution Id for the `Institution`.")
+            StrictStr, Field(description="__Mandatory__. The Yapily institution Id for the `Institution`.")
         ],
         **kwargs,
     ) -> ApiResponse:

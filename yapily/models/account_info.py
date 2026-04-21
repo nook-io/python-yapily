@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,8 +28,10 @@ class AccountInfo(BaseModel):
     __Conditional__. Used to create a request for the balance of the account specified. Once the user authorises the request, only the balance can be obtained by executing [GET Account Balances](./#get-account-balances).<br><br> This can be specified in conjunction with `accountIdentifiersForTransaction` to generate a `Consent` that can both access the accounts balance and transactions.  # noqa: E501
     """
 
-    account_id: Annotated[StrictStr | None, Field(alias='accountId', description='__Conditional__. Unique identifier of the account.')] = None
-    account_identification: Annotated[AccountIdentification, Field(alias='accountIdentification')] = ...
+    account_id: Annotated[
+        StrictStr | None, Field(alias="accountId", description="__Conditional__. Unique identifier of the account.")
+    ] = None
+    account_identification: Annotated[AccountIdentification, Field(alias="accountIdentification")]
     __properties = ["accountId", "accountIdentification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

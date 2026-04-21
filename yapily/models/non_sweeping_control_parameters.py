@@ -35,7 +35,7 @@ class NonSweepingControlParameters(BaseModel):
             alias="psuAuthenticationMethods",
             description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
         ),
-    ] = ...
+    ]
     periodic_limits: Annotated[list[NonSweepingPeriodicLimits] | None, Field(alias="periodicLimits")] = None
     max_amount_per_payment: Annotated[
         Amount | None,

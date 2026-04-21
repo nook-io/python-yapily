@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -34,18 +35,47 @@ class PaymentRequest(BaseModel):
     __Mandatory__. The payment request object defining the details of the payment.  # noqa: E501
     """
 
-    payment_idempotency_id: Annotated[StrictStr, Field(alias='paymentIdempotencyId', description='__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.')] = ...
+    payment_idempotency_id: Annotated[
+        StrictStr,
+        Field(
+            alias="paymentIdempotencyId",
+            description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
+        ),
+    ]
     payer: Payer | None = None
-    reference: Annotated[StrictStr | None, Field(description='__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.')] = None
-    context_type: Annotated[PaymentContextType | None, Field(alias='contextType')] = None
-    purpose_code: Annotated[StrictStr | None, Field(alias='purposeCode', description='__Optional__. The payment purpose code. <br><br>Allowed values: INTP, DEPT, BEXP, LICF, SERV, SUPP, TRAD, SUBS, GDSV, ROYA, COMT, CHAR, ECPR, CLPR, INTE, LOAN, LOAR, INPC, INPR, INSC, INSU, LIFI, PPTI, HLRP, HLST, PDEP, IVPT, REBT, REFU, CDBL, CPKC, EDUC, FEES, GAMB, LOTT, GIFT, INSM, REOD, GOVT, TCSC, BLDM, RENT, DIVD, INVS, SAVG, HLTI, DNTS, LTCF, MDCS, VIEW, BECH, BENE, SSBE, PEFC, PENS, ADCS, BONU, COMM, SALA, ESTX, HSTX, INTX, PTXP, RDTX, TAXS, VATX, WHLD, TAXR, CBTV, ELEC, GASB, PHON, UBIL, WTER . <br><br>See [Payment Purpose code](https://docs.yapily.com/pages/payments/payments-resources/tri-pilot/) to see the definition of each code')] = None
+    reference: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long."
+        ),
+    ] = None
+    context_type: Annotated[PaymentContextType | None, Field(alias="contextType")] = None
+    purpose_code: Annotated[
+        StrictStr | None,
+        Field(
+            alias="purposeCode",
+            description="__Optional__. The payment purpose code. <br><br>Allowed values: INTP, DEPT, BEXP, LICF, SERV, SUPP, TRAD, SUBS, GDSV, ROYA, COMT, CHAR, ECPR, CLPR, INTE, LOAN, LOAR, INPC, INPR, INSC, INSU, LIFI, PPTI, HLRP, HLST, PDEP, IVPT, REBT, REFU, CDBL, CPKC, EDUC, FEES, GAMB, LOTT, GIFT, INSM, REOD, GOVT, TCSC, BLDM, RENT, DIVD, INVS, SAVG, HLTI, DNTS, LTCF, MDCS, VIEW, BECH, BENE, SSBE, PEFC, PENS, ADCS, BONU, COMM, SALA, ESTX, HSTX, INTX, PTXP, RDTX, TAXS, VATX, WHLD, TAXR, CBTV, ELEC, GASB, PHON, UBIL, WTER . <br><br>See [Payment Purpose code](https://docs.yapily.com/pages/payments/payments-resources/tri-pilot/) to see the definition of each code",
+        ),
+    ] = None
     type: Annotated[PaymentType, Field()]
     payee: Annotated[Payee, Field()]
-    periodic_payment: Annotated[PeriodicPaymentRequest | None, Field(alias='periodicPayment')] = None
-    international_payment: Annotated[InternationalPaymentRequest | None, Field(alias='internationalPayment')] = None
+    periodic_payment: Annotated[PeriodicPaymentRequest | None, Field(alias="periodicPayment")] = None
+    international_payment: Annotated[InternationalPaymentRequest | None, Field(alias="internationalPayment")] = None
     amount: Annotated[Amount, Field()]
-    payment_date_time: Annotated[datetime | None, Field(alias='paymentDateTime', description='__Conditional__. Used to specify the date of the payment when the payment type is one of the following:<ul>    <li><code>DOMESTIC_SCHEDULED_PAYMENT</code></li>    <li><code>DOMESTIC_PERIODIC_PAYMENT</code></li>    <li><code>INTERNATIONAL_SCHEDULED_PAYMENT</code></li>    <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>')] = None
-    read_refund_account: Annotated[StrictBool | None, Field(alias='readRefundAccount', description='__Optional__. Used to request the payer details in the payment response when the `Institution` provides the feature `READ_DOMESTIC_SINGLE_REFUND`.<br><br>See [Reverse Payments](https://docs.yapily.com/pages/knowledge/open-banking/reverse_payments/) for more information.')] = None
+    payment_date_time: Annotated[
+        datetime | None,
+        Field(
+            alias="paymentDateTime",
+            description="__Conditional__. Used to specify the date of the payment when the payment type is one of the following:<ul>    <li><code>DOMESTIC_SCHEDULED_PAYMENT</code></li>    <li><code>DOMESTIC_PERIODIC_PAYMENT</code></li>    <li><code>INTERNATIONAL_SCHEDULED_PAYMENT</code></li>    <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>",
+        ),
+    ] = None
+    read_refund_account: Annotated[
+        StrictBool | None,
+        Field(
+            alias="readRefundAccount",
+            description="__Optional__. Used to request the payer details in the payment response when the `Institution` provides the feature `READ_DOMESTIC_SINGLE_REFUND`.<br><br>See [Reverse Payments](https://docs.yapily.com/pages/knowledge/open-banking/reverse_payments/) for more information.",
+        ),
+    ] = None
     __properties = [
         "paymentIdempotencyId",
         "payer",

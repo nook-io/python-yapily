@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,10 +28,32 @@ class NonSweepingPeriodicLimits(BaseModel):
     NonSweepingPeriodicLimits
     """
 
-    total_max_amount: Annotated[Amount, Field(alias='totalMaxAmount', description='__Mandatory__. Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the Alignment is Calendar, the limit is pro-rated in the first period to the remaining number of days.')] = ...
-    frequency: Annotated[StrictStr | None, Field(description='__Mandatory__. Frequency for which the payment limits are enforced. Allowed values are [DAILY, WEEKLY, EVERY_TWO_WEEKS, MONTHLY, YEARLY]. This field cannot be enforced when `recurringPaymentCategory=ONGOING`.')] = None
-    alignment: Annotated[StrictStr | None, Field(description='__Mandatory__. Period alignment for which the payment limits are enforced. Allowed values are [CONSENT, CALENDAR]. If CONSENT, then period starts on consent creation date. If CALENDAR, then period lines up with the frequency e.g. WEEKLY period will begin at start of the week in question. This field cannot be enforced when `recurringPaymentCategory=ONGOING`.')] = None
-    max_number_of_payments: Annotated[StrictInt | None, Field(alias='maxNumberOfPayments', description='__Optional__. Max number of payments that can be submitted under this period.')] = None
+    total_max_amount: Annotated[
+        Amount,
+        Field(
+            alias="totalMaxAmount",
+            description="__Mandatory__. Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the Alignment is Calendar, the limit is pro-rated in the first period to the remaining number of days.",
+        ),
+    ]
+    frequency: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Mandatory__. Frequency for which the payment limits are enforced. Allowed values are [DAILY, WEEKLY, EVERY_TWO_WEEKS, MONTHLY, YEARLY]. This field cannot be enforced when `recurringPaymentCategory=ONGOING`."
+        ),
+    ] = None
+    alignment: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Mandatory__. Period alignment for which the payment limits are enforced. Allowed values are [CONSENT, CALENDAR]. If CONSENT, then period starts on consent creation date. If CALENDAR, then period lines up with the frequency e.g. WEEKLY period will begin at start of the week in question. This field cannot be enforced when `recurringPaymentCategory=ONGOING`."
+        ),
+    ] = None
+    max_number_of_payments: Annotated[
+        StrictInt | None,
+        Field(
+            alias="maxNumberOfPayments",
+            description="__Optional__. Max number of payments that can be submitted under this period.",
+        ),
+    ] = None
     __properties = ["totalMaxAmount", "frequency", "alignment", "maxNumberOfPayments"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

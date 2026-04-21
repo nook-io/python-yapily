@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -25,9 +26,19 @@ class UserCredentials(BaseModel):
     __Conditional__. Used to capture the user's credentials to allow them to login to an `Institution` that uses the embedded account authorisation flow. <br><br>This is the first step required in the embedded account authorisation flow to authorise the `Consent`.  # noqa: E501
     """
 
-    id: Annotated[StrictStr, Field(description='__Mandatory__. The login id for the user for a particular `Institution`.')] = ...
-    corporate_id: Annotated[StrictStr | None, Field(alias='corporateId', description='__Conditional__. The corporate login for the user for a particular corporate `Institution`.')] = None
-    password: Annotated[StrictStr, Field(description='__Mandatory__. The password of the user to login to a particular `Institution`.')] = ...
+    id: Annotated[
+        StrictStr, Field(description="__Mandatory__. The login id for the user for a particular `Institution`.")
+    ]
+    corporate_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="corporateId",
+            description="__Conditional__. The corporate login for the user for a particular corporate `Institution`.",
+        ),
+    ] = None
+    password: Annotated[
+        StrictStr, Field(description="__Mandatory__. The password of the user to login to a particular `Institution`.")
+    ]
     __properties = ["id", "corporateId", "password"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

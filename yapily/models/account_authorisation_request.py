@@ -51,7 +51,7 @@ class AccountAuthorisationRequest(BaseModel):
             alias="institutionId",
             description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
         ),
-    ] = ...
+    ]
     callback: Annotated[
         StrictStr | None,
         Field(

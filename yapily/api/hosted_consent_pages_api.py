@@ -174,7 +174,7 @@ class HostedConsentPagesApi:
     @validate_call
     async def get_hosted_consent_request(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the consent request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the consent request")],
         **kwargs,
     ) -> ApiResponseOfGetHostedConsentRequest:
         """Get Hosted Consent Request  # noqa: E501
@@ -201,7 +201,7 @@ class HostedConsentPagesApi:
     @validate_call
     async def get_hosted_consent_request_with_http_info(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the consent request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the consent request")],
         **kwargs,
     ) -> ApiResponse:
         """Get Hosted Consent Request  # noqa: E501

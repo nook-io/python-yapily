@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -29,11 +30,22 @@ class InternationalPaymentRequest(BaseModel):
     __Conditional__. Used to specify properties to define an international payment. <br><br>Must be specified when the payment `type` is one of the following:<ul>     <li><code>INTERNATIONAL_SINGLE_PAYMENT</code></li>     <li><code>INTERNATIONAL_SCHEDULED_PAYMENT</code></li>     <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>  # noqa: E501
     """
 
-    currency_of_transfer: Annotated[StrictStr, Field(alias='currencyOfTransfer', description="__Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer's account. Specified as a 3-letter code (ISO 4217).")] = ...
-    exchange_rate_information: Annotated[ExchangeRateInformation | None, Field(alias='exchangeRateInformation')] = None
-    purpose: Annotated[StrictStr | None, Field(description='__Optional__. Used to indicate the external purpose as a [ISO20022 purpose code](https://www.rba.hr/documents/20182/183267/External+purpose+codes+list/8a28f888-1f83-5e29-d6ed-fce05f428689?version=1.1) value.')] = None
+    currency_of_transfer: Annotated[
+        StrictStr,
+        Field(
+            alias="currencyOfTransfer",
+            description="__Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer's account. Specified as a 3-letter code (ISO 4217).",
+        ),
+    ]
+    exchange_rate_information: Annotated[ExchangeRateInformation | None, Field(alias="exchangeRateInformation")] = None
+    purpose: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Optional__. Used to indicate the external purpose as a [ISO20022 purpose code](https://www.rba.hr/documents/20182/183267/External+purpose+codes+list/8a28f888-1f83-5e29-d6ed-fce05f428689?version=1.1) value."
+        ),
+    ] = None
     priority: PriorityCodeEnum | None = None
-    charge_bearer: Annotated[ChargeBearerType | None, Field(alias='chargeBearer')] = None
+    charge_bearer: Annotated[ChargeBearerType | None, Field(alias="chargeBearer")] = None
     __properties = ["currencyOfTransfer", "exchangeRateInformation", "purpose", "priority", "chargeBearer"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

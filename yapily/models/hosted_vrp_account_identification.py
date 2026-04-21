@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -25,8 +26,18 @@ class HostedVrpAccountIdentification(BaseModel):
     HostedVrpAccountIdentification
     """
 
-    type: Annotated[StrictStr, Field(description='Used to describe the format of the account.<br><br> Allowed values: <br>MASKED_ACCOUNT_NUMBER<br>SORT_CODE<br>ACCOUNT_NUMBER ')] = ...
-    identification: Annotated[StrictStr, Field(description='__Mandatory__. The value associated with the account identification type.<br><br> See [Account Identification Combinations](https://docs.yapily.com/pages/key-concepts/payments/payment-execution/intro-to-payment-execution/#account-identifications-combinations) for more information on the format of the values.')] = ...
+    type: Annotated[
+        StrictStr,
+        Field(
+            description="Used to describe the format of the account.<br><br> Allowed values: <br>MASKED_ACCOUNT_NUMBER<br>SORT_CODE<br>ACCOUNT_NUMBER "
+        ),
+    ]
+    identification: Annotated[
+        StrictStr,
+        Field(
+            description="__Mandatory__. The value associated with the account identification type.<br><br> See [Account Identification Combinations](https://docs.yapily.com/pages/key-concepts/payments/payment-execution/intro-to-payment-execution/#account-identifications-combinations) for more information on the format of the values."
+        ),
+    ]
     __properties = ["type", "identification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

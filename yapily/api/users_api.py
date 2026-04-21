@@ -164,9 +164,7 @@ class UsersApi:
     @validate_call
     async def delete_user(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         **kwargs,
     ) -> ApiResponseOfUserDeleteResponse:
         """Delete User  # noqa: E501
@@ -193,9 +191,7 @@ class UsersApi:
     @validate_call
     async def delete_user_with_http_info(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         **kwargs,
     ) -> ApiResponse:
         """Delete User  # noqa: E501
@@ -293,9 +289,7 @@ class UsersApi:
     @validate_call
     async def get_user(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         **kwargs,
     ) -> ApplicationUser:
         """Get User  # noqa: E501
@@ -322,9 +316,7 @@ class UsersApi:
     @validate_call
     async def get_user_with_http_info(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         **kwargs,
     ) -> ApiResponse:
         """Get User  # noqa: E501

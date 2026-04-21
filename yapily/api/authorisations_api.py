@@ -1851,8 +1851,7 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1923,8 +1922,7 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -2079,7 +2077,7 @@ class AuthorisationsApi:
     async def update_embedded_account_request(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         embedded_account_authorisation_request: EmbeddedAccountAuthorisationRequest,
         psu_id: Annotated[
@@ -2157,7 +2155,7 @@ class AuthorisationsApi:
     async def update_embedded_account_request_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         embedded_account_authorisation_request: EmbeddedAccountAuthorisationRequest,
         psu_id: Annotated[
@@ -2332,7 +2330,7 @@ class AuthorisationsApi:
     async def update_embedded_bulk_payment_authorisation(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         bulk_payment_embedded_authorisation_request: BulkPaymentEmbeddedAuthorisationRequest,
         psu_id: Annotated[
@@ -2404,7 +2402,7 @@ class AuthorisationsApi:
     async def update_embedded_bulk_payment_authorisation_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         bulk_payment_embedded_authorisation_request: BulkPaymentEmbeddedAuthorisationRequest,
         psu_id: Annotated[
@@ -2570,7 +2568,7 @@ class AuthorisationsApi:
     async def update_embedded_payment_authorisation(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         payment_embedded_authorisation_request: PaymentEmbeddedAuthorisationRequest,
         psu_id: Annotated[
@@ -2648,7 +2646,7 @@ class AuthorisationsApi:
     async def update_embedded_payment_authorisation_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         payment_embedded_authorisation_request: PaymentEmbeddedAuthorisationRequest,
         psu_id: Annotated[
@@ -2824,8 +2822,7 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -2894,8 +2891,7 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -3065,8 +3061,7 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -3147,8 +3142,7 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],

@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -29,12 +30,30 @@ class CreateHostedPaymentRequest(BaseModel):
     CreateHostedPaymentRequest
     """
 
-    user_id: Annotated[StrictStr | None, Field(alias='userId', description='__Conditional__. Yapily Identifier for the `User` returned by the create user step POST /users. You must provide either a `userId` or `applicationUserId`.')] = None
-    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description="__Conditional__. Your own `User` reference. This field allows you to use your own unique references for individual users. Where the `User` reference doesn't have an associated Yapily `userId`, a new `userId` is created and linked to it. You must provide either a `userId` or `applicationUserId`.")] = None
-    institution_identifiers: Annotated[InstitutionIdentifiers, Field(alias='institutionIdentifiers')] = ...
-    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
-    redirect_url: Annotated[StrictStr, Field(alias='redirectUrl', description='URL of your server to redirect the user after completion of the payment flow.')] = ...
-    payment_request_details: Annotated[HostedPaymentRequestDetails, Field(alias='paymentRequestDetails')] = ...
+    user_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="userId",
+            description="__Conditional__. Yapily Identifier for the `User` returned by the create user step POST /users. You must provide either a `userId` or `applicationUserId`.",
+        ),
+    ] = None
+    application_user_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="applicationUserId",
+            description="__Conditional__. Your own `User` reference. This field allows you to use your own unique references for individual users. Where the `User` reference doesn't have an associated Yapily `userId`, a new `userId` is created and linked to it. You must provide either a `userId` or `applicationUserId`.",
+        ),
+    ] = None
+    institution_identifiers: Annotated[InstitutionIdentifiers, Field(alias="institutionIdentifiers")]
+    user_settings: Annotated[UserSettings | None, Field(alias="userSettings")] = None
+    redirect_url: Annotated[
+        StrictStr,
+        Field(
+            alias="redirectUrl",
+            description="URL of your server to redirect the user after completion of the payment flow.",
+        ),
+    ]
+    payment_request_details: Annotated[HostedPaymentRequestDetails, Field(alias="paymentRequestDetails")]
     __properties = [
         "userId",
         "applicationUserId",

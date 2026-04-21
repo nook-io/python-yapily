@@ -190,8 +190,7 @@ class NotificationsApi:
     async def delete_event_subscription_by_id(
         self,
         event_type_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier of the event type (for which notifications will be sent). "),
+            StrictStr, Field(description="Unique identifier of the event type (for which notifications will be sent). ")
         ],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID for which event type will be deleted")
@@ -225,8 +224,7 @@ class NotificationsApi:
     async def delete_event_subscription_by_id_with_http_info(
         self,
         event_type_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier of the event type (for which notifications will be sent). "),
+            StrictStr, Field(description="Unique identifier of the event type (for which notifications will be sent). ")
         ],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID for which event type will be deleted")
@@ -336,8 +334,7 @@ class NotificationsApi:
     async def get_event_subscription_by_id(
         self,
         event_type_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier of the event type (for which notifications will be sent). "),
+            StrictStr, Field(description="Unique identifier of the event type (for which notifications will be sent). ")
         ],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
@@ -371,8 +368,7 @@ class NotificationsApi:
     async def get_event_subscription_by_id_with_http_info(
         self,
         event_type_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier of the event type (for which notifications will be sent). "),
+            StrictStr, Field(description="Unique identifier of the event type (for which notifications will be sent). ")
         ],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")

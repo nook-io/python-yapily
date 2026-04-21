@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -34,17 +35,17 @@ class SubmissionResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    payment_idempotency_id: Annotated[StrictStr | None, Field(alias='paymentIdempotencyId')] = None
-    payment_lifecycle_id: Annotated[StrictStr | None, Field(alias='paymentLifecycleId')] = None
-    institution_consent_id: Annotated[StrictStr | None, Field(alias='institutionConsentId')] = None
+    payment_idempotency_id: Annotated[StrictStr | None, Field(alias="paymentIdempotencyId")] = None
+    payment_lifecycle_id: Annotated[StrictStr | None, Field(alias="paymentLifecycleId")] = None
+    institution_consent_id: Annotated[StrictStr | None, Field(alias="institutionConsentId")] = None
     status: PaymentStatus | None = None
-    status_details: Annotated[PaymentStatusDetails | None, Field(alias='statusDetails')] = None
-    initiation_details: Annotated[InitiationDetails, Field(alias='initiationDetails')] = ...
-    submission_details: Annotated[SubmissionDetails, Field(alias='submissionDetails')] = ...
+    status_details: Annotated[PaymentStatusDetails | None, Field(alias="statusDetails")] = None
+    initiation_details: Annotated[InitiationDetails, Field(alias="initiationDetails")]
+    submission_details: Annotated[SubmissionDetails, Field(alias="submissionDetails")]
     payer: Payer | None = None
-    refund_account: Annotated[RefundAccount | None, Field(alias='refundAccount')] = None
-    expected_execution_time: Annotated[datetime | None, Field(alias='expectedExecutionTime')] = None
-    expected_settlement_time: Annotated[datetime | None, Field(alias='expectedSettlementTime')] = None
+    refund_account: Annotated[RefundAccount | None, Field(alias="refundAccount")] = None
+    expected_execution_time: Annotated[datetime | None, Field(alias="expectedExecutionTime")] = None
+    expected_settlement_time: Annotated[datetime | None, Field(alias="expectedSettlementTime")] = None
     __properties = [
         "id",
         "paymentIdempotencyId",

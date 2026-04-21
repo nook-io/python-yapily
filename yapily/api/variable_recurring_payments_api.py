@@ -309,8 +309,7 @@ class VariableRecurringPaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -345,8 +344,7 @@ class VariableRecurringPaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -465,8 +463,7 @@ class VariableRecurringPaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -501,8 +498,7 @@ class VariableRecurringPaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -619,8 +615,7 @@ class VariableRecurringPaymentsApi:
         self,
         consent_id: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The consent Id of the `Variable Recurring Payments Consent` to retrieve.",
             ),
         ],
@@ -652,8 +647,7 @@ class VariableRecurringPaymentsApi:
         self,
         consent_id: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The consent Id of the `Variable Recurring Payments Consent` to retrieve.",
             ),
         ],
@@ -758,8 +752,7 @@ class VariableRecurringPaymentsApi:
         self,
         consent_id: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The consent Id of the `Variable Recurring Payments Consent` to retrieve.",
             ),
         ],
@@ -791,8 +784,7 @@ class VariableRecurringPaymentsApi:
         self,
         consent_id: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The consent Id of the `Variable Recurring Payments Consent` to retrieve.",
             ),
         ],
@@ -897,12 +889,11 @@ class VariableRecurringPaymentsApi:
         self,
         payment_id: Annotated[
             StrictStr,
-            Field(..., description="__Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve."),
+            Field(description="__Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve."),
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The consent token containing the user's authorisation to make the `Variable Recurring Payments` request.",
             ),
         ],
@@ -936,12 +927,11 @@ class VariableRecurringPaymentsApi:
         self,
         payment_id: Annotated[
             StrictStr,
-            Field(..., description="__Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve."),
+            Field(description="__Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve."),
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The consent token containing the user's authorisation to make the `Variable Recurring Payments` request.",
             ),
         ],

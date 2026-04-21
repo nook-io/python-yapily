@@ -46,12 +46,9 @@ class FinancialProfileApi:
     @validate_call
     async def create_profile_consent(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         consent: Annotated[
-            StrictStr,
-            Field(..., description="__Mandatory__. The `consent-token` obtained from the original authorisation."),
+            StrictStr, Field(description="__Mandatory__. The `consent-token` obtained from the original authorisation.")
         ],
         **kwargs,
     ) -> ApiResponseOfFinancialProfileAuthorisationResponse:
@@ -81,12 +78,9 @@ class FinancialProfileApi:
     @validate_call
     async def create_profile_consent_with_http_info(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         consent: Annotated[
-            StrictStr,
-            Field(..., description="__Mandatory__. The `consent-token` obtained from the original authorisation."),
+            StrictStr, Field(description="__Mandatory__. The `consent-token` obtained from the original authorisation.")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -195,10 +189,8 @@ class FinancialProfileApi:
     @validate_call
     async def delete_profile_consent(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
-        profile_consent_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The ID of the ProfileConsent")],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
+        profile_consent_id: Annotated[StrictStr, Field(description="__Mandatory__. The ID of the ProfileConsent")],
         **kwargs,
     ) -> ApiResponseOfFinancialProfileConsentRemoveResponse:
         """Delete Profile Consent  # noqa: E501
@@ -227,10 +219,8 @@ class FinancialProfileApi:
     @validate_call
     async def delete_profile_consent_with_http_info(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
-        profile_consent_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The ID of the ProfileConsent")],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
+        profile_consent_id: Annotated[StrictStr, Field(description="__Mandatory__. The ID of the ProfileConsent")],
         **kwargs,
     ) -> ApiResponse:
         """Delete Profile Consent  # noqa: E501
@@ -338,9 +328,7 @@ class FinancialProfileApi:
     @validate_call
     async def get_balance_prediction(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         **kwargs,
     ) -> ApiResponseOfFinancialProfileBalancePrediction:
         """Get Predicted Balances  # noqa: E501
@@ -367,9 +355,7 @@ class FinancialProfileApi:
     @validate_call
     async def get_balance_prediction_with_http_info(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         **kwargs,
     ) -> ApiResponse:
         """Get Predicted Balances  # noqa: E501
@@ -472,10 +458,8 @@ class FinancialProfileApi:
     @validate_call
     async def get_profile_consent(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
-        profile_consent_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The ID of the ProfileConsent")],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
+        profile_consent_id: Annotated[StrictStr, Field(description="__Mandatory__. The ID of the ProfileConsent")],
         **kwargs,
     ) -> ApiResponseOfFinancialProfileConsent:
         """Get Profile Consent  # noqa: E501
@@ -504,10 +488,8 @@ class FinancialProfileApi:
     @validate_call
     async def get_profile_consent_with_http_info(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
-        profile_consent_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The ID of the ProfileConsent")],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
+        profile_consent_id: Annotated[StrictStr, Field(description="__Mandatory__. The ID of the ProfileConsent")],
         **kwargs,
     ) -> ApiResponse:
         """Get Profile Consent  # noqa: E501
@@ -615,9 +597,7 @@ class FinancialProfileApi:
     @validate_call
     async def get_user_profile(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         **kwargs,
     ) -> ApiResponseOfFinancialProfile:
         """Get Transaction Groups  # noqa: E501
@@ -644,9 +624,7 @@ class FinancialProfileApi:
     @validate_call
     async def get_user_profile_with_http_info(
         self,
-        user_uuid: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The Yapily generated UUID for the user.")
-        ],
+        user_uuid: Annotated[StrictStr, Field(description="__Mandatory__. The Yapily generated UUID for the user.")],
         **kwargs,
     ) -> ApiResponse:
         """Get Transaction Groups  # noqa: E501

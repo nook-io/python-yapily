@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,10 +28,19 @@ class DataConstraintsResponse(BaseModel):
     DataConstraintsResponse
     """
 
-    institution_id: Annotated[StrictStr, Field(alias='institutionId', description='The id to represent the `Institution`.')] = ...
-    institution_country_code: Annotated[StrictStr | None, Field(alias='institutionCountryCode', description='2 letter ISO Country code of the `Institution`.')] = None
-    endpoint_path: Annotated[StrictStr | None, Field(alias='endpointPath', description='Define the applicable API end point.')] = None
-    endpoint_method: Annotated[StrictStr | None, Field(alias='endpointMethod', description='Https Method for the endpoint.')] = None
+    institution_id: Annotated[
+        StrictStr, Field(alias="institutionId", description="The id to represent the `Institution`.")
+    ]
+    institution_country_code: Annotated[
+        StrictStr | None,
+        Field(alias="institutionCountryCode", description="2 letter ISO Country code of the `Institution`."),
+    ] = None
+    endpoint_path: Annotated[
+        StrictStr | None, Field(alias="endpointPath", description="Define the applicable API end point.")
+    ] = None
+    endpoint_method: Annotated[
+        StrictStr | None, Field(alias="endpointMethod", description="Https Method for the endpoint.")
+    ] = None
     request: Annotated[RequestConstraints, Field()]
     __properties = ["institutionId", "institutionCountryCode", "endpointPath", "endpointMethod", "request"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

@@ -41,7 +41,7 @@ class WebhooksApi:
     @validate_call
     async def delete_webhook(
         self,
-        webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
+        webhook_id: Annotated[StrictStr, Field(description="Registered webhook id")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -73,7 +73,7 @@ class WebhooksApi:
     @validate_call
     async def delete_webhook_with_http_info(
         self,
-        webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
+        webhook_id: Annotated[StrictStr, Field(description="Registered webhook id")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -590,7 +590,7 @@ class WebhooksApi:
     @validate_call
     async def webhook_secret_reset(
         self,
-        webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
+        webhook_id: Annotated[StrictStr, Field(description="Registered webhook id")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -627,7 +627,7 @@ class WebhooksApi:
     @validate_call
     async def webhook_secret_reset_with_http_info(
         self,
-        webhook_id: Annotated[StrictStr, Field(..., description="Registered webhook id")],
+        webhook_id: Annotated[StrictStr, Field(description="Registered webhook id")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,

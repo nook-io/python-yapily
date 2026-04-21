@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -28,9 +29,14 @@ class SubmissionDetails(BaseModel):
     __Mandatory__. The payment submission object defining the details of the payment instruction to be executed under the Variable Recurring Payment.  # noqa: E501
     """
 
-    reference: Annotated[StrictStr | None, Field(description='__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.')] = None
+    reference: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long."
+        ),
+    ] = None
     payee: Annotated[Payee, Field()]
-    payment_amount: Annotated[Amount, Field(alias='paymentAmount')] = ...
+    payment_amount: Annotated[Amount, Field(alias="paymentAmount")]
     __properties = ["reference", "payee", "paymentAmount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

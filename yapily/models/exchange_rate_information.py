@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,10 +28,27 @@ class ExchangeRateInformation(BaseModel):
     __Optional__. Used to provide details on the currency exchange rate and contract.  # noqa: E501
     """
 
-    unit_currency: Annotated[StrictStr, Field(alias='unitCurrency', description='__Mandatory__. The currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is `GBP`.')] = ...
-    rate: Annotated[StrictFloat | StrictInt | None, Field(description='__Optional__. The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency.')] = None
-    rate_type: Annotated[RateTypeEnum, Field(alias='rateType')] = ...
-    foreign_exchange_contract_reference: Annotated[StrictStr | None, Field(alias='foreignExchangeContractReference', description='__Optional__. The unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent.')] = None
+    unit_currency: Annotated[
+        StrictStr,
+        Field(
+            alias="unitCurrency",
+            description="__Mandatory__. The currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is `GBP`.",
+        ),
+    ]
+    rate: Annotated[
+        StrictFloat | StrictInt | None,
+        Field(
+            description="__Optional__. The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency."
+        ),
+    ] = None
+    rate_type: Annotated[RateTypeEnum, Field(alias="rateType")]
+    foreign_exchange_contract_reference: Annotated[
+        StrictStr | None,
+        Field(
+            alias="foreignExchangeContractReference",
+            description="__Optional__. The unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent.",
+        ),
+    ] = None
     __properties = ["unitCurrency", "rate", "rateType", "foreignExchangeContractReference"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

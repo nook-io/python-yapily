@@ -47,14 +47,13 @@ class EnrichmentApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for account")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for account")],
         categorisation_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for transaction categorisation request")
+            StrictStr, Field(description="Unique identifier for transaction categorisation request")
         ],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
@@ -109,14 +108,13 @@ class EnrichmentApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for account")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for account")],
         categorisation_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for transaction categorisation request")
+            StrictStr, Field(description="Unique identifier for transaction categorisation request")
         ],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
@@ -263,7 +261,7 @@ class EnrichmentApi:
     @validate_call
     async def get_categorisation_account_type(
         self,
-        account_type: Annotated[StrictStr, Field(..., description="type of bank account (consumer or business)")],
+        account_type: Annotated[StrictStr, Field(description="type of bank account (consumer or business)")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -295,7 +293,7 @@ class EnrichmentApi:
     @validate_call
     async def get_categorisation_account_type_with_http_info(
         self,
-        account_type: Annotated[StrictStr, Field(..., description="type of bank account (consumer or business)")],
+        account_type: Annotated[StrictStr, Field(description="type of bank account (consumer or business)")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -413,12 +411,11 @@ class EnrichmentApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for account")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for account")],
         psu_id: Annotated[
             StrictStr | None,
             Field(
@@ -491,12 +488,11 @@ class EnrichmentApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for account")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for account")],
         psu_id: Annotated[
             StrictStr | None,
             Field(

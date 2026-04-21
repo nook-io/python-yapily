@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,8 +28,13 @@ class FundsConfirmationRequest(BaseModel):
     The fund confirmation object defining the details of the account and funds to be checked under the Variable Recurring Payment consent.  # noqa: E501
     """
 
-    reference: Annotated[StrictStr | None, Field(description='__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.')] = None
-    payment_amount: Annotated[Amount, Field(alias='paymentAmount')] = ...
+    reference: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long."
+        ),
+    ] = None
+    payment_amount: Annotated[Amount, Field(alias="paymentAmount")]
     __properties = ["reference", "paymentAmount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

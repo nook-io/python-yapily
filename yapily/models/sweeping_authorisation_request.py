@@ -59,7 +59,7 @@ class SweepingAuthorisationRequest(BaseModel):
             alias="institutionId",
             description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
         ),
-    ] = ...
+    ]
     callback: Annotated[
         StrictStr | None,
         Field(
@@ -74,8 +74,8 @@ class SweepingAuthorisationRequest(BaseModel):
             description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
         ),
     ] = None
-    control_parameters: Annotated[SweepingControlParameters, Field(alias="controlParameters")] = ...
-    initiation_details: Annotated[InitiationDetails, Field(alias="initiationDetails")] = ...
+    control_parameters: Annotated[SweepingControlParameters, Field(alias="controlParameters")]
+    initiation_details: Annotated[InitiationDetails, Field(alias="initiationDetails")]
     compliance_data: Annotated[ComplianceData | None, Field(alias="complianceData")] = None
     __properties = [
         "userId",

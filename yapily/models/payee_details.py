@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,9 +28,20 @@ class PayeeDetails(BaseModel):
     __Mandatory__. Details of the beneficiary [person or business].  # noqa: E501
     """
 
-    name: Annotated[StrictStr, Field(description='__Mandatory__. The account holder name of the beneficiary.')] = ...
-    account_identifications: Annotated[list[AccountIdentification], Field(alias='accountIdentifications', description='__Mandatory__. The account identifications that identify the `Payee` bank account.')] = ...
-    country: Annotated[StrictStr, Field(description='__Conditional__. The 2-letter ISO 3166 country code for the address. <br><br>An `Institution` may require you to specify the `country` when used in the context of the `Payee` to be able to make a payment')] = ...
+    name: Annotated[StrictStr, Field(description="__Mandatory__. The account holder name of the beneficiary.")]
+    account_identifications: Annotated[
+        list[AccountIdentification],
+        Field(
+            alias="accountIdentifications",
+            description="__Mandatory__. The account identifications that identify the `Payee` bank account.",
+        ),
+    ]
+    country: Annotated[
+        StrictStr,
+        Field(
+            description="__Conditional__. The 2-letter ISO 3166 country code for the address. <br><br>An `Institution` may require you to specify the `country` when used in the context of the `Payee` to be able to make a payment"
+        ),
+    ]
     __properties = ["name", "accountIdentifications", "country"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

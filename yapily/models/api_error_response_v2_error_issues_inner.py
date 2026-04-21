@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -25,9 +26,14 @@ class ApiErrorResponseV2ErrorIssuesInner(BaseModel):
     Detailed information regarding the issue that was experienced during processing of the request  # noqa: E501
     """
 
-    type: Annotated[StrictStr | None, Field(description='Category of the issue')] = None
-    code: Annotated[StrictStr, Field(description='5 digit Error Code that uniquely identifies the type of issue, for full list of error codes pelase check our documentation')] = ...
-    message: Annotated[StrictStr, Field(description='Human readable description of the issue that was experienced')] = ...
+    type: Annotated[StrictStr | None, Field(description="Category of the issue")] = None
+    code: Annotated[
+        StrictStr,
+        Field(
+            description="5 digit Error Code that uniquely identifies the type of issue, for full list of error codes pelase check our documentation"
+        ),
+    ]
+    message: Annotated[StrictStr, Field(description="Human readable description of the issue that was experienced")]
     __properties = ["type", "code", "message"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -31,7 +31,7 @@ class BulkPaymentRequest(BaseModel):
     payments: Annotated[
         list[PaymentRequest],
         Field(description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment."),
-    ] = ...
+    ]
     originator_identification_number: Annotated[
         StrictStr | None,
         Field(

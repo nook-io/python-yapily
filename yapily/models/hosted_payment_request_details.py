@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -32,14 +33,31 @@ class HostedPaymentRequestDetails(BaseModel):
     Details of the payment.  # noqa: E501
     """
 
-    payment_idempotency_id: Annotated[StrictStr, Field(alias='paymentIdempotencyId', description='A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.')] = ...
-    reference: Annotated[StrictStr | None, Field(description='The payment reference or description. Limited to a maximum of 18 characters for UK institutions.')] = None
-    context_type: Annotated[PaymentContextType | None, Field(alias='contextType')] = None
+    payment_idempotency_id: Annotated[
+        StrictStr,
+        Field(
+            alias="paymentIdempotencyId",
+            description="A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
+        ),
+    ]
+    reference: Annotated[
+        StrictStr | None,
+        Field(
+            description="The payment reference or description. Limited to a maximum of 18 characters for UK institutions."
+        ),
+    ] = None
+    context_type: Annotated[PaymentContextType | None, Field(alias="contextType")] = None
     type: Annotated[PaymentType, Field()]
     payee: Annotated[Payee, Field()]
     payer: Payer | None = None
-    amount_details: Annotated[HostedAmountDetails, Field(alias='amountDetails')] = ...
-    payment_due_date: Annotated[date | None, Field(alias='paymentDueDate', description='The date that the payment is due. Displayed to the end user in the payment summary screen.')] = None
+    amount_details: Annotated[HostedAmountDetails, Field(alias="amountDetails")]
+    payment_due_date: Annotated[
+        date | None,
+        Field(
+            alias="paymentDueDate",
+            description="The date that the payment is due. Displayed to the end user in the payment summary screen.",
+        ),
+    ] = None
     __properties = [
         "paymentIdempotencyId",
         "reference",

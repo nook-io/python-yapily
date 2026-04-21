@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -28,12 +29,36 @@ class Payee(BaseModel):
     __Mandatory__. Details of the beneficiary [person or business].  # noqa: E501
     """
 
-    name: Annotated[StrictStr, Field(description='__Mandatory__. The account holder name of the beneficiary.')] = ...
-    account_identifications: Annotated[list[AccountIdentification], Field(alias='accountIdentifications', description='__Mandatory__. The account identifications that identify the `Payee` bank account.')] = ...
-    account_type: Annotated[StrictStr | None, Field(alias='accountType', description='__Optional__. The payee account type. <br><br>Allowed values: BUSINESS, BUSINESS_SAVING, CHARITY, COLLECTION, CORPORATE, E_WALLET, GOVERNMENT, INVESTMENT, INVESTMENT_ISA, JOINT_PERSONAL, PENSION, PERSONAL, PERSONAL_SAVING, PREMIER, WEALTH .')] = None
+    name: Annotated[StrictStr, Field(description="__Mandatory__. The account holder name of the beneficiary.")]
+    account_identifications: Annotated[
+        list[AccountIdentification],
+        Field(
+            alias="accountIdentifications",
+            description="__Mandatory__. The account identifications that identify the `Payee` bank account.",
+        ),
+    ]
+    account_type: Annotated[
+        StrictStr | None,
+        Field(
+            alias="accountType",
+            description="__Optional__. The payee account type. <br><br>Allowed values: BUSINESS, BUSINESS_SAVING, CHARITY, COLLECTION, CORPORATE, E_WALLET, GOVERNMENT, INVESTMENT, INVESTMENT_ISA, JOINT_PERSONAL, PENSION, PERSONAL, PERSONAL_SAVING, PREMIER, WEALTH .",
+        ),
+    ] = None
     address: Address | None = None
-    merchant_id: Annotated[StrictStr | None, Field(alias='merchantId', description='__Optional__. The merchant ID is a unique code provided by the payment processor to the merchant.')] = None
-    merchant_category_code: Annotated[StrictStr | None, Field(alias='merchantCategoryCode', description='__Optional__. The category code of the merchant in case the `Payee` is a business. Specified as a 3-letter ISO 18245 code.')] = None
+    merchant_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="merchantId",
+            description="__Optional__. The merchant ID is a unique code provided by the payment processor to the merchant.",
+        ),
+    ] = None
+    merchant_category_code: Annotated[
+        StrictStr | None,
+        Field(
+            alias="merchantCategoryCode",
+            description="__Optional__. The category code of the merchant in case the `Payee` is a business. Specified as a 3-letter ISO 18245 code.",
+        ),
+    ] = None
     __properties = ["name", "accountIdentifications", "accountType", "address", "merchantId", "merchantCategoryCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

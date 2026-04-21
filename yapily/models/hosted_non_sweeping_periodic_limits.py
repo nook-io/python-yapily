@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,9 +28,25 @@ class HostedNonSweepingPeriodicLimits(BaseModel):
     HostedNonSweepingPeriodicLimits
     """
 
-    max_amount: Annotated[Amount, Field(alias='maxAmount', description='__Mandatory__. Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the Alignment is Calendar, the limit is pro-rated in the first period to the remaining number of days.')] = ...
-    frequency: Annotated[StrictStr, Field(description='__Mandatory__. Frequency for which the payment limits are enforced. Allowed values are [MONTHLY].')] = ...
-    alignment: Annotated[StrictStr, Field(description='__Mandatory__. Period alignment for which the payment limits are enforced. Allowed values are [CONSENT, CALENDAR]. If CONSENT, then period starts on consent creation date. If CALENDAR, then period lines up with the frequency e.g. WEEKLY period will begin at start of the week in question.')] = ...
+    max_amount: Annotated[
+        Amount,
+        Field(
+            alias="maxAmount",
+            description="__Mandatory__. Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the Alignment is Calendar, the limit is pro-rated in the first period to the remaining number of days.",
+        ),
+    ]
+    frequency: Annotated[
+        StrictStr,
+        Field(
+            description="__Mandatory__. Frequency for which the payment limits are enforced. Allowed values are [MONTHLY]."
+        ),
+    ]
+    alignment: Annotated[
+        StrictStr,
+        Field(
+            description="__Mandatory__. Period alignment for which the payment limits are enforced. Allowed values are [CONSENT, CALENDAR]. If CONSENT, then period starts on consent creation date. If CALENDAR, then period lines up with the frequency e.g. WEEKLY period will begin at start of the week in question."
+        ),
+    ]
     __properties = ["maxAmount", "frequency", "alignment"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

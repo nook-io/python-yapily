@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -28,11 +29,20 @@ class PaymentConstraintsResponse(BaseModel):
     PaymentConstraintsResponse
     """
 
-    institution_id: Annotated[StrictStr, Field(alias='institutionId', description='The id to represent the `Institution`.')] = ...
-    institution_country_code: Annotated[StrictStr | None, Field(alias='institutionCountryCode', description='2 letter ISO Country code of the `Institution`.')] = None
-    endpoint_path: Annotated[StrictStr | None, Field(alias='endpointPath', description='Define the applicable API end point.')] = None
-    endpoint_method: Annotated[StrictStr | None, Field(alias='endpointMethod', description='Https Method for the endpoint.')] = None
-    payment_type: Annotated[PaymentTypeOfConstraints, Field(alias='paymentType')] = ...
+    institution_id: Annotated[
+        StrictStr, Field(alias="institutionId", description="The id to represent the `Institution`.")
+    ]
+    institution_country_code: Annotated[
+        StrictStr | None,
+        Field(alias="institutionCountryCode", description="2 letter ISO Country code of the `Institution`."),
+    ] = None
+    endpoint_path: Annotated[
+        StrictStr | None, Field(alias="endpointPath", description="Define the applicable API end point.")
+    ] = None
+    endpoint_method: Annotated[
+        StrictStr | None, Field(alias="endpointMethod", description="Https Method for the endpoint.")
+    ] = None
+    payment_type: Annotated[PaymentTypeOfConstraints, Field(alias="paymentType")]
     request: Annotated[RequestConstraints, Field()]
     __properties = [
         "institutionId",

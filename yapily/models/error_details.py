@@ -30,9 +30,9 @@ class ErrorDetails(BaseModel):
     tracing_id: Annotated[
         StrictStr,
         Field(alias="tracingId", description="Unique identifier of the request, used by Yapily for support purposes"),
-    ] = ...
-    code: Annotated[StrictInt, Field(description="Numeric HTTP status code associated with the error")] = ...
-    status: Annotated[StrictStr, Field(description="Textual description of the HTTP status")] = ...
+    ]
+    code: Annotated[StrictInt, Field(description="Numeric HTTP status code associated with the error")]
+    status: Annotated[StrictStr, Field(description="Textual description of the HTTP status")]
     support_url: Annotated[
         StrictStr | None,
         Field(alias="supportUrl", description="Link to where further information regarding the error can be found"),

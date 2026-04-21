@@ -31,18 +31,50 @@ class HostedVRPConsentDetails(BaseModel):
     HostedVRPConsentDetails
     """
 
-    id: Annotated[StrictStr, Field(description='The unique ID of the consent request.')] = ...
-    user_id: Annotated[StrictStr | None, Field(alias='userId', description='Represents the Unique Identifier for the `User` assigned by Yapily.')] = None
-    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description='Represents the User-friendly reference to the `User`.')] = None
-    application_id: Annotated[StrictStr, Field(alias='applicationId', description='Represens the Unique Identifier of the `Application` the user is associated with.')] = ...
-    institution_identifiers: Annotated[InstitutionIdentifiers | None, Field(alias='institutionIdentifiers')] = None
-    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
-    redirect_url: Annotated[StrictStr | None, Field(alias='redirectUrl', description="URL of client's server to redirect the PSU after completion of the consent authorisation.")] = None
-    vrp_setup: Annotated[VRPSetup, Field(alias='vrpSetup')] = ...
-    created_at: Annotated[datetime | None, Field(alias='createdAt')] = None
-    authorisation_expires_at: Annotated[datetime | None, Field(alias='authorisationExpiresAt', description='Represents the date and time at which the auth Token will expire.')] = None
-    consent_token: Annotated[StrictStr | None, Field(alias='consentToken', description='Represents the authorisation to make VRP payments')] = None
-    consent_status: Annotated[StrictStr, Field(alias='consentStatus', description='Current status of the authorisation. Can be one of [AWAITING_AUTHORIZATION, AUTHORIZED, REJECTED, REVOKED, FAILED, EXPIRED]')] = ...
+    id: Annotated[StrictStr, Field(description="The unique ID of the consent request.")]
+    user_id: Annotated[
+        StrictStr | None,
+        Field(alias="userId", description="Represents the Unique Identifier for the `User` assigned by Yapily."),
+    ] = None
+    application_user_id: Annotated[
+        StrictStr | None,
+        Field(alias="applicationUserId", description="Represents the User-friendly reference to the `User`."),
+    ] = None
+    application_id: Annotated[
+        StrictStr,
+        Field(
+            alias="applicationId",
+            description="Represens the Unique Identifier of the `Application` the user is associated with.",
+        ),
+    ]
+    institution_identifiers: Annotated[InstitutionIdentifiers | None, Field(alias="institutionIdentifiers")] = None
+    user_settings: Annotated[UserSettings | None, Field(alias="userSettings")] = None
+    redirect_url: Annotated[
+        StrictStr | None,
+        Field(
+            alias="redirectUrl",
+            description="URL of client's server to redirect the PSU after completion of the consent authorisation.",
+        ),
+    ] = None
+    vrp_setup: Annotated[VRPSetup, Field(alias="vrpSetup")]
+    created_at: Annotated[datetime | None, Field(alias="createdAt")] = None
+    authorisation_expires_at: Annotated[
+        datetime | None,
+        Field(
+            alias="authorisationExpiresAt",
+            description="Represents the date and time at which the auth Token will expire.",
+        ),
+    ] = None
+    consent_token: Annotated[
+        StrictStr | None, Field(alias="consentToken", description="Represents the authorisation to make VRP payments")
+    ] = None
+    consent_status: Annotated[
+        StrictStr,
+        Field(
+            alias="consentStatus",
+            description="Current status of the authorisation. Can be one of [AWAITING_AUTHORIZATION, AUTHORIZED, REJECTED, REVOKED, FAILED, EXPIRED]",
+        ),
+    ]
     phases: Annotated[list[HostedVRPPhase], Field()] | None = None
     __properties = [
         "id",

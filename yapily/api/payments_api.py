@@ -42,8 +42,7 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -112,8 +111,7 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -274,8 +272,7 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -349,8 +346,7 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -527,14 +523,13 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent token` containing the user's authorisation to make the request.",
             ),
         ],
         bulk_payment_id: Annotated[
             StrictStr,
-            Field(..., description="__Mandatory__. Bulk payment id returned when bulk payment request was submitted."),
+            Field(description="__Mandatory__. Bulk payment id returned when bulk payment request was submitted."),
         ],
         **kwargs,
     ) -> GetBulkPaymentStatus200Response:
@@ -566,14 +561,13 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent token` containing the user's authorisation to make the request.",
             ),
         ],
         bulk_payment_id: Annotated[
             StrictStr,
-            Field(..., description="__Mandatory__. Bulk payment id returned when bulk payment request was submitted."),
+            Field(description="__Mandatory__. Bulk payment id returned when bulk payment request was submitted."),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -685,11 +679,10 @@ class PaymentsApi:
     @validate_call
     async def get_payments(
         self,
-        payment_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The payment Id of the payment.")],
+        payment_id: Annotated[StrictStr, Field(description="__Mandatory__. The payment Id of the payment.")],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -760,11 +753,10 @@ class PaymentsApi:
     @validate_call
     async def get_payments_with_http_info(
         self,
-        payment_id: Annotated[StrictStr, Field(..., description="__Mandatory__. The payment Id of the payment.")],
+        payment_id: Annotated[StrictStr, Field(description="__Mandatory__. The payment Id of the payment.")],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],

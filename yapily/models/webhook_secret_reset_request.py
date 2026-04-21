@@ -25,7 +25,10 @@ class WebhookSecretResetRequest(BaseModel):
     WebhookSecretResetRequest
     """
 
-    delay: Annotated[Annotated[float, Field(le=86400, ge=0, strict=True)] | Annotated[int, Field(le=86400, ge=0, strict=True)], Field(description='delay in seconds')] = ...
+    delay: Annotated[
+        Annotated[float, Field(le=86400, ge=0, strict=True)] | Annotated[int, Field(le=86400, ge=0, strict=True)],
+        Field(description="delay in seconds"),
+    ]
     __properties = ["delay"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

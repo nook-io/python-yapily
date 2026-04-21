@@ -43,9 +43,9 @@ class ApplicationManagementApi:
     async def create_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
+            StrictStr, Field(description="The id of the application that vrp configuration being created for")
         ],
-        vrp_configuration: Annotated[VrpConfiguration, Field(..., description="The vrp configuration to create")],
+        vrp_configuration: Annotated[VrpConfiguration, Field(description="The vrp configuration to create")],
         **kwargs,
     ) -> None:
         """Create application VRP configuration by Application Id  # noqa: E501
@@ -77,9 +77,9 @@ class ApplicationManagementApi:
     async def create_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
+            StrictStr, Field(description="The id of the application that vrp configuration being created for")
         ],
-        vrp_configuration: Annotated[VrpConfiguration, Field(..., description="The vrp configuration to create")],
+        vrp_configuration: Annotated[VrpConfiguration, Field(description="The vrp configuration to create")],
         **kwargs,
     ) -> ApiResponse:
         """Create application VRP configuration by Application Id  # noqa: E501
@@ -192,7 +192,7 @@ class ApplicationManagementApi:
     @validate_call
     async def create_sub_application(
         self,
-        application_request: Annotated[ApplicationRequest, Field(..., description="The sub-application to create")],
+        application_request: Annotated[ApplicationRequest, Field(description="The sub-application to create")],
         **kwargs,
     ) -> ApiResponseOfApplicationResponse:
         """Creates a sub-application for the root application id provided in the authentication token  # noqa: E501
@@ -219,7 +219,7 @@ class ApplicationManagementApi:
     @validate_call
     async def create_sub_application_with_http_info(
         self,
-        application_request: Annotated[ApplicationRequest, Field(..., description="The sub-application to create")],
+        application_request: Annotated[ApplicationRequest, Field(description="The sub-application to create")],
         **kwargs,
     ) -> ApiResponse:
         """Creates a sub-application for the root application id provided in the authentication token  # noqa: E501
@@ -332,7 +332,7 @@ class ApplicationManagementApi:
     @validate_call
     async def delete_application(
         self,
-        application_id: Annotated[StrictStr, Field(..., description="The id of the application being deleted")],
+        application_id: Annotated[StrictStr, Field(description="The id of the application being deleted")],
         **kwargs,
     ) -> None:
         """Delete an application  # noqa: E501
@@ -359,7 +359,7 @@ class ApplicationManagementApi:
     @validate_call
     async def delete_application_with_http_info(
         self,
-        application_id: Annotated[StrictStr, Field(..., description="The id of the application being deleted")],
+        application_id: Annotated[StrictStr, Field(description="The id of the application being deleted")],
         **kwargs,
     ) -> ApiResponse:
         """Delete an application  # noqa: E501
@@ -457,7 +457,7 @@ class ApplicationManagementApi:
     @validate_call
     async def get_application_by_id(
         self,
-        application_id: Annotated[StrictStr, Field(..., description="The id of the application being fetched")],
+        application_id: Annotated[StrictStr, Field(description="The id of the application being fetched")],
         **kwargs,
     ) -> ApiResponseOfApplicationResponse:
         """Get application details  # noqa: E501
@@ -484,7 +484,7 @@ class ApplicationManagementApi:
     @validate_call
     async def get_application_by_id_with_http_info(
         self,
-        application_id: Annotated[StrictStr, Field(..., description="The id of the application being fetched")],
+        application_id: Annotated[StrictStr, Field(description="The id of the application being fetched")],
         **kwargs,
     ) -> ApiResponse:
         """Get application details  # noqa: E501
@@ -589,7 +589,7 @@ class ApplicationManagementApi:
     async def get_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
+            StrictStr, Field(description="The id of the application that vrp configuration being created for")
         ],
         **kwargs,
     ) -> VrpConfiguration:
@@ -618,7 +618,7 @@ class ApplicationManagementApi:
     async def get_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
+            StrictStr, Field(description="The id of the application that vrp configuration being created for")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -857,8 +857,8 @@ class ApplicationManagementApi:
     @validate_call
     async def update_application(
         self,
-        application_id: Annotated[StrictStr, Field(..., description="The id of the application being updated")],
-        application_request: Annotated[ApplicationRequest, Field(..., description="The application to update")],
+        application_id: Annotated[StrictStr, Field(description="The id of the application being updated")],
+        application_request: Annotated[ApplicationRequest, Field(description="The application to update")],
         **kwargs,
     ) -> ApiResponseOfApplicationResponse:
         """Update an Application  # noqa: E501
@@ -887,8 +887,8 @@ class ApplicationManagementApi:
     @validate_call
     async def update_application_with_http_info(
         self,
-        application_id: Annotated[StrictStr, Field(..., description="The id of the application being updated")],
-        application_request: Annotated[ApplicationRequest, Field(..., description="The application to update")],
+        application_id: Annotated[StrictStr, Field(description="The id of the application being updated")],
+        application_request: Annotated[ApplicationRequest, Field(description="The application to update")],
         **kwargs,
     ) -> ApiResponse:
         """Update an Application  # noqa: E501
@@ -1005,9 +1005,9 @@ class ApplicationManagementApi:
     async def update_application_vrp_configuration_by_application_id(
         self,
         application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
+            StrictStr, Field(description="The id of the application that vrp configuration being created for")
         ],
-        vrp_configuration: Annotated[VrpConfiguration, Field(..., description="The vrp configuration to create")],
+        vrp_configuration: Annotated[VrpConfiguration, Field(description="The vrp configuration to create")],
         **kwargs,
     ) -> None:
         """Update application VRP configuration by Application Id  # noqa: E501
@@ -1039,9 +1039,9 @@ class ApplicationManagementApi:
     async def update_application_vrp_configuration_by_application_id_with_http_info(
         self,
         application_id: Annotated[
-            StrictStr, Field(..., description="The id of the application that vrp configuration being created for")
+            StrictStr, Field(description="The id of the application that vrp configuration being created for")
         ],
-        vrp_configuration: Annotated[VrpConfiguration, Field(..., description="The vrp configuration to create")],
+        vrp_configuration: Annotated[VrpConfiguration, Field(description="The vrp configuration to create")],
         **kwargs,
     ) -> ApiResponse:
         """Update application VRP configuration by Application Id  # noqa: E501

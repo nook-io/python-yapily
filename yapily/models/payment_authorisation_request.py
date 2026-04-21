@@ -49,7 +49,7 @@ class PaymentAuthorisationRequest(BaseModel):
             alias="institutionId",
             description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
         ),
-    ] = ...
+    ]
     callback: Annotated[
         StrictStr | None,
         Field(
@@ -64,7 +64,7 @@ class PaymentAuthorisationRequest(BaseModel):
             description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
         ),
     ] = None
-    payment_request: Annotated[PaymentRequest, Field(alias="paymentRequest")] = ...
+    payment_request: Annotated[PaymentRequest, Field(alias="paymentRequest")]
     __properties = [
         "userUuid",
         "applicationUserId",

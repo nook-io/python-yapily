@@ -35,12 +35,12 @@ class SweepingControlParameters(BaseModel):
             alias="psuAuthenticationMethods",
             description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
         ),
-    ] = ...
-    periodic_limits: Annotated[list[SweepingPeriodicLimits], Field(alias="periodicLimits")] = ...
+    ]
+    periodic_limits: Annotated[list[SweepingPeriodicLimits], Field(alias="periodicLimits")]
     max_amount_per_payment: Annotated[
         Amount,
         Field(alias="maxAmountPerPayment", description="__Mandatory__. Max amount that can be submitted per payment."),
-    ] = ...
+    ]
     valid_from: Annotated[
         datetime | None,
         Field(alias="validFrom", description="__Optional__. Start date when the consent becomes valid."),

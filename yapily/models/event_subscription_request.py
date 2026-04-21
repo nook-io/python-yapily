@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,7 +28,13 @@ class EventSubscriptionRequest(BaseModel):
     EventSubscriptionRequest
     """
 
-    event_type_id: Annotated[StrictStr, Field(alias='eventTypeId', description='Unique identifier of the event type (for which notifications will be sent).<br><br>Allowed values: payment.status, payment.status.completed, payment.isoStatus ')] = ...
+    event_type_id: Annotated[
+        StrictStr,
+        Field(
+            alias="eventTypeId",
+            description="Unique identifier of the event type (for which notifications will be sent).<br><br>Allowed values: payment.status, payment.status.completed, payment.isoStatus ",
+        ),
+    ]
     notification: Annotated[Notification, Field()]
     __properties = ["eventTypeId", "notification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

@@ -49,12 +49,11 @@ class FinancialDataApi:
     async def get_account(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -126,12 +125,11 @@ class FinancialDataApi:
     async def get_account_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -298,12 +296,11 @@ class FinancialDataApi:
     async def get_account_balances(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -375,12 +372,11 @@ class FinancialDataApi:
     async def get_account_balances_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -547,12 +543,11 @@ class FinancialDataApi:
     async def get_account_direct_debits(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -608,12 +603,11 @@ class FinancialDataApi:
     async def get_account_direct_debits_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -750,12 +744,11 @@ class FinancialDataApi:
     async def get_account_periodic_payments(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -811,12 +804,11 @@ class FinancialDataApi:
     async def get_account_periodic_payments_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -955,12 +947,11 @@ class FinancialDataApi:
     async def get_account_scheduled_payments(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1016,12 +1007,11 @@ class FinancialDataApi:
     async def get_account_scheduled_payments_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1161,8 +1151,7 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1233,8 +1222,7 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1389,12 +1377,11 @@ class FinancialDataApi:
     async def get_beneficiaries(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1440,12 +1427,11 @@ class FinancialDataApi:
     async def get_beneficiaries_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1570,7 +1556,7 @@ class FinancialDataApi:
     @validate_call
     async def get_categories(
         self,
-        country: Annotated[StrictStr, Field(..., description="__Mandatory__. The 2 letter country code e.g. 'GB'.")],
+        country: Annotated[StrictStr, Field(description="__Mandatory__. The 2 letter country code e.g. 'GB'.")],
         **kwargs,
     ) -> ApiListResponseOfCategory:
         """Get Categories  # noqa: E501
@@ -1597,7 +1583,7 @@ class FinancialDataApi:
     @validate_call
     async def get_categories_with_http_info(
         self,
-        country: Annotated[StrictStr, Field(..., description="__Mandatory__. The 2 letter country code e.g. 'GB'.")],
+        country: Annotated[StrictStr, Field(description="__Mandatory__. The 2 letter country code e.g. 'GB'.")],
         **kwargs,
     ) -> ApiResponse:
         """Get Categories  # noqa: E501
@@ -1697,8 +1683,7 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1743,8 +1728,7 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1866,12 +1850,11 @@ class FinancialDataApi:
     async def get_real_time_transactions(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -1977,12 +1960,11 @@ class FinancialDataApi:
     async def get_real_time_transactions_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -2186,17 +2168,14 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
-        statement_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The statement Id of the statement file.")
-        ],
+        statement_id: Annotated[StrictStr, Field(description="__Mandatory__. The statement Id of the statement file.")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -2244,17 +2223,14 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
-        statement_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The statement Id of the statement file.")
-        ],
+        statement_id: Annotated[StrictStr, Field(description="__Mandatory__. The statement Id of the statement file.")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -2383,17 +2359,14 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
-        statement_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The statement Id of the statement file.")
-        ],
+        statement_id: Annotated[StrictStr, Field(description="__Mandatory__. The statement Id of the statement file.")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -2441,17 +2414,14 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
-        statement_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The statement Id of the statement file.")
-        ],
+        statement_id: Annotated[StrictStr, Field(description="__Mandatory__. The statement Id of the statement file.")],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
@@ -2582,13 +2552,12 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
@@ -2675,13 +2644,12 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         sub_application: Annotated[
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
@@ -2870,12 +2838,11 @@ class FinancialDataApi:
     async def get_transactions(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -3014,12 +2981,11 @@ class FinancialDataApi:
     async def get_transactions_with_http_info(
         self,
         account_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The account Id of the user's bank account.")
+            StrictStr, Field(description="__Mandatory__. The account Id of the user's bank account.")
         ],
         consent: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],

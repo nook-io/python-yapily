@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -27,10 +28,13 @@ class ComplianceDataBusiness(BaseModel):
     __Conditional__. Mandatory if the type is BUSINESS.  # noqa: E501
     """
 
-    name: Annotated[StrictStr, Field(description='This is the registered company name of your end user.')] = ...
-    registration_number: Annotated[StrictStr, Field(alias='registrationNumber', description='This is the registered company number of the business.')] = ...
-    registered_address: Annotated[ComplianceDataAddress, Field(alias='registeredAddress')] = ...
-    trading_address: Annotated[ComplianceDataAddress | None, Field(alias='tradingAddress')] = None
+    name: Annotated[StrictStr, Field(description="This is the registered company name of your end user.")]
+    registration_number: Annotated[
+        StrictStr,
+        Field(alias="registrationNumber", description="This is the registered company number of the business."),
+    ]
+    registered_address: Annotated[ComplianceDataAddress, Field(alias="registeredAddress")]
+    trading_address: Annotated[ComplianceDataAddress | None, Field(alias="tradingAddress")] = None
     __properties = ["name", "registrationNumber", "registeredAddress", "tradingAddress"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

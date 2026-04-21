@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -26,8 +27,16 @@ class FundsAvailable(BaseModel):
     FundsAvailable
     """
 
-    funds_available: Annotated[StrictBool, Field(alias='fundsAvailable', description='__Mandatory__. Indicates whether funds are available or not.')] = ...
-    funds_available_at: Annotated[datetime, Field(alias='fundsAvailableAt', description='__Mandatory__. Date and Time when the funds availability is checked.')] = ...
+    funds_available: Annotated[
+        StrictBool,
+        Field(alias="fundsAvailable", description="__Mandatory__. Indicates whether funds are available or not."),
+    ]
+    funds_available_at: Annotated[
+        datetime,
+        Field(
+            alias="fundsAvailableAt", description="__Mandatory__. Date and Time when the funds availability is checked."
+        ),
+    ]
     __properties = ["fundsAvailable", "fundsAvailableAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

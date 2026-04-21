@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -26,8 +27,8 @@ class ComplianceDataIndividual(BaseModel):
     __Conditional__. Mandatory if the type is INDIVIDUAL.  # noqa: E501
     """
 
-    name: Annotated[StrictStr, Field(description='This is the first and last name of your end user.')] = ...
-    birth_date: Annotated[date, Field(alias='birthDate', description='This is the date of birth of your end user.')] = ...
+    name: Annotated[StrictStr, Field(description="This is the first and last name of your end user.")]
+    birth_date: Annotated[date, Field(alias="birthDate", description="This is the date of birth of your end user.")]
     __properties = ["name", "birthDate"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -26,7 +27,13 @@ class ExtendConsentRequest(BaseModel):
     ExtendConsentRequest
     """
 
-    last_confirmed_at: Annotated[datetime, Field(alias='lastConfirmedAt', description='__Mandatory__. The time that the user confirmed access to their account information')] = ...
+    last_confirmed_at: Annotated[
+        datetime,
+        Field(
+            alias="lastConfirmedAt",
+            description="__Mandatory__. The time that the user confirmed access to their account information",
+        ),
+    ]
     __properties = ["lastConfirmedAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

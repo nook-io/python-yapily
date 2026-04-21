@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -25,7 +26,10 @@ class OneTimeTokenRequest(BaseModel):
     The request body containing the `OneTimeTokenRequest` json payload  # noqa: E501
     """
 
-    one_time_token: Annotated[StrictStr, Field(alias='oneTimeToken', description='__Mandatory__. The one time token to exchange for a consent token.')] = ...
+    one_time_token: Annotated[
+        StrictStr,
+        Field(alias="oneTimeToken", description="__Mandatory__. The one time token to exchange for a consent token."),
+    ]
     __properties = ["oneTimeToken"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

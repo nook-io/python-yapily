@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -29,9 +30,12 @@ class FundsConfirmationResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    reference: Annotated[StrictStr | None, Field(description='The payment reference or description. Limited to a maximum of 18 characters long.')] = None
-    payment_amount: Annotated[Amount, Field(alias='paymentAmount')] = ...
-    funds_available: Annotated[FundsAvailable, Field(alias='fundsAvailable')] = ...
+    reference: Annotated[
+        StrictStr | None,
+        Field(description="The payment reference or description. Limited to a maximum of 18 characters long."),
+    ] = None
+    payment_amount: Annotated[Amount, Field(alias="paymentAmount")]
+    funds_available: Annotated[FundsAvailable, Field(alias="fundsAvailable")]
     __properties = ["id", "reference", "paymentAmount", "fundsAvailable"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

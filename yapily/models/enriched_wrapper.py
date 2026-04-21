@@ -34,25 +34,25 @@ class EnrichedWrapper(BaseModel):
             alias="incomeStreams",
             description="Lists all possible income streams identified for the `Application User`.",
         ),
-    ] = ...
+    ]
     expenditure_streams: Annotated[
         list[TransactionStream],
         Field(
             alias="expenditureStreams",
             description="Lists all possible expenditure streams identified for the `Application User`.",
         ),
-    ] = ...
+    ]
     recently_terminated_income_streams: Annotated[
         list[TerminatedTransactionStream],
         Field(alias="recentlyTerminatedIncomeStreams", description="A list of terminated transaction income streams"),
-    ] = ...
+    ]
     recently_terminated_expenditure_streams: Annotated[
         list[TerminatedTransactionStream],
         Field(
             alias="recentlyTerminatedExpenditureStreams",
             description="A list of terminated transaction expenditure streams",
         ),
-    ] = ...
+    ]
     __properties = [
         "incomeStreams",
         "expenditureStreams",

@@ -356,8 +356,7 @@ class HostedPagesApi:
         self,
         sub_application: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)",
             ),
         ],
@@ -401,8 +400,7 @@ class HostedPagesApi:
         self,
         sub_application: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)",
             ),
         ],
@@ -533,11 +531,10 @@ class HostedPagesApi:
     @validate_call
     def create_hosted_vrp_funds_confirmation(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -589,11 +586,10 @@ class HostedPagesApi:
     @validate_call
     def create_hosted_vrp_funds_confirmation_with_http_info(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -734,11 +730,10 @@ class HostedPagesApi:
     @validate_call
     def create_hosted_vrp_payment(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -790,11 +785,10 @@ class HostedPagesApi:
     @validate_call
     def create_hosted_vrp_payment_with_http_info(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             ),
         ],
@@ -933,7 +927,7 @@ class HostedPagesApi:
     @validate_call
     def get_hosted_consent_request(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -975,7 +969,7 @@ class HostedPagesApi:
     @validate_call
     def get_hosted_consent_request_with_http_info(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1098,7 +1092,7 @@ class HostedPagesApi:
     @validate_call
     def get_hosted_payment_request(
         self,
-        payment_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the payment request")],
+        payment_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the payment request")],
         **kwargs,
     ) -> ApiResponseOfGetHostedPaymentRequest:
         """Get Hosted payment request  # noqa: E501
@@ -1132,7 +1126,7 @@ class HostedPagesApi:
     @validate_call
     def get_hosted_payment_request_with_http_info(
         self,
-        payment_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the payment request")],
+        payment_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the payment request")],
         **kwargs,
     ) -> ApiResponse:
         """Get Hosted payment request  # noqa: E501
@@ -1246,8 +1240,7 @@ class HostedPagesApi:
         self,
         sub_application: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)",
             ),
         ],
@@ -1286,8 +1279,7 @@ class HostedPagesApi:
         self,
         sub_application: Annotated[
             StrictStr,
-            Field(
-                ...,
+            Field(,
                 description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)",
             ),
         ],
@@ -1405,8 +1397,8 @@ class HostedPagesApi:
     @validate_call
     def get_hosted_vrp_payment_request(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
+        payment_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1452,8 +1444,8 @@ class HostedPagesApi:
     @validate_call
     def get_hosted_vrp_payment_request_with_http_info(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
+        payment_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1583,7 +1575,7 @@ class HostedPagesApi:
     @validate_call
     def revoke_hosted_consent_request(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(
@@ -1625,7 +1617,7 @@ class HostedPagesApi:
     @validate_call
     def revoke_hosted_consent_request_with_http_info(
         self,
-        consent_request_id: Annotated[StrictStr, Field(..., description="Unique Identifier of the Consent Request")],
+        consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         sub_application: Annotated[
             StrictStr | None,
             Field(

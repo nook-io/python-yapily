@@ -1,4 +1,5 @@
 from typing import Annotated
+
 """
 Yapily API
 
@@ -29,12 +30,27 @@ class GetHostedVRPConsentsResponseInner(BaseModel):
     GetHostedVRPConsentsResponseInner
     """
 
-    id: Annotated[StrictStr, Field(description='Represents the Unique Id of the VRP consent request')] = ...
-    application_id: Annotated[StrictStr, Field(alias='applicationId', description='Represents the Unique Id of the `Application` the user is associated with.')] = ...
-    institution_identifiers: Annotated[InstitutionIdentifiers | None, Field(alias='institutionIdentifiers')] = None
-    vrp_setup: Annotated[VRPSetupRequest | None, Field(alias='vrpSetup')] = None
-    updated_at: Annotated[datetime | None, Field(alias='updatedAt', description='Represents the date and time at which the Consent was updated.')] = None
-    consent_status: Annotated[StrictStr | None, Field(alias='consentStatus', description='Current status of the authorisation. Can be one of [AWAITING_AUTHORIZATION, AUTHORIZED, REJECTED, REVOKED, FAILED, EXPIRED]')] = None
+    id: Annotated[StrictStr, Field(description="Represents the Unique Id of the VRP consent request")]
+    application_id: Annotated[
+        StrictStr,
+        Field(
+            alias="applicationId",
+            description="Represents the Unique Id of the `Application` the user is associated with.",
+        ),
+    ]
+    institution_identifiers: Annotated[InstitutionIdentifiers | None, Field(alias="institutionIdentifiers")] = None
+    vrp_setup: Annotated[VRPSetupRequest | None, Field(alias="vrpSetup")] = None
+    updated_at: Annotated[
+        datetime | None,
+        Field(alias="updatedAt", description="Represents the date and time at which the Consent was updated."),
+    ] = None
+    consent_status: Annotated[
+        StrictStr | None,
+        Field(
+            alias="consentStatus",
+            description="Current status of the authorisation. Can be one of [AWAITING_AUTHORIZATION, AUTHORIZED, REJECTED, REVOKED, FAILED, EXPIRED]",
+        ),
+    ] = None
     __properties = ["id", "applicationId", "institutionIdentifiers", "vrpSetup", "updatedAt", "consentStatus"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

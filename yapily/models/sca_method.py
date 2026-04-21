@@ -27,9 +27,7 @@ class ScaMethod(BaseModel):
     __Conditional__. Used to update the authorisation with the sca method of the user's choice for the `Institution` that uses the embedded authorisation flow. If the user has multiple sca methods configured, the `Institution` will allow the user to select from each of these options. <br><br>When the user has multiple sca methods for the `Institution`, this is the second step required in the embedded authorisation flow to authorise the `Consent`.  # noqa: E501
     """
 
-    id: Annotated[
-        StrictStr, Field(description="__Mandatory__. The id of the sca method provided by the `Institution`")
-    ] = ...
+    id: Annotated[StrictStr, Field(description="__Mandatory__. The id of the sca method provided by the `Institution`")]
     type: Type | None = None
     description: Annotated[
         StrictStr | None,

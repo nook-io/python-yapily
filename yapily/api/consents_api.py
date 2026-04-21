@@ -171,7 +171,7 @@ class ConsentsApi:
     async def delete(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         force_delete: Annotated[
             StrictBool | None, Field(description="__Optional__. Whether to force the deletion.")
@@ -205,7 +205,7 @@ class ConsentsApi:
     async def delete_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         force_delete: Annotated[
             StrictBool | None, Field(description="__Optional__. Whether to force the deletion.")
@@ -313,7 +313,7 @@ class ConsentsApi:
     async def extend_consent(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         extend_consent_request: ExtendConsentRequest,
         **kwargs,
@@ -345,7 +345,7 @@ class ConsentsApi:
     async def extend_consent_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         extend_consent_request: ExtendConsentRequest,
         **kwargs,
@@ -458,7 +458,7 @@ class ConsentsApi:
     async def get_consent_by_id(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         **kwargs,
     ) -> ApiResponseOfConsent:
@@ -487,7 +487,7 @@ class ConsentsApi:
     async def get_consent_by_id_with_http_info(
         self,
         consent_id: Annotated[
-            StrictStr, Field(..., description="__Mandatory__. The consent Id of the `Consent` to update.")
+            StrictStr, Field(description="__Mandatory__. The consent Id of the `Consent` to update.")
         ],
         **kwargs,
     ) -> ApiResponse:
