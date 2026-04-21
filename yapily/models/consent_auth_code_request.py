@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,8 +25,8 @@ class ConsentAuthCodeRequest(BaseModel):
     The request body containing the `ConsentAuthCodeRequest` json payload  # noqa: E501
     """
 
-    auth_code: StrictStr = Field(default=..., alias="authCode", description="__Mandatory__. The authorisation code")
-    auth_state: StrictStr = Field(default=..., alias="authState", description="__Mandatory__. The authorisation state")
+    auth_code: Annotated[StrictStr, Field(alias='authCode', description='__Mandatory__. The authorisation code')] = ...
+    auth_state: Annotated[StrictStr, Field(alias='authState', description='__Mandatory__. The authorisation state')] = ...
     __properties = ["authCode", "authState"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -27,12 +27,12 @@ class IdentityAddress(BaseModel):
     IdentityAddress
     """
 
-    address_lines: Annotated[list[StrictStr], Field()] | None = Field(default=None, alias="addressLines")
+    address_lines: Annotated[list[StrictStr] | None, Field(alias="addressLines")] = None
     city: StrictStr | None = None
-    postal_code: StrictStr | None = Field(default=None, alias="postalCode")
+    postal_code: Annotated[StrictStr | None, Field(alias="postalCode")] = None
     country: StrictStr | None = None
-    street_name: StrictStr | None = Field(default=None, alias="streetName")
-    building_number: StrictStr | None = Field(default=None, alias="buildingNumber")
+    street_name: Annotated[StrictStr | None, Field(alias="streetName")] = None
+    building_number: Annotated[StrictStr | None, Field(alias="buildingNumber")] = None
     type: AddressTypeEnum | None = None
     county: StrictStr | None = None
     __properties = ["addressLines", "city", "postalCode", "country", "streetName", "buildingNumber", "type", "county"]

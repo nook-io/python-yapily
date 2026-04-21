@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,10 +27,8 @@ class TransactionPayeeDetailsAccountIdentificationsInner(BaseModel):
     TransactionPayeeDetailsAccountIdentificationsInner
     """
 
-    type: AccountIdentificationType | None = Field(default=None, description="Describes the format of the account.")
-    identification: StrictStr | None = Field(
-        default=None, description="The value associated with the account identification type."
-    )
+    type: Annotated[AccountIdentificationType | None, Field(description='Describes the format of the account.')] = None
+    identification: Annotated[StrictStr | None, Field(description='The value associated with the account identification type.')] = None
     __properties = ["type", "identification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

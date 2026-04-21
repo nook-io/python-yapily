@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -28,24 +29,12 @@ class PeriodicPaymentRequest(BaseModel):
     __Conditional__. Used to specify properties to define a periodic payment. <br><br>Must be specified when the payment `type` is one of the following:<ul>     <li><code>DOMESTIC_PERIODIC_PAYMENT</code></li>     <li><code>INTERNATIONAL_PERIODIC_PAYMENT</code></li></ul>  # noqa: E501
     """
 
-    frequency: FrequencyRequest = Field(...)
-    number_of_payments: StrictInt | None = Field(
-        default=None,
-        alias="numberOfPayments",
-        description="__Conditional__. Defines the total number of payments to be made.<br><br>This is required if `finalPaymentDateTime` is not specified and it is intended for the periodic payment have a fixed amount of payments.",
-    )
-    next_payment_date_time: datetime | None = Field(
-        default=None,
-        alias="nextPaymentDateTime",
-        description="__Conditional__. Defines when to start the recurring payment date and time. Specify this if you want the first payment to start on a different day than what the frequency object defines.",
-    )
-    next_payment_amount: Amount | None = Field(default=None, alias="nextPaymentAmount")
-    final_payment_date_time: datetime | None = Field(
-        default=None,
-        alias="finalPaymentDateTime",
-        description="__Conditional__. Defines the final payment date and time. To create an open-ended periodic payment, do not specify this property.",
-    )
-    final_payment_amount: Amount | None = Field(default=None, alias="finalPaymentAmount")
+    frequency: Annotated[FrequencyRequest, Field()]
+    number_of_payments: Annotated[StrictInt | None, Field(alias='numberOfPayments', description='__Conditional__. Defines the total number of payments to be made.<br><br>This is required if `finalPaymentDateTime` is not specified and it is intended for the periodic payment have a fixed amount of payments.')] = None
+    next_payment_date_time: Annotated[datetime | None, Field(alias='nextPaymentDateTime', description='__Conditional__. Defines when to start the recurring payment date and time. Specify this if you want the first payment to start on a different day than what the frequency object defines.')] = None
+    next_payment_amount: Annotated[Amount | None, Field(alias='nextPaymentAmount')] = None
+    final_payment_date_time: Annotated[datetime | None, Field(alias='finalPaymentDateTime', description='__Conditional__. Defines the final payment date and time. To create an open-ended periodic payment, do not specify this property.')] = None
+    final_payment_amount: Annotated[Amount | None, Field(alias='finalPaymentAmount')] = None
     __properties = [
         "frequency",
         "numberOfPayments",

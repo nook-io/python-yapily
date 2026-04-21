@@ -31,18 +31,20 @@ class AccountBalance(BaseModel):
     """
 
     type: AccountBalanceType | None = None
-    date_time: datetime | None = Field(
-        default=None, alias="dateTime", description="Date and time of the reported balance."
-    )
-    balance_amount: Amount | None = Field(default=None, alias="balanceAmount")
-    credit_line_included: StrictBool | None = Field(
-        default=None,
-        alias="creditLineIncluded",
-        description="_Optional_. Indicates whether any credit lines are included in the balance.",
-    )
-    credit_lines: Annotated[list[CreditLine], Field()] | None = Field(
-        default=None, alias="creditLines", description="_Optional_. Specifies the type of balance."
-    )
+    date_time: Annotated[
+        datetime | None, Field(alias="dateTime", description="Date and time of the reported balance.")
+    ] = None
+    balance_amount: Annotated[Amount | None, Field(alias="balanceAmount")] = None
+    credit_line_included: Annotated[
+        StrictBool | None,
+        Field(
+            alias="creditLineIncluded",
+            description="_Optional_. Indicates whether any credit lines are included in the balance.",
+        ),
+    ] = None
+    credit_lines: Annotated[
+        list[CreditLine] | None, Field(alias="creditLines", description="_Optional_. Specifies the type of balance.")
+    ] = None
     __properties = ["type", "dateTime", "balanceAmount", "creditLineIncluded", "creditLines"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

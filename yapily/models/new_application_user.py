@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,16 +25,8 @@ class NewApplicationUser(BaseModel):
     Details of a new user to be created for the application.  # noqa: E501
     """
 
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="__Optional__. The unique identifier of the `Application User` assigned by the Application Owner.",
-    )
-    reference_id: StrictStr | None = Field(
-        default=None,
-        alias="referenceId",
-        description="__Deprecated__. A non-unique reference Id for the `Application User`.",
-    )
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description='__Optional__. The unique identifier of the `Application User` assigned by the Application Owner.')] = None
+    reference_id: Annotated[StrictStr | None, Field(alias='referenceId', description='__Deprecated__. A non-unique reference Id for the `Application User`.')] = None
     __properties = ["applicationUserId", "referenceId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

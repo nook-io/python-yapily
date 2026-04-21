@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,15 +25,11 @@ class ComplianceDataAddress(BaseModel):
     This is the registered company or trading address of your end user.  # noqa: E501
     """
 
-    address_line1: StrictStr = Field(
-        default=..., alias="addressLine1", description="__Mandatory__. AddressLine1 of the business."
-    )
-    address_line2: StrictStr | None = Field(
-        default=None, alias="addressLine2", description="__Optional__. AddressLine2 of the business."
-    )
-    town_name: StrictStr = Field(default=..., alias="townName", description="__Mandatory__. Town name of the business.")
-    post_code: StrictStr = Field(default=..., alias="postCode", description="__Mandatory__. Post code of the business.")
-    country: StrictStr = Field(default=..., description="__Mandatory__. Country of the business.")
+    address_line1: Annotated[StrictStr, Field(alias='addressLine1', description='__Mandatory__. AddressLine1 of the business.')] = ...
+    address_line2: Annotated[StrictStr | None, Field(alias='addressLine2', description='__Optional__. AddressLine2 of the business.')] = None
+    town_name: Annotated[StrictStr, Field(alias='townName', description='__Mandatory__. Town name of the business.')] = ...
+    post_code: Annotated[StrictStr, Field(alias='postCode', description='__Mandatory__. Post code of the business.')] = ...
+    country: Annotated[StrictStr, Field(description='__Mandatory__. Country of the business.')] = ...
     __properties = ["addressLine1", "addressLine2", "townName", "postCode", "country"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

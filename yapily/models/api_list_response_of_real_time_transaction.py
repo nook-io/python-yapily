@@ -32,11 +32,11 @@ class ApiListResponseOfRealTimeTransaction(BaseModel):
     """
 
     meta: ResponseMetaWithCount | None = None
-    data: Annotated[list[RealTimeTransaction], Field()] | None = None
+    data: list[RealTimeTransaction] | None = None
     links: ApiListResponseOfRealTimeTransactionLinks | None = None
-    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(default=None, alias="forwardedData")
+    forwarded_data: Annotated[list[ResponseForwardedData] | None, Field(alias="forwardedData")] = None
     raw: Annotated[list[RawResponse], Field()] | None = None
-    tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
+    tracing_id: Annotated[StrictStr | None, Field(alias="tracingId")] = None
     __properties = ["meta", "data", "links", "forwardedData", "raw", "tracingId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

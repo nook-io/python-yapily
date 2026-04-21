@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,13 +25,9 @@ class GetAccountsTransactionsCategorised200ResponseMeta(BaseModel):
     GetAccountsTransactionsCategorised200ResponseMeta
     """
 
-    tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
-    count: StrictInt | None = Field(default=None, description="total number of transactions available")
-    page_count: StrictInt | None = Field(
-        default=None,
-        alias="pageCount",
-        description="total number of pages available calculated based on the limit per page sent in the request",
-    )
+    tracing_id: Annotated[StrictStr | None, Field(alias='tracingId')] = None
+    count: Annotated[StrictInt | None, Field(description='total number of transactions available')] = None
+    page_count: Annotated[StrictInt | None, Field(alias='pageCount', description='total number of pages available calculated based on the limit per page sent in the request')] = None
     __properties = ["tracingId", "count", "pageCount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

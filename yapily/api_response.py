@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Annotated, Any
 
 from pydantic import Field, StrictInt, StrictStr
 
@@ -12,10 +12,10 @@ class ApiResponse:
     API response object
     """
 
-    status_code: StrictInt | None = Field(None, description="HTTP status code")
-    headers: dict[StrictStr, StrictStr] | None = Field(None, description="HTTP headers")
-    data: Any | None = Field(None, description="Deserialized data given the data type")
-    raw_data: Any | None = Field(None, description="Raw data (HTTP response body)")
+    status_code: Annotated[StrictInt | None, Field(description='HTTP status code')] = None
+    headers: Annotated[dict[StrictStr, StrictStr] | None, Field(description='HTTP headers')] = None
+    data: Annotated[Any | None, Field(description='Deserialized data given the data type')] = None
+    raw_data: Annotated[Any | None, Field(description='Raw data (HTTP response body)')] = None
 
     def __init__(self, status_code=None, headers=None, data=None, raw_data=None) -> None:
         self.status_code = status_code

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,10 +28,7 @@ class AccountIdentificationResponse(BaseModel):
     """
 
     type: AccountIdentificationTypeResponse | None = None
-    identification: StrictStr | None = Field(
-        default=None,
-        description="The value associated with the account identification type.<br><br> See [Account Identification Combinations](https://docs.yapily.com/pages/payments/payments-resources/intro-to-payment-execution/#account-identifications-combinations) for more information on the format of the values.",
-    )
+    identification: Annotated[StrictStr | None, Field(description='The value associated with the account identification type.<br><br> See [Account Identification Combinations](https://docs.yapily.com/pages/payments/payments-resources/intro-to-payment-execution/#account-identifications-combinations) for more information on the format of the values.')] = None
     __properties = ["type", "identification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -27,9 +27,9 @@ class RegisterWebhookRequest(BaseModel):
     RegisterWebhookRequest
     """
 
-    application_id: StrictStr = Field(default=..., alias="applicationId", description="user application id")
-    categories: Annotated[list[StrictStr], Field()] = Field(...)
-    callback_url: RegisterWebhookRequestCallbackUrl = Field(default=..., alias="callbackUrl")
+    application_id: Annotated[StrictStr, Field(alias="applicationId", description="user application id")] = ...
+    categories: Annotated[list[StrictStr], Field()]
+    callback_url: Annotated[RegisterWebhookRequestCallbackUrl, Field(alias="callbackUrl")] = ...
     metadata: dict[str, StrictStr] | None = None
     __properties = ["applicationId", "categories", "callbackUrl", "metadata"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

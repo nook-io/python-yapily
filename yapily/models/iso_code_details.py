@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,8 +25,8 @@ class IsoCodeDetails(BaseModel):
     __Mandatory__. Details the identification of the ISO code.  # noqa: E501
     """
 
-    code: StrictStr | None = Field(default="UNKNOWN", description="__Mandatory__. Unique identifier of the ISO code.")
-    name: StrictStr | None = Field(default="UNKNOWN", description="__Mandatory__. Name of the ISO Code.")
+    code: Annotated[StrictStr | None, Field(description='__Mandatory__. Unique identifier of the ISO code.')] = 'UNKNOWN'
+    name: Annotated[StrictStr | None, Field(description='__Mandatory__. Name of the ISO Code.')] = 'UNKNOWN'
     __properties = ["code", "name"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

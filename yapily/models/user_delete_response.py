@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -28,12 +29,10 @@ class UserDeleteResponse(BaseModel):
     Deletion of the user. Includes the user profile and all associate consents.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier of the user.")
-    delete_status: DeleteStatusEnum | None = Field(default=None, alias="deleteStatus")
-    creation_date: datetime | None = Field(
-        default=None, alias="creationDate", description="Date and time that the user was created."
-    )
-    user_consents: list[ConsentDeleteResponse] | None = Field(default=None, alias="userConsents")
+    id: Annotated[StrictStr | None, Field(description='Unique identifier of the user.')] = None
+    delete_status: Annotated[DeleteStatusEnum | None, Field(alias='deleteStatus')] = None
+    creation_date: Annotated[datetime | None, Field(alias='creationDate', description='Date and time that the user was created.')] = None
+    user_consents: Annotated[list[ConsentDeleteResponse] | None, Field(alias='userConsents')] = None
     __properties = ["id", "deleteStatus", "creationDate", "userConsents"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

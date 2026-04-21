@@ -28,29 +28,31 @@ class HostedVRPLimits(BaseModel):
     The restrictions and limits for payments executed under the VRP consent  # noqa: E501
     """
 
-    periodic_limits: Annotated[list[HostedNonSweepingPeriodicLimits], Field()] | None = Field(
-        default=None, alias="periodicLimits"
-    )
-    max_amount_per_payment: Amount | None = Field(
-        default=None,
-        alias="maxAmountPerPayment",
-        description="__Optional__. Max amount that can be submitted per payment.",
-    )
-    max_cumulative_amount: Amount | None = Field(
-        default=None,
-        alias="maxCumulativeAmount",
-        description="__Optional__. Max cumulative amount that can be submitted under this consent.",
-    )
-    max_cumulative_number_of_payments: StrictInt | None = Field(
-        default=None,
-        alias="maxCumulativeNumberOfPayments",
-        description="__Optional__. Max number of payments that can be submitted under this consent.",
-    )
-    edited_by_user: StrictBool | None = Field(
-        default=None,
-        alias="editedByUser",
-        description="Indicates if the user edited the control parameters during authorisation",
-    )
+    periodic_limits: Annotated[list[HostedNonSweepingPeriodicLimits] | None, Field(alias="periodicLimits")] = None
+    max_amount_per_payment: Annotated[
+        Amount | None,
+        Field(alias="maxAmountPerPayment", description="__Optional__. Max amount that can be submitted per payment."),
+    ] = None
+    max_cumulative_amount: Annotated[
+        Amount | None,
+        Field(
+            alias="maxCumulativeAmount",
+            description="__Optional__. Max cumulative amount that can be submitted under this consent.",
+        ),
+    ] = None
+    max_cumulative_number_of_payments: Annotated[
+        StrictInt | None,
+        Field(
+            alias="maxCumulativeNumberOfPayments",
+            description="__Optional__. Max number of payments that can be submitted under this consent.",
+        ),
+    ] = None
+    edited_by_user: Annotated[
+        StrictBool | None,
+        Field(
+            alias="editedByUser", description="Indicates if the user edited the control parameters during authorisation"
+        ),
+    ] = None
     __properties = [
         "periodicLimits",
         "maxAmountPerPayment",

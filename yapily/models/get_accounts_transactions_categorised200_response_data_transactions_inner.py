@@ -43,26 +43,27 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInner(BaseMod
     """
 
     id: StrictStr | None = None
-    var_date: StrictStr | None = Field(default=None, alias="date")
-    booking_date_time: datetime | None = Field(default=None, alias="bookingDateTime")
-    value_date_time: datetime | None = Field(default=None, alias="valueDateTime")
+    var_date: Annotated[StrictStr | None, Field(alias="date")] = None
+    booking_date_time: Annotated[datetime | None, Field(alias="bookingDateTime")] = None
+    value_date_time: Annotated[datetime | None, Field(alias="valueDateTime")] = None
     status: StrictStr | None = None
     amount: StrictInt | None = None
     currency: StrictStr | None = None
-    transaction_amount: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount | None = (
-        Field(default=None, alias="transactionAmount")
-    )
+    transaction_amount: Annotated[
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount | None,
+        Field(alias="transactionAmount"),
+    ] = None
     reference: StrictStr | None = None
     description: StrictStr | None = None
-    transaction_information: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None, alias="transactionInformation"
-    )
-    proprietary_bank_transaction_code: (
-        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode | None
-    ) = Field(default=None, alias="proprietaryBankTransactionCode")
-    iso_bank_transaction_code: (
-        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCode | None
-    ) = Field(default=None, alias="isoBankTransactionCode")
+    transaction_information: Annotated[list[StrictStr] | None, Field(alias="transactionInformation")] = None
+    proprietary_bank_transaction_code: Annotated[
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerProprietaryBankTransactionCode | None,
+        Field(alias="proprietaryBankTransactionCode"),
+    ] = None
+    iso_bank_transaction_code: Annotated[
+        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCode | None,
+        Field(alias="isoBankTransactionCode"),
+    ] = None
     balance: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance | None = None
     enrichment: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichment | None = None
     hash: StrictStr | None = None

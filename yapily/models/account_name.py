@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,9 +25,7 @@ class AccountName(BaseModel):
     AccountName
     """
 
-    name: StrictStr | None = Field(
-        default=None, description="The bank account holder's name given by the account owner."
-    )
+    name: Annotated[StrictStr | None, Field(description="The bank account holder's name given by the account owner.")] = None
     __properties = ["name"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

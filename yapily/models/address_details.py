@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,11 +25,7 @@ class AddressDetails(BaseModel):
     AddressDetails
     """
 
-    address_line: StrictStr | None = Field(
-        default=None,
-        alias="addressLine",
-        description="Information, in free format text, that identifies a specific address.",
-    )
+    address_line: Annotated[StrictStr | None, Field(alias='addressLine', description='Information, in free format text, that identifies a specific address.')] = None
     __properties = ["addressLine"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

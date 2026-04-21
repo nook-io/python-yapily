@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,13 +25,11 @@ class ApiListResponseOfRealTimeTransactionLinks(BaseModel):
     ApiListResponseOfRealTimeTransactionLinks
     """
 
-    first: StrictStr | None = Field(default=None, description="A cursor or link to the first page in the data set.")
-    prev: StrictStr | None = Field(default=None, description="A cursor or link to the previous page in the data set.")
-    var_self: StrictStr | None = Field(
-        default=None, alias="self", description="A cursor or link to the current page in the data set."
-    )
-    next: StrictStr | None = Field(default=None, description="A cursor or link to the next page in the data set.")
-    last: StrictStr | None = Field(default=None, description="A cursor or link to the last page in the data set.")
+    first: Annotated[StrictStr | None, Field(description='A cursor or link to the first page in the data set.')] = None
+    prev: Annotated[StrictStr | None, Field(description='A cursor or link to the previous page in the data set.')] = None
+    var_self: Annotated[StrictStr | None, Field(alias='self', description='A cursor or link to the current page in the data set.')] = None
+    next: Annotated[StrictStr | None, Field(description='A cursor or link to the next page in the data set.')] = None
+    last: Annotated[StrictStr | None, Field(description='A cursor or link to the last page in the data set.')] = None
     __properties = ["first", "prev", "self", "next", "last"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

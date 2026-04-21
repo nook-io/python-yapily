@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,7 +25,7 @@ class DirectDebitPayee(BaseModel):
     DirectDebitPayee
     """
 
-    name: StrictStr | None = Field(default=None, description="__Mandatory__. The account holder name.")
+    name: Annotated[StrictStr | None, Field(description='__Mandatory__. The account holder name.')] = None
     __properties = ["name"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

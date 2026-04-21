@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -28,29 +29,13 @@ class CreateHostedConsentRequest(BaseModel):
     CreateHostedConsentRequest
     """
 
-    user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="__Conditional__. Yapily Identifier for the `User` returned by the create user step POST /users. You must provide either a `userId` or `applicationUserId`.",
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="__Conditional__. Your own `User` reference. This field allows you to use your own unique references for individual users. Where the `User` reference doesn't have an associated Yapily `userId`, a new `userId` is created and linked to it. You must provide either a `userId` or `applicationUserId`.",
-    )
-    institution_identifiers: InstitutionIdentifiers = Field(default=..., alias="institutionIdentifiers")
-    user_settings: UserSettings | None = Field(default=None, alias="userSettings")
-    redirect_url: StrictStr = Field(
-        default=...,
-        alias="redirectUrl",
-        description="URL of your server to redirect the user after completion of the consent flow.",
-    )
-    one_time_token: StrictBool | None = Field(
-        default=None,
-        alias="oneTimeToken",
-        description="Used to receive a oneTimeToken rather than a consentToken at the redirectUrl for additional security.",
-    )
-    account_request: HostedAccountRequest | None = Field(default=None, alias="accountRequest")
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='__Conditional__. Yapily Identifier for the `User` returned by the create user step POST /users. You must provide either a `userId` or `applicationUserId`.')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description="__Conditional__. Your own `User` reference. This field allows you to use your own unique references for individual users. Where the `User` reference doesn't have an associated Yapily `userId`, a new `userId` is created and linked to it. You must provide either a `userId` or `applicationUserId`.")] = None
+    institution_identifiers: Annotated[InstitutionIdentifiers, Field(alias='institutionIdentifiers')] = ...
+    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
+    redirect_url: Annotated[StrictStr, Field(alias='redirectUrl', description='URL of your server to redirect the user after completion of the consent flow.')] = ...
+    one_time_token: Annotated[StrictBool | None, Field(alias='oneTimeToken', description='Used to receive a oneTimeToken rather than a consentToken at the redirectUrl for additional security.')] = None
+    account_request: Annotated[HostedAccountRequest | None, Field(alias='accountRequest')] = None
     __properties = [
         "userId",
         "applicationUserId",

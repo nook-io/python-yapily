@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,8 +27,8 @@ class ValidationError(BaseModel):
     ValidationError
     """
 
-    field_name: StrictStr = Field(default=..., alias="fieldName", description="name of the field with error")
-    error: EnumError = Field(...)
+    field_name: Annotated[StrictStr, Field(alias='fieldName', description='name of the field with error')] = ...
+    error: Annotated[EnumError, Field()]
     __properties = ["fieldName", "error"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

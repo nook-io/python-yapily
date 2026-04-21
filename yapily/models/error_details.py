@@ -27,24 +27,20 @@ class ErrorDetails(BaseModel):
     ErrorDetails
     """
 
-    tracing_id: StrictStr = Field(
-        default=...,
-        alias="tracingId",
-        description="Unique identifier of the request, used by Yapily for support purposes",
-    )
-    code: StrictInt = Field(default=..., description="Numeric HTTP status code associated with the error")
-    status: StrictStr = Field(default=..., description="Textual description of the HTTP status")
-    support_url: StrictStr | None = Field(
-        default=None,
-        alias="supportUrl",
-        description="Link to where further information regarding the error can be found",
-    )
-    source: StrictStr | None = Field(
-        default=None, description="Source of the error. This may be YAPILY, the INSTITUTION, or the USER"
-    )
-    issues: Annotated[list[ErrorIssue], Field()] | None = Field(
-        default=None, description="List of issues relating to the error"
-    )
+    tracing_id: Annotated[
+        StrictStr,
+        Field(alias="tracingId", description="Unique identifier of the request, used by Yapily for support purposes"),
+    ] = ...
+    code: Annotated[StrictInt, Field(description="Numeric HTTP status code associated with the error")] = ...
+    status: Annotated[StrictStr, Field(description="Textual description of the HTTP status")] = ...
+    support_url: Annotated[
+        StrictStr | None,
+        Field(alias="supportUrl", description="Link to where further information regarding the error can be found"),
+    ] = None
+    source: Annotated[
+        StrictStr | None, Field(description="Source of the error. This may be YAPILY, the INSTITUTION, or the USER")
+    ] = None
+    issues: Annotated[list[ErrorIssue] | None, Field(description="List of issues relating to the error")] = None
     __properties = ["tracingId", "code", "status", "supportUrl", "source", "issues"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

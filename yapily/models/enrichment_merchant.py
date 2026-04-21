@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,16 +25,8 @@ class EnrichmentMerchant(BaseModel):
     Details of the merchant, identified by Yapily data services.  # noqa: E501
     """
 
-    merchant_name: StrictStr | None = Field(
-        default=None,
-        alias="merchantName",
-        description="The name of the indivdual merchant involved in the transaction e.g. (TESCO Petrol).",
-    )
-    parent_group: StrictStr | None = Field(
-        default=None,
-        alias="parentGroup",
-        description="The parent organisation that the merchant belongs to e.g. (TESCO).",
-    )
+    merchant_name: Annotated[StrictStr | None, Field(alias='merchantName', description='The name of the indivdual merchant involved in the transaction e.g. (TESCO Petrol).')] = None
+    parent_group: Annotated[StrictStr | None, Field(alias='parentGroup', description='The parent organisation that the merchant belongs to e.g. (TESCO).')] = None
     __properties = ["merchantName", "parentGroup"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

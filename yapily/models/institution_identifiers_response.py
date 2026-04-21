@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,16 +25,8 @@ class InstitutionIdentifiersResponse(BaseModel):
     Specifies the institution selected for making the payment.  # noqa: E501
     """
 
-    institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="Yapily identifier which identifies the `Institution` the payment request is sent to.",
-    )
-    institution_country_code: StrictStr | None = Field(
-        default=None,
-        alias="institutionCountryCode",
-        description="2 letter ISO Country code of the `Institution` the payment request is sent to.",
-    )
+    institution_id: Annotated[StrictStr | None, Field(alias='institutionId', description='Yapily identifier which identifies the `Institution` the payment request is sent to.')] = None
+    institution_country_code: Annotated[StrictStr | None, Field(alias='institutionCountryCode', description='2 letter ISO Country code of the `Institution` the payment request is sent to.')] = None
     __properties = ["institutionId", "institutionCountryCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

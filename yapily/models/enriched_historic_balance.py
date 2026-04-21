@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,14 +26,8 @@ class EnrichedHistoricBalance(BaseModel):
     A list of Aggregated Account Balances for historic date range.  # noqa: E501
     """
 
-    var_date: date | None = Field(
-        default=None,
-        alias="date",
-        description="The date for which Aggregated Balance amount across Bank accounts is calculated.",
-    )
-    balance: StrictFloat | StrictInt | None = Field(
-        default=None, description="The Aggregated Balance amount for a specific date."
-    )
+    var_date: Annotated[date | None, Field(alias='date', description='The date for which Aggregated Balance amount across Bank accounts is calculated.')] = None
+    balance: Annotated[StrictFloat | StrictInt | None, Field(description='The Aggregated Balance amount for a specific date.')] = None
     __properties = ["date", "balance"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

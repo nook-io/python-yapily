@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,9 +27,9 @@ class IsoBankTransactionCode(BaseModel):
     Defines the underlying transaction type (e.g. Card or Debit Transactions, Loans or Mortages). <br><br> Conforms to `ISO` standards - ISO 20022.  # noqa: E501
     """
 
-    domain_code: IsoCodeDetails | None = Field(default=None, alias="domainCode")
-    family_code: IsoCodeDetails | None = Field(default=None, alias="familyCode")
-    sub_family_code: IsoCodeDetails | None = Field(default=None, alias="subFamilyCode")
+    domain_code: Annotated[IsoCodeDetails | None, Field(alias='domainCode')] = None
+    family_code: Annotated[IsoCodeDetails | None, Field(alias='familyCode')] = None
+    sub_family_code: Annotated[IsoCodeDetails | None, Field(alias='subFamilyCode')] = None
     __properties = ["domainCode", "familyCode", "subFamilyCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

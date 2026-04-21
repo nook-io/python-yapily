@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,23 +26,10 @@ class PostAccountsAccountIdTransactionsCategorisationRequest(BaseModel):
     PostAccountsAccountIdTransactionsCategorisationRequest
     """
 
-    country_code: StrictStr = Field(
-        default=..., alias="countryCode", description="_Mandatory_, ISO 3166-1 alpha-2 two-letter country codes e.g. GB"
-    )
-    categorisation_type: StrictStr = Field(
-        default=...,
-        alias="categorisationType",
-        description="__Mandatory__. Allowed values are `consumer` and `business`.",
-    )
-    var_from: datetime | None = Field(
-        default=None,
-        alias="from",
-        description="__Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). ",
-    )
-    before: datetime | None = Field(
-        default=None,
-        description="__Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).",
-    )
+    country_code: Annotated[StrictStr, Field(alias='countryCode', description='_Mandatory_, ISO 3166-1 alpha-2 two-letter country codes e.g. GB')] = ...
+    categorisation_type: Annotated[StrictStr, Field(alias='categorisationType', description='__Mandatory__. Allowed values are `consumer` and `business`.')] = ...
+    var_from: Annotated[datetime | None, Field(alias='from', description="__Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). ")] = None
+    before: Annotated[datetime | None, Field(description="__Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).")] = None
     __properties = ["countryCode", "categorisationType", "from", "before"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

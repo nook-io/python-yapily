@@ -28,12 +28,10 @@ class RegisteredWebhookWithStatus(BaseModel):
     RegisteredWebhookWithStatus
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="the UUID of the registered webhook, used to update or remove the webhook"
-    )
-    application_id: StrictStr | None = Field(default=None, alias="applicationId", description="user applicaiton id")
+    id: Annotated[StrictStr | None, Field(description='the UUID of the registered webhook, used to update or remove the webhook')] = None
+    application_id: Annotated[StrictStr | None, Field(alias='applicationId', description='user applicaiton id')] = None
     categories: Annotated[list[StrictStr], Field()] | None = None
-    callback_url: RegisteredWebhookCallbackUrl | None = Field(default=None, alias="callbackUrl")
+    callback_url: Annotated[RegisteredWebhookCallbackUrl | None, Field(alias='callbackUrl')] = None
     metadata: dict[str, StrictStr] | None = None
     status: WebhookStatusType | None = None
     __properties = ["id", "applicationId", "categories", "callbackUrl", "metadata", "status"]

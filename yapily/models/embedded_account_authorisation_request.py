@@ -30,42 +30,54 @@ class EmbeddedAccountAuthorisationRequest(BaseModel):
     EmbeddedAccountAuthorisationRequest
     """
 
-    user_uuid: StrictStr | None = Field(
-        default=None, alias="userUuid", description="`User` for which the authorisation request was created."
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="__Conditional__. The user-friendly reference to the `User` that will authorise the authorisation request. If a `User` with the specified `applicationUserId` exists, it will be used otherwise, a new `User` with the specified `applicationUserId` will be created and used. Either the `userUuid` or `applicationUserId` must be provided.",
-    )
-    forward_parameters: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None,
-        alias="forwardParameters",
-        description="Extra parameters the TPP may want to get forwarded in the callback request after the PSU redirect.",
-    )
-    institution_id: StrictStr = Field(
-        default=...,
-        alias="institutionId",
-        description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
-    )
-    callback: StrictStr | None = Field(
-        default=None,
-        description="__Optional__. The server to redirect the user to after the user complete the authorisation at the `Institution`. <br><br>See [Using a callback (Optional)](https://docs.yapily.com/) for more information.",
-    )
+    user_uuid: Annotated[
+        StrictStr | None, Field(alias="userUuid", description="`User` for which the authorisation request was created.")
+    ] = None
+    application_user_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="applicationUserId",
+            description="__Conditional__. The user-friendly reference to the `User` that will authorise the authorisation request. If a `User` with the specified `applicationUserId` exists, it will be used otherwise, a new `User` with the specified `applicationUserId` will be created and used. Either the `userUuid` or `applicationUserId` must be provided.",
+        ),
+    ] = None
+    forward_parameters: Annotated[
+        list[StrictStr] | None,
+        Field(
+            alias="forwardParameters",
+            description="Extra parameters the TPP may want to get forwarded in the callback request after the PSU redirect.",
+        ),
+    ] = None
+    institution_id: Annotated[
+        StrictStr,
+        Field(
+            alias="institutionId",
+            description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
+        ),
+    ] = ...
+    callback: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Optional__. The server to redirect the user to after the user complete the authorisation at the `Institution`. <br><br>See [Using a callback (Optional)](https://docs.yapily.com/) for more information."
+        ),
+    ] = None
     redirect: RedirectRequest | None = None
-    one_time_token: StrictBool | None = Field(
-        default=None,
-        alias="oneTimeToken",
-        description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
-    )
-    user_credentials: UserCredentials | None = Field(default=None, alias="userCredentials")
-    selected_sca_method: ScaMethod | None = Field(default=None, alias="selectedScaMethod")
-    sca_code: StrictStr | None = Field(
-        default=None,
-        alias="scaCode",
-        description="__Conditional__. Used to update the authorisation with the sca code received by the user from the `Institution` using the embedded account authorisation flow.<br><br>This is the penultimate step required in the embedded account authorisation flow to authorise the `Consent`. After sending the sca code, to obtain an authorised consent, the last step is to poll [Get Consent](https://docs.yapily.com/api/reference/#operation/getConsentById) until the `Institution` authorises the request and the `Consent` `status` transitions to `AUTHORIZED`.",
-    )
-    account_request: AccountRequest | None = Field(default=None, alias="accountRequest")
+    one_time_token: Annotated[
+        StrictBool | None,
+        Field(
+            alias="oneTimeToken",
+            description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
+        ),
+    ] = None
+    user_credentials: Annotated[UserCredentials | None, Field(alias="userCredentials")] = None
+    selected_sca_method: Annotated[ScaMethod | None, Field(alias="selectedScaMethod")] = None
+    sca_code: Annotated[
+        StrictStr | None,
+        Field(
+            alias="scaCode",
+            description="__Conditional__. Used to update the authorisation with the sca code received by the user from the `Institution` using the embedded account authorisation flow.<br><br>This is the penultimate step required in the embedded account authorisation flow to authorise the `Consent`. After sending the sca code, to obtain an authorised consent, the last step is to poll [Get Consent](https://docs.yapily.com/api/reference/#operation/getConsentById) until the `Institution` authorises the request and the `Consent` `status` transitions to `AUTHORIZED`.",
+        ),
+    ] = None
+    account_request: Annotated[AccountRequest | None, Field(alias="accountRequest")] = None
     __properties = [
         "userUuid",
         "applicationUserId",

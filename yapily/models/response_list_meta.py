@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,7 +27,7 @@ class ResponseListMeta(BaseModel):
     ResponseListMeta
     """
 
-    tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
+    tracing_id: Annotated[StrictStr | None, Field(alias='tracingId')] = None
     count: StrictInt | None = None
     pagination: Pagination | None = None
     __properties = ["tracingId", "count", "pagination"]

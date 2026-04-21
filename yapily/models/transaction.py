@@ -40,58 +40,63 @@ class Transaction(BaseModel):
     Details of a transaction (credit or debit) that has occurred on the account.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier of the transaction.")
-    var_date: datetime | None = Field(default=None, alias="date")
-    booking_date_time: datetime | None = Field(
-        default=None,
-        alias="bookingDateTime",
-        description="Date and time in UTC format of when a transaction was booked.",
-    )
-    value_date_time: datetime | None = Field(
-        default=None,
-        alias="valueDateTime",
-        description="Date and time in UTC format when the funds either cease to be available (for debit transactions) or become available (for credit transactions) to the account owner.",
-    )
+    id: Annotated[StrictStr | None, Field(description="Unique identifier of the transaction.")] = None
+    var_date: Annotated[datetime | None, Field(alias="date")] = None
+    booking_date_time: Annotated[
+        datetime | None,
+        Field(alias="bookingDateTime", description="Date and time in UTC format of when a transaction was booked."),
+    ] = None
+    value_date_time: Annotated[
+        datetime | None,
+        Field(
+            alias="valueDateTime",
+            description="Date and time in UTC format when the funds either cease to be available (for debit transactions) or become available (for credit transactions) to the account owner.",
+        ),
+    ] = None
     status: TransactionStatusEnum | None = None
-    amount: StrictFloat | StrictInt | None = Field(default=None, description="The transaction amount.")
-    currency: StrictStr | None = Field(
-        default=None,
-        description="Currency the transaction amount is denoted in. Specified as a 3-letter ISO 4217 code.",
-    )
-    transaction_amount: Amount | None = Field(default=None, alias="transactionAmount")
-    gross_amount: Amount | None = Field(default=None, alias="grossAmount")
-    currency_exchange: CurrencyExchange | None = Field(default=None, alias="currencyExchange")
-    charge_details: TransactionChargeDetails | None = Field(default=None, alias="chargeDetails")
+    amount: Annotated[StrictFloat | StrictInt | None, Field(description="The transaction amount.")] = None
+    currency: Annotated[
+        StrictStr | None,
+        Field(description="Currency the transaction amount is denoted in. Specified as a 3-letter ISO 4217 code."),
+    ] = None
+    transaction_amount: Annotated[Amount | None, Field(alias="transactionAmount")] = None
+    gross_amount: Annotated[Amount | None, Field(alias="grossAmount")] = None
+    currency_exchange: Annotated[CurrencyExchange | None, Field(alias="currencyExchange")] = None
+    charge_details: Annotated[TransactionChargeDetails | None, Field(alias="chargeDetails")] = None
     reference: StrictStr | None = None
-    statement_references: Annotated[list[StatementReference], Field()] | None = Field(
-        default=None, alias="statementReferences"
-    )
+    statement_references: Annotated[list[StatementReference] | None, Field(alias="statementReferences")] = None
     description: StrictStr | None = None
-    transaction_information: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None,
-        alias="transactionInformation",
-        description="Further details on the transaction. This is narrative data, caught as unstructured text.",
-    )
-    address_details: AddressDetails | None = Field(default=None, alias="addressDetails")
-    iso_bank_transaction_code: IsoBankTransactionCode | None = Field(default=None, alias="isoBankTransactionCode")
-    proprietary_bank_transaction_code: ProprietaryBankTransactionCode | None = Field(
-        default=None, alias="proprietaryBankTransactionCode"
-    )
+    transaction_information: Annotated[
+        list[StrictStr] | None,
+        Field(
+            alias="transactionInformation",
+            description="Further details on the transaction. This is narrative data, caught as unstructured text.",
+        ),
+    ] = None
+    address_details: Annotated[AddressDetails | None, Field(alias="addressDetails")] = None
+    iso_bank_transaction_code: Annotated[IsoBankTransactionCode | None, Field(alias="isoBankTransactionCode")] = None
+    proprietary_bank_transaction_code: Annotated[
+        ProprietaryBankTransactionCode | None, Field(alias="proprietaryBankTransactionCode")
+    ] = None
     balance: TransactionBalance | None = None
-    payee_details: TransactionPayeeDetails | None = Field(default=None, alias="payeeDetails")
-    payer_details: TransactionPayerDetails | None = Field(default=None, alias="payerDetails")
+    payee_details: Annotated[TransactionPayeeDetails | None, Field(alias="payeeDetails")] = None
+    payer_details: Annotated[TransactionPayerDetails | None, Field(alias="payerDetails")] = None
     merchant: Merchant | None = None
     enrichment: Enrichment | None = None
-    supplementary_data: dict[str, Any] | None = Field(
-        default=None,
-        alias="supplementaryData",
-        description="Additional information that cannot be captured in a structured field or block.",
-    )
-    transaction_mutability: StrictStr | None = Field(
-        default=None,
-        alias="transactionMutability",
-        description="__Optional__. Specifies the Mutability of the Transaction record.<ul><li>A transaction with a `Status` of `Pending` is mutable.</li><li>A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is not guaranteed to be immutable (although in most instances it will be).</li><li>A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.</li><li>A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.</li></ul>",
-    )
+    supplementary_data: Annotated[
+        dict[str, Any] | None,
+        Field(
+            alias="supplementaryData",
+            description="Additional information that cannot be captured in a structured field or block.",
+        ),
+    ] = None
+    transaction_mutability: Annotated[
+        StrictStr | None,
+        Field(
+            alias="transactionMutability",
+            description="__Optional__. Specifies the Mutability of the Transaction record.<ul><li>A transaction with a `Status` of `Pending` is mutable.</li><li>A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is not guaranteed to be immutable (although in most instances it will be).</li><li>A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.</li><li>A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.</li></ul>",
+        ),
+    ] = None
     __properties = [
         "id",
         "date",

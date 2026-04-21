@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,11 +25,7 @@ class InstitutionConsent(BaseModel):
     `Institution` authorised consents which are currently in place for the `Application User`.  # noqa: E501
     """
 
-    institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="__Mandatory__. The `Institution` the authorisation request is sent to.",
-    )
+    institution_id: Annotated[StrictStr | None, Field(alias='institutionId', description='__Mandatory__. The `Institution` the authorisation request is sent to.')] = None
     __properties = ["institutionId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,8 +25,8 @@ class CategoryStructure(BaseModel):
     CategoryStructure
     """
 
-    name: StrictStr | None = Field(default=None, description="webhook event category name")
-    description: StrictStr | None = Field(default=None, description="description of the webhook event category")
+    name: Annotated[StrictStr | None, Field(description='webhook event category name')] = None
+    description: Annotated[StrictStr | None, Field(description='description of the webhook event category')] = None
     __properties = ["name", "description"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

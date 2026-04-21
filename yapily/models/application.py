@@ -29,18 +29,18 @@ class Application(BaseModel):
     Information about the application.  # noqa: E501
     """
 
-    uuid: StrictStr | None = Field(
-        default=None, description="Unique identification for the `Application` as assigned by Yapily."
-    )
-    name: StrictStr | None = Field(default=None, description="The individual name of the `Application`.")
-    active: StrictBool | None = Field(default=None, description="States whether an `Application` is active.")
-    auth_callbacks: Annotated[list[StrictStr], Field()] | None = Field(default=None, alias="authCallbacks")
+    uuid: Annotated[
+        StrictStr | None, Field(description="Unique identification for the `Application` as assigned by Yapily.")
+    ] = None
+    name: Annotated[StrictStr | None, Field(description="The individual name of the `Application`.")] = None
+    active: Annotated[StrictBool | None, Field(description="States whether an `Application` is active.")] = None
+    auth_callbacks: Annotated[list[StrictStr] | None, Field(alias="authCallbacks")] = None
     institutions: list[Institution] | None = None
     media: list[Media] | None = None
-    created: datetime | None = Field(default=None, description="Date and time of when the application was created.")
-    updated: datetime | None = Field(
-        default=None, description="Date and time of when the application was last updated."
-    )
+    created: Annotated[datetime | None, Field(description="Date and time of when the application was created.")] = None
+    updated: Annotated[
+        datetime | None, Field(description="Date and time of when the application was last updated.")
+    ] = None
     __properties = ["uuid", "name", "active", "authCallbacks", "institutions", "media", "created", "updated"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

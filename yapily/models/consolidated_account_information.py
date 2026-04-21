@@ -27,11 +27,13 @@ class ConsolidatedAccountInformation(BaseModel):
     Summary information regarding account balances of the overall account provided by the bank  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None,
-        description="Identifier of the consolidated account. When used in Get Account Transactions calls, the transactions between the sub-accounts will not be reported",
-    )
-    account_balances: Annotated[list[AccountBalance], Field()] | None = Field(default=None, alias="accountBalances")
+    id: Annotated[
+        StrictStr | None,
+        Field(
+            description="Identifier of the consolidated account. When used in Get Account Transactions calls, the transactions between the sub-accounts will not be reported"
+        ),
+    ] = None
+    account_balances: Annotated[list[AccountBalance] | None, Field(alias="accountBalances")] = None
     __properties = ["id", "accountBalances"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

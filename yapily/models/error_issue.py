@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,16 +27,11 @@ class ErrorIssue(BaseModel):
     Detailed information regarding the issue that was experienced during processing of the request  # noqa: E501
     """
 
-    type: StrictStr = Field(default=..., description="Category of the issue")
-    code: StrictStr = Field(default=..., description="Code that uniquely identifies the type of issue")
-    parameter: StrictStr | None = Field(
-        default=None,
-        description="Identfies the parameter / property within the request (headers, query parameters or body) that the issue relates to. For headers and query parameters, it refers to the parameter name. For the body, it refers to the JSONPath of the property",
-    )
-    message: StrictStr | None = Field(
-        default=None, description="Human readable description of the issue that was experienced"
-    )
-    institution_error: InstitutionError | None = Field(default=None, alias="institutionError")
+    type: Annotated[StrictStr, Field(description='Category of the issue')] = ...
+    code: Annotated[StrictStr, Field(description='Code that uniquely identifies the type of issue')] = ...
+    parameter: Annotated[StrictStr | None, Field(description='Identfies the parameter / property within the request (headers, query parameters or body) that the issue relates to. For headers and query parameters, it refers to the parameter name. For the body, it refers to the JSONPath of the property')] = None
+    message: Annotated[StrictStr | None, Field(description='Human readable description of the issue that was experienced')] = None
+    institution_error: Annotated[InstitutionError | None, Field(alias='institutionError')] = None
     __properties = ["type", "code", "parameter", "message", "institutionError"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

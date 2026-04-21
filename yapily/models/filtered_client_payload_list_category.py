@@ -28,12 +28,12 @@ class FilteredClientPayloadListCategory(BaseModel):
     FilteredClientPayloadListCategory
     """
 
-    api_call: dict[str, Any] | None = Field(default=None, alias="apiCall")
+    api_call: Annotated[dict[str, Any] | None, Field(alias='apiCall')] = None
     data: Annotated[list[Category], Field()] | None = None
-    next_cursor_hash: StrictStr | None = Field(default=None, alias="nextCursorHash")
-    next_link: StrictStr | None = Field(default=None, alias="nextLink")
-    paging_map: dict[str, FilterAndSort] | None = Field(default=None, alias="pagingMap")
-    total_count: StrictInt | None = Field(default=None, alias="totalCount")
+    next_cursor_hash: Annotated[StrictStr | None, Field(alias='nextCursorHash')] = None
+    next_link: Annotated[StrictStr | None, Field(alias='nextLink')] = None
+    paging_map: Annotated[dict[str, FilterAndSort] | None, Field(alias='pagingMap')] = None
+    total_count: Annotated[StrictInt | None, Field(alias='totalCount')] = None
     __properties = ["apiCall", "data", "nextCursorHash", "nextLink", "pagingMap", "totalCount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

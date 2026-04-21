@@ -30,46 +30,56 @@ class HostedGetConsentRequestResponse(BaseModel):
     HostedGetConsentRequestResponse
     """
 
-    consent_request_id: StrictStr | None = Field(
-        default=None, alias="consentRequestId", description="Unique Id of the consent request."
+    consent_request_id: Annotated[
+        StrictStr | None, Field(alias="consentRequestId", description="Unique Id of the consent request.")
+    ] = None
+    consent_id: Annotated[StrictStr | None, Field(alias="consentId", description="Identification of the consent.")] = (
+        None
     )
-    consent_id: StrictStr | None = Field(default=None, alias="consentId", description="Identification of the consent.")
-    user_id: StrictStr | None = Field(
-        default=None, alias="userId", description="Unique Id for the `User` assigned by Yapily."
+    user_id: Annotated[
+        StrictStr | None, Field(alias="userId", description="Unique Id for the `User` assigned by Yapily.")
+    ] = None
+    application_user_id: Annotated[
+        StrictStr | None, Field(alias="applicationUserId", description="Your reference to the `User`.")
+    ] = None
+    application_id: Annotated[
+        StrictStr | None,
+        Field(alias="applicationId", description="Unique Id of the `Application` the user is associated with."),
+    ] = None
+    institution_identifiers: Annotated[InstitutionIdentifiersResponse | None, Field(alias="institutionIdentifiers")] = (
+        None
     )
-    application_user_id: StrictStr | None = Field(
-        default=None, alias="applicationUserId", description="Your reference to the `User`."
-    )
-    application_id: StrictStr | None = Field(
-        default=None, alias="applicationId", description="Unique Id of the `Application` the user is associated with."
-    )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
-    user_settings: UserSettings | None = Field(default=None, alias="userSettings")
-    redirect_url: StrictStr | None = Field(
-        default=None,
-        alias="redirectUrl",
-        description="URL of consent server to redirect the user after completion of the consent flow.",
-    )
-    created_at: datetime | None = Field(
-        default=None, alias="createdAt", description="The date and time at which the payment was created."
-    )
-    authorisation_expires_at: datetime | None = Field(
-        default=None,
-        alias="authorisationExpiresAt",
-        description="The date and time at which the auth Token will expire.",
-    )
-    status: StrictStr | None = Field(
-        default=None,
-        description="Current status of the consent request. Allowed values are [AWAITING_AUTHORIZATION, AUTHORIZED, REJECTED, REVOKED, FAILED, EXPIRED, AWAITING_DECOUPLED_AUTHORIZATION]",
-    )
-    phases: Annotated[list[HostedConsentPhase], Field()] | None = Field(
-        default=None, description="The phase reached by the consent and its timestamp."
-    )
-    consent_token: StrictStr | None = Field(
-        default=None,
-        alias="consentToken",
-        description="Represents the authorisation to gain access to the requested features. Required to access account information.",
-    )
+    user_settings: Annotated[UserSettings | None, Field(alias="userSettings")] = None
+    redirect_url: Annotated[
+        StrictStr | None,
+        Field(
+            alias="redirectUrl",
+            description="URL of consent server to redirect the user after completion of the consent flow.",
+        ),
+    ] = None
+    created_at: Annotated[
+        datetime | None, Field(alias="createdAt", description="The date and time at which the payment was created.")
+    ] = None
+    authorisation_expires_at: Annotated[
+        datetime | None,
+        Field(alias="authorisationExpiresAt", description="The date and time at which the auth Token will expire."),
+    ] = None
+    status: Annotated[
+        StrictStr | None,
+        Field(
+            description="Current status of the consent request. Allowed values are [AWAITING_AUTHORIZATION, AUTHORIZED, REJECTED, REVOKED, FAILED, EXPIRED, AWAITING_DECOUPLED_AUTHORIZATION]"
+        ),
+    ] = None
+    phases: Annotated[
+        list[HostedConsentPhase] | None, Field(description="The phase reached by the consent and its timestamp.")
+    ] = None
+    consent_token: Annotated[
+        StrictStr | None,
+        Field(
+            alias="consentToken",
+            description="Represents the authorisation to gain access to the requested features. Required to access account information.",
+        ),
+    ] = None
     __properties = [
         "consentRequestId",
         "consentId",

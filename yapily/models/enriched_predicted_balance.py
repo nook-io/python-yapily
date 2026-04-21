@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,18 +26,10 @@ class EnrichedPredictedBalance(BaseModel):
     A list of Predicted Account Balances for future date range.  # noqa: E501
     """
 
-    var_date: date | None = Field(
-        default=None, alias="date", description="The date for which Balance amount is predicted."
-    )
-    median_balance: StrictFloat | StrictInt | None = Field(
-        default=None, alias="medianBalance", description="The median Balance amount for a future date."
-    )
-    var_90percentile_balance: StrictFloat | StrictInt | None = Field(
-        default=None, alias="90percentileBalance", description="The 90th percentile Balance amount for a future date."
-    )
-    var_10percentile_balance: StrictFloat | StrictInt | None = Field(
-        default=None, alias="10percentileBalance", description="The 10th percentile Balance amount for a future date."
-    )
+    var_date: Annotated[date | None, Field(alias='date', description='The date for which Balance amount is predicted.')] = None
+    median_balance: Annotated[StrictFloat | StrictInt | None, Field(alias='medianBalance', description='The median Balance amount for a future date.')] = None
+    var_90percentile_balance: Annotated[StrictFloat | StrictInt | None, Field(alias='90percentileBalance', description='The 90th percentile Balance amount for a future date.')] = None
+    var_10percentile_balance: Annotated[StrictFloat | StrictInt | None, Field(alias='10percentileBalance', description='The 10th percentile Balance amount for a future date.')] = None
     __properties = ["date", "medianBalance", "90percentileBalance", "10percentileBalance"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

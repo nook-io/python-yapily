@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -30,24 +31,12 @@ class Enrichment(BaseModel):
     """
 
     categorisation: Categorisation | None = None
-    transaction_hash: TransactionHash | None = Field(default=None, alias="transactionHash")
-    cleansed_description: StrictStr | None = Field(
-        default=None,
-        alias="cleansedDescription",
-        description="Cleaned version of the `Transaction Description` that removes miscellaneous, generic and unhelpful text.",
-    )
+    transaction_hash: Annotated[TransactionHash | None, Field(alias='transactionHash')] = None
+    cleansed_description: Annotated[StrictStr | None, Field(alias='cleansedDescription', description='Cleaned version of the `Transaction Description` that removes miscellaneous, generic and unhelpful text.')] = None
     merchant: EnrichmentMerchant | None = None
-    location: StrictStr | None = Field(default=None, description="The location of where the transaction took place.")
-    payment_processor: StrictStr | None = Field(
-        default=None,
-        alias="paymentProcessor",
-        description="A payment provider that manages (credit/debit) transactions between the `Institution` and the merchant.",
-    )
-    corrected_date: datetime | None = Field(
-        default=None,
-        alias="correctedDate",
-        description="The likely date and time on which the transaction took place. This is distinct from `Booking Date Time` which usually refers to the post-clearing value.",
-    )
+    location: Annotated[StrictStr | None, Field(description='The location of where the transaction took place.')] = None
+    payment_processor: Annotated[StrictStr | None, Field(alias='paymentProcessor', description='A payment provider that manages (credit/debit) transactions between the `Institution` and the merchant.')] = None
+    corrected_date: Annotated[datetime | None, Field(alias='correctedDate', description='The likely date and time on which the transaction took place. This is distinct from `Booking Date Time` which usually refers to the post-clearing value.')] = None
     __properties = [
         "categorisation",
         "transactionHash",

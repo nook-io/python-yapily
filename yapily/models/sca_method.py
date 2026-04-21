@@ -27,21 +27,26 @@ class ScaMethod(BaseModel):
     __Conditional__. Used to update the authorisation with the sca method of the user's choice for the `Institution` that uses the embedded authorisation flow. If the user has multiple sca methods configured, the `Institution` will allow the user to select from each of these options. <br><br>When the user has multiple sca methods for the `Institution`, this is the second step required in the embedded authorisation flow to authorise the `Consent`.  # noqa: E501
     """
 
-    id: StrictStr = Field(
-        default=..., description="__Mandatory__. The id of the sca method provided by the `Institution`"
-    )
+    id: Annotated[
+        StrictStr, Field(description="__Mandatory__. The id of the sca method provided by the `Institution`")
+    ] = ...
     type: Type | None = None
-    description: StrictStr | None = Field(
-        default=None, description="__Optional__. A description of the sca method if provided by the `Institution`"
-    )
-    information: StrictStr | None = Field(
-        default=None,
-        description="Additional information from the institution to provide to the PSU to help with the selected SCA method. The language is determined by the institution and may vary.",
-    )
-    data: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None,
-        description="Data from the institution to provide to the PSU to complete authorisation. The language is determined by the institution and may vary.",
-    )
+    description: Annotated[
+        StrictStr | None,
+        Field(description="__Optional__. A description of the sca method if provided by the `Institution`"),
+    ] = None
+    information: Annotated[
+        StrictStr | None,
+        Field(
+            description="Additional information from the institution to provide to the PSU to help with the selected SCA method. The language is determined by the institution and may vary."
+        ),
+    ] = None
+    data: Annotated[
+        list[StrictStr] | None,
+        Field(
+            description="Data from the institution to provide to the PSU to complete authorisation. The language is determined by the institution and may vary."
+        ),
+    ] = None
     __properties = ["id", "type", "description", "information", "data"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

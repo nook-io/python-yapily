@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,7 +25,7 @@ class SchemaXYapilyValidations(BaseModel):
     SchemaXYapilyValidations
     """
 
-    max_duration_from_now: StrictStr | None = Field(default=None, alias="maxDurationFromNow")
+    max_duration_from_now: Annotated[StrictStr | None, Field(alias='maxDurationFromNow')] = None
     __properties = ["maxDurationFromNow"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

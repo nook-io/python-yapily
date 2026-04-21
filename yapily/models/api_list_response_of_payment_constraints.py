@@ -15,9 +15,8 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 
 from yapily.models.payment_constraints_response import PaymentConstraintsResponse
 from yapily.models.response_list_meta import ResponseListMeta
@@ -29,7 +28,7 @@ class ApiListResponseOfPaymentConstraints(BaseModel):
     """
 
     meta: ResponseListMeta | None = None
-    data: Annotated[list[PaymentConstraintsResponse], Field()] | None = None
+    data: list[PaymentConstraintsResponse] | None = None
     __properties = ["meta", "data"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

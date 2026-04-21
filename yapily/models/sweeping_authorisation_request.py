@@ -31,40 +31,52 @@ class SweepingAuthorisationRequest(BaseModel):
     SweepingAuthorisationRequest
     """
 
-    user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="This is the Yapily user identifier for the user returned by the create user step POST ../users",
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="A client's own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls.",
-    )
-    forward_parameters: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None,
-        alias="forwardParameters",
-        description="Extra parameters the TPP may want to get forwarded in the callback request after the PSU redirect.",
-    )
-    context_type: PaymentContextType | None = Field(default=None, alias="contextType")
-    institution_id: StrictStr = Field(
-        default=...,
-        alias="institutionId",
-        description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
-    )
-    callback: StrictStr | None = Field(
-        default=None,
-        description="__Optional__. The server to redirect the user to after the user complete the authorisation at the `Institution`. <br><br>See [Using a callback (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-optional) for more information.",
-    )
+    user_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="userId",
+            description="This is the Yapily user identifier for the user returned by the create user step POST ../users",
+        ),
+    ] = None
+    application_user_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="applicationUserId",
+            description="A client's own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls.",
+        ),
+    ] = None
+    forward_parameters: Annotated[
+        list[StrictStr] | None,
+        Field(
+            alias="forwardParameters",
+            description="Extra parameters the TPP may want to get forwarded in the callback request after the PSU redirect.",
+        ),
+    ] = None
+    context_type: Annotated[PaymentContextType | None, Field(alias="contextType")] = None
+    institution_id: Annotated[
+        StrictStr,
+        Field(
+            alias="institutionId",
+            description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
+        ),
+    ] = ...
+    callback: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Optional__. The server to redirect the user to after the user complete the authorisation at the `Institution`. <br><br>See [Using a callback (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-optional) for more information."
+        ),
+    ] = None
     redirect: RedirectRequest | None = None
-    one_time_token: StrictBool | None = Field(
-        default=None,
-        alias="oneTimeToken",
-        description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
-    )
-    control_parameters: SweepingControlParameters = Field(default=..., alias="controlParameters")
-    initiation_details: InitiationDetails = Field(default=..., alias="initiationDetails")
-    compliance_data: ComplianceData | None = Field(default=None, alias="complianceData")
+    one_time_token: Annotated[
+        StrictBool | None,
+        Field(
+            alias="oneTimeToken",
+            description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/knowledge/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
+        ),
+    ] = None
+    control_parameters: Annotated[SweepingControlParameters, Field(alias="controlParameters")] = ...
+    initiation_details: Annotated[InitiationDetails, Field(alias="initiationDetails")] = ...
+    compliance_data: Annotated[ComplianceData | None, Field(alias="complianceData")] = None
     __properties = [
         "userId",
         "applicationUserId",

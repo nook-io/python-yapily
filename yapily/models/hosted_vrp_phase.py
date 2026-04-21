@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,16 +26,8 @@ class HostedVRPPhase(BaseModel):
     The phase of the VRP Consent Request.  # noqa: E501
     """
 
-    phase_name: StrictStr | None = Field(
-        default=None,
-        alias="phaseName",
-        description="The name of the hosted VRP consent process phase. Allowed values are : <ul> <li> INITIATED - Process initiated </li><li> DECLINED - Process failed and will not proceed further </li><li> INSTITUTION_SUBMITTED - Consent institution submitted </li><li> INPUT_CAPTURED - Additional input captured to process the Consent </li><li> IBAN_VALIDATED - Payer IBAN successfully validated </li><li> AUTHORISATION_CREATED - Consent authorisation request created with Institution, awaiting authorisation completion </li><li> AUTHORISATION_REJECTED - Consent Authorisation request rejected by Institution and will not proceed further </li><li> AUTHORISED - Consent authorisation completed </li><li> AUTHORISATION_FAILED - Consent authorisation failed and will not proceed further</li><li> SUBMITTED - Consent execution created and submitted to Institution </li><li> ACCEPTED - Consent execution accepted by Institution and awaiting settlement </li><li> REJECTED - Consent execution request rejected by Institution and will not proceed further </li><li> STATUS_POLLING_STARTED - Consent status polling started </li><li> STATUS_POLLING_ENDED - Consent status polling ended </li><li> MERCHANT_ACKNOWLEDGED - Consent acknowledgement received from merchant </li><li> FINISHED - Consent process completed </li> <li> REVOKED - Consent process completed </li>  </ul>",
-    )
-    phase_created_at: datetime | None = Field(
-        default=None,
-        alias="phaseCreatedAt",
-        description="The date and time at which the phase of the hosted Consent was created.",
-    )
+    phase_name: Annotated[StrictStr | None, Field(alias='phaseName', description='The name of the hosted VRP consent process phase. Allowed values are : <ul> <li> INITIATED - Process initiated </li><li> DECLINED - Process failed and will not proceed further </li><li> INSTITUTION_SUBMITTED - Consent institution submitted </li><li> INPUT_CAPTURED - Additional input captured to process the Consent </li><li> IBAN_VALIDATED - Payer IBAN successfully validated </li><li> AUTHORISATION_CREATED - Consent authorisation request created with Institution, awaiting authorisation completion </li><li> AUTHORISATION_REJECTED - Consent Authorisation request rejected by Institution and will not proceed further </li><li> AUTHORISED - Consent authorisation completed </li><li> AUTHORISATION_FAILED - Consent authorisation failed and will not proceed further</li><li> SUBMITTED - Consent execution created and submitted to Institution </li><li> ACCEPTED - Consent execution accepted by Institution and awaiting settlement </li><li> REJECTED - Consent execution request rejected by Institution and will not proceed further </li><li> STATUS_POLLING_STARTED - Consent status polling started </li><li> STATUS_POLLING_ENDED - Consent status polling ended </li><li> MERCHANT_ACKNOWLEDGED - Consent acknowledgement received from merchant </li><li> FINISHED - Consent process completed </li> <li> REVOKED - Consent process completed </li>  </ul>')] = None
+    phase_created_at: Annotated[datetime | None, Field(alias='phaseCreatedAt', description='The date and time at which the phase of the hosted Consent was created.')] = None
     __properties = ["phaseName", "phaseCreatedAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

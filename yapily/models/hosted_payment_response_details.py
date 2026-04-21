@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -31,23 +32,14 @@ class HostedPaymentResponseDetails(BaseModel):
     Details of the payment.  # noqa: E501
     """
 
-    payment_idempotency_id: StrictStr | None = Field(
-        default=None,
-        alias="paymentIdempotencyId",
-        description="A unique identifier provided to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
-    )
-    reference: StrictStr | None = Field(
-        default=None,
-        description="The payment reference or description. Limited to a maximum of 18 characters for UK institutions.",
-    )
-    context_type: PaymentContextTypeResponse | None = Field(default=None, alias="contextType")
+    payment_idempotency_id: Annotated[StrictStr | None, Field(alias='paymentIdempotencyId', description='A unique identifier provided to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.')] = None
+    reference: Annotated[StrictStr | None, Field(description='The payment reference or description. Limited to a maximum of 18 characters for UK institutions.')] = None
+    context_type: Annotated[PaymentContextTypeResponse | None, Field(alias='contextType')] = None
     type: PaymentTypeResponse | None = None
     payee: PayeeDetailsResponse | None = None
     payer: PayerDetailsResponse | None = None
-    amount_details: AmountDetailsResponse | None = Field(default=None, alias="amountDetails")
-    payment_due_date: date | None = Field(
-        default=None, alias="paymentDueDate", description="The date that the payment is due."
-    )
+    amount_details: Annotated[AmountDetailsResponse | None, Field(alias='amountDetails')] = None
+    payment_due_date: Annotated[date | None, Field(alias='paymentDueDate', description='The date that the payment is due.')] = None
     __properties = [
         "paymentIdempotencyId",
         "reference",

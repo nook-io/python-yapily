@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,7 +27,7 @@ class GetAccountsTransactionsCategorised200ResponseLinks(BaseModel):
 
     first: StrictStr | None = None
     prev: StrictStr | None = None
-    var_self: StrictStr | None = Field(default=None, alias="self")
+    var_self: Annotated[StrictStr | None, Field(alias='self')] = None
     next: StrictStr | None = None
     last: StrictStr | None = None
     __properties = ["first", "prev", "self", "next", "last"]

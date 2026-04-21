@@ -34,43 +34,21 @@ class SweepingAuthorisationResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="This is the Yapily user identifier for the user returned by the create user step POST ../users",
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="A client's own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls.",
-    )
-    institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="The reference to the Institution which identifies which institution the authorisation request is sent to.",
-    )
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='This is the Yapily user identifier for the user returned by the create user step POST ../users')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description="A client's own user reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value.  Clients can then use either their own applicationUserId or the Yapily userId to reference the same user in future calls.")] = None
+    institution_id: Annotated[StrictStr | None, Field(alias='institutionId', description='The reference to the Institution which identifies which institution the authorisation request is sent to.')] = None
     status: AuthorisationStatus | None = None
-    created_at: datetime | None = Field(default=None, alias="createdAt")
-    feature_scope: Annotated[list[FeatureEnum], Unique] | None = Field(
-        default=None,
-        alias="featureScope",
-        description="__Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).",
-    )
-    consent_token: StrictStr | None = Field(
-        default=None,
-        alias="consentToken",
-        description="The `consent-token` containing the user's authorisation to make the payment request.",
-    )
+    created_at: Annotated[datetime | None, Field(alias='createdAt')] = None
+    feature_scope: Annotated[Annotated[list[FeatureEnum], Unique] | None, Field(alias='featureScope', description='__Optional__. Used to granularly specify the set of features that the user will give their consent for when requesting access to their account information. Depending on the `Institution`, this may also populate a consent screen which list these scopes before the user authorises.<br><br>This endpoint accepts allow all [Financial Data Features](/guides/financial-data/features/#feature-list) that the `Institution` supports.To find out which scopes an `Institution` supports, check [GET Institution](./#get-institution).')] = None
+    consent_token: Annotated[StrictStr | None, Field(alias='consentToken', description="The `consent-token` containing the user's authorisation to make the payment request.")] = None
     state: StrictStr | None = None
-    authorized_at: datetime | None = Field(default=None, alias="authorizedAt")
-    institution_consent_id: StrictStr | None = Field(
-        default=None, alias="institutionConsentId", description="Identification of the consent at the Institution."
-    )
-    authorisation_url: StrictStr | None = Field(default=None, alias="authorisationUrl")
-    qr_code_url: StrictStr | None = Field(default=None, alias="qrCodeUrl")
-    control_parameters: SweepingControlParameters | None = Field(default=None, alias="controlParameters")
+    authorized_at: Annotated[datetime | None, Field(alias='authorizedAt')] = None
+    institution_consent_id: Annotated[StrictStr | None, Field(alias='institutionConsentId', description='Identification of the consent at the Institution.')] = None
+    authorisation_url: Annotated[StrictStr | None, Field(alias='authorisationUrl')] = None
+    qr_code_url: Annotated[StrictStr | None, Field(alias='qrCodeUrl')] = None
+    control_parameters: Annotated[SweepingControlParameters | None, Field(alias='controlParameters')] = None
     payer: Payer | None = None
-    initiation_details: InitiationDetails | None = Field(default=None, alias="initiationDetails")
+    initiation_details: Annotated[InitiationDetails | None, Field(alias='initiationDetails')] = None
     __properties = [
         "id",
         "userId",

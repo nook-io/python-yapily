@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,13 +28,8 @@ class FeatureDetails(BaseModel):
     """
 
     feature: FeatureEnum | None = None
-    endpoint: StrictStr | None = Field(
-        default=None,
-        description="Endpoints that are associated with the feature e.g. (available for use if an Institution supports a feature).",
-    )
-    documentation_url: StrictStr | None = Field(
-        default=None, alias="documentationUrl", description="The link to further documentation regarding the feature."
-    )
+    endpoint: Annotated[StrictStr | None, Field(description='Endpoints that are associated with the feature e.g. (available for use if an Institution supports a feature).')] = None
+    documentation_url: Annotated[StrictStr | None, Field(alias='documentationUrl', description='The link to further documentation regarding the feature.')] = None
     __properties = ["feature", "endpoint", "documentationUrl"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

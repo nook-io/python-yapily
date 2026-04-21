@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,7 +28,7 @@ class RegisterWebhookRequestCallbackUrl(BaseModel):
     RegisterWebhookRequestCallbackUrl
     """
 
-    main: RegisterWebhookRequestCallbackUrlMain = Field(...)
+    main: Annotated[RegisterWebhookRequestCallbackUrlMain, Field()]
     backup: RegisterWebhookRequestCallbackUrlBackup | None = None
     __properties = ["main", "backup"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

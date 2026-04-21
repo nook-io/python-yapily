@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -30,11 +31,11 @@ class PaymentStatusDetails(BaseModel):
     """
 
     status: PaymentStatus | None = None
-    status_reason: StrictStr | None = Field(default=None, alias="statusReason")
-    status_reason_description: StrictStr | None = Field(default=None, alias="statusReasonDescription")
-    status_update_date: datetime | None = Field(default=None, alias="statusUpdateDate")
-    multi_authorisation_status: MultiAuthorisation | None = Field(default=None, alias="multiAuthorisationStatus")
-    iso_status: PaymentIsoStatus | None = Field(default=None, alias="isoStatus")
+    status_reason: Annotated[StrictStr | None, Field(alias='statusReason')] = None
+    status_reason_description: Annotated[StrictStr | None, Field(alias='statusReasonDescription')] = None
+    status_update_date: Annotated[datetime | None, Field(alias='statusUpdateDate')] = None
+    multi_authorisation_status: Annotated[MultiAuthorisation | None, Field(alias='multiAuthorisationStatus')] = None
+    iso_status: Annotated[PaymentIsoStatus | None, Field(alias='isoStatus')] = None
     __properties = [
         "status",
         "statusReason",

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,10 +25,8 @@ class GetBulkPaymentStatus200ResponseDataStatusDetails(BaseModel):
     GetBulkPaymentStatus200ResponseDataStatusDetails
     """
 
-    status: StrictStr | None = Field(
-        default=None, description="Bulk file status. Enum: `COMPLETED` `PENDING` `FAILED` `UNKNOWN`"
-    )
-    updated_at: StrictStr | None = Field(default=None, alias="updatedAt")
+    status: Annotated[StrictStr | None, Field(description='Bulk file status. Enum: `COMPLETED` `PENDING` `FAILED` `UNKNOWN`')] = None
+    updated_at: Annotated[StrictStr | None, Field(alias='updatedAt')] = None
     __properties = ["status", "updatedAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

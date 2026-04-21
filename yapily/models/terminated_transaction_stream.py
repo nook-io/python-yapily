@@ -29,36 +29,42 @@ class TerminatedTransactionStream(BaseModel):
     Terminated transaction stream generated as part of the financial profile for a User.  # noqa: E501
     """
 
-    name: StrictStr | None = Field(default=None, description="The name of the TransactionStream")
-    transactions: Annotated[list[EnrichedTransaction], Field()] | None = Field(
-        default=None, description="A list of Transactions from the transaction stream."
-    )
-    transaction_schedule: TransactionSchedule | None = Field(default=None, alias="transactionSchedule")
-    schedule_consistency_score: StrictFloat | StrictInt | None = Field(
-        default=None,
-        alias="scheduleConsistencyScore",
-        description="The consistency of the transaction.  This is a number between 0 and 1 with 1 being the most consistent schedule.",
-    )
-    next_expected_transaction_date: date | None = Field(
-        default=None, alias="nextExpectedTransactionDate", description="When is the transaction expected to occur next."
-    )
-    earliest_transaction_date: date | None = Field(
-        default=None, alias="earliestTransactionDate", description="When is the first recorded transaction date"
-    )
-    most_recent_transaction_date: date | None = Field(
-        default=None, alias="mostRecentTransactionDate", description="When is the most recent transaction date"
-    )
-    amount_consistency_score: StrictFloat | StrictInt | None = Field(
-        default=None,
-        alias="amountConsistencyScore",
-        description="The consistency of the amount of the transaction.  This is a number between 0 and 1 with 1 being the most consistent amount.",
-    )
-    average_amount: StrictFloat | StrictInt | None = Field(
-        default=None, alias="averageAmount", description="The average amount of the transaction stream"
-    )
-    missed_transactions: StrictInt | None = Field(
-        default=None, alias="missedTransactions", description="Missed transactions of transaction stream"
-    )
+    name: Annotated[StrictStr | None, Field(description="The name of the TransactionStream")] = None
+    transactions: Annotated[
+        list[EnrichedTransaction] | None, Field(description="A list of Transactions from the transaction stream.")
+    ] = None
+    transaction_schedule: Annotated[TransactionSchedule | None, Field(alias="transactionSchedule")] = None
+    schedule_consistency_score: Annotated[
+        StrictFloat | StrictInt | None,
+        Field(
+            alias="scheduleConsistencyScore",
+            description="The consistency of the transaction.  This is a number between 0 and 1 with 1 being the most consistent schedule.",
+        ),
+    ] = None
+    next_expected_transaction_date: Annotated[
+        date | None,
+        Field(alias="nextExpectedTransactionDate", description="When is the transaction expected to occur next."),
+    ] = None
+    earliest_transaction_date: Annotated[
+        date | None, Field(alias="earliestTransactionDate", description="When is the first recorded transaction date")
+    ] = None
+    most_recent_transaction_date: Annotated[
+        date | None, Field(alias="mostRecentTransactionDate", description="When is the most recent transaction date")
+    ] = None
+    amount_consistency_score: Annotated[
+        StrictFloat | StrictInt | None,
+        Field(
+            alias="amountConsistencyScore",
+            description="The consistency of the amount of the transaction.  This is a number between 0 and 1 with 1 being the most consistent amount.",
+        ),
+    ] = None
+    average_amount: Annotated[
+        StrictFloat | StrictInt | None,
+        Field(alias="averageAmount", description="The average amount of the transaction stream"),
+    ] = None
+    missed_transactions: Annotated[
+        StrictInt | None, Field(alias="missedTransactions", description="Missed transactions of transaction stream")
+    ] = None
     __properties = [
         "name",
         "transactions",

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,10 +25,8 @@ class AmountDetailsResponse(BaseModel):
     Monetary Amount.  # noqa: E501
     """
 
-    amount: StrictFloat | StrictInt | None = Field(default=None, description="The monetary value")
-    currency: StrictStr | None = Field(
-        default=None, description="The [ISO 4217](https://www.xe.com/iso4217.php) currency code"
-    )
+    amount: Annotated[StrictFloat | StrictInt | None, Field(description='The monetary value')] = None
+    currency: Annotated[StrictStr | None, Field(description='The [ISO 4217](https://www.xe.com/iso4217.php) currency code')] = None
     __properties = ["amount", "currency"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

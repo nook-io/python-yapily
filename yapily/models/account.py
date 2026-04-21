@@ -32,35 +32,45 @@ class Account(BaseModel):
     Account
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier of the account.")
-    type: StrictStr | None = Field(default=None, description="Specifies the type of account e.g. (BUSINESS_CURRENT).")
-    description: StrictStr | None = Field(
-        default=None, description="Product name as defined by the financial institution for this account"
+    id: Annotated[StrictStr | None, Field(description="Unique identifier of the account.")] = None
+    type: Annotated[StrictStr | None, Field(description="Specifies the type of account e.g. (BUSINESS_CURRENT).")] = (
+        None
     )
-    balance: StrictFloat | StrictInt | None = Field(
-        default=None,
-        description="Main / headline balance for the account. <br><br> Use of this field is recommended as fallback only. Instead, use of the typed balances (accountBalances) is recommended.",
-    )
-    currency: StrictStr | None = Field(
-        default=None,
-        description="Currency the bank account balance is denoted in. <br><br> Specified as a 3-letter ISO 4217 currency code",
-    )
-    usage_type: UsageType | None = Field(default=None, alias="usageType")
-    account_type: AccountType | None = Field(default=None, alias="accountType")
-    nickname: StrictStr | None = Field(
-        default=None,
-        description="Nickname of the account that was provided by the account owner. <br><br> May be used to aid identification of the account.",
-    )
-    details: StrictStr | None = Field(
-        default=None,
-        description="Supplementary specifications that might be provided by the Bank. These provide further characteristics about the account.",
-    )
-    account_names: Annotated[list[AccountName], Field()] | None = Field(default=None, alias="accountNames")
-    account_identifications: list[AccountIdentification] | None = Field(default=None, alias="accountIdentifications")
-    account_balances: Annotated[list[AccountBalance], Field()] | None = Field(default=None, alias="accountBalances")
-    consolidated_account_information: ConsolidatedAccountInformation | None = Field(
-        default=None, alias="consolidatedAccountInformation"
-    )
+    description: Annotated[
+        StrictStr | None, Field(description="Product name as defined by the financial institution for this account")
+    ] = None
+    balance: Annotated[
+        StrictFloat | StrictInt | None,
+        Field(
+            description="Main / headline balance for the account. <br><br> Use of this field is recommended as fallback only. Instead, use of the typed balances (accountBalances) is recommended."
+        ),
+    ] = None
+    currency: Annotated[
+        StrictStr | None,
+        Field(
+            description="Currency the bank account balance is denoted in. <br><br> Specified as a 3-letter ISO 4217 currency code"
+        ),
+    ] = None
+    usage_type: Annotated[UsageType | None, Field(alias="usageType")] = None
+    account_type: Annotated[AccountType | None, Field(alias="accountType")] = None
+    nickname: Annotated[
+        StrictStr | None,
+        Field(
+            description="Nickname of the account that was provided by the account owner. <br><br> May be used to aid identification of the account."
+        ),
+    ] = None
+    details: Annotated[
+        StrictStr | None,
+        Field(
+            description="Supplementary specifications that might be provided by the Bank. These provide further characteristics about the account."
+        ),
+    ] = None
+    account_names: Annotated[list[AccountName] | None, Field(alias="accountNames")] = None
+    account_identifications: Annotated[list[AccountIdentification] | None, Field(alias="accountIdentifications")] = None
+    account_balances: Annotated[list[AccountBalance] | None, Field(alias="accountBalances")] = None
+    consolidated_account_information: Annotated[
+        ConsolidatedAccountInformation | None, Field(alias="consolidatedAccountInformation")
+    ] = None
     __properties = [
         "id",
         "type",

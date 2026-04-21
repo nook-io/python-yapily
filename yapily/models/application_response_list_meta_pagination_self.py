@@ -25,16 +25,9 @@ class ApplicationResponseListMetaPaginationSelf(BaseModel):
     ApplicationResponseListMetaPaginationSelf
     """
 
-    offset: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=None, description="The number of skipped applications."
-    )
-    limit: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=None, description="The maximum number of applications for the current page."
-    )
-    sort: StrictStr | None = Field(
-        default=None,
-        description='The field by which results are sorted by. Default direction is ascending, descending is identified by a "-" prefix.',
-    )
+    offset: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(description='The number of skipped applications.')] = None
+    limit: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(description='The maximum number of applications for the current page.')] = None
+    sort: Annotated[StrictStr | None, Field(description='The field by which results are sorted by. Default direction is ascending, descending is identified by a "-" prefix.')] = None
     __properties = ["offset", "limit", "sort"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

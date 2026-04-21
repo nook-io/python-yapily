@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,11 +25,7 @@ class PaymentRisk(BaseModel):
     Additional information about the payment that may be used for risk scoring  # noqa: E501
     """
 
-    context_type: StrictStr | None = Field(
-        default=None,
-        alias="contextType",
-        description="__Optional__. The payment context code. Allowed values are [BILL_IN_ADVANCE, BILL_IN_ARREARS, ECOMMERCE_MERCHANT, FACE_TO_FACE_POS, TRANSFER_TO_SELF,TRANSFER_TO_THIRD_PARTY, PISP_PAYEE ].",
-    )
+    context_type: Annotated[StrictStr | None, Field(alias='contextType', description='__Optional__. The payment context code. Allowed values are [BILL_IN_ADVANCE, BILL_IN_ARREARS, ECOMMERCE_MERCHANT, FACE_TO_FACE_POS, TRANSFER_TO_SELF,TRANSFER_TO_THIRD_PARTY, PISP_PAYEE ].')] = None
     __properties = ["contextType"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

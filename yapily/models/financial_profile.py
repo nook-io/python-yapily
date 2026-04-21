@@ -28,12 +28,13 @@ class FinancialProfile(BaseModel):
     A financial profile for a User.  # noqa: E501
     """
 
-    status: StrictStr | None = Field(
-        default=None, description="The status, can be EMPTY, PARTIAL, PENDING, COMPLETED or ERROR."
-    )
-    profile_consents: Annotated[list[ProfileConsent], Field()] | None = Field(
-        default=None, alias="profileConsents", description="A list of ProfileConsent used in the financial profile."
-    )
+    status: Annotated[
+        StrictStr | None, Field(description="The status, can be EMPTY, PARTIAL, PENDING, COMPLETED or ERROR.")
+    ] = None
+    profile_consents: Annotated[
+        list[ProfileConsent] | None,
+        Field(alias="profileConsents", description="A list of ProfileConsent used in the financial profile."),
+    ] = None
     enrichment: EnrichedWrapper | None = None
     __properties = ["status", "profileConsents", "enrichment"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

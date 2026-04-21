@@ -28,17 +28,18 @@ class BalancePredictionProfile(BaseModel):
     A Balance Prediction profile for a User.  # noqa: E501
     """
 
-    status: StrictStr | None = Field(
-        default=None, description="The status, will be COMPLETED which represents successful retreival of profile."
-    )
-    profile_consents: Annotated[list[ProfileConsent], Field()] | None = Field(
-        default=None,
-        alias="profileConsents",
-        description="A list of ProfileConsents used in the Balance Prediction profile.",
-    )
-    enriched_balances: Annotated[list[EnrichedBalances], Field()] | None = Field(
-        default=None, alias="enrichedBalances", description="A list of Balances returned by Balance Prediction profile."
-    )
+    status: Annotated[
+        StrictStr | None,
+        Field(description="The status, will be COMPLETED which represents successful retreival of profile."),
+    ] = None
+    profile_consents: Annotated[
+        list[ProfileConsent] | None,
+        Field(alias="profileConsents", description="A list of ProfileConsents used in the Balance Prediction profile."),
+    ] = None
+    enriched_balances: Annotated[
+        list[EnrichedBalances] | None,
+        Field(alias="enrichedBalances", description="A list of Balances returned by Balance Prediction profile."),
+    ] = None
     __properties = ["status", "profileConsents", "enrichedBalances"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -27,12 +27,9 @@ class Category(BaseModel):
     Income and Expense `Category` in which the transaction resides.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier of the category")
-    label: StrictStr | None = Field(default=None, description="Descriptive identifier of the category.")
-    country: StrictStr | None = Field(
-        default=None,
-        description="The country code of where the category transaction took place, denoted as a 3-digit character code - ISO 3166.",
-    )
+    id: Annotated[StrictStr | None, Field(description='Unique identifier of the category')] = None
+    label: Annotated[StrictStr | None, Field(description='Descriptive identifier of the category.')] = None
+    country: Annotated[StrictStr | None, Field(description='The country code of where the category transaction took place, denoted as a 3-digit character code - ISO 3166.')] = None
     subcategories: Annotated[list[Subcategory], Field()] | None = None
     __properties = ["id", "label", "country", "subcategories"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

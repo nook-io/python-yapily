@@ -27,10 +27,8 @@ class ApplicationResponseListMeta(BaseModel):
     ApplicationResponseListMeta
     """
 
-    tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
-    count: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=None, description="The number of applications in the current page."
-    )
+    tracing_id: Annotated[StrictStr | None, Field(alias='tracingId')] = None
+    count: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(description='The number of applications in the current page.')] = None
     pagination: ApplicationResponseListMetaPagination | None = None
     __properties = ["tracingId", "count", "pagination"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -28,7 +29,7 @@ class CreditLine(BaseModel):
     """
 
     type: CreditLineType | None = None
-    credit_line_amount: Amount | None = Field(default=None, alias="creditLineAmount")
+    credit_line_amount: Annotated[Amount | None, Field(alias='creditLineAmount')] = None
     __properties = ["type", "creditLineAmount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

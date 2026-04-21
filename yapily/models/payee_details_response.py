@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,23 +28,11 @@ class PayeeDetailsResponse(BaseModel):
     Details of the beneficiary [person or business].  # noqa: E501
     """
 
-    name: StrictStr | None = Field(default=None, description="The account holder name of the beneficiary.")
-    account_identifications: list[AccountIdentificationResponse] | None = Field(
-        default=None,
-        alias="accountIdentifications",
-        description="The account identifications that identify the `Payee` bank account.",
-    )
+    name: Annotated[StrictStr | None, Field(description='The account holder name of the beneficiary.')] = None
+    account_identifications: Annotated[list[AccountIdentificationResponse] | None, Field(alias='accountIdentifications', description='The account identifications that identify the `Payee` bank account.')] = None
     address: AddressResponse | None = None
-    merchant_id: StrictStr | None = Field(
-        default=None,
-        alias="merchantId",
-        description="The merchant ID is a unique code provided by the payment processor to the merchant.",
-    )
-    merchant_category_code: StrictStr | None = Field(
-        default=None,
-        alias="merchantCategoryCode",
-        description="The category code of the merchant in case the `Payee` is a business. Specified as a 3-letter ISO 18245 code.",
-    )
+    merchant_id: Annotated[StrictStr | None, Field(alias='merchantId', description='The merchant ID is a unique code provided by the payment processor to the merchant.')] = None
+    merchant_category_code: Annotated[StrictStr | None, Field(alias='merchantCategoryCode', description='The category code of the merchant in case the `Payee` is a business. Specified as a 3-letter ISO 18245 code.')] = None
     __properties = ["name", "accountIdentifications", "address", "merchantId", "merchantCategoryCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

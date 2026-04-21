@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -31,20 +32,13 @@ class HostedPaymentRequestDetailsLink(BaseModel):
     HostedPaymentRequestDetailsLink
     """
 
-    reference: StrictStr | None = Field(
-        default=None,
-        description="The payment reference or description. Limited to a maximum of 18 characters for UK institutions.",
-    )
-    context_type: PaymentContextTypeResponse | None = Field(default=None, alias="contextType")
+    reference: Annotated[StrictStr | None, Field(description='The payment reference or description. Limited to a maximum of 18 characters for UK institutions.')] = None
+    context_type: Annotated[PaymentContextTypeResponse | None, Field(alias='contextType')] = None
     type: PaymentTypeResponse | None = None
     payee: PayeeDetailsResponse | None = None
     payer: PayerDetailsResponse | None = None
-    amount_details: AmountDetailsResponse | None = Field(default=None, alias="amountDetails")
-    payment_due_date: date | None = Field(
-        default=None,
-        alias="paymentDueDate",
-        description="The date that the payment is due. Displayed to the end user in the payment summary screen.",
-    )
+    amount_details: Annotated[AmountDetailsResponse | None, Field(alias='amountDetails')] = None
+    payment_due_date: Annotated[date | None, Field(alias='paymentDueDate', description='The date that the payment is due. Displayed to the end user in the payment summary screen.')] = None
     __properties = ["reference", "contextType", "type", "payee", "payer", "amountDetails", "paymentDueDate"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

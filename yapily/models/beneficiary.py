@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,16 +27,10 @@ class Beneficiary(BaseModel):
     Account information belonging to the target beneficiary (person/ business).  # noqa: E501
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier of the `beneficiary`.")
-    reference: StrictStr | None = Field(
-        default=None,
-        description="A creditor reference that is requested to be used for all payment instructions to this beneficiary.",
-    )
+    id: Annotated[StrictStr | None, Field(description='Unique identifier of the `beneficiary`.')] = None
+    reference: Annotated[StrictStr | None, Field(description='A creditor reference that is requested to be used for all payment instructions to this beneficiary.')] = None
     payee: BeneficiaryPayee | None = None
-    trusted: StrictBool | None = Field(
-        default=None,
-        description="Indicates whether the account owner has stated that this beneficiary should be trusted. This often results in reduced authentication and authorisation requirements on payments to the beneficiary.",
-    )
+    trusted: Annotated[StrictBool | None, Field(description='Indicates whether the account owner has stated that this beneficiary should be trusted. This often results in reduced authentication and authorisation requirements on payments to the beneficiary.')] = None
     __properties = ["id", "reference", "payee", "trusted"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

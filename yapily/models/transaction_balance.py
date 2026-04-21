@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -28,7 +29,7 @@ class TransactionBalance(BaseModel):
     """
 
     type: AccountBalanceType | None = None
-    balance_amount: Amount | None = Field(default=None, alias="balanceAmount")
+    balance_amount: Annotated[Amount | None, Field(alias='balanceAmount')] = None
     __properties = ["type", "balanceAmount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

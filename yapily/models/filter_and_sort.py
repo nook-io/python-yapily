@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,18 +28,9 @@ class FilterAndSort(BaseModel):
     FilterAndSort
     """
 
-    var_from: datetime | None = Field(
-        default=None,
-        alias="from",
-        description="__Optional__. The earliest date and time of resources / records that should be returned.",
-    )
-    before: datetime | None = Field(
-        default=None,
-        description="__Optional__. The latest date and time of resources / records that should be returned.",
-    )
-    limit: StrictInt | None = Field(
-        default=None, description="__Optional__. The maximum number of resources / records that should be returned."
-    )
+    var_from: Annotated[datetime | None, Field(alias='from', description='__Optional__. The earliest date and time of resources / records that should be returned.')] = None
+    before: Annotated[datetime | None, Field(description='__Optional__. The latest date and time of resources / records that should be returned.')] = None
+    limit: Annotated[StrictInt | None, Field(description='__Optional__. The maximum number of resources / records that should be returned.')] = None
     sort: SortEnum | None = None
     offset: StrictInt | None = None
     cursor: StrictStr | None = None

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -28,13 +29,9 @@ class VrpPeriodicLimit(BaseModel):
     VrpPeriodicLimit
     """
 
-    maximum_amount: Amount = Field(
-        default=...,
-        alias="maximumAmount",
-        description="__Mandatory__. Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the Alignment is Calendar, the limit is pro-rated in the first period to the remaining number of days.",
-    )
-    frequency: FrequencyEnum = Field(...)
-    alignment: AlignmentEnum = Field(...)
+    maximum_amount: Annotated[Amount, Field(alias='maximumAmount', description='__Mandatory__. Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the Alignment is Calendar, the limit is pro-rated in the first period to the remaining number of days.')] = ...
+    frequency: Annotated[FrequencyEnum, Field()]
+    alignment: Annotated[AlignmentEnum, Field()]
     __properties = ["maximumAmount", "frequency", "alignment"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

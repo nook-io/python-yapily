@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,16 +26,10 @@ class AccountStatement(BaseModel):
     Statement information belonging to the account.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier for the statement.")
-    start_date_time: datetime | None = Field(
-        default=None, alias="startDateTime", description="Date and time of when the statement period starts."
-    )
-    end_date_time: datetime | None = Field(
-        default=None, alias="endDateTime", description="Date and time of when the statement period ends."
-    )
-    creation_date_time: datetime | None = Field(
-        default=None, alias="creationDateTime", description="Date and time of when the statement was created."
-    )
+    id: Annotated[StrictStr | None, Field(description='Unique identifier for the statement.')] = None
+    start_date_time: Annotated[datetime | None, Field(alias='startDateTime', description='Date and time of when the statement period starts.')] = None
+    end_date_time: Annotated[datetime | None, Field(alias='endDateTime', description='Date and time of when the statement period ends.')] = None
+    creation_date_time: Annotated[datetime | None, Field(alias='creationDateTime', description='Date and time of when the statement was created.')] = None
     __properties = ["id", "startDateTime", "endDateTime", "creationDateTime"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

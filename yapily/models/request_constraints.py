@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,7 +28,7 @@ class RequestConstraints(BaseModel):
     """
 
     headers: ModelSchema | None = None
-    body: ModelSchema = Field(...)
+    body: Annotated[ModelSchema, Field()]
     __properties = ["headers", "body"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

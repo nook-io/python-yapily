@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,22 +25,10 @@ class CurrencyExchange(BaseModel):
     Provides details on the currrency exchange.  # noqa: E501
     """
 
-    source_currency: StrictStr | None = Field(
-        default=None, alias="sourceCurrency", description="Currency from which an amount is to be converted."
-    )
-    target_currency: StrictStr | None = Field(
-        default=None, alias="targetCurrency", description="Currency to which an amount is to be converted."
-    )
-    unit_currency: StrictStr | None = Field(
-        default=None,
-        alias="unitCurrency",
-        description="The currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP.",
-    )
-    exchange_rate: StrictFloat | StrictInt | None = Field(
-        default=None,
-        alias="exchangeRate",
-        description="The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency.",
-    )
+    source_currency: Annotated[StrictStr | None, Field(alias='sourceCurrency', description='Currency from which an amount is to be converted.')] = None
+    target_currency: Annotated[StrictStr | None, Field(alias='targetCurrency', description='Currency to which an amount is to be converted.')] = None
+    unit_currency: Annotated[StrictStr | None, Field(alias='unitCurrency', description='The currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP.')] = None
+    exchange_rate: Annotated[StrictFloat | StrictInt | None, Field(alias='exchangeRate', description='The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency.')] = None
     __properties = ["sourceCurrency", "targetCurrency", "unitCurrency", "exchangeRate"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

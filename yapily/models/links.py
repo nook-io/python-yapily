@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,7 +25,7 @@ class Links(BaseModel):
     Links
     """
 
-    var_self: StrictStr | None = Field(default=None, alias="self")
+    var_self: Annotated[StrictStr | None, Field(alias='self')] = None
     first: StrictStr | None = None
     last: StrictStr | None = None
     next: StrictStr | None = None

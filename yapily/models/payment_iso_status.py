@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,7 +28,7 @@ class PaymentIsoStatus(BaseModel):
     """
 
     code: PaymentIsoStatusCodeEnum | None = None
-    name: StrictStr | None = Field(default=None, description="The full name of the ISO 20022 `PaymentStatusCode`.")
+    name: Annotated[StrictStr | None, Field(description='The full name of the ISO 20022 `PaymentStatusCode`.')] = None
     __properties = ["code", "name"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

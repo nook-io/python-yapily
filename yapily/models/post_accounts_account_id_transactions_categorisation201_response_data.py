@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,7 +25,7 @@ class PostAccountsAccountIdTransactionsCategorisation201ResponseData(BaseModel):
     PostAccountsAccountIdTransactionsCategorisation201ResponseData
     """
 
-    categorisation_id: StrictStr | None = Field(default=None, alias="categorisationId")
+    categorisation_id: Annotated[StrictStr | None, Field(alias='categorisationId')] = None
     __properties = ["categorisationId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

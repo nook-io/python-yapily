@@ -30,8 +30,8 @@ class BulkPaymentDetailsByIdResponseData(BaseModel):
     """
 
     id: StrictStr | None = None
-    consent_id: StrictStr | None = Field(default=None, alias="consentId")
-    created_at: StrictStr | None = Field(default=None, alias="createdAt")
+    consent_id: Annotated[StrictStr | None, Field(alias='consentId')] = None
+    created_at: Annotated[StrictStr | None, Field(alias='createdAt')] = None
     payments: Annotated[list[BulkPaymentDetailsByIdResponseDataPaymentsInner], Field()] | None = None
     __properties = ["id", "consentId", "createdAt", "payments"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

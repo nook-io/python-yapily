@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,16 +26,8 @@ class HostedConsentPhase(BaseModel):
     The phase of the Consent Request.  # noqa: E501
     """
 
-    phase_name: StrictStr | None = Field(
-        default=None,
-        alias="phaseName",
-        description="The name of the hosted consent process phase. Allowed values are : <ul> <li> INITIATED - Process initiated </li> <li> INSTITUTION_SUBMITTED - Consent institution submitted </li> <li>    AUTHORISATION_INITIATED - All details required for consent initiation have been collected</li> <li> AUTHORISATION_CREATED - Consent authorisation request created with Institution, awaiting authorisation completion </li> <li> AUTHORISATION_FAILED - Consent authorisation failed and will not proceed further</li> <li> AUTHORISATION_REJECTED - Consent Authorisation request rejected by Institution and will not proceed further </li> <li>    DECOUPLED_AUTHORISATION - For embedded banks, decoupled authorisation was initiated by the bank</li> <li>    EMBEDDED_CREDENTIAL_REQUESTED - For embedded banks, a UI element to collect user credentials was displayed</li> <li>    EMBEDDED_CODE_REQUESTED - For embedded banks, a UI element to collect SCA for initiated consent was displayed</li><li>    EMBEDDED_TYPE_REQUESTED - For embedded banks, a UI element to allow the user to select their preferred SCA method for this consent authorisation was displayed</li> <li>    EMBEDDED_CODE_COLLECTED - For embedded banks, SCA code was collected for consent authorisation</li><li>    EMBEDDED_TYPE_SELECTED - For embedded banks, preferred SCA method was selected for consent authorisation</li> <li>    CONSENT_POLLING_STARTED - We start polling the bank for consent authorisation status</li><li>    CONSENT_POLLING_ENDED - We finish polling the bank for consent authorisation status</li> <li> AUTHORISED - Consent authorisation completed </li> <li> FINISHED - Process finished </li>  </ul>",
-    )
-    phase_created_at: datetime | None = Field(
-        default=None,
-        alias="phaseCreatedAt",
-        description="The date and time at which the phase of the hosted Consent was created.",
-    )
+    phase_name: Annotated[StrictStr | None, Field(alias='phaseName', description='The name of the hosted consent process phase. Allowed values are : <ul> <li> INITIATED - Process initiated </li> <li> INSTITUTION_SUBMITTED - Consent institution submitted </li> <li>    AUTHORISATION_INITIATED - All details required for consent initiation have been collected</li> <li> AUTHORISATION_CREATED - Consent authorisation request created with Institution, awaiting authorisation completion </li> <li> AUTHORISATION_FAILED - Consent authorisation failed and will not proceed further</li> <li> AUTHORISATION_REJECTED - Consent Authorisation request rejected by Institution and will not proceed further </li> <li>    DECOUPLED_AUTHORISATION - For embedded banks, decoupled authorisation was initiated by the bank</li> <li>    EMBEDDED_CREDENTIAL_REQUESTED - For embedded banks, a UI element to collect user credentials was displayed</li> <li>    EMBEDDED_CODE_REQUESTED - For embedded banks, a UI element to collect SCA for initiated consent was displayed</li><li>    EMBEDDED_TYPE_REQUESTED - For embedded banks, a UI element to allow the user to select their preferred SCA method for this consent authorisation was displayed</li> <li>    EMBEDDED_CODE_COLLECTED - For embedded banks, SCA code was collected for consent authorisation</li><li>    EMBEDDED_TYPE_SELECTED - For embedded banks, preferred SCA method was selected for consent authorisation</li> <li>    CONSENT_POLLING_STARTED - We start polling the bank for consent authorisation status</li><li>    CONSENT_POLLING_ENDED - We finish polling the bank for consent authorisation status</li> <li> AUTHORISED - Consent authorisation completed </li> <li> FINISHED - Process finished </li>  </ul>')] = None
+    phase_created_at: Annotated[datetime | None, Field(alias='phaseCreatedAt', description='The date and time at which the phase of the hosted Consent was created.')] = None
     __properties = ["phaseName", "phaseCreatedAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

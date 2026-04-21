@@ -28,7 +28,7 @@ class Balances(BaseModel):
     Balances
     """
 
-    main_balance_amount: Amount | None = Field(default=None, alias="mainBalanceAmount")
+    main_balance_amount: Annotated[Amount | None, Field(alias='mainBalanceAmount')] = None
     balances: Annotated[list[AccountBalance], Field()] | None = None
     __properties = ["mainBalanceAmount", "balances"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

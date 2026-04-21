@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -30,11 +31,11 @@ class DirectDebitResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    status_details: PaymentStatusDetails | None = Field(default=None, alias="statusDetails")
-    payee_details: DirectDebitPayee | None = Field(default=None, alias="payeeDetails")
+    status_details: Annotated[PaymentStatusDetails | None, Field(alias='statusDetails')] = None
+    payee_details: Annotated[DirectDebitPayee | None, Field(alias='payeeDetails')] = None
     reference: StrictStr | None = None
-    previous_payment_amount: Amount | None = Field(default=None, alias="previousPaymentAmount")
-    previous_payment_date_time: datetime | None = Field(default=None, alias="previousPaymentDateTime")
+    previous_payment_amount: Annotated[Amount | None, Field(alias='previousPaymentAmount')] = None
+    previous_payment_date_time: Annotated[datetime | None, Field(alias='previousPaymentDateTime')] = None
     __properties = [
         "id",
         "statusDetails",

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -28,29 +29,13 @@ class CreateHostedVRPConsentRequest(BaseModel):
     CreateHostedVRPConsentRequest
     """
 
-    user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="__Conditional__. Yapily Identifier for the `User` returned by the create user step POST /users. Clients must either provide userId or applicationUserId.",
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="__Conditional__. Client's own `User` reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value. Clients must either provide userId or applicationUserId.",
-    )
-    institution_identifiers: InstitutionIdentifiers = Field(default=..., alias="institutionIdentifiers")
-    user_settings: UserSettings | None = Field(default=None, alias="userSettings")
-    redirect_url: StrictStr = Field(
-        default=...,
-        alias="redirectUrl",
-        description="URL of client's server to redirect the PSU after completion of the consent authorisation.",
-    )
-    one_time_token: StrictBool | None = Field(
-        default=None,
-        alias="oneTimeToken",
-        description="Used to receive a oneTimeToken rather than a consentToken at the redirectUrl for additional security. This can only be used when the redirectUrl is set.",
-    )
-    vrp_setup: VRPSetupRequest = Field(default=..., alias="vrpSetup")
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='__Conditional__. Yapily Identifier for the `User` returned by the create user step POST /users. Clients must either provide userId or applicationUserId.')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description="__Conditional__. Client's own `User` reference. If the client wants to work with their own unique references for individual PSUs then they can use the applicationUserId property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied applicationUserId, then a new Yapily userId is created automatically and linked to the applicationUserId value. Clients must either provide userId or applicationUserId.")] = None
+    institution_identifiers: Annotated[InstitutionIdentifiers, Field(alias='institutionIdentifiers')] = ...
+    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
+    redirect_url: Annotated[StrictStr, Field(alias='redirectUrl', description="URL of client's server to redirect the PSU after completion of the consent authorisation.")] = ...
+    one_time_token: Annotated[StrictBool | None, Field(alias='oneTimeToken', description='Used to receive a oneTimeToken rather than a consentToken at the redirectUrl for additional security. This can only be used when the redirectUrl is set.')] = None
+    vrp_setup: Annotated[VRPSetupRequest, Field(alias='vrpSetup')] = ...
     __properties = [
         "userId",
         "applicationUserId",

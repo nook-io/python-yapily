@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,14 +25,8 @@ class InstitutionError(BaseModel):
     Raw error details provided by the `Institution`, when it was the error source.  # noqa: E501
     """
 
-    error_message: StrictStr | None = Field(
-        default=None, alias="errorMessage", description="Textual description of the `Institution` error."
-    )
-    http_status_code: StrictInt | None = Field(
-        default=None,
-        alias="httpStatusCode",
-        description="Numeric HTTP status code associated with the `Institution` error.",
-    )
+    error_message: Annotated[StrictStr | None, Field(alias='errorMessage', description='Textual description of the `Institution` error.')] = None
+    http_status_code: Annotated[StrictInt | None, Field(alias='httpStatusCode', description='Numeric HTTP status code associated with the `Institution` error.')] = None
     __properties = ["errorMessage", "httpStatusCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

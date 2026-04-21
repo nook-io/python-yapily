@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -28,15 +29,9 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankT
     GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCode
     """
 
-    domain_code: (
-        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None
-    ) = Field(default=None, alias="domainCode")
-    family_code: (
-        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None
-    ) = Field(default=None, alias="familyCode")
-    sub_family_code: (
-        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None
-    ) = Field(default=None, alias="subFamilyCode")
+    domain_code: Annotated[GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None, Field(alias='domainCode')] = None
+    family_code: Annotated[GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None, Field(alias='familyCode')] = None
+    sub_family_code: Annotated[GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerIsoBankTransactionCodeDomainCode | None, Field(alias='subFamilyCode')] = None
     __properties = ["domainCode", "familyCode", "subFamilyCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

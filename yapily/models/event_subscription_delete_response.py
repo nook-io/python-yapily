@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,16 +28,10 @@ class EventSubscriptionDeleteResponse(BaseModel):
     EventSubscriptionDeleteResponse
     """
 
-    event_type_id: StrictStr = Field(
-        default=...,
-        alias="eventTypeId",
-        description="Unique identifier of the event type (for which notifications will be sent)",
-    )
-    application_id: StrictStr = Field(
-        default=..., alias="applicationId", description="Application related to event subscription."
-    )
-    created: datetime = Field(default=..., description="Creation datetime of event subscription.")
-    delete_status: DeleteStatusEnum = Field(default=..., alias="deleteStatus")
+    event_type_id: Annotated[StrictStr, Field(alias='eventTypeId', description='Unique identifier of the event type (for which notifications will be sent)')] = ...
+    application_id: Annotated[StrictStr, Field(alias='applicationId', description='Application related to event subscription.')] = ...
+    created: Annotated[datetime, Field(description='Creation datetime of event subscription.')] = ...
+    delete_status: Annotated[DeleteStatusEnum, Field(alias='deleteStatus')] = ...
     __properties = ["eventTypeId", "applicationId", "created", "deleteStatus"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,18 +28,10 @@ class SubmissionRequest(BaseModel):
     __Mandatory__. The payment request object defining the details of the payment for execution under the Variable Recurring Payment consent.  # noqa: E501
     """
 
-    payment_idempotency_id: StrictStr = Field(
-        default=...,
-        alias="paymentIdempotencyId",
-        description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
-    )
-    psu_authentication_method: StrictStr = Field(
-        default=...,
-        alias="psuAuthenticationMethod",
-        description="__Mandatory__. Chosen authentication method for submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
-    )
-    context_type: PaymentContextType | None = Field(default=None, alias="contextType")
-    payment_amount: Amount = Field(default=..., alias="paymentAmount")
+    payment_idempotency_id: Annotated[StrictStr, Field(alias='paymentIdempotencyId', description='__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.')] = ...
+    psu_authentication_method: Annotated[StrictStr, Field(alias='psuAuthenticationMethod', description='__Mandatory__. Chosen authentication method for submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].')] = ...
+    context_type: Annotated[PaymentContextType | None, Field(alias='contextType')] = None
+    payment_amount: Annotated[Amount, Field(alias='paymentAmount')] = ...
     __properties = ["paymentIdempotencyId", "psuAuthenticationMethod", "contextType", "paymentAmount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

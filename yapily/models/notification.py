@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,10 +25,8 @@ class Notification(BaseModel):
     Subscription details for how and where to receive notifications.  # noqa: E501
     """
 
-    type: StrictStr = Field(
-        default=..., description="How the notification will be delivered. This is currently only via WEBHOOK."
-    )
-    url: StrictStr = Field(default=..., description="URL to which the notification will be sent.")
+    type: Annotated[StrictStr, Field(description='How the notification will be delivered. This is currently only via WEBHOOK.')] = ...
+    url: Annotated[StrictStr, Field(description='URL to which the notification will be sent.')] = ...
     __properties = ["type", "url"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

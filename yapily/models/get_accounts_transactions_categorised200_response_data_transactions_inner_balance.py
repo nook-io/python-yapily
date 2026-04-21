@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -29,9 +30,7 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
     """
 
     type: StrictStr | None = None
-    balance_amount: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount | None = Field(
-        default=None, alias="balanceAmount"
-    )
+    balance_amount: Annotated[GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount | None, Field(alias='balanceAmount')] = None
     __properties = ["type", "balanceAmount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

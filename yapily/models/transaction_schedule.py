@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,20 +25,9 @@ class TransactionSchedule(BaseModel):
     The frequency at which transactions occurred.  # noqa: E501
     """
 
-    frequency: StrictStr | None = Field(
-        default=None,
-        description="How often the transaction happens.  Can be 'Monthly', 'Twice monthly', 'Every two weeks', 'Every four weeks', 'Daily', 'Weekly', 'Every weekday', 'Twice daily', 'Twice every weekday'",
-    )
-    detailed_frequency: StrictStr | None = Field(
-        default=None,
-        alias="detailedFrequency",
-        description="When in the cycle the transaction occurs.  Can be 'Daily', 'Twice daily', 'Twice every weekday', 'Every weekday', 'Weekly on day n', 'Every two weeks on day n', 'Monthly on working day before day n of month', 'Monthly on last working day of month', 'Twice a month on 15th and last working day of month', 'Every four weeks on day n'",
-    )
-    detailed_frequency_parameter: StrictFloat | StrictInt | None = Field(
-        default=None,
-        alias="detailedFrequencyParameter",
-        description="The n in detailedFrequency where there is one - for week-based frequencies, an integer from 0 to 6 where 0 is Monday or for month-based frequencies, an integer from 0 to 27 where 0 is the first day of the month",
-    )
+    frequency: Annotated[StrictStr | None, Field(description="How often the transaction happens.  Can be 'Monthly', 'Twice monthly', 'Every two weeks', 'Every four weeks', 'Daily', 'Weekly', 'Every weekday', 'Twice daily', 'Twice every weekday'")] = None
+    detailed_frequency: Annotated[StrictStr | None, Field(alias='detailedFrequency', description="When in the cycle the transaction occurs.  Can be 'Daily', 'Twice daily', 'Twice every weekday', 'Every weekday', 'Weekly on day n', 'Every two weeks on day n', 'Monthly on working day before day n of month', 'Monthly on last working day of month', 'Twice a month on 15th and last working day of month', 'Every four weeks on day n'")] = None
+    detailed_frequency_parameter: Annotated[StrictFloat | StrictInt | None, Field(alias='detailedFrequencyParameter', description='The n in detailedFrequency where there is one - for week-based frequencies, an integer from 0 to 6 where 0 is Monday or for month-based frequencies, an integer from 0 to 27 where 0 is the first day of the month')] = None
     __properties = ["frequency", "detailedFrequency", "detailedFrequencyParameter"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

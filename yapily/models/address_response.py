@@ -27,26 +27,24 @@ class AddressResponse(BaseModel):
     The address of the `Payee` or `Payer`.  # noqa: E501
     """
 
-    address_lines: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None, alias="addressLines", description="The address line of the address"
-    )
-    street_name: StrictStr | None = Field(
-        default=None, alias="streetName", description="The street name of the address"
-    )
-    building_number: StrictStr | None = Field(
-        default=None, alias="buildingNumber", description="The building number of the address"
-    )
-    post_code: StrictStr | None = Field(default=None, alias="postCode", description="The post code of the address")
-    town_name: StrictStr | None = Field(default=None, alias="townName", description="The town name of the address")
-    county: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None, description="The list of counties for the address"
-    )
-    country: StrictStr | None = Field(default=None, description="The 2-letter country code for the address.")
-    department: StrictStr | None = Field(default=None, description="The department for the address")
-    sub_department: StrictStr | None = Field(
-        default=None, alias="subDepartment", description="The sub-department for the address"
-    )
-    address_type: AddressTypeEnumResponse | None = Field(default=None, alias="addressType")
+    address_lines: Annotated[
+        list[StrictStr] | None, Field(alias="addressLines", description="The address line of the address")
+    ] = None
+    street_name: Annotated[
+        StrictStr | None, Field(alias="streetName", description="The street name of the address")
+    ] = None
+    building_number: Annotated[
+        StrictStr | None, Field(alias="buildingNumber", description="The building number of the address")
+    ] = None
+    post_code: Annotated[StrictStr | None, Field(alias="postCode", description="The post code of the address")] = None
+    town_name: Annotated[StrictStr | None, Field(alias="townName", description="The town name of the address")] = None
+    county: Annotated[list[StrictStr] | None, Field(description="The list of counties for the address")] = None
+    country: Annotated[StrictStr | None, Field(description="The 2-letter country code for the address.")] = None
+    department: Annotated[StrictStr | None, Field(description="The department for the address")] = None
+    sub_department: Annotated[
+        StrictStr | None, Field(alias="subDepartment", description="The sub-department for the address")
+    ] = None
+    address_type: Annotated[AddressTypeEnumResponse | None, Field(alias="addressType")] = None
     __properties = [
         "addressLines",
         "streetName",

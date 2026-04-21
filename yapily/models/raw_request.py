@@ -16,7 +16,7 @@ import json
 import pprint
 import re  # noqa: F401
 from datetime import datetime
-from typing import Any
+from typing import Annotated, Any
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 
@@ -28,12 +28,12 @@ class RawRequest(BaseModel):
 
     method: StrictStr | None = None
     url: StrictStr | None = None
-    request_instant: datetime | None = Field(default=None, alias="requestInstant")
+    request_instant: Annotated[datetime | None, Field(alias='requestInstant')] = None
     headers: dict[str, StrictStr] | None = None
     body: dict[str, Any] | None = None
-    body_parameters: dict[str, StrictStr] | None = Field(default=None, alias="bodyParameters")
-    start_time: datetime | None = Field(default=None, alias="startTime")
-    started_at: datetime | None = Field(default=None, alias="startedAt")
+    body_parameters: Annotated[dict[str, StrictStr] | None, Field(alias='bodyParameters')] = None
+    start_time: Annotated[datetime | None, Field(alias='startTime')] = None
+    started_at: Annotated[datetime | None, Field(alias='startedAt')] = None
     __properties = ["method", "url", "requestInstant", "headers", "body", "bodyParameters", "startTime", "startedAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

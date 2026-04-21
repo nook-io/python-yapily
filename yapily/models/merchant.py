@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,14 +25,8 @@ class Merchant(BaseModel):
     Details of the merchant involved in the transaction.  # noqa: E501
     """
 
-    merchant_name: StrictStr | None = Field(
-        default=None, alias="merchantName", description="The name of the merchant involved in the transaction."
-    )
-    merchant_category_code: StrictStr | None = Field(
-        default=None,
-        alias="merchantCategoryCode",
-        description="Defines the underlying services and goods that the merchant provides. Specified as a 3-letter ISO 18245 code ",
-    )
+    merchant_name: Annotated[StrictStr | None, Field(alias='merchantName', description='The name of the merchant involved in the transaction.')] = None
+    merchant_category_code: Annotated[StrictStr | None, Field(alias='merchantCategoryCode', description='Defines the underlying services and goods that the merchant provides. Specified as a 3-letter ISO 18245 code ')] = None
     __properties = ["merchantName", "merchantCategoryCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

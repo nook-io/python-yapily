@@ -34,49 +34,64 @@ class HostedPayment(BaseModel):
     HostedPayment
     """
 
-    payment_id: StrictStr | None = Field(
-        default=None, alias="paymentId", description="The Unique Identifier of the payment."
+    payment_id: Annotated[
+        StrictStr | None, Field(alias="paymentId", description="The Unique Identifier of the payment.")
+    ] = None
+    hosted_payment_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="hostedPaymentId",
+            description="The Unique Identifier of the payment created using Yapily hosted application.",
+        ),
+    ] = None
+    consent_id: Annotated[
+        StrictStr | None, Field(alias="consentId", description="The Unique Identifier of the consent.")
+    ] = None
+    institution_identifiers: Annotated[InstitutionIdentifiersResponse | None, Field(alias="institutionIdentifiers")] = (
+        None
     )
-    hosted_payment_id: StrictStr | None = Field(
-        default=None,
-        alias="hostedPaymentId",
-        description="The Unique Identifier of the payment created using Yapily hosted application.",
-    )
-    consent_id: StrictStr | None = Field(
-        default=None, alias="consentId", description="The Unique Identifier of the consent."
-    )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
-    phases: Annotated[list[HostedPaymentPhase], Field()] | None = Field(
-        default=None, description="The phase reached by the payment and its timestamp."
-    )
-    payment_status: StrictStr | None = Field(
-        default=None,
-        alias="paymentStatus",
-        description="Payment status based on latest HostedAuthPaymentPhase in phases. Value can be <ul> <li>PENDING  -  Payment pending processing</li> <li>COMPLETED  -  Payment processing completed</li> <li>FAILED  -  Payment process failed</li></ul>",
-    )
-    status_details: Annotated[list[HostedPaymentStatusDetails], Field()] | None = Field(
-        default=None, alias="statusDetails", description="Details of the payment status."
-    )
-    institution_payment_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionPaymentId",
-        description="The Unique Identifier of the payment created with the `Institution`.",
-    )
-    payment_lifecycle_id: StrictStr | None = Field(
-        default=None,
-        alias="paymentLifecycleId",
-        description="The Unique Identifier provided by TPP in the Payment request to identify the payment.",
-    )
-    payment_idempotency_id: StrictStr | None = Field(
-        default=None,
-        alias="paymentIdempotencyId",
-        description="A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
-    )
-    reference: StrictStr | None = Field(
-        default=None,
-        description="The payment reference or description. Limited to a maximum of 18 characters for UK institutions.",
-    )
-    context_type: PaymentContextTypeResponse | None = Field(default=None, alias="contextType")
+    phases: Annotated[
+        list[HostedPaymentPhase] | None, Field(description="The phase reached by the payment and its timestamp.")
+    ] = None
+    payment_status: Annotated[
+        StrictStr | None,
+        Field(
+            alias="paymentStatus",
+            description="Payment status based on latest HostedAuthPaymentPhase in phases. Value can be <ul> <li>PENDING  -  Payment pending processing</li> <li>COMPLETED  -  Payment processing completed</li> <li>FAILED  -  Payment process failed</li></ul>",
+        ),
+    ] = None
+    status_details: Annotated[
+        list[HostedPaymentStatusDetails] | None,
+        Field(alias="statusDetails", description="Details of the payment status."),
+    ] = None
+    institution_payment_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="institutionPaymentId",
+            description="The Unique Identifier of the payment created with the `Institution`.",
+        ),
+    ] = None
+    payment_lifecycle_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="paymentLifecycleId",
+            description="The Unique Identifier provided by TPP in the Payment request to identify the payment.",
+        ),
+    ] = None
+    payment_idempotency_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="paymentIdempotencyId",
+            description="A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
+        ),
+    ] = None
+    reference: Annotated[
+        StrictStr | None,
+        Field(
+            description="The payment reference or description. Limited to a maximum of 18 characters for UK institutions."
+        ),
+    ] = None
+    context_type: Annotated[PaymentContextTypeResponse | None, Field(alias="contextType")] = None
     type: PaymentTypeResponse | None = None
     payee: PayeeDetailsResponse | None = None
     payer: PayerDetailsResponse | None = None

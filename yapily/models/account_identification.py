@@ -1,3 +1,5 @@
+from typing import Annotated
+
 """
 Yapily API
 
@@ -26,11 +28,13 @@ class AccountIdentification(BaseModel):
     AccountIdentification
     """
 
-    type: AccountIdentificationType = Field(...)
-    identification: StrictStr = Field(
-        default=...,
-        description="__Mandatory__. The value associated with the account identification type.<br><br> See [Account Identification Combinations](https://docs.yapily.com/pages/key-concepts/payments/payment-execution/intro-to-payment-execution/#account-identifications-combinations) for more information on the format of the values.",
-    )
+    type: AccountIdentificationType
+    identification: Annotated[
+        StrictStr,
+        Field(
+            description="__Mandatory__. The value associated with the account identification type.<br><br> See [Account Identification Combinations](https://docs.yapily.com/pages/key-concepts/payments/payment-execution/intro-to-payment-execution/#account-identifications-combinations) for more information on the format of the values."
+        ),
+    ] = ...
     __properties = ["type", "identification"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

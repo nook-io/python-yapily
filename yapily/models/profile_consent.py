@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,30 +26,14 @@ class ProfileConsent(BaseModel):
     Details of a consent linked to a `User Profile`.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(
-        default=None, description="Unique identifier of the `consent` in context of a user's profile."
-    )
-    status: StrictStr | None = Field(default=None, description="The status, can be PENDING, COMPLETED or ERROR.")
-    user_id: StrictStr | None = Field(default=None, alias="userId", description="The userUuid.")
-    reference_consent_id: StrictStr | None = Field(
-        default=None, alias="referenceConsentId", description="Unique identifier of the consent."
-    )
-    institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="__Mandatory__. The  `Institution` the authorisation request is sent to.",
-    )
-    created_at: datetime | None = Field(
-        default=None, alias="createdAt", description="When a profile consent is created."
-    )
-    expires_at: datetime | None = Field(
-        default=None, alias="expiresAt", description="When a profile consent is expired after created + X."
-    )
-    data_inserted_at: datetime | None = Field(
-        default=None,
-        alias="dataInsertedAt",
-        description="After data retrieval from aggregated profile consent is completed.",
-    )
+    id: Annotated[StrictStr | None, Field(description="Unique identifier of the `consent` in context of a user's profile.")] = None
+    status: Annotated[StrictStr | None, Field(description='The status, can be PENDING, COMPLETED or ERROR.')] = None
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='The userUuid.')] = None
+    reference_consent_id: Annotated[StrictStr | None, Field(alias='referenceConsentId', description='Unique identifier of the consent.')] = None
+    institution_id: Annotated[StrictStr | None, Field(alias='institutionId', description='__Mandatory__. The  `Institution` the authorisation request is sent to.')] = None
+    created_at: Annotated[datetime | None, Field(alias='createdAt', description='When a profile consent is created.')] = None
+    expires_at: Annotated[datetime | None, Field(alias='expiresAt', description='When a profile consent is expired after created + X.')] = None
+    data_inserted_at: Annotated[datetime | None, Field(alias='dataInsertedAt', description='After data retrieval from aggregated profile consent is completed.')] = None
     __properties = [
         "id",
         "status",

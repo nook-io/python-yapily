@@ -29,47 +29,54 @@ class NonSweepingControlParameters(BaseModel):
     Define the restrictions and limits for payment orders as part of Non-Sweeping VRP consent  # noqa: E501
     """
 
-    psu_authentication_methods: Annotated[list[StrictStr], Field()] = Field(
-        default=...,
-        alias="psuAuthenticationMethods",
-        description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
-    )
-    periodic_limits: Annotated[list[NonSweepingPeriodicLimits], Field()] | None = Field(
-        default=None, alias="periodicLimits"
-    )
-    max_amount_per_payment: Amount | None = Field(
-        default=None,
-        alias="maxAmountPerPayment",
-        description="__Mandatory__. Max amount that can be submitted per payment.",
-    )
-    max_cumulative_amount: Amount | None = Field(
-        default=None,
-        alias="maxCumulativeAmount",
-        description="__Optional__. Max cumulative amount that can be submitted under this consent.",
-    )
-    initial_payment: Amount | None = Field(
-        default=None,
-        alias="initialPayment",
-        description="__Mandatory__. Initial payment to be charged under this consent. If enforced, this amount must match the first payment amount executed using this consent.",
-    )
-    max_cumulative_number_of_payments: StrictInt | None = Field(
-        default=None,
-        alias="maxCumulativeNumberOfPayments",
-        description="__Optional__. Max number of payments that can be submitted under this consent.",
-    )
-    valid_from: datetime | None = Field(
-        default=None, alias="validFrom", description="__Optional__. Start date when the consent becomes valid."
-    )
-    valid_to: datetime | None = Field(
-        default=None,
-        alias="validTo",
-        description="__Optional__. End date when the consent expires and becomes invalid.",
-    )
-    recurring_payment_category: StrictStr | None = Field(
-        default=None,
-        alias="recurringPaymentCategory",
-        description="The use-case for the VRP consent supported by the bank. Allowed values: <br>`ONGOING` <br>`SUBSCRIPTION`",
-    )
+    psu_authentication_methods: Annotated[
+        list[StrictStr],
+        Field(
+            alias="psuAuthenticationMethods",
+            description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
+        ),
+    ] = ...
+    periodic_limits: Annotated[list[NonSweepingPeriodicLimits] | None, Field(alias="periodicLimits")] = None
+    max_amount_per_payment: Annotated[
+        Amount | None,
+        Field(alias="maxAmountPerPayment", description="__Mandatory__. Max amount that can be submitted per payment."),
+    ] = None
+    max_cumulative_amount: Annotated[
+        Amount | None,
+        Field(
+            alias="maxCumulativeAmount",
+            description="__Optional__. Max cumulative amount that can be submitted under this consent.",
+        ),
+    ] = None
+    initial_payment: Annotated[
+        Amount | None,
+        Field(
+            alias="initialPayment",
+            description="__Mandatory__. Initial payment to be charged under this consent. If enforced, this amount must match the first payment amount executed using this consent.",
+        ),
+    ] = None
+    max_cumulative_number_of_payments: Annotated[
+        StrictInt | None,
+        Field(
+            alias="maxCumulativeNumberOfPayments",
+            description="__Optional__. Max number of payments that can be submitted under this consent.",
+        ),
+    ] = None
+    valid_from: Annotated[
+        datetime | None,
+        Field(alias="validFrom", description="__Optional__. Start date when the consent becomes valid."),
+    ] = None
+    valid_to: Annotated[
+        datetime | None,
+        Field(alias="validTo", description="__Optional__. End date when the consent expires and becomes invalid."),
+    ] = None
+    recurring_payment_category: Annotated[
+        StrictStr | None,
+        Field(
+            alias="recurringPaymentCategory",
+            description="The use-case for the VRP consent supported by the bank. Allowed values: <br>`ONGOING` <br>`SUBSCRIPTION`",
+        ),
+    ] = None
     __properties = [
         "psuAuthenticationMethods",
         "periodicLimits",

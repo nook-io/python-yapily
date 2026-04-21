@@ -37,83 +37,103 @@ class PaymentResponse(BaseModel):
     PaymentResponse
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier of the payment.")
-    institution_consent_id: StrictStr | None = Field(
-        default=None, alias="institutionConsentId", description="Identification of the consent at the Institution."
-    )
-    payment_idempotency_id: StrictStr | None = Field(
-        default=None,
-        alias="paymentIdempotencyId",
-        description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
-    )
-    payment_lifecycle_id: StrictStr | None = Field(default=None, alias="paymentLifecycleId")
+    id: Annotated[StrictStr | None, Field(description="Unique identifier of the payment.")] = None
+    institution_consent_id: Annotated[
+        StrictStr | None,
+        Field(alias="institutionConsentId", description="Identification of the consent at the Institution."),
+    ] = None
+    payment_idempotency_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="paymentIdempotencyId",
+            description="__Mandatory__. A unique identifier that you must provide to identify the payment. This can be any alpha-numeric string but is limited to a maximum of 35 characters.",
+        ),
+    ] = None
+    payment_lifecycle_id: Annotated[StrictStr | None, Field(alias="paymentLifecycleId")] = None
     status: PaymentStatus | None = None
-    status_details: PaymentStatusDetails | None = Field(default=None, alias="statusDetails")
+    status_details: Annotated[PaymentStatusDetails | None, Field(alias="statusDetails")] = None
     payer: Payer | None = None
-    payee_details: Payee | None = Field(default=None, alias="payeeDetails")
-    reference: StrictStr | None = Field(
-        default=None,
-        description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.",
-    )
-    amount: StrictFloat | StrictInt | None = Field(default=None, description="Monetary amount.")
-    currency: StrictStr | None = Field(
-        default=None, description="Currency the payment amount is denoted in. Specified as a 3-letter ISO 4217 code."
-    )
-    amount_details: Amount | None = Field(default=None, alias="amountDetails")
-    created_at: datetime | None = Field(
-        default=None, alias="createdAt", description="Date and time of when the payment request was created."
-    )
-    first_payment_amount: Amount | None = Field(default=None, alias="firstPaymentAmount")
-    first_payment_date_time: datetime | None = Field(
-        default=None,
-        alias="firstPaymentDateTime",
-        description="Date and time of when the first payment request is to be made.",
-    )
-    next_payment_amount: Amount | None = Field(default=None, alias="nextPaymentAmount")
-    next_payment_date_time: datetime | None = Field(
-        default=None,
-        alias="nextPaymentDateTime",
-        description="__Conditional__. Defines when the recurring payment is to be made.",
-    )
-    final_payment_amount: Amount | None = Field(default=None, alias="finalPaymentAmount")
-    final_payment_date_time: datetime | None = Field(
-        default=None, alias="finalPaymentDateTime", description="Date and time of when the final payment is to be made."
-    )
-    number_of_payments: StrictInt | None = Field(
-        default=None,
-        alias="numberOfPayments",
-        description="Number of recurring payment requests to be made as part of the instructed payment schedule.",
-    )
-    previous_payment_amount: Amount | None = Field(default=None, alias="previousPaymentAmount")
-    previous_payment_date_time: datetime | None = Field(
-        default=None,
-        alias="previousPaymentDateTime",
-        description="Date and time of when the previous payment request was posted.",
-    )
-    charge_details: Annotated[list[PaymentChargeDetails], Field()] | None = Field(default=None, alias="chargeDetails")
-    scheduled_payment_type: StrictStr | None = Field(
-        default=None,
-        alias="scheduledPaymentType",
-        description="Details the execution type and the payment date between the payer and the payee.",
-    )
-    scheduled_payment_date_time: datetime | None = Field(
-        default=None,
-        alias="scheduledPaymentDateTime",
-        description="Date and time of when the scheduled payment request will be made.",
-    )
+    payee_details: Annotated[Payee | None, Field(alias="payeeDetails")] = None
+    reference: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long."
+        ),
+    ] = None
+    amount: Annotated[StrictFloat | StrictInt | None, Field(description="Monetary amount.")] = None
+    currency: Annotated[
+        StrictStr | None,
+        Field(description="Currency the payment amount is denoted in. Specified as a 3-letter ISO 4217 code."),
+    ] = None
+    amount_details: Annotated[Amount | None, Field(alias="amountDetails")] = None
+    created_at: Annotated[
+        datetime | None, Field(alias="createdAt", description="Date and time of when the payment request was created.")
+    ] = None
+    first_payment_amount: Annotated[Amount | None, Field(alias="firstPaymentAmount")] = None
+    first_payment_date_time: Annotated[
+        datetime | None,
+        Field(
+            alias="firstPaymentDateTime", description="Date and time of when the first payment request is to be made."
+        ),
+    ] = None
+    next_payment_amount: Annotated[Amount | None, Field(alias="nextPaymentAmount")] = None
+    next_payment_date_time: Annotated[
+        datetime | None,
+        Field(
+            alias="nextPaymentDateTime",
+            description="__Conditional__. Defines when the recurring payment is to be made.",
+        ),
+    ] = None
+    final_payment_amount: Annotated[Amount | None, Field(alias="finalPaymentAmount")] = None
+    final_payment_date_time: Annotated[
+        datetime | None,
+        Field(alias="finalPaymentDateTime", description="Date and time of when the final payment is to be made."),
+    ] = None
+    number_of_payments: Annotated[
+        StrictInt | None,
+        Field(
+            alias="numberOfPayments",
+            description="Number of recurring payment requests to be made as part of the instructed payment schedule.",
+        ),
+    ] = None
+    previous_payment_amount: Annotated[Amount | None, Field(alias="previousPaymentAmount")] = None
+    previous_payment_date_time: Annotated[
+        datetime | None,
+        Field(
+            alias="previousPaymentDateTime",
+            description="Date and time of when the previous payment request was posted.",
+        ),
+    ] = None
+    charge_details: Annotated[list[PaymentChargeDetails] | None, Field(alias="chargeDetails")] = None
+    scheduled_payment_type: Annotated[
+        StrictStr | None,
+        Field(
+            alias="scheduledPaymentType",
+            description="Details the execution type and the payment date between the payer and the payee.",
+        ),
+    ] = None
+    scheduled_payment_date_time: Annotated[
+        datetime | None,
+        Field(
+            alias="scheduledPaymentDateTime",
+            description="Date and time of when the scheduled payment request will be made.",
+        ),
+    ] = None
     frequency: FrequencyResponse | None = None
-    currency_of_transfer: StrictStr | None = Field(
-        default=None,
-        alias="currencyOfTransfer",
-        description="__Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer's account. Specified as a 3-letter code (ISO 4217).",
-    )
-    purpose: StrictStr | None = Field(
-        default=None, description="Specifies the external purpose code for the `Institution` - IS0 20022."
-    )
+    currency_of_transfer: Annotated[
+        StrictStr | None,
+        Field(
+            alias="currencyOfTransfer",
+            description="__Mandatory__. The currency to be transferred to the payee. This may differ from the currency the payment is denoted in and the currency of the payer's account. Specified as a 3-letter code (ISO 4217).",
+        ),
+    ] = None
+    purpose: Annotated[
+        StrictStr | None, Field(description="Specifies the external purpose code for the `Institution` - IS0 20022.")
+    ] = None
     priority: PriorityCodeEnum | None = None
-    exchange_rate: ExchangeRateInformationResponse | None = Field(default=None, alias="exchangeRate")
-    refund_account: RefundAccount | None = Field(default=None, alias="refundAccount")
-    bulk_amount_sum: StrictFloat | StrictInt | None = Field(default=None, alias="bulkAmountSum")
+    exchange_rate: Annotated[ExchangeRateInformationResponse | None, Field(alias="exchangeRate")] = None
+    refund_account: Annotated[RefundAccount | None, Field(alias="refundAccount")] = None
+    bulk_amount_sum: Annotated[StrictFloat | StrictInt | None, Field(alias="bulkAmountSum")] = None
     __properties = [
         "id",
         "institutionConsentId",

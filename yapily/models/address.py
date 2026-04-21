@@ -27,33 +27,35 @@ class Address(BaseModel):
     __Conditional__. The address of the `Payee` or `Payer`.<ul><li>`payee.address` is mandatory when the `paymentType` is an `INTERNATIONAL` payment</li><li>An `Institution` may require you to specify the `country` when used in the context of the `Payee` to be able to make a payment.</li></ul>  # noqa: E501
     """
 
-    address_lines: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None, alias="addressLines", description="__Optional__. The address line of the address"
-    )
-    street_name: StrictStr | None = Field(
-        default=None, alias="streetName", description="__Optional__. The street name of the address"
-    )
-    building_number: StrictStr | None = Field(
-        default=None, alias="buildingNumber", description="__Optional__. The building number of the address"
-    )
-    post_code: StrictStr | None = Field(
-        default=None, alias="postCode", description="__Optional__. The post code of the address"
-    )
-    town_name: StrictStr | None = Field(
-        default=None, alias="townName", description="__Optional__. The town name of the address"
-    )
-    county: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None, description="__Optional__. The list of counties for the address"
-    )
-    country: StrictStr | None = Field(
-        default=None,
-        description="__Conditional__. The 2-letter country code for the address. <br><br>An `Institution` may require you to specify the `country` when used in the context of the `Payee` to be able to make a payment",
-    )
-    department: StrictStr | None = Field(default=None, description="__Optional__. The department for the address")
-    sub_department: StrictStr | None = Field(
-        default=None, alias="subDepartment", description="__Optional__. The sub-department for the address"
-    )
-    address_type: AddressTypeEnum | None = Field(default=None, alias="addressType")
+    address_lines: Annotated[
+        list[StrictStr] | None, Field(alias="addressLines", description="__Optional__. The address line of the address")
+    ] = None
+    street_name: Annotated[
+        StrictStr | None, Field(alias="streetName", description="__Optional__. The street name of the address")
+    ] = None
+    building_number: Annotated[
+        StrictStr | None, Field(alias="buildingNumber", description="__Optional__. The building number of the address")
+    ] = None
+    post_code: Annotated[
+        StrictStr | None, Field(alias="postCode", description="__Optional__. The post code of the address")
+    ] = None
+    town_name: Annotated[
+        StrictStr | None, Field(alias="townName", description="__Optional__. The town name of the address")
+    ] = None
+    county: Annotated[
+        list[StrictStr] | None, Field(description="__Optional__. The list of counties for the address")
+    ] = None
+    country: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Conditional__. The 2-letter country code for the address. <br><br>An `Institution` may require you to specify the `country` when used in the context of the `Payee` to be able to make a payment"
+        ),
+    ] = None
+    department: Annotated[StrictStr | None, Field(description="__Optional__. The department for the address")] = None
+    sub_department: Annotated[
+        StrictStr | None, Field(alias="subDepartment", description="__Optional__. The sub-department for the address")
+    ] = None
+    address_type: Annotated[AddressTypeEnum | None, Field(alias="addressType")] = None
     __properties = [
         "addressLines",
         "streetName",

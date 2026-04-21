@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -29,29 +30,13 @@ class CreateHostedPaymentRequestLink(BaseModel):
     CreateHostedPaymentRequestLink
     """
 
-    user_id: StrictStr | None = Field(
-        default=None,
-        alias="userId",
-        description="__Conditional__. Yapily Identifier for the `User` returned by the create user step POST /users. You must either provide `userId` or `applicationUserId`.",
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="__Conditional__. Your own `User` reference. If you want to work with their own unique references for individual PSUs then you can use the `applicationUserId` property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied `applicationUserId`, then a new Yapily userId is created automatically and linked to the `applicationUserId` value. You must either provide userId or `applicationUserId`.",
-    )
-    institution_identifiers: InstitutionIdentifiers = Field(default=..., alias="institutionIdentifiers")
-    user_settings: UserSettings | None = Field(default=None, alias="userSettings")
-    redirect_url: StrictStr = Field(
-        default=...,
-        alias="redirectUrl",
-        description="URL of your server to redirect the user after completion of the payment flow.",
-    )
-    authorisation_expires_at: datetime | None = Field(
-        default=None,
-        alias="authorisationExpiresAt",
-        description="The date and time that the authorisation expires. Must be between 10 minutes and 30 days in the future. If not specified, the authorisation URL will expire 10 minutes after creation.",
-    )
-    payment_request_details: HostedPaymentRequestDetailsLink = Field(default=..., alias="paymentRequestDetails")
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='__Conditional__. Yapily Identifier for the `User` returned by the create user step POST /users. You must either provide `userId` or `applicationUserId`.')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description='__Conditional__. Your own `User` reference. If you want to work with their own unique references for individual PSUs then you can use the `applicationUserId` property to provide that value. Where Yapily does not already have a Yapily userId that matches the supplied `applicationUserId`, then a new Yapily userId is created automatically and linked to the `applicationUserId` value. You must either provide userId or `applicationUserId`.')] = None
+    institution_identifiers: Annotated[InstitutionIdentifiers, Field(alias='institutionIdentifiers')] = ...
+    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
+    redirect_url: Annotated[StrictStr, Field(alias='redirectUrl', description='URL of your server to redirect the user after completion of the payment flow.')] = ...
+    authorisation_expires_at: Annotated[datetime | None, Field(alias='authorisationExpiresAt', description='The date and time that the authorisation expires. Must be between 10 minutes and 30 days in the future. If not specified, the authorisation URL will expire 10 minutes after creation.')] = None
+    payment_request_details: Annotated[HostedPaymentRequestDetailsLink, Field(alias='paymentRequestDetails')] = ...
     __properties = [
         "userId",
         "applicationUserId",

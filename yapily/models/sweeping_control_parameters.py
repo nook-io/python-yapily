@@ -29,25 +29,26 @@ class SweepingControlParameters(BaseModel):
     Define the restrictions and limits for payment orders as part of Sweeping VRP consent  # noqa: E501
     """
 
-    psu_authentication_methods: Annotated[list[StrictStr], Field()] = Field(
-        default=...,
-        alias="psuAuthenticationMethods",
-        description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
-    )
-    periodic_limits: Annotated[list[SweepingPeriodicLimits], Field()] = Field(default=..., alias="periodicLimits")
-    max_amount_per_payment: Amount = Field(
-        default=...,
-        alias="maxAmountPerPayment",
-        description="__Mandatory__. Max amount that can be submitted per payment.",
-    )
-    valid_from: datetime | None = Field(
-        default=None, alias="validFrom", description="__Optional__. Start date when the consent becomes valid."
-    )
-    valid_to: datetime | None = Field(
-        default=None,
-        alias="validTo",
-        description="__Optional__. End date when the consent expires and becomes invalid.",
-    )
+    psu_authentication_methods: Annotated[
+        list[StrictStr],
+        Field(
+            alias="psuAuthenticationMethods",
+            description="__Mandatory__. Defines the authentication method(s) allowed in payment submission step. Allowed values are [SCA_REQUIRED, SCA_NOT_REQUIRED].",
+        ),
+    ] = ...
+    periodic_limits: Annotated[list[SweepingPeriodicLimits], Field(alias="periodicLimits")] = ...
+    max_amount_per_payment: Annotated[
+        Amount,
+        Field(alias="maxAmountPerPayment", description="__Mandatory__. Max amount that can be submitted per payment."),
+    ] = ...
+    valid_from: Annotated[
+        datetime | None,
+        Field(alias="validFrom", description="__Optional__. Start date when the consent becomes valid."),
+    ] = None
+    valid_to: Annotated[
+        datetime | None,
+        Field(alias="validTo", description="__Optional__. End date when the consent expires and becomes invalid."),
+    ] = None
     __properties = ["psuAuthenticationMethods", "periodicLimits", "maxAmountPerPayment", "validFrom", "validTo"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -2901,7 +2901,7 @@ class FinancialDataApi:
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         var_with: Annotated[
-            Annotated[list[StrictStr], Field()] | None,
+            list[StrictStr] | None,
             Field(
                 description="__Optional__. Acceptable value: `categorisation`. When set, will include enrichment data in the transactions returned. <br><br>Enrichment data is optional, e.g. when 'categorisation' enrichment data is requested, the enrichment response will include categorisation data and merchant name, only if it can be evaluated from the transaction. This service is limited for UK institution transactions currently. __This is a legacy feature and will be deprecated. Date TBC__"
             ),
@@ -3045,7 +3045,7 @@ class FinancialDataApi:
             StrictStr | None, Field(description="The sub-application ID to which event type is being subscribed to")
         ] = None,
         var_with: Annotated[
-            Annotated[list[StrictStr], Field()] | None,
+            list[StrictStr] | None,
             Field(
                 description="__Optional__. Acceptable value: `categorisation`. When set, will include enrichment data in the transactions returned. <br><br>Enrichment data is optional, e.g. when 'categorisation' enrichment data is requested, the enrichment response will include categorisation data and merchant name, only if it can be evaluated from the transaction. This service is limited for UK institution transactions currently. __This is a legacy feature and will be deprecated. Date TBC__"
             ),

@@ -27,10 +27,8 @@ class ApplicationResponseListMetaPagination(BaseModel):
     ApplicationResponseListMetaPagination
     """
 
-    var_self: ApplicationResponseListMetaPaginationSelf | None = Field(default=None, alias="self")
-    total_count: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=None, alias="totalCount", description="The total number of applications that match the given filter."
-    )
+    var_self: Annotated[ApplicationResponseListMetaPaginationSelf | None, Field(alias='self')] = None
+    total_count: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(alias='totalCount', description='The total number of applications that match the given filter.')] = None
     __properties = ["self", "totalCount"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

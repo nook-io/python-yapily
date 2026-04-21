@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,7 +26,7 @@ class SchemaXYapilyAnnotations(BaseModel):
     SchemaXYapilyAnnotations
     """
 
-    last_updated_at: datetime | None = Field(default=None, alias="lastUpdatedAt")
+    last_updated_at: Annotated[datetime | None, Field(alias='lastUpdatedAt')] = None
     __properties = ["lastUpdatedAt"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

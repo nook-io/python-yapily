@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,22 +27,12 @@ class ApiError(BaseModel):
     Provides details of the error that has occurred.  # noqa: E501
     """
 
-    code: StrictInt | None = Field(
-        default=None, description="_Mandatory_. Numeric `HTTP` status code associated with the error."
-    )
-    institution_error: InstitutionError | None = Field(default=None, alias="institutionError")
-    message: StrictStr | None = Field(
-        default=None, description="__Mandatory__. Description of the exact error that has been experienced."
-    )
+    code: Annotated[StrictInt | None, Field(description='_Mandatory_. Numeric `HTTP` status code associated with the error.')] = None
+    institution_error: Annotated[InstitutionError | None, Field(alias='institutionError')] = None
+    message: Annotated[StrictStr | None, Field(description='__Mandatory__. Description of the exact error that has been experienced.')] = None
     source: StrictStr | None = None
-    status: StrictStr | None = Field(
-        default=None, description="__Mandatory__. Textual description of the `HTTP` error status type."
-    )
-    tracing_id: StrictStr | None = Field(
-        default=None,
-        alias="tracingId",
-        description="_Optional_.  A unique identifier assigned by Yapily for the request that can be used for support purposes.",
-    )
+    status: Annotated[StrictStr | None, Field(description='__Mandatory__. Textual description of the `HTTP` error status type.')] = None
+    tracing_id: Annotated[StrictStr | None, Field(alias='tracingId', description='_Optional_.  A unique identifier assigned by Yapily for the request that can be used for support purposes.')] = None
     __properties = ["code", "institutionError", "message", "source", "status", "tracingId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,7 +26,7 @@ class Next(BaseModel):
     Next
     """
 
-    var_from: datetime | None = Field(default=None, alias="from")
+    var_from: Annotated[datetime | None, Field(alias='from')] = None
     before: datetime | None = None
     limit: StrictInt | None = None
     cursor: StrictStr | None = None

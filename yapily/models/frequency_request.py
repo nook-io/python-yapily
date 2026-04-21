@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,22 +27,10 @@ class FrequencyRequest(BaseModel):
     __Mandatory__. Defines the intervals at which payment should be made.  # noqa: E501
     """
 
-    type: FrequencyEnumExtended = Field(...)
-    interval_week: StrictInt | None = Field(
-        default=None,
-        alias="intervalWeek",
-        description="__Conditional__. See [payment frequency](/guides/payments/payment-execution/periodic-payments/#payment-frequency) for more information",
-    )
-    interval_month: StrictInt | None = Field(
-        default=None,
-        alias="intervalMonth",
-        description="__Conditional__. See [payment frequency](/guides/payments/payment-execution/periodic-payments/#payment-frequency) for more information",
-    )
-    execution_day: StrictInt | None = Field(
-        default=None,
-        alias="executionDay",
-        description="__Conditional__. See [payment frequency](/guides/payments/payment-execution/periodic-payments/#payment-frequency) for more information",
-    )
+    type: Annotated[FrequencyEnumExtended, Field()]
+    interval_week: Annotated[StrictInt | None, Field(alias='intervalWeek', description='__Conditional__. See [payment frequency](/guides/payments/payment-execution/periodic-payments/#payment-frequency) for more information')] = None
+    interval_month: Annotated[StrictInt | None, Field(alias='intervalMonth', description='__Conditional__. See [payment frequency](/guides/payments/payment-execution/periodic-payments/#payment-frequency) for more information')] = None
+    execution_day: Annotated[StrictInt | None, Field(alias='executionDay', description='__Conditional__. See [payment frequency](/guides/payments/payment-execution/periodic-payments/#payment-frequency) for more information')] = None
     __properties = ["type", "intervalWeek", "intervalMonth", "executionDay"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

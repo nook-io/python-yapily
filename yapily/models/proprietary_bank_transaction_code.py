@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,10 +25,8 @@ class ProprietaryBankTransactionCode(BaseModel):
     Transaction code that is proprietary to the `Institution`.  # noqa: E501
     """
 
-    code: StrictStr | None = Field(
-        default=None, description="__Mandatory__. Properietary code used to identify the underlying transaction."
-    )
-    issuer: StrictStr | None = Field(default=None, description="__Mandatory__. Issuer of the properitary code.")
+    code: Annotated[StrictStr | None, Field(description='__Mandatory__. Properietary code used to identify the underlying transaction.')] = None
+    issuer: Annotated[StrictStr | None, Field(description='__Mandatory__. Issuer of the properitary code.')] = None
     __properties = ["code", "issuer"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

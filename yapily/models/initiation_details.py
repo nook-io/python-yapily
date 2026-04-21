@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,10 +28,7 @@ class InitiationDetails(BaseModel):
     __Mandatory__. The payment initiation object defining the details of the payment under the Variable Recurring Payment consent.  # noqa: E501
     """
 
-    reference: StrictStr | None = Field(
-        default=None,
-        description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.",
-    )
+    reference: Annotated[StrictStr | None, Field(description='__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.')] = None
     payer: Payer | None = None
     payee: Payee | None = None
     __properties = ["reference", "payer", "payee"]

@@ -30,74 +30,26 @@ class Consent(BaseModel):
     Consent detailing the requested authorisation from a user to a specific `Institution`.  # noqa: E501
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier of the consent.")
-    user_uuid: StrictStr | None = Field(default=None, alias="userUuid")
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="__Conditional__. The user-friendly reference to the `User` that will authorise the authorisation request. If a `User` with the specified `applicationUserId` exists, it will be used otherwise, a new `User` with the specified `applicationUserId` will be created and used. Either the `userUuid` or `applicationUserId` must be provided.",
-    )
-    reference_id: StrictStr | None = Field(default=None, alias="referenceId")
-    institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="__Mandatory__. The `Institution` the authorisation request is sent to.",
-    )
+    id: Annotated[StrictStr | None, Field(description='Unique identifier of the consent.')] = None
+    user_uuid: Annotated[StrictStr | None, Field(alias='userUuid')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description='__Conditional__. The user-friendly reference to the `User` that will authorise the authorisation request. If a `User` with the specified `applicationUserId` exists, it will be used otherwise, a new `User` with the specified `applicationUserId` will be created and used. Either the `userUuid` or `applicationUserId` must be provided.')] = None
+    reference_id: Annotated[StrictStr | None, Field(alias='referenceId')] = None
+    institution_id: Annotated[StrictStr | None, Field(alias='institutionId', description='__Mandatory__. The `Institution` the authorisation request is sent to.')] = None
     status: AuthorisationStatus | None = None
-    created_at: datetime | None = Field(
-        default=None, alias="createdAt", description="Date and time of when the consent was created."
-    )
-    transaction_from: datetime | None = Field(
-        default=None,
-        alias="transactionFrom",
-        description="When performing a transaction query using the consent, this is the earliest date of transaction records that can be retrieved.",
-    )
-    transaction_to: datetime | None = Field(
-        default=None,
-        alias="transactionTo",
-        description="When performing a transaction query using the consent, this is the latest date of transaction records that can be retrieved.",
-    )
-    expires_at: datetime | None = Field(
-        default=None,
-        alias="expiresAt",
-        description="Date and time of when the authorisation will expire by. Reauthorisation will be needed to retain access.",
-    )
-    time_to_expire_in_millis: StrictInt | None = Field(default=None, alias="timeToExpireInMillis")
-    time_to_expire: StrictStr | None = Field(default=None, alias="timeToExpire")
-    feature_scope: Annotated[list[FeatureEnum], Unique] | None = Field(
-        default=None, alias="featureScope", description="The set of features that the consent will provide access to."
-    )
-    consent_token: StrictStr | None = Field(
-        default=None,
-        alias="consentToken",
-        description="Represents the authorisation to gain access to the requested features. Required to access account information or make a payment request.",
-    )
-    state: StrictStr | None = Field(
-        default=None, description="Correlation ID used with the `Institution` during the authorisation process."
-    )
-    authorized_at: datetime | None = Field(
-        default=None,
-        alias="authorizedAt",
-        description="Date and time of when the request was authorised by the Institution.",
-    )
-    last_confirmed_at: datetime | None = Field(
-        default=None,
-        alias="lastConfirmedAt",
-        description="The time that the PSU last confirmed access to their account information, either through full authentication with the institution, or through reconfirmation with the TPP.",
-    )
-    reconfirm_by: datetime | None = Field(
-        default=None,
-        alias="reconfirmBy",
-        description="The time by which the consent should be reconfirmed to ensure continued access to the account information.",
-    )
-    institution_consent_id: StrictStr | None = Field(
-        default=None, alias="institutionConsentId", description="Identification of the consent at the Institution."
-    )
-    is_deleted_by_institution: StrictBool | None = Field(
-        default=None,
-        alias="isDeletedByInstitution",
-        description="Denotes whether the consent has been deleted on the institution side or not when a DELETE method is executed on a Yapily consent if that functionality is provided by the institution",
-    )
+    created_at: Annotated[datetime | None, Field(alias='createdAt', description='Date and time of when the consent was created.')] = None
+    transaction_from: Annotated[datetime | None, Field(alias='transactionFrom', description='When performing a transaction query using the consent, this is the earliest date of transaction records that can be retrieved.')] = None
+    transaction_to: Annotated[datetime | None, Field(alias='transactionTo', description='When performing a transaction query using the consent, this is the latest date of transaction records that can be retrieved.')] = None
+    expires_at: Annotated[datetime | None, Field(alias='expiresAt', description='Date and time of when the authorisation will expire by. Reauthorisation will be needed to retain access.')] = None
+    time_to_expire_in_millis: Annotated[StrictInt | None, Field(alias='timeToExpireInMillis')] = None
+    time_to_expire: Annotated[StrictStr | None, Field(alias='timeToExpire')] = None
+    feature_scope: Annotated[Annotated[list[FeatureEnum], Unique] | None, Field(alias='featureScope', description='The set of features that the consent will provide access to.')] = None
+    consent_token: Annotated[StrictStr | None, Field(alias='consentToken', description='Represents the authorisation to gain access to the requested features. Required to access account information or make a payment request.')] = None
+    state: Annotated[StrictStr | None, Field(description='Correlation ID used with the `Institution` during the authorisation process.')] = None
+    authorized_at: Annotated[datetime | None, Field(alias='authorizedAt', description='Date and time of when the request was authorised by the Institution.')] = None
+    last_confirmed_at: Annotated[datetime | None, Field(alias='lastConfirmedAt', description='The time that the PSU last confirmed access to their account information, either through full authentication with the institution, or through reconfirmation with the TPP.')] = None
+    reconfirm_by: Annotated[datetime | None, Field(alias='reconfirmBy', description='The time by which the consent should be reconfirmed to ensure continued access to the account information.')] = None
+    institution_consent_id: Annotated[StrictStr | None, Field(alias='institutionConsentId', description='Identification of the consent at the Institution.')] = None
+    is_deleted_by_institution: Annotated[StrictBool | None, Field(alias='isDeletedByInstitution', description='Denotes whether the consent has been deleted on the institution side or not when a DELETE method is executed on a Yapily consent if that functionality is provided by the institution')] = None
     __properties = [
         "id",
         "userUuid",

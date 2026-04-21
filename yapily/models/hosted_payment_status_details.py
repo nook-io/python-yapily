@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -29,10 +30,8 @@ class HostedPaymentStatusDetails(BaseModel):
     """
 
     status: PaymentStatus | None = None
-    status_update_date: datetime | None = Field(
-        default=None, alias="statusUpdateDate", description="Date and time the status was updated."
-    )
-    iso_status: HostedPaymentIsoStatus | None = Field(default=None, alias="isoStatus")
+    status_update_date: Annotated[datetime | None, Field(alias='statusUpdateDate', description='Date and time the status was updated.')] = None
+    iso_status: Annotated[HostedPaymentIsoStatus | None, Field(alias='isoStatus')] = None
     __properties = ["status", "statusUpdateDate", "isoStatus"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

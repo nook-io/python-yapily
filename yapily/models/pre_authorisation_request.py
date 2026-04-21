@@ -27,35 +27,45 @@ class PreAuthorisationRequest(BaseModel):
     PreAuthorisationRequest
     """
 
-    user_uuid: StrictStr | None = Field(default=None, alias="userUuid")
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="__Conditional__. The user-friendly reference to the `User` that will authorise the authorisation request. If a `User` with the specified `applicationUserId` exists, it will be used otherwise, a new `User` with the specified `applicationUserId` will be created and used. Either the `userUuid` or `applicationUserId` must be provided.",
-    )
-    forward_parameters: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None,
-        alias="forwardParameters",
-        description="Extra parameters to be forwarded in the redirect back to the client after the user authorisation flow has been completed.",
-    )
-    institution_id: StrictStr = Field(
-        default=...,
-        alias="institutionId",
-        description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
-    )
-    callback: StrictStr | None = Field(
-        default=None,
-        description="__Optional__. The server to redirect the user to after the user complete the authorisation at the `Institution`. <br><br>See [Using a callback (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-optional) for more information.",
-    )
+    user_uuid: Annotated[StrictStr | None, Field(alias="userUuid")] = None
+    application_user_id: Annotated[
+        StrictStr | None,
+        Field(
+            alias="applicationUserId",
+            description="__Conditional__. The user-friendly reference to the `User` that will authorise the authorisation request. If a `User` with the specified `applicationUserId` exists, it will be used otherwise, a new `User` with the specified `applicationUserId` will be created and used. Either the `userUuid` or `applicationUserId` must be provided.",
+        ),
+    ] = None
+    forward_parameters: Annotated[
+        list[StrictStr] | None,
+        Field(
+            alias="forwardParameters",
+            description="Extra parameters to be forwarded in the redirect back to the client after the user authorisation flow has been completed.",
+        ),
+    ] = None
+    institution_id: Annotated[
+        StrictStr,
+        Field(
+            alias="institutionId",
+            description="__Mandatory__. The reference to the `Institution` which identifies which institution the authorisation request is sent to.",
+        ),
+    ] = ...
+    callback: Annotated[
+        StrictStr | None,
+        Field(
+            description="__Optional__. The server to redirect the user to after the user complete the authorisation at the `Institution`. <br><br>See [Using a callback (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-optional) for more information."
+        ),
+    ] = None
     redirect: RedirectRequest | None = None
-    one_time_token: StrictBool | None = Field(
-        default=None,
-        alias="oneTimeToken",
-        description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
-    )
-    scope: StrictStr = Field(
-        default=..., description="__Mandatory__. Defines the scope of the pre-authorisation request."
-    )
+    one_time_token: Annotated[
+        StrictBool | None,
+        Field(
+            alias="oneTimeToken",
+            description="__Conditional__. Used to receive a `oneTimeToken` rather than a `consentToken` at the `callback` for additional security. This can only be used when the `callback` is set. <br><br>See [Using a callback with an OTT (Optional)](https://docs.yapily.com/pages/knowledge/yapily-concepts/callback_url/#using-a-callback-with-an-ott-optional) for more information.",
+        ),
+    ] = None
+    scope: Annotated[
+        StrictStr, Field(description="__Mandatory__. Defines the scope of the pre-authorisation request.")
+    ] = ...
     __properties = [
         "userUuid",
         "applicationUserId",

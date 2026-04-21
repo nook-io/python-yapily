@@ -29,10 +29,10 @@ class PostAccountsAccountIdTransactionsCategorisation400ResponseError(BaseModel)
     PostAccountsAccountIdTransactionsCategorisation400ResponseError
     """
 
-    tracing_id: StrictStr | None = Field(None, alias="tracingId")
+    tracing_id: Annotated[StrictStr | None, Field(alias='tracingId')] = None
     code: StrictFloat | StrictInt | None = None
     status: StrictStr | None = None
-    support_url: StrictStr | None = Field(None, alias="supportUrl")
+    support_url: Annotated[StrictStr | None, Field(alias='supportUrl')] = None
     source: StrictStr | None = None
     issues: (
         Annotated[list[PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner], Field()] | None

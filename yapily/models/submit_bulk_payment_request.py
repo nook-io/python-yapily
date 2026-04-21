@@ -28,24 +28,31 @@ class SubmitBulkPaymentRequest(BaseModel):
     The payment request object defining the details of the bulk payment  # noqa: E501
     """
 
-    idempotency_id: Annotated[str, StringConstraints(strict=True, max_length=40, min_length=1)] | None = Field(
-        default=None,
-        alias="idempotencyId",
-        description="__Optional__. An alphanumeric string (1-40 chars) used for idempotency. Unique per consent ID for 24 hours. Prevents duplicate bulk file payment submissions.",
-    )
-    payments: Annotated[list[PaymentRequest], Field()] = Field(
-        default=..., description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment."
-    )
-    originator_identification_number: StrictStr | None = Field(
-        default=None,
-        alias="originatorIdentificationNumber",
-        description="__Conditional__. The identification number of the originator.<ul><li>Mandatory for AIB bulk payments</li></ul>",
-    )
-    execution_date_time: datetime | None = Field(
-        default=None,
-        alias="executionDateTime",
-        description="__Optional__. Used to schedule the bulk payment to be executed at a future date if supported by the `Institution`.",
-    )
+    idempotency_id: Annotated[
+        Annotated[str, StringConstraints(strict=True, max_length=40, min_length=1)] | None,
+        Field(
+            alias="idempotencyId",
+            description="__Optional__. An alphanumeric string (1-40 chars) used for idempotency. Unique per consent ID for 24 hours. Prevents duplicate bulk file payment submissions.",
+        ),
+    ] = None
+    payments: Annotated[
+        list[PaymentRequest],
+        Field(description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment."),
+    ] = ...
+    originator_identification_number: Annotated[
+        StrictStr | None,
+        Field(
+            alias="originatorIdentificationNumber",
+            description="__Conditional__. The identification number of the originator.<ul><li>Mandatory for AIB bulk payments</li></ul>",
+        ),
+    ] = None
+    execution_date_time: Annotated[
+        datetime | None,
+        Field(
+            alias="executionDateTime",
+            description="__Optional__. Used to schedule the bulk payment to be executed at a future date if supported by the `Institution`.",
+        ),
+    ] = None
     __properties = ["idempotencyId", "payments", "originatorIdentificationNumber", "executionDateTime"]
 
     @field_validator("idempotency_id")

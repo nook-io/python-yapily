@@ -28,23 +28,11 @@ class VrpConfiguration(BaseModel):
     VrpConfiguration
     """
 
-    maximum_individual_amount: Amount | None = Field(
-        default=None, alias="maximumIndividualAmount", description="Maximum amount per transaction"
-    )
-    maximum_cumulative_amount: Amount | None = Field(
-        default=None, alias="maximumCumulativeAmount", description="Maximum cumulative amount"
-    )
-    maximum_cumulative_number_of_payments: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=None, alias="maximumCumulativeNumberOfPayments", description="Maximum cumulative number of payments"
-    )
-    periodic_limits: Annotated[list[VrpPeriodicLimit], Field(min_length=1)] | None = Field(
-        default=None, alias="periodicLimits"
-    )
-    recurring_payment_category: StrictStr | None = Field(
-        default=None,
-        alias="recurringPaymentCategory",
-        description="Payment Category with allowed values: ONGOING, SUBSCRIPTION",
-    )
+    maximum_individual_amount: Annotated[Amount | None, Field(alias='maximumIndividualAmount', description='Maximum amount per transaction')] = None
+    maximum_cumulative_amount: Annotated[Amount | None, Field(alias='maximumCumulativeAmount', description='Maximum cumulative amount')] = None
+    maximum_cumulative_number_of_payments: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(alias='maximumCumulativeNumberOfPayments', description='Maximum cumulative number of payments')] = None
+    periodic_limits: Annotated[Annotated[list[VrpPeriodicLimit], Field(min_length=1)] | None, Field(alias='periodicLimits')] = None
+    recurring_payment_category: Annotated[StrictStr | None, Field(alias='recurringPaymentCategory', description='Payment Category with allowed values: ONGOING, SUBSCRIPTION')] = None
     __properties = [
         "maximumIndividualAmount",
         "maximumCumulativeAmount",

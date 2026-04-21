@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -29,41 +30,17 @@ class HostedConsentRequestResponse(BaseModel):
     HostedConsentRequestResponse
     """
 
-    consent_request_id: StrictStr | None = Field(
-        default=None, alias="consentRequestId", description="Unique Id of the consent request."
-    )
-    user_id: StrictStr | None = Field(
-        default=None, alias="userId", description="Unique Id for the `User` assigned by Yapily."
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None, alias="applicationUserId", description="Your reference to the `User`."
-    )
-    application_id: StrictStr | None = Field(
-        default=None, alias="applicationId", description="Unique Id of the `Application` the user is associated with."
-    )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
-    user_settings: UserSettings | None = Field(default=None, alias="userSettings")
-    redirect_url: StrictStr | None = Field(
-        default=None,
-        alias="redirectUrl",
-        description="URL of consent server to redirect the user after completion of the consent flow.",
-    )
-    account_request_details: HostedAccountRequestDetailsResponse | None = Field(
-        default=None, alias="accountRequestDetails"
-    )
-    hosted_url: StrictStr | None = Field(
-        default=None,
-        alias="hostedUrl",
-        description="The URL of Hosted UI page for the applicationId which initiates the user journey for the consent. <br> URL would be appended with authToken, applicationId and userSettings.",
-    )
-    created_at: datetime | None = Field(
-        default=None, alias="createdAt", description="The date and time at which the consent was created."
-    )
-    authorisation_expires_at: datetime | None = Field(
-        default=None,
-        alias="authorisationExpiresAt",
-        description="The date and time at which the auth Token will expire.",
-    )
+    consent_request_id: Annotated[StrictStr | None, Field(alias='consentRequestId', description='Unique Id of the consent request.')] = None
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='Unique Id for the `User` assigned by Yapily.')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description='Your reference to the `User`.')] = None
+    application_id: Annotated[StrictStr | None, Field(alias='applicationId', description='Unique Id of the `Application` the user is associated with.')] = None
+    institution_identifiers: Annotated[InstitutionIdentifiersResponse | None, Field(alias='institutionIdentifiers')] = None
+    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
+    redirect_url: Annotated[StrictStr | None, Field(alias='redirectUrl', description='URL of consent server to redirect the user after completion of the consent flow.')] = None
+    account_request_details: Annotated[HostedAccountRequestDetailsResponse | None, Field(alias='accountRequestDetails')] = None
+    hosted_url: Annotated[StrictStr | None, Field(alias='hostedUrl', description='The URL of Hosted UI page for the applicationId which initiates the user journey for the consent. <br> URL would be appended with authToken, applicationId and userSettings.')] = None
+    created_at: Annotated[datetime | None, Field(alias='createdAt', description='The date and time at which the consent was created.')] = None
+    authorisation_expires_at: Annotated[datetime | None, Field(alias='authorisationExpiresAt', description='The date and time at which the auth Token will expire.')] = None
     __properties = [
         "consentRequestId",
         "userId",

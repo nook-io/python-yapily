@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -29,40 +30,18 @@ class HostedPaymentRequestResponse(BaseModel):
     HostedPaymentRequestResponse
     """
 
-    payment_request_id: StrictStr | None = Field(
-        default=None, alias="paymentRequestId", description="Unique Id of the payment request."
-    )
-    user_id: StrictStr | None = Field(
-        default=None, alias="userId", description="Unique Id for the `User` assigned by Yapily."
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None, alias="applicationUserId", description="Your reference to the `User`."
-    )
-    application_id: StrictStr | None = Field(
-        default=None, alias="applicationId", description="Unique Id of the `Application` the user is associated with."
-    )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
-    user_settings: UserSettings | None = Field(default=None, alias="userSettings")
-    redirect_url: StrictStr | None = Field(
-        default=None,
-        alias="redirectUrl",
-        description="URL of payment server to redirect the user after completion of the payment flow.",
-    )
-    payment_request_details: HostedPaymentResponseDetails | None = Field(default=None, alias="paymentRequestDetails")
-    hosted_url: StrictStr | None = Field(
-        default=None,
-        alias="hostedUrl",
-        description="The URL of Hosted UI page for the applicationId which initiates the user journey for the payment. <br> URL would be appended with authToken, applicationId and userSettings.",
-    )
-    created_at: datetime | None = Field(
-        default=None, alias="createdAt", description="The date and time at which the payment was created."
-    )
-    authorisation_expires_at: datetime | None = Field(
-        default=None,
-        alias="authorisationExpiresAt",
-        description="The date and time at which the auth Token will expire.",
-    )
-    status: StrictStr | None = Field(default=None, description="Current status of the payment request.")
+    payment_request_id: Annotated[StrictStr | None, Field(alias='paymentRequestId', description='Unique Id of the payment request.')] = None
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='Unique Id for the `User` assigned by Yapily.')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description='Your reference to the `User`.')] = None
+    application_id: Annotated[StrictStr | None, Field(alias='applicationId', description='Unique Id of the `Application` the user is associated with.')] = None
+    institution_identifiers: Annotated[InstitutionIdentifiersResponse | None, Field(alias='institutionIdentifiers')] = None
+    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
+    redirect_url: Annotated[StrictStr | None, Field(alias='redirectUrl', description='URL of payment server to redirect the user after completion of the payment flow.')] = None
+    payment_request_details: Annotated[HostedPaymentResponseDetails | None, Field(alias='paymentRequestDetails')] = None
+    hosted_url: Annotated[StrictStr | None, Field(alias='hostedUrl', description='The URL of Hosted UI page for the applicationId which initiates the user journey for the payment. <br> URL would be appended with authToken, applicationId and userSettings.')] = None
+    created_at: Annotated[datetime | None, Field(alias='createdAt', description='The date and time at which the payment was created.')] = None
+    authorisation_expires_at: Annotated[datetime | None, Field(alias='authorisationExpiresAt', description='The date and time at which the auth Token will expire.')] = None
+    status: Annotated[StrictStr | None, Field(description='Current status of the payment request.')] = None
     __properties = [
         "paymentRequestId",
         "userId",

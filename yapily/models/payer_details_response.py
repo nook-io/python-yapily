@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,12 +28,8 @@ class PayerDetailsResponse(BaseModel):
     Details of the benefactor [person or business].  # noqa: E501
     """
 
-    name: StrictStr | None = Field(default=None, description="The account holder name of the Payer.")
-    account_identifications: list[AccountIdentificationResponse] | None = Field(
-        default=None,
-        alias="accountIdentifications",
-        description="The account identifications that identify the `Payer` bank account.",
-    )
+    name: Annotated[StrictStr | None, Field(description='The account holder name of the Payer.')] = None
+    account_identifications: Annotated[list[AccountIdentificationResponse] | None, Field(alias='accountIdentifications', description='The account identifications that identify the `Payer` bank account.')] = None
     address: AddressResponse | None = None
     __properties = ["name", "accountIdentifications", "address"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

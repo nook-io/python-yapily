@@ -33,8 +33,8 @@ class ApiResponseOfSubmissionResponse(BaseModel):
     meta: ResponseMeta | None = None
     data: SubmissionResponse | None = None
     links: dict[str, StrictStr] | None = None
-    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(default=None, alias="forwardedData")
-    tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
+    forwarded_data: Annotated[list[ResponseForwardedData] | None, Field(alias="forwardedData")] = None
+    tracing_id: Annotated[StrictStr | None, Field(alias="tracingId")] = None
     raw: Annotated[list[RawResponse], Field()] | None = None
     __properties = ["meta", "data", "links", "forwardedData", "tracingId", "raw"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

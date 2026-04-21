@@ -32,19 +32,13 @@ class Institution(BaseModel):
     Typically, a bank or business unit within a bank e.g. (AIB Business, AIB Ireland, AIB UK).  # noqa: E501
     """
 
-    id: StrictStr | None = Field(default=None, description="Unique identifier for the `Institution`.")
-    name: StrictStr | None = Field(default=None, description="The friendly name of the `Institution`.")
-    full_name: StrictStr | None = Field(
-        default=None, alias="fullName", description="The full name of the `Institution`."
-    )
-    countries: list[Country] | None = Field(
-        default=None, description="An array of `Country` denoting which regions the `Institution` provides coverage for"
-    )
-    environment_type: EnvironmentType | None = Field(default=None, alias="environmentType")
-    credentials_type: CredentialsType | None = Field(default=None, alias="credentialsType")
-    media: list[Media] | None = Field(
-        default=None, description="Contains links to the logo and the icons for the `Institution`"
-    )
+    id: Annotated[StrictStr | None, Field(description='Unique identifier for the `Institution`.')] = None
+    name: Annotated[StrictStr | None, Field(description='The friendly name of the `Institution`.')] = None
+    full_name: Annotated[StrictStr | None, Field(alias='fullName', description='The full name of the `Institution`.')] = None
+    countries: Annotated[list[Country] | None, Field(description='An array of `Country` denoting which regions the `Institution` provides coverage for')] = None
+    environment_type: Annotated[EnvironmentType | None, Field(alias='environmentType')] = None
+    credentials_type: Annotated[CredentialsType | None, Field(alias='credentialsType')] = None
+    media: Annotated[list[Media] | None, Field(description='Contains links to the logo and the icons for the `Institution`')] = None
     features: Annotated[list[FeatureEnum], Unique] | None = None
     __properties = ["id", "name", "fullName", "countries", "environmentType", "credentialsType", "media", "features"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

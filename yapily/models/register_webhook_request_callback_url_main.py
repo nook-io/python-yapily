@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,7 +25,7 @@ class RegisterWebhookRequestCallbackUrlMain(BaseModel):
     primary webhook url used to send events to  # noqa: E501
     """
 
-    url: StrictStr = Field(...)
+    url: Annotated[StrictStr, Field()]
     __properties = ["url"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

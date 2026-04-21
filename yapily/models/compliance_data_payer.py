@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,10 +28,7 @@ class ComplianceDataPayer(BaseModel):
     __Conditional__. Payer details required for compliance checks.  # noqa: E501
     """
 
-    type: StrictStr = Field(
-        default=...,
-        description="The payer type. Allowed values: INDIVIDUAL, BUSINESS. The corresponding object must be included.",
-    )
+    type: Annotated[StrictStr, Field(description='The payer type. Allowed values: INDIVIDUAL, BUSINESS. The corresponding object must be included.')] = ...
     individual: ComplianceDataIndividual | None = None
     business: ComplianceDataBusiness | None = None
     __properties = ["type", "individual", "business"]

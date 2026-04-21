@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,12 +28,8 @@ class BeneficiaryPayee(BaseModel):
     __Mandatory__. Account details belonging to the `Beneficiary Payee` (person/ business). You must define this in your payment request along with all of the nested mandatory properties.  # noqa: E501
     """
 
-    name: StrictStr | None = Field(default=None, description="The account holder name of the beneficiary.")
-    account_identifications: list[AccountIdentification] = Field(
-        default=...,
-        alias="accountIdentifications",
-        description="__Mandatory__. The account identifications that identify the `BeneficiaryPayee` bank account.",
-    )
+    name: Annotated[StrictStr | None, Field(description='The account holder name of the beneficiary.')] = None
+    account_identifications: Annotated[list[AccountIdentification], Field(alias='accountIdentifications', description='__Mandatory__. The account identifications that identify the `BeneficiaryPayee` bank account.')] = ...
     address: Address | None = None
     __properties = ["name", "accountIdentifications", "address"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

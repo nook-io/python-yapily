@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,16 +25,8 @@ class InstitutionIdentifiers(BaseModel):
     Specifies the institution requirements for making the payment. Skips the bank selection screen in payment flow if the `institutionId` and `institutionCountryCode` are provided.  # noqa: E501
     """
 
-    institution_id: StrictStr | None = Field(
-        default=None,
-        alias="institutionId",
-        description="Yapily identifier which identifies the `Institution` the payment request is sent to.",
-    )
-    institution_country_code: StrictStr = Field(
-        default=...,
-        alias="institutionCountryCode",
-        description="2 letter ISO Country code of the `Institution` the payment request is sent to.",
-    )
+    institution_id: Annotated[StrictStr | None, Field(alias='institutionId', description='Yapily identifier which identifies the `Institution` the payment request is sent to.')] = None
+    institution_country_code: Annotated[StrictStr, Field(alias='institutionCountryCode', description='2 letter ISO Country code of the `Institution` the payment request is sent to.')] = ...
     __properties = ["institutionId", "institutionCountryCode"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

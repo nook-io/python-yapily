@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,10 +25,7 @@ class RedirectRequest(BaseModel):
     __Optional__. The server to redirect the user to after the user complete the authorisation at the `Institution`.  # noqa: E501
     """
 
-    url: StrictStr = Field(
-        default=...,
-        description="__Mandatory__.Successful redirect after the user complete the authorisation at the `Institution`.",
-    )
+    url: Annotated[StrictStr, Field(description='__Mandatory__.Successful redirect after the user complete the authorisation at the `Institution`.')] = ...
     __properties = ["url"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

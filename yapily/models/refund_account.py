@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,7 +28,7 @@ class RefundAccount(BaseModel):
     """
 
     name: StrictStr | None = None
-    account_identifications: list[AccountIdentification] | None = Field(default=None, alias="accountIdentifications")
+    account_identifications: Annotated[list[AccountIdentification] | None, Field(alias='accountIdentifications')] = None
     __properties = ["name", "accountIdentifications"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

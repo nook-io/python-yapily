@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,10 +25,8 @@ class Media(BaseModel):
     Details of the media held for the `Institution`  # noqa: E501
     """
 
-    source: StrictStr | None = Field(
-        default=None, description="__Mandatory__. URL from where the media can be retrieved."
-    )
-    type: StrictStr | None = Field(default=None, description="__Mandatory__. The type of media e.g. (logo, icon).")
+    source: Annotated[StrictStr | None, Field(description='__Mandatory__. URL from where the media can be retrieved.')] = None
+    type: Annotated[StrictStr | None, Field(description='__Mandatory__. The type of media e.g. (logo, icon).')] = None
     __properties = ["source", "type"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

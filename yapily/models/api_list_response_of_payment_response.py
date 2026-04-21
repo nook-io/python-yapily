@@ -32,12 +32,12 @@ class ApiListResponseOfPaymentResponse(BaseModel):
     """
 
     meta: ResponseListMeta | None = None
-    data: Annotated[list[PaymentResponse], Field()] | None = None
+    data: list[PaymentResponse] | None = None
     links: dict[str, StrictStr] | None = None
-    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(default=None, alias="forwardedData")
-    raw: Annotated[list[RawResponse], Field()] | None = None
+    forwarded_data: Annotated[list[ResponseForwardedData] | None, Field(alias="forwardedData")] = None
+    raw: list[RawResponse] | None = None
     paging: FilteredClientPayloadListPaymentResponse | None = None
-    tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
+    tracing_id: Annotated[StrictStr | None, Field(alias="tracingId")] = None
     __properties = ["meta", "data", "links", "forwardedData", "raw", "paging", "tracingId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

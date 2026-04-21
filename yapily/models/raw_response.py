@@ -15,7 +15,7 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Any
+from typing import Annotated, Any
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 
@@ -30,7 +30,7 @@ class RawResponse(BaseModel):
     request: RawRequest | None = None
     duration: StrictStr | None = None
     headers: dict[str, StrictStr] | None = None
-    result_code: StrictInt | None = Field(default=None, alias="resultCode")
+    result_code: Annotated[StrictInt | None, Field(alias='resultCode')] = None
     result: dict[str, Any] | None = None
     __properties = ["request", "duration", "headers", "resultCode", "result"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

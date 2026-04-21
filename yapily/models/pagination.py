@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,8 +28,8 @@ class Pagination(BaseModel):
     Pagination
     """
 
-    total_count: StrictInt | None = Field(default=None, alias="totalCount")
-    var_self: FilterAndSort | None = Field(default=None, alias="self")
+    total_count: Annotated[StrictInt | None, Field(alias='totalCount')] = None
+    var_self: Annotated[FilterAndSort | None, Field(alias='self')] = None
     next: Next | None = None
     __properties = ["totalCount", "self", "next"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)

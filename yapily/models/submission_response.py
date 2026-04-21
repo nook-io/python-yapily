@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -33,17 +34,17 @@ class SubmissionResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    payment_idempotency_id: StrictStr | None = Field(default=None, alias="paymentIdempotencyId")
-    payment_lifecycle_id: StrictStr | None = Field(default=None, alias="paymentLifecycleId")
-    institution_consent_id: StrictStr | None = Field(default=None, alias="institutionConsentId")
+    payment_idempotency_id: Annotated[StrictStr | None, Field(alias='paymentIdempotencyId')] = None
+    payment_lifecycle_id: Annotated[StrictStr | None, Field(alias='paymentLifecycleId')] = None
+    institution_consent_id: Annotated[StrictStr | None, Field(alias='institutionConsentId')] = None
     status: PaymentStatus | None = None
-    status_details: PaymentStatusDetails | None = Field(default=None, alias="statusDetails")
-    initiation_details: InitiationDetails = Field(default=..., alias="initiationDetails")
-    submission_details: SubmissionDetails = Field(default=..., alias="submissionDetails")
+    status_details: Annotated[PaymentStatusDetails | None, Field(alias='statusDetails')] = None
+    initiation_details: Annotated[InitiationDetails, Field(alias='initiationDetails')] = ...
+    submission_details: Annotated[SubmissionDetails, Field(alias='submissionDetails')] = ...
     payer: Payer | None = None
-    refund_account: RefundAccount | None = Field(default=None, alias="refundAccount")
-    expected_execution_time: datetime | None = Field(default=None, alias="expectedExecutionTime")
-    expected_settlement_time: datetime | None = Field(default=None, alias="expectedSettlementTime")
+    refund_account: Annotated[RefundAccount | None, Field(alias='refundAccount')] = None
+    expected_execution_time: Annotated[datetime | None, Field(alias='expectedExecutionTime')] = None
+    expected_settlement_time: Annotated[datetime | None, Field(alias='expectedSettlementTime')] = None
     __properties = [
         "id",
         "paymentIdempotencyId",

@@ -29,14 +29,14 @@ class TransactionPayerDetails(BaseModel):
     Details of the benefactor [person or business].  # noqa: E501
     """
 
-    name: StrictStr | None = Field(default=None, description="The account holder name of the Payer.")
-    account_identifications: Annotated[list[TransactionPayeeDetailsAccountIdentificationsInner], Field()] | None = (
+    name: Annotated[StrictStr | None, Field(description="The account holder name of the Payer.")] = None
+    account_identifications: Annotated[
+        list[TransactionPayeeDetailsAccountIdentificationsInner] | None,
         Field(
-            default=None,
             alias="accountIdentifications",
             description="The account identifications that identify the Payer's bank account.",
-        )
-    )
+        ),
+    ] = None
     __properties = ["name", "accountIdentifications"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

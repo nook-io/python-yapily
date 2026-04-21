@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,21 +26,11 @@ class EnrichedTransaction(BaseModel):
     Details of the transaction, identified by Yapily data services.  # noqa: E501
     """
 
-    transaction_id: StrictStr | None = Field(
-        default=None, alias="transactionId", description="Unique identifier of the transaction"
-    )
-    transaction_information: StrictStr | None = Field(
-        default=None, alias="transactionInformation", description="Information for the transaction"
-    )
-    amount: StrictFloat | StrictInt | None = Field(default=None, description="Monetary amount.")
-    institution: StrictStr | None = Field(
-        default=None, description="The `Institution` that the transaction is sent to."
-    )
-    booking_date_time: datetime | None = Field(
-        default=None,
-        alias="bookingDateTime",
-        description="Date and time of when a transaction entry occured and was posted to the account servicer's books.",
-    )
+    transaction_id: Annotated[StrictStr | None, Field(alias='transactionId', description='Unique identifier of the transaction')] = None
+    transaction_information: Annotated[StrictStr | None, Field(alias='transactionInformation', description='Information for the transaction')] = None
+    amount: Annotated[StrictFloat | StrictInt | None, Field(description='Monetary amount.')] = None
+    institution: Annotated[StrictStr | None, Field(description='The `Institution` that the transaction is sent to.')] = None
+    booking_date_time: Annotated[datetime | None, Field(alias='bookingDateTime', description="Date and time of when a transaction entry occured and was posted to the account servicer's books.")] = None
     __properties = ["transactionId", "transactionInformation", "amount", "institution", "bookingDateTime"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

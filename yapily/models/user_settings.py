@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,12 +25,8 @@ class UserSettings(BaseModel):
     Specifies the language and location preferences of the user.  # noqa: E501
     """
 
-    language: StrictStr | None = Field(
-        default=None, description="2 letter ISO Language code which denotes the language preference for the `User`."
-    )
-    location: StrictStr | None = Field(
-        default=None, description="2 letter ISO Country code which denotes the location preference for the `User`."
-    )
+    language: Annotated[StrictStr | None, Field(description='2 letter ISO Language code which denotes the language preference for the `User`.')] = None
+    location: Annotated[StrictStr | None, Field(description='2 letter ISO Country code which denotes the location preference for the `User`.')] = None
     __properties = ["language", "location"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

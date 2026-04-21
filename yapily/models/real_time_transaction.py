@@ -40,32 +40,28 @@ class RealTimeTransaction(BaseModel):
     """
 
     id: StrictStr | None = None
-    var_date: datetime | None = Field(default=None, alias="date")
-    booking_date_time: datetime | None = Field(default=None, alias="bookingDateTime")
-    value_date_time: datetime | None = Field(default=None, alias="valueDateTime")
+    var_date: Annotated[datetime | None, Field(alias="date")] = None
+    booking_date_time: Annotated[datetime | None, Field(alias="bookingDateTime")] = None
+    value_date_time: Annotated[datetime | None, Field(alias="valueDateTime")] = None
     status: TransactionStatusEnum | None = None
-    transaction_amount: Amount | None = Field(default=None, alias="transactionAmount")
-    gross_amount: Amount | None = Field(default=None, alias="grossAmount")
-    currency_exchange: CurrencyExchange | None = Field(default=None, alias="currencyExchange")
-    charge_details: TransactionChargeDetails | None = Field(default=None, alias="chargeDetails")
+    transaction_amount: Annotated[Amount | None, Field(alias="transactionAmount")] = None
+    gross_amount: Annotated[Amount | None, Field(alias="grossAmount")] = None
+    currency_exchange: Annotated[CurrencyExchange | None, Field(alias="currencyExchange")] = None
+    charge_details: Annotated[TransactionChargeDetails | None, Field(alias="chargeDetails")] = None
     reference: StrictStr | None = None
-    statement_references: Annotated[list[StatementReference], Field()] | None = Field(
-        default=None, alias="statementReferences"
-    )
+    statement_references: Annotated[list[StatementReference] | None, Field(alias="statementReferences")] = None
     description: StrictStr | None = None
-    transaction_information: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None, alias="transactionInformation"
-    )
-    address_details: AddressDetails | None = Field(default=None, alias="addressDetails")
-    iso_bank_transaction_code: IsoBankTransactionCode | None = Field(default=None, alias="isoBankTransactionCode")
-    proprietary_bank_transaction_code: ProprietaryBankTransactionCode | None = Field(
-        default=None, alias="proprietaryBankTransactionCode"
-    )
+    transaction_information: Annotated[list[StrictStr] | None, Field(alias="transactionInformation")] = None
+    address_details: Annotated[AddressDetails | None, Field(alias="addressDetails")] = None
+    iso_bank_transaction_code: Annotated[IsoBankTransactionCode | None, Field(alias="isoBankTransactionCode")] = None
+    proprietary_bank_transaction_code: Annotated[
+        ProprietaryBankTransactionCode | None, Field(alias="proprietaryBankTransactionCode")
+    ] = None
     balance: TransactionBalance | None = None
-    payee_details: Payee | None = Field(default=None, alias="payeeDetails")
-    payer_details: Payer | None = Field(default=None, alias="payerDetails")
+    payee_details: Annotated[Payee | None, Field(alias="payeeDetails")] = None
+    payer_details: Annotated[Payer | None, Field(alias="payerDetails")] = None
     merchant: Merchant | None = None
-    supplementary_data: dict[str, Any] | None = Field(default=None, alias="supplementaryData")
+    supplementary_data: Annotated[dict[str, Any] | None, Field(alias="supplementaryData")] = None
     __properties = [
         "id",
         "date",

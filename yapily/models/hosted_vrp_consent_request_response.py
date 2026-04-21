@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -29,44 +30,18 @@ class HostedVRPConsentRequestResponse(BaseModel):
     HostedVRPConsentRequestResponse
     """
 
-    id: StrictStr = Field(default=..., description="Represents the Unique Id of the VRP consent request")
-    user_id: StrictStr | None = Field(
-        default=None, alias="userId", description="Represents the Unique Id for the `User` assigned by Yapily."
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None, alias="applicationUserId", description="Represents the user-friendly reference to the `User`."
-    )
-    application_id: StrictStr = Field(
-        default=...,
-        alias="applicationId",
-        description="Represents the Unique Id of the `Application` the user is associated with.",
-    )
-    institution_identifiers: InstitutionIdentifiers | None = Field(default=None, alias="institutionIdentifiers")
-    user_settings: UserSettings | None = Field(default=None, alias="userSettings")
-    redirect_url: StrictStr | None = Field(
-        default=None,
-        alias="redirectUrl",
-        description="URL of client's server to redirect the PSU after completion of the consent authorisation.",
-    )
-    vrp_setup: VRPSetupRequest | None = Field(default=None, alias="vrpSetup")
-    hosted_url: StrictStr = Field(
-        default=...,
-        alias="hostedUrl",
-        description="Represents the URL of Hosted UI page for the applicationId which initiates the user journey for the Consent. <br> URL would be appended with authToken, applicationId and userSettings.",
-    )
-    auth_token: StrictStr = Field(
-        default=...,
-        alias="authToken",
-        description="Represents the JWT Token signed by the certificate-vault using Yapily's keys.",
-    )
-    created_at: datetime = Field(
-        default=..., alias="createdAt", description="Represents the date and time at which the Consent was created."
-    )
-    authorisation_expires_at: datetime | None = Field(
-        default=None,
-        alias="authorisationExpiresAt",
-        description="Represents the date and time at which the auth Token will expire.",
-    )
+    id: Annotated[StrictStr, Field(description='Represents the Unique Id of the VRP consent request')] = ...
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='Represents the Unique Id for the `User` assigned by Yapily.')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description='Represents the user-friendly reference to the `User`.')] = None
+    application_id: Annotated[StrictStr, Field(alias='applicationId', description='Represents the Unique Id of the `Application` the user is associated with.')] = ...
+    institution_identifiers: Annotated[InstitutionIdentifiers | None, Field(alias='institutionIdentifiers')] = None
+    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
+    redirect_url: Annotated[StrictStr | None, Field(alias='redirectUrl', description="URL of client's server to redirect the PSU after completion of the consent authorisation.")] = None
+    vrp_setup: Annotated[VRPSetupRequest | None, Field(alias='vrpSetup')] = None
+    hosted_url: Annotated[StrictStr, Field(alias='hostedUrl', description='Represents the URL of Hosted UI page for the applicationId which initiates the user journey for the Consent. <br> URL would be appended with authToken, applicationId and userSettings.')] = ...
+    auth_token: Annotated[StrictStr, Field(alias='authToken', description="Represents the JWT Token signed by the certificate-vault using Yapily's keys.")] = ...
+    created_at: Annotated[datetime, Field(alias='createdAt', description='Represents the date and time at which the Consent was created.')] = ...
+    authorisation_expires_at: Annotated[datetime | None, Field(alias='authorisationExpiresAt', description='Represents the date and time at which the auth Token will expire.')] = None
     __properties = [
         "id",
         "userId",

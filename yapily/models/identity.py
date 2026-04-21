@@ -28,9 +28,9 @@ class Identity(BaseModel):
     """
 
     id: StrictStr | None = None
-    first_name: StrictStr | None = Field(default=None, alias="firstName")
-    last_name: StrictStr | None = Field(default=None, alias="lastName")
-    full_name: StrictStr | None = Field(default=None, alias="fullName")
+    first_name: Annotated[StrictStr | None, Field(alias='firstName')] = None
+    last_name: Annotated[StrictStr | None, Field(alias='lastName')] = None
+    full_name: Annotated[StrictStr | None, Field(alias='fullName')] = None
     gender: StrictStr | None = None
     birthdate: StrictStr | None = None
     email: StrictStr | None = None

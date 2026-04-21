@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -30,43 +31,18 @@ class HostedPaymentDetails(BaseModel):
     HostedPaymentDetails
     """
 
-    payment_request_id: StrictStr | None = Field(
-        default=None, alias="paymentRequestId", description="The unique ID of the payment request."
-    )
-    user_id: StrictStr | None = Field(
-        default=None, alias="userId", description="The Unique Identifier for the `User` assigned by Yapily."
-    )
-    application_user_id: StrictStr | None = Field(
-        default=None, alias="applicationUserId", description="Your reference to the `User`."
-    )
-    application_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationId",
-        description="The Unique Identifier of the `Application` the user is associated with.",
-    )
-    institution_identifiers: InstitutionIdentifiersResponse | None = Field(default=None, alias="institutionIdentifiers")
-    user_settings: UserSettings | None = Field(default=None, alias="userSettings")
-    redirect_url: StrictStr | None = Field(
-        default=None,
-        alias="redirectUrl",
-        description="URL of your server to redirect the user after completion of the payment flow.",
-    )
-    payment_request_details: HostedPaymentRequestDetailsLink | None = Field(default=None, alias="paymentRequestDetails")
-    created_at: datetime | None = Field(
-        default=None, alias="createdAt", description="The date and time at which the payment request was created."
-    )
-    authorisation_expires_at: datetime | None = Field(
-        default=None,
-        alias="authorisationExpiresAt",
-        description="The date and time at which the auth Token will expire.",
-    )
-    status: StrictStr | None = Field(
-        default=None,
-        description="Current status of the payment request. <br> Possible values: <br> ACTIVE <br> INACTIVE",
-    )
-    payments: list[HostedPayment] | None = Field(
-        default=None, description="Payments that have been initiated as part of this request"
-    )
+    payment_request_id: Annotated[StrictStr | None, Field(alias='paymentRequestId', description='The unique ID of the payment request.')] = None
+    user_id: Annotated[StrictStr | None, Field(alias='userId', description='The Unique Identifier for the `User` assigned by Yapily.')] = None
+    application_user_id: Annotated[StrictStr | None, Field(alias='applicationUserId', description='Your reference to the `User`.')] = None
+    application_id: Annotated[StrictStr | None, Field(alias='applicationId', description='The Unique Identifier of the `Application` the user is associated with.')] = None
+    institution_identifiers: Annotated[InstitutionIdentifiersResponse | None, Field(alias='institutionIdentifiers')] = None
+    user_settings: Annotated[UserSettings | None, Field(alias='userSettings')] = None
+    redirect_url: Annotated[StrictStr | None, Field(alias='redirectUrl', description='URL of your server to redirect the user after completion of the payment flow.')] = None
+    payment_request_details: Annotated[HostedPaymentRequestDetailsLink | None, Field(alias='paymentRequestDetails')] = None
+    created_at: Annotated[datetime | None, Field(alias='createdAt', description='The date and time at which the payment request was created.')] = None
+    authorisation_expires_at: Annotated[datetime | None, Field(alias='authorisationExpiresAt', description='The date and time at which the auth Token will expire.')] = None
+    status: Annotated[StrictStr | None, Field(description='Current status of the payment request. <br> Possible values: <br> ACTIVE <br> INACTIVE')] = None
+    payments: Annotated[list[HostedPayment] | None, Field(description='Payments that have been initiated as part of this request')] = None
     __properties = [
         "paymentRequestId",
         "userId",

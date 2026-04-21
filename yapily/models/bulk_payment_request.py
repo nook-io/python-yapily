@@ -28,19 +28,24 @@ class BulkPaymentRequest(BaseModel):
     The payment request object defining the details of the bulk payment  # noqa: E501
     """
 
-    payments: Annotated[list[PaymentRequest], Field()] = Field(
-        default=..., description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment."
-    )
-    originator_identification_number: StrictStr | None = Field(
-        default=None,
-        alias="originatorIdentificationNumber",
-        description="__Conditional__. The identification number of the originator.<ul><li>Mandatory for AIB bulk payments</li></ul>",
-    )
-    execution_date_time: datetime | None = Field(
-        default=None,
-        alias="executionDateTime",
-        description="__Optional__. Used to schedule the bulk payment to be executed at a future date if supported by the `Institution`.",
-    )
+    payments: Annotated[
+        list[PaymentRequest],
+        Field(description="__Mandatory__. The array of `PaymentRequest` objects to initiate in the bulk payment."),
+    ] = ...
+    originator_identification_number: Annotated[
+        StrictStr | None,
+        Field(
+            alias="originatorIdentificationNumber",
+            description="__Conditional__. The identification number of the originator.<ul><li>Mandatory for AIB bulk payments</li></ul>",
+        ),
+    ] = None
+    execution_date_time: Annotated[
+        datetime | None,
+        Field(
+            alias="executionDateTime",
+            description="__Optional__. Used to schedule the bulk payment to be executed at a future date if supported by the `Institution`.",
+        ),
+    ] = None
     __properties = ["payments", "originatorIdentificationNumber", "executionDateTime"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

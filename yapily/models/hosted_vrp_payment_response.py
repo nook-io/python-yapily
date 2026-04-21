@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -33,25 +34,18 @@ class HostedVRPPaymentResponse(BaseModel):
     """
 
     id: StrictStr | None = None
-    payment_idempotency_id: StrictStr | None = Field(default=None, alias="paymentIdempotencyId")
+    payment_idempotency_id: Annotated[StrictStr | None, Field(alias='paymentIdempotencyId')] = None
     amount: Amount | None = None
-    reference: StrictStr | None = Field(
-        default=None,
-        description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.",
-    )
+    reference: Annotated[StrictStr | None, Field(description='__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.')] = None
     payee: Payee | None = None
     payer: HostedVrpPayerResponse | None = None
-    refund_account: HostedVrpRefundAccount | None = Field(default=None, alias="refundAccount")
+    refund_account: Annotated[HostedVrpRefundAccount | None, Field(alias='refundAccount')] = None
     risk: PaymentRisk | None = None
-    payment_lifecycle_id: StrictStr | None = Field(
-        default=None,
-        alias="paymentLifecycleId",
-        description="The Unique Identifier provided by TPP in the Payment request to identify the payment.",
-    )
-    expected_execution_time: datetime | None = Field(default=None, alias="expectedExecutionTime")
-    expected_settlement_time: datetime | None = Field(default=None, alias="expectedSettlementTime")
-    institution_payment_id: StrictStr | None = Field(default=None, alias="institutionPaymentId")
-    status_details: HostedPaymentStatusDetails | None = Field(default=None, alias="statusDetails")
+    payment_lifecycle_id: Annotated[StrictStr | None, Field(alias='paymentLifecycleId', description='The Unique Identifier provided by TPP in the Payment request to identify the payment.')] = None
+    expected_execution_time: Annotated[datetime | None, Field(alias='expectedExecutionTime')] = None
+    expected_settlement_time: Annotated[datetime | None, Field(alias='expectedSettlementTime')] = None
+    institution_payment_id: Annotated[StrictStr | None, Field(alias='institutionPaymentId')] = None
+    status_details: Annotated[HostedPaymentStatusDetails | None, Field(alias='statusDetails')] = None
     __properties = [
         "id",
         "paymentIdempotencyId",

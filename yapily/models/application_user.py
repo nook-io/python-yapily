@@ -28,24 +28,22 @@ class ApplicationUser(BaseModel):
     Information about a user of an application.  # noqa: E501
     """
 
-    uuid: StrictStr | None = Field(default=None, description="A unique identifier for the 'User' assigned by Yapily.")
-    application_uuid: StrictStr | None = Field(
-        default=None,
-        alias="applicationUuid",
-        description="Unique identifier of the application the user is associated with.",
+    uuid: Annotated[StrictStr | None, Field(description="A unique identifier for the 'User' assigned by Yapily.")] = (
+        None
     )
-    application_user_id: StrictStr | None = Field(
-        default=None,
-        alias="applicationUserId",
-        description="__Conditional__. The user-friendly reference to the `User`.",
-    )
-    reference_id: StrictStr | None = Field(default=None, alias="referenceId")
-    created_at: datetime | None = Field(
-        default=None, alias="createdAt", description="Date and time of when the user was created."
-    )
-    institution_consents: Annotated[list[InstitutionConsent], Field()] | None = Field(
-        default=None, alias="institutionConsents"
-    )
+    application_uuid: Annotated[
+        StrictStr | None,
+        Field(alias="applicationUuid", description="Unique identifier of the application the user is associated with."),
+    ] = None
+    application_user_id: Annotated[
+        StrictStr | None,
+        Field(alias="applicationUserId", description="__Conditional__. The user-friendly reference to the `User`."),
+    ] = None
+    reference_id: Annotated[StrictStr | None, Field(alias="referenceId")] = None
+    created_at: Annotated[
+        datetime | None, Field(alias="createdAt", description="Date and time of when the user was created.")
+    ] = None
+    institution_consents: Annotated[list[InstitutionConsent] | None, Field(alias="institutionConsents")] = None
     __properties = ["uuid", "applicationUuid", "applicationUserId", "referenceId", "createdAt", "institutionConsents"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

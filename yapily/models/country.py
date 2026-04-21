@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -24,10 +25,8 @@ class Country(BaseModel):
     An array of `Country` denoting which regions the `Institution` provides coverage for  # noqa: E501
     """
 
-    display_name: StrictStr | None = Field(default=None, alias="displayName", description="Country name.")
-    country_code2: StrictStr | None = Field(
-        default=None, alias="countryCode2", description="Two character ISO 3166 country code."
-    )
+    display_name: Annotated[StrictStr | None, Field(alias='displayName', description='Country name.')] = None
+    country_code2: Annotated[StrictStr | None, Field(alias='countryCode2', description='Two character ISO 3166 country code.')] = None
     __properties = ["displayName", "countryCode2"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

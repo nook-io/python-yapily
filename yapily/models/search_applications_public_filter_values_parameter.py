@@ -25,21 +25,10 @@ class SearchApplicationsPublicFilterValuesParameter(BaseModel):
     SearchApplicationsPublicFilterValuesParameter
     """
 
-    application_ids: Annotated[list[StrictStr], Field(max_length=15)] | None = Field(
-        default=None,
-        alias="applicationIds",
-        description="Sub-application ids to filter the results for. If provided, the results will only include sub-applications with the given ids. Non-existent ids will be ignored.",
-    )
-    offset: Annotated[int, Field(strict=True, ge=0)] | None = Field(
-        default=0, description="The number of results to skip."
-    )
-    limit: Annotated[int, Field(strict=True, le=1000, ge=1)] | None = Field(
-        default=1000, description="The maximum number of results to return."
-    )
-    sort: StrictStr | None = Field(
-        default="name",
-        description="The field to sort the results by.<br><br>Possible values:<ul><li>`last_updated` (ascending)</li><li>`-last_updated` (descending)</li><li>`name` (ascending)</li><li>`-name` (descending)</li><li>`uuid` (ascending)</li><li>`-uuid` (descending)</li></ul>",
-    )
+    application_ids: Annotated[Annotated[list[StrictStr], Field(max_length=15)] | None, Field(alias='applicationIds', description='Sub-application ids to filter the results for. If provided, the results will only include sub-applications with the given ids. Non-existent ids will be ignored.')] = None
+    offset: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(description='The number of results to skip.')] = 0
+    limit: Annotated[Annotated[int, Field(strict=True, le=1000, ge=1)] | None, Field(description='The maximum number of results to return.')] = 1000
+    sort: Annotated[StrictStr | None, Field(description='The field to sort the results by.<br><br>Possible values:<ul><li>`last_updated` (ascending)</li><li>`-last_updated` (descending)</li><li>`name` (ascending)</li><li>`-name` (descending)</li><li>`uuid` (ascending)</li><li>`-uuid` (descending)</li></ul>')] = 'name'
     __properties = ["applicationIds", "offset", "limit", "sort"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

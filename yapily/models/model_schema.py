@@ -32,39 +32,41 @@ class ModelSchema(BaseModel):
 
     title: StrictStr | None = None
     maximum: StrictFloat | StrictInt | None = None
-    exclusive_maximum: StrictFloat | StrictInt | None = Field(default=None, alias="exclusiveMaximum")
+    exclusive_maximum: Annotated[StrictFloat | StrictInt | None, Field(alias="exclusiveMaximum")] = None
     minimum: StrictFloat | StrictInt | None = None
-    exclusive_minimum: StrictFloat | StrictInt | None = Field(default=None, alias="exclusiveMinimum")
+    exclusive_minimum: Annotated[StrictFloat | StrictInt | None, Field(alias="exclusiveMinimum")] = None
     pattern: StrictStr | None = None
-    max_items: Annotated[int, Field(strict=True, ge=0)] | None = Field(default=None, alias="maxItems")
-    min_items: Annotated[int, Field(strict=True, ge=0)] | None = Field(default=None, alias="minItems")
-    unique_items: StrictBool | None = Field(default=None, alias="uniqueItems")
+    max_items: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(alias="maxItems")] = None
+    min_items: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(alias="minItems")] = None
+    unique_items: Annotated[StrictBool | None, Field(alias="uniqueItems")] = None
     required: Annotated[list[StrictStr], Field(min_length=1), Unique] | None = None
     enum: Annotated[list[Any], Field(min_length=1)] | None = None
     type: SchemaType | None = None
     contains: ModelSchema | None = None
-    var_not: ModelSchema | None = Field(default=None, alias="not")
-    var_if: ModelSchema | None = Field(default=None, alias="if")
+    var_not: Annotated[ModelSchema | None, Field(alias="not")] = None
+    var_if: Annotated[ModelSchema | None, Field(alias="if")] = None
     then: ModelSchema | None = None
-    var_else: ModelSchema | None = Field(default=None, alias="else")
-    all_of: Annotated[list[ModelSchema], Field()] | None = Field(default=None, alias="allOf")
-    one_of: Annotated[list[ModelSchema], Field()] | None = Field(default=None, alias="oneOf")
-    any_of: Annotated[list[ModelSchema], Field()] | None = Field(default=None, alias="anyOf")
+    var_else: Annotated[ModelSchema | None, Field(alias="else")] = None
+    all_of: Annotated[list[ModelSchema] | None, Field(alias="allOf")] = None
+    one_of: Annotated[list[ModelSchema] | None, Field(alias="oneOf")] = None
+    any_of: Annotated[list[ModelSchema] | None, Field(alias="anyOf")] = None
     items: ModelSchema | None = None
     properties: dict[str, ModelSchema] | None = None
     description: StrictStr | None = None
     format: StrictStr | None = None
     default: Any | None = None
     example: Any | None = None
-    dependent_required: dict[str, Annotated[list[StrictStr], Unique]] | None = Field(
-        default=None,
-        alias="dependentRequired",
-        description="dependentRequired keyword is used to satisfy dependency between fields",
-    )
-    defs: dict[str, ModelSchema] | None = Field(default=None, alias="$defs")
-    ref: StrictStr | None = Field(default=None, alias="$ref")
-    x_yapily_annotations: SchemaXYapilyAnnotations | None = Field(default=None, alias="x-yapily-annotations")
-    x_yapily_validations: SchemaXYapilyValidations | None = Field(default=None, alias="x-yapily-validations")
+    dependent_required: Annotated[
+        dict[str, Annotated[list[StrictStr], Unique]] | None,
+        Field(
+            alias="dependentRequired",
+            description="dependentRequired keyword is used to satisfy dependency between fields",
+        ),
+    ] = None
+    defs: Annotated[dict[str, ModelSchema] | None, Field(alias="$defs")] = None
+    ref: Annotated[StrictStr | None, Field(alias="$ref")] = None
+    x_yapily_annotations: Annotated[SchemaXYapilyAnnotations | None, Field(alias="x-yapily-annotations")] = None
+    x_yapily_validations: Annotated[SchemaXYapilyValidations | None, Field(alias="x-yapily-validations")] = None
     __properties = [
         "title",
         "maximum",

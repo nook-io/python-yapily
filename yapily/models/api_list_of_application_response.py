@@ -15,9 +15,8 @@ from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 
 from yapily.models.application_response import ApplicationResponse
 from yapily.models.application_response_list_meta import ApplicationResponseListMeta
@@ -29,7 +28,7 @@ class ApiListOfApplicationResponse(BaseModel):
     """
 
     meta: ApplicationResponseListMeta | None = None
-    data: Annotated[list[ApplicationResponse], Field()] | None = None
+    data: list[ApplicationResponse] | None = None
     __properties = ["meta", "data"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

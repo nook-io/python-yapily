@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,29 +26,11 @@ class MultiAuthorisation(BaseModel):
     Details the additional levels of authorisation which are required from, and being managed by, the `Institution`.  # noqa: E501
     """
 
-    status: StrictStr | None = Field(
-        default=None, description="_Mandatory_. Specifies the current status of the multi-authorisation flow."
-    )
-    number_of_authorisation_required: StrictInt | None = Field(
-        default=None,
-        alias="numberOfAuthorisationRequired",
-        description="__Mandatory__. Total number of authorisations required.",
-    )
-    number_of_authorisation_received: StrictInt | None = Field(
-        default=None,
-        alias="numberOfAuthorisationReceived",
-        description="__Mandatory__. The total number of authorisations that have been recieved.",
-    )
-    last_updated_date_time: datetime | None = Field(
-        default=None,
-        alias="lastUpdatedDateTime",
-        description="__Mandatory__. Date and time of when the authorisation was last updated.",
-    )
-    expiration_date_time: datetime | None = Field(
-        default=None,
-        alias="expirationDateTime",
-        description="__Mandatory__. Date and time by when the authorisation flow must be completed before it expires and the authorisation request is terminated.",
-    )
+    status: Annotated[StrictStr | None, Field(description='_Mandatory_. Specifies the current status of the multi-authorisation flow.')] = None
+    number_of_authorisation_required: Annotated[StrictInt | None, Field(alias='numberOfAuthorisationRequired', description='__Mandatory__. Total number of authorisations required.')] = None
+    number_of_authorisation_received: Annotated[StrictInt | None, Field(alias='numberOfAuthorisationReceived', description='__Mandatory__. The total number of authorisations that have been recieved.')] = None
+    last_updated_date_time: Annotated[datetime | None, Field(alias='lastUpdatedDateTime', description='__Mandatory__. Date and time of when the authorisation was last updated.')] = None
+    expiration_date_time: Annotated[datetime | None, Field(alias='expirationDateTime', description='__Mandatory__. Date and time by when the authorisation flow must be completed before it expires and the authorisation request is terminated.')] = None
     __properties = [
         "status",
         "numberOfAuthorisationRequired",

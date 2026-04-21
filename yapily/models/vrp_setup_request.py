@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -32,30 +33,13 @@ class VRPSetupRequest(BaseModel):
     """
 
     payer: Payer | None = None
-    payee: Payee = Field(...)
-    reference: StrictStr | None = Field(
-        default=None,
-        description="__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.",
-    )
+    payee: Annotated[Payee, Field()]
+    reference: Annotated[StrictStr | None, Field(description='__Optional__. The payment reference or description. Limited to a maximum of 18 characters long.')] = None
     limits: HostedVRPLimitsRequest | None = None
-    valid_from: datetime | None = Field(
-        default=None, alias="validFrom", description="__Optional__. Start date when the consent becomes valid."
-    )
-    valid_to: datetime | None = Field(
-        default=None,
-        alias="validTo",
-        description="__Optional__. End date when the consent expires and becomes invalid.",
-    )
-    recurring_payment_category: StrictStr | None = Field(
-        default=None,
-        alias="recurringPaymentCategory",
-        description="The use-case for the VRP consent supported by the bank. Allowed values: <br>`ONGOING` <br>`SUBSCRIPTION`",
-    )
-    initial_payment: Amount | None = Field(
-        default=None,
-        alias="initialPayment",
-        description="__Optional__. Initial payment to be charged under this consent. If enforced, this amount must match the first payment amount executed using this consent.",
-    )
+    valid_from: Annotated[datetime | None, Field(alias='validFrom', description='__Optional__. Start date when the consent becomes valid.')] = None
+    valid_to: Annotated[datetime | None, Field(alias='validTo', description='__Optional__. End date when the consent expires and becomes invalid.')] = None
+    recurring_payment_category: Annotated[StrictStr | None, Field(alias='recurringPaymentCategory', description='The use-case for the VRP consent supported by the bank. Allowed values: <br>`ONGOING` <br>`SUBSCRIPTION`')] = None
+    initial_payment: Annotated[Amount | None, Field(alias='initialPayment', description='__Optional__. Initial payment to be charged under this consent. If enforced, this amount must match the first payment amount executed using this consent.')] = None
     risk: PaymentRisk | None = None
     __properties = [
         "payer",

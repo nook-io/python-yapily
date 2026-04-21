@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -38,11 +39,9 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichme
         GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentCategorisation | None
     ) = None
     recurrence: StrictStr | None = None
-    transaction_hash: (
-        GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentTransactionHash | None
-    ) = Field(default=None, alias="transactionHash")
+    transaction_hash: Annotated[GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentTransactionHash | None, Field(alias='transactionHash')] = None
     merchant: GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerEnrichmentMerchant | None = None
-    payment_processor: StrictStr | None = Field(default=None, alias="paymentProcessor")
+    payment_processor: Annotated[StrictStr | None, Field(alias='paymentProcessor')] = None
     __properties = ["categorisation", "recurrence", "transactionHash", "merchant", "paymentProcessor"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

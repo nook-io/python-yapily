@@ -28,23 +28,28 @@ class EnrichedBalances(BaseModel):
     Enriched Balance information generated which include historic aggregated balances and predicted balances  # noqa: E501
     """
 
-    account_ids: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None,
-        alias="accountIds",
-        description="A list of Account Ids used to generate Balance Prediction Profile.",
-    )
-    institutions: Annotated[list[StrictStr], Field()] | None = Field(
-        default=None,
-        description="A list of Institution Ids associated with the accounts used to generate Balance Prediction Profile.",
-    )
-    historic: Annotated[list[EnrichedHistoricBalance], Field()] | None = Field(
-        default=None,
-        description="A list of historic balances. Each balance in the list is an aggregation (sum) of the reported balance for each account within the profile at a point in time.",
-    )
-    predicted: Annotated[list[EnrichedPredictedBalance], Field()] | None = Field(
-        default=None,
-        description="A list of predicted balances. Each balance in the list is a projected balance of the profile at a future point in time.",
-    )
+    account_ids: Annotated[
+        list[StrictStr] | None,
+        Field(alias="accountIds", description="A list of Account Ids used to generate Balance Prediction Profile."),
+    ] = None
+    institutions: Annotated[
+        list[StrictStr] | None,
+        Field(
+            description="A list of Institution Ids associated with the accounts used to generate Balance Prediction Profile."
+        ),
+    ] = None
+    historic: Annotated[
+        list[EnrichedHistoricBalance] | None,
+        Field(
+            description="A list of historic balances. Each balance in the list is an aggregation (sum) of the reported balance for each account within the profile at a point in time."
+        ),
+    ] = None
+    predicted: Annotated[
+        list[EnrichedPredictedBalance] | None,
+        Field(
+            description="A list of predicted balances. Each balance in the list is a projected balance of the profile at a future point in time."
+        ),
+    ] = None
     __properties = ["accountIds", "institutions", "historic", "predicted"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

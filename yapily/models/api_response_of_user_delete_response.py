@@ -33,9 +33,9 @@ class ApiResponseOfUserDeleteResponse(BaseModel):
     meta: ResponseMeta | None = None
     data: UserDeleteResponse | None = None
     links: dict[str, StrictStr] | None = None
-    forwarded_data: Annotated[list[ResponseForwardedData], Field()] | None = Field(default=None, alias="forwardedData")
+    forwarded_data: Annotated[list[ResponseForwardedData] | None, Field(alias="forwardedData")] = None
     raw: Annotated[list[RawResponse], Field()] | None = None
-    tracing_id: StrictStr | None = Field(default=None, alias="tracingId")
+    tracing_id: Annotated[StrictStr | None, Field(alias="tracingId")] = None
     __properties = ["meta", "data", "links", "forwardedData", "raw", "tracingId"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -26,17 +27,9 @@ class PaymentChargeDetails(BaseModel):
     Details the charges that will apply to the payment.  # noqa: E501
     """
 
-    charge_amount: Amount | None = Field(default=None, alias="chargeAmount")
-    charge_type: StrictStr | None = Field(
-        default=None,
-        alias="chargeType",
-        description="__Mandatory__. Specifies the nature of the transaction charge e.g. (Bank transfer fees).",
-    )
-    charge_to: StrictStr | None = Field(
-        default=None,
-        alias="chargeTo",
-        description="__Mandatory__. States which party of the payment bears the charges.",
-    )
+    charge_amount: Annotated[Amount | None, Field(alias='chargeAmount')] = None
+    charge_type: Annotated[StrictStr | None, Field(alias='chargeType', description='__Mandatory__. Specifies the nature of the transaction charge e.g. (Bank transfer fees).')] = None
+    charge_to: Annotated[StrictStr | None, Field(alias='chargeTo', description='__Mandatory__. States which party of the payment bears the charges.')] = None
     __properties = ["chargeAmount", "chargeType", "chargeTo"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

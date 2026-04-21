@@ -38,7 +38,7 @@ class ConstraintsApi:
     async def get_account_constraints_rules_by_institution(
         self,
         institution_ids: Annotated[
-            Annotated[list[StrictStr], Field()],
+            list[StrictStr],
             Field(
                 ...,
                 description="Unique Id(s) of the `Institution`(s) to retrieve the Data Constraints for. Multiple institutionIds need to be separated by `,`",
@@ -98,7 +98,7 @@ class ConstraintsApi:
     async def get_account_constraints_rules_by_institution_with_http_info(
         self,
         institution_ids: Annotated[
-            Annotated[list[StrictStr], Field()],
+            list[StrictStr],
             Field(
                 ...,
                 description="Unique Id(s) of the `Institution`(s) to retrieve the Data Constraints for. Multiple institutionIds need to be separated by `,`",
@@ -247,7 +247,7 @@ class ConstraintsApi:
     async def get_payment_constraints_rules_by_institution(
         self,
         institution_ids: Annotated[
-            Annotated[list[StrictStr], Field()],
+            list[StrictStr],
             Field(
                 ...,
                 description="Unique Id(s) of the `Institution`(s) to retrieve the Payment Constraints for. Multiple institutionIds need to be separated by `,`",
@@ -312,7 +312,7 @@ class ConstraintsApi:
     async def get_payment_constraints_rules_by_institution_with_http_info(
         self,
         institution_ids: Annotated[
-            Annotated[list[StrictStr], Field()],
+            list[StrictStr],
             Field(
                 ...,
                 description="Unique Id(s) of the `Institution`(s) to retrieve the Payment Constraints for. Multiple institutionIds need to be separated by `,`",

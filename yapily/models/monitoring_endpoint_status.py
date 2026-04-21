@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -27,8 +28,8 @@ class MonitoringEndpointStatus(BaseModel):
     MonitoringEndpointStatus
     """
 
-    last_tested: datetime | None = Field(None, alias="lastTested")
-    resource_endpoint: StrictStr | None = Field(None, alias="resourceEndpoint")
+    last_tested: Annotated[datetime | None, Field(alias='lastTested')] = None
+    resource_endpoint: Annotated[StrictStr | None, Field(alias='resourceEndpoint')] = None
     span: StrictStr | None = None
     status: MonitoringStatusEnum | None = None
     __properties = ["lastTested", "resourceEndpoint", "span", "status"]

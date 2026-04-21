@@ -1,3 +1,4 @@
+from typing import Annotated
 """
 Yapily API
 
@@ -25,7 +26,7 @@ class PostAccountsAccountIdTransactionsCategorisation400ResponseErrorIssuesInner
     """
 
     type: StrictStr | None = None
-    code: StrictFloat | StrictInt | None = Field(None, description="A 5 digit error code")
+    code: Annotated[StrictFloat | StrictInt | None, Field(description='A 5 digit error code')] = None
     message: StrictStr | None = None
     __properties = ["type", "code", "message"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
