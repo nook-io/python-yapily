@@ -39,14 +39,14 @@ class ConstraintsApi:
         self,
         institution_ids: Annotated[
             list[StrictStr],
-            Field(,
-                description="Unique Id(s) of the `Institution`(s) to retrieve the Data Constraints for. Multiple institutionIds need to be separated by `,`",
+            Field(
+                description="Unique Id(s) of the `Institution`(s) to retrieve the Data Constraints for. Multiple institutionIds need to be separated by `,`"
             ),
         ],
         institution_country_code: Annotated[
             StrictStr,
-            Field(,
-                description="Country code of the `Institution`(s). Ensure that the country code matches the respective institutionIds; any mismatch will result in an HTTP 404 error response.",
+            Field(
+                description="Country code of the `Institution`(s). Ensure that the country code matches the respective institutionIds; any mismatch will result in an HTTP 404 error response."
             ),
         ],
         endpoint_path: Annotated[
@@ -97,14 +97,14 @@ class ConstraintsApi:
         self,
         institution_ids: Annotated[
             list[StrictStr],
-            Field(,
-                description="Unique Id(s) of the `Institution`(s) to retrieve the Data Constraints for. Multiple institutionIds need to be separated by `,`",
+            Field(
+                description="Unique Id(s) of the `Institution`(s) to retrieve the Data Constraints for. Multiple institutionIds need to be separated by `,`"
             ),
         ],
         institution_country_code: Annotated[
             StrictStr,
-            Field(,
-                description="Country code of the `Institution`(s). Ensure that the country code matches the respective institutionIds; any mismatch will result in an HTTP 404 error response.",
+            Field(
+                description="Country code of the `Institution`(s). Ensure that the country code matches the respective institutionIds; any mismatch will result in an HTTP 404 error response."
             ),
         ],
         endpoint_path: Annotated[
@@ -244,14 +244,14 @@ class ConstraintsApi:
         self,
         institution_ids: Annotated[
             list[StrictStr],
-            Field(,
-                description="Unique Id(s) of the `Institution`(s) to retrieve the Payment Constraints for. Multiple institutionIds need to be separated by `,`",
+            Field(
+                description="Unique Id(s) of the `Institution`(s) to retrieve the Payment Constraints for. Multiple institutionIds need to be separated by `,`"
             ),
         ],
         institution_country_code: Annotated[
             StrictStr,
-            Field(,
-                description="Country code of the `Institution`(s). Ensure that the country code matches the respective institutionIds; any mismatch will result in an HTTP 404 error response.",
+            Field(
+                description="Country code of the `Institution`(s). Ensure that the country code matches the respective institutionIds; any mismatch will result in an HTTP 404 error response."
             ),
         ],
         payment_type: Annotated[StrictStr, Field(description="Type of payment to retrieve payment constraints for")],
@@ -305,14 +305,14 @@ class ConstraintsApi:
         self,
         institution_ids: Annotated[
             list[StrictStr],
-            Field(,
-                description="Unique Id(s) of the `Institution`(s) to retrieve the Payment Constraints for. Multiple institutionIds need to be separated by `,`",
+            Field(
+                description="Unique Id(s) of the `Institution`(s) to retrieve the Payment Constraints for. Multiple institutionIds need to be separated by `,`"
             ),
         ],
         institution_country_code: Annotated[
             StrictStr,
-            Field(,
-                description="Country code of the `Institution`(s). Ensure that the country code matches the respective institutionIds; any mismatch will result in an HTTP 404 error response.",
+            Field(
+                description="Country code of the `Institution`(s). Ensure that the country code matches the respective institutionIds; any mismatch will result in an HTTP 404 error response."
             ),
         ],
         payment_type: Annotated[StrictStr, Field(description="Type of payment to retrieve payment constraints for")],

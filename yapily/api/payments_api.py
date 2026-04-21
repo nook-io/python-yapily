@@ -42,8 +42,8 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         submit_bulk_payment_request: SubmitBulkPaymentRequest,
@@ -111,8 +111,8 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         submit_bulk_payment_request: SubmitBulkPaymentRequest,
@@ -272,8 +272,8 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         payment_request: PaymentRequest,
@@ -346,8 +346,8 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         payment_request: PaymentRequest,
@@ -523,8 +523,8 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent token` containing the user's authorisation to make the request."
             ),
         ],
         bulk_payment_id: Annotated[
@@ -561,8 +561,8 @@ class PaymentsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent token` containing the user's authorisation to make the request."
             ),
         ],
         bulk_payment_id: Annotated[
@@ -682,8 +682,8 @@ class PaymentsApi:
         payment_id: Annotated[StrictStr, Field(description="__Mandatory__. The payment Id of the payment.")],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -756,8 +756,8 @@ class PaymentsApi:
         payment_id: Annotated[StrictStr, Field(description="__Mandatory__. The payment Id of the payment.")],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[

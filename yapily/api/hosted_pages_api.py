@@ -356,8 +356,8 @@ class HostedPagesApi:
         self,
         sub_application: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)",
+            Field(
+                description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)"
             ),
         ],
         create_hosted_vrp_consent_request: CreateHostedVRPConsentRequest,
@@ -400,8 +400,8 @@ class HostedPagesApi:
         self,
         sub_application: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)",
+            Field(
+                description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)"
             ),
         ],
         create_hosted_vrp_consent_request: CreateHostedVRPConsentRequest,
@@ -534,8 +534,8 @@ class HostedPagesApi:
         consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         funds_confirmation_request: FundsConfirmationRequest,
@@ -589,8 +589,8 @@ class HostedPagesApi:
         consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         funds_confirmation_request: FundsConfirmationRequest,
@@ -733,8 +733,8 @@ class HostedPagesApi:
         consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         create_hosted_vrp_payment_request: CreateHostedVRPPaymentRequest,
@@ -788,8 +788,8 @@ class HostedPagesApi:
         consent_request_id: Annotated[StrictStr, Field(description="Unique Identifier of the Consent Request")],
         consent_token: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         create_hosted_vrp_payment_request: CreateHostedVRPPaymentRequest,
@@ -1240,8 +1240,8 @@ class HostedPagesApi:
         self,
         sub_application: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)",
+            Field(
+                description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)"
             ),
         ],
         **kwargs,
@@ -1279,8 +1279,8 @@ class HostedPagesApi:
         self,
         sub_application: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)",
+            Field(
+                description="__Mandatory__. The unique identifier of the sub application the request is being submitted on behalf of (e.g. an underlying merchant)"
             ),
         ],
         **kwargs,

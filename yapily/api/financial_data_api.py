@@ -53,8 +53,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -129,8 +129,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -300,8 +300,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -376,8 +376,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -547,8 +547,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -607,8 +607,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -748,8 +748,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -808,8 +808,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -951,8 +951,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -1011,8 +1011,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -1151,8 +1151,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -1222,8 +1222,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -1381,8 +1381,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -1431,8 +1431,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -1683,8 +1683,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -1728,8 +1728,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         sub_application: Annotated[
@@ -1854,8 +1854,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -1964,8 +1964,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -2168,8 +2168,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         account_id: Annotated[
@@ -2223,8 +2223,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         account_id: Annotated[
@@ -2359,8 +2359,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         account_id: Annotated[
@@ -2414,8 +2414,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         account_id: Annotated[
@@ -2552,8 +2552,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         account_id: Annotated[
@@ -2644,8 +2644,8 @@ class FinancialDataApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         account_id: Annotated[
@@ -2842,8 +2842,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -2985,8 +2985,8 @@ class FinancialDataApi:
         ],
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[

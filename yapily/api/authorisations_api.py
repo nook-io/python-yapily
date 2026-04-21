@@ -1851,8 +1851,8 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -1922,8 +1922,8 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         psu_id: Annotated[
@@ -2822,8 +2822,8 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         payment_authorisation_request: PaymentAuthorisationRequest,
@@ -2891,8 +2891,8 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         payment_authorisation_request: PaymentAuthorisationRequest,
@@ -3061,8 +3061,8 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         account_authorisation_request: AccountAuthorisationRequest,
@@ -3142,8 +3142,8 @@ class AuthorisationsApi:
         self,
         consent: Annotated[
             StrictStr,
-            Field(,
-                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
+            Field(
+                description="__Mandatory__. The `consent-token` containing the user's authorisation to make the request."
             ),
         ],
         account_authorisation_request: AccountAuthorisationRequest,
