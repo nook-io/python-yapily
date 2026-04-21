@@ -2,7 +2,15 @@ import json
 import pprint
 from typing import Annotated, Any
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictFloat,
+    StrictInt,
+    StrictStr,
+)
 
 from yapily.models.schema_type import SchemaType
 from yapily.models.schema_x_yapily_annotations import SchemaXYapilyAnnotations
@@ -17,26 +25,34 @@ class ModelSchema(BaseModel):
 
     title: StrictStr | None = None
     maximum: StrictFloat | StrictInt | None = None
-    exclusive_maximum: Annotated[StrictFloat | StrictInt | None, Field(alias="exclusiveMaximum")] = None
+    exclusive_maximum: Annotated[
+        StrictFloat | StrictInt | None, Field(alias="exclusiveMaximum")
+    ] = None
     minimum: StrictFloat | StrictInt | None = None
-    exclusive_minimum: Annotated[StrictFloat | StrictInt | None, Field(alias="exclusiveMinimum")] = None
+    exclusive_minimum: Annotated[
+        StrictFloat | StrictInt | None, Field(alias="exclusiveMinimum")
+    ] = None
     pattern: StrictStr | None = None
-    max_items: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(alias="maxItems")] = None
-    min_items: Annotated[Annotated[int, Field(strict=True, ge=0)] | None, Field(alias="minItems")] = None
+    max_items: Annotated[
+        Annotated[int, Field(strict=True, ge=0)] | None, Field(alias="maxItems")
+    ] = None
+    min_items: Annotated[
+        Annotated[int, Field(strict=True, ge=0)] | None, Field(alias="minItems")
+    ] = None
     unique_items: Annotated[StrictBool | None, Field(alias="uniqueItems")] = None
     required: Annotated[list[StrictStr], Field(min_length=1), Unique] | None = None
     enum: Annotated[list[Any], Field(min_length=1)] | None = None
     type: SchemaType | None = None
-    contains: "ModelSchema" | None = None
-    var_not: Annotated["ModelSchema" | None, Field(alias="not")] = None
-    var_if: Annotated["ModelSchema" | None, Field(alias="if")] = None
-    then: "ModelSchema" | None = None
-    var_else: Annotated["ModelSchema" | None, Field(alias="else")] = None
+    contains: "ModelSchema | None" = None
+    var_not: Annotated["ModelSchema | None", Field(alias="not")] = None
+    var_if: Annotated["ModelSchema | None", Field(alias="if")] = None
+    then: "ModelSchema | None" = None
+    var_else: Annotated["ModelSchema | None", Field(alias="else")] = None
     all_of: Annotated[list["ModelSchema"] | None, Field(alias="allOf")] = None
     one_of: Annotated[list["ModelSchema"] | None, Field(alias="oneOf")] = None
     any_of: Annotated[list["ModelSchema"] | None, Field(alias="anyOf")] = None
-    items: "ModelSchema" | None = None
-    properties: dict[str, "ModelSchema"] | None = None
+    items: "ModelSchema | None" = None
+    properties: "dict[str, ModelSchema] | None" = None
     description: StrictStr | None = None
     format: StrictStr | None = None
     default: Any | None = None
@@ -48,10 +64,14 @@ class ModelSchema(BaseModel):
             description="dependentRequired keyword is used to satisfy dependency between fields",
         ),
     ] = None
-    defs: Annotated[dict[str, "ModelSchema"] | None, Field(alias="$defs")] = None
+    defs: "Annotated[dict[str, ModelSchema] | None, Field(alias='$defs')]" = None
     ref: Annotated[StrictStr | None, Field(alias="$ref")] = None
-    x_yapily_annotations: Annotated[SchemaXYapilyAnnotations | None, Field(alias="x-yapily-annotations")] = None
-    x_yapily_validations: Annotated[SchemaXYapilyValidations | None, Field(alias="x-yapily-validations")] = None
+    x_yapily_annotations: Annotated[
+        SchemaXYapilyAnnotations | None, Field(alias="x-yapily-annotations")
+    ] = None
+    x_yapily_validations: Annotated[
+        SchemaXYapilyValidations | None, Field(alias="x-yapily-validations")
+    ] = None
     __properties = [
         "title",
         "maximum",
@@ -197,11 +217,21 @@ class ModelSchema(BaseModel):
                 "required": obj.get("required"),
                 "enum": obj.get("enum"),
                 "type": obj.get("type"),
-                "contains": ModelSchema.from_dict(obj.get("contains")) if obj.get("contains") is not None else None,
-                "var_not": ModelSchema.from_dict(obj.get("not")) if obj.get("not") is not None else None,
-                "var_if": ModelSchema.from_dict(obj.get("if")) if obj.get("if") is not None else None,
-                "then": ModelSchema.from_dict(obj.get("then")) if obj.get("then") is not None else None,
-                "var_else": ModelSchema.from_dict(obj.get("else")) if obj.get("else") is not None else None,
+                "contains": ModelSchema.from_dict(obj.get("contains"))
+                if obj.get("contains") is not None
+                else None,
+                "var_not": ModelSchema.from_dict(obj.get("not"))
+                if obj.get("not") is not None
+                else None,
+                "var_if": ModelSchema.from_dict(obj.get("if"))
+                if obj.get("if") is not None
+                else None,
+                "then": ModelSchema.from_dict(obj.get("then"))
+                if obj.get("then") is not None
+                else None,
+                "var_else": ModelSchema.from_dict(obj.get("else"))
+                if obj.get("else") is not None
+                else None,
                 "all_of": [ModelSchema.from_dict(_item) for _item in obj.get("allOf")]
                 if obj.get("allOf") is not None
                 else None,
@@ -211,8 +241,13 @@ class ModelSchema(BaseModel):
                 "any_of": [ModelSchema.from_dict(_item) for _item in obj.get("anyOf")]
                 if obj.get("anyOf") is not None
                 else None,
-                "items": ModelSchema.from_dict(obj.get("items")) if obj.get("items") is not None else None,
-                "properties": {_k: ModelSchema.from_dict(_v) for _k, _v in obj.get("properties").items()}
+                "items": ModelSchema.from_dict(obj.get("items"))
+                if obj.get("items") is not None
+                else None,
+                "properties": {
+                    _k: ModelSchema.from_dict(_v)
+                    for _k, _v in obj.get("properties").items()
+                }
                 if obj.get("properties") is not None
                 else None,
                 "description": obj.get("description"),
@@ -220,14 +255,20 @@ class ModelSchema(BaseModel):
                 "default": obj.get("default"),
                 "example": obj.get("example"),
                 "dependent_required": obj.get("dependentRequired"),
-                "defs": {_k: ModelSchema.from_dict(_v) for _k, _v in obj.get("$defs").items()}
+                "defs": {
+                    _k: ModelSchema.from_dict(_v) for _k, _v in obj.get("$defs").items()
+                }
                 if obj.get("$defs") is not None
                 else None,
                 "ref": obj.get("$ref"),
-                "x_yapily_annotations": SchemaXYapilyAnnotations.from_dict(obj.get("x-yapily-annotations"))
+                "x_yapily_annotations": SchemaXYapilyAnnotations.from_dict(
+                    obj.get("x-yapily-annotations")
+                )
                 if obj.get("x-yapily-annotations") is not None
                 else None,
-                "x_yapily_validations": SchemaXYapilyValidations.from_dict(obj.get("x-yapily-validations"))
+                "x_yapily_validations": SchemaXYapilyValidations.from_dict(
+                    obj.get("x-yapily-validations")
+                )
                 if obj.get("x-yapily-validations") is not None
                 else None,
             }
