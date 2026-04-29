@@ -53,7 +53,7 @@ class Enrichment(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -66,7 +66,7 @@ class Enrichment(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of categorisation
         if self.categorisation:
             _dict["categorisation"] = self.categorisation.to_dict()
@@ -85,9 +85,9 @@ class Enrichment(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return Enrichment.parse_obj(obj)
+            return Enrichment.model_validate(obj)
 
-        return Enrichment.parse_obj(
+        return Enrichment.model_validate(
             {
                 "categorisation": Categorisation.from_dict(obj.get("categorisation"))
                 if obj.get("categorisation") is not None

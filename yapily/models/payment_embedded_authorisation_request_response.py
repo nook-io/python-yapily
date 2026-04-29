@@ -133,7 +133,7 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -146,7 +146,7 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in charges (list)
         _items = []
         if self.charges:
@@ -176,9 +176,9 @@ class PaymentEmbeddedAuthorisationRequestResponse(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return PaymentEmbeddedAuthorisationRequestResponse.parse_obj(obj)
+            return PaymentEmbeddedAuthorisationRequestResponse.model_validate(obj)
 
-        return PaymentEmbeddedAuthorisationRequestResponse.parse_obj(
+        return PaymentEmbeddedAuthorisationRequestResponse.model_validate(
             {
                 "id": obj.get("id"),
                 "user_uuid": obj.get("userUuid"),

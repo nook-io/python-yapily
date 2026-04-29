@@ -26,7 +26,7 @@ class ComplianceDataPayer(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -39,7 +39,7 @@ class ComplianceDataPayer(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of individual
         if self.individual:
             _dict["individual"] = self.individual.to_dict()
@@ -55,9 +55,9 @@ class ComplianceDataPayer(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ComplianceDataPayer.parse_obj(obj)
+            return ComplianceDataPayer.model_validate(obj)
 
-        return ComplianceDataPayer.parse_obj(
+        return ComplianceDataPayer.model_validate(
             {
                 "type": obj.get("type"),
                 "individual": ComplianceDataIndividual.from_dict(obj.get("individual"))

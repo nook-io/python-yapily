@@ -21,7 +21,7 @@ class Pagination(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -34,7 +34,7 @@ class Pagination(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of var_self
         if self.var_self:
             _dict["self"] = self.var_self.to_dict()
@@ -50,9 +50,9 @@ class Pagination(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return Pagination.parse_obj(obj)
+            return Pagination.model_validate(obj)
 
-        return Pagination.parse_obj(
+        return Pagination.model_validate(
             {
                 "total_count": obj.get("totalCount"),
                 "var_self": FilterAndSort.from_dict(obj.get("self")) if obj.get("self") is not None else None,

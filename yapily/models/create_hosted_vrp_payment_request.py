@@ -25,7 +25,7 @@ class CreateHostedVRPPaymentRequest(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -38,7 +38,7 @@ class CreateHostedVRPPaymentRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of amount
         if self.amount:
             _dict["amount"] = self.amount.to_dict()
@@ -51,9 +51,9 @@ class CreateHostedVRPPaymentRequest(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return CreateHostedVRPPaymentRequest.parse_obj(obj)
+            return CreateHostedVRPPaymentRequest.model_validate(obj)
 
-        return CreateHostedVRPPaymentRequest.parse_obj(
+        return CreateHostedVRPPaymentRequest.model_validate(
             {
                 "payment_idempotency_id": obj.get("paymentIdempotencyId"),
                 "amount": Amount.from_dict(obj.get("amount")) if obj.get("amount") is not None else None,

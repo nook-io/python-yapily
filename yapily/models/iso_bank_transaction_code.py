@@ -20,7 +20,7 @@ class IsoBankTransactionCode(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -33,7 +33,7 @@ class IsoBankTransactionCode(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of domain_code
         if self.domain_code:
             _dict["domainCode"] = self.domain_code.to_dict()
@@ -52,9 +52,9 @@ class IsoBankTransactionCode(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return IsoBankTransactionCode.parse_obj(obj)
+            return IsoBankTransactionCode.model_validate(obj)
 
-        return IsoBankTransactionCode.parse_obj(
+        return IsoBankTransactionCode.model_validate(
             {
                 "domain_code": IsoCodeDetails.from_dict(obj.get("domainCode"))
                 if obj.get("domainCode") is not None

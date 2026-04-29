@@ -24,7 +24,7 @@ class FilteredClientPayloadListTransaction(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -37,7 +37,7 @@ class FilteredClientPayloadListTransaction(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in data (list)
         _items = []
         if self.data:
@@ -61,9 +61,9 @@ class FilteredClientPayloadListTransaction(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return FilteredClientPayloadListTransaction.parse_obj(obj)
+            return FilteredClientPayloadListTransaction.model_validate(obj)
 
-        return FilteredClientPayloadListTransaction.parse_obj(
+        return FilteredClientPayloadListTransaction.model_validate(
             {
                 "api_call": obj.get("apiCall"),
                 "data": [Transaction.from_dict(_item) for _item in obj.get("data")]

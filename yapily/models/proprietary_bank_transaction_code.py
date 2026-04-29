@@ -20,7 +20,7 @@ class ProprietaryBankTransactionCode(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -33,7 +33,7 @@ class ProprietaryBankTransactionCode(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "ProprietaryBankTransactionCode":
@@ -42,6 +42,6 @@ class ProprietaryBankTransactionCode(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ProprietaryBankTransactionCode.parse_obj(obj)
+            return ProprietaryBankTransactionCode.model_validate(obj)
 
-        return ProprietaryBankTransactionCode.parse_obj({"code": obj.get("code"), "issuer": obj.get("issuer")})
+        return ProprietaryBankTransactionCode.model_validate({"code": obj.get("code"), "issuer": obj.get("issuer")})

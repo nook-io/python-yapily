@@ -22,7 +22,7 @@ class InstitutionError(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -35,7 +35,7 @@ class InstitutionError(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "InstitutionError":
@@ -44,8 +44,8 @@ class InstitutionError(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return InstitutionError.parse_obj(obj)
+            return InstitutionError.model_validate(obj)
 
-        return InstitutionError.parse_obj(
+        return InstitutionError.model_validate(
             {"error_message": obj.get("errorMessage"), "http_status_code": obj.get("httpStatusCode")}
         )

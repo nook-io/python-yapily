@@ -20,7 +20,7 @@ class ApiResponseError(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -33,7 +33,7 @@ class ApiResponseError(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of error
         if self.error:
             _dict["error"] = self.error.to_dict()
@@ -53,9 +53,9 @@ class ApiResponseError(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ApiResponseError.parse_obj(obj)
+            return ApiResponseError.model_validate(obj)
 
-        return ApiResponseError.parse_obj(
+        return ApiResponseError.model_validate(
             {
                 "error": ApiError.from_dict(obj.get("error")) if obj.get("error") is not None else None,
                 "raw": [RawResponse.from_dict(_item) for _item in obj.get("raw")]

@@ -20,7 +20,7 @@ class CreditLine(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -33,7 +33,7 @@ class CreditLine(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of credit_line_amount
         if self.credit_line_amount:
             _dict["creditLineAmount"] = self.credit_line_amount.to_dict()
@@ -46,9 +46,9 @@ class CreditLine(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return CreditLine.parse_obj(obj)
+            return CreditLine.model_validate(obj)
 
-        return CreditLine.parse_obj(
+        return CreditLine.model_validate(
             {
                 "type": obj.get("type"),
                 "credit_line_amount": Amount.from_dict(obj.get("creditLineAmount"))

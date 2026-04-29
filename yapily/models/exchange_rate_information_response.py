@@ -40,7 +40,7 @@ class ExchangeRateInformationResponse(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -53,7 +53,7 @@ class ExchangeRateInformationResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "ExchangeRateInformationResponse":
@@ -62,9 +62,9 @@ class ExchangeRateInformationResponse(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ExchangeRateInformationResponse.parse_obj(obj)
+            return ExchangeRateInformationResponse.model_validate(obj)
 
-        return ExchangeRateInformationResponse.parse_obj(
+        return ExchangeRateInformationResponse.model_validate(
             {
                 "unit_currency": obj.get("unitCurrency"),
                 "rate": obj.get("rate"),

@@ -16,7 +16,7 @@ class ResponseForwardedData(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -29,7 +29,7 @@ class ResponseForwardedData(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "ResponseForwardedData":
@@ -38,6 +38,6 @@ class ResponseForwardedData(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ResponseForwardedData.parse_obj(obj)
+            return ResponseForwardedData.model_validate(obj)
 
-        return ResponseForwardedData.parse_obj({"headers": obj.get("headers"), "url": obj.get("url")})
+        return ResponseForwardedData.model_validate({"headers": obj.get("headers"), "url": obj.get("url")})

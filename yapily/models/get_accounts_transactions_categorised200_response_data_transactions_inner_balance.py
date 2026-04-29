@@ -24,7 +24,7 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -37,7 +37,7 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of balance_amount
         if self.balance_amount:
             _dict["balanceAmount"] = self.balance_amount.to_dict()
@@ -50,9 +50,9 @@ class GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance(
             return None
 
         if not isinstance(obj, dict):
-            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance.parse_obj(obj)
+            return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance.model_validate(obj)
 
-        return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance.parse_obj(
+        return GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerBalance.model_validate(
             {
                 "type": obj.get("type"),
                 "balance_amount": GetAccountsTransactionsCategorised200ResponseDataTransactionsInnerTransactionAmount.from_dict(

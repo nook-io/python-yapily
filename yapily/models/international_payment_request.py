@@ -35,7 +35,7 @@ class InternationalPaymentRequest(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -48,7 +48,7 @@ class InternationalPaymentRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of exchange_rate_information
         if self.exchange_rate_information:
             _dict["exchangeRateInformation"] = self.exchange_rate_information.to_dict()
@@ -61,9 +61,9 @@ class InternationalPaymentRequest(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return InternationalPaymentRequest.parse_obj(obj)
+            return InternationalPaymentRequest.model_validate(obj)
 
-        return InternationalPaymentRequest.parse_obj(
+        return InternationalPaymentRequest.model_validate(
             {
                 "currency_of_transfer": obj.get("currencyOfTransfer"),
                 "exchange_rate_information": ExchangeRateInformation.from_dict(obj.get("exchangeRateInformation"))

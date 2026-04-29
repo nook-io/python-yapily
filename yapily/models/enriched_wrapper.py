@@ -48,7 +48,7 @@ class EnrichedWrapper(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -61,7 +61,7 @@ class EnrichedWrapper(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in income_streams (list)
         _items = []
         if self.income_streams:
@@ -99,9 +99,9 @@ class EnrichedWrapper(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return EnrichedWrapper.parse_obj(obj)
+            return EnrichedWrapper.model_validate(obj)
 
-        return EnrichedWrapper.parse_obj(
+        return EnrichedWrapper.model_validate(
             {
                 "income_streams": [TransactionStream.from_dict(_item) for _item in obj.get("incomeStreams")]
                 if obj.get("incomeStreams") is not None

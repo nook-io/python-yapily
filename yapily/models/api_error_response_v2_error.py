@@ -33,7 +33,7 @@ class ApiErrorResponseV2Error(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -46,7 +46,7 @@ class ApiErrorResponseV2Error(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in issues (list)
         _items = []
         if self.issues:
@@ -63,9 +63,9 @@ class ApiErrorResponseV2Error(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ApiErrorResponseV2Error.parse_obj(obj)
+            return ApiErrorResponseV2Error.model_validate(obj)
 
-        return ApiErrorResponseV2Error.parse_obj(
+        return ApiErrorResponseV2Error.model_validate(
             {
                 "tracing_id": obj.get("tracingId"),
                 "code": obj.get("code"),

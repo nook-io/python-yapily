@@ -58,7 +58,7 @@ class CreateHostedConsentRequest(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -71,7 +71,7 @@ class CreateHostedConsentRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of institution_identifiers
         if self.institution_identifiers:
             _dict["institutionIdentifiers"] = self.institution_identifiers.to_dict()
@@ -90,9 +90,9 @@ class CreateHostedConsentRequest(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return CreateHostedConsentRequest.parse_obj(obj)
+            return CreateHostedConsentRequest.model_validate(obj)
 
-        return CreateHostedConsentRequest.parse_obj(
+        return CreateHostedConsentRequest.model_validate(
             {
                 "user_id": obj.get("userId"),
                 "application_user_id": obj.get("applicationUserId"),

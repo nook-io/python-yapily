@@ -43,7 +43,7 @@ class NonSweepingPeriodicLimits(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -56,7 +56,7 @@ class NonSweepingPeriodicLimits(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of total_max_amount
         if self.total_max_amount:
             _dict["totalMaxAmount"] = self.total_max_amount.to_dict()
@@ -69,9 +69,9 @@ class NonSweepingPeriodicLimits(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return NonSweepingPeriodicLimits.parse_obj(obj)
+            return NonSweepingPeriodicLimits.model_validate(obj)
 
-        return NonSweepingPeriodicLimits.parse_obj(
+        return NonSweepingPeriodicLimits.model_validate(
             {
                 "total_max_amount": Amount.from_dict(obj.get("totalMaxAmount"))
                 if obj.get("totalMaxAmount") is not None

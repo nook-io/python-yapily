@@ -19,7 +19,7 @@ class Notification(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -32,7 +32,7 @@ class Notification(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "Notification":
@@ -41,6 +41,6 @@ class Notification(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return Notification.parse_obj(obj)
+            return Notification.model_validate(obj)
 
-        return Notification.parse_obj({"type": obj.get("type"), "url": obj.get("url")})
+        return Notification.model_validate({"type": obj.get("type"), "url": obj.get("url")})

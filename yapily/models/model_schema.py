@@ -109,7 +109,7 @@ class ModelSchema(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -122,7 +122,7 @@ class ModelSchema(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of contains
         if self.contains:
             _dict["contains"] = self.contains.to_dict()
@@ -201,9 +201,9 @@ class ModelSchema(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ModelSchema.parse_obj(obj)
+            return ModelSchema.model_validate(obj)
 
-        return ModelSchema.parse_obj(
+        return ModelSchema.model_validate(
             {
                 "title": obj.get("title"),
                 "maximum": obj.get("maximum"),

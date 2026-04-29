@@ -36,7 +36,7 @@ class FilterAndSort(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -49,7 +49,7 @@ class FilterAndSort(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "FilterAndSort":
@@ -58,9 +58,9 @@ class FilterAndSort(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return FilterAndSort.parse_obj(obj)
+            return FilterAndSort.model_validate(obj)
 
-        return FilterAndSort.parse_obj(
+        return FilterAndSort.model_validate(
             {
                 "var_from": obj.get("from"),
                 "before": obj.get("before"),

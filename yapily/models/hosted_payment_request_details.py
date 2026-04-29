@@ -56,7 +56,7 @@ class HostedPaymentRequestDetails(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -69,7 +69,7 @@ class HostedPaymentRequestDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of payee
         if self.payee:
             _dict["payee"] = self.payee.to_dict()
@@ -88,9 +88,9 @@ class HostedPaymentRequestDetails(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return HostedPaymentRequestDetails.parse_obj(obj)
+            return HostedPaymentRequestDetails.model_validate(obj)
 
-        return HostedPaymentRequestDetails.parse_obj(
+        return HostedPaymentRequestDetails.model_validate(
             {
                 "payment_idempotency_id": obj.get("paymentIdempotencyId"),
                 "reference": obj.get("reference"),

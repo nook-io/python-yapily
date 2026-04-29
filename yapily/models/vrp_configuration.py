@@ -43,7 +43,7 @@ class VrpConfiguration(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -56,7 +56,7 @@ class VrpConfiguration(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of maximum_individual_amount
         if self.maximum_individual_amount:
             _dict["maximumIndividualAmount"] = self.maximum_individual_amount.to_dict()
@@ -79,9 +79,9 @@ class VrpConfiguration(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return VrpConfiguration.parse_obj(obj)
+            return VrpConfiguration.model_validate(obj)
 
-        return VrpConfiguration.parse_obj(
+        return VrpConfiguration.model_validate(
             {
                 "maximum_individual_amount": Amount.from_dict(obj.get("maximumIndividualAmount"))
                 if obj.get("maximumIndividualAmount") is not None

@@ -71,7 +71,7 @@ class AccountRequest(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -84,7 +84,7 @@ class AccountRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of account_identifiers
         if self.account_identifiers:
             _dict["accountIdentifiers"] = self.account_identifiers.to_dict()
@@ -111,9 +111,9 @@ class AccountRequest(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return AccountRequest.parse_obj(obj)
+            return AccountRequest.model_validate(obj)
 
-        return AccountRequest.parse_obj(
+        return AccountRequest.model_validate(
             {
                 "transaction_from": obj.get("transactionFrom"),
                 "transaction_to": obj.get("transactionTo"),

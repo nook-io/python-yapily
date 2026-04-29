@@ -24,7 +24,7 @@ class HostedPaymentStatusDetails(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -37,7 +37,7 @@ class HostedPaymentStatusDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of iso_status
         if self.iso_status:
             _dict["isoStatus"] = self.iso_status.to_dict()
@@ -50,9 +50,9 @@ class HostedPaymentStatusDetails(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return HostedPaymentStatusDetails.parse_obj(obj)
+            return HostedPaymentStatusDetails.model_validate(obj)
 
-        return HostedPaymentStatusDetails.parse_obj(
+        return HostedPaymentStatusDetails.model_validate(
             {
                 "status": obj.get("status"),
                 "status_update_date": obj.get("statusUpdateDate"),

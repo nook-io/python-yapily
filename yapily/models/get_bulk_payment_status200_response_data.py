@@ -27,7 +27,7 @@ class GetBulkPaymentStatus200ResponseData(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -40,7 +40,7 @@ class GetBulkPaymentStatus200ResponseData(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of status_details
         if self.status_details:
             _dict["statusDetails"] = self.status_details.to_dict()
@@ -53,9 +53,9 @@ class GetBulkPaymentStatus200ResponseData(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return GetBulkPaymentStatus200ResponseData.parse_obj(obj)
+            return GetBulkPaymentStatus200ResponseData.model_validate(obj)
 
-        return GetBulkPaymentStatus200ResponseData.parse_obj(
+        return GetBulkPaymentStatus200ResponseData.model_validate(
             {
                 "id": obj.get("id"),
                 "consent_id": obj.get("consentId"),

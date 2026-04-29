@@ -34,7 +34,7 @@ class SubmissionRequest(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -47,7 +47,7 @@ class SubmissionRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of payment_amount
         if self.payment_amount:
             _dict["paymentAmount"] = self.payment_amount.to_dict()
@@ -60,9 +60,9 @@ class SubmissionRequest(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return SubmissionRequest.parse_obj(obj)
+            return SubmissionRequest.model_validate(obj)
 
-        return SubmissionRequest.parse_obj(
+        return SubmissionRequest.model_validate(
             {
                 "payment_idempotency_id": obj.get("paymentIdempotencyId"),
                 "psu_authentication_method": obj.get("psuAuthenticationMethod"),

@@ -37,7 +37,7 @@ class PostAccountsAccountIdTransactionsCategorisationRequest(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -50,7 +50,7 @@ class PostAccountsAccountIdTransactionsCategorisationRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "PostAccountsAccountIdTransactionsCategorisationRequest":
@@ -59,9 +59,9 @@ class PostAccountsAccountIdTransactionsCategorisationRequest(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return PostAccountsAccountIdTransactionsCategorisationRequest.parse_obj(obj)
+            return PostAccountsAccountIdTransactionsCategorisationRequest.model_validate(obj)
 
-        return PostAccountsAccountIdTransactionsCategorisationRequest.parse_obj(
+        return PostAccountsAccountIdTransactionsCategorisationRequest.model_validate(
             {
                 "country_code": obj.get("countryCode"),
                 "categorisation_type": obj.get("categorisationType"),

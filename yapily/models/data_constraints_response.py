@@ -31,7 +31,7 @@ class DataConstraintsResponse(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -44,7 +44,7 @@ class DataConstraintsResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of request
         if self.request:
             _dict["request"] = self.request.to_dict()
@@ -57,9 +57,9 @@ class DataConstraintsResponse(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return DataConstraintsResponse.parse_obj(obj)
+            return DataConstraintsResponse.model_validate(obj)
 
-        return DataConstraintsResponse.parse_obj(
+        return DataConstraintsResponse.model_validate(
             {
                 "institution_id": obj.get("institutionId"),
                 "institution_country_code": obj.get("institutionCountryCode"),

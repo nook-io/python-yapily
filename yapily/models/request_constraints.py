@@ -19,7 +19,7 @@ class RequestConstraints(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -32,7 +32,7 @@ class RequestConstraints(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of headers
         if self.headers:
             _dict["headers"] = self.headers.to_dict()
@@ -48,9 +48,9 @@ class RequestConstraints(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return RequestConstraints.parse_obj(obj)
+            return RequestConstraints.model_validate(obj)
 
-        return RequestConstraints.parse_obj(
+        return RequestConstraints.model_validate(
             {
                 "headers": ModelSchema.from_dict(obj.get("headers")) if obj.get("headers") is not None else None,
                 "body": ModelSchema.from_dict(obj.get("body")) if obj.get("body") is not None else None,

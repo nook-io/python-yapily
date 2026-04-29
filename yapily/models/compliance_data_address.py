@@ -24,7 +24,7 @@ class ComplianceDataAddress(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -37,7 +37,7 @@ class ComplianceDataAddress(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "ComplianceDataAddress":
@@ -46,9 +46,9 @@ class ComplianceDataAddress(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ComplianceDataAddress.parse_obj(obj)
+            return ComplianceDataAddress.model_validate(obj)
 
-        return ComplianceDataAddress.parse_obj(
+        return ComplianceDataAddress.model_validate(
             {
                 "address_line1": obj.get("addressLine1"),
                 "address_line2": obj.get("addressLine2"),

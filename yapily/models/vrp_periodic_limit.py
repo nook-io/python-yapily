@@ -28,7 +28,7 @@ class VrpPeriodicLimit(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -41,7 +41,7 @@ class VrpPeriodicLimit(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of maximum_amount
         if self.maximum_amount:
             _dict["maximumAmount"] = self.maximum_amount.to_dict()
@@ -54,9 +54,9 @@ class VrpPeriodicLimit(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return VrpPeriodicLimit.parse_obj(obj)
+            return VrpPeriodicLimit.model_validate(obj)
 
-        return VrpPeriodicLimit.parse_obj(
+        return VrpPeriodicLimit.model_validate(
             {
                 "maximum_amount": Amount.from_dict(obj.get("maximumAmount"))
                 if obj.get("maximumAmount") is not None

@@ -22,7 +22,7 @@ class RawResponse(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -35,7 +35,7 @@ class RawResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of request
         if self.request:
             _dict["request"] = self.request.to_dict()
@@ -48,9 +48,9 @@ class RawResponse(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return RawResponse.parse_obj(obj)
+            return RawResponse.model_validate(obj)
 
-        return RawResponse.parse_obj(
+        return RawResponse.model_validate(
             {
                 "request": RawRequest.from_dict(obj.get("request")) if obj.get("request") is not None else None,
                 "duration": obj.get("duration"),

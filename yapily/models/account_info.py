@@ -21,7 +21,7 @@ class AccountInfo(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -34,7 +34,7 @@ class AccountInfo(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of account_identification
         if self.account_identification:
             _dict["accountIdentification"] = self.account_identification.to_dict()
@@ -47,9 +47,9 @@ class AccountInfo(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return AccountInfo.parse_obj(obj)
+            return AccountInfo.model_validate(obj)
 
-        return AccountInfo.parse_obj(
+        return AccountInfo.model_validate(
             {
                 "account_id": obj.get("accountId"),
                 "account_identification": AccountIdentification.from_dict(obj.get("accountIdentification"))

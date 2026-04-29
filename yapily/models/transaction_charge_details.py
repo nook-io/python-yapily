@@ -18,7 +18,7 @@ class TransactionChargeDetails(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -31,7 +31,7 @@ class TransactionChargeDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.model_dump(by_alias=True, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of charge_amount
         if self.charge_amount:
             _dict["chargeAmount"] = self.charge_amount.to_dict()
@@ -44,9 +44,9 @@ class TransactionChargeDetails(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return TransactionChargeDetails.parse_obj(obj)
+            return TransactionChargeDetails.model_validate(obj)
 
-        return TransactionChargeDetails.parse_obj(
+        return TransactionChargeDetails.model_validate(
             {
                 "charge_amount": Amount.from_dict(obj.get("chargeAmount"))
                 if obj.get("chargeAmount") is not None

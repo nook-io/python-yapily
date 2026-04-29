@@ -17,7 +17,7 @@ class ConsentAuthCodeRequest(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
@@ -30,7 +30,7 @@ class ConsentAuthCodeRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        return self.dict(by_alias=True, exclude={}, exclude_none=True)
+        return self.model_dump(by_alias=True, exclude_none=True)
 
     @classmethod
     def from_dict(cls, obj: dict) -> "ConsentAuthCodeRequest":
@@ -39,6 +39,6 @@ class ConsentAuthCodeRequest(BaseModel):
             return None
 
         if not isinstance(obj, dict):
-            return ConsentAuthCodeRequest.parse_obj(obj)
+            return ConsentAuthCodeRequest.model_validate(obj)
 
-        return ConsentAuthCodeRequest.parse_obj({"auth_code": obj.get("authCode"), "auth_state": obj.get("authState")})
+        return ConsentAuthCodeRequest.model_validate({"auth_code": obj.get("authCode"), "auth_state": obj.get("authState")})
